@@ -4,6 +4,7 @@ import re
 import sys
 import optparse
 import logging
+import tempfile
 
 def to_sents(infile):
     words = []
@@ -788,8 +789,8 @@ def main():
 
     lines = open(options.input, "r") if options.input else sys.stdin
     
-    logfile = '/tmp/malt_to_prop_log.txt'
-    logging.basicConfig(filename=logfile,level=logging.DEBUG)
+    logfileHandleAndName=tempfile.mkstemp(dir="/tmp/")
+    logging.basicConfig(filename=logfileHandleAndName[1],level=logging.DEBUG)
     #logging.error("this is an error message")
     
     full_sents,all_words = to_sents(lines)
