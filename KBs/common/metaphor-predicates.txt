@@ -1,11 +1,14 @@
-; CHANGE LOG
-;
-; 11/21/2012 aks - removed rifle, gun, war, competition, sight, bullet, crosshairs, president
-; 11/26/2012 aks - added lead, illegal, boxing-match, rexist
-; 12/3/2012 aks - subevent, rexist marked *nonlexical*
-;
+;; Change Log:
+;;
+;; 2012-11-21 aks - Removed rifle, gun, war, competition, sight, bullet,
+;;   crosshairs, president
+;; 2012-11-26 aks - Added lead, illegal, boxing-match, rexist
+;; 2012-12-03 aks - subevent, rexist marked *nonlexical*
 
-;;;; CONFLICT
+;;
+;; Conflict
+;;
+
 (adversary e y x c) : y and x are rivals in the context of conflict c
 (aim e x w y) : x directs weapon (or attack) w at target y
 (attack e x y) : x attacks y
@@ -22,11 +25,14 @@
 (slap e x y) : x slaps y
 (subevent x y) : x is a sub-event of y *nonlexical*
 (thrive e m) : m is an entity that thrives
-(use e x w y z) : x uses w on object y for purpose z 
+(use e x w y z) : x uses w on object y for purpose z
 (union u) : u is a labor union
 (weapon w) : w is a weapon
 
-;;;; BUILD-DESTROY and GOVERNANCE DFCEs
+
+;;
+;; Build-Destroy and Governance DFCEs
+;;
 (buildP e z x)
 (build z x)
 (citizens s z)
@@ -34,7 +40,7 @@
 (control f x s)
 (decreaseFct x)
 (decreaseStructP e1 x)
-(decreaseStruct x) 
+(decreaseStruct x)
 (dFCompEnt x)
 (functionality f x)
 (increaseFct x)
@@ -43,7 +49,3 @@
 (nation x)
 (respectP f y z x)
 (sharedPlan f x)
-
-
-
-
