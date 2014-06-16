@@ -675,25 +675,25 @@ WEALTH_AND_SOCIAL_CLASS
 ; BOTTOM OF ECONOMIC SCALE
 (B (name bajo-la-linea) (=> (^ (S#LOW_POINT e0 :0.45) (SS#LOW_POINT%BOTTOM_OF_ECONOMIC_SCALE x e0 :0.45)) (^ (bajo-nn e0 x) (la-in e1 x y) (linea-nn e2 y))))
 (B (name fondo) (=> (^ (S#LOW_POINT e0 :0.45) (SS#LOW_POINT%BOTTOM_OF_ECONOMIC_SCALE x e0 :0.45)) (fondo-nn e0 x)))
-;(B (name low) (=> (^ (S#LOW_POINT e0 :0.45) (SS#LOW_POINT%BOTTOM_OF_ENCONOMIC_SCALE e0 e0 :0.45)) (bajo-adj e0 x)))
+;(B (name low) (=> (^ (S#LOW_POINT e0 :0.45) (SS#LOW_POINT%BOTTOM_OF_ECONOMIC_SCALE e0 e0 :0.45)) (bajo-adj e0 x)))
 
 ;MOVEMENT DOWNWARD
-(B (name deslizar) (=> (^ (SS#LOW_POINT%MOVEMENT_DOWNWARD e0 e1 :0.3) (R#MOVE-D-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e1) (SS#BOTTOM_OF_ENCONOMIC_SCALE u e1 ) (deslizar-vb e0 x y z))))
-(B (name caer) (=> (^ (SS#LOW_POINT%MOVEMENT_DOWNWARD e0 e1 :0.3) (R#MOVE-D-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e1) (SS#BOTTOM_OF_ENCONOMIC_SCALE u e1 ) (caer-vb e0 x y z))))
-(B (name deslizarse) (=> (^ (SS#LOW_POINT%MOVEMENT_DOWNWARD e0 e1 :0.3) (R#MOVE-D-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e1) (SS#BOTTOM_OF_ENCONOMIC_SCALE u e1 ) (deslizarse-vb e0 x y z))))
-(B (name caerse) (=> (^ (SS#LOW_POINT%MOVEMENT_DOWNWARD e0 e1 :0.3) (R#MOVE-D-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e1) (SS#BOTTOM_OF_ENCONOMIC_SCALE u e1 ) (caerse-vb e0 x y z))))
-(B (name voltear) (=> (^ (SS#LOW_POINT%MOVEMENT_DOWNWARD e0 e1 :0.3) (R#MOVE-D-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e1) (SS#BOTTOM_OF_ENCONOMIC_SCALE u e1 ) (voltear-vb e0 x y z))))
-(B (name hundir) (=> (^ (SS#LOW_POINT%MOVEMENT_DOWNWARD e0 e1 :0.3) (R#MOVE-D-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e1) (SS#BOTTOM_OF_ENCONOMIC_SCALE u e1 ) (hundir-vb e0 x y z))))
-(B (name hundirse) (=> (^ (SS#LOW_POINT%MOVEMENT_DOWNWARD e0 e1 :0.3) (R#MOVE-D-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e1) (SS#BOTTOM_OF_ENCONOMIC_SCALE u e1 ) (hundirse-vb e0 x y z))))
-(B (name sumergir) (=> (^ (SS#LOW_POINT%MOVEMENT_DOWNWARD e0 e1 :0.3) (R#MOVE-D-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e1) (SS#BOTTOM_OF_ENCONOMIC_SCALE u e1 ) (sumergir-vb e0 x y z))))
-(B (name sumergirse) (=> (^ (SS#LOW_POINT%MOVEMENT_DOWNWARD e0 e1 :0.3) (R#MOVE-D-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e1) (SS#BOTTOM_OF_ENCONOMIC_SCALE u e1 ) (sumergirse-vb e0 x y z))))
+(B (name deslizar) (=> (^ (SS#LOW_POINT%MOVEMENT_DOWNWARD e0 e1 :0.3) (R#MOVE-D-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e1) (SS#BOTTOM_OF_ECONOMIC_SCALE u e1 ) (deslizar-vb e0 x y z))))
+(B (name caer) (=> (^ (SS#LOW_POINT%MOVEMENT_DOWNWARD e0 e1 :0.3) (R#MOVE-D-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e1) (SS#BOTTOM_OF_ECONOMIC_SCALE u e1 ) (caer-vb e0 x y z))))
+(B (name deslizarse) (=> (^ (SS#LOW_POINT%MOVEMENT_DOWNWARD e0 e1 :0.3) (R#MOVE-D-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e1) (SS#BOTTOM_OF_ECONOMIC_SCALE u e1 ) (deslizarse-vb e0 x y z))))
+(B (name caerse) (=> (^ (SS#LOW_POINT%MOVEMENT_DOWNWARD e0 e1 :0.3) (R#MOVE-D-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e1) (SS#BOTTOM_OF_ECONOMIC_SCALE u e1 ) (caerse-vb e0 x y z))))
+(B (name voltear) (=> (^ (SS#LOW_POINT%MOVEMENT_DOWNWARD e0 e1 :0.3) (R#MOVE-D-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e1) (SS#BOTTOM_OF_ECONOMIC_SCALE u e1 ) (voltear-vb e0 x y z))))
+(B (name hundir) (=> (^ (SS#LOW_POINT%MOVEMENT_DOWNWARD e0 e1 :0.3) (R#MOVE-D-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e1) (SS#BOTTOM_OF_ECONOMIC_SCALE u e1 ) (hundir-vb e0 x y z))))
+(B (name hundirse) (=> (^ (SS#LOW_POINT%MOVEMENT_DOWNWARD e0 e1 :0.3) (R#MOVE-D-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e1) (SS#BOTTOM_OF_ECONOMIC_SCALE u e1 ) (hundirse-vb e0 x y z))))
+(B (name sumergir) (=> (^ (SS#LOW_POINT%MOVEMENT_DOWNWARD e0 e1 :0.3) (R#MOVE-D-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e1) (SS#BOTTOM_OF_ECONOMIC_SCALE u e1 ) (sumergir-vb e0 x y z))))
+(B (name sumergirse) (=> (^ (SS#LOW_POINT%MOVEMENT_DOWNWARD e0 e1 :0.3) (R#MOVE-D-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e1) (SS#BOTTOM_OF_ECONOMIC_SCALE u e1 ) (sumergirse-vb e0 x y z))))
 
 ;MOVEMENT UPWARD
-(B (name sobreponer-a) (=> (^ (SS#LOW_POINT%MOVEMENT_UPWARD e0 e2 :0.3) (R#MOVE-U-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e2) (SS#BOTTOM_OF_ENCONOMIC_SCALE u e2 ) (sobreponer-vb e0 x y z) (a-in e1 e0 y))))
-(B (name resurgir-de) (=> (^ (SS#LOW_POINT%MOVEMENT_UPWARD e0 e2 :0.3) (R#MOVE-U-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e2) (SS#BOTTOM_OF_ENCONOMIC_SCALE u e2 ) (resurgir-vb e0 x y z) (de-in e1 e0 y))))
-(B (name subir) (=> (^ (SS#LOW_POINT%MOVEMENT_UPWARD e0 e1 :0.3) (R#MOVE-U-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e1) (SS#BOTTOM_OF_ENCONOMIC_SCALE u e1 ) (subir-vb e0 x y z))))
-(B (name saltar) (=> (^ (SS#LOW_POINT%MOVEMENT_UPWARD e0 e1 :0.3) (R#MOVE-U-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e1) (SS#BOTTOM_OF_ENCONOMIC_SCALE u e1 ) (saltar-vb e0 x y z))))
-(B (name brincar) (=> (^ (SS#LOW_POINT%MOVEMENT_UPWARD e0 e1 :0.3) (R#MOVE-U-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e1) (SS#BOTTOM_OF_ENCONOMIC_SCALE u e1 ) (brincar-vb e0 x y z))))
+(B (name sobreponer-a) (=> (^ (SS#LOW_POINT%MOVEMENT_UPWARD e0 e2 :0.3) (R#MOVE-U-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e2) (SS#BOTTOM_OF_ECONOMIC_SCALE u e2 ) (sobreponer-vb e0 x y z) (a-in e1 e0 y))))
+(B (name resurgir-de) (=> (^ (SS#LOW_POINT%MOVEMENT_UPWARD e0 e2 :0.3) (R#MOVE-U-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e2) (SS#BOTTOM_OF_ECONOMIC_SCALE u e2 ) (resurgir-vb e0 x y z) (de-in e1 e0 y))))
+(B (name subir) (=> (^ (SS#LOW_POINT%MOVEMENT_UPWARD e0 e1 :0.3) (R#MOVE-U-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e1) (SS#BOTTOM_OF_ECONOMIC_SCALE u e1 ) (subir-vb e0 x y z))))
+(B (name saltar) (=> (^ (SS#LOW_POINT%MOVEMENT_UPWARD e0 e1 :0.3) (R#MOVE-U-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e1) (SS#BOTTOM_OF_ECONOMIC_SCALE u e1 ) (saltar-vb e0 x y z))))
+(B (name brincar) (=> (^ (SS#LOW_POINT%MOVEMENT_UPWARD e0 e1 :0.3) (R#MOVE-U-PATIENT x e0 :0.3)) (^ (S#LOW_POINT e1) (SS#BOTTOM_OF_ECONOMIC_SCALE u e1 ) (brincar-vb e0 x y z))))
 
 (B (name bajo-puntomap) (=> (I#LOW-POINT x :0.9) (S#LOW_POINT x)))
 (B (name parte-inferior-econ-scale-map) (=> (I#LOW_POINT%BOTTOM-OF-ECONOMIC-SCALE x y :0.9) (SS#LOW_POINT%BOTTOM_OF_ECONOMIC_SCALE x y)))
@@ -723,7 +723,7 @@ WEALTH_AND_SOCIAL_CLASS
 (B (name subir) (=> (^ (SS#HIGH_POINT%MOVEMENT_FORWARD_UPWARD e0 a :0.3) (R#MOVE-U-PATIENT x e0 :0.3)) (^ (S#HIGH_POINT a) (SS#TOP_OF_ECONOMIC_SCALE b a) (subir-vb e0 x y u1))))
 
 (B (name highpointmap) (=> (I#HIGH_POINT x :0.9) (S#HIGH_POINT x)))
-(B (name top-of-econ-scale-map) (=> (I#HIGH_POINT%TOP_OF_ENCONOMIC_SCALE x y :0.9) (SS#HIGH_POINT%TOP_OF_ENCONOMIC_SCALE x y)))
+(B (name top-of-econ-scale-map) (=> (I#HIGH_POINT%TOP_OF_ECONOMIC_SCALE x y :0.9) (SS#HIGH_POINT%TOP_OF_ECONOMIC_SCALE x y)))
 (B (name movement-downwardmap) (=> (I#HIGH_POINT%MOVEMENT_BACKWARD_DOWNWARD x y :0.9) (SS#HIGH_POINT%MOVEMENT_BACKWARD_DOWNWARD x y)))
 (B (name movement-upwardmap) (=> (I#HIGH_POINT%MOVEMENT_FORWARD_UPWARD x y :0.9) (SS#HIGH_POINT%MOVEMENT_FORWARD_UPWARD x y)))
 
