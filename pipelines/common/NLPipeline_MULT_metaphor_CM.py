@@ -1,5 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
+# This script requires the environment variables METAPHOR_DIR, HENRY_DIR,
+# BOXER_DIR, and TMP_DIR to be set.
 
 import os
 import re
@@ -29,12 +32,12 @@ HENRY_DIR = os.environ["HENRY_DIR"]
 BOXER_DIR = os.environ["BOXER_DIR"]
 TMP_DIR = os.environ["TMP_DIR"]
 
+BOXER2HENRY = "%s/pipelines/English/Boxer2Henry.py" % METAPHOR_DIR
+PARSER2HENRY = "%s/pipelines/common/IntParser2Henry.py" % METAPHOR_DIR
+
 FARSI_PIPELINE = "%s/pipelines/Farsi/LF_Pipeline" % METAPHOR_DIR
 SPANISH_PIPELINE = "%s/pipelines/Spanish/run_spanish.sh" % METAPHOR_DIR
 RUSSIAN_PIPELINE = "%s/pipelines/Russian/run_russian.sh" % METAPHOR_DIR
-
-BOXER2HENRY = "%s/pipelines/English/Boxer2Henry.py" % METAPHOR_DIR
-PARSER2HENRY = "%s/pipelines/common/IntParser2Henry.py" % METAPHOR_DIR
 
 # Compiled knowledge bases
 EN_KBPATH = "%s/KBs/English/English_compiled_KB.da" % METAPHOR_DIR
@@ -42,19 +45,24 @@ ES_KBPATH = "%s/KBs/Spanish/Spanish_compiled_KB.da" % METAPHOR_DIR
 RU_KBPATH = "%s/KBs/Russian/Russian_compiled_KB.da" % METAPHOR_DIR
 FA_KBPATH = "%s/KBs/Farsi/Farsi_compiled_KB.da" % METAPHOR_DIR
 
-# switches
+# Switches
 kbcompiled = True
 
-DESCRIPTION = "Abductive engine output; " \
-              "targetFrame: Is currently equal to targetConceptSubDomain;" \
-              "targetConceptDomain: Target concept domain defined by abduction; " \
-              "targetConceptSubDomain: Target concept subdomain defined by abduction ; " \
-              "sourceFrame: Source frame proposed by abduction ; " \
-              "sourceConceptSubDomain: Source subdomain proposed by abduction ; " \
-              "targetFrameElementSentence: List of words denoting the target found by abduction; " \
-              "sourceFrameElementSentence: List of words denoting the source found by abduction; " \
-              "annotationMappings: Target-Source mapping structures. " \
-              "isiAbductiveExplanation: Target-Source mapping (metaphor interpretation) as logical form found by abduction."
+DESCRIPTION = \
+  "Abductive engine output; " \
+  "targetFrame: Is currently equal to targetConceptSubDomain;" \
+  "targetConceptDomain: Target concept domain defined by abduction; " \
+  "targetConceptSubDomain: Target concept subdomain defined by abduction ; " \
+  "sourceFrame: Source frame proposed by abduction ; " \
+  "sourceConceptSubDomain: Source subdomain proposed by abduction ; " \
+  "targetFrameElementSentence: List of words denoting the target found by " \
+  "abduction; " \
+  "sourceFrameElementSentence: List of words denoting the source found by " \
+  "abduction; " \
+  "annotationMappings: Target-Source mapping structures. " \
+  "isiAbductiveExplanation: Target-Source mapping (metaphor interpretation) " \
+  "as logical form found by abduction."
+
 
 def extract_parses(inputString):
     output_struct = dict()
@@ -68,6 +76,7 @@ def extract_parses(inputString):
             output_struct[target] = line
     return output_struct
 
+
 def extract_hypotheses(inputString):
     output_struct = dict()
     hypothesis_found = False
@@ -78,29 +87,22 @@ def extract_hypotheses(inputString):
     explanation = False
 
     for line in inputString.splitlines():
-
         match_obj = p.match(line)
 
         if match_obj:
             target = match_obj.group(1)
-
         elif line.startswith("<hypothesis"):
             hypothesis_found = True
-
         elif line.startswith("</hypothesis>"):
             hypothesis_found = False
-
         elif hypothesis_found:
             output_struct[target] = line
             target = ""
             hypothesis_found = False
-
         #elif line.startswith("<unification"):
         #    unification = True
-
         #elif line.startswith("<explanation"):
         #    explanation = True
-
         #elif line.startswith("</result-inference>"):
 
     #print json.dumps(output_struct, ensure_ascii=False)
@@ -109,6 +111,7 @@ def extract_hypotheses(inputString):
 
 def generate_text_input(input_metaphors, language):
     output_str = ""
+
     for key in input_metaphors.keys():
         output_str += "<META>" + key + "\n\n " + input_metaphors[key] + "\n\n"
 
@@ -125,23 +128,26 @@ def ADP(request_body_dict, input_metaphors, language, with_pdf_content):
     # Parser pipeline
     parser_proc = ""
     if language == "FA":
-        parser_proc = FARSI_PIPELINE + " | python " + PARSER2HENRY + " --nonmerge sameid freqpred"
+        parser_proc = FARSI_PIPELINE + " | python " + PARSER2HENRY + \
+          " --nonmerge sameid freqpred"
         KBPATH = FA_KBPATH
-
     elif language == "ES":
-        parser_proc = SPANISH_PIPELINE + " | python " + PARSER2HENRY + " --nonmerge sameid freqpred"
+        parser_proc = SPANISH_PIPELINE + " | python " + PARSER2HENRY + \
+          " --nonmerge sameid freqpred"
         KBPATH = ES_KBPATH
-
     elif language == "RU":
-        parser_proc = RUSSIAN_PIPELINE + " | python " + PARSER2HENRY + " --nonmerge sameid freqpred"
+        parser_proc = RUSSIAN_PIPELINE + " | python " + PARSER2HENRY + \
+          " --nonmerge sameid freqpred"
         KBPATH = RU_KBPATH
-
     elif language == "EN":
         tokenizer = BOXER_DIR + "/bin/tokkie --stdin"
-        candcParser = BOXER_DIR + "/bin/candc --models " + BOXER_DIR + "/models/boxer --candc-printer boxer"
-        boxer = BOXER_DIR + "/bin/boxer --semantics tacitus --resolve true --stdin"
+        candcParser = BOXER_DIR + "/bin/candc --models " + BOXER_DIR + \
+          "/models/boxer --candc-printer boxer"
+        boxer = BOXER_DIR + "/bin/boxer --semantics tacitus --resolve true " \
+          + "--stdin"
         b2h = "python " + BOXER2HENRY + " --nonmerge sameid freqpred"
-        parser_proc = tokenizer + " | " + candcParser + " | " + boxer + " | " + b2h
+        parser_proc = tokenizer + " | " + candcParser + " | " + boxer + " | " \
+          + b2h
         KBPATH = EN_KBPATH
 
     parser_pipeline = Popen(parser_proc, shell=True, stdin=PIPE, stdout=PIPE,
@@ -151,17 +157,17 @@ def ADP(request_body_dict, input_metaphors, language, with_pdf_content):
     # Parser processing time in seconds
     parser_time = (time.time() - start_time) * 0.001
 
-    # time to generate final output in seconds
+    # Time to generate final output in seconds
     generate_output_time = 2
 
-    # time left for Henry in seconds
+    # Time left for Henry in seconds
     time_all_henry = 600 - parser_time - generate_output_time
 
     if with_pdf_content:
-        # time for graph generation subtracted from Henry time in seconds
+        # Time for graph generation subtracted from Henry time in seconds
         time_all_henry -= - 3
 
-    # time for one interpretation in Henry in seconds
+    # Time for one interpretation in Henry in seconds
     time_unit_henry = str(int(time_all_henry / len(input_metaphors)))
 
     # Henry processing
@@ -187,7 +193,7 @@ def ADP(request_body_dict, input_metaphors, language, with_pdf_content):
 
     processed, failed, empty = 0, 0, 0
 
-    # merge ADB result and input json document
+    # Merge ADB result and input JSON document
     input_annotations = request_body_dict["metaphorAnnotationRecords"]
 
     total = len(input_annotations)
@@ -195,11 +201,14 @@ def ADP(request_body_dict, input_metaphors, language, with_pdf_content):
         if "sentenceId" in annotation:
             sID = str(annotation["sentenceId"])
             if sID in hypotheses.keys():
-                CM_output = extract_CM_mapping(sID,hypotheses[sID],parses[sID],DESCRIPTION,annotation)
+                CM_output = extract_CM_mapping(sID,hypotheses[sID],
+                                               parses[sID], DESCRIPTION,
+                                               annotation)
                 try:
                     for annot_property in CM_output.keys():
                         if CM_output.get(annot_property):
-                            annotation[annot_property] = CM_output[annot_property] 
+                            annotation[annot_property] = \
+                              CM_output[annot_property]
                     processed += 1
                 except Exception:
                     failed += 1
@@ -211,7 +220,7 @@ def ADP(request_body_dict, input_metaphors, language, with_pdf_content):
                         pass
                     except:
                         pass
-            else: 
+            else:
                 failed += 1
                 try:
                     #fl = open("/lfs1/vzaytsev/misc/fails/failed_linguisticMetaphor.%d.txt" % int(annotation["sentenceId"]), "w")
@@ -232,7 +241,7 @@ def ADP(request_body_dict, input_metaphors, language, with_pdf_content):
 
 
 def get_webservice_location():
-    # this gives the IP address; you may want to use this during the demo
+    # This gives the IP address; you may want to use this during the demo
     # hostname=socket.gethostbyname(hostname)
 
     hostname = socket.getfqdn()
@@ -242,6 +251,3 @@ def get_webservice_location():
         port = os.environ.get("ADP_PORT")
 
     return hostname + ":" + port
-
-
-
