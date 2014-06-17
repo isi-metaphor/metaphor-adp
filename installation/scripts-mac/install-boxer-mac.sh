@@ -1,11 +1,11 @@
 #!/bin/bash
 
 if [ $# != 3 ]; then
-echo Usage: "$0 boxer_username boxer_password boxer_models"
-exit 1
+    echo Usage: "$0 boxer_username boxer_password boxer_models"
+    exit 1
 fi
 
-echo installing BOXER ...
+echo Installing Boxer:
 
 boxer_username=$1
 boxer_password=$2
@@ -19,8 +19,8 @@ make
 make bin/boxer
 make bin/tokkie
 
-echo unpack models
-#in mac it's .tar because it is unzipped when downloaded
+echo Unpack models:
+# On Mac it's .tar because it is unzipped when downloaded
 cp $boxer_models .
 tar -xzf models*.*
 rm -f models*.*

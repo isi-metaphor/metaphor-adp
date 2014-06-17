@@ -16,7 +16,7 @@ if setvars == "yes":
     bashrc_file=os.environ['HOME'] + "/.bash_profile"
 
     f=open(bashrc_file, "a+")
-    
+
     f.write("\n#Metaphor ADP\n")
     f.write("export ADP_HOME="+install_dir+"\n")
     f.write("export GUROBI_HOME=/Library/gurobi511/mac64\n")
@@ -32,7 +32,7 @@ if setvars == "yes":
     else:
         f.write("export LD_LIBRARY_PATH=$GUROBI_HOME/lib:$LD_LIBRARY_PATH\n")
 
-    if os.environ.get('LD_LIBRARY_PATH') is None:
+    if os.environ.get('LIBRARY_PATH') is None:
         f.write("export LIBRARY_PATH=$GUROBI_HOME/lib\n")
     else:
         f.write("export LIBRARY_PATH=$GUROBI_HOME/lib:$LIBRARY_PATH\n")
