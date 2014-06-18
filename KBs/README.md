@@ -1,12 +1,12 @@
 Knowledge Bases
-===
+===============
 
 Available abductive knowledge bases are stored in this directory.
 Abductive axioms have the following format:
 
 ```
 <axiom> ::= "(B (name " <axiom name> ") (=> " <lhs> <rhs> "))"
-<axiom name> ::= <ASCII stringl, no spaces>
+<axiom name> ::= <ASCII string, no spaces>
 <lhs> ::= <proposition with weight> | "(^ " <conjunction of propositions with weights> ")"
 <rhs> ::= <proposition> | "(^ " <conjunction of propositions> ")"
 <conjunction of propositions with weights> ::= <proposition with weight> | <proposition with weight> " " <conjunction of propositions with weights>
@@ -39,5 +39,3 @@ Note that for Mac users, the output path must come before the KB_PATH:
 ```
 henry -m compile_kb -o KB_COMPILED_PATH KB_PATH
 ```
-
-
