@@ -1,5 +1,9 @@
+;; -*- Mode: Lisp -*-
+
 ;;
 ;; Democracy: Metaphor Targets
 ;;
 
-(B (name democracy) (=> (^ (TS#DEMOCRACY x :0.45) (T#DEMOCRACY u :0.45)) (democracy-nn e0 x)))
+(B (name democracy)
+   (=> (^ (TS#DEMOCRACY x :0.45) (T#DEMOCRACY u :0.45))
+       (democracy-nn e0 x)))
