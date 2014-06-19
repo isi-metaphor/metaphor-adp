@@ -1,6 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+# Extract conceptual metaphors from hypotheses
+# Ekaterina Ovchinikova, April 2013
+
+# This generates the conceptual metaphor output file (*.cm).
+# It can be used in two modes:
+# - We don't have the source or target domains and identify those too.
+# - We are given a target domain and are identifying the source domain.
+
 import re
 from collections import defaultdict
 import json
@@ -47,28 +55,23 @@ def findIndexes(SubStr, MainStr):
         return []
 
     inds = []
-    ss_toks=nltk.word_tokenize(SubStr.rstrip().lower())
-    ms_toks=nltk.word_tokenize(MainStr.rstrip().lower())
-
-    #print ss_toks
-    #print ms_toks
+    ss_toks = nltk.word_tokenize(SubStr.rstrip().lower())
+    ms_toks = nltk.word_tokenize(MainStr.rstrip().lower())
 
     for mi, mt in enumerate(ms_toks):
         if ss_toks[0] == mt and len(ms_toks) >= mi + len(ss_toks) - 1:
             inds.append(mi)
             found = True
-            if len(ss_toks)>1:
-                for si in range(1,len(ss_toks)):
+            if len(ss_toks) > 1:
+                for si in range(1, len(ss_toks)):
                     if ss_toks[si] != ms_toks[mi+si]:
                         found = False
                         break
                     else:
                         inds.append(mi+si)
             if found:
-                #print inds
                 return inds
-            else:
-                inds = []
+            inds = []
 
     return inds
 
@@ -76,7 +79,8 @@ def findIndexes(SubStr, MainStr):
 # Process parse output and generate index->argument dict
 def extractWordsIds(parse):
     Wids = dict()
-    obs_pattern = re.compile('\(([^\s\()]+)([^:\()]+):[^:]+:[^:]+:\[([\d,]+)\]\)')
+    obs_pattern = \
+      re.compile('\(([^\s\()]+)([^:\()]+):[^:]+:[^:]+:\[([\d,]+)\]\)')
 
     snumb = 1
 
@@ -91,9 +95,9 @@ def extractWordsIds(parse):
             tid = int(pid) - snumb * 1000
 
             if pname.endswith('-vb') or pname.endswith('-rb') or \
-              pname.endswith('-adj') and len(args)>0:
+              pname.endswith('-adj') and len(args) > 0:
                 Wids[tid] = [args[0]]
-            elif pname.endswith('-nn') and len(args)>1:
+            elif pname.endswith('-nn') and len(args) > 1:
                 Wids[tid] = [args[0],args[1]]
 
     #print json.dumps(Wids, ensure_ascii=False)
@@ -118,7 +122,7 @@ def wordStr2print(Args, WordProps, Equalities):
 
     words = []
     for arg in Args:
-        newwords = findWords(arg,WordProps,Equalities,False)
+        newwords = findWords(arg, WordProps, Equalities, False)
         for word in newwords:
             if not word in words:
                 words.append(word)
@@ -142,12 +146,12 @@ def wordStr2print_Mapping(mappings, WordProps, Equalities):
             #for arg in args:
             #output only first ARG instead of all
             firstargs.append(args[0])
-            newwords = findWords(args[0],WordProps,Equalities,True)
+            newwords = findWords(args[0], WordProps, Equalities,True)
             for word in newwords:
                 if not word in words: words.append(word)
 
         output_str += ', ' + propName + '['
-        if len(words)>0:
+        if len(words) > 0:
             for word in words:
                 output_str += word + ','
         else:
@@ -181,17 +185,18 @@ def findWords(ARG, WordProps, Equalities, isMapping):
                     else:
                         if not propName[:-3] in words:
                             words.append(propName[:-3])
-                elif len(args)>1 and arg ==args[1] :
+                elif len(args) > 1 and arg == args[1] :
                     if propName.endswith('-nn'):
                         if not propName[:-3] in words:
                             words.append(propName[:-3])
                     elif propName=='person':
                         if not 'person' in words: words.append('person')
-                #TODO: enable when Boxer starts working correctly
-                #elif propName=='subset-of' and arg==args[2] :
-                #    output_str += ',' + findWords(args[1],WordProps,Equalities,isMapping)
+                # TODO: Enable this when Boxer starts working correctly.
+                # elif propName == 'subset-of' and arg == args[2] :
+                #    output_str += ',' + findWords(args[1], WordProps,
+                #                                  Equalities, isMapping)
 
-    if len(words)==0 and isMapping:
+    if len(words) == 0 and isMapping:
         return [ARG]
 
     return words
@@ -213,7 +218,7 @@ def createDStruc(superD,subD,inputVars,checkVars):
 
             for subd in subD:
                 for subArgs in subD[subd]:
-                    if len(subArgs)>1 and superArgs[0]==subArgs[1]:
+                    if len(subArgs) > 1 and superArgs[0] == subArgs[1]:
                         if checkVars:
                             if subArgs[0] in inputVars:
                                 if not includeD:
@@ -227,7 +232,8 @@ def createDStruc(superD,subD,inputVars,checkVars):
 
     return outputstrucs
 
-def collectVars(struc,superkey,equalities):
+
+def collectVars(struc, superkey, equalities):
     output = []
 
     for arg in struc[superkey]:
@@ -244,24 +250,28 @@ def collectVars(struc,superkey,equalities):
                         output.append(a)
     return output
 
-def collectVars2(struc,domain,subdomain):
+
+def collectVars2(struc, domain, subdomain):
     output = dict()
 
     for arg in struc[domain]:
         if not arg.startswith('_'):
-            output[arg]=1
+            output[arg] = 1
 
-        for (subd,subarg) in struc[domain][arg]:
+        for (subd, subarg) in struc[domain][arg]:
             if not subarg.startswith('_'):
-                output[subarg]=1
+                output[subarg] = 1
 
     return output
 
-def isLinkedbyParse(v1,v2,word_props,equalities,input_been,pathlength):
-    if v1==v2: return pathlength
+
+def isLinkedbyParse(v1, v2, word_props, equalities, input_been, pathlength):
+    if v1 == v2:
+        return pathlength
 
     pathlength += 1
-    if pathlength == 9: return pathlength
+    if pathlength == 9:
+        return pathlength
 
     been = list(input_been)
     if (v1,v2) in been: return 9
@@ -273,7 +283,7 @@ def isLinkedbyParse(v1,v2,word_props,equalities,input_been,pathlength):
     #if equalities.has_key(v1) and equalities[v1].has_key(v2): return 2
 
     nbrs = []
-    for (propName,args) in word_props:
+    for (propName, args) in word_props:
         if v1 in args:
             if v2 in args: return pathlength
 
@@ -283,8 +293,10 @@ def isLinkedbyParse(v1,v2,word_props,equalities,input_been,pathlength):
     pl = 9
     for n in nbrs:
         npl = isLinkedbyParse(n, v2, word_props, equalities, been, pathlength)
-        if npl<pl: pl = npl
+        if npl < pl:
+            pl = npl
     return pl
+
 
 def filterMappings(BestArgs,mappings):
     bestMapping = dict()
@@ -344,7 +356,6 @@ def transitive_closure(A):
                     A[x][y] = 1
         else:
             break
-
     return A
 
 
@@ -459,31 +470,36 @@ def extract_CM_mapping(sid, inputString, parse, DESCRIPTION, LCCannotation):
 
     #print json.dumps(equalities, ensure_ascii=False)
 
-    # transitive closure of equalities
+    # Transitive closure of equalities
     equalities = transitive_closure(equalities)
 
-    # find arguments for the input target and source words
+    # Find arguments for the input target and source words
     inputTargetArgs = []
     inputSourceArgs = []
     checkVars = False
-    if LCCannotation and 'annotationMappings' in LCCannotation and len(LCCannotation['annotationMappings'])>0:
+    if LCCannotation and 'annotationMappings' in LCCannotation and \
+      len(LCCannotation['annotationMappings']) > 0:
         firstAnn = LCCannotation['annotationMappings'][0]
         if 'target' in firstAnn and 'source' in firstAnn:
             checkVars = True
-            inputSourceIds = findIndexes(firstAnn['source'],LCCannotation['linguisticMetaphor'])
-            inputTargetIds = findIndexes(firstAnn['target'],LCCannotation['linguisticMetaphor'])
+            inputSourceIds = findIndexes(firstAnn['source'],
+                                         LCCannotation['linguisticMetaphor'])
+            inputTargetIds = findIndexes(firstAnn['target'],
+                                         LCCannotation['linguisticMetaphor'])
 
-            # extract words with ids from parse
+            # Extract words with IDs from parse
             Wids = extractWordsIds(parse)
-            # find arguments for input and source target words
-            inputTargetArgs = findArgs(inputTargetIds,Wids)
-            inputSourceArgs = findArgs(inputSourceIds,Wids)
+            # Find arguments for input and source target words.
+            inputTargetArgs = findArgs(inputTargetIds, Wids)
+            inputSourceArgs = findArgs(inputSourceIds, Wids)
 
     #print json.dumps(inputTargetArgs, ensure_ascii=False)
     #print json.dumps(inputSourceArgs, ensure_ascii=False)
 
-    target_strucs = createDStruc(subtargets,subsubtargets,inputTargetArgs,checkVars)
-    source_strucs = createDStruc(sources,subsources,inputSourceArgs,checkVars)
+    target_strucs = createDStruc(subtargets, subsubtargets, inputTargetArgs,
+                                 checkVars)
+    source_strucs = createDStruc(sources, subsources, inputSourceArgs,
+                                 checkVars)
 
     #print json.dumps(target_strucs, ensure_ascii=False)
     #print json.dumps(source_strucs, ensure_ascii=False)
@@ -492,7 +508,8 @@ def extract_CM_mapping(sid, inputString, parse, DESCRIPTION, LCCannotation):
     #exit(0)
 
     output_struct_item = {}
-    if not LCCannotation: output_struct_item["sid"] = sid
+    if not LCCannotation:
+        output_struct_item["sid"] = sid
     output_struct_item["isiDescription"] = DESCRIPTION
     output_struct_item["targetConceptDomain"] = "ECONOMIC_INEQUALITY"
 
@@ -505,7 +522,7 @@ def extract_CM_mapping(sid, inputString, parse, DESCRIPTION, LCCannotation):
     CMs = dict()
 
     for targetS in target_strucs:
-        tV = collectVars(target_strucs,targetS,equalities)
+        tV = collectVars(target_strucs, targetS, equalities)
         Tdomains = []
 
         for targ in target_strucs[targetS]:
@@ -513,8 +530,9 @@ def extract_CM_mapping(sid, inputString, parse, DESCRIPTION, LCCannotation):
               (targetS, targetS) not in Tdomains:
                 Tdomains.append((targetS,targetS))
             else:
-                for (tsubd,tsubarg) in target_strucs[targetS][targ]:
-                    if (targetS,tsubd) not in Tdomains: Tdomains.append((targetS,tsubd))
+                for (tsubd, tsubarg) in target_strucs[targetS][targ]:
+                    if (targetS, tsubd) not in Tdomains:
+                        Tdomains.append((targetS,tsubd))
 
         #print "Tdomans:"
         #print json.dumps(Tdomains, ensure_ascii=False)
@@ -531,7 +549,8 @@ def extract_CM_mapping(sid, inputString, parse, DESCRIPTION, LCCannotation):
                     #print (sourceS,ssubS,sargs)
                     for tv in tV:
                         for sv in sargs:
-                            newlink = isLinkedbyParse(tv,sv,word_props,equalities,[],0)
+                            newlink = isLinkedbyParse(tv, sv, word_props,
+                                                      equalities, [], 0)
                             #print "%s,%s,%s,%s,%s,%s" % (targetS,sourceS,ssubS,tv,sv,newlink)
                             if newlink < link:
                                 link = newlink
@@ -566,7 +585,7 @@ def extract_CM_mapping(sid, inputString, parse, DESCRIPTION, LCCannotation):
             else:
                 Tdomains.append(('POVERTY','POVERTY'))
 
-            if len(source_strucs)>0:
+            if len(source_strucs) > 0:
                 for sourceS in source_strucs:
                     if sourceTask and sourceS != LCCannotation["sourceFrame"]:
                         continue
@@ -582,34 +601,40 @@ def extract_CM_mapping(sid, inputString, parse, DESCRIPTION, LCCannotation):
                                      SSforS[LCCannotation["sourceFrame"]],
                                      0.001))
                 else:
-                    Sdomains.append((LCCannotation["sourceFrame"],'TYPE',0.001))
+                    Sdomains.append((LCCannotation["sourceFrame"], 'TYPE',
+                                     0.001))
             else:
-                Sdomains.append(('STRUGGLE','TYPE',0.001))
+                Sdomains.append(('STRUGGLE', 'TYPE', 0.001))
 
         for (t, ts) in Tdomains:
             for (s, ss, c) in Sdomains:
                 #explanationAppendix += "ECONOMIC_INEQUALITY,%s,%s,%s,%s,%s\n" % (t,ts,s,ss,c)
-                TSpair = "%s,%s,%s,%s" % (t,ts,s,ss)
+                TSpair = "%s,%s,%s,%s" % (t, ts, s, ss)
                 if CMs.has_key(TSpair):
-                    if CMs[TSpair] < c: CMs[TSpair] = c
+                    if CMs[TSpair] < c:
+                        CMs[TSpair] = c
                 else: CMs[TSpair] = c
-                bestCM = "%s,%s,%s,%s" % (t,ts,s,ss)
+                bestCM = "%s,%s,%s,%s" % (t, ts, s, ss)
 
     #print bestCM
 
     explanationAppendix = "\n%%BEGIN_CM_LIST\n"
     for TSpair in CMs.keys():
-        explanationAppendix += "ECONOMIC_INEQUALITY,%s,%s\n" % (TSpair,CMs[TSpair])
+        explanationAppendix += "ECONOMIC_INEQUALITY,%s,%s\n" % \
+          (TSpair, CMs[TSpair])
     explanationAppendix += "%%END_CM_LIST"
 
-    output_struct_item['isiAbductiveExplanation'] = inputString + explanationAppendix.encode("utf-8")
+    output_struct_item['isiAbductiveExplanation'] = inputString + \
+      explanationAppendix.encode("utf-8")
     output_struct_item["targetConceptDomain"] = 'ECONOMIC_INEQUALITY'
     data = bestCM.split(',')
     output_struct_item["targetConceptSubDomain"] = data[0]
     output_struct_item["targetFrame"] = data[1]
     output_struct_item["sourceFrame"] = data[2]
-    if data[3]=='-': output_struct_item["sourceConceptSubDomain"] = 'TYPE'
-    else: output_struct_item["sourceConceptSubDomain"] = data[3]
+    if data[3] == '-':
+        output_struct_item["sourceConceptSubDomain"] = 'TYPE'
+    else:
+        output_struct_item["sourceConceptSubDomain"] = data[3]
 
     targetArgs = collectVars2(target_strucs,data[0],data[1])
     sourceArgs = collectVars2(source_strucs,data[2],data[3])
@@ -626,10 +651,14 @@ def extract_CM_mapping(sid, inputString, parse, DESCRIPTION, LCCannotation):
         sourceWords = wordStr2print(sourceArgs,word_props,())
         annotationMappings_struc['target'] = targetWords
         annotationMappings_struc['source'] = sourceWords
-        if len(targetWords)>0: annotationMappings_struc['targetInLm'] = True
-        else: annotationMappings_struc['targetInLm'] = False
-        if len(sourceWords)>0: annotationMappings_struc['sourceInLm'] = True
-        else: annotationMappings_struc['sourceInLm'] = False
+        if len(targetWords) > 0:
+            annotationMappings_struc['targetInLm'] = True
+        else:
+            annotationMappings_struc['targetInLm'] = False
+        if len(sourceWords) > 0:
+            annotationMappings_struc['sourceInLm'] = True
+        else:
+            annotationMappings_struc['sourceInLm'] = False
 
     output_struct_item['annotationMappings'] = [annotationMappings_struc]
 

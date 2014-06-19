@@ -1,12 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Contributors:
-# - Ekaterina Ovchinnikova <katya@isi.edu>, 2012
-# - Jonathan Gordon <jgordon@isi.edu>, 2014
-
-# Converter turning logical forms into Henry input, adding nonmerge
-# contraints.
+# Convert logical forms into Henry input, adding nonmerge contraints
+# Ekaterina Ovchinnikova <katya@isi.edu>, 2012
+# Jonathan Gordon <jgordon@isi.edu>, 2014
 
 # In order to see options, run
 #   ./IntParser2Henry.py -h
