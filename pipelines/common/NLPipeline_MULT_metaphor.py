@@ -1,6 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+# Multilingual abductive discourse processing pipeline
+# Ekaterina Ovchinnikova <katya@isi.edu>, 2012
+# Jonathan Gordon <jgordon@isi.edu>, 2014
+
+# External tools used:
+# - English NLP pipeline (Metaphor-ADP/pipelines/English)
+# - Spanish NLP pipeline (Metaphor-ADP/pipelines/Spanish)
+# - Russian NLP pipeline (Metaphor-ADP/pipelines/Russian)
+# - Farsi NLP pipeline (Metaphor-ADP/pipelines/Farsi)
+# - Henry abductive reasoner (https://github.com/naoya-i/henry-n700)
+
 # This script requires the environment variables METAPHOR_DIR, HENRY_DIR,
 # BOXER_DIR, and TMP_DIR to be set.
 
@@ -63,22 +74,16 @@ def extract_hypotheses(inputString, unique_id, with_pdf_content):
 
         if match_obj:
             target = match_obj.group(1)
-
         elif line.startswith('<hypothesis'):
             hypothesis_found = True
-
         elif line.startswith('</hypothesis>'):
             hypothesis_found = False
-
         elif hypothesis_found:
             hypothesis = line
-
         elif line.startswith('<unification'):
             unification = True
-
         elif line.startswith('<explanation'):
             explanation = True
-
         elif line.startswith('</result-inference>'):
             output_struct_item['id'] = target
             output_struct_item['isiAbductiveHypothesis'] = hypothesis
@@ -104,15 +109,9 @@ def extract_hypotheses(inputString, unique_id, with_pdf_content):
 
 
 def generate_text_input(input_metaphors, language):
-    output_str = ""
+    output_str = ''
 
     for key in input_metaphors.keys():
-        #if language == "EN" or language == "RU":
-        #    output_str += "<META>" + key + "\n\n " + input_metaphors[key] \
-        #      + "\n\n"
-        #else:
-        #    output_str += ".TEXTID(" + key + ").\n\n" + input_metaphors[key] \
-        #      + "\n\n"
         output_str += "<META>" + key + "\n\n " + input_metaphors[key] + "\n\n"
 
     return output_str
@@ -166,7 +165,7 @@ def ADP(request_body_dict, input_metaphors, language, with_pdf_content):
 
     if with_pdf_content:
         # Time for graph generation subtracted from Henry time in seconds
-        time_all_henry -= - 3
+        time_all_henry -= -3
 
     # Time for one interpretation in Henry in seconds
     time_unit_henry = str(int(time_all_henry / len(input_metaphors)))
@@ -269,7 +268,3 @@ def get_base64(pdf_file_path):
     f.close()
     encoded_str = binary_str.encode("base64")
     return encoded_str
-
-
-# if __name__ == '__main__':
-#     main()

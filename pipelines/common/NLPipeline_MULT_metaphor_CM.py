@@ -1,6 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+# Multilingual abductive discourse processing pipeline
+# Ekaterina Ovchinnikova <katya@isi.edu>, 2012
+# Jonathan Gordon <jgordon@isi.edu>, 2014
+
+# External tools used:
+# - English NLP pipeline (Metaphor-ADP/pipelines/English)
+# - Spanish NLP pipeline (Metaphor-ADP/pipelines/Spanish)
+# - Russian NLP pipeline (Metaphor-ADP/pipelines/Russian)
+# - Farsi NLP pipeline (Metaphor-ADP/pipelines/Farsi)
+# - Henry abductive reasoner (https://github.com/naoya-i/henry-n700)
+
 # This script requires the environment variables METAPHOR_DIR, HENRY_DIR,
 # BOXER_DIR, and TMP_DIR to be set.
 
@@ -10,16 +21,18 @@ import json
 import time
 import thread
 import socket
-import logging
-import extract_CMs_from_hypotheses
 
+import logging
 from logging.handlers import TimedRotatingFileHandler
+
+import extract_CMs_from_hypotheses
 from extract_CMs_from_hypotheses import *
 
 from subprocess import Popen, PIPE
 
 '''
-logHandler = TimedRotatingFileHandler("/lfs1/vzaytsev/misc/log/access.log", when="midnight")
+logHandler = TimedRotatingFileHandler("/lfs1/vzaytsev/misc/log/access.log",
+                                      when="midnight")
 logFormatter = logging.Formatter("%(asctime)s %(message)s")
 logHandler.setFormatter(logFormatter)
 logger = logging.getLogger("my_logger")
@@ -81,8 +94,8 @@ def extract_hypotheses(inputString):
     output_struct = dict()
     hypothesis_found = False
     p = re.compile('<result-inference target="(.+)"')
-    target = ""
-    hypothesis = ""
+    target = ''
+    hypothesis = ''
     unification = False
     explanation = False
 
@@ -91,13 +104,13 @@ def extract_hypotheses(inputString):
 
         if match_obj:
             target = match_obj.group(1)
-        elif line.startswith("<hypothesis"):
+        elif line.startswith('<hypothesis'):
             hypothesis_found = True
-        elif line.startswith("</hypothesis>"):
+        elif line.startswith('</hypothesis>'):
             hypothesis_found = False
         elif hypothesis_found:
             output_struct[target] = line
-            target = ""
+            target = ''
             hypothesis_found = False
         #elif line.startswith("<unification"):
         #    unification = True
@@ -110,7 +123,7 @@ def extract_hypotheses(inputString):
 
 
 def generate_text_input(input_metaphors, language):
-    output_str = ""
+    output_str = ''
 
     for key in input_metaphors.keys():
         output_str += "<META>" + key + "\n\n " + input_metaphors[key] + "\n\n"
@@ -165,7 +178,7 @@ def ADP(request_body_dict, input_metaphors, language, with_pdf_content):
 
     if with_pdf_content:
         # Time for graph generation subtracted from Henry time in seconds
-        time_all_henry -= - 3
+        time_all_henry -= -3
 
     # Time for one interpretation in Henry in seconds
     time_unit_henry = str(int(time_all_henry / len(input_metaphors)))
@@ -231,10 +244,7 @@ def ADP(request_body_dict, input_metaphors, language, with_pdf_content):
                 except:
                     pass
 
-    #logger.info("STAT: {'processed':%d,'failed':%d,'empty':%d,'unknown':%d}" % (processed,
-    #                                                                            failed,
-    #                                                                            empty,
-    #                                                                            total - processed))
+    #logger.info("STAT: {'processed':%d,'failed':%d,'empty':%d,'unknown':%d}" % (processed, failed, empty, total - processed))
 
     #return json.dumps(request_body_dict, ensure_ascii=False)
     return request_body_dict
