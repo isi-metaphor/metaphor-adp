@@ -1,28 +1,29 @@
-#! /bin/bash
-# Variable $METAPHOR_DIR should point to the root of 
-# Metaphor-ADP directory (e.g. ~/code/Metaphor-ADP directory)
-# usage:
-#   $ ./run_spanish.sh <input> <output>
-# or
-#   $ ./run_spanish.sh <input>
-# or
-#   $ ./run_spanish.sh
-# <input> and <output> should be absolute paths.
+#!/bin/bash
 
+# The variable $METAPHOR_DIR should point to the root of the
+# Metaphor-ADP directory.
 # export METAPHOR_DIR=~/code/Metaphor-ADP
 
+# Usage:
+#   ./run_spanish.sh <input> <output>
+# or
+#   ./run_spanish.sh <input>
+# or
+#   ./run_spanish.sh
+# <input> and <output> should be absolute paths.
+
 if [[ $OSTYPE == "linux-gnu" ]]; then
-   PLATFORM="linux"
+    PLATFORM="linux"
 elif [[ $OSTYPE == "linux" ]]; then
-   PLATFORM="linux"
+    PLATFORM="linux"
 elif [[ $OSTYPE == "darwin12" ]]; then
-   PLATFORM="darwin"
+    PLATFORM="darwin"
 elif [[ $OSTYPE == "darwin11" ]]; then
-   PLATFORM="darwin"
+    PLATFORM="darwin"
 elif [[ $OSTYPE == "darwin10" ]]; then
-   PLATFORM="darwin"
+    PLATFORM="darwin"
 elif [[ $OSTYPE == "darwin9" ]]; then
-   PLATFORM="darwin"
+    PLATFORM="darwin"
 fi
 
 TREE_TAGGER_BIN=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/bin
@@ -58,59 +59,60 @@ CURRENT_DIR=`pwd`
 cd $MALT_DIR
 
 if [[ $PLATFORM == "linux" ]]; then
- if [ -d "$2" ]; then
-#    $TOKENIZER -a $ABBR_LIST < "${1:-/dev/stdin}" |
-#    tee  $2/tokenizer_o.txt |
-    python $TOKENIZER_BIN --sentid 1 --normquotes 1 < "${1:-/dev/stdin}" |
-    tee $2/tokenizer_o.txt |
-    $MWL -f $MWLFILE |
-    $TAGGER $OPTIONS $PARFILE |
-    tee $2/tagger_o.txt |
-    $MALT_IFORMAT |
-    tee $2/conll_o.txt |
-    java -Xmx16g -jar $MALT_BIN -c $MALT_MODEL -m parse -v off |
-    tee $2/malt_o.txt |
-    $MALT_OFORMAT > /dev/stdout
- else
-#    $TOKENIZER -a $ABBR_LIST  < "${1:-/dev/stdin}" |
-    python $TOKENIZER_BIN --sentid 1 --normquotes 1 < "${1:-/dev/stdin}" |
-    $MWL -f $MWLFILE |
-    $TAGGER $OPTIONS $PARFILE | 
-    $MALT_IFORMAT |
-    #cat > temp;
-    #java -Xmx16g -jar $MALT_BIN -c $MALT_MODEL -i temp -m parse -v off >temp2;
-    java -Xmx16g -jar $MALT_BIN -c $MALT_MODEL -m parse -v off |
-    #paste temp2 temp | cut -d "	" -f 1-10,20 |
-    $MALT_OFORMAT > "${2:-/dev/stdout}"
- fi
+    if [ -d "$2" ]; then
+#       $TOKENIZER -a $ABBR_LIST < "${1:-/dev/stdin}" |
+#       tee $2/tokenizer_o.txt |
+        python $TOKENIZER_BIN --sentid 1 --normquotes 1 < "${1:-/dev/stdin}" |
+        tee $2/tokenizer_o.txt |
+        $MWL -f $MWLFILE |
+        $TAGGER $OPTIONS $PARFILE |
+        tee $2/tagger_o.txt |
+        $MALT_IFORMAT |
+        tee $2/conll_o.txt |
+        java -Xmx16g -jar $MALT_BIN -c $MALT_MODEL -m parse -v off |
+        tee $2/malt_o.txt |
+        $MALT_OFORMAT > /dev/stdout
+    else
+#       $TOKENIZER -a $ABBR_LIST  < "${1:-/dev/stdin}" |
+        python $TOKENIZER_BIN --sentid 1 --normquotes 1 < "${1:-/dev/stdin}" |
+        $MWL -f $MWLFILE |
+        $TAGGER $OPTIONS $PARFILE |
+        $MALT_IFORMAT |
+        #cat > temp;
+        #java -Xmx16g -jar $MALT_BIN -c $MALT_MODEL -i temp -m parse -v off >temp2;
+        java -Xmx16g -jar $MALT_BIN -c $MALT_MODEL -m parse -v off |
+        #paste temp2 temp | cut -d "	" -f 1-10,20 |
+        $MALT_OFORMAT > "${2:-/dev/stdout}"
+    fi
 elif [[ $PLATFORM == "darwin" ]]; then
- if [ -d "$2" ]; then
-#    $TOKENIZER -a $ABBR_LIST < "${1:-/dev/stdin}" |
-#    tee  $2/tokenizer_o.txt |
-    python $TOKENIZER_BIN --sentid 1 --normquotes 1 < "${1:-/dev/stdin}" |
-    tee $2/tokenizer_o.txt |
-    $MWL -f $MWLFILE |
-    $TAGGER $OPTIONS $PARFILE |
-    tee $2/tagger_o.txt |
-    $MALT_IFORMAT |
-    tee $2/conll_o.txt |
-    java -Xmx16g -jar $MALT_BIN -c $MALT_MODEL -m parse -v off |
-    tee $2/malt_o.txt |
-    $MALT_OFORMAT > /dev/stdout
- else
-#    $TOKENIZER -a $ABBR_LIST  < "${1:-/dev/stdin}" |
-    python $TOKENIZER_BIN --sentid 1 --normquotes 1 < "${1:-/dev/stdin}" |
-    $MWL -f $MWLFILE |
-    $TAGGER $OPTIONS $PARFILE | 
-    $MALT_IFORMAT |
-    #cat > temp;
-    #java -Xmx16g -jar $MALT_BIN -c $MALT_MODEL -i temp -m parse -v off >temp2;
-    java -Xmx16g -jar $MALT_BIN -c $MALT_MODEL -m parse -v off |
-    #paste temp2 temp | cut -d "	" -f 1-10,20 |
-    $MALT_OFORMAT > "${2:-/dev/stdout}"
- fi
+    if [ -d "$2" ]; then
+#       $TOKENIZER -a $ABBR_LIST < "${1:-/dev/stdin}" |
+#       tee $2/tokenizer_o.txt |
+        python $TOKENIZER_BIN --sentid 1 --normquotes 1 < "${1:-/dev/stdin}" |
+        tee $2/tokenizer_o.txt |
+        $MWL -f $MWLFILE |
+        $TAGGER $OPTIONS $PARFILE |
+        tee $2/tagger_o.txt |
+        $MALT_IFORMAT |
+        tee $2/conll_o.txt |
+        java -Xmx16g -jar $MALT_BIN -c $MALT_MODEL -m parse -v off |
+        tee $2/malt_o.txt |
+        $MALT_OFORMAT > /dev/stdout
+    else
+#       $TOKENIZER -a $ABBR_LIST  < "${1:-/dev/stdin}" |
+        python $TOKENIZER_BIN --sentid 1 --normquotes 1 < "${1:-/dev/stdin}" |
+        $MWL -f $MWLFILE |
+        $TAGGER $OPTIONS $PARFILE | 
+        $MALT_IFORMAT |
+        #cat > temp;
+        #java -Xmx16g -jar $MALT_BIN -c $MALT_MODEL -i temp -m parse -v off >temp2;
+        java -Xmx16g -jar $MALT_BIN -c $MALT_MODEL -m parse -v off |
+        #paste temp2 temp | cut -d "	" -f 1-10,20 |
+        $MALT_OFORMAT > "${2:-/dev/stdout}"
+    fi
 else
     echo "Unsupported platform $OSTYPE"
 fi
+
 #rm temp temp2
 cd $CURRENT_DIR
