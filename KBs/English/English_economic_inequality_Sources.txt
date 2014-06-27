@@ -2444,7 +2444,7 @@
 (B (name eat) (=> (^ (S#OBESITY e0 :0.3) (SS#OBESITY%EXCESS_CONSUMPTION x e0 :0.3) (R#OVERWEIGHT x e0 :0.3)) (^ (eat-vb e0 x y u) (up-in e1 e0 z))))
 (B (name feast) (=> (^ (S#OBESITY e0 :0.3) (SS#OBESITY%EXCESS_CONSUMPTION x e0 :0.3) (R#OVERWEIGHT x e0 :0.3)) (feast-vb e0 x y u)))
 (B (name overeat) (=> (^ (S#OBESITY e0 :0.3) (SS#OBESITY%EXCESS_CONSUMPTION x e0 :0.3) (R#OVERWEIGHT x e0 :0.3)) (overeat-vb e0 x y u)))
-;; ##RI: This will probably over-generate
+;; This will probably over-generate
 ;(B (name eat) (=> (^ (S#OBESITY e0 :0.3) (SS#OBESITY%EXCESS_CONSUMPTION x e0 :0.3) (R#OVERWEIGHT x e0 :0.3)) (eat-vb e0 x y u)))
 
 (B (name ravenous) (=> (^ (S#OBESITY e0 :0.3) (SS#OBESITY%EXCESS_CONSUMPTION x e0 :0.3) (R#OVERWEIGHT x e0 :0.3)) (ravenous-adj e0 x)))
@@ -2472,40 +2472,79 @@
 
 (B (name leech) (=> (^ (S#PARASITE e0 :0.45) (SS#PARASITE%ACTION x e0 :0.45)) (infestation-nn e0 x)))
 
-(B (name parasitemap) (=> (I#PARASITE x :0.9) (S#PARASITE x)))
-(B (name destructive-beingmap) (=> (I#PARASITE%DESTRUCTIVE_BEING x y :0.9) (SS#PARASITE%DESTRUCTIVE_BEING x y)))
-(B (name destructive-beingmap) (=> (I#PARASITE%ACTION x y :0.9) (SS#PARASITE%ACTION x y)))
+(B (name parasite-map) (=> (I#PARASITE x :0.9) (S#PARASITE x)))
+(B (name destructive-being-map) (=> (I#PARASITE%DESTRUCTIVE_BEING x y :0.9) (SS#PARASITE%DESTRUCTIVE_BEING x y)))
+(B (name destructive-being-map) (=> (I#PARASITE%ACTION x y :0.9) (SS#PARASITE%ACTION x y)))
 
 
 ;; Vision
+;; Removed from source list, 2014-06-20
 
 ;; Vision: Blindness
 
-(B (name blind) (=> (^ (S#VISION e0 :0.3) (SS#VISION%BLINDNESS e0 e0 :0.3) (R#BLIND x e0 :0.3)) (blind-adj e0 x)))
-(B (name myopic) (=> (^ (S#VISION e0 :0.3) (SS#VISION%BLINDNESS e0 e0 :0.3) (R#BLIND x e0 :0.3)) (myopic-adj e0 x)))
+;; (B (name blind)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#VISION%BLINDNESS e0 e0 :0.3)
+;;           (R#BLIND x e0 :0.3))
+;;        (blind-adj e0 x)))
+;; (B (name myopic)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#VISION%BLINDNESS e0 e0 :0.3)
+;;           (R#BLIND x e0 :0.3))
+;;        (myopic-adj e0 x)))
 
-(B (name blindness) (=> (^ (S#VISION e0 :0.45) (SS#VISION%BLINDNESS x e0 :0.45)) (blindness-nn e0 x)))
-(B (name dazzle) (=> (^ (S#VISION e0 :0.45) (SS#VISION%BLINDNESS x e0 :0.45)) (dazzle-nn e0 x)))
+;; (B (name blindness)
+;;    (=> (^ (S#VISION e0 :0.45) (SS#VISION%BLINDNESS x e0 :0.45))
+;;        (blindness-nn e0 x)))
+;; (B (name dazzle)
+;;    (=> (^ (S#VISION e0 :0.45) (SS#VISION%BLINDNESS x e0 :0.45))
+;;        (dazzle-nn e0 x)))
 
-(B (name blindvb) (=> (^ (S#VISION e0 :0.3) (SS#VISION%BLINDNESS e0 e0 :0.3) (R#BLIND y e0 :0.3)) (blind-vb e0 x y z)))
-(B (name dazzlevb) (=> (^ (S#VISION e0 :0.3) (SS#VISION%BLINDNESS e0 e0 :0.3) (R#BLIND y e0 :0.3)) (dazzle-vb e0 x y z)))
+;; (B (name blind-vb)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#VISION%BLINDNESS e0 e0 :0.3)
+;;           (R#BLIND y e0 :0.3))
+;;        (blind-vb e0 x y z)))
+;; (B (name dazzle-vb)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#VISION%BLINDNESS e0 e0 :0.3)
+;;           (R#BLIND y e0 :0.3))
+;;        (dazzle-vb e0 x y z)))
 
-(B (name invisible) (=> (^ (S#VISION e0 :0.3) (SS#VISION%BLINDNESS e0 e0 :0.3) (R#INVISIBLE x e0 :0.3)) (invisible-adj e0 x)))
-(B (name hidden) (=> (^ (S#VISION e0 :0.3) (SS#VISION%BLINDNESS e0 e0 :0.3) (R#INVISIBLE x e0 :0.3)) (hidden-adj e0 x)))
+;; (B (name invisible)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#VISION%BLINDNESS e0 e0 :0.3)
+;;           (R#INVISIBLE x e0 :0.3))
+;;        (invisible-adj e0 x)))
+;; (B (name hidden)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#VISION%BLINDNESS e0 e0 :0.3)
+;;           (R#INVISIBLE x e0 :0.3))
+;;        (hidden-adj e0 x)))
 
 
 ;; Vision: Seeing
 
-(B (name picture) (=> (^ (S#VISION e0 :0.45) (SS#VISION%SEEING x e0 :0.45)) (picture-nn e0 x)))
+;; (B (name picture)
+;;    (=> (^ (S#VISION e0 :0.45) (SS#VISION%SEEING x e0 :0.45))
+;;        (picture-nn e0 x)))
 
-(B (name open-eyes) (=> (^ (S#VISION e1 :0.45) (SS#VISION%SEEING x e1 :0.45)) (^ (open-adj e0 x) (eye-nn e1 x))))
+;; (B (name open-eyes)
+;;    (=> (^ (S#VISION e1 :0.45) (SS#VISION%SEEING x e1 :0.45))
+;;        (^ (open-adj e0 x) (eye-nn e1 x))))
 
-;(B (name see) (=> (^ (S#VISION e0 :0.3) (SS#VISION%SEEING x e0 e0 :0.3) (R#SIGHTED y e0 :0.3)) (see-vb e0 x y z)))
-(B (name see) (=> (^ (S#VISION e0 :0.3) (SS#VISION%SEEING x e0 e0 :0.3) (R#SIGHTED y e0 :0.3)) (picture-vb e0 x y z)))
+;; (B (name see)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#VISION%SEEING x e0 e0 :0.3)
+;;           (R#SIGHTED y e0 :0.3))
+;;        (see-vb e0 x y z)))
+;; (B (name picture-vb)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#VISION%SEEING x e0 e0 :0.3)
+;;           (R#SIGHTED y e0 :0.3))
+;;        (picture-vb e0 x y z)))
 
-(B (name visionmap) (=> (I#VISION x :0.9) (S#VISION x)))
-(B (name blindnessmap) (=> (I#VISION%BLINDNESS x y :0.9) (SS#VISION%BLINDNESS x y)))
-(B (name seeingmap) (=> (I#VISION%SEEING x y :0.9) (SS#VISION%SEEING x y)))
+;; (B (name vision-map)
+;;    (=> (I#VISION x :0.9)
+;;        (S#VISION x)))
+;; (B (name blindness-map)
+;;    (=> (I#VISION%BLINDNESS x y :0.9)
+;;        (SS#VISION%BLINDNESS x y)))
+;; (B (name seeing-map)
+;;    (=> (I#VISION%SEEING x y :0.9)
+;;        (SS#VISION%SEEING x y)))
 
 
 ;; Monster
@@ -3261,83 +3300,85 @@
 
 
 ;; Destroyer
+;; Removed from sources list, 2014-06-20.
 
 ;; Destroyer: Destructive Force
 
-(B (name destroyer)
-   (=> (^ (S#DESTROYER e0 :0.45) (SS#DESTROYER%DESTRUCTIVE_FORCE x e0 :0.45))
-       (destroyer-nn e0 x)))
-(B (name destruction)
-   (=> (^ (S#DESTROYER e0 :0.45) (SS#DESTROYER%DESTRUCTIVE_FORCE x e0 :0.45))
-       (destruction-nn e0 x)))
-(B (name destructiveness)
-   (=> (^ (S#DESTROYER e0 :0.45) (SS#DESTROYER%DESTRUCTIVE_FORCE x e0 :0.45))
-       (destructiveness-nn e0 x)))
+;; (B (name destroyer)
+;;    (=> (^ (S#DESTROYER e0 :0.45) (SS#DESTROYER%DESTRUCTIVE_FORCE x e0 :0.45))
+;;        (destroyer-nn e0 x)))
+;; (B (name destruction)
+;;    (=> (^ (S#DESTROYER e0 :0.45) (SS#DESTROYER%DESTRUCTIVE_FORCE x e0 :0.45))
+;;        (destruction-nn e0 x)))
+;; (B (name destructiveness)
+;;    (=> (^ (S#DESTROYER e0 :0.45) (SS#DESTROYER%DESTRUCTIVE_FORCE x e0 :0.45))
+;;        (destructiveness-nn e0 x)))
 
-(B (name destroy)
-   (=> (^ (S#DESTROYER e0 :0.23) (SS#DESTROYER%DESTRUCTIVE_FORCE e0 e0 :0.23)
-          (R#DESTRUCTIVE_FORCE-AGENT x e0 :0.23)
-          (R#DESTRUCTIVE_FORCE-PATIENT y e0 :0.23))
-       (^ (TS#POVERTY x) (destroy-vb e0 x y u))))
+;; (B (name destroy)
+;;    (=> (^ (S#DESTROYER e0 :0.23) (SS#DESTROYER%DESTRUCTIVE_FORCE e0 e0 :0.23)
+;;           (R#DESTRUCTIVE_FORCE-AGENT x e0 :0.23)
+;;           (R#DESTRUCTIVE_FORCE-PATIENT y e0 :0.23))
+;;        (^ (TS#POVERTY x) (destroy-vb e0 x y u))))
 
 
 ;; Destroyer: Mapping
 
-(B (name destroyer-map)
-   (=> (I#DESTROYER x :0.9)
-       (S#DESTROYER x)))
-(B (name destroyer-DESTRUCTIVE_FORCE-map)
-   (=> (I#DESTROYER%DESTRUCTIVE_FORCE x y :0.9)
-       (SS#DESTROYER%DESTRUCTIVE_FORCE x y)))
+;; (B (name destroyer-map)
+;;    (=> (I#DESTROYER x :0.9)
+;;        (S#DESTROYER x)))
+;; (B (name destroyer-DESTRUCTIVE_FORCE-map)
+;;    (=> (I#DESTROYER%DESTRUCTIVE_FORCE x y :0.9)
+;;        (SS#DESTROYER%DESTRUCTIVE_FORCE x y)))
 
 
 ;; Geographic Feature
+;; Removed from source list, 2014-06-20
 
 ;; Geographic Feature: Type
 
-(B (name mountain)
-   (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3)
-          (R#MOUNTAIN x e0 :0.3))
-       (mountain-nn e0 x)))
-(B (name himalayas)
-   (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3)
-          (R#MOUNTAIN x e0 :0.3))
-       (himalayas-nn e0 x)))
-(B (name alps)
-   (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3)
-          (R#MOUNTAIN x e0 :0.3))
-       (alps-nn e0 x)))
-;; Conflict with Body of Water, presumably
-;(B (name ocean)
-;   (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
-;          (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#OCEAN x e0 :0.3))
-;       (ocean-nn e0 x)))
-;(B (name sea)
-;   (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
-;          (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#OCEAN x e0 :0.3))
-;       (sea-nn e0 x)))
-(B (name prairie)
-   (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3)
-          (R#VALLEY x e0 :0.3))
-       (prairie-nn e0 x)))
-(B (name valley)
-   (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3)
-          (R#VALLEY x e0 :0.3))
-       (valley-nn e0 x)))
-(B (name oasis)
-   (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3)
-          (R#VALLEY x e0 :0.3))
-       (oasis-nn e0 x)))
+;; (B (name mountain)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3)
+;;           (R#MOUNTAIN x e0 :0.3))
+;;        (mountain-nn e0 x)))
+;; (B (name himalayas)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3)
+;;           (R#MOUNTAIN x e0 :0.3))
+;;        (himalayas-nn e0 x)))
+;; (B (name alps)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3)
+;;           (R#MOUNTAIN x e0 :0.3))
+;;        (alps-nn e0 x)))
+;; ;; Conflict with Body of Water, presumably
+;; ;(B (name ocean)
+;; ;   (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
+;; ;          (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#OCEAN x e0 :0.3))
+;; ;       (ocean-nn e0 x)))
+;; ;(B (name sea)
+;; ;   (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
+;; ;          (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#OCEAN x e0 :0.3))
+;; ;       (sea-nn e0 x)))
+;; (B (name prairie)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3)
+;;           (R#VALLEY x e0 :0.3))
+;;        (prairie-nn e0 x)))
+;; (B (name valley)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3)
+;;           (R#VALLEY x e0 :0.3))
+;;        (valley-nn e0 x)))
+;; (B (name oasis)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3)
+;;           (R#VALLEY x e0 :0.3))
+;;        (oasis-nn e0 x)))
 
 
-;; Geographic Feature: Mapping
+;; ;; Geographic Feature: Mapping
 
-(B (name geographic-feature-map)
-   (=> (I#GEOGRAPHIC_FEATURE x :0.9)
-       (S#GEOGRAPHIC_FEATURE x)))
-(B (name geographic-feature-type-map)
-   (=> (I#GEOGRAPHIC_FEATURE%TYPE x y :0.9)
-       (SS#GEOGRAPHIC_FEATURE%TYPE x y)))
+;; (B (name geographic-feature-map)
+;;    (=> (I#GEOGRAPHIC_FEATURE x :0.9)
+;;        (S#GEOGRAPHIC_FEATURE x)))
+;; (B (name geographic-feature-type-map)
+;;    (=> (I#GEOGRAPHIC_FEATURE%TYPE x y :0.9)
+;;        (SS#GEOGRAPHIC_FEATURE%TYPE x y)))
 
 
 ;; Enabler
@@ -3628,43 +3669,44 @@
 
 
 ;; Impurity
+;; Removed from source list, 2014-06-20
 
 ;; Impurity: Type
 
-(B (name dirt)
-   (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE x e0 :0.45))
-       (dirt-nn e0 x)))
-(B (name dust)
-   (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE x e0 :0.45))
-       (dust-nn e0 x)))
-(B (name trash)
-   (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE x e0 :0.45))
-       (trash-nn e0 x)))
+;; (B (name dirt)
+;;    (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE x e0 :0.45))
+;;        (dirt-nn e0 x)))
+;; (B (name dust)
+;;    (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE x e0 :0.45))
+;;        (dust-nn e0 x)))
+;; (B (name trash)
+;;    (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE x e0 :0.45))
+;;        (trash-nn e0 x)))
 
-(B (name dirty-adj)
-   (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE e0 e0 :0.45))
-       (dirty-adj e0 x)))
+;; (B (name dirty-adj)
+;;    (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE e0 e0 :0.45))
+;;        (dirty-adj e0 x)))
 
-(B (name dirty-nn)
-   (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE e0 e0 :0.45))
-       (dirty-nn e0 x)))
-(B (name stain)
-   (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE e0 e0 :0.45))
-       (stain-nn e0 x)))
+;; (B (name dirty-nn)
+;;    (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE e0 e0 :0.45))
+;;        (dirty-nn e0 x)))
+;; (B (name stain)
+;;    (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE e0 e0 :0.45))
+;;        (stain-nn e0 x)))
 
-(B (name sully)
-   (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE e0 e0 :0.45))
-       (sully-vb e0 x y z)))
+;; (B (name sully)
+;;    (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE e0 e0 :0.45))
+;;        (sully-vb e0 x y z)))
 
 
 ;; Impurity: Mapping
 
-(B (name impurity-map)
-   (=> (I#IMPURITY x :0.9)
-       (S#IMPURITY x)))
-(B (name impurity-type-map)
-   (=> (I#IMPURITY%TYPE x y :0.9)
-       (SS#IMPURITY%TYPE x y)))
+;; (B (name impurity-map)
+;;    (=> (I#IMPURITY x :0.9)
+;;        (S#IMPURITY x)))
+;; (B (name impurity-type-map)
+;;    (=> (I#IMPURITY%TYPE x y :0.9)
+;;        (SS#IMPURITY%TYPE x y)))
 
 
 ;; Movement

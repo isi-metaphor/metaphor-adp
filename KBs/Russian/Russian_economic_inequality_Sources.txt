@@ -1,6 +1,8 @@
+;; -*- Mode: Lisp -*-
+
 ;;
-;; Economic Inequality
-;; Russian Source Words
+;; Economic Inequality: Russian Source Axioms
+;; Katya Ovchinnikova, Jonathan Gordon
 ;;
 
 ;; Disease
@@ -1499,38 +1501,79 @@
 
 
 ;; Vision
+;; Remove from source list, 2014-06-20
 
 ;; Vision: Blindness
 
-(B (name blind) (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3) (R#BLIND x e0 :0.3)) (слепой-adj e0 x)))
-(B (name myopic) (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3) (R#BLIND x e0 :0.3)) (незрячий-adj e0 x)))
-(B (name blind) (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS x e0 :0.3) (R#BLIND x e0 :0.3)) (слепец-nn e0 x)))
+;; (B (name blind)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3) (R#BLIND x e0 :0.3))
+;;        (слепой-adj e0 x)))
+;; (B (name myopic)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3) (R#BLIND x e0 :0.3))
+;;        (незрячий-adj e0 x)))
 
-(B (name blindness) (=> (^ (S#VISION e0 :0.45) (SS#BLINDNESS x e0 :0.45)) (слепота-nn e0 x)))
-(B (name blindness) (=> (^ (S#VISION e0 :0.45) (SS#BLINDNESS x e0 :0.45)) (завеса-nn e0 x)))
-(B (name blindness) (=> (^ (S#VISION e0 :0.45) (SS#BLINDNESS x e0 :0.45)) (завес-nn e0 x)))
+;; (B (name blindman)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS x e0 :0.3) (R#BLIND x e0 :0.3))
+;;        (слепец-nn e0 x)))
 
-(B (name blindvb) (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3) (R#BLIND y e0 :0.3)) (ослеплять-vb e0 x y z)))
-(B (name blindvb) (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3) (R#BLIND y e0 :0.3)) (ослепить-vb e0 x y z)))
-(B (name blindvb) (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3) (R#BLIND y e0 :0.3)) (слепить-vb e0 x y z)))
+;; (B (name blindness)
+;;    (=> (^ (S#VISION e0 :0.45) (SS#BLINDNESS x e0 :0.45))
+;;        (слепота-nn e0 x)))
+;; (B (name blindness-veil)
+;;    (=> (^ (S#VISION e0 :0.45) (SS#BLINDNESS x e0 :0.45))
+;;        (завеса-nn e0 x)))
+;; (B (name blindness-curtains)
+;;    (=> (^ (S#VISION e0 :0.45) (SS#BLINDNESS x e0 :0.45))
+;;        (завес-nn e0 x)))
 
-(B (name blindvb) (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3) (R#BLIND y e0 :0.3)) (ослепнуть-vb e0 x y z)))
-(B (name blindvb) (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3) (R#BLIND y e0 :0.3)) (слепнуть-vb e0 x y z)))
+;; (B (name blind-vb)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3) (R#BLIND y e0 :0.3))
+;;        (ослеплять-vb e0 x y z)))
+;; (B (name dazzle)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3) (R#BLIND y e0 :0.3))
+;;        (ослепить-vb e0 x y z)))
+;; (B (name blind-vb2)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3) (R#BLIND y e0 :0.3))
+;;        (слепить-vb e0 x y z)))
 
-(B (name invisible) (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3) (R#INVISIBLE x e0 :0.3)) (невидимый-adj e0 x)))
+;; (B (name go-blind)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3) (R#BLIND y e0 :0.3))
+;;        (ослепнуть-vb e0 x y z)))
+;; (B (name go-blind2)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3) (R#BLIND y e0 :0.3))
+;;        (слепнуть-vb e0 x y z)))
+
+;; (B (name invisible)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3)
+;;           (R#INVISIBLE x e0 :0.3))
+;;        (невидимый-adj e0 x)))
 
 
 ;; Vision: Seeing
 
-(B (name open-eyes) (=> (^ (S#VISION e0 :0.45) (SS#SEEING e0 e0 :0.45)) (^ (открыть-vb e0 x y z) (глаз-nn e1 y))))
-(B (name open-eyes) (=> (^ (S#VISION e0 :0.45) (SS#SEEING e0 e0 :0.45)) (прозреть-vb e0 x y z)))
-(B (name open-eyes) (=> (^ (S#VISION e0 :0.45) (SS#SEEING e0 e0 :0.45)) (прозревать-vb e0 x y z)))
+;; (B (name open-eyes)
+;;    (=> (^ (S#VISION e0 :0.45) (SS#SEEING e0 e0 :0.45))
+;;        (^ (открыть-vb e0 x y z) (глаз-nn e1 y))))
+;; (B (name see-the-light)
+;;    (=> (^ (S#VISION e0 :0.45) (SS#SEEING e0 e0 :0.45))
+;;        (прозреть-vb e0 x y z)))
+;; (B (name recover-sight)
+;;    (=> (^ (S#VISION e0 :0.45) (SS#SEEING e0 e0 :0.45))
+;;        (прозревать-vb e0 x y z)))
 
-(B (name open-eyes) (=> (^ (S#VISION e0 :0.45) (SS#SEEING x e0 :0.45)) (видимость-nn e0 x)))
+;; (B (name visibility)
+;;    (=> (^ (S#VISION e0 :0.45) (SS#SEEING x e0 :0.45))
+;;        (видимость-nn e0 x)))
 
-(B (name visionmap) (=> (I#VISION x :0.9) (S#VISION x)))
-(B (name blindnessmap) (=> (I#BLINDNESS x y :0.9) (SS#BLINDNESS x y)))
-(B (name seeingmap) (=> (I#SEEING x y :0.9) (SS#SEEING x y)))
+;; (B (name vision-map)
+;;    (=> (I#VISION x :0.9)
+;;        (S#VISION x)))
+;; (B (name blindness-map)
+;;    (=> (I#BLINDNESS x y :0.9)
+;;        (SS#BLINDNESS x y)))
+;; (B (name seeing-map)
+;;    (=> (I#SEEING x y :0.9)
+;;        (SS#SEEING x y)))
 
 
 ;; Monster
@@ -2402,49 +2445,117 @@
 
 (B (name turn) (=> (^ (S#MACHINE e0 :0.45) (SS#FUNCTION x e0 :0.45)) (наезд-nn e0 x)))
 
-(B (name machinemap) (=> (I#MACHINE x :0.9) (S#MACHINE x)))
-(B (name machine-typemap) (=> (I#MACHINE%TYPE x y :0.9) (SS#MACHINE%TYPE x y)))
-(B (name machine-partsmap) (=> (I#MACHINE%PARTS x y :0.9) (SS#MACHINE%PARTS x y)))
-(B (name machine-functionmap) (=> (I#FUNCTION x y :0.9) (SS#FUNCTION x y)))
+(B (name machine-map) (=> (I#MACHINE x :0.9) (S#MACHINE x)))
+(B (name machine-type-map) (=> (I#MACHINE%TYPE x y :0.9) (SS#MACHINE%TYPE x y)))
+(B (name machine-parts-map) (=> (I#MACHINE%PARTS x y :0.9) (SS#MACHINE%PARTS x y)))
+(B (name machine-function-map) (=> (I#FUNCTION x y :0.9) (SS#FUNCTION x y)))
 
 
 ;; Destroyer
+;; Remove from source list, 2014-06-20
 
 ;; Destroyer: Destructive Force
 
-(B (name destroyer) (=> (^ (S#DESTROYER e0 :0.45) (SS#DESTRUCTIVE_FORCE x e0 :0.45)) (разрушитель-nn e0 x)))
-(B (name destruction) (=> (^ (S#DESTROYER e0 :0.45) (SS#DESTRUCTIVE_FORCE x e0 :0.45)) (разрушение-nn e0 x)))
-(B (name destruction) (=> (^ (S#DESTROYER e0 :0.45) (SS#DESTRUCTIVE_FORCE e0 e0 :0.45)) (разрушительный-adj e0 x)))
+;; (B (name destroyer)
+;;    (=> (^ (S#DESTROYER e0 :0.45) (SS#DESTRUCTIVE_FORCE x e0 :0.45))
+;;        (разрушитель-nn e0 x)))
+;; (B (name destruction)
+;;    (=> (^ (S#DESTROYER e0 :0.45) (SS#DESTRUCTIVE_FORCE x e0 :0.45))
+;;        (разрушение-nn e0 x)))
+;; (B (name destruction)
+;;    (=> (^ (S#DESTROYER e0 :0.45) (SS#DESTRUCTIVE_FORCE e0 e0 :0.45))
+;;        (разрушительный-adj e0 x)))
 
-(B (name destroy) (=> (^ (S#DESTROYER e0 :0.23) (SS#DESTRUCTIVE_FORCE e0 e0 :0.23) (R#DESTRUCTIVE_FORCE-AGENT x e0 :0.23) (R#DESTRUCTIVE_FORCE-PATIENT y e0 :0.23)) (разрушать-vb e0 x y u)))
-(B (name destroy) (=> (^ (S#DESTROYER e0 :0.23) (SS#DESTRUCTIVE_FORCE e0 e0 :0.23) (R#DESTRUCTIVE_FORCE-AGENT x e0 :0.23) (R#DESTRUCTIVE_FORCE-PATIENT y e0 :0.23)) (разрушить-vb e0 x y u)))
-(B (name destroy) (=> (^ (S#DESTROYER e0 :0.23) (SS#DESTRUCTIVE_FORCE e0 e0 :0.23) (R#DESTRUCTIVE_FORCE-AGENT x e0 :0.23) (R#DESTRUCTIVE_FORCE-PATIENT y e0 :0.23)) (рушить-vb e0 x y u)))
-(B (name destroy) (=> (^ (S#DESTROYER e0 :0.23) (SS#DESTRUCTIVE_FORCE e0 e0 :0.23) (R#DESTRUCTIVE_FORCE-AGENT x e0 :0.23) (R#DESTRUCTIVE_FORCE-PATIENT y e0 :0.23)) (крушить-vb e0 x y u)))
+;; (B (name destroy)
+;;    (=> (^ (S#DESTROYER e0 :0.23) (SS#DESTRUCTIVE_FORCE e0 e0 :0.23)
+;;           (R#DESTRUCTIVE_FORCE-AGENT x e0 :0.23)
+;;           (R#DESTRUCTIVE_FORCE-PATIENT y e0 :0.23))
+;;        (разрушать-vb e0 x y u)))
+;; (B (name destroy2)
+;;    (=> (^ (S#DESTROYER e0 :0.23) (SS#DESTRUCTIVE_FORCE e0 e0 :0.23)
+;;           (R#DESTRUCTIVE_FORCE-AGENT x e0 :0.23)
+;;           (R#DESTRUCTIVE_FORCE-PATIENT y e0 :0.23))
+;;        (разрушить-vb e0 x y u)))
+;; (B (name destroy3)
+;;    (=> (^ (S#DESTROYER e0 :0.23) (SS#DESTRUCTIVE_FORCE e0 e0 :0.23)
+;;           (R#DESTRUCTIVE_FORCE-AGENT x e0 :0.23)
+;;           (R#DESTRUCTIVE_FORCE-PATIENT y e0 :0.23))
+;;        (рушить-vb e0 x y u)))
+;; (B (name destroy4)
+;;    (=> (^ (S#DESTROYER e0 :0.23) (SS#DESTRUCTIVE_FORCE e0 e0 :0.23)
+;;           (R#DESTRUCTIVE_FORCE-AGENT x e0 :0.23)
+;;           (R#DESTRUCTIVE_FORCE-PATIENT y e0 :0.23))
+;;        (крушить-vb e0 x y u)))
 
-(B (name destroyermap) (=> (I#DESTROYER x :0.9) (S#DESTROYER x)))
-(B (name destroyer-DESTRUCTIVE_FORCEmap) (=> (I#DESTRUCTIVE_FORCE x y :0.9) (SS#DESTRUCTIVE_FORCE x y)))
+;; (B (name destroyer-map)
+;;    (=> (I#DESTROYER x :0.9)
+;;        (S#DESTROYER x)))
+;; (B (name destroyer-DESTRUCTIVE_FORCE-map)
+;;    (=> (I#DESTRUCTIVE_FORCE x y :0.9)
+;;        (SS#DESTRUCTIVE_FORCE x y)))
 
 
 ;; Geographic Feature
+;; Removed from source list, 2014-06-20
 
 ;; Geographic Feature: Type
 
-(B (name mountain) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#MOUNTAIN x e0 :0.3)) (гора-nn e0 x)))
-;(B (name himalayas) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#RIVER x e0 :0.3)) (река-nn e0 x)))
-(B (name alps) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#FOREST x e0 :0.3)) (лес-nn e0 x)))
-;(B (name ocean) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#OCEAN x e0 :0.3)) (океан-nn e0 x)))
-;(B (name sea) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#OCEAN x e0 :0.3)) (море-nn e0 x)))
-(B (name prairie) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#VALLEY x e0 :0.3)) (степь-nn e0 x)))
-(B (name valley) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#VALLEY x e0 :0.3)) (далина-nn e0 x)))
-(B (name valley) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#OASIS x e0 :0.3)) (оазис-nn e0 x)))
-(B (name valley) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.45) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.45)) (остров-nn e0 x)))
-(B (name valley) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.45) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.45)) (островок-nn e0 x)))
-(B (name valley) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.45) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.45)) (материк-nn e0 x)))
+;; (B (name mountain)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
+;;           (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#MOUNTAIN x e0 :0.3))
+;;        (гора-nn e0 x)))
+;; (B (name himalayas)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
+;;           (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#RIVER x e0 :0.3))
+;;        (река-nn e0 x)))
+;; (B (name alps)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
+;;           (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#FOREST x e0 :0.3))
+;;        (лес-nn e0 x)))
+;; (B (name ocean)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
+;;           (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#OCEAN x e0 :0.3))
+;;        (океан-nn e0 x)))
+;; (B (name sea)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
+;;           (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#OCEAN x e0 :0.3))
+;;        (море-nn e0 x)))
+;; (B (name steppe)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
+;;           (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#VALLEY x e0 :0.3))
+;;        (степь-nn e0 x)))
+;; (B (name valley)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
+;;           (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#VALLEY x e0 :0.3))
+;;        (далина-nn e0 x)))
+;; (B (name oasis)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
+;;           (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#OASIS x e0 :0.3))
+;;        (оазис-nn e0 x)))
+;; (B (name island)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.45)
+;;           (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.45))
+;;        (остров-nn e0 x)))
+;; (B (name islet)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.45)
+;;           (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.45))
+;;        (островок-nn e0 x)))
+;; (B (name mainland)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.45)
+;;           (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.45))
+;;        (материк-nn e0 x)))
 
-;(B (name valley) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#CLIMATE x e0 :0.3)) (климат-nn e0 x)))
+;; (B (name climate)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
+;;           (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#CLIMATE x e0 :0.3))
+;;        (климат-nn e0 x)))
 
-(B (name geographic-featuremap) (=> (I#GEOGRAPHIC_FEATURE x :0.9) (S#GEOGRAPHIC_FEATURE x)))
-(B (name geographic-feature-typemap) (=> (I#GEOGRAPHIC_FEATURE%TYPE x y :0.9) (SS#GEOGRAPHIC_FEATURE%TYPE x y)))
+;; (B (name geographic-feature-map)
+;;    (=> (I#GEOGRAPHIC_FEATURE x :0.9)
+;;        (S#GEOGRAPHIC_FEATURE x)))
+;; (B (name geographic-feature-type-map)
+;;    (=> (I#GEOGRAPHIC_FEATURE%TYPE x y :0.9)
+;;        (SS#GEOGRAPHIC_FEATURE%TYPE x y)))
 
 
 ;; Enabler
@@ -2560,37 +2671,78 @@
 (B (name god) (=> (^ (S#A_RIGHT e0 :0.45) (SS#A_RIGHT%TYPE x e0 :0.45)) (право-nn e0 x)))
 (B (name god) (=> (^ (S#A_RIGHT e0 :0.45) (SS#A_RIGHT%TYPE x e0 :0.45)) (^ (право-nn e0 x) (на-in e1 x y))))
 
+
 ;; Impurity
+;; Removed from source list, 2014-06-20
 
 ;; Impurity: Type
 
-(B (name god) (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE x e0 :0.45)) (грязь-nn e0 x)))
-(B (name god) (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE x e0 :0.45)) (пыль-nn e0 x)))
-(B (name god) (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE x e0 :0.45)) (мусор-nn e0 x)))
+;; (B (name dirt)
+;;    (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE x e0 :0.45))
+;;        (грязь-nn e0 x)))
+;; (B (name dust)
+;;    (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE x e0 :0.45))
+;;        (пыль-nn e0 x)))
+;; (B (name garbage)
+;;    (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE x e0 :0.45))
+;;        (мусор-nn e0 x)))
 
-(B (name god) (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE e0 e0 :0.45)) (грязный-adj e0 x)))
+;; (B (name dirty)
+;;    (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE e0 e0 :0.45))
+;;        (грязный-adj e0 x)))
 
-(B (name god) (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE e0 e0 :0.45)) (загрязнить-vb e0 x y z)))
-(B (name god) (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE e0 e0 :0.45)) (загрязнять-vb e0 x y z)))
-(B (name god) (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE e0 e0 :0.45)) (пачкать-vb e0 x y z)))
-(B (name god) (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE e0 e0 :0.45)) (запачкать-vb e0 x y z)))
+;; (B (name contaminate)
+;;    (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE e0 e0 :0.45))
+;;        (загрязнить-vb e0 x y z)))
+;; (B (name contaminate2)
+;;    (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE e0 e0 :0.45))
+;;        (загрязнять-vb e0 x y z)))
+;; (B (name sully)
+;;    (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE e0 e0 :0.45))
+;;        (пачкать-vb e0 x y z)))
+;; (B (name bedaub)
+;;    (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE e0 e0 :0.45))
+;;        (запачкать-vb e0 x y z)))
 
-(B (name god) (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE e0 e0 :0.45)) (отмывать-vb e0 x y z)))
-(B (name god) (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE e0 e0 :0.45)) (отмыть-vb e0 x y z)))
-(B (name god) (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE e0 e0 :0.45)) (отмывание-nn e0 x)))
+;; (B (name launder)
+;;    (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE e0 e0 :0.45))
+;;        (отмывать-vb e0 x y z)))
+;; (B (name wash)
+;;    (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE e0 e0 :0.45))
+;;        (отмыть-vb e0 x y z)))
+
+;; (B (name laundering)
+;;    (=> (^ (S#IMPURITY e0 :0.45) (SS#IMPURITY%TYPE e0 e0 :0.45))
+;;        (отмывание-nn e0 x)))
 
 
 ;; Movement
 
 ;; Movement: Movement
 
-(B (name god) (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT x e0 :0.45)) (движение-nn e0 x)))
-(B (name god) (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT x e0 :0.45)) (перемещение-nn e0 x)))
-(B (name god) (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT x e0 :0.45)) (мобильность-nn e0 x)))
+(B (name motion)
+   (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT x e0 :0.45))
+       (движение-nn e0 x)))
+(B (name movement)
+   (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT x e0 :0.45))
+       (перемещение-nn e0 x)))
+(B (name mobility)
+   (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT x e0 :0.45))
+       (мобильность-nn e0 x)))
 
-(B (name god) (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT e0 e0 :0.45)) (двигаться-vb e0 x y z)))
-(B (name god) (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT e0 e0 :0.45)) (двинуться-vb e0 x y z)))
-(B (name god) (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT e0 e0 :0.45)) (надвигаться-vb e0 x y z)))
-(B (name god) (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT e0 e0 :0.45)) (перемещаться-vb e0 x y z)))
+(B (name move)
+   (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT e0 e0 :0.45))
+       (двигаться-vb e0 x y z)))
+(B (name advance)
+   (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT e0 e0 :0.45))
+       (двинуться-vb e0 x y z)))
+(B (name hang-around)
+   (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT e0 e0 :0.45))
+       (надвигаться-vb e0 x y z)))
+(B (name travel)
+   (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT e0 e0 :0.45))
+       (перемещаться-vb e0 x y z)))
 
-(B (name god) (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT e0 e0 :0.45)) (откатиться-vb e0 x y z)))
+(B (name downgrade)
+   (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT e0 e0 :0.45))
+       (откатиться-vb e0 x y z)))

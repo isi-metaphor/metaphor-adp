@@ -1,4 +1,9 @@
-;; General Farsi Axioms
+;; -*- Mode: Lisp -*-
+
+;;
+;; Economic Inequality: Farsi Source Axioms
+;; Katya Ovchinnikova, Niloofar Montazeri, Jonathan Gordon
+;;
 
 (B (name shodan) (=> (shodan e0 x y :0.9) (^ (شد‫#‬شو-vb e0 x u1 u2) (NVE e6 y e0))))
 (B (name gashtan) (=> (shodan e0 x y :0.9) (^ (گشت‫#‬گرد-vb e0 x u1 u2) (NVE e6 y e0))))
@@ -1432,30 +1437,57 @@
 
 
 ;; Vision
+;; Removed from source list, 2014-06-20
 
 ;; Vision: Blindness
 
-(B (name blind) (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3) (R#BLIND x e0 :0.3)) (کور-adj e0 x)))
-(B (name blind) (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3) (R#BLIND x e0 :0.3)) (نابینا-adj e0 x)))
+;; (B (name blind)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3) (R#BLIND x e0 :0.3))
+;;        (کور-adj e0 x)))
+;; (B (name blind)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3) (R#BLIND x e0 :0.3))
+;;        (نابینا-adj e0 x)))
 
-(B (name blindness) (=> (^ (S#VISION e0 :0.45) (SS#BLINDNESS x e0 :0.45)) (کوری-nn e0 x)))
-(B (name blindvb) (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3) (R#BLIND y e0 :0.3)) (^ (کور-nn e1 z) (kardan e0 x y z))))
+;; (B (name blindness)
+;;    (=> (^ (S#VISION e0 :0.45) (SS#BLINDNESS x e0 :0.45))
+;;        (کوری-nn e0 x)))
+;; (B (name blind-vb)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3) (R#BLIND y e0 :0.3))
+;;        (^ (کور-nn e1 z) (kardan e0 x y z))))
 
-(B (name invisible) (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3) (R#INVISIBLE x e0 :0.3)) (نامریی-adj e0 x)))
-(B (name hidden) (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3) (R#INVISIBLE x e0 :0.3)) (پنهان-adj e0 x)))
+;; (B (name invisible)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3)
+;;           (R#INVISIBLE x e0 :0.3))
+;;        (نامریی-adj e0 x)))
+;; (B (name hidden)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#BLINDNESS e0 e0 :0.3)
+;;           (R#INVISIBLE x e0 :0.3))
+;;        (پنهان-adj e0 x)))
 
 
 ;; Vision: Seeing
 
-(B (name view) (=> (^ (S#VISION e1 :0.45) (SS#SEEING x e1 :0.45)) (نما-nn e1 x)))
+;; (B (name view)
+;;    (=> (^ (S#VISION e1 :0.45) (SS#SEEING x e1 :0.45))
+;;        (نما-nn e1 x)))
 
-(B (name open-eyes) (=> (^ (S#VISION e1 :0.45) (SS#SEEING x e1 :0.45)) (^ (باز-adj e0 x) (چشم-nn e1 x))))
+;; (B (name open-eyes)
+;;    (=> (^ (S#VISION e1 :0.45) (SS#SEEING x e1 :0.45))
+;;        (^ (باز-adj e0 x) (چشم-nn e1 x))))
 
-(B (name see) (=> (^ (S#VISION e0 :0.3) (SS#SEEING x e0 e0 :0.3) (R#SIGHTED y e0 :0.3)) (دیدن-vb e0 x y z)))
+;; (B (name see)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#SEEING x e0 e0 :0.3) (R#SIGHTED y e0 :0.3))
+;;        (دیدن-vb e0 x y z)))
 
-(B (name visionmap) (=> (I#VISION x :0.9) (S#VISION x)))
-(B (name blindnessmap) (=> (I#BLINDNESS x y :0.9) (SS#BLINDNESS x y)))
-(B (name seeingmap) (=> (I#SEEING x y :0.9) (SS#SEEING x y)))
+;; (B (name vision-map)
+;;    (=> (I#VISION x :0.9)
+;;        (S#VISION x)))
+;; (B (name blindness-map)
+;;    (=> (I#BLINDNESS x y :0.9)
+;;        (SS#BLINDNESS x y)))
+;; (B (name seeing-map)
+;;    (=> (I#SEEING x y :0.9)
+;;        (SS#SEEING x y)))
 
 
 ;; Monster
@@ -1951,58 +1983,128 @@
 
 ;; Machine: Type
 
-(B (name machine) (=> (^ (S#MACHINE e0 :0.45) (SS#TYPE x e0 :0.45)) (ماشین-nn e0 x)))
-(B (name mechanism) (=> (^ (S#MACHINE e0 :0.45) (SS#TYPE x e0 :0.45)) (سازوکار-nn e0 x)))
+(B (name machine)
+   (=> (^ (S#MACHINE e0 :0.45) (SS#TYPE x e0 :0.45))
+       (ماشین-nn e0 x)))
+(B (name mechanism)
+   (=> (^ (S#MACHINE e0 :0.45) (SS#TYPE x e0 :0.45))
+       (سازوکار-nn e0 x)))
 
 
 ;; Machine: Parts
 
-(B (name engine) (=> (^ (S#MACHINE e0 :0.45) (SS#PARTS x e0 :0.45)) (موتور-nn e0 x)))
-(B (name engine) (=> (^ (S#MACHINE e0 :0.45) (SS#PARTS x e0 :0.45)) (چرخ-nn e0 x)))
+(B (name engine)
+   (=> (^ (S#MACHINE e0 :0.45) (SS#PARTS x e0 :0.45))
+       (موتور-nn e0 x)))
+(B (name engine2)
+   (=> (^ (S#MACHINE e0 :0.45) (SS#PARTS x e0 :0.45))
+       (چرخ-nn e0 x)))
 
 
 ;; Machine: Function
 
-(B (name turn) (=> (^ (S#MACHINE e0 :0.23) (SS#FUNCTION e0 e0 :0.23) (R#FUNCTION-AGENT x e0 :0.23) (R#FUNCTION-PATIENT y e0 :0.23)) (چرخید#چرخ-vb e0 x y u)))
-(B (name repair) (=> (^ (S#MACHINE e0 :0.23) (SS#FUNCTION e0 e0 :0.23) (R#FUNCTION-AGENT x e0 :0.23) (R#FUNCTION-PATIENT y e0 :0.23)) (^ (تعمیر-nn e1 z) (kardan e0 x y z))))
-(B (name fuel) (=> (^ (S#MACHINE e0 :0.23) (SS#FUNCTION e0 e0 :0.23) (R#FUNCTION-AGENT x e0 :0.23) (R#FUNCTION-PATIENT y e0 :0.23)) (^ (سوخت-گیری-nn e1 z) (kardan e0 x y z))))
+(B (name turn)
+   (=> (^ (S#MACHINE e0 :0.23) (SS#FUNCTION e0 e0 :0.23)
+          (R#FUNCTION-AGENT x e0 :0.23) (R#FUNCTION-PATIENT y e0 :0.23))
+       (چرخید#چرخ-vb e0 x y u)))
+(B (name repair)
+   (=> (^ (S#MACHINE e0 :0.23) (SS#FUNCTION e0 e0 :0.23)
+          (R#FUNCTION-AGENT x e0 :0.23) (R#FUNCTION-PATIENT y e0 :0.23))
+       (^ (تعمیر-nn e1 z) (kardan e0 x y z))))
+(B (name fuel)
+   (=> (^ (S#MACHINE e0 :0.23) (SS#FUNCTION e0 e0 :0.23)
+          (R#FUNCTION-AGENT x e0 :0.23) (R#FUNCTION-PATIENT y e0 :0.23))
+       (^ (سوخت-گیری-nn e1 z) (kardan e0 x y z))))
 
 
-(B (name machinemap) (=> (I#MACHINE x :0.9) (S#MACHINE x)))
-(B (name machine-typemap) (=> (I#TYPE x y :0.9) (SS#TYPE x y)))
-(B (name machine-partsmap) (=> (I#PARTS x y :0.9) (SS#PARTS x y)))
-(B (name machine-functionmap) (=> (I#FUNCTION x y :0.9) (SS#FUNCTION x y)))
+(B (name machine-map)
+   (=> (I#MACHINE x :0.9)
+       (S#MACHINE x)))
+(B (name machine-type-map)
+   (=> (I#TYPE x y :0.9)
+       (SS#TYPE x y)))
+(B (name machine-parts-map)
+   (=> (I#PARTS x y :0.9)
+       (SS#PARTS x y)))
+(B (name machine-function-map)
+   (=> (I#FUNCTION x y :0.9)
+       (SS#FUNCTION x y)))
 
 
 ;; Destroyer
+;; Removed from source list, 2014-06-20
 
 ;; Destroyer: Destructive Force
 
-(B (name destroyer) (=> (^ (S#DESTROYER e0 :0.45) (SS#DESTRUCTIVE_FORCE x e0 :0.45)) (ویرانگر-nn e0 x)))
-(B (name destruction) (=> (^ (S#DESTROYER e0 :0.45) (SS#DESTRUCTIVE_FORCE x e0 :0.45)) (ویرانی-nn e0 x)))
+;; (B (name destroyer)
+;;    (=> (^ (S#DESTROYER e0 :0.45) (SS#DESTRUCTIVE_FORCE x e0 :0.45))
+;;        (ویرانگر-nn e0 x)))
+;; (B (name destruction)
+;;    (=> (^ (S#DESTROYER e0 :0.45) (SS#DESTRUCTIVE_FORCE x e0 :0.45))
+;;        (ویرانی-nn e0 x)))
 
-(B (name destroy) (=> (^ (S#DESTROYER e0 :0.23) (SS#DESTRUCTIVE_FORCE e0 e0 :0.23) (R#DESTRUCTIVE_FORCE-AGENT x e0 :0.23) (R#DESTRUCTIVE_FORCE-PATIENT y e0 :0.23)) (^ (نابود-nn e1 z) (kardan e0 x y z))))
+;; (B (name destroy)
+;;    (=> (^ (S#DESTROYER e0 :0.23) (SS#DESTRUCTIVE_FORCE e0 e0 :0.23)
+;;           (R#DESTRUCTIVE_FORCE-AGENT x e0 :0.23)
+;;           (R#DESTRUCTIVE_FORCE-PATIENT y e0 :0.23))
+;;        (^ (نابود-nn e1 z) (kardan e0 x y z))))
 
-(B (name destroyermap) (=> (I#DESTROYER x :0.9) (S#DESTROYER x)))
-(B (name destroyer-DESTRUCTIVE_FORCEmap) (=> (I#DESTRUCTIVE_FORCE x y :0.9) (SS#DESTRUCTIVE_FORCE x y)))
+;; (B (name destroyer-map)
+;;    (=> (I#DESTROYER x :0.9)
+;;        (S#DESTROYER x)))
+;; (B (name destroyer-DESTRUCTIVE_FORCE-map)
+;;    (=> (I#DESTRUCTIVE_FORCE x y :0.9)
+;;        (SS#DESTRUCTIVE_FORCE x y)))
 
 
 ;; Geographic Feature
+;; Removed from source list, 2014-06-20
 
 ;; Geographic Feature: Type
 
-(B (name mountain) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#TYPE x e0 :0.3) (R#MOUNTAIN x e0 :0.3)) (کوه-nn e0 x)))
-(B (name himalayas) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#TYPE x e0 :0.3) (R#MOUNTAIN x e0 :0.3)) (هیمالیا-nn e0 x)))
-(B (name ocean) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#TYPE x e0 :0.3) (R#OCEAN x e0 :0.3)) (اقیانوس-nn e0 x)))
-(B (name sea) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#TYPE x e0 :0.3) (R#OCEAN x e0 :0.3)) (دریا-nn e0 x)))
-(B (name prairie) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#TYPE x e0 :0.3) (R#VALLEY x e0 :0.3)) (چمن-زار-nn e0 x)))
-(B (name prairie) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#TYPE x e0 :0.3) (R#VALLEY x e0 :0.3)) (دشت-nn e0 x)))
-(B (name prairie) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#TYPE x e0 :0.3) (R#VALLEY x e0 :0.3)) (چمنزار-nn e0 x)))
-(B (name valley) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#TYPE x e0 :0.3) (R#VALLEY x e0 :0.3)) (دره-nn e0 x)))
-(B (name valley) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#TYPE x e0 :0.3) (R#VALLEY x e0 :0.3)) (واحه-nn e0 x)))
+;; (B (name mountain)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#TYPE x e0 :0.3)
+;;           (R#MOUNTAIN x e0 :0.3))
+;;        (کوه-nn e0 x)))
+;; (B (name himalayas)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#TYPE x e0 :0.3)
+;;           (R#MOUNTAIN x e0 :0.3))
+;;        (هیمالیا-nn e0 x)))
+;; (B (name ocean)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#TYPE x e0 :0.3)
+;;           (R#OCEAN x e0 :0.3))
+;;        (اقیانوس-nn e0 x)))
+;; (B (name sea)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#TYPE x e0 :0.3)
+;;           (R#OCEAN x e0 :0.3))
+;;        (دریا-nn e0 x)))
+;; (B (name prairie1)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#TYPE x e0 :0.3)
+;;           (R#VALLEY x e0 :0.3))
+;;        (چمن-زار-nn e0 x)))
+;; (B (name prairie2)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#TYPE x e0 :0.3)
+;;           (R#VALLEY x e0 :0.3))
+;;        (دشت-nn e0 x)))
+;; (B (name prairie3)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#TYPE x e0 :0.3)
+;;           (R#VALLEY x e0 :0.3))
+;;        (چمنزار-nn e0 x)))
+;; (B (name valley1)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#TYPE x e0 :0.3)
+;;           (R#VALLEY x e0 :0.3))
+;;        (دره-nn e0 x)))
+;; (B (name valley2)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#TYPE x e0 :0.3)
+;;           (R#VALLEY x e0 :0.3))
+;;        (واحه-nn e0 x)))
 
-(B (name geographic-featuremap) (=> (I#GEOGRAPHIC_FEATURE x :0.9) (S#GEOGRAPHIC_FEATURE x)))
-(B (name geographic-feature-typemap) (=> (I#TYPE x y :0.9) (SS#TYPE x y)))
+;; (B (name geographic-feature-map)
+;;    (=> (I#GEOGRAPHIC_FEATURE x :0.9)
+;;        (S#GEOGRAPHIC_FEATURE x)))
+;; (B (name geographic-feature-type-map)
+;;    (=> (I#TYPE x y :0.9)
+;;        (SS#TYPE x y)))
 
 
 ;; Enabler
@@ -2097,32 +2199,55 @@
 (B (name harvestn) (=> (^ (S#CROP e0 :0.3) (SS#OUTCOME x e0 :0.3) (R#CROP y e0 :0.3)) (خرمن-nn e0 x)))
 
 
-(B (name cropmap) (=> (I#CROP x :0.9) (S#CROP x)))
-(B (name crop-plantingmap) (=> (I#PLANTING x y :0.9) (SS#PLANTING x y)))
-(B (name crop-cultivationmap) (=> (I#CULTIVATION x y :0.9) (SS#CULTIVATION x y)))
-(B (name crop-outcomemap) (=> (I#OUTCOME x y :0.9) (SS#OUTCOME x y)))
+(B (name crop-map) (=> (I#CROP x :0.9) (S#CROP x)))
+(B (name crop-planting-map) (=> (I#PLANTING x y :0.9) (SS#PLANTING x y)))
+(B (name crop-cultivation-map) (=> (I#CULTIVATION x y :0.9) (SS#CULTIVATION x y)))
+(B (name crop-outcome-map) (=> (I#OUTCOME x y :0.9) (SS#OUTCOME x y)))
 
 
 ;; A Right
 
 ;; A Right: Type
 
-(B (name right) (=> (^ (S#A_RIGHT e0 :0.45) (SS#TYPE x e0 :0.45)) (بجا-nn e0 x)))
-(B (name right) (=> (^ (S#A_RIGHT e0 :0.45) (SS#TYPE x e0 :0.45)) (مناسب-nn e0 x)))
-(B (name right-for) (=> (^ (S#A_RIGHT e0 :0.45) (SS#TYPE x e0 :0.45)) (^ (مناسب-nn e0 x) (برای -in e1 x y))))
-(B (name right-for) (=> (^ (S#A_RIGHT e0 :0.45) (SS#TYPE x e0 :0.45)) (^ (مناسب-nn e0 x) (nn e1 x y))))
+(B (name just) ;; Or so Google Translate says. It says it's an adverb though.
+   (=> (^ (S#A_RIGHT e0 :0.45) (SS#TYPE x e0 :0.45))
+       (بجا-nn e0 x)))
+(B (name right)
+   (=> (^ (S#A_RIGHT e0 :0.45) (SS#TYPE x e0 :0.45))
+       (مناسب-nn e0 x)))
+(B (name right-for)
+   (=> (^ (S#A_RIGHT e0 :0.45) (SS#TYPE x e0 :0.45))
+       (^ (مناسب-nn e0 x) (برای -in e1 x y))))
+(B (name right-for)
+   (=> (^ (S#A_RIGHT e0 :0.45) (SS#TYPE x e0 :0.45))
+       (^ (مناسب-nn e0 x) (nn e1 x y))))
 
 
 ;; Impurity
+;; Removed from source list, 2014-06-20
 
 ;; Impurity: Type
 
-(B (name god) (=> (^ (S#IMPURITY e0 :0.45) (SS#TYPE x e0 :0.45)) (خاک-nn e0 x)))
-(B (name god) (=> (^ (S#IMPURITY e0 :0.45) (SS#TYPE x e0 :0.45)) (غبار-nn e0 x)))
-(B (name god) (=> (^ (S#IMPURITY e0 :0.45) (SS#TYPE x e0 :0.45)) (زباله-nn e0 x)))
+;; (B (name soil)
+;;    (=> (^ (S#IMPURITY e0 :0.45) (SS#TYPE x e0 :0.45))
+;;        (خاک-nn e0 x)))
+;; (B (name dust)
+;;    (=> (^ (S#IMPURITY e0 :0.45) (SS#TYPE x e0 :0.45))
+;;        (غبار-nn e0 x)))
+;; (B (name waste)
+;;    (=> (^ (S#IMPURITY e0 :0.45) (SS#TYPE x e0 :0.45))
+;;        (زباله-nn e0 x)))
 
-(B (name god) (=> (^ (S#IMPURITY e0 :0.45) (SS#TYPE e0 e0 :0.45)) (کثیف-adj e0 x)))
+;; (B (name dirty)
+;;    (=> (^ (S#IMPURITY e0 :0.45) (SS#TYPE e0 e0 :0.45))
+;;        (کثیف-adj e0 x)))
 
-(B (name god) (=> (^ (S#IMPURITY e0 :0.45) (SS#TYPE e0 e0 :0.45)) (لجن-nn e0 x)))
-(B (name god) (=> (^ (S#IMPURITY e0 :0.45) (SS#TYPE e0 e0 :0.45)) (لکه-nn e0 x)))
-(B (name god) (=> (^ (S#IMPURITY e0 :0.45) (SS#TYPE e0 e0 :0.45)) (کثافت-nn e0 x)))
+;; (B (name sludge)
+;;    (=> (^ (S#IMPURITY e0 :0.45) (SS#TYPE e0 e0 :0.45))
+;;        (لجن-nn e0 x)))
+;; (B (name spots)
+;;    (=> (^ (S#IMPURITY e0 :0.45) (SS#TYPE e0 e0 :0.45))
+;;        (لکه-nn e0 x)))
+;; (B (name density) ;; Or so Google Translate says.
+;;    (=> (^ (S#IMPURITY e0 :0.45) (SS#TYPE e0 e0 :0.45))
+;;        (کثافت-nn e0 x)))

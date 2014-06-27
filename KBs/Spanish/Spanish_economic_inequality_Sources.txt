@@ -1,8 +1,12 @@
+;; -*- Mode: Lisp -*-
+
 ;;
-;; Source Words
+;; Economic Inequality: Spanish Source Axioms
+;; Katya Ovchinnikova, Ross Israel, Jonathan Gordon
 ;;
 
-; DISEASE
+;; Disease
+
 (B (name enfermedad) (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45)) (enfermedad-nn e0 x)))
 ;(B (name mal) (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45)) (mal-nn e0 x)))
 (B (name náusea) (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45)) (náusea-nn e0 x)))
@@ -1037,21 +1041,51 @@ WEALTH_AND_SOCIAL_CLASS
 (B (name parasitemap) (=> (I#PARASITE x :0.9) (S#PARASITE x)))
 (B (name destructive-beingmap) (=> (I#PARASITE%DESTRUCTIVE_BEING x y :0.9) (SS#PARASITE%DESTRUCTIVE_BEING x y)))
 
-;VISION
-;BLINDNESS
-(B (name ciego) (=> (^ (S#VISION e0 :0.3) (SS#VISION%BLINDNESS x e0 :0.3) (R#BLIND x e0 :0.3)) (ciego-adj e0 x)))
-(B (name ceguera) (=> (^ (S#VISION e0 :0.45) (SS#VISION%BLINDNESS x e0 :0.45)) (ceguera-nn e0 x)))
-(B (name ceguera) (=> (^ (S#VISION e0 :0.45) (SS#VISION%BLINDNESS x e0 :0.45)) (disfrazados-nn e0 x)))
-(B (name cegarvb) (=> (^ (S#VISION e0 :0.3) (SS#VISION%BLINDNESS e0 e0 :0.3) (R#BLIND y e0 :0.3)) (cegar-vb e0 x y z)))
 
-;SEEING
-(B (name abiertos-ojos) (=> (^ (S#VISION e0 :0.45) (SS#VISION%SEEING x e0 :0.45)) (^ (abiertos-adj e0 x) (ojos-nn e1 x))))
-(B (name exhibitionism) (=> (^ (S#VISION e0 :0.45) (SS#VISION%SEEING x e0 :0.45)) (exhibicionismo-nn e0 x)))
-;(B (name ver) (=> (^ (S#VISION e0 :0.3) (SS#VISION%SEEING e0 e0 :0.3) (R#SIGHTED y e0 :0.3)) (ver-vb e0 x y z)))
+;; Vision
+;; Removed from source list, 2014-06-20
 
-(B (name visionmap) (=> (I#VISION x :0.9) (S#VISION x)))
-(B (name blindnessmap) (=> (I#VISION%VISION-BLINDNESS x y :0.9) (SS#VISION%BLINDNESS x y)))
-(B (name seeingmap) (=> (I#VISION%VISION-SEEING x y :0.9) (SS#VISION%SEEING x y)))
+;; Vision: Blindness
+
+;; (B (name ciego)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#VISION%BLINDNESS x e0 :0.3)
+;;           (R#BLIND x e0 :0.3))
+;;        (ciego-adj e0 x)))
+;; (B (name ceguera)
+;;    (=> (^ (S#VISION e0 :0.45) (SS#VISION%BLINDNESS x e0 :0.45))
+;;        (ceguera-nn e0 x)))
+;; (B (name disfrazados)
+;;    (=> (^ (S#VISION e0 :0.45) (SS#VISION%BLINDNESS x e0 :0.45))
+;;        (disfrazados-nn e0 x)))
+;; (B (name cegar-vb)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#VISION%BLINDNESS e0 e0 :0.3)
+;;           (R#BLIND y e0 :0.3))
+;;        (cegar-vb e0 x y z)))
+
+
+;; Vision: Seeing
+
+;; (B (name abiertos-ojos)
+;;    (=> (^ (S#VISION e0 :0.45) (SS#VISION%SEEING x e0 :0.45))
+;;        (^ (abiertos-adj e0 x) (ojos-nn e1 x))))
+;; (B (name exhibitionism)
+;;    (=> (^ (S#VISION e0 :0.45) (SS#VISION%SEEING x e0 :0.45))
+;;        (exhibicionismo-nn e0 x)))
+;; (B (name ver)
+;;    (=> (^ (S#VISION e0 :0.3) (SS#VISION%SEEING e0 e0 :0.3)
+;;           (R#SIGHTED y e0 :0.3))
+;;        (ver-vb e0 x y z)))
+
+;; (B (name vision-map)
+;;    (=> (I#VISION x :0.9)
+;;        (S#VISION x)))
+;; (B (name blindness-map)
+;;    (=> (I#VISION%VISION-BLINDNESS x y :0.9)
+;;        (SS#VISION%BLINDNESS x y)))
+;; (B (name seeing-map)
+;;    (=> (I#VISION%VISION-SEEING x y :0.9)
+;;        (SS#VISION%SEEING x y)))
+
 
 ; MONSTER
 ; TYPE
@@ -1544,33 +1578,82 @@ WEALTH_AND_SOCIAL_CLASS
 ; FUNCTION
 (B (name girar) (=> (^ (S#MACHINE e0 :0.23) (SS#MACHINE%FUNCTION e0 e0 :0.23) (R#FUNCTION-AGENT x e0 :0.23) (R#FUNCTION-PATIENT y e0 :0.23))  (^ (motor-nn e1 x) (girar-vb e0 x y u))))
 
-(B (name machinemap) (=> (I#MACHINE x :0.9) (S#MACHINE x)))
+(B (name machine-map) (=> (I#MACHINE x :0.9) (S#MACHINE x)))
 ;(B (name machine-typemap) (=> (I#MACHINE%TYPE x y :0.9) (SS#MACHINE%TYPE x y)))
-(B (name machine-partsmap) (=> (I#MACHINE%PARTS x y :0.9) (SS#MACHINE%PARTS x y)))
-(B (name machine-functionmap) (=> (I#MACHINE%FUNCTION x y :0.9) (SS#MACHINE%FUNCTION x y)))
+(B (name machine-parts-map) (=> (I#MACHINE%PARTS x y :0.9) (SS#MACHINE%PARTS x y)))
+(B (name machine-function-map) (=> (I#MACHINE%FUNCTION x y :0.9) (SS#MACHINE%FUNCTION x y)))
 
-; DESTROYER
-; DESTRUCTIVE FORCE
-(B (name destructor) (=> (^ (S#DESTROYER e0 :0.45) (SS#DESTROYER%DESTRUCTIVE_FORCE x e0 :0.45)) (destructor-nn e0 x)))
-(B (name destrucción) (=> (^ (S#DESTROYER e0 :0.45) (SS#DESTROYER%DESTRUCTIVE_FORCE x e0 :0.45)) (destrucción-nn e0 x)))
-(B (name destruir) (=> (^ (S#DESTROYER e0 :0.23) (SS#DESTROYER%DESTRUCTIVE_FORCE e0 e0 :0.23) (R#DESTRUCTIVE-FORCE-AGENT x e0 :0.23) (R#DESTRUCTIVE-FORCE-PATIENT y e0 :0.23)) (destruir-vb e0 x y u)))
 
-(B (name destroyermap) (=> (I#DESTROYER x :0.9) (S#DESTROYER x)))
-(B (name destroyer-destructive-forcemap) (=> (I#DESTROYER%DESTRUCTIVE_FORCE x y :0.9) (SS#DESTROYER%DESTRUCTIVE_FORCE x y)))
+;; Destroyer
+;; Remove from source list, 2014-06-20
 
-; GEOGRAPHIC FEATURE
-; TYPE
-(B (name montaña) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#MOUNTAIN x e0 :0.3)) (mountain-nn e0 x)))
-(B (name himalayas) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#MOUNTAIN x e0 :0.3)) (himalayas-nn e0 x)))
-(B (name alps) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#MOUNTAIN x e0 :0.3)) (alps-nn e0 x)))
-;(B (name océano) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#OCEAN x e0 :0.3)) (ocean-nn e0 x)))
-;(B (name mar) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#OCEAN x e0 :0.3)) (mar-nn e0 x)))
-(B (name pradera) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#VALLEY x e0 :0.3)) (pradera-nn e0 x)))
-(B (name valle) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#VALLEY x e0 :0.3)) (valle-nn e0 x)))
-(B (name valle) (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3) (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#VALLEY x e0 :0.3)) (cascada-nn e0 x)))
+;; Destroyer: Destructive Force
 
-(B (name geographic-featuremap) (=> (I#GEOGRAPHIC_FEATURE x :0.9) (S#GEOGRAPHIC_FEATURE x)))
-;(B (name geographic-feature-typemap) (=> (I#GEOGRAPHIC_FEATURE%TYPE x y :0.9) (SS#GEOGRAPHIC_FEATURE%TYPE x y)))
+;; (B (name destructor)
+;;    (=> (^ (S#DESTROYER e0 :0.45) (SS#DESTROYER%DESTRUCTIVE_FORCE x e0 :0.45))
+;;        (destructor-nn e0 x)))
+;; (B (name destrucción)
+;;    (=> (^ (S#DESTROYER e0 :0.45) (SS#DESTROYER%DESTRUCTIVE_FORCE x e0 :0.45))
+;;        (destrucción-nn e0 x)))
+;; (B (name destruir)
+;;    (=> (^ (S#DESTROYER e0 :0.23) (SS#DESTROYER%DESTRUCTIVE_FORCE e0 e0 :0.23)
+;;           (R#DESTRUCTIVE-FORCE-AGENT x e0 :0.23)
+;;           (R#DESTRUCTIVE-FORCE-PATIENT y e0 :0.23))
+;;        (destruir-vb e0 x y u)))
+
+;; (B (name destroyer-map)
+;;    (=> (I#DESTROYER x :0.9)
+;;        (S#DESTROYER x)))
+;; (B (name destroyer-destructive-force-map)
+;;    (=> (I#DESTROYER%DESTRUCTIVE_FORCE x y :0.9)
+;;        (SS#DESTROYER%DESTRUCTIVE_FORCE x y)))
+
+
+;; Geographic Feature
+;; Removed from source list, 2014-06-20
+
+;; Geographic Feature: Type
+
+;; (B (name montaña)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
+;;           (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#MOUNTAIN x e0 :0.3))
+;;        (mountain-nn e0 x)))
+;; (B (name himalayas)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
+;;           (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#MOUNTAIN x e0 :0.3))
+;;        (himalayas-nn e0 x)))
+;; (B (name alps)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
+;;           (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#MOUNTAIN x e0 :0.3))
+;;        (alps-nn e0 x)))
+;; (B (name océano)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
+;;           (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#OCEAN x e0 :0.3))
+;;        (ocean-nn e0 x)))
+;; (B (name mar)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
+;;           (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#OCEAN x e0 :0.3))
+;;        (mar-nn e0 x)))
+;; (B (name pradera)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
+;;           (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#VALLEY x e0 :0.3))
+;;        (pradera-nn e0 x)))
+;; (B (name valle)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
+;;           (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#VALLEY x e0 :0.3))
+;;        (valle-nn e0 x)))
+;; (B (name cascada)
+;;    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
+;;           (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#VALLEY x e0 :0.3))
+;;        (cascada-nn e0 x)))
+
+;; (B (name geographic-feature-map)
+;;    (=> (I#GEOGRAPHIC_FEATURE x :0.9)
+;;        (S#GEOGRAPHIC_FEATURE x)))
+;; (B (name geographic-feature-type-map)
+;;    (=> (I#GEOGRAPHIC_FEATURE%TYPE x y :0.9)
+;;        (SS#GEOGRAPHIC_FEATURE%TYPE x y)))
+
 
 ; ENABLER
 ; LUBRICANT
