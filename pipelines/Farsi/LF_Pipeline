@@ -14,14 +14,14 @@ if [ -d "$2" ]; then
 	tee $2/dot_o.txt |
 	$farsiPipelineDir/tag |
 	tee $2/tagger_o.txt |
-	$farsiPipelineDir/parse |
-	tee $2/parser_o.txt |
-	$farsiPipelineDir/createLF > /dev/stdout
+	$farsiPipelineDir/taggedFileToCONLL.py |
+	tee $2/parser_o.txt
+	#$farsiPipelineDir/createLF > /dev/stdout
 else
 	$farsiPipelineDir/farsilemm.py $farsiPipelineDir/lemmatizationDict.txt < $inputFile |
-	$farsiPipelineDir/tokenize  | 
+	$farsiPipelineDir/tokenize |
 	$farsiPipelineDir/addDot.py |
 	$farsiPipelineDir/tag |
-	$farsiPipelineDir/parse |
-	$farsiPipelineDir/createLF > $outputFileName
+	$farsiPipelineDir/taggedFileToCONLL.py > $outputFileName
+	#$farsiPipelineDir/createLF > $outputFileName
 fi

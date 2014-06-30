@@ -5,7 +5,7 @@
 #STDERR collects the sentence offsets for the text ids
 
 $maxwordlenght=150;
-
+$linenumber=1;
 $i=0;$sl=0;$start=0;
 while (<>) {
     if (/^</) {
@@ -18,8 +18,9 @@ while (<>) {
 	($w,$p,$l)=split /\t/,$_;
 	if (defined $l) {
 	    $t=substr($p,0,1); 
-	    $out="1\t$w\t$l\t$t\t$t\t$p\n";
+	    $out="$linenumber\t$w\t$l\t$t\t$t\t$p\n";
 	    print $out;
+	    $linenumber++;
 	    $sl++;
 	    if (($p eq 'SENT') or (($start) and ($out=~/^1\t[;,.()-]/))) {
 		#if a sentence is too long, we split by the first punctuation

@@ -8,8 +8,9 @@ parser = optparse.OptionParser(usage=usage)
 parser.add_option("-i", "--input", dest="input",
                   action="store", help="read from FILE", metavar="FILE")
 (options, args) = parser.parse_args()
-
+LineNumber = 1
 def malter(LINE_OBJECT):
+    global LineNumber
     """formats lines for maltparser in conll format"""
     if len(LINE_OBJECT) == 1:
         return  "0"+"\t"+LINE_OBJECT[0]+"\t"+LINE_OBJECT[0]+"\t"+"f"+"\t"+"f"+"\t"+"0"+"\t"+"0"+"\t"+"ROOT"+"\t"+"-"
@@ -20,7 +21,8 @@ def malter(LINE_OBJECT):
     tPOS = LINE_OBJECT[1].strip()
     aPOS = replace_tag(tPOS,LINE_OBJECT[2].strip())
     Lemma = determineLemma(LINE_OBJECT[2].strip(),tokenString)
-    malt_line = "0"+"\t"+tokenString+"\t"+Lemma+"\t"+aPOS+"\t"+aPOS+"\t"+"0"+"\t"+"0"+"\t"+"ROOT"+"\t"+"-"#+"\t"+tPOS
+    malt_line = str(LineNumber)+"\t"+tokenString+"\t"+Lemma+"\t"+aPOS+"\t"+aPOS+"\t"+"0"+"\t"+"0"+"\t"+"ROOT"+"\t"+"-"#+"\t"+tPOS
+    LineNumber += 1
     return malt_line
 
 def determineLemma(original,token):

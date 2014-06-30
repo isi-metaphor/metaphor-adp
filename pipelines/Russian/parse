@@ -1,0 +1,9 @@
+#! /bin/bash
+
+taggedInputFile="${1:-/dev/stdin}"
+parsedFileName="${2:-/dev/stdout}"
+
+MALT_PARSER_DIR=$METAPHOR_DIR/external-tools/malt-1.5
+RU_PARSER_DIR=$METAPHOR_DIR/external-tools/malt-ru
+#cd $RU_PARSER_DIR
+cat $taggedInputFile | java -cp $MALT_PARSER_DIR/dist/malt/malt.jar:$RU_PARSER_DIR maltParserWrap_RU > $parsedFileName
