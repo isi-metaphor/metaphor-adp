@@ -1,5 +1,19 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
+# Multilingual abductive discourse processing pipeline
+# Ekaterina Ovchinnikova <katya@isi.edu>, 2012
+# Jonathan Gordon <jgordon@isi.edu>, 2014
+
+# External tools used:
+# - English NLP pipeline (Metaphor-ADP/pipelines/English)
+# - Spanish NLP pipeline (Metaphor-ADP/pipelines/Spanish)
+# - Russian NLP pipeline (Metaphor-ADP/pipelines/Russian)
+# - Farsi NLP pipeline (Metaphor-ADP/pipelines/Farsi)
+# - Henry abductive reasoner (https://github.com/naoya-i/henry-n700)
+
+# This script requires the environment variables METAPHOR_DIR, HENRY_DIR,
+# BOXER_DIR, and TMP_DIR to be set.
 
 import os
 import re
@@ -10,17 +24,17 @@ import socket
 from subprocess import Popen, PIPE
 
 
-METAPHOR_DIR = os.environ["METAPHOR_DIR"]
-HENRY_DIR = os.environ["HENRY_DIR"]
-BOXER_DIR = os.environ["BOXER_DIR"]
-TMP_DIR = os.environ["TMP_DIR"]
+METAPHOR_DIR = os.environ['METAPHOR_DIR']
+HENRY_DIR = os.environ['HENRY_DIR']
+BOXER_DIR = os.environ['BOXER_DIR']
+TMP_DIR = os.environ['TMP_DIR']
+
+BOXER2HENRY = "%s/pipelines/English/Boxer2Henry.py" % METAPHOR_DIR
+PARSER2HENRY = "%s/pipelines/common/IntParser2Henry.py" % METAPHOR_DIR
 
 FARSI_PIPELINE = "%s/pipelines/Farsi/LF_Pipeline" % METAPHOR_DIR
 SPANISH_PIPELINE = "%s/pipelines/Spanish/run_spanish.sh" % METAPHOR_DIR
 RUSSIAN_PIPELINE = "%s/pipelines/Russian/run_russian.sh" % METAPHOR_DIR
-
-BOXER2HENRY = "%s/pipelines/English/Boxer2Henry.py" % METAPHOR_DIR
-PARSER2HENRY = "%s/pipelines/common/IntParser2Henry.py" % METAPHOR_DIR
 
 # Compiled knowledge bases
 EN_KBPATH = "%s/KBs/English/English_compiled_KB.da" % METAPHOR_DIR
@@ -28,7 +42,7 @@ ES_KBPATH = "%s/KBs/Spanish/Spanish_compiled_KB.da" % METAPHOR_DIR
 RU_KBPATH = "%s/KBs/Russian/Russian_compiled_KB.da" % METAPHOR_DIR
 FA_KBPATH = "%s/KBs/Farsi/Farsi_compiled_KB.da" % METAPHOR_DIR
 
-# switches
+# Switches
 kbcompiled = True
 
 DESCRIPTION = "Abductive engine output; abductive_hypothesis: metaphor " \
@@ -46,44 +60,36 @@ def extract_hypotheses(inputString, unique_id, with_pdf_content):
     output_struct = []
     hypothesis_found = False
     p = re.compile('<result-inference target="(.+)"')
-    target = ""
-    hypothesis = ""
+    target = ''
+    hypothesis = ''
     unification = False
     explanation = False
 
-    # for generating proofgraph URIs
+    # For generating proofgraph URIs
     webservice = get_webservice_location()
 
     for line in inputString.splitlines():
-
         output_struct_item = {}
         match_obj = p.match(line)
 
         if match_obj:
             target = match_obj.group(1)
-
-        elif line.startswith("<hypothesis"):
+        elif line.startswith('<hypothesis'):
             hypothesis_found = True
-
-        elif line.startswith("</hypothesis>"):
+        elif line.startswith('</hypothesis>'):
             hypothesis_found = False
-
         elif hypothesis_found:
             hypothesis = line
-
-        elif line.startswith("<unification"):
+        elif line.startswith('<unification'):
             unification = True
-
-        elif line.startswith("<explanation"):
+        elif line.startswith('<explanation'):
             explanation = True
-
-        elif line.startswith("</result-inference>"):
-
-            output_struct_item["id"] = target
-            output_struct_item["isiAbductiveHypothesis"] = hypothesis
-            output_struct_item["isiAbductiveUnification"] = unification
-            output_struct_item["isiAbductiveExplanation"] = explanation
-            output_struct_item["isiAbductiveProofgraph"] = \
+        elif line.startswith('</result-inference>'):
+            output_struct_item['id'] = target
+            output_struct_item['isiAbductiveHypothesis'] = hypothesis
+            output_struct_item['isiAbductiveUnification'] = unification
+            output_struct_item['isiAbductiveExplanation'] = explanation
+            output_struct_item['isiAbductiveProofgraph'] = \
                 "http://%s/proofgraphs/%s_%s.pdf" % \
                 (webservice, unique_id, target, )
 
@@ -103,14 +109,9 @@ def extract_hypotheses(inputString, unique_id, with_pdf_content):
 
 
 def generate_text_input(input_metaphors, language):
-    
-    output_str = ""
+    output_str = ''
 
     for key in input_metaphors.keys():
-        #if language == "EN" or language == "RU":
-        #    output_str += "<META>" + key + "\n\n " + input_metaphors[key] + "\n\n"
-        #else:
-        #    output_str += ".TEXTID(" + key + ").\n\n" + input_metaphors[key] + "\n\n"
         output_str += "<META>" + key + "\n\n " + input_metaphors[key] + "\n\n"
 
     return output_str
@@ -120,31 +121,32 @@ def generate_text_input(input_metaphors, language):
 # as base-64 in output
 
 def ADP(request_body_dict, input_metaphors, language, with_pdf_content):
-
-
     start_time = time.time()
     input_str = generate_text_input(input_metaphors, language)
 
     # Parser pipeline
     parser_proc = ""
     if language == "FA":
-        parser_proc = FARSI_PIPELINE + " | python " + PARSER2HENRY + " --nonmerge sameid freqpred"
+        parser_proc = FARSI_PIPELINE + " | python " + PARSER2HENRY + \
+          " --nonmerge sameid freqpred"
         KBPATH = FA_KBPATH
-
     elif language == "ES":
-        parser_proc = SPANISH_PIPELINE + " | python " + PARSER2HENRY + " --nonmerge sameid freqpred"
+        parser_proc = SPANISH_PIPELINE + " | python " + PARSER2HENRY + \
+          " --nonmerge sameid freqpred"
         KBPATH = ES_KBPATH
-
     elif language == "RU":
-        parser_proc = RUSSIAN_PIPELINE + " | python " + PARSER2HENRY + " --nonmerge sameid freqpred"
+        parser_proc = RUSSIAN_PIPELINE + " | python " + PARSER2HENRY + \
+          " --nonmerge sameid freqpred"
         KBPATH = RU_KBPATH
-
     elif language == "EN":
         tokenizer = BOXER_DIR + "/bin/tokkie --stdin"
-        candcParser = BOXER_DIR + "/bin/candc --models " + BOXER_DIR + "/models/boxer --candc-printer boxer"
-        boxer = BOXER_DIR + "/bin/boxer --semantics tacitus --resolve true --stdin"
+        candcParser = BOXER_DIR + "/bin/candc --models " + BOXER_DIR + \
+          "/models/boxer --candc-printer boxer"
+        boxer = BOXER_DIR + '/bin/boxer --semantics tacitus --resolve true ' \
+          + '--stdin'
         b2h = "python " + BOXER2HENRY + " --nonmerge sameid freqpred"
-        parser_proc = tokenizer + " | " + candcParser + " | " + boxer + " | " + b2h
+        parser_proc = tokenizer + " | " + candcParser + " | " + boxer + " | " \
+          + b2h
         KBPATH = EN_KBPATH
 
 
@@ -155,17 +157,17 @@ def ADP(request_body_dict, input_metaphors, language, with_pdf_content):
     # Parser processing time in seconds
     parser_time = (time.time() - start_time) * 0.001
 
-    # time to generate final output in seconds
+    # Time to generate final output in seconds
     generate_output_time = 2
 
-    # time left for Henry in seconds
+    # Time left for Henry in seconds
     time_all_henry = 600 - parser_time - generate_output_time
 
     if with_pdf_content:
-        # time for graph generation subtracted from Henry time in seconds
-        time_all_henry -= - 3
+        # Time for graph generation subtracted from Henry time in seconds
+        time_all_henry -= -3
 
-    # time for one interpretation in Henry in seconds
+    # Time for one interpretation in Henry in seconds
     time_unit_henry = str(int(time_all_henry / len(input_metaphors)))
 
     # Henry processing
@@ -187,14 +189,14 @@ def ADP(request_body_dict, input_metaphors, language, with_pdf_content):
 
     henry_output = henry_pipeline.communicate(input=parser_output)[0]
 
-    # unique id used for proofgraph name
+    # Unique ID used for proofgraph name
     unique_id = get_unique_id()
 
     if with_pdf_content:
-        # generate graphs so we can return them with output
+        # Generate graphs so we can return them with output
         generate_graph(input_metaphors, henry_output, unique_id)
     else:
-        # start graphical generation in thread; don't wait for it to finish
+        # Start graphical generation in thread; don't wait for it to finish
         thread.start_new_thread(generate_graph,
                                 (input_metaphors, henry_output, unique_id))
 
@@ -203,7 +205,7 @@ def ADP(request_body_dict, input_metaphors, language, with_pdf_content):
 
     # print hypotheses
 
-    # merge ADB result and input json document
+    # Merge ADB result and input JSON document
     for hyp in hypotheses:
         for ann in request_body_dict["metaphorAnnotationRecords"]:
             try:
@@ -217,8 +219,7 @@ def ADP(request_body_dict, input_metaphors, language, with_pdf_content):
 
 
 def get_webservice_location():
-
-    # this gives the IP address; you may want to use this during the demo
+    # This gives the IP address; you may want to use this during the demo
     # hostname=socket.gethostbyname(hostname)
 
     hostname = socket.getfqdn()
@@ -237,10 +238,9 @@ def get_unique_id():
 
 
 def generate_graph(input_dict, henry_output, unique_id):
-
-    # create proofgraphs directory if it doesn't exist
+    # Create proofgraphs directory if it doesn't exist
     graph_dir = TMP_DIR + "/proofgraphs"
-    
+
     if not os.path.exists(graph_dir):
         os.makedirs(graph_dir)
 
@@ -261,14 +261,10 @@ def generate_graph(input_dict, henry_output, unique_id):
     print "Done generating proof graphs."
 
 
-# returns contents of PDF file in base-64
+# Returns contents of PDF file in base-64
 def get_base64(pdf_file_path):
     f = open(pdf_file_path, "rb")
     binary_str = f.read()
     f.close()
     encoded_str = binary_str.encode("base64")
     return encoded_str
-
-
-# if "__main__" == __name__:
-#     main()

@@ -1,11 +1,11 @@
 #!/bin/bash
 
 if [ $# != 1 ]; then
-echo Usage: "$0 install_dir"
-exit 1
+    echo Usage: "$0 install_dir"
+    exit 1
 fi
 
-echo testing henry
+echo Testing Henry
 
 install_dir=$1
 export ADP_HOME=$install_dir

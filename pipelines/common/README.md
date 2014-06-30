@@ -1,14 +1,35 @@
-Abductive discource processing pipeline
-===
+Abductive Discourse Processing Pipeline
+=======================================
+
+**SCRIPTS**
+
+- NLPipeline_MULT_metaphor.py
+- NLPipeline_MULT_metaphor_CM.py
+- NLPipeline_MULT_stdinout.py
+- NLPipeline_MULT_stdinout_CM.py
+
+These are the abductive discourse processing pipeline scripts.
+TODO: What are the differences between these four?
+
+Which use:
+- extract_CMs_from_hypotheses.py
+  Generate the conceptual metaphor file (*.cm)
+- IntParser2Henry.py
+  Convert logical forms into Henry input, adding nonmerge contraints
+
+---
 
 **DESCRIPTION**
 
-Multilingual (English, Spanish, Farsi, Russian) abductive discource processing pipeline.
+Multilingual (English, Spanish, Farsi, Russian) abductive discourse
+processing pipeline.
 
-* `NLPipeline_MULT_stdinout_CM.py` – running tokenizer, lemmatizer, parser, logical form converter, abductive reasoner, proof graph generator, CM output
+* `NLPipeline_MULT_stdinout_CM.py` – Run tokenizer, lemmatizer, parser,
+logical form converter, abductive reasoner, proof graph generator,
+conceptual metaphor output
 
 ```
-usage: NLPipeline_MULT_stdinout_CM.py [-h] [--lang LANG] [--input INPUT]
+Usage: NLPipeline_MULT_stdinout_CM.py [-h] [--lang LANG] [--input INPUT]
                                    [--outputdir OUTPUTDIR] [--parse] [--henry]
                                    [--kb KB] [--kbcompiled KBCOMPILED]
                                    [--graph GRAPH] [--CMoutput]
@@ -29,7 +50,6 @@ optional arguments:
   --graph GRAPH         ID of text/sentence to vizualize. Possible value:
                         allN, where N is number of sentences to vizualize.
   --CMoutput            Conceptual metaphor output.
-
 ```
 
 ---

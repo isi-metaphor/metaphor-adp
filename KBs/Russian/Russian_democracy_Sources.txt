@@ -1,104 +1,112 @@
-; BODY_OF_WATER 
+;;
+;; Democracy
+;; Russian Source Words
+;;
 
-(B (name voda) (=>(^(S#BODY_OF_WATER e0 :0.45)(SS#BODY_OF_WATER%TYPE x e0 :0.45))(вода-nn e0 x)))
-(B (name more) (=> (^(S#BODY_OF_WATER e0 :0.45)(SS#BODY_OF_WATER%TYPE x e0 :0.45))(море-nn e0 y)))
-(B (name okean) (=> (^(S#BODY_OF_WATER e0 :0.45)(SS#BODY_OF_WATER%TYPE x e0 :0.45)) (океан-nn e0 y)))
-(B (name reka) (=> (^(S#BODY_OF_WATER e0 :0.45)(SS#BODY_OF_WATER%TYPE x e0 :0.45)) (река-nn e0 y)))
-(B (name rucheek) (=> (^(S#BODY_OF_WATER e0 :0.45)(SS#BODY_OF_WATER%TYPE x e0 :0.45)) (ручей-nn e0 y)))
-(B (name rucheek) (=> (^(S#BODY_OF_WATER e0 :0.45)(SS#BODY_OF_WATER%TYPE x e0 :0.45)) (ручеек-nn e0 y)))
+;; Body of Water
 
-; OF - BODY_OF_WATER
-(B (name of-BODY_OF_WATER) (=>(R#MATTER x y :0.9)(^(S#BODY_OF_WATER z)(SS#BODY_OF_WATER%TYPE y z)(of-in e1 y x))))
+;; Body of Water: Type
 
-; LARGE_FEATURES
+(B (name voda) (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%TYPE x e0 :0.45)) (вода-nn e0 x)))
+(B (name more) (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%TYPE x e0 :0.45)) (море-nn e0 y)))
+(B (name okean) (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%TYPE x e0 :0.45)) (океан-nn e0 y)))
+(B (name reka) (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%TYPE x e0 :0.45)) (река-nn e0 y)))
+(B (name rucheek) (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%TYPE x e0 :0.45)) (ручей-nn e0 y)))
+(B (name rucheek) (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%TYPE x e0 :0.45)) (ручеек-nn e0 y)))
 
-(B (name voda) (=>(^(S#BODY_OF_WATER e0 :0.45)(SS#LARGE_FEATURES e0 e0 :0.45))(безбрежный-adj e0 x)))
-
-; MOVEMENT 
-
-(B (name potok)  (=>(^(S#BODY_OF_WATER x :0.45)(SS#MOVEMENT y x :0.45))(поток-nn e0 y)))
-(B (name potok)  (=>(^(S#BODY_OF_WATER x :0.45)(SS#MOVEMENT y x :0.45))(отток-nn e0 y)))
-(B (name potok)  (=>(^(S#BODY_OF_WATER x :0.45)(SS#MOVEMENT y x :0.45))(приток-nn e0 y)))
-(B (name istochnik)  (=>(^(S#BODY_OF_WATER x :0.45)(SS#MOVEMENT y x :0.45))(источник-nn e0 y)))
-(B (name tech)  (=>(^(S#BODY_OF_WATER x :0.45)(SS#MOVEMENT y x :0.45)) (течь-nn e0 y)))
-(B (name utechka)  (=>(^(S#BODY_OF_WATER x :0.45)(SS#MOVEMENT y x :0.45)) (утечка-nn e0 y)))
-(B (name volna)  (=>(^(S#BODY_OF_WATER x :0.45)(SS#MOVEMENT y x :0.45)) (волна-nn e0 y)))
-(B (name volna)  (=>(^(S#BODY_OF_WATER x :0.45)(SS#MOVEMENT y x :0.45)) (прилив-nn e0 y)))
-(B (name volna)  (=>(^(S#BODY_OF_WATER x :0.45)(SS#MOVEMENT y x :0.45)) (отлив-nn e0 y)))
-
-(B (name volna)  (=>(^(S#BODY_OF_WATER x :0.45)(SS#MOVEMENT y x :0.45)) (мель-nn e0 y)))
-
-(B (name techvb) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3))(течь-vb e0 x u1 u2)))
-(B (name utech) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3))(утечь-vb e0 x u1 u2)))
-(B (name utekat)(=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (утекать-vb e0 x u1 u2)))
-(B (name vytech) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (потечь-vb e0 x u1 u2)))
-(B (name vytech) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (протечь-vb e0 x u1 u2)))
-(B (name vytech) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (протекать-vb e0 x u1 u2)))
-(B (name vytech) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (притекать-vb e0 x u1 u2)))
-(B (name vytech) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (вытечь-vb e0 x u1 u2)))
-(B (name vytekat) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (вытекать-vb e0 x u1 u2)))
-(B (name vytech) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (стечь-vb e0 x u1 u2)))
-(B (name vytekat) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (стекать-vb e0 x u1 u2)))
-(B (name litsja) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (литься-vb e0 x u1 u2)))
-(B (name litsja) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (вылиться-vb e0 x u1 u2)))
-(B (name litsja) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (политься-vb e0 x u1 u2)))
-(B (name litsja) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (приливать-vb e0 x u1 u2)))
-(B (name litsja) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (отливать-vb e0 x u1 u2)))
-
-(B (name litsja) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (налить-vb e0 x u1 u2)))
-(B (name litsja) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (лить-vb e0 x u1 u2)))
-(B (name litsja) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (вылить-vb e0 x u1 u2)))
-(B (name litsja) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (выливать-vb e0 x u1 u2)))
-(B (name litsja) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (слить-vb e0 x u1 u2)))
-(B (name litsja) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (сливать-vb e0 x u1 u2)))
-(B (name struitsja) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (влить-vb e0 x u1 u2)))
-(B (name struitsja) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (вливать-vb e0 x u1 u2)))
-(B (name struitsja) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (струиться-vb e0 x u1 u2)))
-(B (name struitsja) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (капать-vb e0 x u1 u2)))
+;; Of - Body of Water
+(B (name of-BODY_OF_WATER) (=> (R#MATTER x y :0.9) (^ (S#BODY_OF_WATER z) (SS#BODY_OF_WATER%TYPE y z) (of-in e1 y x))))
 
 
-(B (name struitsja) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (плавать-vb e0 x u1 u2)))
-(B (name struitsja) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (плыть-vb e0 x u1 u2)))
-(B (name struitsja) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (купаться-vb e0 x u1 u2)))
-(B (name struitsja) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (искупаться-vb e0 x u1 u2)))
-(B (name struitsja) (=>(^(S#BODY_OF_WATER y :0.3)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.3)(R#STREAMING x e0 :0.3)) (выкупаться-vb e0 x u1 u2)))
-(B (name pogruzitsja-v) (=>(^(S#BODY_OF_WATER y :0.2)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.2)) (^(погрузиться-vb e0 x y u) (в-in e1 e0 z))))
-(B (name pogruzhatsja-v) (=>(^(S#BODY_OF_WATER y :0.2)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.2)) (^(погружаться-vb e0 x y u) (в-in e1 e0 z))))
-(B (name pogruzhatsja-v) (=>(^(S#BODY_OF_WATER y :0.2)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.2)) (^(окунуться-vb e0 x y u) (в-in e1 e0 z))))
-(B (name pogruzhatsja-v) (=>(^(S#BODY_OF_WATER y :0.2)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.2)) (^(окунаться-vb e0 x y u) (в-in e1 e0 z))))
-(B (name pogruzhatsja-v) (=>(^(S#BODY_OF_WATER y :0.2)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.2)) (^(окунуть-vb e0 x y u) (в-in e1 e0 z))))
-(B (name pogruzhatsja-v) (=>(^(S#BODY_OF_WATER y :0.2)(SS#BODY_OF_WATER%MOVEMENT e0 y :0.2)) (^(окунать-vb e0 x y u) (в-in e1 e0 z))))
+;; Body of Water: Large Features
+
+(B (name voda) (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#LARGE_FEATURES e0 e0 :0.45)) (безбрежный-adj e0 x)))
 
 
-; OF - MOVEMENT
-(B (name of-stream) (=>(R#STREAMING y x :0.9)(^(SS#BODY_OF_WATER%MOVEMENT x u)(of-in e1 x y))))
+;; Body of Water: Movement
 
-; DANGER
+(B (name potok)  (=> (^ (S#BODY_OF_WATER x :0.45) (SS#MOVEMENT y x :0.45)) (поток-nn e0 y)))
+(B (name potok)  (=> (^ (S#BODY_OF_WATER x :0.45) (SS#MOVEMENT y x :0.45)) (отток-nn e0 y)))
+(B (name potok)  (=> (^ (S#BODY_OF_WATER x :0.45) (SS#MOVEMENT y x :0.45)) (приток-nn e0 y)))
+(B (name istochnik)  (=> (^ (S#BODY_OF_WATER x :0.45) (SS#MOVEMENT y x :0.45)) (источник-nn e0 y)))
+(B (name tech)  (=> (^ (S#BODY_OF_WATER x :0.45) (SS#MOVEMENT y x :0.45)) (течь-nn e0 y)))
+(B (name utechka)  (=> (^ (S#BODY_OF_WATER x :0.45) (SS#MOVEMENT y x :0.45)) (утечка-nn e0 y)))
+(B (name volna)  (=> (^ (S#BODY_OF_WATER x :0.45) (SS#MOVEMENT y x :0.45)) (волна-nn e0 y)))
+(B (name volna)  (=> (^ (S#BODY_OF_WATER x :0.45) (SS#MOVEMENT y x :0.45)) (прилив-nn e0 y)))
+(B (name volna)  (=> (^ (S#BODY_OF_WATER x :0.45) (SS#MOVEMENT y x :0.45)) (отлив-nn e0 y)))
 
-(B (name volna)  (=>(^(S#BODY_OF_WATER x :0.4)(SS#DANGER y x :0.4)) (цунами-nn e0 y)))
-(B (name volna)  (=>(^(S#BODY_OF_WATER x :0.4)(SS#DANGER y x :0.4)) (потоп-nn e0 y)))
-(B (name volna)  (=>(^(S#BODY_OF_WATER x :0.4)(SS#DANGER y x :0.4)) (наводнение-nn e0 y)))
-(B (name volna)  (=>(^(S#BODY_OF_WATER x :0.45)(SS#DANGER y x :0.45)) (трясина-nn e0 y)))
-(B (name volna)  (=>(^(S#BODY_OF_WATER x :0.45)(SS#DANGER y x :0.45)) (болото-nn e0 y)))
+(B (name volna)  (=> (^ (S#BODY_OF_WATER x :0.45) (SS#MOVEMENT y x :0.45)) (мель-nn e0 y)))
 
-(B (name volna)  (=>(^(S#BODY_OF_WATER e0 :0.45)(SS#DANGER e0 e0 :0.45)) (потопить-vb e0 x y z)))
-(B (name volna)  (=>(^(S#BODY_OF_WATER e0 :0.45)(SS#DANGER e0 e0 :0.45)) (топить-vb e0 x y z)))
-(B (name volna)  (=>(^(S#BODY_OF_WATER e0 :0.45)(SS#DANGER e0 e0 :0.45)) (затопить-vb e0 x y z)))
-(B (name volna)  (=>(^(S#BODY_OF_WATER e0 :0.45)(SS#DANGER e0 e0 :0.45)) (захлестнуть-vb e0 x y z)))
-(B (name volna)  (=>(^(S#BODY_OF_WATER e0 :0.45)(SS#DANGER e0 e0 :0.45)) (захлестывать-vb e0 x y z)))
+(B (name techvb) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (течь-vb e0 x u1 u2)))
+(B (name utech) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (утечь-vb e0 x u1 u2)))
+(B (name utekat) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (утекать-vb e0 x u1 u2)))
+(B (name vytech) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (потечь-vb e0 x u1 u2)))
+(B (name vytech) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (протечь-vb e0 x u1 u2)))
+(B (name vytech) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (протекать-vb e0 x u1 u2)))
+(B (name vytech) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (притекать-vb e0 x u1 u2)))
+(B (name vytech) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (вытечь-vb e0 x u1 u2)))
+(B (name vytekat) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (вытекать-vb e0 x u1 u2)))
+(B (name vytech) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (стечь-vb e0 x u1 u2)))
+(B (name vytekat) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (стекать-vb e0 x u1 u2)))
+(B (name litsja) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (литься-vb e0 x u1 u2)))
+(B (name litsja) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (вылиться-vb e0 x u1 u2)))
+(B (name litsja) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (политься-vb e0 x u1 u2)))
+(B (name litsja) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (приливать-vb e0 x u1 u2)))
+(B (name litsja) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (отливать-vb e0 x u1 u2)))
 
-(B (name volna)  (=>(^(S#BODY_OF_WATER e0 :0.45)(SS#DANGER e0 e0 :0.45)) (наводнить-vb e0 x y z)))
-(B (name volna)  (=>(^(S#BODY_OF_WATER e0 :0.45)(SS#DANGER e0 e0 :0.45)) (наводнять-vb e0 x y z)))
+(B (name litsja) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (налить-vb e0 x u1 u2)))
+(B (name litsja) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (лить-vb e0 x u1 u2)))
+(B (name litsja) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (вылить-vb e0 x u1 u2)))
+(B (name litsja) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (выливать-vb e0 x u1 u2)))
+(B (name litsja) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (слить-vb e0 x u1 u2)))
+(B (name litsja) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (сливать-vb e0 x u1 u2)))
+(B (name struitsja) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (влить-vb e0 x u1 u2)))
+(B (name struitsja) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (вливать-vb e0 x u1 u2)))
+(B (name struitsja) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (струиться-vb e0 x u1 u2)))
+(B (name struitsja) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (капать-vb e0 x u1 u2)))
 
-(B (name techvb) (=>(^(S#BODY_OF_WATER y :0.45)(SS#BODY_OF_WATER%DANGER e0 y :0.45))(захлебнуться-vb e0 x u1 u2)))
-(B (name techvb) (=>(^(S#BODY_OF_WATER y :0.45)(SS#BODY_OF_WATER%DANGER e0 y :0.45))(захлебываться-vb e0 x u1 u2)))
-(B (name techvb) (=>(^(S#BODY_OF_WATER y :0.45)(SS#BODY_OF_WATER%DANGER e0 y :0.45))(тонуть-vb e0 x u1 u2)))
-(B (name techvb) (=>(^(S#BODY_OF_WATER y :0.45)(SS#BODY_OF_WATER%DANGER e0 y :0.45))(утонуть-vb e0 x u1 u2)))
-(B (name techvb) (=>(^(S#BODY_OF_WATER y :0.45)(SS#BODY_OF_WATER%DANGER e0 y :0.45))(потонуть-vb e0 x u1 u2)))
-(B (name techvb) (=>(^(S#BODY_OF_WATER y :0.45)(SS#BODY_OF_WATER%DANGER e0 y :0.45))(затонуть-vb e0 x u1 u2)))
+(B (name struitsja) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (плавать-vb e0 x u1 u2)))
+(B (name struitsja) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (плыть-vb e0 x u1 u2)))
+(B (name struitsja) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (купаться-vb e0 x u1 u2)))
+(B (name struitsja) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (искупаться-vb e0 x u1 u2)))
+(B (name struitsja) (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.3) (R#STREAMING x e0 :0.3)) (выкупаться-vb e0 x u1 u2)))
+(B (name pogruzitsja-v) (=> (^ (S#BODY_OF_WATER y :0.2) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.2)) (^ (погрузиться-vb e0 x y u) (в-in e1 e0 z))))
+(B (name pogruzhatsja-v) (=> (^ (S#BODY_OF_WATER y :0.2) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.2)) (^ (погружаться-vb e0 x y u) (в-in e1 e0 z))))
+(B (name pogruzhatsja-v) (=> (^ (S#BODY_OF_WATER y :0.2) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.2)) (^ (окунуться-vb e0 x y u) (в-in e1 e0 z))))
+(B (name pogruzhatsja-v) (=> (^ (S#BODY_OF_WATER y :0.2) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.2)) (^ (окунаться-vb e0 x y u) (в-in e1 e0 z))))
+(B (name pogruzhatsja-v) (=> (^ (S#BODY_OF_WATER y :0.2) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.2)) (^ (окунуть-vb e0 x y u) (в-in e1 e0 z))))
+(B (name pogruzhatsja-v) (=> (^ (S#BODY_OF_WATER y :0.2) (SS#BODY_OF_WATER%MOVEMENT e0 y :0.2)) (^ (окунать-vb e0 x y u) (в-in e1 e0 z))))
+
+;; Of - Movement
+(B (name of-stream) (=> (R#STREAMING y x :0.9) (^ (SS#BODY_OF_WATER%MOVEMENT x u) (of-in e1 x y))))
 
 
-(B (name watermap)(=>(I#BODY_OF_WATER x :0.9)(S#BODY_OF_WATER x)))
-(B (name watertypemap)(=>(I#BODY_OF_WATER%TYPE x y :0.9)(SS#BODY_OF_WATER%TYPE x y)))
-(B (name streammap)(=>(I#BODY_OF_WATER%MOVEMENT x y :0.9)(SS#BODY_OF_WATER%MOVEMENT x y)))
-(B (name streammap)(=>(I#BODY_OF_WATER%DANGER x y :0.9)(SS#BODY_OF_WATER%DANGER x y)))
+;; Body of Water: Danger
+
+(B (name volna)  (=> (^ (S#BODY_OF_WATER x :0.4) (SS#DANGER y x :0.4)) (цунами-nn e0 y)))
+(B (name volna)  (=> (^ (S#BODY_OF_WATER x :0.4) (SS#DANGER y x :0.4)) (потоп-nn e0 y)))
+(B (name volna)  (=> (^ (S#BODY_OF_WATER x :0.4) (SS#DANGER y x :0.4)) (наводнение-nn e0 y)))
+(B (name volna)  (=> (^ (S#BODY_OF_WATER x :0.45) (SS#DANGER y x :0.45)) (трясина-nn e0 y)))
+(B (name volna)  (=> (^ (S#BODY_OF_WATER x :0.45) (SS#DANGER y x :0.45)) (болото-nn e0 y)))
+
+(B (name volna)  (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#DANGER e0 e0 :0.45)) (потопить-vb e0 x y z)))
+(B (name volna)  (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#DANGER e0 e0 :0.45)) (топить-vb e0 x y z)))
+(B (name volna)  (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#DANGER e0 e0 :0.45)) (затопить-vb e0 x y z)))
+(B (name volna)  (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#DANGER e0 e0 :0.45)) (захлестнуть-vb e0 x y z)))
+(B (name volna)  (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#DANGER e0 e0 :0.45)) (захлестывать-vb e0 x y z)))
+
+(B (name volna)  (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#DANGER e0 e0 :0.45)) (наводнить-vb e0 x y z)))
+(B (name volna)  (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#DANGER e0 e0 :0.45)) (наводнять-vb e0 x y z)))
+
+(B (name techvb) (=> (^ (S#BODY_OF_WATER y :0.45) (SS#BODY_OF_WATER%DANGER e0 y :0.45)) (захлебнуться-vb e0 x u1 u2)))
+(B (name techvb) (=> (^ (S#BODY_OF_WATER y :0.45) (SS#BODY_OF_WATER%DANGER e0 y :0.45)) (захлебываться-vb e0 x u1 u2)))
+(B (name techvb) (=> (^ (S#BODY_OF_WATER y :0.45) (SS#BODY_OF_WATER%DANGER e0 y :0.45)) (тонуть-vb e0 x u1 u2)))
+(B (name techvb) (=> (^ (S#BODY_OF_WATER y :0.45) (SS#BODY_OF_WATER%DANGER e0 y :0.45)) (утонуть-vb e0 x u1 u2)))
+(B (name techvb) (=> (^ (S#BODY_OF_WATER y :0.45) (SS#BODY_OF_WATER%DANGER e0 y :0.45)) (потонуть-vb e0 x u1 u2)))
+(B (name techvb) (=> (^ (S#BODY_OF_WATER y :0.45) (SS#BODY_OF_WATER%DANGER e0 y :0.45)) (затонуть-vb e0 x u1 u2)))
+
+
+(B (name watermap) (=> (I#BODY_OF_WATER x :0.9) (S#BODY_OF_WATER x)))
+(B (name watertypemap) (=> (I#BODY_OF_WATER%TYPE x y :0.9) (SS#BODY_OF_WATER%TYPE x y)))
+(B (name streammap) (=> (I#BODY_OF_WATER%MOVEMENT x y :0.9) (SS#BODY_OF_WATER%MOVEMENT x y)))
+(B (name streammap) (=> (I#BODY_OF_WATER%DANGER x y :0.9) (SS#BODY_OF_WATER%DANGER x y)))

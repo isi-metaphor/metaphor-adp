@@ -1,28 +1,29 @@
-#! /bin/bash
-# Variable $METAPHOR_DIR should point to the root of 
-# Metaphor-ADP directory (e.g. ~/code/Metaphor-ADP directory)
-# usage:
-#   $ ./run_spanish.sh <input> <output>
-# or
-#   $ ./run_spanish.sh <input>
-# or
-#   $ ./run_spanish.sh
-# <input> and <output> should be absolute paths.
+#!/bin/bash
 
+# The variable $METAPHOR_DIR should point to the root of the
+# Metaphor-ADP directory.
 # export METAPHOR_DIR=~/code/Metaphor-ADP
 
+# Usage:
+#   ./run_spanish.sh <input> <output>
+# or
+#   ./run_spanish.sh <input>
+# or
+#   ./run_spanish.sh
+# <input> and <output> should be absolute paths.
+
 if [[ $OSTYPE == "linux-gnu" ]]; then
-   PLATFORM="linux"
+    PLATFORM="linux"
 elif [[ $OSTYPE == "linux" ]]; then
-   PLATFORM="linux"
+    PLATFORM="linux"
 elif [[ $OSTYPE == "darwin12" ]]; then
-   PLATFORM="darwin"
+    PLATFORM="darwin"
 elif [[ $OSTYPE == "darwin11" ]]; then
-   PLATFORM="darwin"
+    PLATFORM="darwin"
 elif [[ $OSTYPE == "darwin10" ]]; then
-   PLATFORM="darwin"
+    PLATFORM="darwin"
 elif [[ $OSTYPE == "darwin9" ]]; then
-   PLATFORM="darwin"
+    PLATFORM="darwin"
 fi
 
 TREE_TAGGER_BIN=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/bin
