@@ -23,14 +23,16 @@ import os
 import json
 from collections import defaultdict
 
+id2args = defaultdict(list)
 id2prop = defaultdict(list)
 pred2farg = defaultdict(list)
 
 # Add word IDs mapped to first args of corresponding propositions.
-def add_id2prop(id_str, arg):
-    ids = id_str.split(',')
-    for id in ids:
-        id2prop[id].append(arg)
+def add_id2prop(id_str,args):
+	ids = id_str.split(',')
+	for id in ids:
+		id2prop[id].append(args[0])
+		id2args[id].append(args)
 
 
 # Generate nonmerge constraints, so that propositions with the same word IDs
@@ -44,6 +46,24 @@ def generate_sameID_nm():
                 nm += ' ' + arg
             nm += ')'
     return nm
+def generate_sameIDall_nm():
+	nm = ''
+	for id in id2args.keys():
+		if len(id2args[id])>1:
+			arity=None
+			for args in id2args[id]:
+				if arity==None:
+					arity=len(args)
+				elif arity!=arity
+					arity=None
+			if arity!=None:
+				neqSets=apply(zip,id2args[id])
+				for neq in neqSets:
+					nm += ' (!='
+					for arg in neq:
+						nm += ' ' + arg 
+					nm += ')'
+	return nm	
 
 
 # Generate nonmerge constraints, so that frequent predicates could not be
@@ -95,7 +115,8 @@ def main():
     parser.add_argument('--output', help='Output file', default=None)
     parser.add_argument('--nonmerge', help='Add nonmerge constraints. '
                         'Values: samepred (args of a pred cannot be merged), '
-                        'sameid (args of preds with same id cannot be merged), '
+                        'sameid (first arg of preds with same id cannot be merged), '
+                        'sameidall (ALL args of preds with same id cannot be merged), '
                         'freqpred (args of frequent preds cannot be merged)',
                         nargs='+', default=[])
     parser.add_argument('--cost', help='Input observation costs.', type=int,
@@ -106,6 +127,7 @@ def main():
     # Set nonmerge options
     samepred = 'samepred' in pa.nonmerge
     sameid = 'sameid' in pa.nonmerge
+    sameidall = 'sameidall' in pa.nonmerge
     freqpred = 'freqpred' in pa.nonmerge
 
     # Read input
@@ -198,11 +220,11 @@ def main():
                         prop_args = ' '+prop_args.replace(',',' ')
                         # Arguments of the same predicate cannot be unified
                         if samepred: nm = ' (!='+prop_args+')'
-                        if sameid or freqpred:
+                        if sameid or sameidall or freqpred:
                             args = prop_args.split()
                             # Add first arg of this proposition to dict id2prop
                             if sameid and matchObj.group(1):
-                                add_id2prop(word_id_str,args[0])
+                                add_id2prop(word_id_str,args)
                             # Frequent predicates cannot be unified
                             if freqpred and pred4nm:
                                 if args[0] not in pred2farg[pred4nm]:
@@ -221,6 +243,7 @@ def main():
 
             # Write nonmerge constraints for 'sameid' into output
             if sameid: ofile.write(generate_sameID_nm())
+            if sameidall: ofile.write(generate_sameIDall_nm())
             # Write nonmerge constraints for 'freqpred' into output
             if freqpred: ofile.write(generate_freqPred_nm())
 
