@@ -55,7 +55,7 @@ def generate_sameIDall_nm():
 				l=len(args)
 				if arity==None:
 					arity=l
-				elif arity!=l
+				elif arity!=l:
 					arity=None
 			if arity!=None:
 				neqSets=apply(zip,id2args[id])
