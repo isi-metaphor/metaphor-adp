@@ -81,7 +81,7 @@ public class maltParserWrap_RU {
 				//writer.flush();
 				//writer.close();
 				//System.out.println();
-				//break;
+				break;
 				
 			}
 			//service.terminateParserModel();

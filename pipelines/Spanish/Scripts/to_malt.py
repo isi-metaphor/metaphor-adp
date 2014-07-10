@@ -9,11 +9,13 @@ parser.add_option("-i", "--input", dest="input",
                   action="store", help="read from FILE", metavar="FILE")
 (options, args) = parser.parse_args()
 LineNumber = 1
+metaTagFlag = True
 def malter(LINE_OBJECT):
     global LineNumber
+    global metaTagNumber
     """formats lines for maltparser in conll format"""
     if len(LINE_OBJECT) == 1:
-        return  "0"+"\t"+LINE_OBJECT[0]+"\t"+LINE_OBJECT[0]+"\t"+"f"+"\t"+"f"+"\t"+"0"+"\t"+"0"+"\t"+"ROOT"+"\t"+"-"
+        return  "1"+"\t"+LINE_OBJECT[0]+"\t"+LINE_OBJECT[0]+"\t"+"f"+"\t"+"f"+"\t"+"0"+"\t"+"0"+"\t"+"ROOT"+"\t"+"-"
     #Lemma
     Token = LINE_OBJECT[0].strip().split()
     tokenString = "_".join(Token)
@@ -21,8 +23,14 @@ def malter(LINE_OBJECT):
     tPOS = LINE_OBJECT[1].strip()
     aPOS = replace_tag(tPOS,LINE_OBJECT[2].strip())
     Lemma = determineLemma(LINE_OBJECT[2].strip(),tokenString)
-    malt_line = str(LineNumber)+"\t"+tokenString+"\t"+Lemma+"\t"+aPOS+"\t"+aPOS+"\t"+"0"+"\t"+"0"+"\t"+"ROOT"+"\t"+"-"#+"\t"+tPOS
-    LineNumber += 1
+    malt_line = "1"+"\t"+tokenString+"\t"+Lemma+"\t"+aPOS+"\t"+aPOS+"\t"+"0"+"\t"+"0"+"\t"+"ROOT"+"\t"+"-"#+"\t"+tPOS
+    """
+    if metaTagNumber == True:
+	LineNumber = 1
+	#metaTagNumber = False
+    else:
+        LineNumber += 1
+    """
     return malt_line
 
 def determineLemma(original,token):
@@ -102,6 +110,8 @@ optional_lemma = re.compile("\w\|\w")
 
 sentID = re.compile("<{{{.*}}}!!!>")
 def main():
+    global LineNumber
+    global metaTagFlag
     lines = open(options.input, "r") if options.input else sys.stdin
     printable = reform(lines)
     for line in printable:
@@ -112,14 +122,23 @@ def main():
             if pos == 'fs' or (pos =='FS' and token != "¿") or sentID.search(token):
                 line_list[3] = "f"
                 line_list[4] = "f"
-                sys.stdout.write("\t".join(line_list)+'\n\n')
+		if metaTagFlag == False:
+		    line_list[0] = str(LineNumber)
+		    LineNumber += 1
+		sys.stdout.write("\t".join(line_list)+'\n\n')
             else:
+		metaTagFlag = False
                 if token == "¿":
                     line_list[3] = "f"
-                    line_list[4] = "f"                 
-                sys.stdout.write("\t".join(line_list)+'\n')
+                    line_list[4] = "f"
+		line_list[0] = str(LineNumber)
+		LineNumber += 1
+		sys.stdout.write("\t".join(line_list)+'\n')
         except IndexError:
             sys.stdout.write(line)
+    if token != '.':
+	sys.stdout.write("\n")
+    sys.stdout.write("END\n")
 
 if __name__ == "__main__":
     main()

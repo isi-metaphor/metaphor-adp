@@ -64,17 +64,17 @@ if [[ $PLATFORM == "linux" ]]; then
     tee $2/tokenizer_o.txt |
     $MWL -f $MWLFILE |
     $TAGGER $OPTIONS $PARFILE |
-    tee $2/tagger_o.txt |
-    $MALT_IFORMAT | 
-    tee $2/conll_o.txt
+    tee $2/tagger_o.txt 
+    #$MALT_IFORMAT | 
+    #tee $2/conll_o.txt 
     #java -Xmx16g -jar $MALT_BIN -c $MALT_MODEL -m parse -v off
     #tee $2/malt_o.txt |
     #$MALT_OFORMAT > /dev/stdout
  else
     python $TOKENIZER_BIN --sentid 1 --normquotes 1 < "${1:-/dev/stdin}" |
     $MWL -f $MWLFILE |
-    $TAGGER $OPTIONS $PARFILE | 
-    $MALT_IFORMAT > "${2:-/dev/stdout}" 
+    $TAGGER $OPTIONS $PARFILE |
+    $MALT_IFORMAT 
     #java -Xmx16g -jar $MALT_BIN -c $MALT_MODEL -m parse -v off
     #$MALT_OFORMAT > "${2:-/dev/stdout}"
  fi
