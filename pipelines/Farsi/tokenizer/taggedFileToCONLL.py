@@ -184,6 +184,7 @@ while line != "":
     outputFile.write(("\n"))
     line = inputFile.readline()
 
+outputFile.write("END\n")
 inputFile.close()
 outputFile.close()
 #testLemmaFile.close()

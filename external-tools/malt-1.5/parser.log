@@ -1015,3 +1015,28 @@ Parsing time: 00:00:14 (14052 ms)
   Feature model        : NivreEager.xml
   Classifier           : libsvm
   Data Format          : /farsiMALTModel/conllx.xml
+  Transition system    : Arc-Eager
+  Parser configuration : Nivre with NORMAL root handling
+  Feature model        : NivreEager.xml
+  Classifier           : libsvm
+  Data Format          : /farsiMALTModel/conllx.xml
+  Transition system    : Arc-Eager
+  Parser configuration : Nivre with NORMAL root handling
+  Feature model        : NivreEager.xml
+  Classifier           : libsvm
+  Data Format          : /farsiMALTModel/conllx.xml
+  Transition system    : Arc-Eager
+  Parser configuration : Nivre with NORMAL root handling
+  Feature model        : NivreEager.xml
+  Classifier           : libsvm
+  Data Format          : /farsiMALTModel/conllx.xml
+  Transition system    : Arc-Eager
+  Parser configuration : Nivre with NORMAL root handling
+  Feature model        : NivreEager.xml
+  Classifier           : libsvm
+  Data Format          : /farsiMALTModel/conllx.xml
+  Transition system    : Arc-Eager
+  Parser configuration : Nivre with NORMAL root handling
+  Feature model        : NivreEager.xml
+  Classifier           : libsvm
+  Data Format          : /farsiMALTModel/conllx.xml

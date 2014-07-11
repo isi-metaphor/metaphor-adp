@@ -66,8 +66,8 @@ if [[ $PLATFORM == "linux" ]]; then
   else
     python $TOKENIZER_BIN --sentid 1 --normquotes 1 --wptokenizer 0 < "${1:-/dev/stdin}" |
     $TAGGER_BIN $TREE_TAGGER_OPT $TAGGER_PAR |
-    $LEMMATIZER_BIN -l $MALT_RU_DIR/msd-ru-lemma.lex.gz -p $MALT_RU_DIR/wform2011.ptn1 -c $MALT_RU_DIR/cstlemma
-    #$MALT_IFORMAT > "${2:-/dev/stdout}"
+    $LEMMATIZER_BIN -l $MALT_RU_DIR/msd-ru-lemma.lex.gz -p $MALT_RU_DIR/wform2011.ptn1 -c $MALT_RU_DIR/cstlemma |
+    $MALT_IFORMAT > "${2:-/dev/stdout}"
     #java -Xmx16g -jar $MALT_BIN -c $MALT_MODEL -m parse -v off
     #python $RU_PIPELINE_DIR/malt_ru.py > "${2:-/dev/stdout}"
   fi

@@ -40,49 +40,52 @@ public class maltParserWrap_RU {
 				String line = null;
 				ArrayList<String> lines = new ArrayList<String>();
 				while ((line = reader.readLine()) != null) {
-					
-					if (line.trim().length()==0) {
-						DependencyStructure graph = service.parse(lines.toArray(new String[lines.size()]));
-						
-						for (int i = 1; i <= graph.getHighestDependencyNodeIndex(); i++) {
+					if (!line.equals("END")){	
+						if (line.trim().length()==0) {
+							DependencyStructure graph = service.parse(lines.toArray(new String[lines.size()]));
 							
-							DependencyNode node = graph.getDependencyNode(i);
-							if (node != null) {
-								for (SymbolTable table : node.getLabelTypes()) {
-									writer.write(node.getLabelSymbol(table) + "\t");
-								}
-								if (node.hasHead()) {
-									Edge  e = node.getHeadEdge();
-									writer.write(e.getSource().getIndex() + "\t");
-									if (e.isLabeled()) {
-										for (SymbolTable table : e.getLabelTypes()) {
-											writer.write(e.getLabelSymbol(table) + "\t");
-										}
-									} else {
-										for (SymbolTable table : graph.getDefaultRootEdgeLabels().keySet()) {
-											writer.write(graph.getDefaultRootEdgeLabelSymbol(table) + "\t");
+							for (int i = 1; i <= graph.getHighestDependencyNodeIndex(); i++) {
+								
+								DependencyNode node = graph.getDependencyNode(i);
+								if (node != null) {
+									for (SymbolTable table : node.getLabelTypes()) {
+										writer.write(node.getLabelSymbol(table) + "\t");
+									}
+									if (node.hasHead()) {
+										Edge  e = node.getHeadEdge();
+										writer.write(e.getSource().getIndex() + "\t");
+										if (e.isLabeled()) {
+											for (SymbolTable table : e.getLabelTypes()) {
+												writer.write(e.getLabelSymbol(table) + "\t");
+											}
+										} else {
+											for (SymbolTable table : graph.getDefaultRootEdgeLabels().keySet()) {
+												writer.write(graph.getDefaultRootEdgeLabelSymbol(table) + "\t");
+											}
 										}
 									}
+									writer.write("_\t_\n");
+									writer.flush();
 								}
-								writer.write("_\t_\n");
-								writer.flush();
 							}
+							writer.write('\n');
+							writer.flush();
+							//System.out.print(".");
+							lines.clear();
+							
+						} else {
+							lines.add(line);
 						}
-						writer.write('\n');
-						writer.flush();
-						//System.out.print(".");
-						lines.clear();
-						
 					} else {
-						lines.add(line);
+					writer.write("END");
+					writer.flush();
 					}
+					//reader.close();
+					//writer.flush();
+					//writer.close();
+					//System.out.println();
+					//break;
 				}
-				//reader.close();
-				//writer.flush();
-				//writer.close();
-				//System.out.println();
-				break;
-				
 			}
 			//service.terminateParserModel();
 		} catch (MaltChainedException e) {
@@ -95,5 +98,5 @@ public class maltParserWrap_RU {
 			System.err.println("MaltAPITest exception: " + e.getMessage());
 		}
 	}
-
 }
+
