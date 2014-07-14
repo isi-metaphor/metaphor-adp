@@ -1,21 +1,6 @@
 #!/bin/bash
 
-farsiPipelineDir=$METAPHOR_DIR/pipelines/Farsi
-
-taggedInputFile="${1:-/dev/stdin}"
-parsedFileName="${2:-/dev/stdout}"
-
-lemmaDictFile=$farsiPipelineDir/lemmatizationDict.txt
-
-taggedFileToCONLL=$farsiPipelineDir/taggedFileToCONLL.py
-
 parserDir=$METAPHOR_DIR/external-tools/malt-1.5
-parserModelFile=farsiMALTModel
-
-
-
-#parserCommand=java -mx2G -jar malt.jar -c $parserModelFile -i $conllTaggedFile -m parse > $parsedFileName
-cd $parserDir
-#modify the POS tagged file to include dummy label & dep lines
-cat $taggedInputFile | $taggedFileToCONLL |java -mx2G -jar malt.jar -c $parserModelFile -m parse -v off> $parsedFileName
-#cat $taggedInputFile | $taggedFileToCONLL > $parsedFileName
+#cd $parserDir
+java -cp $parserDir/dist/malt/malt.jar:$parserDir maltParserWrap_FA
+#java -cp dist/malt/malt.jar:$parserDir maltParserWrap
