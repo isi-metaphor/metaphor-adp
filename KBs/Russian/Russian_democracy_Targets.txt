@@ -1,6 +1,0 @@
-;;
-;; Democracy
-;; Russian Target Words
-;;
-
-(B (name democracy) (=> (^ (TS#DEMOCRACY x :0.45) (T#DEMOCRACY u :0.45)) (демократия-nn e0 x)))
