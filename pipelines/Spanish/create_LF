@@ -1,0 +1,9 @@
+#! /bin/bash
+
+parsedInputFile="${1:-/dev/stdin}"
+lfFileName="${2:-/dev/stdout}"
+
+ES_PIPELINE_DIR=$METAPHOR_DIR/pipelines/Spanish
+
+cat $parsedInputFile | python $ES_PIPELINE_DIR/Scripts/malt_to_prop.py > $lfFileName
+
