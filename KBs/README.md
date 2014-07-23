@@ -21,8 +21,8 @@ Map linguistic phrases to source domains and subdomains. Source domains
 are described in the comments of the KBs and in the government source
 lists. As of July 2014, this is in the shared Dropbox folder:
   Metaphor/Option Year 2/Government Documents/meta source list final 062014.xlsx
-
 E.g.,
+
     (B (name disease)
        (=> (^ (S#DISEASE x :0.45) (SS#DISEASE%TYPE x :0.45))
            (disease-nn e0 x)))
@@ -48,9 +48,8 @@ Source axioms are stored under KBs/*/*-sources.txt
 
 ## Metaphor Target Lexical Axioms
 
-Map linguistic phrases to target domains and subdomains.
+Map linguistic phrases to target domains and subdomains. E.g.,
 
-E.g.,
     (B (name poverty)
        (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY x :0.45))
            (poverty-nn e0 x)))
@@ -139,7 +138,7 @@ Example:
 A knowledge base can be compiled by
 [Henry](https://github.com/naoya-i/henry-n700) using the following command:
 
-  henry -m compile_kb -o KB_COMPILED_PATH KB_PATH
+    henry -m compile_kb -o KB_COMPILED_PATH KB_PATH
 
 where KB_PATH can contain several space-separated paths to different files.
 For Mac users, the output path is required to come before the KB_PATH.
