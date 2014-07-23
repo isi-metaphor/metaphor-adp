@@ -1,9 +1,11 @@
 # Farsi Knowledge Bases
-Jonathan Gordon, 2014-06-16
+Jonathan Gordon, 2014-07-23
 
-To compiled the current KB:
+This directory contains the knowledge bases of Farsi (Persian) axioms for
+metaphor recognition and interpretation.
 
-    henry -m compile_kb -o Farsi_compiled_KB_new.da \
-    Farsi_economic_inequality_Sources.txt \
-    Farsi_economic_inequality_Targets.txt \
+To recompile the KB (Farsi_compiled_KB.da), run:
+
+    henry -m compile_kb -o Farsi_compiled_KB.da \
+    fa-sources.txt fa-targets.txt \
     ../common/economic_inequality_ontology.txt
