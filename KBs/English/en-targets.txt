@@ -439,4 +439,4 @@
        (checkbook-nn e0 x)))
 (B (name credit-card)
    (=> (^ (TS#WEALTH x :0.3) (T#ECONOMIC-INEQUALITY u :0.3))
-       (^ (credit-nn e0 x) (of-in e2 e1) (card-nn e2 y))))
+       (^ (credit-nn e0 x) (of-in e3 e2 e1) (card-nn e2 y))))

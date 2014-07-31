@@ -1,0 +1,26 @@
+#!/usr/bin/env python
+
+# For a KB (passed as a filename or stdin), print any predicates that are
+# used with more than one arity (number of arguments).
+# Jonathan Gordon, 2014-07-28
+
+import fileinput
+import re
+
+arities = {}
+
+for line in fileinput.input():
+    # Ignore comments.
+    if line[0] == ';':
+        continue
+    preds = re.findall(r'\(([^ )(]+ [^()]+)\)', line)
+    if not preds:
+        continue
+    for pred in preds:
+        # Ignore weights.
+        pred = re.sub(' :[0-9.]+', '', pred)
+        args = pred.split()
+        if arities.get(args[0]) and arities.get(args[0]) != len(args[1:]):
+            print args[0]
+        else:
+            arities[args[0]] = len(args[1:])

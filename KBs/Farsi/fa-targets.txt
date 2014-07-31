@@ -4,27 +4,6 @@
 ;; Farsi Metaphor Targets
 ;;
 
-;; General Farsi axioms
-
-(B (name shodan)
-   (=> (shodan e0 x y :0.9)
-       (^ (شد‫#‬شو-vb e0 x u1 u2) (NVE e6 y e0))))
-(B (name gashtan)
-   (=> (shodan e0 x y :0.9)
-       (^ (گشت‫#‬گرد-vb e0 x u1 u2) (NVE e6 y e0))))
-(B (name kardan)
-   (=> (kardan e0 x y :0.9)
-       (^ (کرد‫#‬کن-vb e0 x u1 u2) (NVE e6 y e0))))
-(B (name nemoodan)
-   (=> (kardan e0 x y :0.9)
-       (^ (نمود‫#‬نما-vb e0 x u1 u2) (NVE e6 y e0))))
-(B (name yaftan)
-   (=> (yaftan e0 x y :0.9)
-       (^ (یافت‫#‬یاب-vb e0 x u1 u2) (NVE e6 y e0))))
-(B (name gereftan)
-   (=> (yaftan e0 x y :0.9)
-       (^ (گرفت‫#‬گیر-vb e0 x u1 u2) (NVE e6 y e0))))
-
 
 ;; Democracy
 

@@ -34,7 +34,7 @@
 ;;   vitality.
 
 (B (name blood-component)
-   (=> (^ (M#CAUSE-FUNCTION x :0.45) (M#CAUSING-THING-F x :0.45))
+   (=> (^ (M#CAUSE-FUNCTION e0 :0.45) (M#CAUSING-THING-F x e0 :0.45))
        (^ (I#BLOOD_STREAM e0) (I#BLOOD_STREAM%COMPONENT x e0)
           (R#BLOOD x e0))))
 
@@ -49,7 +49,7 @@
 
 (B (name water-movement)
    (=> (^ (M#LIQUID-MOVE-FREELY e0 :0.3) (M#LIQUID-THING y :0.3))
-       (^ (I#BODY_OF_WATER e0) (I#BODY_OF_WATER%MOVEMENT e0)
+       (^ (I#BODY_OF_WATER e0) (I#BODY_OF_WATER%MOVEMENT x e0)
           (R#STREAMING x e0))))
 
 
@@ -130,7 +130,7 @@
 
 (B (name victim)
    (=> (^ (M#EXPERIENCE-HARM e0 :0.45) (M#EXPERIENCER x :0.45))
-       (^ (I#CRIME%VICTIM e0))))
+       (^ (I#CRIME%VICTIM x e0))))
 
 
 ;; Darkness
@@ -162,16 +162,16 @@
 (B (name cure)
    (=> (^ (M#CAUSE-NOT-EXIST e1 :0.3) (M#CAUSING-THING_E y e1 :0.3)
           (M#EXISTING-THING x e1 :0.3))
-       (^ (I#DISEASE%CURE e0) (R#CURE-AGENT y e0) (R#SICK x d)
-          (S#DISEASE d))))
+       (^ (I#DISEASE%CURE e0 e0) (R#CURE-AGENT y e0) (R#SICK x e0)
+          (I#DISEASE e0))))
 
 (B (name cure2)
    (=> (^ (M#CAUSE-NOT-EXIST e1 :0.46) (M#CAUSING-THING_E y e1 :0.46))
-       (^ (I#DISEASE%CURE e0) (R#CURE-AGENT y e0))))
+       (^ (I#DISEASE%CURE e0 e0) (R#CURE-AGENT y e0))))
 
 (B (name cure3)
    (=> (^ (M#CAUSE-NOT-EXIST e1 :0.48) (M#CAUSING-THING_E e0 e1 :0.48))
-       (I#DISEASE%CURE e0)))
+       (I#DISEASE%CURE e0 e0)))
 
 
 ;; Downward Movement
@@ -186,7 +186,7 @@
 ;;   A capacity to perform work (such as causing motion).
 
 (B (name energy)
-   (=> (^ (M#CAUSE-FUNCTION x :0.45) (M#CAUSING-THING-F x :0.45))
+   (=> (^ (M#CAUSE-FUNCTION e0 :0.45) (M#CAUSING-THING-F x e0 :0.45))
        (^ (I#ENERGY e0) (I#ENERGY%TYPE x e0))))
 
 
@@ -311,7 +311,7 @@
 (B (name physical-restraint)
    (=> (^ (M#CAUSE-HARM e0 :0.23) (M#CAUSING-THING-H x e0 :0.23)
           (M#HARM-VICTIM y e0 :0.23) (CAUSE-NOT-FUNCTION e0 :0.23))
-       (^ (I#PHYSICAL_HARM%RESTRAINT e0) (R#HARM-AGENT x e0)
+       (^ (I#PHYSICAL_HARM%RESTRAINT e0 e0) (R#HARM-AGENT x e0)
           (R#HARM-VICTIM y e0))))
 
 (B (name physical-protection)
