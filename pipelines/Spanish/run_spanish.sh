@@ -64,8 +64,8 @@ if [[ $PLATFORM == "linux" ]]; then
     tee $2/tokenizer_o.txt |
     $MWL -f $MWLFILE |
     $TAGGER $OPTIONS $PARFILE |
-    tee $2/tagger_o.txt 
-    #$MALT_IFORMAT | 
+    tee $2/tagger_o.txt |
+    $MALT_IFORMAT  
     #tee $2/conll_o.txt 
     #java -Xmx16g -jar $MALT_BIN -c $MALT_MODEL -m parse -v off
     #tee $2/malt_o.txt |
