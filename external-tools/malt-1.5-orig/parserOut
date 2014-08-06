@@ -1,0 +1,105 @@
+1	<META>	<META>	N	N	_	0	ROOT	_	_
+2	1	1	N	N	_	1	MOZ	_	_
+3	.	_	PUNC	PUNC	_	0	ROOT	_	_
+4	.	_	PUNC	PUNC	_	3	PUNC	_	_
+
+1	از	از	PREP	PREP	_	14	ADV	_	_
+2	نگاه	نگاه	N	N	_	1	POSDEP	_	_
+3	دینی	دین	ADJ	ADJ	_	2	NPOSTMOD	_	_
+4	نیز	نیز	ADV	ADV	_	2	POSDEP	_	_
+5	صرف	صرف	N	N	_	14	SBJ	_	_
+6	نظر	نظر	N	N	_	5	MOZ	_	_
+7	از	از	PREP	PREP	_	6	NPP	_	_
+8	نوشته-های	نوشته	N	N	_	7	POSDEP	_	_
+9	عمومی	عمومی	ADJ	ADJ	_	8	NPOSTMOD	_	_
+10	،	.	PUNC	PUNC	_	9	PUNC	_	_
+11	با	با	PREP	PREP	_	14	ADV	_	_
+12	نگاهی	نگاه	N	N	_	11	POSDEP	_	_
+13	دقیقابعادفقرکاویده	دقیقابعادفقرکاویده	ADJ	ADJ	_	12	NPOSTMOD	_	_
+14	نشده-است	شد#شو	V	V	_	0	ROOT	_	_
+15	.	_	PUNC	PUNC	_	14	PUNC	_	_
+
+1	<META>	<META>	N	N	_	0	ROOT	_	_
+2	1	1	N	N	_	1	MOZ	_	_
+3	.	_	PUNC	PUNC	_	0	ROOT	_	_
+4	.	_	PUNC	PUNC	_	3	PUNC	_	_
+
+1	از	از	PREP	PREP	_	14	ADV	_	_
+2	نگاه	نگاه	N	N	_	1	POSDEP	_	_
+3	دینی	دین	ADJ	ADJ	_	2	NPOSTMOD	_	_
+4	نیز	نیز	ADV	ADV	_	2	POSDEP	_	_
+5	صرف	صرف	N	N	_	14	SBJ	_	_
+6	نظر	نظر	N	N	_	5	MOZ	_	_
+7	از	از	PREP	PREP	_	6	NPP	_	_
+8	نوشته-های	نوشته	N	N	_	7	POSDEP	_	_
+9	عمومی	عمومی	ADJ	ADJ	_	8	NPOSTMOD	_	_
+10	،	.	PUNC	PUNC	_	9	PUNC	_	_
+11	با	با	PREP	PREP	_	14	ADV	_	_
+12	نگاهی	نگاه	N	N	_	11	POSDEP	_	_
+13	دقیقابعادفقرکاویده	دقیقابعادفقرکاویده	ADJ	ADJ	_	12	NPOSTMOD	_	_
+14	نشده-است	شد#شو	V	V	_	0	ROOT	_	_
+15	.	_	PUNC	PUNC	_	14	PUNC	_	_
+
+1	<META>	<META>	N	N	_	0	ROOT	_	_
+2	1	1	N	N	_	1	MOZ	_	_
+3	.	_	PUNC	PUNC	_	0	ROOT	_	_
+4	.	_	PUNC	PUNC	_	3	PUNC	_	_
+
+1	از	از	PREP	PREP	_	14	ADV	_	_
+2	نگاه	نگاه	N	N	_	1	POSDEP	_	_
+3	دینی	دین	ADJ	ADJ	_	2	NPOSTMOD	_	_
+4	نیز	نیز	ADV	ADV	_	2	POSDEP	_	_
+5	صرف	صرف	N	N	_	14	SBJ	_	_
+6	نظر	نظر	N	N	_	5	MOZ	_	_
+7	از	از	PREP	PREP	_	6	NPP	_	_
+8	نوشته-های	نوشته	N	N	_	7	POSDEP	_	_
+9	عمومی	عمومی	ADJ	ADJ	_	8	NPOSTMOD	_	_
+10	،	.	PUNC	PUNC	_	9	PUNC	_	_
+11	با	با	PREP	PREP	_	14	ADV	_	_
+12	نگاهی	نگاه	N	N	_	11	POSDEP	_	_
+13	دقیقابعادفقرکاویده	دقیقابعادفقرکاویده	ADJ	ADJ	_	12	NPOSTMOD	_	_
+14	نشده-است	شد#شو	V	V	_	0	ROOT	_	_
+15	.	_	PUNC	PUNC	_	14	PUNC	_	_
+
+1	<META>	<META>	N	N	_	0	ROOT	_	_
+2	1	1	N	N	_	1	MOZ	_	_
+3	.	_	PUNC	PUNC	_	0	ROOT	_	_
+4	.	_	PUNC	PUNC	_	3	PUNC	_	_
+
+1	از	از	PREP	PREP	_	14	ADV	_	_
+2	نگاه	نگاه	N	N	_	1	POSDEP	_	_
+3	دینی	دین	ADJ	ADJ	_	2	NPOSTMOD	_	_
+4	نیز	نیز	ADV	ADV	_	2	POSDEP	_	_
+5	صرف	صرف	N	N	_	14	SBJ	_	_
+6	نظر	نظر	N	N	_	5	MOZ	_	_
+7	از	از	PREP	PREP	_	6	NPP	_	_
+8	نوشته-های	نوشته	N	N	_	7	POSDEP	_	_
+9	عمومی	عمومی	ADJ	ADJ	_	8	NPOSTMOD	_	_
+10	،	.	PUNC	PUNC	_	9	PUNC	_	_
+11	با	با	PREP	PREP	_	14	ADV	_	_
+12	نگاهی	نگاه	N	N	_	11	POSDEP	_	_
+13	دقیقابعادفقرکاویده	دقیقابعادفقرکاویده	ADJ	ADJ	_	12	NPOSTMOD	_	_
+14	نشده-است	شد#شو	V	V	_	0	ROOT	_	_
+15	.	_	PUNC	PUNC	_	14	PUNC	_	_
+
+1	<META>	<META>	N	N	_	0	ROOT	_	_
+2	1	1	N	N	_	1	MOZ	_	_
+3	.	_	PUNC	PUNC	_	0	ROOT	_	_
+4	.	_	PUNC	PUNC	_	3	PUNC	_	_
+
+1	از	از	PREP	PREP	_	14	ADV	_	_
+2	نگاه	نگاه	N	N	_	1	POSDEP	_	_
+3	دینی	دین	ADJ	ADJ	_	2	NPOSTMOD	_	_
+4	نیز	نیز	ADV	ADV	_	2	POSDEP	_	_
+5	صرف	صرف	N	N	_	14	SBJ	_	_
+6	نظر	نظر	N	N	_	5	MOZ	_	_
+7	از	از	PREP	PREP	_	6	NPP	_	_
+8	نوشته-های	نوشته	N	N	_	7	POSDEP	_	_
+9	عمومی	عمومی	ADJ	ADJ	_	8	NPOSTMOD	_	_
+10	،	.	PUNC	PUNC	_	9	PUNC	_	_
+11	با	با	PREP	PREP	_	14	ADV	_	_
+12	نگاهی	نگاه	N	N	_	11	POSDEP	_	_
+13	دقیقابعادفقرکاویده	دقیقابعادفقرکاویده	ADJ	ADJ	_	12	NPOSTMOD	_	_
+14	نشده-است	شد#شو	V	V	_	0	ROOT	_	_
+15	.	_	PUNC	PUNC	_	14	PUNC	_	_
+

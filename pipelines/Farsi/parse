@@ -1,6 +1,5 @@
 #!/bin/bash
 
 parserDir=$METAPHOR_DIR/external-tools/malt-1.5
-#cd $parserDir
+
 java -cp $parserDir/dist/malt/malt.jar:$parserDir maltParserWrap_FA
-#java -cp dist/malt/malt.jar:$parserDir maltParserWrap

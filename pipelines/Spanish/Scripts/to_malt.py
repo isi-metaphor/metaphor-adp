@@ -124,7 +124,7 @@ def main():
                 line_list[4] = "f"
 		if metaTagFlag == False:
 		    line_list[0] = str(LineNumber)
-		    LineNumber += 1
+		    LineNumber = 1
 		sys.stdout.write("\t".join(line_list)+'\n\n')
             else:
 		metaTagFlag = False
@@ -136,7 +136,7 @@ def main():
 		sys.stdout.write("\t".join(line_list)+'\n')
         except IndexError:
             sys.stdout.write(line)
-    if token != '.':
+    if pos != 'fs' and pos != 'FS':
 	sys.stdout.write("\n")
     sys.stdout.write("END\n")
 
