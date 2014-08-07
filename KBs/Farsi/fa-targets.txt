@@ -8,18 +8,53 @@
 ;; Democracy
 
 (B (name democracy/دمکراسی)
-   (=> (^ (TS#DEMOCRACY x :0.45) (T#DEMOCRACY u :0.45))
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#DEMOCRACY x :0.45))
        (دمکراسی-nn e0 x)))
 
 
 ;; Democracy: Bureaucracy
 
-;; TODO: Add bureaucracy targets.
+(B (name bureaucracy/بوروکراسی)
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#BUREAUCRACY x :0.45))
+       (بوروکراسی-nn e0 x)))
 
 
 ;; Democracy: Elections
 
-;; TODO: Add election targets.
+(B (name election/انتخابات)
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#ELECTIONS x :0.45))
+       (انتخابات-nn e0 x)))
+(B (name vote/رای)
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#ELECTIONS x :0.45))
+       (رای-nn e0 x)))
+
+(B (name elect/برگزیدن)
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#ELECTIONS x :0.45))
+       (برگزیدن-vb e0 x u1 u2)))
+(B (name vote/رای دادن)
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#ELECTIONS x :0.45))
+       (رای دادن-vb e0 x u1 u2)))
+
+(B (name elected/انتخاب)
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#ELECTIONS x :0.45))
+       (انتخاب-adj e0 x)))
+
+
+;; Democracy: Government
+
+(B (name government/دولت)
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#GOVERNMENT x :0.45))
+       (دولت-nn e0 x)))
+(B (name government/حکومت)
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#GOVERNMENT x :0.45))
+       (حکومت-nn e0 x)))
+
+(B (name federal-government/دولت-فدرال)
+   (=> (^ (T#DEMOCRACY u :0.4) (TS#GOVERNMENT x :0.4))
+       (^ (فدرال-adj e0 x) (دولت-nn e0 x))))
+(B (name local-government/حکومت-محلی)
+   (=> (^ (T#DEMOCRACY u :0.4) (TS#GOVERNMENT x :0.4))
+       (^ (محلی-adj e0 x) (حکومت-nn e0 x))))
 
 
 ;; Economic Inequality

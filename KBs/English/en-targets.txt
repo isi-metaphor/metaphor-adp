@@ -7,42 +7,50 @@
 
 ;; Democracy
 
-(B (name democracy)
-   (=> (^ (TS#DEMOCRACY x :0.45) (T#DEMOCRACY u :0.45))
+(B (name democracy-nn)
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#DEMOCRACY x :0.45))
        (democracy-nn e0 x)))
 
 
 ;; Democracy: Bureaucracy
 
-(B (name bureaucracy)
-   (=> (^ (TS#BUREAUCRACY x :0.45) (T#DEMOCRACY u :0.45))
+(B (name bureaucracy-nn)
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#BUREAUCRACY x :0.45))
        (bureaucracy-nn e0 x)))
 
 
 ;; Democracy: Elections
 
-(B (name election)
-   (=> (^ (TS#ELECTIONS x :0.45) (T#DEMOCRACY u :0.45))
+(B (name election-nn)
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#ELECTIONS x :0.45))
        (election-nn e0 x)))
+(B (name vote-nn)
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#ELECTIONS x :0.45))
+       (vote-nn e0 x)))
 
-(B (name elect)
-   (=> (^ (TS#ELECTIONS x :0.45) (T#DEMOCRACY u :0.45))
+(B (name elect-vb)
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#ELECTIONS x :0.45))
        (elect-vb e0 x u1 u2)))
+(B (name vote-vb)
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#ELECTIONS x :0.45))
+       (vote-vb e0 x u1 u2)))
 
+(B (name elected-adj)
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#ELECTIONS x :0.45))
+       (elected-adj e0 x)))
 
 
 ;; Democracy: Government
 
 (B (name government)
-   (=> (^ (TS#GOVERNMENT x :0.45) (T#DEMOCRACY u :0.45))
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#GOVERNMENT x :0.45))
        (government-nn e0 x)))
 
 (B (name federal-government)
-   (=> (^ (TS#GOVERNMENT x :0.4) (T#DEMOCRACY u :0.4))
+   (=> (^ (T#DEMOCRACY u :0.4) (TS#GOVERNMENT x :0.4))
        (^ (federal-adj e0 x) (government-nn e0 x))))
-
 (B (name local-government)
-   (=> (^ (TS#GOVERNMENT x :0.4) (T#DEMOCRACY u :0.4))
+   (=> (^ (T#DEMOCRACY u :0.4) (TS#GOVERNMENT x :0.4))
        (^ (local-adj e0 x) (government-nn e0 x))))
 
 

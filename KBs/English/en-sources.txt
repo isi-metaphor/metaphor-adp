@@ -9,15 +9,25 @@
 
 ;; A God: Type
 
-(B (name god)
+(B (name god-nn)
    (=> (^ (S#A_GOD e0 :0.45) (SS#A_GOD%TYPE x e0 :0.45))
        (god-nn e0 x)))
-(B (name goddess)
+(B (name goddess-nn)
    (=> (^ (S#A_GOD e0 :0.45) (SS#A_GOD%TYPE x e0 :0.45))
        (goddess-nn e0 x)))
-(B (name idol)
+(B (name deity-nn)
+   (=> (^ (S#A_GOD e0 :0.45) (SS#A_GOD%TYPE x e0 :0.45))
+       (deity-nn e0 x)))
+(B (name idol-nn)
    (=> (^ (S#A_GOD e0 :0.45) (SS#A_GOD%TYPE x e0 :0.45))
        (idol-nn e0 x)))
+
+(B (name divine-adj)
+   (=> (^ (S#A_GOD e0 :0.45) (SS#A_GOD%TYPE e0 e0 :0.45))
+       (divine-adj e0 x)))
+(B (name godlike)
+   (=> (^ (S#A_GOD e0 :0.45) (SS#A_GOD%TYPE e0 e0 :0.45))
+       (deify-adj e0 x)))
 
 
 ;; A God: Veneration
@@ -34,6 +44,10 @@
    (=> (^ (S#A_GOD e0 :0.30) (SS#A_GOD%VENERATION e0 e0 :0.30)
           (R#WORSHIP-AGENT x e0 :0.30))
        (^ (bow-vb e0 x y u) (to-in e1 e0 z))))
+(B (name deify-vb)
+   (=> (^ (S#A_GOD e0 :0.3) (SS#A_GOD%VENERATION e0 e0 :0.3)
+          (R#WORSHIP-AGENT x e0 :0.3))
+       (deify-vb e0 x y u)))
 
 
 ;; A God: Mapping
@@ -380,17 +394,17 @@
 
 ;; Addiction: Type
 
-(B (name drug)
+(B (name drug-nn)
    (=> (^ (S#ADDICTION e0 :0.30) (SS#ADDICTION%TYPE x e0 :0.30)
           (R#SUBSTANCE x e0 :0.30))
        (drug-nn e0 x)))
-(B (name intoxication)
+(B (name intoxication-nn)
    (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%TYPE x e0 :0.45))
        (intoxication-nn e0 x)))
-(B (name cocaine)
+(B (name cocaine-nn)
    (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%TYPE x e0 :0.45))
        (cocaine-nn e0 x)))
-(B (name opium)
+(B (name opium-nn)
    (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%TYPE x e0 :0.45))
        (opium-nn e0 x)))
 
@@ -718,14 +732,62 @@
 ;; Backward Movement
 ;;   Movement to or toward what is behind.
 
-;; TODO: Add backward movement axioms.
+(B (name backward-adj)
+   (=> (S#BACKWARD_MOVEMENT e0 :0.9)
+       (backward-adj e0 x)))
+(B (name reverse-adj)
+   (=> (S#BACKWARD_MOVEMENT e0 :0.9)
+       (reverse-adj e0 x)))
+
+(B (name reverse-nn)
+   (=> (S#BACKWARD_MOVEMENT e0 :0.9)
+       (reverse-nn e0 x)))
+
+(B (name reverse-vb)
+   (=> (S#BACKWARD_MOVEMENT e0 :0.9)
+       (reverse-vb e0 x u1 u2)))
+
+
+;; Backward Movement: Mapping
+
+(B (name backward-movement-map)
+   (=> (I#BACKWARD_MOVEMENT x :0.9)
+       (S#BACKWARD_MOVEMENT x)))
 
 
 ;; Barrier
 ;;   Anything used or acting to block someone from going somewhere or from
 ;;   doing something, or to block something from happening.
 
-;; TODO: Add barrier axioms.
+(B (name barrier-nn)
+   (=> (S#BARRIER e0 :0.9)
+       (barrier-nn e0 x)))
+(B (name barricade-nn)
+   (=> (S#BARRIER e0 :0.9)
+       (barricade-nn e0 x)))
+(B (name obstacle-nn)
+   (=> (S#BARRIER e0 :0.9)
+       (obstacle-nn e0 x)))
+(B (name roadblock-nn)
+   (=> (S#BARRIER e0 :0.9)
+       (roadblock-nn e0 x)))
+
+(B (name block-vb)
+   (=> (S#BARRIER e0 :0.9)
+       (block-vb e0 x0 x1 x2)))
+(B (name barricade-vb)
+   (=> (S#BARRIER e0 :0.9)
+       (barricade-vb e0 x0 x1 x2)))
+(B (name obstruct-vb)
+   (=> (S#BARRIER e0 :0.9)
+       (obstruct-vb e0 x0 x1 x2)))
+
+
+;; Barrier: Mapping
+
+(B (name barrier-map)
+   (=> (I#BARRIER x :0.9)
+       (S#BARRIER x)))
 
 
 ;; Blood Stream
@@ -1166,13 +1228,66 @@
 ;;   The activity of making, buying, or selling goods or providing services
 ;;   in exchange for money.
 
-;; TODO: Write business axioms.
+(B (name business-nn)
+   (=> (S#BUSINESS e0 :0.9)
+       (business-nn e0 x)))
+(B (name company-nn)
+   (=> (S#BUSINESS e0 :0.9)
+       (company-nn e0 x)))
+(B (name manufacturer-nn)
+   (=> (S#BUSINESS e0 :0.9)
+       (manufacturer-nn e0 x)))
+
+(B (name manufacture-vb)
+   (=> (S#BUSINESS e0 :0.9)
+       (manufacture-vb e0 x0 x1 x2)))
+(B (name sell-vb)
+   (=> (S#BUSINESS e0 :0.9)
+       (sell-vb e0 x0 x1 x2)))
+(B (name buy-vb)
+   (=> (S#BUSINESS e0 :0.9)
+       (buy-vb e0 x0 x1 x2)))
+
+
+;; Business: Mapping
+
+(B (name business-map)
+   (=> (I#BUSINESS x :0.9)
+       (S#BUSINESS x)))
 
 
 ;; Clothing
 ;;   The things that people wear to cover their bodies.
 
-;; TODO: Write clothing axioms.
+(B (name clothing-nn)
+   (=> (S#CLOTHING e0 :0.9)
+       (clothing-nn e0 x)))
+
+(B (name shirt-nn)
+   (=> (S#CLOTHING e0 :0.9)
+       (shirt-nn e0 x)))
+(B (name jacket-nn)
+   (=> (S#CLOTHING e0 :0.9)
+       (jacket-nn e0 x)))
+(B (name hat-nn)
+   (=> (S#CLOTHING e0 :0.9)
+       (hat-nn e0 x)))
+(B (name cloak-nn)
+   (=> (S#CLOTHING e0 :0.9)
+       (cloak-nn e0 x)))
+(B (name dress-nn)
+   (=> (S#CLOTHING e0 :0.9)
+       (dress-nn e0 x)))
+(B (name skirt-nn)
+   (=> (S#CLOTHING e0 :0.9)
+       (skirt-nn e0 x)))
+
+
+;; Clothing: Mapping
+
+(B (name clothing-map)
+   (=> (I#CLOTHING x :0.9)
+       (S#CLOTHING x)))
 
 
 ;; Competition
@@ -1182,13 +1297,13 @@
 
 ;; Competition: Type
 
-(B (name competition)
+(B (name competition-nn)
    (=> (^ (S#COMPETITION x :0.45) (SS#COMPETITION%TYPE x e0 :0.45))
        (competition-nn e0 x)))
-(B (name contest)
+(B (name contest-nn)
    (=> (^ (S#COMPETITION x :0.45) (SS#COMPETITION%TYPE x e0 :0.45))
        (contest-nn e0 x)))
-(B (name race)
+(B (name race-nn)
    (=> (^ (S#COMPETITION x :0.45) (SS#COMPETITION%TYPE x e0 :0.45))
        (race-nn e0 x)))
 (B (name fair-shot-at)
@@ -1198,13 +1313,13 @@
 
 ;; Competition: Component
 
-(B (name winner)
+(B (name winner-nn)
    (=> (^ (S#COMPETITION x :0.45) (SS#COMPETITION%COMPONENT x e0 :0.45))
        (winner-nn e0 x)))
-(B (name loser)
+(B (name loser-nn)
    (=> (^ (S#COMPETITION x :0.45) (SS#COMPETITION%COMPONENT x e0 :0.45))
        (loser-nn e0 x)))
-(B (name player)
+(B (name player-nn)
    (=> (^ (S#COMPETITION x :0.45) (SS#COMPETITION%COMPONENT x e0 :0.45))
        (player-nn e0 x)))
 
@@ -1255,7 +1370,6 @@
 (B (name closet)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%CONFINED_SPACE x e0 :0.45))
        (closet-nn e0 x)))
-;; TODO: Add prison cell, jail cell. Will this show up as nn nn or as jj nn?
 
 (B (name stuck)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%CONFINED_SPACE e0 e0 :0.45))
@@ -1405,7 +1519,32 @@
 ;;   An object (such as a box or can) that can hold something; a receptacle
 ;;   (as a box or jar) for holding goods.
 
-;; TODO: Add container axioms.
+(B (name container-nn)
+   (=> (S#CONTAINER e0 :0.45)
+       (container-nn e0 x)))
+
+(B (name box-nn)
+   (=> (S#CONTAINER e0 :0.45)
+       (box-nn e0 x)))
+(B (name can-nn)
+   (=> (S#CONTAINER e0 :0.45)
+       (can-nn e0 x)))
+(B (name jar-nn)
+   (=> (S#CONTAINER e0 :0.45)
+       (jar-nn e0 x)))
+(B (name jug-nn)
+   (=> (S#CONTAINER e0 :0.45)
+       (jug-nn e0 x)))
+(B (name crate-nn)
+   (=> (S#CONTAINER e0 :0.45)
+       (crate-nn e0 x)))
+
+
+;; Container: Mapping
+
+(B (name container-map)
+   (=> (I#CONTAINER x :0.9)
+       (S#CONTAINER x)))
 
 
 ;; Contamination
@@ -1519,76 +1658,9 @@
           (R#VICTIM y e0 :0.2))
        (kill-vb e0 x y u)))
 
-(B (name steal)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2) (R#AGENT x e0 :0.2)
-          (R#THEME z e0 :0.2))
-       (steal-vb e0 x z u2)))
-(B (name pilfer)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2) (R#AGENT x e0 :0.2)
-          (R#THEME z e0 :0.2))
-       (pilfer-vb e0 x z u2)))
-(B (name filch)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2) (R#AGENT x e0 :0.2)
-          (R#THEME z e0 :0.2))
-       (filch-vb e0 x z u2)))
-(B (name pinch)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2) (R#AGENT x e0 :0.2)
-          (R#THEME z e0 :0.2))
-       (pinch-vb e0 x z u2)))
-(B (name plunder)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2) (R#AGENT x e0 :0.2)
-          (R#THEME z e0 :0.2))
-       (plunder-vb e0 x z u2)))
-(B (name pillage)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2) (R#AGENT x e0 :0.2)
-          (R#THEME z e0 :0.2))
-       (pillage-vb e0 x z u2)))
-
 (B (name pimp-vb)
    (=> (^ (S#CRIME e0 :0.30) (SS#CRIME%TYPE e0 e0 :0.30) (R#AGENT x e0 :0.30))
        (pimp-vb e0 x z u2)))
-
-(B (name theft)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (theft-nn e0 x)))
-(B (name larceny)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (larceny-nn e0 x)))
-(B (name stealing)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (stealing-nn e0 x)))
-(B (name thievery)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (thievery-nn e0 x)))
-
-(B (name robbery)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (robbery-nn e0 x)))
-(B (name pillage)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (pillage-nn e0 x)))
-(B (name plundering)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (plundering-nn e0 x)))
-(B (name booty)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (booty-nn e0 x)))
-(B (name plunder)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (plunder-nn e0 x)))
-
-(B (name rob)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2) (R#AGENT x e0 :0.2)
-          (R#VICTIM y e0 :0.2))
-       (rob-vb e0 x y u)))
-(B (name mug)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2) (R#AGENT x e0 :0.2)
-          (R#VICTIM y e0 :0.2))
-       (mug-vb e0 x y u)))
-(B (name hijack)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2) (R#AGENT x e0 :0.2)
-          (R#VICTIM y e0 :0.2))
-       (hijack-vb e0 x y u)))
 
 ;; From - Crime
 (B (name from-theft)
@@ -1602,10 +1674,6 @@
 
 ;; Crime: Perpetrator
 
-(B (name bandit)
-   (=> (^ (S#CRIME e0 :0.30) (SS#CRIME%PERPETRATOR x e0 :0.30)
-          (R#AGENT x e0 :0.30))
-       (bandit-nn e0 x)))
 (B (name criminal-nn)
    (=> (^ (S#CRIME e0 :0.30) (SS#CRIME%PERPETRATOR x e0 :0.30)
           (R#AGENT x e0 :0.30))
@@ -1642,35 +1710,10 @@
    (=> (^ (S#CRIME e0 :0.30) (SS#CRIME%PERPETRATOR x e0 :0.30)
           (R#AGENT x e0 :0.30))
        (prostitute-nn e0 x)))
-(B (name thief)
-   (=> (^ (S#CRIME e0 :0.30) (SS#CRIME%PERPETRATOR x e0 :0.30)
-          (R#AGENT x e0 :0.30))
-       (thief-nn e0 x)))
-(B (name pilferer)
-   (=> (^ (S#CRIME e0 :0.30) (SS#CRIME%PERPETRATOR x e0 :0.30)
-          (R#AGENT x e0 :0.30))
-       (pilferer-nn e0 x)))
-(B (name mugger)
-   (=> (^ (S#CRIME e0 :0.30) (SS#CRIME%PERPETRATOR x e0 :0.30)
-          (R#AGENT x e0 :0.30))
-       (mugger-nn e0 x)))
-(B (name robber)
-   (=> (^ (S#CRIME e0 :0.30) (SS#CRIME%PERPETRATOR x e0 :0.30)
-          (R#AGENT x e0 :0.30))
-       (robber-nn e0 x)))
-(B (name burglar)
-   (=> (^ (S#CRIME e0 :0.30) (SS#CRIME%PERPETRATOR x e0 :0.30)
-          (R#AGENT x e0 :0.30))
-       (burglar-nn e0 x)))
-(B (name plunderer)
-   (=> (^ (S#CRIME e0 :0.30) (SS#CRIME%PERPETRATOR x e0 :0.30)
-          (R#AGENT x e0 :0.30))
-       (plunderer-nn e0 x)))
 (B (name pimp-nn)
    (=> (^ (S#CRIME e0 :0.30) (SS#CRIME%PERPETRATOR x e0 :0.30)
           (R#AGENT x e0 :0.30))
        (pimp-nn e0 x)))
-
 (B (name accomplice)
    (=> (^ (S#CRIME e0 :0.30) (SS#CRIME%PERPETRATOR x e0 :0.30)
           (R#AGENT x e0 :0.30))
@@ -1752,10 +1795,12 @@
 ;; Crime: Victim
 
 (B (name victim)
-   (=> (^ (S#CRIME e0 :0.30) (SS#CRIME%VICTIM x e0 :0.30) (R#VICTIM x e0 :0.30))
+   (=> (^ (S#CRIME e0 :0.30) (SS#CRIME%VICTIM x e0 :0.30)
+          (R#VICTIM x e0 :0.30))
        (victim-nn e0 x)))
 (B (name prey)
-   (=> (^ (S#CRIME e0 :0.30) (SS#CRIME%VICTIM x e0 :0.30) (R#VICTIM x e0 :0.30))
+   (=> (^ (S#CRIME e0 :0.30) (SS#CRIME%VICTIM x e0 :0.30)
+          (R#VICTIM x e0 :0.30))
        (prey-nn e0 x)))
 (B (name sufferer)
    (=> (^ (SS#CRIME%VICTIM x e1 :0.30) (R#VICTIM x e1 :0.30))
@@ -2362,7 +2407,26 @@
 ;;   as strong feeling usually directed toward a specific object and typically
 ;;   accompanied by physiological and behavioral changes in the body.
 
-;; TODO: Add emotion experiencer axioms.
+(B (name emotion-nn)
+   (=> (S#EMOTION e0 :0.9)
+       (emotion-nn e0 x)))
+(B (name feeling-nn)
+   (=> (S#EMOTION e0 :0.9)
+       (feeling-nn e0 x)))
+
+(B (name anger-nn)
+   (=> (S#EMOTION e0 :0.9)
+       (anger-nn e0 x)))
+(B (name fear-nn)
+   (=> (S#EMOTION e0 :0.9)
+       (fear-nn e0 x)))
+
+
+;; Emotion Experiencer: Mapping
+
+(B (name emotion-experiencer-map)
+   (=> (I#EMOTION_EXPERIENCER x :0.9)
+       (S#EMOTION_EXPERIENCER x)))
 
 
 ;; Energy
@@ -2475,18 +2539,10 @@
    (=> (^ (S#ENSLAVEMENT e0 :0.30) (SS#ENSLAVEMENT%SERVANT x e0 :0.30)
           (R#ENSLAVEMENT-PATIENT x e0 :0.30))
        (thrall-nn e0 x)))
-(B (name servant)
-   (=> (^ (S#ENSLAVEMENT e0 :0.30) (SS#ENSLAVEMENT%SERVANT x e0 :0.30)
-          (R#ENSLAVEMENT-PATIENT x e0 :0.30))
-       (servant-nn e0 x)))
 (B (name minion)
    (=> (^ (S#ENSLAVEMENT e0 :0.30) (SS#ENSLAVEMENT%SERVANT x e0 :0.30)
           (R#ENSLAVEMENT-PATIENT x e0 :0.30))
        (minion-nn e0 x)))
-(B (name butler)
-   (=> (^ (S#ENSLAVEMENT e0 :0.30) (SS#ENSLAVEMENT%SERVANT x e0 :0.30)
-          (R#ENSLAVEMENT-PATIENT x e0 :0.30))
-       (butler-nn e0 x)))
 (B (name subject)
    (=> (^ (S#ENSLAVEMENT e0 :0.30) (SS#ENSLAVEMENT%SERVANT x e0 :0.30)
           (R#ENSLAVEMENT-PATIENT x e0 :0.30))
@@ -2614,19 +2670,98 @@
 ;; Factory
 ;;   A building or group of buildings where products are made.
 
-;; TODO: Add factory axioms.
+(B (name factory-nn)
+  (=> (S#FACTORY x :0.9)
+      (factory-nn e0 x)))
+
+(B (name industrial-adj)
+  (=> (S#FACTORY x :0.9)
+      (industrial-adj e0 x)))
+
+
+;; Factory: Mapping
+
+(B (name factory-map)
+  (=> (I#FACTORY x :0.9)
+      (S#FACTORY x)))
 
 
 ;; Family
 ;;   A group of people who are related to each other.
 
-;; TODO: Add family axioms.
+(B (name family-nn)
+  (=> (S#FAMILY x :0.9)
+      (family-nn e0 x)))
+(B (name household-nn)
+  (=> (S#FAMILY x :0.9)
+      (household-nn e0 x)))
+(B (name clan-nn)
+  (=> (S#FAMILY x :0.9)
+      (clan-nn e0 x)))
+(B (name dynasty-nn)
+  (=> (S#FAMILY x :0.9)
+      (dynasty-nn e0 x)))
+
+(B (name ancestor-nn)
+  (=> (S#FAMILY x :0.9)
+      (ancestor-nn e0 x)))
+(B (name relative-nn)
+  (=> (S#FAMILY x :0.9)
+      (relative-nn e0 x)))
+(B (name sibling-nn)
+  (=> (S#FAMILY x :0.9)
+      (sibling-nn e0 x)))
+(B (name brother-nn)
+  (=> (S#FAMILY x :0.9)
+      (brother-nn e0 x)))
+(B (name sister-nn)
+  (=> (S#FAMILY x :0.9)
+      (sister-nn e0 x)))
+(B (name mother-nn)
+  (=> (S#FAMILY x :0.9)
+      (mother-nn e0 x)))
+(B (name father-nn)
+  (=> (S#FAMILY x :0.9)
+      (father-nn e0 x)))
+
+(B (name familial-adj)
+  (=> (S#FAMILY x :0.9)
+      (familial-adj e0 x)))
+
+
+;; Family: Mapping
+
+(B (name family-map)
+  (=> (I#FAMILY x :0.9)
+      (S#FAMILY x)))
 
 
 ;; Fire
 ;;   The light and heat and especially the flame produced by burning.
 
-;; TODO: Add fire axioms.
+(B (name fire-nn)
+  (=> (S#FIRE x :0.9)
+      (fire-nn e0 x)))
+(B (name flame-nn)
+  (=> (S#FIRE x :0.9)
+      (flame-nn e0 x)))
+(B (name blaze-nn)
+  (=> (S#FIRE x :0.9)
+      (blaze-nn e0 x)))
+(B (name smoke-nn)
+  (=> (S#FIRE x :0.9)
+      (smoke-nn e0 x)))
+
+(B (name burn-vb)
+  (=> (S#FIRE x :0.9)
+      (burn-vb e0 x y u)))
+
+
+;; Fire: Mapping
+
+(B (name fire-map)
+  (=> (I#FIRE x :0.9)
+      (S#FIRE x)))
 
 
 ;; Food
@@ -2802,15 +2937,22 @@
 ;; Forward Motion
 ;;   Movement to or toward what is in front.
 
-;; TODO: Add forward motion axioms (e.g., 'advance').
+(B (name advance-vb)
+   (=> (S#FORWARD_MOTION e0 :0.9)
+       (advance-vb e0 x y z)))
+
+
+;; Forward Motion: Mapping
+
+(B (name forward-motion-map)
+   (=> (I#FORWARD_MOTION x :0.9)
+       (S#FORWARD_MOTION x)))
 
 
 ;; Game
 ;;   A competitive activity involving skill, chance, or endurance on the part
 ;;   of two or more persons who play according to a set of rules, usually for
 ;;   their own amusement or for that of spectators.
-
-;; TODO: Add sports.
 
 ;; Game: Type
 
@@ -2891,16 +3033,20 @@
 ;; Game: Outcomes
 
 (B (name win)
-   (=> (^ (S#GAME e0 :0.30) (SS#GAME%OUTCOMES e0 e0 :0.30) (R#PLAYER x e0 :0.30))
+   (=> (^ (S#GAME e0 :0.30) (SS#GAME%OUTCOMES e0 e0 :0.30)
+          (R#PLAYER x e0 :0.30))
        (win-vb e0 x y u)))
 (B (name lose)
-   (=> (^ (S#GAME e0 :0.30) (SS#GAME%OUTCOMES e0 e0 :0.30) (R#PLAYER x e0 :0.30))
+   (=> (^ (S#GAME e0 :0.30) (SS#GAME%OUTCOMES e0 e0 :0.30)
+          (R#PLAYER x e0 :0.30))
        (lose-vb e0 x y u)))
 (B (name defeat)
-   (=> (^ (S#GAME e0 :0.30) (SS#GAME%OUTCOMES e0 e0 :0.30) (R#PLAYER x e0 :0.30))
+   (=> (^ (S#GAME e0 :0.30) (SS#GAME%OUTCOMES e0 e0 :0.30)
+          (R#PLAYER x e0 :0.30))
        (defeat-vb e0 x y u)))
 (B (name triumph)
-   (=> (^ (S#GAME e0 :0.30) (SS#GAME%OUTCOMES e0 e0 :0.30) (R#PLAYER x e0 :0.30))
+   (=> (^ (S#GAME e0 :0.30) (SS#GAME%OUTCOMES e0 e0 :0.30)
+          (R#PLAYER x e0 :0.30))
        (triumph-vb e0 x y u)))
 
 (B (name winner)
@@ -2917,7 +3063,6 @@
    (=> (^ (S#GAME e0 :0.45) (SS#GAME%OUTCOMES x e0 :0.45))
        (triumph-nn e0 x)))
 
-;; TODO: What about WAR or STRUGGLE?
 (B (name defeat-nn)
    (=> (^ (S#GAME e0 :0.30) (SS#GAME%OUTCOMES x e0 :0.30))
        (defeat-nn e0 x)))
@@ -3061,21 +3206,108 @@
 ;; Journey
 ;;   An act or instance of traveling from one place to another.
 
-;; TODO: Add journey axioms.
+(B (name journey-nn)
+   (=> (S#JOURNEY e0 :0.9)
+       (journey-nn e0 x)))
+(B (name voyage-nn)
+   (=> (S#JOURNEY e0 :0.9)
+       (voyage-nn e0 x)))
+(B (name trip-nn)
+   (=> (S#JOURNEY e0 :0.9)
+       (trip-nn e0 x)))
+(B (name travel-nn)
+   (=> (S#JOURNEY e0 :0.9)
+       (travel-nn e0 x)))
+
+(B (name travel-vb)
+   (=> (S#JOURNEY e0 :0.9)
+       (travel-vb e0 x y u)))
+
+
+;; Journey: Mapping
+
+(B (name journey-map)
+   (=> (I#JOURNEY x :0.9)
+       (S#JOURNEY x)))
 
 
 ;; Leader
 ;;   A person who manages or controls other people, esp. because of his or
 ;;   her ability or position.
 
-;; TODO: Add leader axioms.
+(B (name leader-nn)
+   (=> (S#LEADER e0 :0.9)
+       (leader-nn e0 x)))
+(B (name boss-nn)
+   (=> (S#LEADER e0 :0.9)
+       (boss-nn e0 x)))
+(B (name honcho-nn)
+   (=> (S#LEADER e0 :0.9)
+       (honcho-nn e0 x)))
+
+
+;; Leader: Mapping
+
+(B (name leader-map)
+   (=> (I#LEADER x :0.9)
+       (S#LEADER x)))
 
 
 ;; Life Stage
 ;;   One of the series of stages through which a living thing passes from the
 ;;   beginning of its life until its death.
 
-;; TODO: Add life stage axioms.
+(B (name infancy-nn)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (infancy-nn e0 x)))
+(B (name childhood-nn)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (childhood-nn e0 x)))
+(B (name youth-nn)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (youth-nn e0 x)))
+(B (name adolescence-nn)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (adolescence-nn e0 x)))
+(B (name puberty-nn)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (puberty-nn e0 x)))
+
+(B (name baby-nn)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (baby-nn e0 x)))
+(B (name child-nn)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (child-nn e0 x)))
+(B (name teenager-nn)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (teenager-nn e0 x)))
+(B (name teen-nn)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (teen-nn e0 x)))
+
+(B (name young-adj)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (young-adj e0 x)))
+(B (name adolescent-adj)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (adolescent-adj e0 x)))
+(B (name prepubescent-adj)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (prepubescent-adj e0 x)))
+(B (name pubescent-adj)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (pubescent-adj e0 x)))
+(B (name elderly-adj)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (elderly-adj e0 x)))
+
+
+;; Life Stage: Mapping
+
+(B (name life-stage-map)
+   (=> (I#LIFE_STAGE x :0.9)
+       (S#LIFE_STAGE x)))
 
 
 ;; Light
@@ -3546,13 +3778,13 @@
 
 ;; Movement: Movement
 
-(B (name movement)
+(B (name movement-nn)
    (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT x e0 :0.45))
        (movement-nn e0 x)))
-(B (name move)
+(B (name move-nn)
    (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT x e0 :0.45))
        (move-nn e0 x)))
-(B (name mobility)
+(B (name mobility-nn)
    (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT x e0 :0.45))
        (mobility-nn e0 x)))
 
@@ -4375,71 +4607,6 @@
        (constrict-vb e0 x y u)))
 
 
-;; Physical Harm: Protection
-
-(B (name shield-nn)
-   (=> (^ (S#PHYSICAL_HARM e0 :0.45) (SS#PHYSICAL_HARM%PROTECTION x e0 :0.45))
-       (shield-nn e0 x)))
-(B (name shelter)
-   (=> (^ (S#PHYSICAL_HARM e0 :0.45) (SS#PHYSICAL_HARM%PROTECTION x e0 :0.45))
-       (shelter-nn e0 x)))
-(B (name protection)
-   (=> (^ (S#PHYSICAL_HARM e0 :0.45) (SS#PHYSICAL_HARM%PROTECTION x e0 :0.45))
-       (protection-nn e0 x)))
-(B (name cushion-nn)
-   (=> (^ (S#PHYSICAL_HARM e0 :0.45) (SS#PHYSICAL_HARM%PROTECTION x e0 :0.45))
-       (cushion-nn e0 x)))
-(B (name buffer)
-   (=> (^ (S#PHYSICAL_HARM e0 :0.45) (SS#PHYSICAL_HARM%PROTECTION x e0 :0.45))
-       (buffer-nn e0 x)))
-(B (name dodge)
-   (=> (^ (S#PHYSICAL_HARM e0 :0.45) (SS#PHYSICAL_HARM%PROTECTION x e0 :0.45))
-       (dodge-nn e0 x)))
-(B (name dodging)
-   (=> (^ (S#PHYSICAL_HARM e0 :0.45) (SS#PHYSICAL_HARM%PROTECTION x e0 :0.45))
-       (dodging-nn e0 x)))
-(B (name evasion)
-   (=> (^ (S#PHYSICAL_HARM e0 :0.45) (SS#PHYSICAL_HARM%PROTECTION x e0 :0.45))
-       (evasion-nn e0 x)))
-(B (name security)
-   (=> (^ (S#PHYSICAL_HARM e0 :0.45) (SS#PHYSICAL_HARM%PROTECTION x e0 :0.45))
-       (security-nn e0 x)))
-
-
-(B (name shield-vb)
-   (=> (^ (S#PHYSICAL_HARM e0 :0.2) (SS#PHYSICAL_HARM%PROTECTION e0 e0 :0.2)
-          (R#PROTECT-PATIENT y e0 :0.2) (R#PROTECT-AGENT x e0 :0.2))
-       (shield-vb e0 x y u2)))
-(B (name cushion-vb)
-   (=> (^ (S#PHYSICAL_HARM e0 :0.2) (SS#PHYSICAL_HARM%PROTECTION e0 e0 :0.2)
-          (R#PROTECT-PATIENT y e0 :0.2) (R#PROTECT-AGENT x e0 :0.2))
-       (cushion-vb e0 x y u2)))
-(B (name buffer-vb)
-   (=> (^ (S#PHYSICAL_HARM e0 :0.2) (SS#PHYSICAL_HARM%PROTECTION e0 e0 :0.2)
-          (R#PROTECT-PATIENT y e0 :0.2) (R#PROTECT-AGENT x e0 :0.2))
-       (buffer-vb e0 x y u2)))
-(B (name dodge-vb)
-   (=> (^ (S#PHYSICAL_HARM e0 :0.30) (SS#PHYSICAL_HARM%PROTECTION e0 e0 :0.30)
-          (R#PROTECT-AGENT x e0 :0.30))
-       (dodge-vb e0 x y u2)))
-(B (name evade-vb)
-   (=> (^ (S#PHYSICAL_HARM e0 :0.30) (SS#PHYSICAL_HARM%PROTECTION e0 e0 :0.30)
-          (R#PROTECT-AGENT x e0 :0.30))
-       (evade-vb e0 x y u2)))
-(B (name secure-vb)
-   (=> (^ (S#PHYSICAL_HARM e0 :0.30) (SS#PHYSICAL_HARM%PROTECTION e0 e0 :0.30)
-          (R#PROTECT-AGENT x e0 :0.30))
-       (secure-vb e0 x y u2)))
-(B (name ward-off)
-   (=> (^ (S#PHYSICAL_HARM e0 :0.30) (SS#PHYSICAL_HARM%PROTECTION e0 e0 :0.30)
-          (R#PROTECT-AGENT x e0 :0.30))
-       (^ (ward-vb e0 x y u2) (off-in e1 e0))))
-
-(B (name from-theft)
-   (=> (R#HARM-VICTIM y e0 :0.9)
-       (^ (S#PHYSICAL_HARM-PROTECTION e0) (from-in e1 e0 y))))
-
-
 ;; Physical Harm: Mapping
 
 (B (name physical-harm-map)
@@ -4451,9 +4618,6 @@
 (B (name physical-harm-restraint-map)
    (=> (I#PHYSICAL_HARM%RESTRAINT x y :0.9)
        (SS#PHYSICAL_HARM%RESTRAINT x y)))
-(B (name physical-harm-protection-map)
-   (=> (I#PHYSICAL_HARM%PROTECTION x y :0.9)
-       (SS#PHYSICAL_HARM%PROTECTION x y)))
 
 
 ;; Physical Location
@@ -4913,7 +5077,72 @@
 ;;   damaged; the act of preventing somebody or something from being harmed
 ;;   or damaged, or the state of being kept safe.
 
-;; TODO: Add protection axioms.
+(B (name shield-nn)
+   (=> (S#PROTECTION e0 :0.9)
+       (shield-nn e0 x)))
+(B (name shelter)
+   (=> (S#PROTECTION e0 :0.9)
+       (shelter-nn e0 x)))
+(B (name protection)
+   (=> (S#PROTECTION e0 :0.9)
+       (protection-nn e0 x)))
+(B (name cushion-nn)
+   (=> (S#PROTECTION e0 :0.9)
+       (cushion-nn e0 x)))
+(B (name buffer)
+   (=> (S#PROTECTION e0 :0.9)
+       (buffer-nn e0 x)))
+(B (name dodge)
+   (=> (S#PROTECTION e0 :0.9)
+       (dodge-nn e0 x)))
+(B (name dodging)
+   (=> (S#PROTECTION e0 :0.9)
+       (dodging-nn e0 x)))
+(B (name evasion)
+   (=> (S#PROTECTION e0 :0.9)
+       (evasion-nn e0 x)))
+(B (name security)
+   (=> (S#PROTECTION e0 :0.9)
+       (security-nn e0 x)))
+
+(B (name protect-vb)
+   (=> (S#PROTECTION e0 :0.9)
+       (protect-vb e0 x y u)))
+(B (name shield-vb)
+   (=> (^ (S#PROTECTION e0 :0.30)
+          (R#PROTECT-PATIENT y e0 :0.30) (R#PROTECT-AGENT x e0 :0.30))
+       (shield-vb e0 x y u2)))
+(B (name cushion-vb)
+   (=> (^ (S#PROTECTION e0 :0.30)
+          (R#PROTECT-PATIENT y e0 :0.30) (R#PROTECT-AGENT x e0 :0.30))
+       (cushion-vb e0 x y u2)))
+(B (name buffer-vb)
+   (=> (^ (S#PROTECTION e0 :0.30)
+          (R#PROTECT-PATIENT y e0 :0.30) (R#PROTECT-AGENT x e0 :0.30))
+       (buffer-vb e0 x y u2)))
+(B (name dodge-vb)
+   (=> (^ (S#PROTECTION e0 :0.45) (R#PROTECT-AGENT x e0 :0.45))
+       (dodge-vb e0 x y u2)))
+(B (name evade-vb)
+   (=> (^ (S#PROTECTION e0 :0.45) (R#PROTECT-AGENT x e0 :0.45))
+       (evade-vb e0 x y u2)))
+(B (name secure-vb)
+   (=> (^ (S#PROTECTION e0 :0.45) (R#PROTECT-AGENT x e0 :0.45))
+       (secure-vb e0 x y u2)))
+(B (name ward-off)
+   (=> (^ (S#PROTECTION e0 :0.45) (R#PROTECT-AGENT x e0 :0.45))
+       (^ (ward-vb e0 x y u2) (off-in e1 e0))))
+
+(B (name protection-from)
+   (=> (R#HARM-VICTIM y e0 :0.9)
+       (^ (S#PROTECTION e0) (from-in e1 e0 y))))
+
+
+;; Protection: Mapping
+
+(B (name protection-map)
+   (=> (I#PROTECTION x :0.9)
+       (S#PROTECTION x)))
 
 
 ;; Resource
@@ -5059,21 +5288,116 @@
 ;;   A person or entity that controls (something) by making sure that rules
 ;;   and regulations are being followed.
 
-;; TODO: Add rule enforcer axioms.
+(B (name enforcer-nn)
+   (=> (S#RULE_ENFORCER e0 :0.9)
+       (enforcer-nn e0 x)))
+(B (name referee-nn)
+   (=> (S#RULE_ENFORCER e0 :0.9)
+       (referee-nn e0 x)))
+(B (name police-nn)
+   (=> (S#RULE_ENFORCER e0 :0.9)
+       (police-nn e0 x)))
+(B (name police-vb)
+   (=> (S#RULE_ENFORCER e0 :0.9)
+       (police-vb e0 x y u)))
+
+
+;; Rule Enforcer: Mapping
+
+(B (name rule-enforcer-map)
+   (=> (I#RULE_ENFORCER x :0.9)
+       (S#RULE_ENFORCER x)))
 
 
 ;; Science
 ;;   Knowledge about or study of the natural world based on facts learned
 ;;   through experiments and observation.
 
-;; TODO: Add science axioms.
+(B (name science-nn)
+   (=> (S#SCIENCE e0 :0.9)
+       (science-nn e0 x)))
+(B (name physics-nn)
+   (=> (S#SCIENCE e0 :0.9)
+       (physics-nn e0 x)))
+(B (name experiment-nn)
+   (=> (S#SCIENCE e0 :0.9)
+       (experiment-nn e0 x)))
+(B (name observation-nn)
+   (=> (S#SCIENCE e0 :0.9)
+       (observation-nn e0 x)))
+(B (name laboratory-nn)
+   (=> (S#SCIENCE e0 :0.9)
+       (laboratory-nn e0 x)))
+
+(B (name experimental-adj)
+   (=> (S#SCIENCE e0 :0.9)
+       (experimental-adj e0 x)))
+(B (name observational-adj)
+   (=> (S#SCIENCE e0 :0.9)
+       (observational-adj e0 x)))
+
+(B (name experiment)
+   (=> (S#SCIENCE e0 :0.9)
+       (experiment-vb e0 x0 x1 x2)))
+
+
+;; Science: Mapping
+
+(B (name science-map)
+   (=> (I#SCIENCE x :0.9)
+       (S#SCIENCE x)))
 
 
 ;; Servant
 ;;   One that serves others; especially, one that performs duties about the
-;;   person or home of a master or personal employer.
+;;   person or home of a master or personal employer. (Including former
+;;   ENSLAVEMENT axioms.)
 
-;; TODO: Add servant axioms.
+(B (name servant-nn)
+   (=> (S#SERVANT e0 :0.9)
+       (servant-nn e0 x)))
+(B (name manservant-nn)
+   (=> (S#SERVANT e0 :0.9)
+       (manservant-nn e0 x)))
+(B (name butler-nn)
+   (=> (S#SERVANT e0 :0.9)
+       (butler-nn e0 x)))
+(B (name valet-nn)
+   (=> (S#SERVANT e0 :0.9)
+       (valet-nn e0 x)))
+(B (name maid-nn)
+   (=> (S#SERVANT e0 :0.9)
+       (maid-nn e0 x)))
+(B (name housemaid-nn)
+   (=> (S#SERVANT e0 :0.9)
+       (housemaid-nn e0 x)))
+(B (name cleaner-nn)
+   (=> (S#SERVANT e0 :0.9)
+       (cleaner-nn e0 x)))
+(B (name jeeves-nn)
+   (=> (S#SERVANT e0 :0.9)
+       (jeeves-nn e0 x)))
+
+(B (name serve-vb)
+   (=> (S#SERVANT e0 :0.9)
+       (serve-vb e0 x y u)))
+;; Colonel Mustard: Is this place for you?
+;; Wadsworth: Indeed no, sir. I'm merely a humble butler.
+;; Colonel Mustard: What exactly do you do?
+;; Wadsworth: I buttle, sir.
+(B (name buttle-vb)
+   (=> (S#SERVANT e0 :0.9)
+       (buttle-vb e0 x y u)))
+(B (name butle-vb)
+   (=> (S#SERVANT e0 :0.9)
+       (butle-vb e0 x y u)))
+
+
+;; Servant: Mapping
+
+(B (name servant-map)
+   (=> (I#SERVANT x :0.9)
+       (S#SERVANT x)))
 
 
 ;; Struggle
@@ -5167,14 +5491,160 @@
 ;;   A measurement that indicates how hot or cold something is; a measurement
 ;;   in degrees showing the heat of something (such as air or water).
 
-;; TODO: Add temperature axioms.
+(B (name temperature-nn)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (temperature-nn e0 x)))
+(B (name celsius-nn)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (celsius-nn e0 x)))
+(B (name celsius-adj)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (celsius-adj e0 x)))
+(B (name fahrenheit-nn)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (fahrenheit-nn e0 x)))
+(B (name fahrenheit-adj)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (fahrenheit-adj e0 x)))
+(B (name thermometer-nn)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (thermometer-nn e0 x)))
+(B (name thermometre-nn)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (thermometre-nn e0 x)))
+
+(B (name hot-adj)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (hot-adj e0 x)))
+(B (name cold-adj)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (cold-adj e0 x)))
+(B (name warm-adj)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (warm-adj e0 x)))
+(B (name cool-adj)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (cool-adj e0 x)))
+(B (name chilly-adj)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (chilly-adj e0 x)))
+
+(B (name chill-nn)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (chill-nn e0 x)))
+(B (name cold-nn)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (cold-nn e0 x)))
+(B (name heat-nn)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (heat-nn e0 x)))
+
+
+;; Temperature: Mapping
+
+(B (name temperature-map)
+   (=> (I#TEMPERATURE x :0.9)
+       (S#TEMPERATURE x)))
 
 
 ;; Theft
 ;;   The felonious taking and removing of personal property with intent to
-;;   deprive the rightful owner of it.
+;;   deprive the rightful owner of it. (Including former CRIME axioms.)
 
-;; TODO: Add theft axioms.
+(B (name theft-nn)
+   (=> (S#THEFT e0 :0.9)
+       (theft-nn e0 x)))
+(B (name larceny-nn)
+   (=> (S#THEFT e0 :0.9)
+       (larceny-nn e0 x)))
+(B (name stealing-nn)
+   (=> (S#THEFT e0 :0.9)
+       (stealing-nn e0 x)))
+(B (name thievery-nn)
+   (=> (S#THEFT e0 :0.9)
+       (thievery-nn e0 x)))
+(B (name robbery-nn)
+   (=> (S#THEFT e0 :0.9)
+       (robbery-nn e0 x)))
+(B (name pillage-nn)
+   (=> (S#THEFT e0 :0.9)
+       (pillage-nn e0 x)))
+(B (name plundering-nn)
+   (=> (S#THEFT e0 :0.9)
+       (plundering-nn e0 x)))
+(B (name plunder-nn)
+   (=> (S#THEFT e0 :0.9)
+       (plunder-nn e0 x)))
+(B (name booty-nn)
+   (=> (S#THEFT e0 :0.9)
+       (booty-nn e0 x)))
+
+(B (name rob-vb)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#VICTIM y e0 :0.3))
+       (rob-vb e0 x y u)))
+(B (name mug-vb)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#VICTIM y e0 :0.3))
+       (mug-vb e0 x y u)))
+(B (name hijack-vb)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#VICTIM y e0 :0.3))
+       (hijack-vb e0 x y u)))
+(B (name steal-vb)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#THEME z e0 :0.3))
+       (steal-vb e0 x z u2)))
+(B (name pilfer-vb)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#THEME z e0 :0.3))
+       (pilfer-vb e0 x z u2)))
+(B (name filch-vb)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#THEME z e0 :0.3))
+       (filch-vb e0 x z u2)))
+(B (name pinch-vb)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#THEME z e0 :0.3))
+       (pinch-vb e0 x z u2)))
+(B (name plunder-vb)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#THEME z e0 :0.3))
+       (plunder-vb e0 x z u2)))
+(B (name pillage-vb)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#THEME z e0 :0.3))
+       (pillage-vb e0 x z u2)))
+
+(B (name bandit-nn)
+   (=> (^ (S#THEFT e0 :0.30) (SS#THEFT%PERPETRATOR x e0 :0.30)
+          (R#AGENT x e0 :0.30))
+       (bandit-nn e0 x)))
+(B (name thief-nn)
+   (=> (^ (S#THEFT e0 :0.30) (SS#THEFT%PERPETRATOR x e0 :0.30)
+          (R#AGENT x e0 :0.30))
+       (thief-nn e0 x)))
+(B (name pilferer-nn)
+   (=> (^ (S#THEFT e0 :0.30) (SS#THEFT%PERPETRATOR x e0 :0.30)
+          (R#AGENT x e0 :0.30))
+       (pilferer-nn e0 x)))
+(B (name mugger-nn)
+   (=> (^ (S#THEFT e0 :0.30) (SS#THEFT%PERPETRATOR x e0 :0.30)
+          (R#AGENT x e0 :0.30))
+       (mugger-nn e0 x)))
+(B (name robber-nn)
+   (=> (^ (S#THEFT e0 :0.30) (SS#THEFT%PERPETRATOR x e0 :0.30)
+          (R#AGENT x e0 :0.30))
+       (robber-nn e0 x)))
+(B (name burglar-nn)
+   (=> (^ (S#THEFT e0 :0.30) (SS#THEFT%PERPETRATOR x e0 :0.30)
+          (R#AGENT x e0 :0.30))
+       (burglar-nn e0 x)))
+(B (name plunderer-nn)
+   (=> (^ (S#THEFT e0 :0.30) (SS#THEFT%PERPETRATOR x e0 :0.30)
+          (R#AGENT x e0 :0.30))
+       (plunderer-nn e0 x)))
+
+
+;; Theft: Mapping
+
+(B (name theft-map)
+   (=> (I#THEFT x :0.9)
+       (S#THEFT x)))
+(B (name theft-perpetrator-map)
+   (=> (I#THEFT%PERPETRATOR x :0.9)
+       (SS#THEFT%PERPETRATOR x)))
 
 
 ;; Upward Movement
@@ -5243,7 +5713,37 @@
 ;;   Something used to transport people or goods, esp. something used on land
 ;;   or roads.
 
-;; TODO: Add vehicle axioms.
+(B (name vehicle-nn)
+   (=> (S#VEHICLE e0 :0.9)
+       (vehicle-nn e0 x)))
+(B (name automobile-nn)
+   (=> (S#VEHICLE e0 :0.9)
+       (automobile-nn e0 x)))
+(B (name auto-nn)
+   (=> (S#VEHICLE e0 :0.9)
+       (auto-nn e0 x)))
+(B (name motorcar-nn)
+   (=> (S#VEHICLE e0 :0.9)
+       (motorcar-nn e0 x)))
+(B (name car-nn)
+   (=> (S#VEHICLE e0 :0.9)
+       (car-nn e0 x)))
+(B (name truck-nn)
+   (=> (S#VEHICLE e0 :0.9)
+       (truck-nn e0 x)))
+(B (name van-nn)
+   (=> (S#VEHICLE e0 :0.9)
+       (van-nn e0 x)))
+(B (name minivan-nn)
+   (=> (S#VEHICLE e0 :0.9)
+       (minivan-nn e0 x)))
+
+
+;; Vehicle: Mapping
+
+(B (name vehicle-map)
+   (=> (I#VEHICLE x :0.9)
+       (S#VEHICLE x)))
 
 
 ;; War
@@ -5270,7 +5770,6 @@
 (B (name attack)
    (=> (S#WAR e0 :0.9)
        (attack-nn e0 x)))
-;; TODO: What about CRIME?
 (B (name assault)
    (=> (S#WAR e0 :0.9)
        (assault-nn e0 x)))
@@ -5406,19 +5905,19 @@
    (=> (^ (S#WAR e0 :0.45) (R#WEAPON x e0 :0.45))
        (arsenal-nn e0 x)))
 
-(B (name soldier)
+(B (name soldier-nn)
    (=> (S#WAR e0 :0.9)
        (soldier-nn e0 x)))
-(B (name officer)
+(B (name officer-nn)
    (=> (S#WAR e0 :0.9)
        (officer-nn e0 x)))
-(B (name army)
+(B (name army-nn)
    (=> (S#WAR e0 :0.9)
        (army-nn e0 x)))
-(B (name gunner)
+(B (name gunner-nn)
    (=> (S#WAR e0 :0.9)
        (gunner-nn e0 x)))
-(B (name shooter)
+(B (name shooter-nn)
    (=> (S#WAR e0 :0.9)
        (shooter-nn e0 x)))
 

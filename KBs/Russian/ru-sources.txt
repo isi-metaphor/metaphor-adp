@@ -848,14 +848,39 @@
 ;; Backward Movement
 ;;   Movement to or toward what is behind.
 
-;; TODO: Add backward movement axioms.
+(B (name backward/назад)
+   (=> (S#BACKWARD_MOVEMENT e0 :0.9)
+       (назад-adj e0 x)))
+(B (name reverse/обратный)
+   (=> (S#BACKWARD_MOVEMENT e0 :0.9)
+       (обратный-adj e0 x)))
+
+(B (name reverse/реверсировать)
+   (=> (S#BACKWARD_MOVEMENT e0 :0.9)
+       (реверсировать-vb e0 x u1 u2)))
+
+
+;; Backward Movement: Mapping
+
+(B (name backward-movement-map)
+   (=> (I#BACKWARD_MOVEMENT x :0.9)
+       (S#BACKWARD_MOVEMENT x)))
 
 
 ;; Barrier
 ;;   Anything used or acting to block someone from going somewhere or from
 ;;   doing something, or to block something from happening.
 
-;; TODO: Add barrier axioms.
+(B (name barrier/барьер)
+   (=> (S#BARRIER e0 :0.9)
+       (барьер-nn e0 x)))
+(B (name obstacle/препятствием)
+   (=> (S#BARRIER e0 :0.9)
+       (препятствием-nn e0 x)))
+
+(B (name block/блокировать)
+   (=> (S#BARRIER e0 :0.9)
+       (блокировать-vb e0 x0 x1 x2)))
 
 
 ;; Blood Stream
@@ -1503,13 +1528,69 @@
 ;;   The activity of making, buying, or selling goods or providing services
 ;;   in exchange for money.
 
-;; TODO: Write business axioms.
+(B (name business/бизнес)
+   (=> (S#BUSINESS e0 :0.9)
+       (бизнес-nn e0 x)))
+(B (name company/компания)
+   (=> (S#BUSINESS e0 :0.9)
+       (компания-nn e0 x)))
+(B (name manufacturer/производитель)
+   (=> (S#BUSINESS e0 :0.9)
+       (производитель-nn e0 x)))
+
+(B (name manufacture/производить)
+   (=> (S#BUSINESS e0 :0.9)
+       (производить-vb e0 x0 x1 x2)))
+(B (name sell/продать)
+   (=> (S#BUSINESS e0 :0.9)
+       (продать-vb e0 x0 x1 x2)))
+(B (name buy/купить)
+   (=> (S#BUSINESS e0 :0.9)
+       (купить-vb e0 x0 x1 x2)))
+
+
+;; Business: Mapping
+
+(B (name business-map)
+   (=> (I#BUSINESS x :0.9)
+       (S#BUSINESS x)))
 
 
 ;; Clothing
 ;;   The things that people wear to cover their bodies.
 
-;; TODO: Write clothing axioms.
+(B (name clothing/одежда)
+   (=> (S#CLOTHING e0 :0.9)
+       (одежда-nn e0 x)))
+
+(B (name shirt/рубашка)
+   (=> (S#CLOTHING e0 :0.9)
+       (рубашка-nn e0 x)))
+(B (name jacket/куртка)
+   (=> (S#CLOTHING e0 :0.9)
+       (куртка-nn e0 x)))
+(B (name jacket/жакет)
+   (=> (S#CLOTHING e0 :0.9)
+       (жакет-nn e0 x)))
+(B (name hat/шляпа)
+   (=> (S#CLOTHING e0 :0.9)
+       (шляпа-nn e0 x)))
+(B (name cloak/плащ)
+   (=> (S#CLOTHING e0 :0.9)
+       (плащ-nn e0 x)))
+(B (name dress/платье)
+   (=> (S#CLOTHING e0 :0.9)
+       (платье-nn e0 x)))
+(B (name skirt/юбка)
+   (=> (S#CLOTHING e0 :0.9)
+       (юбка-nn e0 x)))
+
+
+;; Clothing: Mapping
+
+(B (name clothing-map)
+   (=> (I#CLOTHING x :0.9)
+       (S#CLOTHING x)))
 
 
 ;; Competition
@@ -1909,7 +1990,32 @@
 ;;   An object (such as a box or can) that can hold something; a receptacle
 ;;   (as a box or jar) for holding goods.
 
-;; TODO: Add container axioms.
+(B (name container/контейнер)
+   (=> (S#CONTAINER e0 :0.45)
+       (контейнер-nn e0 x)))
+
+(B (name box/коробка)
+   (=> (S#CONTAINER e0 :0.45)
+       (коробка-nn e0 x)))
+(B (name can/может)
+   (=> (S#CONTAINER e0 :0.45)
+       (может-nn e0 x)))
+(B (name jar/банку)
+   (=> (S#CONTAINER e0 :0.45)
+       (банку-nn e0 x)))
+(B (name jug/кувшин)
+   (=> (S#CONTAINER e0 :0.45)
+       (кувшин-nn e0 x)))
+(B (name crate/клеть)
+   (=> (S#CONTAINER e0 :0.45)
+       (клеть-nn e0 x)))
+
+
+;; Container: Mapping
+
+(B (name container-map)
+   (=> (I#CONTAINER x :0.9)
+       (S#CONTAINER x)))
 
 
 ;; Contamination
@@ -1972,23 +2078,6 @@
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
        (^ (нарушение-nn e0 x) (право-nn e1 y) (of-in e2 x y))))
 
-(B (name robbery/грабеж)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (грабеж-nn e0 x)))
-(B (name robbery/грабёж)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (грабёж-nn e0 x)))
-(B (name robbery/ограбление)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (ограбление-nn e0 x)))
-
-(B (name theft/кража)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (кража-nn e0 x)))
-(B (name theft/воровство)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (воровство-nn e0 x)))
-
 (B (name fraud/мошенничество)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
        (мошенничество-nn e0 x)))
@@ -2037,45 +2126,6 @@
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE e0 e0 :0.45))
        (убийственный-adj e0 x)))
 
-(B (name rob/грабить)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2)
-          (R#CRIME-AGENT x e0 :0.2) (R#THEFT-THEME z e0 :0.2))
-       (грабить-vb e0 x z u2)))
-(B (name rob/ограбить)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2)
-          (R#CRIME-AGENT x e0 :0.2) (R#THEFT-THEME z e0 :0.2))
-       (ограбить-vb e0 x z u2)))
-
-(B (name steal/красть)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2)
-          (R#CRIME-AGENT x e0 :0.2) (R#THEFT-THEME z e0 :0.2))
-       (красть-vb e0 x z u2)))
-(B (name steal/украсть)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2)
-          (R#CRIME-AGENT x e0 :0.2) (R#THEFT-THEME z e0 :0.2))
-       (украсть-vb e0 x z u2)))
-(B (name rob/обокрасть)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2) (R#CRIME-AGENT x e0 :0.2)
-          (R#CRIME-VICTIM z e0 :0.2))
-       (обокрасть-vb e0 x z u2)))
-
-(B (name steal/воровать)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2)
-          (R#CRIME-AGENT x e0 :0.2) (R#THEFT-THEME z e0 :0.2))
-       (воровать-vb e0 x z u2)))
-(B (name steal/своровать)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2)
-          (R#CRIME-AGENT x e0 :0.2) (R#THEFT-THEME z e0 :0.2))
-       (своровать-vb e0 x z u2)))
-(B (name rob/обворовать)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2)
-          (R#CRIME-AGENT x e0 :0.2) (R#CRIME-VICTIM z e0 :0.2))
-       (обворовать-vb e0 x z u2)))
-(B (name steal-money/наворовать)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2)
-          (R#CRIME-AGENT x e0 :0.2) (R#CRIME-VICTIM z e0 :0.2))
-       (наворовать-vb e0 x z u2)))
-
 (B (name swindle/жульничать)
    (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2)
           (R#CRIME-AGENT x e0 :0.2) (R#CRIME-VICTIM z e0 :0.2))
@@ -2116,9 +2166,6 @@
 (B (name offender/преступник)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PERPETRATOR x e0 :0.45))
        (преступник-nn e0 x)))
-(B (name bandit/бандит)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PERPETRATOR x e0 :0.45))
-       (бандит-nn e0 x)))
 (B (name gang/банда)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PERPETRATOR x e0 :0.45))
        (банда-nn e0 x)))
@@ -2132,24 +2179,6 @@
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PERPETRATOR x e0 :0.45))
        (правонарушитель-nn e0 x)))
 
-(B (name robber/грабитель)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PERPETRATOR x e0 :0.45))
-       (грабитель-nn e0 x)))
-(B (name thief/вор)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PERPETRATOR x e0 :0.45))
-       (вор-nn e0 x)))
-(B (name thief/ворюга)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PERPETRATOR x e0 :0.45))
-       (ворюга-nn e0 x)))
-(B (name pilferer/воришка)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PERPETRATOR x e0 :0.45))
-       (воришка-nn e0 x)))
-(B (name thieves/ворье)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PERPETRATOR x e0 :0.45))
-       (ворье-nn e0 x)))
-(B (name thieves/ворьё)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PERPETRATOR x e0 :0.45))
-       (ворьё-nn e0 x)))
 (B (name swindler/шулер)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PERPETRATOR x e0 :0.45))
        (шулер-nn e0 x)))
@@ -2165,9 +2194,6 @@
 (B (name speculator/спекулянт)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PERPETRATOR x e0 :0.45))
        (спекулянт-nn e0 x)))
-(B (name petty-thief/жулик)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PERPETRATOR x e0 :0.45))
-       (жулик-nn e0 x)))
 (B (name rogues/жулье)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PERPETRATOR x e0 :0.45))
        (жулье-nn e0 x)))
@@ -2998,7 +3024,26 @@
 ;;   as strong feeling usually directed toward a specific object and typically
 ;;   accompanied by physiological and behavioral changes in the body.
 
-;; TODO: Add emotion experiencer axioms.
+(B (name emotion/эмоции)
+   (=> (S#EMOTION e0 :0.9)
+       (эмоции-nn e0 x)))
+(B (name feeling/чувство)
+   (=> (S#EMOTION e0 :0.9)
+       (чувство-nn e0 x)))
+
+(B (name anger/гнев)
+   (=> (S#EMOTION e0 :0.9)
+       (гнев-nn e0 x)))
+(B (name fear/страх)
+   (=> (S#EMOTION e0 :0.9)
+       (страх-nn e0 x)))
+
+
+;; Emotion Experiencer: Mapping
+
+(B (name emotion-experiencer-map)
+   (=> (I#EMOTION_EXPERIENCER x :0.9)
+       (S#EMOTION_EXPERIENCER x)))
 
 
 ;; Energy
@@ -3062,22 +3107,10 @@
    (=> (^ (S#ENSLAVEMENT e0 :0.3) (SS#ENSLAVEMENT%SERVANT x e0 :0.3)
           (R#ENSLAVEMENT-PATIENT x e0 :0.3))
        (раб-nn e0 x)))
-(B (name servant/слуга)
-   (=> (^ (S#ENSLAVEMENT e0 :0.3) (SS#ENSLAVEMENT%SERVANT x e0 :0.3)
-          (R#ENSLAVEMENT-PATIENT x e0 :0.3))
-       (слуга-nn e0 x)))
-(B (name maidservant/прислуга)
-   (=> (^ (S#ENSLAVEMENT e0 :0.3) (SS#ENSLAVEMENT%SERVANT x e0 :0.3)
-          (R#ENSLAVEMENT-PATIENT x e0 :0.3))
-       (прислуга-nn e0 x)))
 (B (name acolyte/прислужник)
    (=> (^ (S#ENSLAVEMENT e0 :0.3) (SS#ENSLAVEMENT%SERVANT x e0 :0.3)
           (R#ENSLAVEMENT-PATIENT x e0 :0.3))
        (прислужник-nn e0 x)))
-(B (name lackey/холоп)
-   (=> (^ (S#ENSLAVEMENT e0 :0.3) (SS#ENSLAVEMENT%SERVANT x e0 :0.3)
-          (R#ENSLAVEMENT-PATIENT x e0 :0.3))
-       (холоп-nn e0 x)))
 (B (name slave/невольник)
    (=> (^ (S#ENSLAVEMENT e0 :0.3) (SS#ENSLAVEMENT%SERVANT x e0 :0.3)
           (R#ENSLAVEMENT-PATIENT x e0 :0.3))
@@ -3086,13 +3119,6 @@
    (=> (^ (S#ENSLAVEMENT e0 :0.3) (SS#ENSLAVEMENT%SERVANT x e0 :0.3)
           (R#ENSLAVEMENT-PATIENT x e0 :0.3))
        (невольница-nn e0 x)))
-
-(B (name serve/служить)
-   (=> (^ (S#ENSLAVEMENT e0 :0.45) (SS#ENSLAVEMENT%SERVANT x e0 :0.45))
-       (служить-vb e0 x y u)))
-(B (name wait/прислуживать)
-   (=> (^ (S#ENSLAVEMENT e0 :0.45) (SS#ENSLAVEMENT%SERVANT x e0 :0.45))
-       (прислуживать-vb e0 x y u)))
 
 
 ;; Enslavement: Oppression
@@ -3272,19 +3298,90 @@
 ;; Factory
 ;;   A building or group of buildings where products are made.
 
-;; TODO: Add factory axioms.
+(B (name factory/завод)
+  (=> (S#FACTORY x :0.9)
+      (завод-nn e0 x)))
+
+(B (name industrial/промышленные)
+  (=> (S#FACTORY x :0.9)
+      (промышленные-adj e0 x)))
+
+
+;; Factory: Mapping
+
+(B (name factory-map)
+  (=> (I#FACTORY x :0.9)
+      (S#FACTORY x)))
 
 
 ;; Family
 ;;   A group of people who are related to each other.
 
-;; TODO: Add family axioms.
+(B (name family/семья)
+  (=> (S#FAMILY x :0.9)
+      (семья-nn e0 x)))
+(B (name clan/клан)
+  (=> (S#FAMILY x :0.9)
+      (клан-nn e0 x)))
+(B (name dynasty/династия)
+  (=> (S#FAMILY x :0.9)
+      (династия-nn e0 x)))
+
+(B (name ancestor/предок)
+  (=> (S#FAMILY x :0.9)
+      (предок-nn e0 x)))
+(B (name relative/относительная)
+  (=> (S#FAMILY x :0.9)
+      (относительная-nn e0 x)))
+(B (name brother/брат)
+  (=> (S#FAMILY x :0.9)
+      (брат-nn e0 x)))
+(B (name sister/сестра)
+  (=> (S#FAMILY x :0.9)
+      (сестра-nn e0 x)))
+(B (name mother/мать)
+  (=> (S#FAMILY x :0.9)
+      (мать-nn e0 x)))
+(B (name father/отец)
+  (=> (S#FAMILY x :0.9)
+      (отец-nn e0 x)))
+
+(B (name familial/семейная)
+  (=> (S#FAMILY x :0.9)
+      (семейная-adj e0 x)))
+
+
+;; Family: Mapping
+
+(B (name family-map)
+  (=> (I#FAMILY x :0.9)
+      (S#FAMILY x)))
 
 
 ;; Fire
 ;;   The light and heat and especially the flame produced by burning.
 
-;; TODO: Add fire axioms.
+(B (name fire/огонь)
+  (=> (S#FIRE x :0.9)
+      (огонь-nn e0 x)))
+(B (name flame/пламя)
+  (=> (S#FIRE x :0.9)
+      (пламя-nn e0 x)))
+(B (name smoke/курить)
+  (=> (S#FIRE x :0.9)
+      (курить-nn e0 x)))
+
+(B (name burn/сжигать)
+  (=> (S#FIRE x :0.9)
+      (сжигать-vb e0 x y u)))
+
+
+;; Fire: Mapping
+
+(B (name fire-map)
+  (=> (I#FIRE x :0.9)
+      (S#FIRE x)))
+
 
 
 ;; Food
@@ -3520,8 +3617,16 @@
 ;; Forward Motion
 ;;   Movement to or toward what is in front.
 
-;; TODO: Add forward motion axioms (e.g., 'advance').
+(B (name advance/продвигать)
+   (=> (S#FORWARD_MOTION e0 :0.9)
+       (продвигать-vb e0 x y z)))
 
+
+;; Forward Motion: Mapping
+
+(B (name forward-motion-map)
+   (=> (I#FORWARD_MOTION x :0.9)
+       (S#FORWARD_MOTION x)))
 
 ;; Game
 ;;   A competitive activity involving skill, chance, or endurance on the part
@@ -3747,21 +3852,102 @@
 ;; Journey
 ;;   An act or instance of traveling from one place to another.
 
-;; TODO: Add journey axioms.
+(B (name journey/вояж)
+   (=> (S#JOURNEY e0 :0.9)
+       (вояж-nn e0 x)))
+(B (name voyage/рейс)
+   (=> (S#JOURNEY e0 :0.9)
+       (рейс-nn e0 x)))
+(B (name trip/поездка)
+   (=> (S#JOURNEY e0 :0.9)
+       (поездка-nn e0 x)))
+(B (name travel/поездки)
+   (=> (S#JOURNEY e0 :0.9)
+       (поездки-nn e0 x)))
+(B (name travel/путешествие)
+   (=> (S#JOURNEY e0 :0.9)
+       (путешествие-nn e0 x)))
+
+(B (name travel/путешествовать)
+   (=> (S#JOURNEY e0 :0.9)
+       (путешествовать-vb e0 x y u)))
+
+
+;; Journey: Mapping
+
+(B (name journey-map)
+   (=> (I#JOURNEY x :0.9)
+       (S#JOURNEY x)))
 
 
 ;; Leader
 ;;   A person who manages or controls other people, esp. because of his or
 ;;   her ability or position.
 
-;; TODO: Add leader axioms.
+(B (name leader/лидер)
+   (=> (S#LEADER e0 :0.9)
+       (лидер-nn e0 x)))
+(B (name boss/босс)
+   (=> (S#LEADER e0 :0.9)
+       (босс-nn e0 x)))
+(B (name honcho/шеф)
+   (=> (S#LEADER e0 :0.9)
+       (шеф-nn e0 x)))
+
+
+;; Leader: Mapping
+
+(B (name leader-map)
+   (=> (I#LEADER x :0.9)
+       (S#LEADER x)))
 
 
 ;; Life Stage
 ;;   One of the series of stages through which a living thing passes from the
 ;;   beginning of its life until its death.
 
-;; TODO: Add life stage axioms.
+(B (name childhood/детство)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (детство-nn e0 x)))
+(B (name youth/молодежь)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (молодежь-nn e0 x)))
+(B (name adolescence/подростковый)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (подростковый-nn e0 x)))
+
+(B (name baby/ребенок)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (ребенок-nn e0 x)))
+(B (name child/дитя)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (дитя-nn e0 x)))
+(B (name teenager/подросток)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (подросток-nn e0 x)))
+
+(B (name young/молодой)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (молодой-adj e0 x)))
+(B (name adolescent/подросток)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (подросток-adj e0 x)))
+(B (name prepubescent/препубертатный)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (препубертатный-adj e0 x)))
+(B (name pubescent/опушенные)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (опушенные-adj e0 x)))
+(B (name elderly/пожилой)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (пожилой-adj e0 x)))
+
+
+;; Life Stage: Mapping
+
+(B (name life-stage-map)
+   (=> (I#LIFE_STAGE x :0.9)
+       (S#LIFE_STAGE x)))
 
 
 ;; Light
@@ -5439,97 +5625,6 @@
        (задохнуться-vb e0 x y u)))
 
 
-;; Physical Harm: Protection
-
-(B (name protection/защита)
-   (=> (^ (S#PHYSICAL_HARM u :0.45) (SS#PHYSICAL_HARM%PROTECTION x u :0.45))
-       (защита-nn e0 x)))
-(B (name shelter/укрытие)
-   (=> (^ (S#PHYSICAL_HARM u :0.45) (SS#PHYSICAL_HARM%PROTECTION x u :0.45))
-       (укрытие-nn e0 x)))
-(B (name asylum/убежище)
-   (=> (^ (S#PHYSICAL_HARM u :0.45) (SS#PHYSICAL_HARM%PROTECTION x u :0.45))
-       (убежище-nn e0 x)))
-(B (name shield/щит)
-   (=> (^ (S#PHYSICAL_HARM u :0.45) (SS#PHYSICAL_HARM%PROTECTION x u :0.45))
-       (щит-nn e0 x)))
-(B (name armor/броня)
-   (=> (^ (S#PHYSICAL_HARM u :0.45) (SS#PHYSICAL_HARM%PROTECTION x u :0.45))
-       (броня-nn e0 x)))
-(B (name armor/доспех)
-   (=> (^ (S#PHYSICAL_HARM u :0.45) (SS#PHYSICAL_HARM%PROTECTION x u :0.45))
-       (доспех-nn e0 x)))
-(B (name armor/латы)
-   (=> (^ (S#PHYSICAL_HARM u :0.45) (SS#PHYSICAL_HARM%PROTECTION x u :0.45))
-       (латы-nn e0 x)))
-(B (name fortress/крепость)
-   (=> (^ (S#PHYSICAL_HARM u :0.45) (SS#PHYSICAL_HARM%PROTECTION x u :0.45))
-       (крепость-nn e0 x)))
-
-(B (name evasion/уклонение-от)
-   (=> (^ (S#PHYSICAL_HARM u :0.45) (SS#PHYSICAL_HARM%PROTECTION x u :0.45))
-       (^ (уклонение-nn e0 x) (от-in e1 x u))))
-(B (name evade/уклониться-от)
-   (=> (^ (S#PHYSICAL_HARM u :0.45) (SS#PHYSICAL_HARM%PROTECTION x u :0.45))
-       (^ (уклониться-vb e0 x y z) (от-in e1 e0 u))))
-(B (name evade/уклоняться-от)
-   (=> (^ (S#PHYSICAL_HARM u :0.45) (SS#PHYSICAL_HARM%PROTECTION x u :0.45))
-       (^ (уклоняться-vb e0 x y z) (от-in e1 e0 u))))
-(B (name insulate-oneself-from/отгородиться-от)
-   (=> (^ (S#PHYSICAL_HARM u :0.45) (SS#PHYSICAL_HARM%PROTECTION x u :0.45))
-       (^ (отгородиться-vb e0 x y z) (от-in e1 e0 u))))
-(B (name retreating-from/отгораживаться-от)
-   (=> (^ (S#PHYSICAL_HARM u :0.45) (SS#PHYSICAL_HARM%PROTECTION x u :0.45))
-       (^ (отгораживаться-vb e0 x y z) (от-in e1 e0 u))))
-
-(B (name evasion/уклонение)
-   (=> (^ (S#PHYSICAL_HARM u :0.45) (SS#PHYSICAL_HARM%PROTECTION x u :0.45))
-       (уклонение-nn e0 x)))
-(B (name evade/уклониться)
-   (=> (^ (S#PHYSICAL_HARM u :0.45) (SS#PHYSICAL_HARM%PROTECTION x u :0.45))
-       (уклониться-vb e0 x y z)))
-(B (name evade/уклоняться)
-   (=> (^ (S#PHYSICAL_HARM u :0.45) (SS#PHYSICAL_HARM%PROTECTION x u :0.45))
-       (уклоняться-vb e0 x y z)))
-
-(B (name harbor/укрыть)
-   (=> (^ (S#PHYSICAL_HARM u :0.2) (SS#PHYSICAL_HARM%PROTECTION e0 u :0.2)
-          (R#PROTECT-PATIENT y e0 :0.2) (R#PROTECT-AGENT x e0 :0.2))
-       (укрыть-vb e0 x y u2)))
-(B (name cover/укрывать)
-   (=> (^ (S#PHYSICAL_HARM u :0.2) (SS#PHYSICAL_HARM%PROTECTION e0 u :0.2)
-          (R#PROTECT-PATIENT y e0 :0.2) (R#PROTECT-AGENT x e0 :0.2))
-       (укрывать-vb e0 x y u2)))
-(B (name hide/скрыть)
-   (=> (^ (S#PHYSICAL_HARM u :0.2) (SS#PHYSICAL_HARM%PROTECTION e0 u :0.2)
-          (R#PROTECT-PATIENT y e0 :0.2) (R#PROTECT-AGENT x e0 :0.2))
-       (скрыть-vb e0 x y u2)))
-(B (name hide/скрывать)
-   (=> (^ (S#PHYSICAL_HARM u :0.2) (SS#PHYSICAL_HARM%PROTECTION e0 u :0.2)
-          (R#PROTECT-PATIENT y e0 :0.2) (R#PROTECT-AGENT x e0 :0.2))
-       (скрывать-vb e0 x y u2)))
-(B (name protect/защитить)
-   (=> (^ (S#PHYSICAL_HARM u :0.2) (SS#PHYSICAL_HARM%PROTECTION e0 u :0.2)
-          (R#PROTECT-PATIENT y e0 :0.2) (R#PROTECT-AGENT x e0 :0.2))
-       (защитить-vb e0 x y u2)))
-(B (name protect/защищать)
-   (=> (^ (S#PHYSICAL_HARM u :0.2) (SS#PHYSICAL_HARM%PROTECTION e0 u :0.2)
-          (R#PROTECT-PATIENT y e0 :0.2) (R#PROTECT-AGENT x e0 :0.2))
-       (защищать-vb e0 x y u2)))
-(B (name guard/охранять)
-   (=> (^ (S#PHYSICAL_HARM u :0.2) (SS#PHYSICAL_HARM%PROTECTION e0 u :0.2)
-          (R#PROTECT-PATIENT y e0 :0.2) (R#PROTECT-AGENT x e0 :0.2))
-       (охранять-vb e0 x y u2)))
-(B (name save/уберечь)
-   (=> (^ (S#PHYSICAL_HARM u :0.2) (SS#PHYSICAL_HARM%PROTECTION e0 u :0.2)
-          (R#PROTECT-PATIENT y e0 :0.2) (R#PROTECT-AGENT x e0 :0.2))
-       (уберечь-vb e0 x y u2)))
-(B (name safeguard/уберегать)
-   (=> (^ (S#PHYSICAL_HARM u :0.2) (SS#PHYSICAL_HARM%PROTECTION e0 u :0.2)
-          (R#PROTECT-PATIENT y e0 :0.2) (R#PROTECT-AGENT x e0 :0.2))
-       (уберегать-vb e0 x y u2)))
-
-
 ;; Physical Harm: Mapping
 
 (B (name physical-harm-map)
@@ -5541,9 +5636,6 @@
 (B (name physical-harm-restraint-map)
    (=> (I#PHYSICAL_HARM%RESTRAINT x y :0.9)
        (SS#PHYSICAL_HARM%RESTRAINT x y)))
-(B (name physical-harm-protection-map)
-   (=> (I#PHYSICAL_HARM%PROTECTION x y :0.9)
-       (SS#PHYSICAL_HARM%PROTECTION x y)))
 
 
 ;; Physical Location
@@ -5927,7 +6019,100 @@
 ;;   damaged; the act of preventing somebody or something from being harmed
 ;;   or damaged, or the state of being kept safe.
 
-;; TODO: Add protection axioms.
+(B (name protection/защита)
+   (=> (S#PROTECTION u :0.9)
+       (защита-nn e0 x)))
+(B (name shelter/укрытие)
+   (=> (S#PROTECTION u :0.9)
+       (укрытие-nn e0 x)))
+(B (name asylum/убежище)
+   (=> (S#PROTECTION u :0.9)
+       (убежище-nn e0 x)))
+(B (name shield/щит)
+   (=> (S#PROTECTION u :0.9)
+       (щит-nn e0 x)))
+(B (name armor/броня)
+   (=> (S#PROTECTION u :0.9)
+       (броня-nn e0 x)))
+(B (name armor/доспех)
+   (=> (S#PROTECTION u :0.9)
+       (доспех-nn e0 x)))
+(B (name armor/латы)
+   (=> (S#PROTECTION u :0.9)
+       (латы-nn e0 x)))
+(B (name fortress/крепость)
+   (=> (S#PROTECTION u :0.9)
+       (крепость-nn e0 x)))
+
+(B (name evasion/уклонение-от)
+   (=> (S#PROTECTION u :0.9)
+       (^ (уклонение-nn e0 x) (от-in e1 x u))))
+(B (name evade/уклониться-от)
+   (=> (S#PROTECTION u :0.9)
+       (^ (уклониться-vb e0 x y z) (от-in e1 e0 u))))
+(B (name evade/уклоняться-от)
+   (=> (S#PROTECTION u :0.9)
+       (^ (уклоняться-vb e0 x y z) (от-in e1 e0 u))))
+(B (name insulate-oneself-from/отгородиться-от)
+   (=> (S#PROTECTION u :0.9)
+       (^ (отгородиться-vb e0 x y z) (от-in e1 e0 u))))
+(B (name retreating-from/отгораживаться-от)
+   (=> (S#PROTECTION u :0.9)
+       (^ (отгораживаться-vb e0 x y z) (от-in e1 e0 u))))
+
+(B (name evasion/уклонение)
+   (=> (S#PROTECTION u :0.9)
+       (уклонение-nn e0 x)))
+(B (name evade/уклониться)
+   (=> (S#PROTECTION u :0.9)
+       (уклониться-vb e0 x y z)))
+(B (name evade/уклоняться)
+   (=> (S#PROTECTION u :0.9)
+       (уклоняться-vb e0 x y z)))
+
+(B (name harbor/укрыть)
+   (=> (^ (S#PROTECTION u :0.3) (R#PROTECT-PATIENT y e0 :0.3)
+          (R#PROTECT-AGENT x e0 :0.3))
+       (укрыть-vb e0 x y u2)))
+(B (name cover/укрывать)
+   (=> (^ (S#PROTECTION u :0.3) (R#PROTECT-PATIENT y e0 :0.3)
+          (R#PROTECT-AGENT x e0 :0.3))
+       (укрывать-vb e0 x y u2)))
+(B (name hide/скрыть)
+   (=> (^ (S#PROTECTION u :0.3) (R#PROTECT-PATIENT y e0 :0.3)
+          (R#PROTECT-AGENT x e0 :0.3))
+       (скрыть-vb e0 x y u2)))
+(B (name hide/скрывать)
+   (=> (^ (S#PROTECTION u :0.3) (R#PROTECT-PATIENT y e0 :0.3)
+          (R#PROTECT-AGENT x e0 :0.3))
+       (скрывать-vb e0 x y u2)))
+(B (name protect/защитить)
+   (=> (^ (S#PROTECTION u :0.3) (R#PROTECT-PATIENT y e0 :0.3)
+          (R#PROTECT-AGENT x e0 :0.3))
+       (защитить-vb e0 x y u2)))
+(B (name protect/защищать)
+   (=> (^ (S#PROTECTION u :0.3) (R#PROTECT-PATIENT y e0 :0.3)
+          (R#PROTECT-AGENT x e0 :0.3))
+       (защищать-vb e0 x y u2)))
+(B (name guard/охранять)
+   (=> (^ (S#PROTECTION u :0.3) (R#PROTECT-PATIENT y e0 :0.3)
+          (R#PROTECT-AGENT x e0 :0.3))
+       (охранять-vb e0 x y u2)))
+(B (name save/уберечь)
+   (=> (^ (S#PROTECTION u :0.3) (R#PROTECT-PATIENT y e0 :0.3)
+          (R#PROTECT-AGENT x e0 :0.3))
+       (уберечь-vb e0 x y u2)))
+(B (name safeguard/уберегать)
+   (=> (^ (S#PROTECTION u :0.3) (R#PROTECT-PATIENT y e0 :0.3)
+          (R#PROTECT-AGENT x e0 :0.3))
+       (уберегать-vb e0 x y u2)))
+
+
+;; Protection: Mapping
+
+(B (name protection-map)
+   (=> (I#PROTECTION x :0.9)
+       (S#PROTECTION x)))
 
 
 ;; Resource
@@ -6167,21 +6352,98 @@
 ;;   A person or entity that controls (something) by making sure that rules
 ;;   and regulations are being followed.
 
-;; TODO: Add rule enforcer axioms.
+(B (name enforcer/инфорсер)
+   (=> (S#RULE_ENFORCER e0 :0.9)
+       (инфорсер-nn e0 x)))
+(B (name referee/судья)
+   (=> (S#RULE_ENFORCER e0 :0.9)
+       (судья-nn e0 x)))
+(B (name police/полиция)
+   (=> (S#RULE_ENFORCER e0 :0.9)
+       (полиция-nn e0 x)))
+(B (name police/контролировать)
+   (=> (S#RULE_ENFORCER e0 :0.9)
+       (контролировать-vb e0 x y u)))
+
+
+;; Rule Enforcer: Mapping
+
+(B (name rule-enforcer-map)
+   (=> (I#RULE_ENFORCER x :0.9)
+       (S#RULE_ENFORCER x)))
 
 
 ;; Science
 ;;   Knowledge about or study of the natural world based on facts learned
 ;;   through experiments and observation.
 
-;; TODO: Add science axioms.
+(B (name science/наука)
+   (=> (S#SCIENCE e0 :0.9)
+       (наука-nn e0 x)))
+(B (name physics/физика)
+   (=> (S#SCIENCE e0 :0.9)
+       (физика-nn e0 x)))
+(B (name experiment/эксперимент)
+   (=> (S#SCIENCE e0 :0.9)
+       (эксперимент-nn e0 x)))
+(B (name observation/наблюдение)
+   (=> (S#SCIENCE e0 :0.9)
+       (наблюдение-nn e0 x)))
+(B (name laboratory/лаборатория)
+   (=> (S#SCIENCE e0 :0.9)
+       (лаборатория-nn e0 x)))
+
+(B (name experimental/пробный)
+   (=> (S#SCIENCE e0 :0.9)
+       (пробный-adj e0 x)))
+(B (name observational/наблюдательный)
+   (=> (S#SCIENCE e0 :0.9)
+       (наблюдательный-adj e0 x)))
+
+
+;; Science: Mapping
+
+(B (name science-map)
+   (=> (I#SCIENCE x :0.9)
+       (S#SCIENCE x)))
 
 
 ;; Servant
 ;;   One that serves others; especially, one that performs duties about the
-;;   person or home of a master or personal employer.
+;;   person or home of a master or personal employer. (Including former
+;;   ENSLAVEMENT axioms.)
 
-;; TODO: Add servant axioms.
+(B (name servant/слуга)
+   (=> (S#SERVANT e0 :0.9)
+       (слуга-nn e0 x)))
+(B (name butler/дворецкий)
+   (=> (S#SERVANT e0 :0.9)
+       (дворецкий-nn e0 x)))
+(B (name valet/камердинер)
+   (=> (S#SERVANT e0 :0.9)
+       (камердинер-nn e0 x)))
+(B (name maidservant/прислуга)
+   (=> (S#SERVANT e0 :0.9)
+       (прислуга-nn e0 x)))
+(B (name maid/горничная)
+   (=> (S#SERVANT e0 :0.9)
+       (горничная-nn e0 x)))
+(B (name housemaid/горничная)
+   (=> (S#SERVANT e0 :0.9)
+       (горничная-nn e0 x)))
+(B (name cleaner/уборщик)
+   (=> (S#SERVANT e0 :0.9)
+       (уборщик-nn e0 x)))
+(B (name lackey/холоп)
+   (=> (S#SERVANT e0 :0.9)
+       (холоп-nn e0 x)))
+
+(B (name serve/служить)
+   (=> (S#SERVANT e0 :0.9)
+       (служить-vb e0 x y u)))
+(B (name wait/прислуживать)
+   (=> (S#SERVANT e0 :0.9)
+       (прислуживать-vb e0 x y u)))
 
 
 ;; Struggle
@@ -6299,19 +6561,158 @@
 ;;   A measurement that indicates how hot or cold something is; a measurement
 ;;   in degrees showing the heat of something (such as air or water).
 
-;; TODO: Add temperature axioms.
+(B (name temperature/температура)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (температура-nn e0 x)))
+(B (name celsius/Цельсия)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (Цельсия-nn e0 x)))
+(B (name thermometer/термометр)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (термометр-nn e0 x)))
+
+(B (name hot/горячая)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (горячая-adj e0 x)))
+(B (name cold/холодно)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (холодно-adj e0 x)))
+(B (name warm/теплый)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (теплый-adj e0 x)))
+(B (name cool/прохладно)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (прохладно-adj e0 x)))
+(B (name chilly/холодно)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (холодно-adj e0 x)))
+
+(B (name chill/холод)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (холод-nn e0 x)))
+(B (name cold/холодно)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (холодно-nn e0 x)))
+(B (name heat/тепло)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (тепло-nn e0 x)))
+
+
+;; Temperature: Mapping
+
+(B (name temperature-map)
+   (=> (I#TEMPERATURE x :0.9)
+       (S#TEMPERATURE x)))
 
 
 ;; Theft
 ;;   The felonious taking and removing of personal property with intent to
 ;;   deprive the rightful owner of it.
 
-;; TODO: Add theft axioms.
+(B (name theft/кража)
+   (=> (S#THEFT e0 :0.9)
+       (кража-nn e0 x)))
+(B (name theft/воровство)
+   (=> (S#THEFT e0 :0.9)
+       (воровство-nn e0 x)))
+(B (name robbery/грабеж)
+   (=> (S#THEFT e0 :0.9)
+       (грабеж-nn e0 x)))
+(B (name robbery/грабёж)
+   (=> (S#THEFT e0 :0.9)
+       (грабёж-nn e0 x)))
+(B (name robbery/ограбление)
+   (=> (S#THEFT e0 :0.9)
+       (ограбление-nn e0 x)))
+
+(B (name rob/грабить)
+   (=> (^ (S#THEFT e0 :0.3) (R#CRIME-AGENT x e0 :0.3)
+          (R#THEFT-THEME z e0 :0.3))
+       (грабить-vb e0 x z u2)))
+(B (name rob/ограбить)
+   (=> (^ (S#THEFT e0 :0.3) (R#CRIME-AGENT x e0 :0.3)
+          (R#THEFT-THEME z e0 :0.3))
+       (ограбить-vb e0 x z u2)))
+(B (name steal/красть)
+   (=> (^ (S#THEFT e0 :0.3) (R#CRIME-AGENT x e0 :0.3)
+          (R#THEFT-THEME z e0 :0.3))
+       (красть-vb e0 x z u2)))
+(B (name steal/украсть)
+   (=> (^ (S#THEFT e0 :0.3) (R#CRIME-AGENT x e0 :0.3)
+          (R#THEFT-THEME z e0 :0.3))
+       (украсть-vb e0 x z u2)))
+(B (name rob/обокрасть)
+   (=> (^ (S#THEFT e0 :0.3) (R#CRIME-AGENT x e0 :0.3)
+          (R#CRIME-VICTIM z e0 :0.3))
+       (обокрасть-vb e0 x z u2)))
+
+(B (name steal/воровать)
+   (=> (^ (S#THEFT e0 :0.3) (R#CRIME-AGENT x e0 :0.3)
+          (R#THEFT-THEME z e0 :0.3))
+       (воровать-vb e0 x z u2)))
+(B (name steal/своровать)
+   (=> (^ (S#THEFT e0 :0.3) (R#CRIME-AGENT x e0 :0.3)
+          (R#THEFT-THEME z e0 :0.3))
+       (своровать-vb e0 x z u2)))
+(B (name rob/обворовать)
+   (=> (^ (S#THEFT e0 :0.3) (R#CRIME-AGENT x e0 :0.3)
+          (R#CRIME-VICTIM z e0 :0.3))
+       (обворовать-vb e0 x z u2)))
+(B (name steal-money/наворовать)
+   (=> (^ (S#THEFT e0 :0.3) (R#CRIME-AGENT x e0 :0.3)
+          (R#CRIME-VICTIM z e0 :0.3))
+       (наворовать-vb e0 x z u2)))
+
+(B (name bandit/бандит)
+   (=> (^ (S#THEFT e0 :0.45) (SS#THEFT%PERPETRATOR x e0 :0.45))
+       (бандит-nn e0 x)))
+(B (name robber/грабитель)
+   (=> (^ (S#THEFT e0 :0.45) (SS#THEFT%PERPETRATOR x e0 :0.45))
+       (грабитель-nn e0 x)))
+(B (name thief/вор)
+   (=> (^ (S#THEFT e0 :0.45) (SS#THEFT%PERPETRATOR x e0 :0.45))
+       (вор-nn e0 x)))
+(B (name thief/ворюга)
+   (=> (^ (S#THEFT e0 :0.45) (SS#THEFT%PERPETRATOR x e0 :0.45))
+       (ворюга-nn e0 x)))
+(B (name pilferer/воришка)
+   (=> (^ (S#THEFT e0 :0.45) (SS#THEFT%PERPETRATOR x e0 :0.45))
+       (воришка-nn e0 x)))
+(B (name thieves/ворье)
+   (=> (^ (S#THEFT e0 :0.45) (SS#THEFT%PERPETRATOR x e0 :0.45))
+       (ворье-nn e0 x)))
+(B (name thieves/ворьё)
+   (=> (^ (S#THEFT e0 :0.45) (SS#THEFT%PERPETRATOR x e0 :0.45))
+       (ворьё-nn e0 x)))
+(B (name petty-thief/жулик)
+   (=> (^ (S#THEFT e0 :0.45) (SS#THEFT%PERPETRATOR x e0 :0.45))
+       (жулик-nn e0 x)))
+
+
+;; Theft: Mapping
+
+(B (name theft-map)
+   (=> (I#THEFT x :0.9)
+       (S#THEFT x)))
+(B (name theft-perpetrator-map)
+   (=> (I#THEFT%PERPETRATOR x :0.9)
+       (SS#THEFT%PERPETRATOR x)))
 
 
 ;; Upward Movement
 ;;   Movement from a lower place or level to a higher place or level.
 ;;   (Including axioms from LOW_POINT%MOVEMENT_UPWARD.)
+
+(B (name climb/подниматься)
+   (=> (^ (S#UPWARD_MOVEMENT e0 :0.30) (R#MOVE-U-PATIENT x e0 :0.30))
+       (подниматься-vb e0 x y z)))
+(B (name jump/прыгать)
+   (=> (^ (S#UPWARD_MOVEMENT e0 :0.30) (R#MOVE-U-PATIENT x e0 :0.30))
+       (прыгать-vb e0 x y z)))
+(B (name raise/поднимать)
+   (=> (^ (S#UPWARD_MOVEMENT e0 :0.30) (R#MOVE-UP e0 e0 :0.30)
+          (R#MOVER x e0 :0.30))
+       (поднимать-vb e0 x y u)))
 
 
 ;; Upward Movement: Mapping
@@ -6325,7 +6726,31 @@
 ;;   Something used to transport people or goods, esp. something used on land
 ;;   or roads.
 
-;; TODO: Add vehicle axioms.
+(B (name automobile/автомобиль)
+   (=> (S#VEHICLE e0 :0.9)
+       (автомобиль-nn e0 x)))
+(B (name auto/авто)
+   (=> (S#VEHICLE e0 :0.9)
+       (авто-nn e0 x)))
+(B (name motorcar/автомобилестроение)
+   (=> (S#VEHICLE e0 :0.9)
+       (автомобилестроение-nn e0 x)))
+(B (name truck/грузовик)
+   (=> (S#VEHICLE e0 :0.9)
+       (грузовик-nn e0 x)))
+(B (name van/ван)
+   (=> (S#VEHICLE e0 :0.9)
+       (ван-nn e0 x)))
+(B (name minivan/минивэн)
+   (=> (S#VEHICLE e0 :0.9)
+       (минивэн-nn e0 x)))
+
+
+;; Vehicle: Mapping
+
+(B (name vehicle-map)
+   (=> (I#VEHICLE x :0.9)
+       (S#VEHICLE x)))
 
 
 ;; War

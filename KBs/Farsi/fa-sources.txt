@@ -15,7 +15,6 @@
 (B (name gashtan)
    (=> (shodan e0 x y :0.9)
        (^ (گشت‫#‬گرد-vb e0 x u1 u2) (NVE e6 y e0))))
-;; TODO: Check konam ke boodan chejoori miad
 (B (name shodan)
    (=> (boodan e0 x y :0.9)
        (^ (بود#باش-vb e0 x u1 u2) (NVE e6 y e0))))
@@ -74,10 +73,13 @@
 
 ;; A God: Type
 
-(B (name god)
+(B (name god/خدا)
    (=> (^ (S#A_GOD e0 :0.45) (SS#A_GOD%TYPE x e0 :0.45))
        (خدا-nn e0 x)))
-(B (name idol)
+(B (name goddess/الهه)
+   (=> (^ (S#A_GOD e0 :0.45) (SS#A_GOD%TYPE x e0 :0.45))
+       (الهه-nn e0 x)))
+(B (name idol/معبود)
    (=> (^ (S#A_GOD e0 :0.45) (SS#A_GOD%TYPE x e0 :0.45))
        (معبود-nn e0 x)))
 
@@ -507,14 +509,42 @@
 ;; Backward Movement
 ;;   Movement to or toward what is behind.
 
-;; TODO: Add backward movement axioms.
+(B (name reverse/معکوس)
+   (=> (S#BACKWARD_MOVEMENT e0 :0.9)
+       (reverse-adj e0 x)))
+
+(B (name reverse/پشت)
+   (=> (S#BACKWARD_MOVEMENT e0 :0.9)
+       (reverse-nn e0 x)))
+
+
+;; Backward Movement: Mapping
+
+(B (name backward-movement-map)
+   (=> (I#BACKWARD_MOVEMENT x :0.9)
+       (S#BACKWARD_MOVEMENT x)))
 
 
 ;; Barrier
 ;;   Anything used or acting to block someone from going somewhere or from
 ;;   doing something, or to block something from happening.
 
-;; TODO: Add barrier axioms.
+(B (name barrier/مانع)
+   (=> (S#BARRIER e0 :0.9)
+       (مانع-nn e0 x)))
+(B (name obstacle/پاگیر)
+   (=> (S#BARRIER e0 :0.9)
+       (پاگیر-nn e0 x)))
+(B (name roadblock/موانع)
+   (=> (S#BARRIER e0 :0.9)
+       (موانع-nn e0 x)))
+
+
+;; Barrier: Mapping
+
+(B (name barrier-map)
+   (=> (I#BARRIER x :0.9)
+       (S#BARRIER x)))
 
 
 ;; Blood Stream
@@ -524,8 +554,8 @@
 ;; Blood Stream: Component
 
 (B (name blood)
-   (=> (^ (S#BLOOD_STREAM e0 :0.3) (SS#BLOOD_STREAM%COMPONENT x e0 :0.3)
-          (R#BLOOD x e0 :0.3))
+   (=> (^ (S#BLOOD_STREAM e0 :0.30) (SS#BLOOD_STREAM%COMPONENT x e0 :0.30)
+          (R#BLOOD x e0 :0.30))
        (خون-nn e0 x)))
 (B (name vein)
    (=> (^ (S#BLOOD_STREAM e0 :0.45) (SS#BLOOD_STREAM%COMPONENT x e0 :0.45))
@@ -939,13 +969,60 @@
 ;;   The activity of making, buying, or selling goods or providing services
 ;;   in exchange for money.
 
-;; TODO: Write business axioms.
+(B (name business/تجارت)
+   (=> (S#BUSINESS e0 :0.9)
+       (تجارت-nn e0 x)))
+(B (name company/شرکت)
+   (=> (S#BUSINESS e0 :0.9)
+       (شرکت-nn e0 x)))
+(B (name manufacturer/سازنده)
+   (=> (S#BUSINESS e0 :0.9)
+       (سازنده-nn e0 x)))
+
+(B (name manufacture/ساختن)
+   (=> (S#BUSINESS e0 :0.9)
+       (ساختن-vb e0 x0 x1 x2)))
+(B (name sell/فروش)
+   (=> (S#BUSINESS e0 :0.9)
+       (فروش-vb e0 x0 x1 x2)))
+(B (name buy/خریدن)
+   (=> (S#BUSINESS e0 :0.9)
+       (خریدن-vb e0 x0 x1 x2)))
+
+
+;; Business: Mapping
+
+(B (name business-map)
+   (=> (I#BUSINESS x :0.9)
+       (S#BUSINESS x)))
 
 
 ;; Clothing
 ;;   The things that people wear to cover their bodies.
 
-;; TODO: Write clothing axioms.
+(B (name clothing/لباس)
+   (=> (S#CLOTHING e0 :0.9)
+       (لباس-nn e0 x)))
+
+(B (name shirt/پیراهن)
+   (=> (S#CLOTHING e0 :0.9)
+       (پیراهن-nn e0 x)))
+(B (name jacket/ژاکت)
+   (=> (S#CLOTHING e0 :0.9)
+       (jacket-nn e0 x)))
+(B (name hat/کلاه)
+   (=> (S#CLOTHING e0 :0.9)
+       (کلاه-nn e0 x)))
+(B (name cloak/عبا)
+   (=> (S#CLOTHING e0 :0.9)
+       (عبا-nn e0 x)))
+
+
+;; Clothing: Mapping
+
+(B (name clothing-map)
+   (=> (I#CLOTHING x :0.9)
+       (S#CLOTHING x)))
 
 
 ;; Competition
@@ -955,14 +1032,28 @@
 
 ;; Competition: Type
 
-;; TODO: Add competition types (competition, contest, race)
+(B (name competition/رقابت)
+   (=> (^ (S#COMPETITION x :0.45) (SS#COMPETITION%TYPE x e0 :0.45))
+       (رقابت-nn e0 x)))
+(B (name race/مسابقه)
+   (=> (^ (S#COMPETITION x :0.45) (SS#COMPETITION%TYPE x e0 :0.45))
+       (مسابقه-nn e0 x)))
+(B (name fair-shot-at)
+   (=> (^ (S#COMPETITION e1 :0.45) (SS#COMPETITION%TYPE x e1 :0.45))
+       (^ (منصفانه-adj e0 x) (ضربه-nn e1 x) (بر-in e3 x y))))
 
 
 ;; Competition: Component
 
-(B (name fair-shot-at)
-   (=> (^ (S#COMPETITION e1 :0.45) (SS#COMPETITION%COMPONENT x e1 :0.45))
-       (^ (منصفانه-adj e0 x) (ضربه-nn e1 x) (بر-in e3 x y))))
+(B (name winner/برنده)
+   (=> (^ (S#COMPETITION x :0.45) (SS#COMPETITION%COMPONENT x e0 :0.45))
+       (برنده-nn e0 x)))
+(B (name loser/بازنده)
+   (=> (^ (S#COMPETITION x :0.45) (SS#COMPETITION%COMPONENT x e0 :0.45))
+       (بازنده-nn e0 x)))
+(B (name player/بازیکن)
+   (=> (^ (S#COMPETITION x :0.45) (SS#COMPETITION%COMPONENT x e0 :0.45))
+       (بازیکن-nn e0 x)))
 
 
 ;; Competition: Mapping
@@ -1177,7 +1268,32 @@
 ;;   An object (such as a box or can) that can hold something; a receptacle
 ;;   (as a box or jar) for holding goods.
 
-;; TODO: Add container axioms.
+(B (name container/ظرف)
+   (=> (S#CONTAINER e0 :0.45)
+       (ظرف-nn e0 x)))
+
+(B (name box/جعبه)
+   (=> (S#CONTAINER e0 :0.45)
+       (جعبه-nn e0 x)))
+(B (name can/قوطی)
+   (=> (S#CONTAINER e0 :0.45)
+       (قوطی-nn e0 x)))
+(B (name jar/شیشه)
+   (=> (S#CONTAINER e0 :0.45)
+       (شیشه-nn e0 x)))
+(B (name jug/کوزه)
+   (=> (S#CONTAINER e0 :0.45)
+       (کوزه-nn e0 x)))
+(B (name crate/جعبه)
+   (=> (S#CONTAINER e0 :0.45)
+       (جعبه-nn e0 x)))
+
+
+;; Container: Mapping
+
+(B (name container-map)
+   (=> (I#CONTAINER x :0.9)
+       (S#CONTAINER x)))
 
 
 ;; Contamination
@@ -1304,94 +1420,13 @@
           (R#VICTIM y e0 :0.2))
        (کشت#کش-vb e0 x y u)))
 
-
-;; Crime: Theft
-
-(B (name steal)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2) (R#AGENT x e0 :0.2)
-          (R#THEME z e0 :0.2))
-       (^ (سرقت-nn e1 z) (kardan e0 x y z))))
-(B (name steal)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2) (R#AGENT x e0 :0.2)
-          (R#THEME z e0 :0.2))
-       (دزدید#دزد-vb e0 x z u2)))
-
-(B (name pilfer)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2) (R#AGENT x e0 :0.2)
-          (R#THEME z e0 :0.2))
-       (^ (کش-nn e1 a) (raftan e0 x z a))))
-(B (name pinch)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2) (R#AGENT x e0 :0.2)
-          (R#THEME z e0 :0.2)) (قاپید#قاپ-vb e0 x z u2)))
-(B (name pinch)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2) (R#AGENT x e0 :0.2)
-          (R#THEME z e0 :0.2))
-       (قاپید#قاپ-vb e0 x z u2)))
-(B (name pinch)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2) (R#AGENT x e0 :0.2)
-          (R#THEME z e0 :0.2))
-       (قاپید#قاپ-vb e0 x z u2)))
-(B (name plunder)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2) (R#AGENT x e0 :0.2)
-          (R#THEME z e0 :0.2))
-       (^ (غارت-nn e1 z) (kardan e0 x y z))))
-
-(B (name theft)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (سرقت-nn e0 x)))
-(B (name larceny)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (دستبرد-nn e0 x)))
-(B (name stealage)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (دزدی-nn e0 x)))
-(B (name stealing)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (^ (راه-nn e0 x) (زنی-nn e1 y) (nn e2 x y))))
-(B (name stealing)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (^ (یغما-nn e0 x) (گری-nn e1 y) (nn e2 x y))))
-(B (name stealing)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (راهزنی-nn e0 x)))
-(B (name thievery)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (غارت-nn e0 x)))
-(B (name thievery)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (یغماگری-nn e0 x)))
-(B (name thievery)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (یغما‫-‬گری-nn e0 x)))
-(B (name pillage)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (تاراج-nn e0 x)))
-(B (name plundering)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (غارتگری-nn e0 x)))
-(B (name booty)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (یغما-nn e0 x)))
-(B (name plunder)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (چپاول-nn e0 x)))
-
-(B (name rob)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2) (R#AGENT x e0 :0.2)
-          (R#VICTIM y e0 :0.2))
-       (ربود#ربا-vb e0 x y u)))
-(B (name mug)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2) (R#AGENT x e0 :0.2)
-          (R#VICTIM y e0 :0.2))
-       (^ (دستبرد-nn e1 a) (zadan e0 x z a))))
-
 ;; From - Crime
 (B (name from-theft)
    (=> (R#CRIME_VICTIM y :0.9)
-       (^ (SS#CRIME_TYPE x e0) (از-in e1 e0 y))))
+       (^ (SS#CRIME%TYPE x e0) (از-in e1 e0 y))))
 (B (name from-theft)
    (=> (R#CRIME_VICTIM y :0.9)
-       (^ (SS#CRIME_TYPE x e0) (به-in e1 e0 y))))
+       (^ (SS#CRIME%TYPE x e0) (به-in e1 e0 y))))
 
 (B (name violence)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
@@ -1400,10 +1435,6 @@
 
 ;; Crime: Perpetrator
 
-(B (name bandit)
-   (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
-          (R#AGENT x e0 :0.3))
-       (جانی-nn e0 x)))
 (B (name criminal2)
    (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
           (R#AGENT x e0 :0.3))
@@ -1440,30 +1471,6 @@
    (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
           (R#AGENT x e0 :0.3))
        (فاحشه-nn e0 x)))
-(B (name thief)
-   (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
-          (R#AGENT x e0 :0.3))
-       (سارق-nn e0 x)))
-(B (name pilferer)
-   (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
-          (R#AGENT x e0 :0.3))
-       (دزد-nn e0 x)))
-(B (name mugger)
-   (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
-          (R#AGENT x e0 :0.3))
-       (غارتگر-nn e0 x)))
-(B (name robber)
-   (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
-          (R#AGENT x e0 :0.3))
-       (راهزن-nn e0 x)))
-(B (name burglar)
-   (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
-          (R#AGENT x e0 :0.3))
-       (جیب‫-‬بر-nn e0 x)))
-(B (name plunderer)
-   (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
-          (R#AGENT x e0 :0.3))
-       (چپاولگر-nn e0 x)))
 
 
 ;; Crime: Punishment
@@ -2189,7 +2196,26 @@
 ;;   as strong feeling usually directed toward a specific object and typically
 ;;   accompanied by physiological and behavioral changes in the body.
 
-;; TODO: Add emotion experiencer axioms.
+(B (name emotion/احساسات)
+   (=> (S#EMOTION e0 :0.9)
+       (احساسات-nn e0 x)))
+(B (name feeling/احساس)
+   (=> (S#EMOTION e0 :0.9)
+       (احساس-nn e0 x)))
+
+(B (name anger/خشم)
+   (=> (S#EMOTION e0 :0.9)
+       (خشم-nn e0 x)))
+(B (name fear/ترس)
+   (=> (S#EMOTION e0 :0.9)
+       (ترس-nn e0 x)))
+
+
+;; Emotion Experiencer: Mapping
+
+(B (name emotion-experiencer-map)
+   (=> (I#EMOTION_EXPERIENCER x :0.9)
+       (S#EMOTION_EXPERIENCER x)))
 
 
 ;; Energy
@@ -2235,13 +2261,8 @@
 ;; Enslavement: Servant
 
 (B (name slave)
-   (=> (^ (S#ENSLAVEMENT e0 :0.3) (SS#ENSLAVEMENT%SERVANT e0 e0 :0.3)
-          (R#ENSLAVEMENT-PATIENT x e0 :0.3))
+   (=> (^ (S#ENSLAVEMENT e0 :0.45) (R#ENSLAVEMENT-PATIENT x e0 :0.45))
        (برده-nn e0 x)))
-(B (name servant)
-   (=> (^ (S#ENSLAVEMENT e0 :0.3) (SS#ENSLAVEMENT%SERVANT e0 e0 :0.3)
-          (R#ENSLAVEMENT-PATIENT x e0 :0.3))
-       (نوکر-nn e0 x)))
 
 
 ;; Enslavement: Oppression
@@ -2297,9 +2318,6 @@
 (B (name enslavement-map)
    (=> (I#ENSLAVEMENT x :0.9)
        (S#ENSLAVEMENT x)))
-(B (name servant-map)
-   (=> (I#CONFINEMENT%SERVANT x y :0.9)
-       (SS#CONFINEMENT%SERVANT x y)))
 (B (name oppression-map)
    (=> (I#CONFINEMENT%OPPRESSION x y :0.9)
        (SS#CONFINEMENT%OPPRESSION x y)))
@@ -2314,7 +2332,15 @@
 
 ;; Fabric: Type
 
-;; TODO: Add fabric types (fabric, cloth, weave, ...)
+(B (name fabric/پارچه)
+  (=> (^ (S#FABRIC x :0.48) (SS#FABRIC%TYPE e0 x :0.48))
+      (پارچه-nn e0 x)))
+(B (name cloth/پارچه)
+  (=> (^ (S#FABRIC x :0.48) (SS#FABRIC%TYPE e0 x :0.48))
+      (پارچه-nn e0 x)))
+(B (name weave/بافت)
+  (=> (^ (S#FABRIC x :0.48) (SS#FABRIC%TYPE e0 x :0.48))
+      (بافت-nn e0 x)))
 
 
 ;; Fabric: Cut
@@ -2350,19 +2376,86 @@
 ;; Factory
 ;;   A building or group of buildings where products are made.
 
-;; TODO: Add factory axioms.
+(B (name factory/کارخانه)
+  (=> (S#FACTORY x :0.9)
+      (کارخانه-nn e0 x)))
+
+(B (name industrial/صنعتی)
+  (=> (S#FACTORY x :0.9)
+      (صنعتی-adj e0 x)))
+
+
+;; Factory: Mapping
+
+(B (name factory-map)
+  (=> (I#FACTORY x :0.9)
+      (S#FACTORY x)))
 
 
 ;; Family
 ;;   A group of people who are related to each other.
 
-;; TODO: Add family axioms.
+(B (name family/خانواده)
+  (=> (S#FAMILY x :0.9)
+      (خانواده-nn e0 x)))
+(B (name clan/قبیله)
+  (=> (S#FAMILY x :0.9)
+      (قبیله-nn e0 x)))
+(B (name dynasty/سلسله)
+  (=> (S#FAMILY x :0.9)
+      (سلسله-nn e0 x)))
+
+(B (name ancestor/جد)
+  (=> (S#FAMILY x :0.9)
+      (جد-nn e0 x)))
+(B (name relative/خویشاوند)
+  (=> (S#FAMILY x :0.9)
+      (خویشاوند-nn e0 x)))
+(B (name brother/برادر)
+  (=> (S#FAMILY x :0.9)
+      (برادر-nn e0 x)))
+(B (name sister/خواهر)
+  (=> (S#FAMILY x :0.9)
+      (خواهر-nn e0 x)))
+(B (name mother/مادر)
+  (=> (S#FAMILY x :0.9)
+      (مادر-nn e0 x)))
+(B (name father/پدر)
+  (=> (S#FAMILY x :0.9)
+      (پدر-nn e0 x)))
+
+(B (name familial/خانوادگی)
+  (=> (S#FAMILY x :0.9)
+      (خانوادگی-adj e0 x)))
+
+
+;; Family: Mapping
+
+(B (name family-map)
+  (=> (I#FAMILY x :0.9)
+      (S#FAMILY x)))
+
 
 
 ;; Fire
 ;;   The light and heat and especially the flame produced by burning.
 
-;; TODO: Add fire axioms.
+(B (name fire/حریق)
+  (=> (S#FIRE x :0.9)
+      (حریق-nn e0 x)))
+(B (name flame/شعله)
+  (=> (S#FIRE x :0.9)
+      (شعله-nn e0 x)))
+(B (name smoke/دود)
+  (=> (S#FIRE x :0.9)
+      (دود-nn e0 x)))
+
+
+;; Fire: Mapping
+
+(B (name fire-map)
+  (=> (I#FIRE x :0.9)
+      (S#FIRE x)))
 
 
 ;; Food
@@ -2488,15 +2581,18 @@
 ;; Forward Motion
 ;;   Movement to or toward what is in front.
 
-;; TODO: Add forward motion axioms (e.g., 'advance').
+
+;; Forward Motion: Mapping
+
+(B (name forward-motion-map)
+   (=> (I#FORWARD_MOTION x :0.9)
+       (S#FORWARD_MOTION x)))
 
 
 ;; Game
 ;;   A competitive activity involving skill, chance, or endurance on the part
 ;;   of two or more persons who play according to a set of rules, usually for
 ;;   their own amusement or for that of spectators.
-
-;; TODO: Add sports.
 
 ;; Game: Type
 (B (name chess)
@@ -2713,21 +2809,83 @@
 ;; Journey
 ;;   An act or instance of traveling from one place to another.
 
-;; TODO: Add journey axioms.
+(B (name journey/سفر)
+   (=> (S#JOURNEY e0 :0.9)
+       (سفر-nn e0 x)))
+(B (name trip/سیاحت)
+   (=> (S#JOURNEY e0 :0.9)
+       (سیاحت-nn e0 x)))
+
+
+;; Journey: Mapping
+
+(B (name journey-map)
+   (=> (I#JOURNEY x :0.9)
+       (S#JOURNEY x)))
 
 
 ;; Leader
 ;;   A person who manages or controls other people, esp. because of his or
 ;;   her ability or position.
 
-;; TODO: Add leader axioms.
+(B (name leader/رهبر)
+   (=> (S#LEADER e0 :0.9)
+       (رهبر-nn e0 x)))
+(B (name boss/رئیس)
+   (=> (S#LEADER e0 :0.9)
+       (رئیس-nn e0 x)))
+
+
+;; Leader: Mapping
+
+(B (name leader-map)
+   (=> (I#LEADER x :0.9)
+       (S#LEADER x)))
 
 
 ;; Life Stage
 ;;   One of the series of stages through which a living thing passes from the
 ;;   beginning of its life until its death.
 
-;; TODO: Add life stage axioms.
+(B (name childhood/کودکی)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (کودکی-nn e0 x)))
+(B (name youth/جوانی)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (جوانی-nn e0 x)))
+(B (name adolescence/نوجوانی)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (adolescence-nn e0 x)))
+(B (name puberty/بلوغ)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (بلوغ-nn e0 x)))
+
+(B (name baby/کودک)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (کودک-nn e0 x)))
+(B (name child/کودک)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (کودک-nn e0 x)))
+(B (name teenager/نوجوان)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (نوجوان-nn e0 x)))
+
+(B (name young/جوان)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (جوان-adj e0 x)))
+(B (name adolescent/نوجوان)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (نوجوان-adj e0 x)))
+(B (name elderly/سالمندان)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (سالمندان-adj e0 x)))
+
+
+;; Life Stage: Mapping
+
+(B (name life-stage-map)
+   (=> (I#LIFE_STAGE x :0.9)
+       (S#LIFE_STAGE x)))
 
 
 ;; Light
@@ -3060,7 +3218,15 @@
 
 ;; Movement: Movement
 
-;; TODO: Add movement axioms (movmement, move, mobility, circle, cycle).
+(B (name movement/جنبش)
+   (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT x e0 :0.45))
+       (جنبش-nn e0 x)))
+(B (name move/حرکت)
+   (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT x e0 :0.45))
+       (حرکت-nn e0 x)))
+(B (name mobility/تحرک)
+   (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT x e0 :0.45))
+       (تحرک-nn e0 x)))
 
 
 ;; Movement: Mapping
@@ -3765,24 +3931,6 @@
           (R#HARM-AGENT x e0 :0.23) (R#HARM-VICTIM y e0 :0.23))
        (^ (تنگ-nn e1 z) (kardan e0 x y z))))
 
-
-;; Physical Harm: Protection
-
-(B (name shield)
-   (=> (^ (S#PHYSICAL_HARM u :0.45) (SS#PHYSICAL_HARM%PROTECTION x u :0.45))
-       (سپر-nn e0 x)))
-(B (name shelter)
-   (=> (^ (S#PHYSICAL_HARM u :0.45) (SS#PHYSICAL_HARM%PROTECTION x u :0.45))
-       (پناه-nn e0 x)))
-(B (name protection)
-   (=> (^ (S#PHYSICAL_HARM u :0.45) (SS#PHYSICAL_HARM%PROTECTION x u :0.45))
-       (محافظت-nn e0 x)))
-
-(B (name shield-vb)
-   (=> (^ (S#PHYSICAL_HARM u :0.2) (SS#PHYSICAL_HARM%PROTECTION e0 u :0.2)
-          (R#PROTECT-PATIENT y e0 :0.2) (R#PROTECT-AGENT x e0 :0.2))
-       (^ (سپر-nn e1 z) (shodan e0 y w) (nn e2 z y))))
-
 (B (name from-theft)
    (=> (R#HARM-VICTIM y e0 :0.9)
        (^ (S#PHYSICAL_HARM-PROTECTION e0) (از-in e1 e0 y))))
@@ -3802,9 +3950,6 @@
 (B (name physical-harm-restraint-map)
    (=> (I#PHYSICAL_HARM%RESTRAINT x y :0.9)
        (SS#PHYSICAL_HARM%RESTRAINT x y)))
-(B (name physical-harm-protection-map)
-   (=> (I#PHYSICAL_HARM%PROTECTION x y :0.9)
-       (SS#PHYSICAL_HARM%PROTECTION x y)))
 
 
 ;; Physical Location
@@ -4135,7 +4280,28 @@
 ;;   damaged; the act of preventing somebody or something from being harmed
 ;;   or damaged, or the state of being kept safe.
 
-;; TODO: Add protection axioms.
+(B (name shield/سپر)
+   (=> (S#PROTECTION e0 :0.9)
+       (سپر-nn e0 x)))
+(B (name shelter/پناه)
+   (=> (S#PROTECTION e0 :0.9)
+       (پناه-nn e0 x)))
+(B (name protection/محافظت)
+   (=> (S#PROTECTION e0 :0.9)
+       (محافظت-nn e0 x)))
+
+(B (name shield-vb)
+   (=> (^ (S#PROTECTION e0 :0.30)
+          (R#PROTECT-PATIENT y e0 :0.30) (R#PROTECT-AGENT x e0 :0.30))
+       (^ (سپر-nn e1 z) (shodan e0 y w) (nn e2 z y))))
+
+
+;; Protection: Mapping
+
+(B (name protection-map)
+   (=> (I#PROTECTION x :0.9)
+       (S#PROTECTION x)))
+
 
 
 ;; Resource
@@ -4296,21 +4462,83 @@
 ;;   A person or entity that controls (something) by making sure that rules
 ;;   and regulations are being followed.
 
-;; TODO: Add rule enforcer axioms.
+(B (name enforcer/مجری)
+   (=> (S#RULE_ENFORCER e0 :0.9)
+       (مجری-nn e0 x)))
+(B (name referee/داور)
+   (=> (S#RULE_ENFORCER e0 :0.9)
+       (داور-nn e0 x)))
+(B (name police/پلیس)
+   (=> (S#RULE_ENFORCER e0 :0.9)
+       (پلیس-nn e0 x)))
+
+
+;; Rule Enforcer: Mapping
+
+(B (name rule-enforcer-map)
+   (=> (I#RULE_ENFORCER x :0.9)
+       (S#RULE_ENFORCER x)))
 
 
 ;; Science
 ;;   Knowledge about or study of the natural world based on facts learned
 ;;   through experiments and observation.
 
-;; TODO: Add science axioms.
+(B (name science/علم)
+   (=> (S#SCIENCE e0 :0.9)
+       (علم-nn e0 x)))
+(B (name physics/فیزیک)
+   (=> (S#SCIENCE e0 :0.9)
+       (فیزیک-nn e0 x)))
+(B (name experiment/تجربه)
+   (=> (S#SCIENCE e0 :0.9)
+       (تجربه-nn e0 x)))
+(B (name observation/مشاهده)
+   (=> (S#SCIENCE e0 :0.9)
+       (مشاهده-nn e0 x)))
+(B (name laboratory/آزمایشگاه)
+   (=> (S#SCIENCE e0 :0.9)
+       (آزمایشگاه-nn e0 x)))
+
+(B (name experimental/تجربی)
+   (=> (S#SCIENCE e0 :0.9)
+       (تجربی-adj e0 x)))
+(B (name observational/مشاهده)
+   (=> (S#SCIENCE e0 :0.9)
+       (مشاهده-adj e0 x)))
+
+
+;; Science: Mapping
+
+(B (name science-map)
+   (=> (I#SCIENCE x :0.9)
+       (S#SCIENCE x)))
 
 
 ;; Servant
 ;;   One that serves others; especially, one that performs duties about the
-;;   person or home of a master or personal employer.
+;;   person or home of a master or personal employer. (Including former
+;;   ENSLAVEMENT axioms.)
 
-;; TODO: Add servant axioms.
+(B (name servant/نوکر)
+   (=> (S#SERVANT e0 :0.9)
+       (نوکر-nn e0 x)))
+(B (name butler/ساقی)
+   (=> (S#SERVANT e0 :0.9)
+       (ساقی-nn e0 x)))
+(B (name valet/ملازم)
+   (=> (S#SERVANT e0 :0.9)
+       (ملازم-nn e0 x)))
+(B (name housemaid/خدمتگزار)
+   (=> (S#SERVANT e0 :0.9)
+       (خدمتگزار-nn e0 x)))
+
+
+;; Servant: Mapping
+
+(B (name servant-map)
+   (=> (I#SERVANT x :0.9)
+       (S#SERVANT x)))
 
 
 ;; Struggle
@@ -4406,14 +4634,162 @@
 ;;   A measurement that indicates how hot or cold something is; a measurement
 ;;   in degrees showing the heat of something (such as air or water).
 
-;; TODO: Add temperature axioms.
+(B (name temperature/دما)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (دما-nn e0 x)))
+(B (name celsius/سانتیگراد)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (سانتیگراد-nn e0 x)))
+(B (name celsius/سانتیگراد)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (سانتیگراد-adj e0 x)))
+(B (name thermometer/دماسنج)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (دماسنجs-nn e0 x)))
+
+(B (name hot/داغ)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (داغ-adj e0 x)))
+(B (name cold/سرد)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (سرد-adj e0 x)))
+(B (name warm/گرم)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (گرم-adj e0 x)))
+(B (name cool/سرد)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (سرد-adj e0 x)))
+
+(B (name chill/چایمان)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (چایمان-nn e0 x)))
+(B (name cold/سرد)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (سرد-nn e0 x)))
+(B (name heat/حرارت)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (حرارت-nn e0 x)))
+
+
+;; Temperature: Mapping
+
+(B (name temperature-map)
+   (=> (I#TEMPERATURE x :0.9)
+       (S#TEMPERATURE x)))
 
 
 ;; Theft
 ;;   The felonious taking and removing of personal property with intent to
-;;   deprive the rightful owner of it.
+;;   deprive the rightful owner of it. (Including former CRIME axioms.)
 
-;; TODO: Add theft axioms.
+(B (name theft/سرقت)
+   (=> (S#THEFT e0 :0.9)
+       (سرقت-nn e0 x)))
+(B (name larceny/دستبرد)
+   (=> (S#THEFT e0 :0.9)
+       (دستبرد-nn e0 x)))
+(B (name stealing/دزدی)
+   (=> (S#THEFT e0 :0.9)
+       (دزدی-nn e0 x)))
+(B (name stealing/راه-زنی)
+   (=> (S#THEFT e0 :0.9)
+       (^ (راه-nn e0 x) (زنی-nn e1 y) (nn e2 x y))))
+(B (name stealing)
+   (=> (S#THEFT e0 :0.9)
+       (^ (یغما-nn e0 x) (گری-nn e1 y) (nn e2 x y))))
+(B (name robbery/راهزنی)
+   (=> (S#THEFT e0 :0.9)
+       (راهزنی-nn e0 x)))
+(B (name looting/غارت)
+   (=> (S#THEFT e0 :0.9)
+       (غارت-nn e0 x)))
+(B (name thievery)
+   (=> (S#THEFT e0 :0.9)
+       (یغماگری-nn e0 x)))
+(B (name thievery)
+   (=> (S#THEFT e0 :0.9)
+       (یغما‫-‬گری-nn e0 x)))
+(B (name pillage)
+   (=> (S#THEFT e0 :0.9)
+       (تاراج-nn e0 x)))
+(B (name plundering)
+   (=> (S#THEFT e0 :0.9)
+       (غارتگری-nn e0 x)))
+(B (name plunder)
+   (=> (S#THEFT e0 :0.9)
+       (چپاول-nn e0 x)))
+(B (name booty)
+   (=> (S#THEFT e0 :0.9)
+       (یغما-nn e0 x)))
+
+(B (name steal)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#THEME z e0 :0.3))
+       (^ (سرقت-nn e1 z) (kardan e0 x y z))))
+(B (name steal)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#THEME z e0 :0.3))
+       (دزدید#دزد-vb e0 x z u2)))
+
+(B (name pilfer)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#THEME z e0 :0.3))
+       (^ (کش-nn e1 a) (raftan e0 x z a))))
+(B (name pinch)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#THEME z e0 :0.3))
+       (قاپید#قاپ-vb e0 x z u2)))
+(B (name pinch)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#THEME z e0 :0.3))
+       (قاپید#قاپ-vb e0 x z u2)))
+(B (name pinch)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#THEME z e0 :0.3))
+       (قاپید#قاپ-vb e0 x z u2)))
+(B (name plunder)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#THEME z e0 :0.3))
+       (^ (غارت-nn e1 z) (kardan e0 x y z))))
+
+(B (name rob)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#VICTIM y e0 :0.3))
+       (ربود#ربا-vb e0 x y u)))
+(B (name mug)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#VICTIM y e0 :0.3))
+       (^ (دستبرد-nn e1 a) (zadan e0 x z a))))
+
+(B (name bandit)
+   (=> (^ (S#THEFT e0 :0.3) (SS#THEFT%PERPETRATOR x e0 :0.3)
+          (R#AGENT x e0 :0.3))
+       (جانی-nn e0 x)))
+(B (name thief)
+   (=> (^ (S#THEFT e0 :0.3) (SS#THEFT%PERPETRATOR x e0 :0.3)
+          (R#AGENT x e0 :0.3))
+       (سارق-nn e0 x)))
+(B (name pilferer)
+   (=> (^ (S#THEFT e0 :0.3) (SS#THEFT%PERPETRATOR x e0 :0.3)
+          (R#AGENT x e0 :0.3))
+       (دزد-nn e0 x)))
+(B (name mugger)
+   (=> (^ (S#THEFT e0 :0.3) (SS#THEFT%PERPETRATOR x e0 :0.3)
+          (R#AGENT x e0 :0.3))
+       (غارتگر-nn e0 x)))
+(B (name robber)
+   (=> (^ (S#THEFT e0 :0.3) (SS#THEFT%PERPETRATOR x e0 :0.3)
+          (R#AGENT x e0 :0.3))
+       (راهزن-nn e0 x)))
+(B (name burglar)
+   (=> (^ (S#THEFT e0 :0.3) (SS#THEFT%PERPETRATOR x e0 :0.3)
+          (R#AGENT x e0 :0.3))
+       (جیب‫-‬بر-nn e0 x)))
+(B (name plunderer)
+   (=> (^ (S#THEFT e0 :0.3) (SS#THEFT%PERPETRATOR x e0 :0.3)
+          (R#AGENT x e0 :0.3))
+       (چپاولگر-nn e0 x)))
+
+
+;; Theft: Mapping
+
+(B (name theft-map)
+   (=> (I#THEFT x :0.9)
+       (S#THEFT x)))
+(B (name theft-perpetrator-map)
+   (=> (I#THEFT%PERPETRATOR x :0.9)
+       (SS#THEFT%PERPETRATOR x)))
 
 
 ;; Upward Movement
@@ -4524,7 +4900,28 @@
 ;;   Something used to transport people or goods, esp. something used on land
 ;;   or roads.
 
-;; TODO: Add vehicle axioms.
+(B (name vehicle/خودرو)
+   (=> (S#VEHICLE e0 :0.9)
+       (خودرو-nn e0 x)))
+(B (name automobile/خودرو)
+   (=> (S#VEHICLE e0 :0.9)
+       (خودرو-nn e0 x)))
+(B (name motorcar/اتومبیل)
+   (=> (S#VEHICLE e0 :0.9)
+       (اتومبیل-nn e0 x)))
+(B (name truck/کامیون)
+   (=> (S#VEHICLE e0 :0.9)
+       (کامیون-nn e0 x)))
+(B (name van/ون)
+   (=> (S#VEHICLE e0 :0.9)
+       (ون-nn e0 x)))
+
+
+;; Vehicle: Mapping
+
+(B (name vehicle-map)
+   (=> (I#VEHICLE x :0.9)
+       (S#VEHICLE x)))
 
 
 ;; War
