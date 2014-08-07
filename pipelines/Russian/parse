@@ -8,4 +8,4 @@ RU_PARSER_DIR=$METAPHOR_DIR/external-tools/malt-ru
 cat $taggedInputFile | java -cp $MALT_PARSER_DIR/dist/malt/malt.jar:$RU_PARSER_DIR maltParserWrap_RU > $parsedFileName
 
 #cd $RU_PARSER_DIR
-#java -Xmx16g -jar $MALT_PARSER_DIR/malt.jar -c rus-test.mco -m parse -v off
+#java -Xmx16g -jar $MALT_PARSER_DIR/dist/malt/malt.jar -c rus-test.mco -m parse -v off

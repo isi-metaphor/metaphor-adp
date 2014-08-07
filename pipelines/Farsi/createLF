@@ -1,15 +1,13 @@
 #!/bin/bash
 
+inputFileName="${1:-/dev/stdin}"
+outputFileName="${2:-/dev/stdout}"
+
 farsiPipelineDir=$METAPHOR_DIR/pipelines/Farsi
 
-parserOutputFileName="${1:-/dev/stdin}"
-LFFileName="${2:-/dev/stdout}"
-
-parseToLFConverter=$farsiPipelineDir/convertParseTreeToLF.py
-farsiWordsDict=$farsiPipelineDir/farsiWordsForLFCreation.txt
-
+parseToLFConverter=$farsiPipelineDir/LFGen/convertParseTreeToLF.py
+farsiWordsDict=$farsiPipelineDir/LFGen/farsiWordsForLFCreation.txt
 
 # convert the parse results to LF
-#python $parseToLFConverter $parserOutputFileName $LFFileName $farsiWordsDict
 
-cat $parserOutputFileName | python $parseToLFConverter $parserOutputFileName $LFFileName $farsiWordsDict
+python $parseToLFConverter $inputFileName $outputFileName $farsiWordsDict

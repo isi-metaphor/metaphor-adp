@@ -43,7 +43,7 @@ public class maltParserWrap_RU {
 					if (!line.equals("END")){	
 						if (line.trim().length()==0) {
 							DependencyStructure graph = service.parse(lines.toArray(new String[lines.size()]));
-							
+							//writer.write(graph.getHighestDependencyNodeIndex() + "\n");	
 							for (int i = 1; i <= graph.getHighestDependencyNodeIndex(); i++) {
 								
 								DependencyNode node = graph.getDependencyNode(i);
@@ -57,6 +57,8 @@ public class maltParserWrap_RU {
 										if (e.isLabeled()) {
 											for (SymbolTable table : e.getLabelTypes()) {
 												writer.write(e.getLabelSymbol(table) + "\t");
+												//writer.write(table + "\t");
+
 											}
 										} else {
 											for (SymbolTable table : graph.getDefaultRootEdgeLabels().keySet()) {
