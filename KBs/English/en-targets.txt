@@ -17,6 +17,9 @@
 (B (name bureaucracy-nn)
    (=> (^ (T#DEMOCRACY u :0.45) (TS#BUREAUCRACY x :0.45))
        (bureaucracy-nn e0 x)))
+(B (name administration-nn)
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#BUREAUCRACY x :0.45))
+       (administration-nn e0 x)))
 
 
 ;; Democracy: Elections
@@ -52,6 +55,10 @@
 (B (name local-government)
    (=> (^ (T#DEMOCRACY u :0.4) (TS#GOVERNMENT x :0.4))
        (^ (local-adj e0 x) (government-nn e0 x))))
+
+(B (name regulation-nn)
+   (=> (^ (T#DEMOCRACY u :0.4) (TS#GOVERNMENT x :0.4))
+       (regulation-nn e0 x)))
 
 
 ;; Economic Inequality
@@ -236,9 +243,6 @@
 (B (name impost)
    (=> (^ (TS#TAXATION x :0.45) (T#ECONOMIC-INEQUALITY u :0.45))
        (impost-nn e0 x)))
-(B (name tribute)
-   (=> (^ (TS#TAXATION x :0.45) (T#ECONOMIC-INEQUALITY u :0.45))
-       (tribute-nn e0 x)))
 (B (name contribution)
    (=> (^ (TS#TAXATION x :0.45) (T#ECONOMIC-INEQUALITY u :0.45))
        (contribution-nn e0 x)))
@@ -283,6 +287,10 @@
 (B (name wealth)
    (=> (^ (TS#WEALTH x :0.45) (T#ECONOMIC-INEQUALITY u :0.45))
        (wealth-nn e0 x)))
+;; I don't know why this can show up without its POS, but it can.
+(B (name wealth)
+   (=> (^ (TS#WEALTH x :0.45) (T#ECONOMIC-INEQUALITY u :0.45))
+       (wealth e0 x)))
 (B (name capital)
    (=> (^ (TS#WEALTH x :0.45) (T#ECONOMIC-INEQUALITY u :0.45))
        (capital-nn e0 x)))

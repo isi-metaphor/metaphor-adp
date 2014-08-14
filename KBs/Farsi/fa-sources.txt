@@ -86,41 +86,41 @@
 
 ;; A God: Veneration
 
-(B (name worship)
+(B (name worship/پرستش)
    (=> (^ (S#A_GOD e0 :0.3) (SS#A_GOD%VENERATION e0 e0 :0.3)
           (R#WORSHIP-AGENT x e0 :0.3))
        (پرستش-nn e0 x y u)))
 
-(B (name worship)
+(B (name pagan-worship/پرستید-پرست)
    (=> (^ (S#A_GOD e0 :0.3) (SS#A_GOD%VENERATION e0 e0 :0.3)
           (R#WORSHIP-AGENT x e0 :0.3))
        (پرستید#پرست-nn e0 x y u)))
 
-(B (name pray)
+(B (name pray-for-the/دعا)
    (=> (^ (S#A_GOD e0 :0.3) (SS#A_GOD%VENERATION e0 e0 :0.3)
           (R#WORSHIP-AGENT x e0 :0.3))
        (^ (دعا-nn e1 z) (kardan e0 x y z))))
-(B (name pray)
+(B (name chant-for-the/مناجات)
    (=> (^ (S#A_GOD e0 :0.3) (SS#A_GOD%VENERATION e0 e0 :0.3)
           (R#WORSHIP-AGENT x e0 :0.3))
        (^ (مناجات-nn e1 z) (kardan e0 x y z))))
 (B (name bow-to)
    (=> (^ (S#A_GOD e0 :0.3) (SS#A_GOD%VENERATION e0 e0 :0.3)
           (R#WORSHIP-AGENT x e0 :0.3))
-       (^ (تعظیم کردن-vb e0 x y u) (به-in e1 e0 z))))
+       (^ (تعظیم#کردن-vb e0 x y u) (به-in e1 e0 z))))
 
 
 ;; A God: Mapping
 
-(B (name god-map)
-   (=> (I#A_GOD x :0.9)
-       (S#A_GOD x)))
-(B (name god-type-map)
-   (=> (I#A_GOD%TYPE x y :0.9)
-       (SS#A_GOD%TYPE x y)))
-(B (name god-veneration-map)
-   (=> (I#A_GOD%VENERATION x y :0.9)
-       (SS#A_GOD%VENERATION x y)))
+;; (B (name god-map)
+;;    (=> (I#A_GOD x :0.9)
+;;        (S#A_GOD x)))
+;; (B (name god-type-map)
+;;    (=> (I#A_GOD%TYPE x y :0.9)
+;;        (SS#A_GOD%TYPE x y)))
+;; (B (name god-veneration-map)
+;;    (=> (I#A_GOD%VENERATION x y :0.9)
+;;        (SS#A_GOD%VENERATION x y)))
 
 
 ;; A Right
@@ -144,19 +144,19 @@
 (B (name right-to)
    (=> (^ (S#A_RIGHT e0 :0.45) (SS#A_RIGHT%TYPE x e0 :0.45))
        (^ (حق-nn e0 x) (nn e1 x y))))
-(B (name inalienable-right)
+(B (name inalienable-right/مسلم-حق)
    (=> (^ (S#A_RIGHT e0 :0.45) (SS#A_RIGHT%TYPE x e0 :0.45))
        (^ (مسلم-adj e0 x) (حق-nn e1 x))))
 
 
 ;; A Right: Mapping
 
-(B (name a_right-map)
-   (=> (I#A_RIGHT x :0.9)
-       (S#A_RIGHT x)))
-(B (name a_right-type-map)
-   (=> (I#A_RIGHT%TYPE x y :0.9)
-       (SS#A_RIGHT%TYPE x y)))
+;; (B (name a_right-map)
+;;    (=> (I#A_RIGHT x :0.9)
+;;        (S#A_RIGHT x)))
+;; (B (name a_right-type-map)
+;;    (=> (I#A_RIGHT%TYPE x y :0.9)
+;;        (SS#A_RIGHT%TYPE x y)))
 
 
 ;; Abyss
@@ -215,22 +215,22 @@
 
 ;; Abyss: Depth
 
-(B (name depth)
+(B (name depth/عمق)
    (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%DEPTH x e0 :0.45))
        (عمق-nn e0 x)))
-(B (name deep2)
+(B (name deep/عمیق)
    (=> (^ (S#ABYSS e0 :0.3) (SS#ABYSS%DEPTH x e0 :0.3)
           (R#ABYSS-THEME x e0 :0.3))
        (عمیق-adj e0 x)))
-(B (name deeper)
+(B (name deeper/ژرف)
    (=> (^ (S#ABYSS e0 :0.3) (SS#ABYSS%DEPTH x e0 :0.3)
           (R#ABYSS-THEME x e0 :0.3))
        (ژرف-adj e0 x)))
-(B (name deepest)
+(B (name deepest/عمیق-ترین)
    (=> (^ (S#ABYSS e0 :0.3) (SS#ABYSS%DEPTH x e0 :0.3)
           (R#ABYSS-THEME x e0 :0.3))
        (عمیق-ترین-adj e0 x)))
-(B (name deep3)
+(B (name deeply/عمیقا)
    (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%DEPTH x e0 :0.45))
        (عمیقا-rb e0 x)))
 
@@ -244,22 +244,22 @@
 
 ;; Abyss: Entrance
 
-(B (name verge)
+(B (name verge/حاشیه)
    (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%ENTRANCE x e0 :0.45))
        (حاشیه-nn e0 x)))
-(B (name edge)
+(B (name edge/لبه)
    (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%ENTRANCE x e0 :0.45))
        (لبه-nn e0 x)))
-(B (name border)
+(B (name border/مرز)
    (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%ENTRANCE x e0 :0.45))
        (مرز-nn e0 x)))
-(B (name borderline)
+(B (name borderline/سرحد)
    (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%ENTRANCE x e0 :0.45))
        (سرحد-nn e0 x)))
-(B (name brink)
+(B (name brink/کناره)
    (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%ENTRANCE x e0 :0.45))
        (کناره-nn e0 x)))
-(B (name cliff)
+(B (name cliff/صخره)
    (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%ENTRANCE x e0 :0.45))
        (صخره-nn e0 x)))
 (B (name precipice)
@@ -318,21 +318,21 @@
 
 ;; Abyss: Mapping
 
-(B (name abyss-map)
-   (=> (I#ABYSS x :0.9)
-       (S#ABYSS x)))
-(B (name abyss-type-map)
-   (=> (I#ABYSS%TYPE x e0 :0.9)
-       (SS#ABYSS%TYPE x e0)))
-(B (name abyss-depth-map)
-   (=> (I#ABYSS%DEPTH x y :0.9)
-       (SS#ABYSS%DEPTH x y)))
-(B (name abyss-entrance-map)
-   (=> (I#ABYSS%ENTRANCE x y :0.9)
-       (SS#ABYSS%ENTRANCE x y)))
-(B (name abyss-exit-map)
-   (=> (I#ABYSS%EXIT x y :0.9)
-       (SS#ABYSS%EXIT x y)))
+;; (B (name abyss-map)
+;;    (=> (I#ABYSS x :0.9)
+;;        (S#ABYSS x)))
+;; (B (name abyss-type-map)
+;;    (=> (I#ABYSS%TYPE x e0 :0.9)
+;;        (SS#ABYSS%TYPE x e0)))
+;; (B (name abyss-depth-map)
+;;    (=> (I#ABYSS%DEPTH x y :0.9)
+;;        (SS#ABYSS%DEPTH x y)))
+;; (B (name abyss-entrance-map)
+;;    (=> (I#ABYSS%ENTRANCE x y :0.9)
+;;        (SS#ABYSS%ENTRANCE x y)))
+;; (B (name abyss-exit-map)
+;;    (=> (I#ABYSS%EXIT x y :0.9)
+;;        (SS#ABYSS%EXIT x y)))
 
 
 ;; Accident
@@ -340,28 +340,28 @@
 
 ;; Accident: Type
 
-(B (name accident)
+(B (name crash/تصادف)
    (=> (^ (S#ACCIDENT e0 :0.45) (SS#ACCIDENT%TYPE x e0 :0.45))
        (تصادف-nn e0 x)))
-(B (name accident)
+(B (name disaster/فاجعه)
    (=> (^ (S#ACCIDENT e0 :0.45) (SS#ACCIDENT%TYPE x e0 :0.45))
        (فاجعه-nn e0 x)))
-(B (name accident)
-   (=> (^ (S#ACCIDENT e0 :0.45) (SS#ACCIDENT%TYPE x e0 :0.45))
-       (بلا-nn e0 x)))
-(B (name accident)
+;; (B (name accident)
+;;    (=> (^ (S#ACCIDENT e0 :0.45) (SS#ACCIDENT%TYPE x e0 :0.45))
+;;        (بلا-nn e0 x)))
+(B (name crash/سقوط)
    (=> (^ (S#ACCIDENT e0 :0.45) (SS#ACCIDENT%TYPE x e0 :0.45))
        (سقوط-nn e0 x)))
 
 
 ;; Accident: Mapping
 
-(B (name accident-map)
-   (=> (I#ACCIDENT x :0.9)
-       (S#ACCIDENT x)))
-(B (name accident-type-map)
-   (=> (I#ACCIDENT%TYPE x y :0.9)
-       (SS#ACCIDENT%TYPE x y)))
+;; (B (name accident-map)
+;;    (=> (I#ACCIDENT x :0.9)
+;;        (S#ACCIDENT x)))
+;; (B (name accident-type-map)
+;;    (=> (I#ACCIDENT%TYPE x y :0.9)
+;;        (SS#ACCIDENT%TYPE x y)))
 
 
 ;; Addiction
@@ -400,11 +400,11 @@
 
 ;; Addiction: Result
 
-(B (name drunk)
+(B (name drunk/مخمور)
    (=> (^ (S#ADDICTION e0 :0.3) (SS#ADDICTION%RESULT e0 e0 :0.3)
           (R#ADDICTED x e0 :0.3))
        (مخمور-adj e0 x)))
-(B (name drunk)
+(B (name drunk/مست)
    (=> (^ (S#ADDICTION e0 :0.3) (SS#ADDICTION%RESULT e0 e0 :0.3)
           (R#ADDICTED x e0 :0.3))
        (مست-adj e0 x)))
@@ -412,18 +412,18 @@
 
 ;; Addiction: Mapping
 
-(B (name addiction-map)
-   (=> (I#ADDICTION x :0.9)
-       (S#ADDICTION x)))
-(B (name addiction-type-map)
-   (=> (I#ADDICTION%TYPE x y :0.9)
-       (SS#ADDICTION%TYPE x y)))
-(B (name addiction-compulsion-map)
-   (=> (I#ADDICTION%COMPULSION x y :0.9)
-       (SS#ADDICTION%COMPULSION x y)))
-(B (name addiction-result-map)
-   (=> (I#ADDICTION%RESULT x y :0.9)
-       (SS#ADDICTION%RESULT x y)))
+;; (B (name addiction-map)
+;;    (=> (I#ADDICTION x :0.9)
+;;        (S#ADDICTION x)))
+;; (B (name addiction-type-map)
+;;    (=> (I#ADDICTION%TYPE x y :0.9)
+;;        (SS#ADDICTION%TYPE x y)))
+;; (B (name addiction-compulsion-map)
+;;    (=> (I#ADDICTION%COMPULSION x y :0.9)
+;;        (SS#ADDICTION%COMPULSION x y)))
+;; (B (name addiction-result-map)
+;;    (=> (I#ADDICTION%RESULT x y :0.9)
+;;        (SS#ADDICTION%RESULT x y)))
 
 
 ;; Animal
@@ -431,26 +431,92 @@
 
 ;; Animal: Type
 
-(B (name donkey)
+(B (name beast/جانور)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (جانور-nn e0 x)))
+(B (name bear/خرس)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (خرس-nn e0 x)))
+(B (name dog/سگ)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (سگ-nn e0 x)))
+(B (name cat/گربه)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (گربه-nn e0 x)))
+(B (name lion/هژبر)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (هژبر-nn e0 x)))
+(B (name tiger/ببر)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (ببر-nn e0 x)))
+(B (name whale/نهنگ)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (نهنگ-nn e0 x)))
+(B (name bird/پرنده)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (پرنده-nn e0 x)))
+(B (name wolf/گرگ)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (گرگ-nn e0 x)))
+(B (name lamb/بره)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (بره-nn e0 x)))
+(B (name deer/گوزن)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (گوزن-nn e0 x)))
+(B (name gorilla/گوریل)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (گوریل-nn e0 x)))
+(B (name monkey/میمون)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (میمون-nn e0 x)))
+(B (name goat/بز)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (بز-nn e0 x)))
+(B (name horse/اسب)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (اسب-nn e0 x)))
+(B (name donkey/خر)
    (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
        (خر-nn e0 x)))
+(B (name cow/گاو)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (گاو-nn e0 x)))
+(B (name snake/مار)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (مار-nn e0 x)))
+(B (name fox/روباه)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (روباه-nn e0 x)))
+(B (name owl/جغد)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (جغد-nn e0 x)))
+(B (name elephant/فیل)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (فیل-nn e0 x)))
+(B (name otter/سمور)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (سمور-nn e0 x)))
+(B (name hyena/کفتار)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (کفتار-nn e0 x)))
 
 
 ;; Animal: Component
 
-(B (name face)
+(B (name muzzle/پوزه)
    (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%COMPONENT x e0 :0.45))
        (پوزه-nn e0 x)))
-(B (name face)
+(B (name jaw/فک)
    (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%COMPONENT x e0 :0.45))
        (فک-nn e0 x)))
-(B (name face)
+(B (name fang/نیش)
    (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%COMPONENT x e0 :0.45))
        (نیش-nn e0 x)))
-(B (name face)
+(B (name blood/دم)
    (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%COMPONENT x e0 :0.45))
        (دم-nn e0 x)))
-(B (name claw)
+(B (name claw/پنجه)
    (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%COMPONENT x e0 :0.45))
        (پنجه-nn e0 x)))
 
@@ -489,21 +555,21 @@
 
 ;; Animal: Mapping
 
-(B (name animal-map)
-   (=> (I#ANIMAL x :0.9)
-       (S#ANIMAL x)))
-(B (name animal-type-map)
-   (=> (I#ANIMAL%TYPE x y :0.9)
-       (SS#ANIMAL%TYPE x y)))
-(B (name animal-component-map)
-   (=> (I#ANIMAL%COMPONENT x y :0.9)
-       (SS#ANIMAL%COMPONENT x y)))
-(B (name animal-function-map)
-   (=> (I#ANIMAL%FUNCTION x y :0.9)
-       (SS#ANIMAL%FUNCTION x y)))
-(B (name animal-action-map)
-   (=> (I#ANIMAL%ACTION x y :0.9)
-       (SS#ANIMAL%ACTION x y)))
+;; (B (name animal-map)
+;;    (=> (I#ANIMAL x :0.9)
+;;        (S#ANIMAL x)))
+;; (B (name animal-type-map)
+;;    (=> (I#ANIMAL%TYPE x y :0.9)
+;;        (SS#ANIMAL%TYPE x y)))
+;; (B (name animal-component-map)
+;;    (=> (I#ANIMAL%COMPONENT x y :0.9)
+;;        (SS#ANIMAL%COMPONENT x y)))
+;; (B (name animal-function-map)
+;;    (=> (I#ANIMAL%FUNCTION x y :0.9)
+;;        (SS#ANIMAL%FUNCTION x y)))
+;; (B (name animal-action-map)
+;;    (=> (I#ANIMAL%ACTION x y :0.9)
+;;        (SS#ANIMAL%ACTION x y)))
 
 
 ;; Backward Movement
@@ -520,9 +586,9 @@
 
 ;; Backward Movement: Mapping
 
-(B (name backward-movement-map)
-   (=> (I#BACKWARD_MOVEMENT x :0.9)
-       (S#BACKWARD_MOVEMENT x)))
+;; (B (name backward-movement-map)
+;;    (=> (I#BACKWARD_MOVEMENT x :0.9)
+;;        (S#BACKWARD_MOVEMENT x)))
 
 
 ;; Barrier
@@ -542,9 +608,9 @@
 
 ;; Barrier: Mapping
 
-(B (name barrier-map)
-   (=> (I#BARRIER x :0.9)
-       (S#BARRIER x)))
+;; (B (name barrier-map)
+;;    (=> (I#BARRIER x :0.9)
+;;        (S#BARRIER x)))
 
 
 ;; Blood Stream
@@ -565,25 +631,17 @@
        (شریان-nn e0 x)))
 
 
-;; Blood Stream: Movement
-
-(B (name flow)
-   (=> (SS#BLOOD_STREAM%MOVEMENT e0 e1 :0.9)
-       (^ (flow-vb e0 x y z) (S#BLOOD_STREAM e1)
-          (SS#BLOOD_STREAM%COMPONENT x e1))))
-
-
 ;; Blood Stream: Mapping
 
-(B (name blood-stream-map)
-   (=> (I#BLOOD_STREAM x :0.9)
-       (S#BLOOD_STREAM x)))
-(B (name blood-stream-component-map)
-   (=> (I#BLOOD_STREAM%COMPONENT x y :0.9)
-       (SS#BLOOD_STREAM%COMPONENT x y)))
-(B (name blood-stream-movement-map)
-   (=> (I#BLOOD_STREAM%MOVEMENT x y :0.9)
-       (SS#BLOOD_STREAM%MOVEMENT x y)))
+;; (B (name blood-stream-map)
+;;    (=> (I#BLOOD_STREAM x :0.9)
+;;        (S#BLOOD_STREAM x)))
+;; (B (name blood-stream-component-map)
+;;    (=> (I#BLOOD_STREAM%COMPONENT x y :0.9)
+;;        (SS#BLOOD_STREAM%COMPONENT x y)))
+;; (B (name blood-stream-movement-map)
+;;    (=> (I#BLOOD_STREAM%MOVEMENT x y :0.9)
+;;        (SS#BLOOD_STREAM%MOVEMENT x y)))
 
 
 ;; Body of Water
@@ -592,23 +650,23 @@
 
 ;; Body of Water: Type
 
-(B (name water)
+(B (name water/آب)
    (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%TYPE x e0 :0.45))
        (آب-nn e0 x)))
-(B (name sea-water)
+(B (name sea-water/آب-دریا)
    (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%TYPE x e0 :0.45))
        (آب-دریا-nn e0 x)))
-(B (name sea-water)
+(B (name sea-water/آب-دریا)
    (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%TYPE x e0 :0.45))
        (^ (آب-nn e0 x) (دریا-nn e1 y) (nn e2 x y))))
 
-(B (name sea)
+(B (name sea/دریا)
    (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%TYPE x e0 :0.45))
        (دریا-nn e0 y)))
-(B (name ocean)
+(B (name ocean/اقیانوس)
    (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%TYPE x e0 :0.45))
        (اقیانوس-nn e0 y)))
-(B (name river)
+(B (name river/رودخانه)
    (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%TYPE x e0 :0.45))
        (رودخانه-nn e0 y)))
 
@@ -684,10 +742,7 @@
 
 ;; Body of Water: Danger
 
-(B (name tsunami)
-   (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%DANGER y e0 :0.45))
-       (سونامی-nn e0 y)))
-(B (name underwater)
+(B (name underwater/زیرآبی)
    (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%DANGER y e0 :0.45))
        (زیرآبی-nn e0 y)))
 
@@ -715,18 +770,18 @@
 
 ;; Body of Water: Mapping
 
-(B (name water-map)
-   (=> (I#BODY_OF_WATER x :0.9)
-       (S#BODY_OF_WATER x)))
-(B (name water-type-map)
-   (=> (I#BODY_OF_WATER%TYPE x y :0.9)
-       (SS#BODY_OF_WATER%TYPE x y)))
-(B (name movement-map)
-   (=> (I#BODY_OF_WATER%MOVEMENT x y :0.9)
-       (SS#BODY_OF_WATER%MOVEMENT x y)))
-(B (name danger-map)
-   (=> (I#BODY_OF_WATER%DANGER x y :0.9)
-       (SS#BODY_OF_WATER%DANGER x y)))
+;; (B (name water-map)
+;;    (=> (I#BODY_OF_WATER x :0.9)
+;;        (S#BODY_OF_WATER x)))
+;; (B (name water-type-map)
+;;    (=> (I#BODY_OF_WATER%TYPE x y :0.9)
+;;        (SS#BODY_OF_WATER%TYPE x y)))
+;; (B (name movement-map)
+;;    (=> (I#BODY_OF_WATER%MOVEMENT x y :0.9)
+;;        (SS#BODY_OF_WATER%MOVEMENT x y)))
+;; (B (name danger-map)
+;;    (=> (I#BODY_OF_WATER%DANGER x y :0.9)
+;;        (SS#BODY_OF_WATER%DANGER x y)))
 
 
 ;; Building
@@ -736,38 +791,35 @@
 
 ;; Building: Type
 
-(B (name house)
+(B (name house/خانه)
    (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%TYPE x e0 :0.45))
        (خانه-nn e0 x)))
-(B (name home)
+(B (name home/مسکن)
    (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%TYPE x e0 :0.45))
        (مسکن-nn e0 x)))
-(B (name skyscraper)
+(B (name skyscraper/آسمانخراش)
    (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%TYPE x e0 :0.45))
        (آسمانخراش-nn e0 x)))
-(B (name mansion)
+(B (name mansion/عمارت)
    (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%TYPE x e0 :0.45))
        (عمارت-nn e0 x)))
 
 
 ;; Building: Structure
 
-(B (name building)
+(B (name building/ساختمان)
    (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%STRUCTURE x e0 :0.45))
        (ساختمان-nn e0 x)))
-(B (name structure)
+(B (name structure/بناء)
    (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%STRUCTURE x e0 :0.45))
        (بناء-nn e0 x)))
-(B (name structure)
+(B (name structure/ساختار)
    (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%STRUCTURE x e0 :0.45))
        (ساختار-nn e0 x)))
-(B (name structure)
-   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%STRUCTURE x e0 :0.45))
-       (بنا-nn e0 x)))
-(B (name edifice)
-   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%STRUCTURE x e0 :0.45))
-       (عمارت-nn e0 x)))
-(B (name basement)
+;; (B (name structure)
+;;    (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%STRUCTURE x e0 :0.45))
+;;        (بنا-nn e0 x)))
+(B (name basement/زیرزمین)
    (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%STRUCTURE x e0 :0.45))
        (زیرزمین-nn e0 x)))
 
@@ -830,16 +882,16 @@
 
 ;; Building: Components
 
-(B (name foundation)
+(B (name foundation/پی)
    (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%COMPONENTS x e0 :0.45))
        (پی-nn e0 x)))
-(B (name base)
+(B (name cornerstone/شالوده)
    (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%COMPONENTS x e0 :0.45))
        (شالوده-nn e0 x)))
-(B (name base)
+(B (name infrastructure/زیربنا)
    (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%COMPONENTS x e0 :0.45))
        (زیربنا-nn e0 x)))
-(B (name base)
+(B (name infrastructure/زیربنای)
    (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%COMPONENTS x e0 :0.45))
        (زیربنای-nn e0 x)))
 (B (name structure)
@@ -918,7 +970,7 @@
 (B (name structure)
    (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%COMPONENTS x e0 :0.45))
        (زیرساختهای-nn e0 x)))
-(B (name ceiling)
+(B (name ceiling/سقف)
    (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%COMPONENTS x e0 :0.45))
        (سقف-nn e0 x)))
 
@@ -951,18 +1003,18 @@
 
 ;; Building: Mapping
 
-(B (name building-map)
-   (=> (I#BUILDING x :0.9)
-       (S#BUILDING x)))
-(B (name structure-map)
-   (=> (I#BUILDING%STRUCTURE x y :0.9)
-       (SS#BUILDING%STRUCTURE x y)))
-(B (name creation_destruction-map)
-   (=> (I#BUILDING%CREATION-DESTRUCTION x y :0.9)
-       (SS#BUILDING%CREATION_DESTRUCTION x y)))
-(B (name components-map)
-   (=> (I#BUILDING%COMPONENTS x y :0.9)
-       (SS#BUILDING%COMPONENTS x y)))
+;; (B (name building-map)
+;;    (=> (I#BUILDING x :0.9)
+;;        (S#BUILDING x)))
+;; (B (name structure-map)
+;;    (=> (I#BUILDING%STRUCTURE x y :0.9)
+;;        (SS#BUILDING%STRUCTURE x y)))
+;; (B (name creation_destruction-map)
+;;    (=> (I#BUILDING%CREATION-DESTRUCTION x y :0.9)
+;;        (SS#BUILDING%CREATION_DESTRUCTION x y)))
+;; (B (name components-map)
+;;    (=> (I#BUILDING%COMPONENTS x y :0.9)
+;;        (SS#BUILDING%COMPONENTS x y)))
 
 
 ;; Business
@@ -992,9 +1044,9 @@
 
 ;; Business: Mapping
 
-(B (name business-map)
-   (=> (I#BUSINESS x :0.9)
-       (S#BUSINESS x)))
+;; (B (name business-map)
+;;    (=> (I#BUSINESS x :0.9)
+;;        (S#BUSINESS x)))
 
 
 ;; Clothing
@@ -1020,9 +1072,9 @@
 
 ;; Clothing: Mapping
 
-(B (name clothing-map)
-   (=> (I#CLOTHING x :0.9)
-       (S#CLOTHING x)))
+;; (B (name clothing-map)
+;;    (=> (I#CLOTHING x :0.9)
+;;        (S#CLOTHING x)))
 
 
 ;; Competition
@@ -1058,12 +1110,12 @@
 
 ;; Competition: Mapping
 
-(B (name competition-map)
-   (=> (I#COMPETITION x :0.9)
-       (S#COMPETITION x)))
-(B (name competition-component-map)
-   (=> (I#COMPETITION%COMPONENT x y :0.9)
-       (SS#COMPETITION%COMPONENT x y)))
+;; (B (name competition-map)
+;;    (=> (I#COMPETITION x :0.9)
+;;        (S#COMPETITION x)))
+;; (B (name competition-component-map)
+;;    (=> (I#COMPETITION%COMPONENT x y :0.9)
+;;        (SS#COMPETITION%COMPONENT x y)))
 
 
 ;; Confinement
@@ -1139,10 +1191,10 @@
 
 ;; Confinement: Restraints
 
-(B (name trap)
+(B (name trap/تله)
    (=> (^ (S#CONFINEMENT u :0.45) (SS#CONFINEMENT%RESTRAINTS x u :0.45))
        (تله-nn e0 x)))
-(B (name net)
+(B (name net/دام)
    (=> (^ (S#CONFINEMENT u :0.45) (SS#CONFINEMENT%RESTRAINTS x u :0.45))
        (دام-nn e0 x)))
 (B (name handcuffs)
@@ -1250,18 +1302,18 @@
 
 ;; Confinement: Mapping
 
-(B (name confinement-map)
-   (=> (I#CONFINEMENT x :0.9)
-       (S#CONFINEMENT x)))
-(B (name confined-space-map)
-   (=> (I#CONFINEMENT%CONFINED_SPACE x y :0.9)
-       (SS#CONFINEMENT%CONFINED_SPACE x y)))
-(B (name confinement-restraints-map)
-   (=> (I#CONFINEMENT%RESTRAINTS x y :0.9)
-       (SS#CONFINEMENT%RESTRAINTS x y)))
-(B (name exit-map)
-   (=> (I#CONFINEMENT%EXIT x y :0.9)
-       (SS#CONFINEMENT%EXIT x y)))
+;; (B (name confinement-map)
+;;    (=> (I#CONFINEMENT x :0.9)
+;;        (S#CONFINEMENT x)))
+;; (B (name confined-space-map)
+;;    (=> (I#CONFINEMENT%CONFINED_SPACE x y :0.9)
+;;        (SS#CONFINEMENT%CONFINED_SPACE x y)))
+;; (B (name confinement-restraints-map)
+;;    (=> (I#CONFINEMENT%RESTRAINTS x y :0.9)
+;;        (SS#CONFINEMENT%RESTRAINTS x y)))
+;; (B (name exit-map)
+;;    (=> (I#CONFINEMENT%EXIT x y :0.9)
+;;        (SS#CONFINEMENT%EXIT x y)))
 
 
 ;; Container
@@ -1291,9 +1343,9 @@
 
 ;; Container: Mapping
 
-(B (name container-map)
-   (=> (I#CONTAINER x :0.9)
-       (S#CONTAINER x)))
+;; (B (name container-map)
+;;    (=> (I#CONTAINER x :0.9)
+;;        (S#CONTAINER x)))
 
 
 ;; Contamination
@@ -1303,36 +1355,36 @@
 
 ;; Contamination: Type
 
-(B (name soil)
-   (=> (^ (S#IMPURITY e0 :0.45) (SS#CONTAMINATION%TYPE x e0 :0.45))
+(B (name soil/خاک)
+   (=> (^ (S#CONTAMINATION e0 :0.45) (SS#CONTAMINATION%TYPE x e0 :0.45))
        (خاک-nn e0 x)))
-(B (name dust)
-   (=> (^ (S#IMPURITY e0 :0.45) (SS#CONTAMINATION%TYPE x e0 :0.45))
+(B (name dust/غبار)
+   (=> (^ (S#CONTAMINATION e0 :0.45) (SS#CONTAMINATION%TYPE x e0 :0.45))
        (غبار-nn e0 x)))
-(B (name waste)
-   (=> (^ (S#IMPURITY e0 :0.45) (SS#CONTAMINATION%TYPE x e0 :0.45))
+(B (name waste/زباله)
+   (=> (^ (S#CONTAMINATION e0 :0.45) (SS#CONTAMINATION%TYPE x e0 :0.45))
        (زباله-nn e0 x)))
 
 (B (name dirty)
-   (=> (^ (S#IMPURITY e0 :0.45) (SS#CONTAMINATION%TYPE e0 e0 :0.45))
+   (=> (^ (S#CONTAMINATION e0 :0.45) (SS#CONTAMINATION%TYPE e0 e0 :0.45))
        (کثیف-adj e0 x)))
 
 (B (name sludge)
-   (=> (^ (S#IMPURITY e0 :0.45) (SS#CONTAMINATION%TYPE e0 e0 :0.45))
+   (=> (^ (S#CONTAMINATION e0 :0.45) (SS#CONTAMINATION%TYPE e0 e0 :0.45))
        (لجن-nn e0 x)))
 (B (name spots)
-   (=> (^ (S#IMPURITY e0 :0.45) (SS#CONTAMINATION%TYPE e0 e0 :0.45))
+   (=> (^ (S#CONTAMINATION e0 :0.45) (SS#CONTAMINATION%TYPE e0 e0 :0.45))
        (لکه-nn e0 x)))
 
 
 ;; Contamination: Mapping
 
-(B (name contamination-map)
-   (=> (I#CONTAMINATION x :0.9)
-       (S#CONTAMINATION x)))
-(B (name contamination-type-map)
-   (=> (I#CONTAMINATION%TYPE x y :0.9)
-       (SS#CONTAMINATION%TYPE x y)))
+;; (B (name contamination-map)
+;;    (=> (I#CONTAMINATION x :0.9)
+;;        (S#CONTAMINATION x)))
+;; (B (name contamination-type-map)
+;;    (=> (I#CONTAMINATION%TYPE x y :0.9)
+;;        (SS#CONTAMINATION%TYPE x y)))
 
 
 
@@ -1341,16 +1393,16 @@
 
 ;; Crime: Type
 
-(B (name crime)
+(B (name crime/جرم)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
        (جرم-nn e0 x)))
-(B (name offence)
+(B (name offence/بزه)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
        (بزه-nn e0 x)))
-(B (name felony)
+(B (name felony/جنایت)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
        (جنایت-nn e0 x)))
-(B (name delinquency)
+(B (name delinquency/تخلف)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
        (تخلف-nn e0 x)))
 
@@ -1407,7 +1459,7 @@
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
        (تجاوز-nn e0 x)))
 
-(B (name rapev)
+(B (name rape-vb)
    (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2) (R#AGENT x e0 :0.2)
           (R#VICTIM y e0 :0.2))
        (^ (تجاوز-nn e1 z) (kardan e0 x y z))))
@@ -1527,21 +1579,21 @@
 
 ;; Crime: Mapping
 
-(B (name crime-map)
-   (=> (I#CRIME x :0.9)
-       (S#CRIME x)))
-(B (name crime-type-map)
-   (=> (I#CRIME%TYPE x y :0.9)
-       (SS#CRIME%TYPE x y)))
-(B (name crime-perpetrators-map)
-   (=> (I#CRIME%PERPETRATOR x y :0.9)
-       (SS#CRIME%PERPETRATOR x y)))
-(B (name punishment-map)
-   (=> (I#CRIME%PUNISHMENT x y :0.9)
-       (SS#CRIME%PUNISHMENT x y)))
-(B (name crime-perpetrators-map)
-   (=> (I#CRIME%VICTIM x y :0.9)
-       (SS#CRIME%VICTIM x y)))
+;; (B (name crime-map)
+;;    (=> (I#CRIME x :0.9)
+;;        (S#CRIME x)))
+;; (B (name crime-type-map)
+;;    (=> (I#CRIME%TYPE x y :0.9)
+;;        (SS#CRIME%TYPE x y)))
+;; (B (name crime-perpetrators-map)
+;;    (=> (I#CRIME%PERPETRATOR x y :0.9)
+;;        (SS#CRIME%PERPETRATOR x y)))
+;; (B (name punishment-map)
+;;    (=> (I#CRIME%PUNISHMENT x y :0.9)
+;;        (SS#CRIME%PUNISHMENT x y)))
+;; (B (name crime-perpetrators-map)
+;;    (=> (I#CRIME%VICTIM x y :0.9)
+;;        (SS#CRIME%VICTIM x y)))
 
 
 ;; Crop
@@ -1611,18 +1663,18 @@
 
 ;; Crop: Mapping
 
-(B (name crop-map)
-   (=> (I#CROP x :0.9)
-       (S#CROP x)))
-(B (name crop-planting-map)
-   (=> (I#CROP%PLANTING x y :0.9)
-       (SS#CROP%PLANTING x y)))
-(B (name crop-cultivation-map)
-   (=> (I#CROP%CULTIVATION x y :0.9)
-       (SS#CROP%CULTIVATION x y)))
-(B (name crop-outcome-map)
-   (=> (I#CROP%OUTCOME x y :0.9)
-       (SS#CROP%OUTCOME x y)))
+;; (B (name crop-map)
+;;    (=> (I#CROP x :0.9)
+;;        (S#CROP x)))
+;; (B (name crop-planting-map)
+;;    (=> (I#CROP%PLANTING x y :0.9)
+;;        (SS#CROP%PLANTING x y)))
+;; (B (name crop-cultivation-map)
+;;    (=> (I#CROP%CULTIVATION x y :0.9)
+;;        (SS#CROP%CULTIVATION x y)))
+;; (B (name crop-outcome-map)
+;;    (=> (I#CROP%OUTCOME x y :0.9)
+;;        (SS#CROP%OUTCOME x y)))
 
 
 ;; Darkness
@@ -1681,15 +1733,15 @@
 
 ;; Darkness: Mapping
 
-(B (name darkness-map)
-   (=> (I#DARKNESS x :0.9)
-       (S#DARKNESS x)))
-(B (name dark-end-of-range-map)
-   (=> (I#DARKNESS%DARK_END_OF_RANGE_OF_DARKNESS_LIGHT x y :0.9)
-       (SS#DARKNESS%DARK_END_OF_RANGE_OF_DARKNESS_LIGHT x y)))
-(B (name darkness-movementmap)
-   (=> (I#DARKNESS%MOVEMENT_IN_THE_RANGE x y :0.9)
-       (SS#DARKNESS%MOVEMENT_IN_THE_RANGE x y)))
+;; (B (name darkness-map)
+;;    (=> (I#DARKNESS x :0.9)
+;;        (S#DARKNESS x)))
+;; (B (name dark-end-of-range-map)
+;;    (=> (I#DARKNESS%DARK_END_OF_RANGE_OF_DARKNESS_LIGHT x y :0.9)
+;;        (SS#DARKNESS%DARK_END_OF_RANGE_OF_DARKNESS_LIGHT x y)))
+;; (B (name darkness-movementmap)
+;;    (=> (I#DARKNESS%MOVEMENT_IN_THE_RANGE x y :0.9)
+;;        (SS#DARKNESS%MOVEMENT_IN_THE_RANGE x y)))
 
 
 ;; Disease
@@ -2099,21 +2151,21 @@
 
 ;; Disease: Mapping
 
-(B (name disease-map)
-   (=> (I#DISEASE e0 :0.9)
-       (S#DISEASE x)))
-(B (name disease-type-map)
-   (=> (I#DISEASE%TYPE x y :0.9)
-       (SS#DISEASE%TYPE x y)))
-(B (name disease-cure-map)
-   (=> (I#DISEASE%CURE x y :0.9)
-       (SS#DISEASE%CURE x y)))
-(B (name disease-treatment-map)
-   (=> (I#DISEASE%TREATMENT x y :0.9)
-       (SS#DISEASE%TREATMENT x y)))
-(B (name disease-symptoms-map)
-   (=> (I#DISEASE%SYMPTOMS x y :0.9)
-       (SS#DISEASE%SYMPTOMS x y)))
+;; (B (name disease-map)
+;;    (=> (I#DISEASE e0 :0.9)
+;;        (S#DISEASE x)))
+;; (B (name disease-type-map)
+;;    (=> (I#DISEASE%TYPE x y :0.9)
+;;        (SS#DISEASE%TYPE x y)))
+;; (B (name disease-cure-map)
+;;    (=> (I#DISEASE%CURE x y :0.9)
+;;        (SS#DISEASE%CURE x y)))
+;; (B (name disease-treatment-map)
+;;    (=> (I#DISEASE%TREATMENT x y :0.9)
+;;        (SS#DISEASE%TREATMENT x y)))
+;; (B (name disease-symptoms-map)
+;;    (=> (I#DISEASE%SYMPTOMS x y :0.9)
+;;        (SS#DISEASE%SYMPTOMS x y)))
 
 
 ; Downward Movement
@@ -2186,9 +2238,9 @@
 
 ;; Downward Movement: Mapping
 
-(B (name downward-movement-map)
-   (=> (I#DOWNWARD_MOVEMENT x :0.9)
-       (S#DOWNWARD_MOVEMENT x)))
+;; (B (name downward-movement-map)
+;;    (=> (I#DOWNWARD_MOVEMENT x :0.9)
+;;        (S#DOWNWARD_MOVEMENT x)))
 
 
 ;; Emotion Experiencer
@@ -2213,9 +2265,9 @@
 
 ;; Emotion Experiencer: Mapping
 
-(B (name emotion-experiencer-map)
-   (=> (I#EMOTION_EXPERIENCER x :0.9)
-       (S#EMOTION_EXPERIENCER x)))
+;; (B (name emotion-experiencer-map)
+;;    (=> (I#EMOTION_EXPERIENCER x :0.9)
+;;        (S#EMOTION_EXPERIENCER x)))
 
 
 ;; Energy
@@ -2244,15 +2296,15 @@
 
 ;; Energy: Mapping
 
-(B (name energy-map)
-   (=> (I#ENERGY x :0.9)
-       (S#ENERGY x)))
-(B (name energy-type-map)
-   (=> (I#ENERGY%TYPE x y :0.9)
-       (SS#ENERGY%TYPE x y)))
-(B (name energy-result-map)
-   (=> (I#ENERGY%RESULT x y :0.9)
-       (SS#ENERGY%RESULT x y)))
+;; (B (name energy-map)
+;;    (=> (I#ENERGY x :0.9)
+;;        (S#ENERGY x)))
+;; (B (name energy-type-map)
+;;    (=> (I#ENERGY%TYPE x y :0.9)
+;;        (SS#ENERGY%TYPE x y)))
+;; (B (name energy-result-map)
+;;    (=> (I#ENERGY%RESULT x y :0.9)
+;;        (SS#ENERGY%RESULT x y)))
 
 
 ;; Enslavement
@@ -2315,15 +2367,15 @@
 
 ;; Enslavement: Mapping
 
-(B (name enslavement-map)
-   (=> (I#ENSLAVEMENT x :0.9)
-       (S#ENSLAVEMENT x)))
-(B (name oppression-map)
-   (=> (I#CONFINEMENT%OPPRESSION x y :0.9)
-       (SS#CONFINEMENT%OPPRESSION x y)))
-(B (name master-map)
-   (=> (I#CONFINEMENT%MASTER x y :0.9)
-       (SS#CONFINEMENT%MASTER x y)))
+;; (B (name enslavement-map)
+;;    (=> (I#ENSLAVEMENT x :0.9)
+;;        (S#ENSLAVEMENT x)))
+;; (B (name oppression-map)
+;;    (=> (I#CONFINEMENT%OPPRESSION x y :0.9)
+;;        (SS#CONFINEMENT%OPPRESSION x y)))
+;; (B (name master-map)
+;;    (=> (I#CONFINEMENT%MASTER x y :0.9)
+;;        (SS#CONFINEMENT%MASTER x y)))
 
 
 ;; Fabric
@@ -2344,33 +2396,34 @@
 
 
 ;; Fabric: Cut
+;; These are more likely to be Physical Harm.
 
-(B (name cut)
-   (=> (^ (S#FABRIC y :0.3) (SS#FABRIC%CUT e0 y :0.3)
-          (R#CUT-AGENT x e0 :0.3))
-       (^ (برش-nn e1 z) (dadan e0 x y z))))
-(B (name cut2)
-   (=> (^ (S#FABRIC y :0.45) (SS#FABRIC%CUT e0 y :0.45))
-       (^ (nn e1 x y) (برش-nn e0 x))))
-(B (name cut3)
-   (=> (^ (S#FABRIC y :0.45) (SS#FABRIC%CUT e0 y :0.45))
-       (^ (از-in e1 x y) (قطع-nn e0 x))))
-(B (name cut4)
-   (=> (^ (S#FABRIC y :0.48) (SS#FABRIC%CUT e0 y :0.48))
-       (بریدگی-nn e0 x)))
+;(B (name cut)
+;   (=> (^ (S#FABRIC y :0.3) (SS#FABRIC%CUT e0 y :0.3)
+;          (R#CUT-AGENT x e0 :0.3))
+;       (^ (برش-nn e1 z) (dadan e0 x y z))))
+;(B (name cut2)
+;   (=> (^ (S#FABRIC y :0.45) (SS#FABRIC%CUT e0 y :0.45))
+;       (^ (nn e1 x y) (برش-nn e0 x))))
+;(B (name cut3)
+;   (=> (^ (S#FABRIC y :0.45) (SS#FABRIC%CUT e0 y :0.45))
+;       (^ (از-in e1 x y) (قطع-nn e0 x))))
+;(B (name cut4)
+;   (=> (^ (S#FABRIC y :0.48) (SS#FABRIC%CUT e0 y :0.48))
+;       (بریدگی-nn e0 x)))
 
 
 ;; Fabric: Mapping
 
-(B (name fabric-map)
-  (=> (I#FABRIC x :0.9)
-      (S#FABRIC x)))
-(B (name fabric-type-map)
-  (=> (I#FABRIC%TYPE x y :0.9)
-      (SS#FABRIC%TYPE x y)))
-(B (name fabric-cut-map)
-  (=> (I#FABRIC%CUT x y :0.9)
-      (SS#FABRIC%CUT x y)))
+;; (B (name fabric-map)
+;;   (=> (I#FABRIC x :0.9)
+;;       (S#FABRIC x)))
+;; (B (name fabric-type-map)
+;;   (=> (I#FABRIC%TYPE x y :0.9)
+;;       (SS#FABRIC%TYPE x y)))
+;; (B (name fabric-cut-map)
+;;   (=> (I#FABRIC%CUT x y :0.9)
+;;       (SS#FABRIC%CUT x y)))
 
 
 ;; Factory
@@ -2387,9 +2440,9 @@
 
 ;; Factory: Mapping
 
-(B (name factory-map)
-  (=> (I#FACTORY x :0.9)
-      (S#FACTORY x)))
+;; (B (name factory-map)
+;;   (=> (I#FACTORY x :0.9)
+;;       (S#FACTORY x)))
 
 
 ;; Family
@@ -2431,9 +2484,9 @@
 
 ;; Family: Mapping
 
-(B (name family-map)
-  (=> (I#FAMILY x :0.9)
-      (S#FAMILY x)))
+;; (B (name family-map)
+;;   (=> (I#FAMILY x :0.9)
+;;       (S#FAMILY x)))
 
 
 
@@ -2453,9 +2506,9 @@
 
 ;; Fire: Mapping
 
-(B (name fire-map)
-  (=> (I#FIRE x :0.9)
-      (S#FIRE x)))
+;; (B (name fire-map)
+;;   (=> (I#FIRE x :0.9)
+;;       (S#FIRE x)))
 
 
 ;; Food
@@ -2504,15 +2557,15 @@
 
 ;; Food: Mapping
 
-(B (name food-map)
-   (=> (I#FOOD x :0.9)
-       (S#FOOD x)))
-(B (name food-type-map)
-   (=> (I#FOOD%TYPE x y :0.9)
-       (SS#FOOD%TYPE x y)))
-(B (name food-consumption-map)
-   (=> (I#FOOD%CONSUMPTION x y :0.9)
-       (SS#FOOD%CONSUMPTION x y)))
+;; (B (name food-map)
+;;    (=> (I#FOOD x :0.9)
+;;        (S#FOOD x)))
+;; (B (name food-type-map)
+;;    (=> (I#FOOD%TYPE x y :0.9)
+;;        (SS#FOOD%TYPE x y)))
+;; (B (name food-consumption-map)
+;;    (=> (I#FOOD%CONSUMPTION x y :0.9)
+;;        (SS#FOOD%CONSUMPTION x y)))
 
 
 ;; Forceful Extraction
@@ -2570,12 +2623,12 @@
 
 ;; Forceful Extraction: Mapping
 
-(B (name forceful-extraction-map)
-   (=> (I#FORCEFUL_EXTRACTION x :0.9)
-       (S#FORCEFUL_EXTRACTION x)))
-(B (name forceful-extraction-type-map)
-   (=> (I#FORCEFUL_EXTRACTION%TYPE x y :0.9)
-       (SS#FORCEFUL_EXTRACTION%TYPE x y)))
+;; (B (name forceful-extraction-map)
+;;    (=> (I#FORCEFUL_EXTRACTION x :0.9)
+;;        (S#FORCEFUL_EXTRACTION x)))
+;; (B (name forceful-extraction-type-map)
+;;    (=> (I#FORCEFUL_EXTRACTION%TYPE x y :0.9)
+;;        (SS#FORCEFUL_EXTRACTION%TYPE x y)))
 
 
 ;; Forward Motion
@@ -2584,9 +2637,9 @@
 
 ;; Forward Motion: Mapping
 
-(B (name forward-motion-map)
-   (=> (I#FORWARD_MOTION x :0.9)
-       (S#FORWARD_MOTION x)))
+;; (B (name forward-motion-map)
+;;    (=> (I#FORWARD_MOTION x :0.9)
+;;        (S#FORWARD_MOTION x)))
 
 
 ;; Game
@@ -2595,6 +2648,7 @@
 ;;   their own amusement or for that of spectators.
 
 ;; Game: Type
+
 (B (name chess)
    (=> (^ (S#GAME e0 :0.45) (SS#GAME%TYPE x e0 :0.45))
        (شطرنج-nn e0 x)))
@@ -2674,21 +2728,21 @@
 
 ;; Game: Mapping
 
-(B (name game-map)
-   (=> (I#GAME x :0.9)
-       (S#GAME x)))
-(B (name game-type-map)
-   (=> (I#GAME%TYPE x y :0.9)
-       (SS#GAME%TYPE x y)))
-(B (name game-components-map)
-   (=> (I#GAME%COMPONENTS x y :0.9)
-       (SS#GAME%COMPONENTS x y)))
-(B (name game-actions-map)
-   (=> (I#GAME%ACTIONS x y :0.9)
-       (SS#GAME%ACTIONS x y)))
-(B (name game-outcomes-map)
-   (=> (I#GAME%OUTCOMES x y :0.9)
-       (SS#GAME%OUTCOMES x y)))
+;; (B (name game-map)
+;;    (=> (I#GAME x :0.9)
+;;        (S#GAME x)))
+;; (B (name game-type-map)
+;;    (=> (I#GAME%TYPE x y :0.9)
+;;        (SS#GAME%TYPE x y)))
+;; (B (name game-components-map)
+;;    (=> (I#GAME%COMPONENTS x y :0.9)
+;;        (SS#GAME%COMPONENTS x y)))
+;; (B (name game-actions-map)
+;;    (=> (I#GAME%ACTIONS x y :0.9)
+;;        (SS#GAME%ACTIONS x y)))
+;; (B (name game-outcomes-map)
+;;    (=> (I#GAME%OUTCOMES x y :0.9)
+;;        (SS#GAME%OUTCOMES x y)))
 
 
 ;; Hazardous Geographic Feature
@@ -2697,12 +2751,12 @@
 
 ;; Hazardous Geographic Feature: Type
 
-(B (name mountain)
+(B (name mountain/کوه)
    (=> (^ (S#HAZARDOUS_GEOGRAPHIC_FEATURE e0 :0.3)
           (SS#HAZARDOUS_GEOGRAPHIC_FEATURE%TYPE x e0 :0.3)
           (R#MOUNTAIN x e0 :0.3))
        (کوه-nn e0 x)))
-(B (name himalayas)
+(B (name himalayas/هیمالیا)
    (=> (^ (S#HAZARDOUS_GEOGRAPHIC_FEATURE e0 :0.3)
           (SS#HAZARDOUS_GEOGRAPHIC_FEATURE%TYPE x e0 :0.3)
           (R#MOUNTAIN x e0 :0.3))
@@ -2711,12 +2765,12 @@
 
 ;; Hazardous Geographic Feature: Mapping
 
-(B (name geographic-feature-map)
-   (=> (I#HAZARDOUS_GEOGRAPHIC_FEATURE x :0.9)
-       (S#HAZARDOUS_GEOGRAPHIC_FEATURE x)))
-(B (name geographic-feature-type-map)
-   (=> (I#HAZARDOUS_GEOGRAPHIC_FEATURE%TYPE x y :0.9)
-       (SS#HAZARDOUS_GEOGRAPHIC_FEATURE%TYPE x y)))
+;; (B (name geographic-feature-map)
+;;    (=> (I#HAZARDOUS_GEOGRAPHIC_FEATURE x :0.9)
+;;        (S#HAZARDOUS_GEOGRAPHIC_FEATURE x)))
+;; (B (name geographic-feature-type-map)
+;;    (=> (I#HAZARDOUS_GEOGRAPHIC_FEATURE%TYPE x y :0.9)
+;;        (SS#HAZARDOUS_GEOGRAPHIC_FEATURE%TYPE x y)))
 
 
 ;; High Location
@@ -2763,9 +2817,9 @@
 
 ;; High Location: Mapping
 
-(B (name high-location-map)
-   (=> (I#HIGH_LOCATION x :0.9)
-       (S#HIGH_LOCATION x)))
+;; (B (name high-location-map)
+;;    (=> (I#HIGH_LOCATION x :0.9)
+;;        (S#HIGH_LOCATION x)))
 
 
 ;; Human Body
@@ -2776,34 +2830,34 @@
 (B (name backbone)
    (=> (^ (S#HUMAN_BODY e0 :0.45) (SS#HUMAN_BODY%COMPONENT x e0 :0.45))
        (^ (ستون-nn e0 x) (فقره-nn e1 y) (nn e2 x y))))
-(B (name face)
+(B (name face/چهره)
    (=> (^ (S#HUMAN_BODY e0 :0.45) (SS#HUMAN_BODY%COMPONENT x e0 :0.45))
        (چهره-nn e0 x)))
-(B (name face)
+(B (name face/صورت)
    (=> (^ (S#HUMAN_BODY e0 :0.45) (SS#HUMAN_BODY%COMPONENT x e0 :0.45))
        (صورت-nn e0 x)))
-(B (name hand)
+(B (name hand/دست)
    (=> (^ (S#HUMAN_BODY e0 :0.45) (SS#HUMAN_BODY%COMPONENT x e0 :0.45))
        (دست-nn e0 x)))
-(B (name hand)
+(B (name skin/پوست)
    (=> (^ (S#HUMAN_BODY e0 :0.45) (SS#HUMAN_BODY%COMPONENT x e0 :0.45))
        (پوست-nn e0 x)))
-(B (name hand)
+(B (name heart/قلب)
    (=> (^ (S#HUMAN_BODY e0 :0.45) (SS#HUMAN_BODY%COMPONENT x e0 :0.45))
        (قلب-nn e0 x)))
-(B (name hand)
+(B (name brain/مغز)
    (=> (^ (S#HUMAN_BODY e0 :0.45) (SS#HUMAN_BODY%COMPONENT x e0 :0.45))
        (مغز-nn e0 x)))
 
 
 ;; Human Body: Mapping
 
-(B (name human-body-map)
-   (=> (I#HUMAN_BODY x :0.9)
-       (S#HUMAN_BODY x)))
-(B (name human-body-component-map)
-   (=> (I#HUMAN_BODY%COMPONENT x y :0.9)
-       (SS#HUMAN_BODY%COMPONENT x y)))
+;; (B (name human-body-map)
+;;    (=> (I#HUMAN_BODY x :0.9)
+;;        (S#HUMAN_BODY x)))
+;; (B (name human-body-component-map)
+;;    (=> (I#HUMAN_BODY%COMPONENT x y :0.9)
+;;        (SS#HUMAN_BODY%COMPONENT x y)))
 
 
 ;; Journey
@@ -2819,9 +2873,9 @@
 
 ;; Journey: Mapping
 
-(B (name journey-map)
-   (=> (I#JOURNEY x :0.9)
-       (S#JOURNEY x)))
+;; (B (name journey-map)
+;;    (=> (I#JOURNEY x :0.9)
+;;        (S#JOURNEY x)))
 
 
 ;; Leader
@@ -2838,9 +2892,9 @@
 
 ;; Leader: Mapping
 
-(B (name leader-map)
-   (=> (I#LEADER x :0.9)
-       (S#LEADER x)))
+;; (B (name leader-map)
+;;    (=> (I#LEADER x :0.9)
+;;        (S#LEADER x)))
 
 
 ;; Life Stage
@@ -2883,9 +2937,9 @@
 
 ;; Life Stage: Mapping
 
-(B (name life-stage-map)
-   (=> (I#LIFE_STAGE x :0.9)
-       (S#LIFE_STAGE x)))
+;; (B (name life-stage-map)
+;;    (=> (I#LIFE_STAGE x :0.9)
+;;        (S#LIFE_STAGE x)))
 
 
 ;; Light
@@ -2941,15 +2995,15 @@
 
 ;; Light: Mapping
 
-(B (name light-map)
-   (=> (I#LIGHT x :0.9)
-       (S#LIGHT x)))
-(B (name dark-end-of-range-map)
-   (=> (I#LIGHT%LIGHT_END_OF_RANGE_OF_DARKNESS_LIGHT x y :0.9)
-       (SS#LIGHT%LIGHT_END_OF_RANGE_OF_DARKNESS_LIGHT x y)))
-(B (name light-movement-map)
-   (=> (I#LIGHT%MOVEMENT x y :0.9)
-       (SS#LIGHT%MOVEMENT x y)))
+;; (B (name light-map)
+;;    (=> (I#LIGHT x :0.9)
+;;        (S#LIGHT x)))
+;; (B (name dark-end-of-range-map)
+;;    (=> (I#LIGHT%LIGHT_END_OF_RANGE_OF_DARKNESS_LIGHT x y :0.9)
+;;        (SS#LIGHT%LIGHT_END_OF_RANGE_OF_DARKNESS_LIGHT x y)))
+;; (B (name light-movement-map)
+;;    (=> (I#LIGHT%MOVEMENT x y :0.9)
+;;        (SS#LIGHT%MOVEMENT x y)))
 
 
 ;; Low Location
@@ -2971,9 +3025,9 @@
 
 ;; Low Location: Mapping
 
-(B (name low-location-map)
-   (=> (I#LOW_LOCATION x :0.9)
-       (S#LOW_LOCATION x)))
+;; (B (name low-location-map)
+;;    (=> (I#LOW_LOCATION x :0.9)
+;;        (S#LOW_LOCATION x)))
 
 
 ;; Machine
@@ -2992,10 +3046,10 @@
 
 ;; Machine: Parts
 
-(B (name engine)
+(B (name engine/موتور)
    (=> (^ (S#MACHINE e0 :0.45) (SS#MACHINE%PARTS x e0 :0.45))
        (موتور-nn e0 x)))
-(B (name engine2)
+(B (name wheels/چرخ)
    (=> (^ (S#MACHINE e0 :0.45) (SS#MACHINE%PARTS x e0 :0.45))
        (چرخ-nn e0 x)))
 
@@ -3018,18 +3072,18 @@
 
 ;; Machine: Mapping
 
-(B (name machine-map)
-   (=> (I#MACHINE x :0.9)
-       (S#MACHINE x)))
-(B (name machine-type-map)
-   (=> (I#MACHINE%TYPE x y :0.9)
-       (SS#MACHINE%TYPE x y)))
-(B (name machine-parts-map)
-   (=> (I#MACHINE%PARTS x y :0.9)
-       (SS#MACHINE%PARTS x y)))
-(B (name machine-function-map)
-   (=> (I#MACHINE%FUNCTION x y :0.9)
-       (SS#MACHINE%FUNCTION x y)))
+;; (B (name machine-map)
+;;    (=> (I#MACHINE x :0.9)
+;;        (S#MACHINE x)))
+;; (B (name machine-type-map)
+;;    (=> (I#MACHINE%TYPE x y :0.9)
+;;        (SS#MACHINE%TYPE x y)))
+;; (B (name machine-parts-map)
+;;    (=> (I#MACHINE%PARTS x y :0.9)
+;;        (SS#MACHINE%PARTS x y)))
+;; (B (name machine-function-map)
+;;    (=> (I#MACHINE%FUNCTION x y :0.9)
+;;        (SS#MACHINE%FUNCTION x y)))
 
 
 ;; Maze
@@ -3086,18 +3140,18 @@
 
 ;; Maze: Mapping
 
-(B (name maze-map)
-   (=> (I#MAZE x :0.9)
-       (S#MAZE x)))
-(B (name maze-confusing-pathways-map)
-   (=> (I#MAZE%CONFUSING_PATHWAYS x y :0.9)
-       (SS#MAZE%CONFUSING_PATHWAYS x y)))
-(B (name maze-navigation-map)
-   (=> (I#MAZE%NAVIGATION x y :0.9)
-       (SS#MAZE%NAVIGATION x y)))
-(B (name maze-obstruction-map)
-   (=> (I#MAZE%OBSTRUCTION x y :0.9)
-       (SS#MAZE%OBSTRUCTION x y)))
+;; (B (name maze-map)
+;;    (=> (I#MAZE x :0.9)
+;;        (S#MAZE x)))
+;; (B (name maze-confusing-pathways-map)
+;;    (=> (I#MAZE%CONFUSING_PATHWAYS x y :0.9)
+;;        (SS#MAZE%CONFUSING_PATHWAYS x y)))
+;; (B (name maze-navigation-map)
+;;    (=> (I#MAZE%NAVIGATION x y :0.9)
+;;        (SS#MAZE%NAVIGATION x y)))
+;; (B (name maze-obstruction-map)
+;;    (=> (I#MAZE%OBSTRUCTION x y :0.9)
+;;        (SS#MAZE%OBSTRUCTION x y)))
 
 
 ;; Medicine
@@ -3114,12 +3168,12 @@
 
 ;; Medicine: Mapping
 
-(B (name medicine-map)
-   (=> (I#MEDICINE x :0.9)
-       (S#MEDICINE x)))
-(B (name medicine-administration-map)
-   (=> (I#MEDICINE%ADMINISTRATION x y :0.9)
-       (SS#MEDICINE%ADMINISTRATION x y)))
+;; (B (name medicine-map)
+;;    (=> (I#MEDICINE x :0.9)
+;;        (S#MEDICINE x)))
+;; (B (name medicine-administration-map)
+;;    (=> (I#MEDICINE%ADMINISTRATION x y :0.9)
+;;        (SS#MEDICINE%ADMINISTRATION x y)))
 
 
 ;; Monster
@@ -3177,15 +3231,15 @@
 
 ;; Monster: Mapping
 
-(B (name monster-map)
-   (=> (I#MONSTER x :0.9)
-       (S#MONSTER x)))
-(B (name monster-type-map)
-   (=> (I#MONSTER%TYPE x y :0.9)
-       (SS#MONSTER%TYPE x y)))
-(B (name monster-action-map)
-   (=> (I#MONSTER%ACTION x y :0.9)
-       (SS#MONSTER%ACTION x y)))
+;; (B (name monster-map)
+;;    (=> (I#MONSTER x :0.9)
+;;        (S#MONSTER x)))
+;; (B (name monster-type-map)
+;;    (=> (I#MONSTER%TYPE x y :0.9)
+;;        (SS#MONSTER%TYPE x y)))
+;; (B (name monster-action-map)
+;;    (=> (I#MONSTER%ACTION x y :0.9)
+;;        (SS#MONSTER%ACTION x y)))
 
 
 ;; Moral Duty
@@ -3193,22 +3247,22 @@
 
 ;; Moral Duty: Remuneration
 
-(B (name duty)
+(B (name duty/وظیفه)
    (=> (^ (S#MORAL_DUTY e0 :0.45) (SS#MORAL_DUTY%REMUNERATION x e0 :0.45))
        (وظیفه-nn e0 x)))
-(B (name due)
+(B (name due/تکلیف)
    (=> (^ (S#MORAL_DUTY e0 :0.45) (SS#MORAL_DUTY%REMUNERATION x e0 :0.45))
        (تکلیف-nn e0 x)))
 
 
 ;; Moral Duty: Mapping
 
-(B (name moral-duty-map)
-   (=> (I#MORAL_DUTY e0 :0.9)
-       (S#MORAL_DUTY x)))
-(B (name remuneration-map)
-   (=> (I#MORAL_DUTY%REMUNERATION x y :0.9)
-       (SS#MORAL_DUTY%REMUNERATION x y)))
+;; (B (name moral-duty-map)
+;;    (=> (I#MORAL_DUTY e0 :0.9)
+;;        (S#MORAL_DUTY x)))
+;; (B (name remuneration-map)
+;;    (=> (I#MORAL_DUTY%REMUNERATION x y :0.9)
+;;        (SS#MORAL_DUTY%REMUNERATION x y)))
 
 
 ;; Movement
@@ -3231,12 +3285,12 @@
 
 ;; Movement: Mapping
 
-(B (name movement-map)
-   (=> (I#MOVEMENT x :0.9)
-       (S#MOVEMENT x)))
-(B (name movement-movement-map)
-   (=> (I#MOVEMENT%MOVEMENT x y :0.9)
-       (SS#MOVEMENT%MOVEMENT x y)))
+;; (B (name movement-map)
+;;    (=> (I#MOVEMENT x :0.9)
+;;        (S#MOVEMENT x)))
+;; (B (name movement-movement-map)
+;;    (=> (I#MOVEMENT%MOVEMENT x y :0.9)
+;;        (SS#MOVEMENT%MOVEMENT x y)))
 
 
 ;; Natural Physical Force
@@ -3250,15 +3304,15 @@
 
 ;; Natural Physical Force: Type
 
-(B (name avalanche)
+(B (name avalanche/بهمن)
    (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
           (SS#NATURAL_PHYSICAL_FORCE%TYPE x e0 :0.45))
        (بهمن-nn e0 x)))
-(B (name tsunami)
+(B (name tsunami/سونامی)
    (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
           (SS#NATURAL_PHYSICAL_FORCE%TYPE x e0 :0.45))
        (سونامی-nn e0 x)))
-(B (name deluge)
+(B (name deluge/طوفان)
    (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
           (SS#NATURAL_PHYSICAL_FORCE%TYPE x e0 :0.45))
        (طوفان-nn e0 x)))
@@ -3354,15 +3408,15 @@
 
 ;; Natural Physical Force: Mapping
 
-(B (name natural-physical-force-map)
-   (=> (I#NATURAL_PHYSICAL_FORCE x :0.9)
-       (S#NATURAL_PHYSICAL_FORCE x)))
-(B (name natural-physical-force-type-map)
-   (=> (I#NATURAL_PHYSICAL_FORCE%TYPE x y :0.9)
-       (SS#NATURAL_PHYSICAL_FORCE%TYPE x y)))
-(B (name natural-physical-force-result-map)
-   (=> (I#NATURAL_PHYSICAL_FORCE%RESULT x y :0.9)
-       (SS#NATURAL_PHYSICAL_FORCE%RESULT x y)))
+;; (B (name natural-physical-force-map)
+;;    (=> (I#NATURAL_PHYSICAL_FORCE x :0.9)
+;;        (S#NATURAL_PHYSICAL_FORCE x)))
+;; (B (name natural-physical-force-type-map)
+;;    (=> (I#NATURAL_PHYSICAL_FORCE%TYPE x y :0.9)
+;;        (SS#NATURAL_PHYSICAL_FORCE%TYPE x y)))
+;; (B (name natural-physical-force-result-map)
+;;    (=> (I#NATURAL_PHYSICAL_FORCE%RESULT x y :0.9)
+;;        (SS#NATURAL_PHYSICAL_FORCE%RESULT x y)))
 
 
 ;; Obesity
@@ -3391,7 +3445,7 @@
    (=> (^ (S#OBESITY e0 :0.45) (SS#OBESITY%EXCESS_CONSUMPTION x e0 :0.45))
        (شکم‫-‬پرست-nn e0 x)))
 
-(B (name ravenous)
+(B (name ravenous/گرسنه)
    (=> (^ (S#OBESITY e0 :0.3) (SS#OBESITY%EXCESS_CONSUMPTION x e0 :0.3)
           (R#OVERWEIGHT x e0 :0.3))
        (گرسنه-adj e0 x)))
@@ -3399,15 +3453,15 @@
 
 ;; Obesity
 
-(B (name obesity-map)
-   (=> (I#OBESITY x :0.9)
-       (S#OBESITY x)))
-(B (name excess-body-weight-map)
-   (=> (I#OBESITY%BODY-WEIGHT x y :0.9)
-       (SS#OBESITY%EXCESS_BODY_WEIGHT x y)))
-(B (name excess-consumption-map)
-   (=> (I#OBESITY%CONSUMPTION x y :0.9)
-       (SS#OBESITY%EXCESS_CONSUMPTION x y)))
+;; (B (name obesity-map)
+;;    (=> (I#OBESITY x :0.9)
+;;        (S#OBESITY x)))
+;; (B (name excess-body-weight-map)
+;;    (=> (I#OBESITY%BODY-WEIGHT x y :0.9)
+;;        (SS#OBESITY%EXCESS_BODY_WEIGHT x y)))
+;; (B (name excess-consumption-map)
+;;    (=> (I#OBESITY%CONSUMPTION x y :0.9)
+;;        (SS#OBESITY%EXCESS_CONSUMPTION x y)))
 
 
 ;; Parasite
@@ -3418,7 +3472,7 @@
 
 ;; Parasite: Destructive Being
 
-(B (name leech)
+(B (name leech/زالو)
    (=> (^ (S#PARASITE e0 :0.45) (SS#PARASITE%DESTRUCTIVE_BEING x e0 :0.45))
        (زالو-nn e0 x)))
 (B (name parasite)
@@ -3453,15 +3507,15 @@
 
 ;; Parasite: Mapping
 
-(B (name parasite-map)
-   (=> (I#PARASITE x :0.9)
-       (S#PARASITE x)))
-(B (name parasite-destructive-being-map)
-   (=> (I#PARASITE%DESTRUCTIVE_BEING x y :0.9)
-       (SS#PARASITE%DESTRUCTIVE_BEING x y)))
-(B (name parasite-action-map)
-   (=> (I#PARASITE%ACTION x y :0.9)
-       (SS#PARASITE%ACTION x y)))
+;; (B (name parasite-map)
+;;    (=> (I#PARASITE x :0.9)
+;;        (S#PARASITE x)))
+;; (B (name parasite-destructive-being-map)
+;;    (=> (I#PARASITE%DESTRUCTIVE_BEING x y :0.9)
+;;        (SS#PARASITE%DESTRUCTIVE_BEING x y)))
+;; (B (name parasite-action-map)
+;;    (=> (I#PARASITE%ACTION x y :0.9)
+;;        (SS#PARASITE%ACTION x y)))
 
 
 ;; Pathway
@@ -3470,7 +3524,7 @@
 
 ;; Pathway: Type
 
-(B (name pathway)
+(B (name pathway/گذرگاه)
    (=> (^ (S#PATHWAY e0 :0.45) (SS#PATHWAY%TYPE x e0 :0.45))
        (گذرگاه-nn e0 x)))
 (B (name road-to)
@@ -3587,18 +3641,18 @@
 
 ;; Pathway: Mapping
 
-(B (name pathway-map)
-   (=> (I#PATHWAY x :0.9)
-       (S#PATHWAY x)))
-(B (name pathway-type-map)
-   (=> (I#PATHWAY%TYPE x y :0.9)
-       (SS#PATHWAY%TYPE x y)))
-(B (name open-path-map)
-   (=> (I#PATHWAY%OPEN_PATH x y :0.9)
-       (SS#PATHWAY%OPEN_PATH x y)))
-(B (name obstructed-path-map)
-   (=> (I#PATHWAY%OBSTRUCTED_PATH x y :0.9)
-       (SS#PATHWAY%OBSTRUCTED_PATH x y)))
+;; (B (name pathway-map)
+;;    (=> (I#PATHWAY x :0.9)
+;;        (S#PATHWAY x)))
+;; (B (name pathway-type-map)
+;;    (=> (I#PATHWAY%TYPE x y :0.9)
+;;        (SS#PATHWAY%TYPE x y)))
+;; (B (name open-path-map)
+;;    (=> (I#PATHWAY%OPEN_PATH x y :0.9)
+;;        (SS#PATHWAY%OPEN_PATH x y)))
+;; (B (name obstructed-path-map)
+;;    (=> (I#PATHWAY%OBSTRUCTED_PATH x y :0.9)
+;;        (SS#PATHWAY%OBSTRUCTED_PATH x y)))
 
 
 ;; Physical Burden
@@ -3630,7 +3684,7 @@
    (=> (^ (S#PHYSICAL_BURDEN e0 :0.45)
           (SS#PHYSICAL_BURDEN%WEIGHT x e0 :0.45))
        (سنگینی-nn e0 x)))
-(B (name pressure)
+(B (name pressure/فشار)
    (=> (^ (S#PHYSICAL_BURDEN e0 :0.45)
           (SS#PHYSICAL_BURDEN%WEIGHT x e0 :0.45))
        (فشار-nn e0 x)))
@@ -3728,18 +3782,18 @@
 
 ;; Physical Burden: Mapping
 
-(B (name physical-burden-map)
-   (=> (I#PHYSICAL_BURDEN  e0 :0.9)
-       (S#PHYSICAL_BURDEN x)))
-(B (name weight-map)
-   (=> (I#PHYSICAL_BURDEN%WEIGHT  x y :0.9)
-       (SS#PHYSICAL_BURDEN%WEIGHT x y)))
-(B (name relief-map)
-   (=> (I#PHYSICAL_BURDEN%RELIEF  x y :0.9)
-       (SS#PHYSICAL_BURDEN%RELIEF x y)))
-(B (name physical-distress-map)
-   (=> (I#PHYSICAL_BURDEN%PHYSICAL_DISTRESS  x y :0.9)
-       (SS#PHYSICAL_BURDEN%xPHYSICAL_DISTRESS x y)))
+;; (B (name physical-burden-map)
+;;    (=> (I#PHYSICAL_BURDEN  e0 :0.9)
+;;        (S#PHYSICAL_BURDEN x)))
+;; (B (name weight-map)
+;;    (=> (I#PHYSICAL_BURDEN%WEIGHT  x y :0.9)
+;;        (SS#PHYSICAL_BURDEN%WEIGHT x y)))
+;; (B (name relief-map)
+;;    (=> (I#PHYSICAL_BURDEN%RELIEF  x y :0.9)
+;;        (SS#PHYSICAL_BURDEN%RELIEF x y)))
+;; (B (name physical-distress-map)
+;;    (=> (I#PHYSICAL_BURDEN%PHYSICAL_DISTRESS  x y :0.9)
+;;        (SS#PHYSICAL_BURDEN%xPHYSICAL_DISTRESS x y)))
 
 
 ;; Physical Harm
@@ -3941,15 +3995,15 @@
 
 ;; Physical Harm: Mapping
 
-(B (name physical-harm-map)
-   (=> (I#PHYSICAL_HARM  x :0.9)
-       (S#PHYSICAL_HARM x)))
-(B (name physical-harm-type-map)
-   (=> (I#PHYSICAL_HARM%TYPE x y :0.9)
-       (SS#PHYSICAL_HARM%TYPE x y)))
-(B (name physical-harm-restraint-map)
-   (=> (I#PHYSICAL_HARM%RESTRAINT x y :0.9)
-       (SS#PHYSICAL_HARM%RESTRAINT x y)))
+;; (B (name physical-harm-map)
+;;    (=> (I#PHYSICAL_HARM  x :0.9)
+;;        (S#PHYSICAL_HARM x)))
+;; (B (name physical-harm-type-map)
+;;    (=> (I#PHYSICAL_HARM%TYPE x y :0.9)
+;;        (SS#PHYSICAL_HARM%TYPE x y)))
+;; (B (name physical-harm-restraint-map)
+;;    (=> (I#PHYSICAL_HARM%RESTRAINT x y :0.9)
+;;        (SS#PHYSICAL_HARM%RESTRAINT x y)))
 
 
 ;; Physical Location
@@ -4038,10 +4092,6 @@
    (=> (^ (S#PHYSICAL_LOCATION e0 :0.45)
           (SS#PHYSICAL_LOCATION%MOVEMENT_INTO x e0 :0.45))
        (^ (وارد-nn e1 z) (shodan e0 x z))))
-(B (name push-nn)
-   (=> (^ (S#PHYSICAL_LOCATION e0 :0.45)
-          (SS#PHYSICAL_LOCATION%MOVEMENT_INTO x e0 :0.45))
-       (فشار-nn e0 x)))
 (B (name push-into)
    (=> (^ (S#PHYSICAL_LOCATION e0 :0.23)
           (SS#PHYSICAL_LOCATION%MOVEMENT_INTO x e0 :0.23)
@@ -4119,18 +4169,18 @@
 
 ;; Physical Location: Mapping
 
-(B (name physical-location-map)
-   (=> (I#PHYSICAL_LOCATION x :0.9)
-       (S#PHYSICAL_LOCATION x)))
-(B (name defined-region-map)
-   (=> (I#PHYSICAL_LOCATION%DEFINED_REGION x y :0.9)
-       (SS#PHYSICAL_LOCATION%DEFINED_REGION x y)))
-(B (name movement-into-map)
-   (=> (I#PHYSICAL_LOCATION%MOVEMENT_INTO x y :0.9)
-       (SS#PHYSICAL_LOCATION%MOVEMENT_INTO x y)))
-(B (name physical-location-exit-map)
-   (=> (I#PHYSICAL_LOCATION%EXIT x y :0.9)
-       (SS#PHYSICAL_LOCATION%EXIT x y)))
+;; (B (name physical-location-map)
+;;    (=> (I#PHYSICAL_LOCATION x :0.9)
+;;        (S#PHYSICAL_LOCATION x)))
+;; (B (name defined-region-map)
+;;    (=> (I#PHYSICAL_LOCATION%DEFINED_REGION x y :0.9)
+;;        (SS#PHYSICAL_LOCATION%DEFINED_REGION x y)))
+;; (B (name movement-into-map)
+;;    (=> (I#PHYSICAL_LOCATION%MOVEMENT_INTO x y :0.9)
+;;        (SS#PHYSICAL_LOCATION%MOVEMENT_INTO x y)))
+;; (B (name physical-location-exit-map)
+;;    (=> (I#PHYSICAL_LOCATION%EXIT x y :0.9)
+;;        (SS#PHYSICAL_LOCATION%EXIT x y)))
 
 
 ;; Plant
@@ -4161,27 +4211,27 @@
 
 ;; Plant: Parts
 
-(B (name root)
+(B (name root/ریشه)
    (=> (^ (S#PLANT e0 :0.3) (SS#PLANT%PARTS x e0 :0.3)
           (R#PLANT-ROOT x e0 :0.3))
        (ریشه-nn e0 x)))
-(B (name fruit)
+(B (name fruit/میوه)
    (=> (^ (S#PLANT e0 :0.3) (SS#PLANT%PARTS x e0 :0.3)
           (R#PLANT-EXTERNAL x e0 :0.3))
        (میوه-nn e0 x)))
-(B (name seed)
+(B (name seed/دانه)
    (=> (^ (S#PLANT e0 :0.3) (SS#PLANT%PARTS x e0 :0.3)
           (R#PLANT-GENESIS x e0 :0.3))
        (دانه-nn e0 x)))
-(B (name leaf)
+(B (name leaf/برگ)
    (=> (^ (S#PLANT e0 :0.3) (SS#PLANT%PARTS x e0 :0.3)
           (R#PLANT-EXTERNAL x e0 :0.3))
        (برگ-nn e0 x)))
-(B (name leaf)
+(B (name branch/شاخه)
    (=> (^ (S#PLANT e0 :0.3) (SS#PLANT%PARTS x e0 :0.3)
           (R#PLANT-EXTERNAL x e0 :0.3))
        (شاخه-nn e0 x)))
-(B (name leaf)
+(B (name trunk/تنه)
    (=> (^ (S#PLANT e0 :0.3) (SS#PLANT%PARTS x e0 :0.3)
           (R#PLANT-EXTERNAL x e0 :0.3))
        (تنه-nn e0 x)))
@@ -4204,18 +4254,18 @@
 
 ;; Plant: Mapping
 
-(B (name plant-map)
-   (=> (I#PLANT x :0.9)
-       (S#PLANT x)))
-(B (name plant-type-map)
-   (=> (I#PLANT%TYPE x y :0.9)
-       (SS#PLANT%TYPE x y)))
-(B (name plant-parts-map)
-   (=> (I#PLANT%PARTS x y :0.9)
-       (SS#PLANT%PARTS x y)))
-(B (name plant-change-of-state-map)
-   (=> (I#PLANT%CHANGE_OF_STATE x y :0.9)
-       (SS#PLANT%CHANGE_OF_STATE x y)))
+;; (B (name plant-map)
+;;    (=> (I#PLANT x :0.9)
+;;        (S#PLANT x)))
+;; (B (name plant-type-map)
+;;    (=> (I#PLANT%TYPE x y :0.9)
+;;        (SS#PLANT%TYPE x y)))
+;; (B (name plant-parts-map)
+;;    (=> (I#PLANT%PARTS x y :0.9)
+;;        (SS#PLANT%PARTS x y)))
+;; (B (name plant-change-of-state-map)
+;;    (=> (I#PLANT%CHANGE_OF_STATE x y :0.9)
+;;        (SS#PLANT%CHANGE_OF_STATE x y)))
 
 
 ;; Portal
@@ -4264,15 +4314,15 @@
 
 ;; Portal: Mapping
 
-(B (name portal-map)
-   (=> (I#PORTAL e0 :0.9)
-       (S#PORTAL x)))
-(B (name means-of-entry-map)
-   (=> (I#PORTAL%MEANS_OF_ENTRY x y :0.9)
-       (SS#PORTAL%MEANS_OF_ENTRY x y)))
-(B (name obstacles-map)
-   (=> (I#PORTAL%OBSTACLES x y :0.9)
-       (SS#PORTAL%OBSTACLES x y)))
+;; (B (name portal-map)
+;;    (=> (I#PORTAL e0 :0.9)
+;;        (S#PORTAL x)))
+;; (B (name means-of-entry-map)
+;;    (=> (I#PORTAL%MEANS_OF_ENTRY x y :0.9)
+;;        (SS#PORTAL%MEANS_OF_ENTRY x y)))
+;; (B (name obstacles-map)
+;;    (=> (I#PORTAL%OBSTACLES x y :0.9)
+;;        (SS#PORTAL%OBSTACLES x y)))
 
 
 ;; Protection
@@ -4298,9 +4348,9 @@
 
 ;; Protection: Mapping
 
-(B (name protection-map)
-   (=> (I#PROTECTION x :0.9)
-       (S#PROTECTION x)))
+;; (B (name protection-map)
+;;    (=> (I#PROTECTION x :0.9)
+;;        (S#PROTECTION x)))
 
 
 
@@ -4441,21 +4491,21 @@
 
 ;; Resource: Mapping
 
-(B (name resource-map)
-   (=> (I#RESOURCE x :0.9)
-       (S#RESOURCE x)))
-(B (name substance-map)
-   (=> (I#RESOURCE%SUBSTANCE x y :0.9)
-       (SS#RESOURCE%SUBSTANCE x y)))
-(B (name quantity-map)
-   (=> (I#RESOURCE%QUANTITY_SIZE x y :0.9)
-       (SS#RESOURCE%QUANTITY_SIZE x y)))
-(B (name distribution-map)
-   (=> (I#RESOURCE%DISTRIBUTION x y :0.9)
-       (SS#RESOURCE%DISTRIBUTION x y)))
-(B (name develop-resources-map)
-   (=> (I#RESOURCE%DEVELOP_RESOURCES x y :0.9)
-       (SS#RESOURCE%DEVELOP_RESOURCES x y)))
+;; (B (name resource-map)
+;;    (=> (I#RESOURCE x :0.9)
+;;        (S#RESOURCE x)))
+;; (B (name substance-map)
+;;    (=> (I#RESOURCE%SUBSTANCE x y :0.9)
+;;        (SS#RESOURCE%SUBSTANCE x y)))
+;; (B (name quantity-map)
+;;    (=> (I#RESOURCE%QUANTITY_SIZE x y :0.9)
+;;        (SS#RESOURCE%QUANTITY_SIZE x y)))
+;; (B (name distribution-map)
+;;    (=> (I#RESOURCE%DISTRIBUTION x y :0.9)
+;;        (SS#RESOURCE%DISTRIBUTION x y)))
+;; (B (name develop-resources-map)
+;;    (=> (I#RESOURCE%DEVELOP_RESOURCES x y :0.9)
+;;        (SS#RESOURCE%DEVELOP_RESOURCES x y)))
 
 
 ;; Rule Enforcer
@@ -4475,9 +4525,9 @@
 
 ;; Rule Enforcer: Mapping
 
-(B (name rule-enforcer-map)
-   (=> (I#RULE_ENFORCER x :0.9)
-       (S#RULE_ENFORCER x)))
+;; (B (name rule-enforcer-map)
+;;    (=> (I#RULE_ENFORCER x :0.9)
+;;        (S#RULE_ENFORCER x)))
 
 
 ;; Science
@@ -4510,9 +4560,9 @@
 
 ;; Science: Mapping
 
-(B (name science-map)
-   (=> (I#SCIENCE x :0.9)
-       (S#SCIENCE x)))
+;; (B (name science-map)
+;;    (=> (I#SCIENCE x :0.9)
+;;        (S#SCIENCE x)))
 
 
 ;; Servant
@@ -4536,9 +4586,9 @@
 
 ;; Servant: Mapping
 
-(B (name servant-map)
-   (=> (I#SERVANT x :0.9)
-       (S#SERVANT x)))
+;; (B (name servant-map)
+;;    (=> (I#SERVANT x :0.9)
+;;        (S#SERVANT x)))
 
 
 ;; Struggle
@@ -4619,15 +4669,15 @@
 
 ;; Struggle: Mapping
 
-(B (name struggle-map)
-   (=> (I#STRUGGLE x :0.9)
-       (S#STRUGGLE x)))
-(B (name struggle-type-map)
-   (=> (I#STRUGGLE%TYPE x e0 :0.9)
-       (SS#STRUGGLE%TYPE x e0)))
-(B (name struggle-adversary-map)
-   (=> (I#STRUGGLE%ADVERSARY x u :0.9)
-       (SS#STRUGGLE%ADVERSARY x u)))
+;; (B (name struggle-map)
+;;    (=> (I#STRUGGLE x :0.9)
+;;        (S#STRUGGLE x)))
+;; (B (name struggle-type-map)
+;;    (=> (I#STRUGGLE%TYPE x e0 :0.9)
+;;        (SS#STRUGGLE%TYPE x e0)))
+;; (B (name struggle-adversary-map)
+;;    (=> (I#STRUGGLE%ADVERSARY x u :0.9)
+;;        (SS#STRUGGLE%ADVERSARY x u)))
 
 
 ;; Temperature
@@ -4673,9 +4723,9 @@
 
 ;; Temperature: Mapping
 
-(B (name temperature-map)
-   (=> (I#TEMPERATURE x :0.9)
-       (S#TEMPERATURE x)))
+;; (B (name temperature-map)
+;;    (=> (I#TEMPERATURE x :0.9)
+;;        (S#TEMPERATURE x)))
 
 
 ;; Theft
@@ -4776,7 +4826,7 @@
    (=> (^ (S#THEFT e0 :0.3) (SS#THEFT%PERPETRATOR x e0 :0.3)
           (R#AGENT x e0 :0.3))
        (جیب‫-‬بر-nn e0 x)))
-(B (name plunderer)
+(B (name plunderer/چپاولگر)
    (=> (^ (S#THEFT e0 :0.3) (SS#THEFT%PERPETRATOR x e0 :0.3)
           (R#AGENT x e0 :0.3))
        (چپاولگر-nn e0 x)))
@@ -4784,12 +4834,12 @@
 
 ;; Theft: Mapping
 
-(B (name theft-map)
-   (=> (I#THEFT x :0.9)
-       (S#THEFT x)))
-(B (name theft-perpetrator-map)
-   (=> (I#THEFT%PERPETRATOR x :0.9)
-       (SS#THEFT%PERPETRATOR x)))
+;; (B (name theft-map)
+;;    (=> (I#THEFT x :0.9)
+;;        (S#THEFT x)))
+;; (B (name theft-perpetrator-map)
+;;    (=> (I#THEFT%PERPETRATOR x e0 :0.9)
+;;        (SS#THEFT%PERPETRATOR x e0)))
 
 
 ;; Upward Movement
@@ -4891,9 +4941,9 @@
 
 ;; Upward Movement: Mapping
 
-(B (name upward-movement-map)
-   (=> (I#UPWARD_MOVEMENT x :0.9)
-       (S#UPWARD_MOVEMENT x)))
+;; (B (name upward-movement-map)
+;;    (=> (I#UPWARD_MOVEMENT x :0.9)
+;;        (S#UPWARD_MOVEMENT x)))
 
 
 ;; Vehicle
@@ -4919,9 +4969,9 @@
 
 ;; Vehicle: Mapping
 
-(B (name vehicle-map)
-   (=> (I#VEHICLE x :0.9)
-       (S#VEHICLE x)))
+;; (B (name vehicle-map)
+;;    (=> (I#VEHICLE x :0.9)
+;;        (S#VEHICLE x)))
 
 
 ;; War
@@ -4930,13 +4980,13 @@
 ;;   carried on by force of arms, as in a series of battles or campaigns.
 ;;   (Includes previous STRUGGLE axioms.)
 
-(B (name war)
+(B (name war/جنگ)
    (=> (^ (S#WAR e0 :0.45) (SS#WAR%TYPE x e0 :0.45))
        (جنگ-nn e0 x)))
-(B (name combat)
+(B (name combat/مبارزه)
    (=> (^ (S#WAR e0 :0.45) (SS#WAR%TYPE x e0 :0.45))
        (مبارزه-nn e0 x)))
-(B (name battle)
+(B (name battle/رزم)
    (=> (^ (S#WAR e0 :0.45) (SS#WAR%TYPE x e0 :0.45))
        (رزم-nn e0 x)))
 (B (name gunshot)
@@ -5051,19 +5101,19 @@
 (B (name minigun)
    (=> (^ (S#WAR e0 :0.45) (R#WEAPON x e0 :0.45))
        (مسلسل-nn e0 x)))
-(B (name pistol)
+(B (name pistol/تپانچه)
    (=> (^ (S#WAR e0 :0.45) (R#WEAPON x e0 :0.45))
        (تپانچه-nn e0 x)))
-(B (name rifle)
+(B (name rifle/تفنگ)
    (=> (^ (S#WAR e0 :0.45) (R#WEAPON x e0 :0.45))
        (تفنگ-nn e0 x)))
-(B (name spear)
+(B (name spear/نیزه)
    (=> (^ (S#WAR e0 :0.45) (R#WEAPON x e0 :0.45))
        (نیزه-nn e0 x)))
-(B (name trigger)
+(B (name trigger/ماشه)
    (=> (^ (S#WAR e0 :0.45) (R#WEAPON x e0 :0.45))
        (ماشه-nn e0 x)))
-(B (name uzi)
+(B (name uzi/یوزی)
    (=> (^ (S#WAR e0 :0.45) (R#WEAPON x e0 :0.45))
        (یوزی-nn e0 x)))
 
@@ -5077,6 +5127,6 @@
 
 ;; War: Mapping
 
-(B (name war-map)
-   (=> (I#WAR x :0.9)
-       (S#WAR x)))
+;; (B (name war-map)
+;;    (=> (I#WAR x :0.9)
+;;        (S#WAR x)))

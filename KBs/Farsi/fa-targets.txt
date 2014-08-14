@@ -31,9 +31,6 @@
 (B (name elect/برگزیدن)
    (=> (^ (T#DEMOCRACY u :0.45) (TS#ELECTIONS x :0.45))
        (برگزیدن-vb e0 x u1 u2)))
-(B (name vote/رای دادن)
-   (=> (^ (T#DEMOCRACY u :0.45) (TS#ELECTIONS x :0.45))
-       (رای دادن-vb e0 x u1 u2)))
 
 (B (name elected/انتخاب)
    (=> (^ (T#DEMOCRACY u :0.45) (TS#ELECTIONS x :0.45))
@@ -309,6 +306,9 @@
    (=> (^ (TS#TAXATION x :0.3) (T#ECONOMIC-INEQUALITY u :0.3)
           (R#TAX-PAYER y x :0.3))
        (^ (مالیات-nn e0 x) (دهنده-nn e1 y) (nn e2 x y))))
+(B (name tax-break)
+   (=> (^ (T#ECONOMIC-INEQUALITY u :0.44) (TS#TAXATION x :0.44))
+       (^ (اتخفیفات e0 x) (مالیاتی-adj e1 x))))
 
 
 ;; Economic Inequality: Wealth
