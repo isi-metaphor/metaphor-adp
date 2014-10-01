@@ -7,26 +7,50 @@
 ;; Democracy
 
 (B (name democracy/democracia)
-   (=> (^ (TS#DEMOCRACY x :0.45) (T#DEMOCRACY u :0.45))
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#DEMOCRACY x :0.45))
        (democracia-nn e0 x)))
 
 
 ;; Democracy: Bureaucracy
 
 (B (name bureaucracy/burocracia)
-   (=> (^ (TS#BUREAUCRACY x :0.45) (T#DEMOCRACY u :0.45))
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#BUREAUCRACY x :0.45))
        (burocracia-nn e0 x)))
 
 
 ;; Democracy: Elections
 
 (B (name election/elección)
-   (=> (^ (TS#ELECTIONS x :0.45) (T#DEMOCRACY u :0.45))
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#ELECTIONS x :0.45))
        (elección-nn e0 x)))
+(B (name vote/voto)
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#ELECTIONS x :0.45))
+       (voto-nn e0 x)))
 
 (B (name elect/electo)
-   (=> (^ (TS#ELECTIONS x :0.45) (T#DEMOCRACY u :0.45))
-       (electo-vb e0 x u1 u2)))
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#ELECTIONS x :0.45))
+       (elegir-vb e0 x u1 u2)))
+(B (name vote/votar)
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#ELECTIONS x :0.45))
+       (votar-vb e0 x u1 u2)))
+
+(B (name elected/elegido)
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#ELECTIONS x :0.45))
+       (elegido-adj e0 x)))
+
+
+;; Democracy: Government
+
+(B (name government/gobierno)
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#GOVERNMENT x :0.45))
+       (gobierno-nn e0 x)))
+
+(B (name federal-government/gobierno-federal)
+   (=> (^ (T#DEMOCRACY u :0.4) (TS#GOVERNMENT x :0.4))
+       (^ (federal-adj e0 x) (gobierno-nn e0 x))))
+(B (name local-government/gobierno-local)
+   (=> (^ (T#DEMOCRACY u :0.4) (TS#GOVERNMENT x :0.4))
+       (^ (local-adj e0 x) (gobierno-nn e0 x))))
 
 
 ;; Economic Inequality

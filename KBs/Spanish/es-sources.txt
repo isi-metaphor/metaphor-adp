@@ -17,9 +17,16 @@
 (B (name goddess/diosa)
    (=> (^ (S#A_GOD e0 :0.45) (SS#A_GOD%TYPE x e0 :0.45))
        (diosa-nn e0 x)))
+(B (name deity/deidad)
+   (=> (^ (S#A_GOD e0 :0.45) (SS#A_GOD%TYPE x e0 :0.45))
+       (deidad-nn e0 x)))
 (B (name idol/ídolo)
    (=> (^ (S#A_GOD e0 :0.45) (SS#A_GOD%TYPE x e0 :0.45))
        (ídolo-nn e0 x)))
+
+(B (name divine/divina)
+   (=> (^ (S#A_GOD e0 :0.45) (SS#A_GOD%TYPE e0 e0 :0.45))
+       (divina-adj e0 x)))
 
 
 ;; A God: Veneration
@@ -44,15 +51,15 @@
 
 ;; A God: Mapping
 
-(B (name god-map)
-   (=> (I#GOD x :0.9)
-       (S#A_GOD x)))
-(B (name god-type-map)
-   (=> (I#A_GOD%TYPE x y :0.9)
-       (SS#A_GOD%TYPE x y)))
-(B (name god-veneration-map)
-   (=> (I#A_GOD%VENERATION x y :0.9)
-       (SS#A_GOD%VENERATION x y)))
+;; (B (name god-map)
+;;    (=> (I#GOD x :0.9)
+;;        (S#A_GOD x)))
+;; (B (name god-type-map)
+;;    (=> (I#A_GOD%TYPE x y :0.9)
+;;        (SS#A_GOD%TYPE x y)))
+;; (B (name god-veneration-map)
+;;    (=> (I#A_GOD%VENERATION x y :0.9)
+;;        (SS#A_GOD%VENERATION x y)))
 
 
 ;; A Right
@@ -71,12 +78,12 @@
 
 ;; A Right: Mapping
 
-(B (name right-map)
-   (=> (I#A_RIGHT x :0.9)
-       (S#A_RIGHT x)))
-(B (name right-type-map)
-   (=> (I#A_RIGHT%TYPE x y :0.9)
-       (SS#A_RIGHT%TYPE x y)))
+;; (B (name a-right-map)
+;;    (=> (I#A_RIGHT x :0.9)
+;;        (S#A_RIGHT x)))
+;; (B (name a-right-type-map)
+;;    (=> (I#A_RIGHT%TYPE x y :0.9)
+;;        (SS#A_RIGHT%TYPE x y)))
 
 
 ;; Abyss
@@ -170,7 +177,8 @@
 (B (name push-on/empujar-en)
    (=> (^ (SS#ABYSS%ENTRANCE e0 e2 :0.2) (R#ABYSS-THEME y e2 :0.2)
           (R#ABYSS-CAUSE x e2 :0.2))
-       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2) (empujar-vb e0 x y u2) (en-in e1 e0 z))))
+       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2) (empujar-vb e0 x y u2)
+          (en-in e1 e0 z))))
 (B (name push-on/empujar-en/poverty)
    (=> (^ (S#ABYSS e0 :0.2) (SS#ABYSS%ENTRANCE e0 e0 :0.2)
           (R#ABYSS-THEME y e2 :0.2) (R#ABYSS-CAUSE x e2 :0.2))
@@ -178,7 +186,8 @@
 (B (name push-to/empujar-a)
    (=> (^ (SS#ABYSS%ENTRANCE e0 e2 :0.2) (R#ABYSS-THEME y e2 :0.2)
           (R#ABYSS-CAUSE x e2 :0.2))
-       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2) (empujar-vb e0 x y u2) (a-in e1 e0 z))))
+       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2) (empujar-vb e0 x y u2)
+          (a-in e1 e0 z))))
 (B (name push-to/empujar-a/poverty)
    (=> (^ (S#ABYSS e0 :0.2) (SS#ABYSS%ENTRANCE e0 e0 :0.2)
           (R#ABYSS-THEME y e2 :0.2) (R#ABYSS-CAUSE x e2 :0.2))
@@ -195,7 +204,8 @@
 (B (name drive-to/conducir-a)
    (=> (^ (SS#ABYSS%ENTRANCE e0 e2 :0.2) (R#ABYSS-THEME y e2 :0.2)
           (R#ABYSS-CAUSE x e2 :0.2))
-       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2) (conducir-vb e0 x y u2) (a-in e1 e0 z))))
+       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2) (conducir-vb e0 x y u2)
+          (a-in e1 e0 z))))
 (B (name drive-to/conducir-a/poverty)
    (=> (^ (S#ABYSS e0 :0.2) (SS#ABYSS%ENTRANCE e0 e0 :0.2)
           (R#ABYSS-THEME y e2 :0.2) (R#ABYSS-CAUSE x e2 :0.2))
@@ -203,7 +213,8 @@
 (B (name suck-in/chupar-en)
    (=> (^ (SS#ABYSS%ENTRANCE e0 e2 :0.2) (R#ABYSS-THEME y e2 :0.2)
           (R#ABYSS-CAUSE x e2 :0.2))
-       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2) (chupar-vb e0 x y u2) (en-in e1 e0 z))))
+       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2) (chupar-vb e0 x y u2)
+          (en-in e1 e0 z))))
 (B (name suck-in/chupar-en/poverty)
    (=> (^ (S#ABYSS e0 :0.2) (SS#ABYSS%ENTRANCE e0 e0 :0.2)
           (R#ABYSS-THEME y e2 :0.2) (R#ABYSS-CAUSE x e2 :0.2))
@@ -211,7 +222,8 @@
 (B (name suck-to/chupar-a)
    (=> (^ (SS#ABYSS%ENTRANCE e0 e2 :0.2) (R#ABYSS-THEME y e2 :0.2)
           (R#ABYSS-CAUSE x e2 :0.2))
-       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2) (chupar-vb e0 x y u2) (a-in e1 e0 z))))
+       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2) (chupar-vb e0 x y u2)
+          (a-in e1 e0 z))))
 (B (name suck-to/chupar-a/poverty)
    (=> (^ (S#ABYSS e0 :0.2) (SS#ABYSS%ENTRANCE e0 e0 :0.2)
           (R#ABYSS-THEME y e2 :0.2) (R#ABYSS-CAUSE x e2 :0.2))
@@ -264,7 +276,8 @@
 (B (name sink-to/hundirse-a)
    (=> (^ (SS#ABYSS%ENTRANCE e0 e2 :0.2) (R#ABYSS-THEME y e2 :0.2)
           (R#ABYSS-CAUSE x e2 :0.2))
-       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2) (hundirse-vb e0 x y u2) (a-in e1 e0 z))))
+       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2) (hundirse-vb e0 x y u2)
+          (a-in e1 e0 z))))
 (B (name sink-to/hundirse-a/poverty)
    (=> (^ (S#ABYSS e0 :0.2) (SS#ABYSS%ENTRANCE e0 e0 :0.2)
           (R#ABYSS-THEME y e2 :0.2) (R#ABYSS-CAUSE x e2 :0.2))
@@ -330,21 +343,21 @@
 
 ;; Abyss: Mapping
 
-(B (name abyss-map)
-   (=> (I#ABYSS x :0.9)
-       (S#ABYSS x)))
-(B (name abyss-type-map)
-   (=> (I#ABYSS%TYPE x y :0.9)
-       (SS#ABYSS%TYPE x y)))
-(B (name abyss-depth-map)
-   (=> (I#ABYSS%DEPTH x y :0.9)
-       (SS#ABYSS%DEPTH x y)))
-(B (name abyss-entrance-map)
-   (=> (I#ABYSS%ENTRANCE x y :0.9)
-       (SS#ABYSS%ENTRANCE x y)))
-(B (name abyss-exit-map)
-   (=> (I#ABYSS%EXIT x y :0.9)
-       (SS#ABYSS%EXIT x y)))
+;; (B (name abyss-map)
+;;    (=> (I#ABYSS x :0.9)
+;;        (S#ABYSS x)))
+;; (B (name abyss-type-map)
+;;    (=> (I#ABYSS%TYPE x y :0.9)
+;;        (SS#ABYSS%TYPE x y)))
+;; (B (name abyss-depth-map)
+;;    (=> (I#ABYSS%DEPTH x y :0.9)
+;;        (SS#ABYSS%DEPTH x y)))
+;; (B (name abyss-entrance-map)
+;;    (=> (I#ABYSS%ENTRANCE x y :0.9)
+;;        (SS#ABYSS%ENTRANCE x y)))
+;; (B (name abyss-exit-map)
+;;    (=> (I#ABYSS%EXIT x y :0.9)
+;;        (SS#ABYSS%EXIT x y)))
 
 
 ;; Accident
@@ -359,12 +372,12 @@
 
 ;; Accident: Mapping
 
-(B (name accident-map)
-   (=> (I#ACCIDENT x :0.9)
-       (S#ACCIDENT x)))
-(B (name accident-type-map)
-   (=> (I#ACCIDENT%TYPE x y :0.9)
-       (SS#ACCIDENT%TYPE x y)))
+;; (B (name accident-map)
+;;    (=> (I#ACCIDENT x :0.9)
+;;        (S#ACCIDENT x)))
+;; (B (name accident-type-map)
+;;    (=> (I#ACCIDENT%TYPE x y :0.9)
+;;        (SS#ACCIDENT%TYPE x y)))
 
 
 ;; Addiction
@@ -381,10 +394,12 @@
 (B (name intoxication/intoxicación)
    (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%TYPE x e0 :0.45))
        (intoxicación-nn e0 x)))
-(B (name drunk/borracho)
-   (=> (^ (S#ADDICTION e0 :0.3) (SS#ADDICTION%TYPE e0 e0 :0.3)
-          (R#ADDICTED x e0 :0.3))
-       (borracho-adj e0 x)))
+(B (name cocaine/cocaína)
+   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%TYPE x e0 :0.45))
+       (cocaína-nn e0 x)))
+(B (name opium/opio)
+   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%TYPE x e0 :0.45))
+       (opio-nn e0 x)))
 
 
 ;; Addiction: Compulsion
@@ -402,23 +417,33 @@
 
 ;; Addiction: Result
 
-;; TODO: Add addiction result axioms.
+(B (name drunk/borracho)
+   (=> (^ (S#ADDICTION e0 :0.30) (SS#ADDICTION%RESULT e0 e0 :0.30)
+          (R#ADDICTED x e0 :0.30))
+       (borracho-adj e0 x)))
+(B (name intoxicated/intoxicado)
+   (=> (^ (S#ADDICTION e0 :0.30) (SS#ADDICTION%RESULT e0 e0 :0.30)
+          (R#ADDICTED x e0 :0.30))
+       (intoxicado-adj e0 x)))
+(B (name overdose/sobredosis)
+   (=> (^ (S#ADDICTION e0 :0.30) (SS#ADDICTION%RESULT x e0 :0.30))
+       (sobredosis-nn e0 x)))
 
 
 ;; Addiction: Mapping
 
-(B (name addiction-map)
-   (=> (I#ADDICTION x :0.9)
-       (S#ADDICTION x)))
-(B (name addiction-type-map)
-   (=> (I#ADDICTION%TYPE x y :0.9)
-       (SS#ADDICTION%TYPE x y)))
-(B (name addiction-compulsion-map)
-   (=> (I#ADDICTION%COMPULSION x y :0.9)
-       (SS#ADDICTION%COMPULSION x y)))
-(B (name addiction-result-map)
-   (=> (I#ADDICTION%RESULT x y :0.9)
-       (SS#ADDICTION%RESULT x y)))
+;; (B (name addiction-map)
+;;    (=> (I#ADDICTION x :0.9)
+;;        (S#ADDICTION x)))
+;; (B (name addiction-type-map)
+;;    (=> (I#ADDICTION%TYPE x y :0.9)
+;;        (SS#ADDICTION%TYPE x y)))
+;; (B (name addiction-compulsion-map)
+;;    (=> (I#ADDICTION%COMPULSION x y :0.9)
+;;        (SS#ADDICTION%COMPULSION x y)))
+;; (B (name addiction-result-map)
+;;    (=> (I#ADDICTION%RESULT x y :0.9)
+;;        (SS#ADDICTION%RESULT x y)))
 
 
 ;; Animal
@@ -551,12 +576,10 @@
 (B (name footprint/huella)
    (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%COMPONENT x e0 :0.45))
        (huella-nn e0 x)))
-(B (name hand/mano)
-   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%COMPONENT x e0 :0.45))
-       (mano-nn e0 x)))
-(B (name hand-rock-cradle/mano-mece-cuna)
-   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%COMPONENT x e0 :0.45))
-       (^ (mano-nn e0 x) (mece-vb e1 u y z) (cuna-nn e2 y))))
+;; Hand is more likely to be HUMAN_BODY.
+;; (B (name hand/mano)
+;;    (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%COMPONENT x e0 :0.45))
+;;        (mano-nn e0 x)))
 
 
 ;; Animal: Function
@@ -651,28 +674,50 @@
 
 ;; Animal: Mapping
 
-(B (name animal-map)
-   (=> (I#ANIMAL x :0.9)
-       (S#ANIMAL x)))
-(B (name animal-type-map)
-   (=> (I#ANIMAL%TYPE x y :0.9)
-       (SS#ANIMAL%TYPE x y)))
-(B (name animal-component-map)
-   (=> (I#ANIMAL%COMPONENT x y :0.9)
-       (SS#ANIMAL%COMPONENT x y)))
-(B (name animal-function-map)
-   (=> (I#ANIMAL%FUNCTION x y :0.9)
-       (SS#ANIMAL%FUNCTION x y)))
-(B (name animal-action-map)
-   (=> (I#ANIMAL%ACTION x y :0.9)
-       (SS#ANIMAL%ACTION x y)))
+;; (B (name animal-map)
+;;    (=> (I#ANIMAL x :0.9)
+;;        (S#ANIMAL x)))
+;; (B (name animal-type-map)
+;;    (=> (I#ANIMAL%TYPE x y :0.9)
+;;        (SS#ANIMAL%TYPE x y)))
+;; (B (name animal-component-map)
+;;    (=> (I#ANIMAL%COMPONENT x y :0.9)
+;;        (SS#ANIMAL%COMPONENT x y)))
+;; (B (name animal-function-map)
+;;    (=> (I#ANIMAL%FUNCTION x y :0.9)
+;;        (SS#ANIMAL%FUNCTION x y)))
+;; (B (name animal-action-map)
+;;    (=> (I#ANIMAL%ACTION x y :0.9)
+;;        (SS#ANIMAL%ACTION x y)))
 
 
 ;; Barrier
 ;;   Anything used or acting to block someone from going somewhere or from
 ;;   doing something, or to block something from happening.
 
-;; TODO: Add barrier axioms.
+(B (name barrier/barrera)
+   (=> (S#BARRIER e0 :0.9)
+       (barrera-nn e0 x)))
+(B (name barricade/barricada)
+   (=> (S#BARRIER e0 :0.9)
+       (barricada-nn e0 x)))
+(B (name obstacle/obstáculo)
+   (=> (S#BARRIER e0 :0.9)
+       (obstáculo-nn e0 x)))
+
+(B (name block/bloquear)
+   (=> (S#BARRIER e0 :0.9)
+       (bloquear-vb e0 x0 x1 x2)))
+(B (name obstruct/obstruir)
+   (=> (S#BARRIER e0 :0.9)
+       (obstruir-vb e0 x0 x1 x2)))
+
+
+;; Barrier: Mapping
+
+;; (B (name barrier-map)
+;;    (=> (I#BARRIER x :0.9)
+;;        (S#BARRIER x)))
 
 
 ;; Blood Stream
@@ -691,24 +736,35 @@
 (B (name artery/ateria)
    (=> (^ (S#BLOOD_STREAM e0 :0.45) (SS#BLOOD_STREAM%COMPONENT x e0 :0.45))
        (ateria-nn e0 x)))
+(B (name arterial/arterial)
+   (=> (^ (S#BLOOD_STREAM e0 :0.45) (SS#BLOOD_STREAM%COMPONENT x e0 :0.45))
+       (arterial-adj e0 x)))
 
 
 ;; Blood Stream: Movement
 
-;; TODO: Add blood stream movement axioms.
+(B (name hemorrhage/sangrar)
+   (=> (^ (S#BLOOD_STREAM e0 :0.45) (SS#BLOOD_STREAM%MOVEMENT e0 e0 :0.45))
+       (sangrar-vb e0 x y z)))
+(B (name coagulate/coagular)
+   (=> (^ (S#BLOOD_STREAM e0 :0.45) (SS#BLOOD_STREAM%MOVEMENT e0 e0 :0.45))
+       (coagular-vb e0 x y z)))
+(B (name transfusion/transfusión)
+   (=> (^ (S#BLOOD_STREAM e0 :0.45) (SS#BLOOD_STREAM%MOVEMENT x e0 :0.45))
+       (transfusión-nn e0 x)))
 
 
 ;; Blood Stream: Mapping
 
-(B (name blood-system-map)
-   (=> (I#BLOOD_SYSTEM x :0.9)
-       (S#BLOOD_SYSTEM x)))
-(B (name blood-system-component-map)
-   (=> (I#BLOOD_SYSTEM%COMPONENT x y :0.9)
-       (SS#BLOOD_SYSTEM%COMPONENT x y)))
-(B (name blood-system-movement-map)
-   (=> (I#BLOOD_SYSTEM%MOVEMENT x y :0.9)
-       (SS#BLOOD_SYSTEM%MOVEMENT x y)))
+;; (B (name blood-stream-map)
+;;    (=> (I#BLOOD_STREAM x :0.9)
+;;        (S#BLOOD_STREAM x)))
+;; (B (name blood-stream-component-map)
+;;    (=> (I#BLOOD_STREAM%COMPONENT x y :0.9)
+;;        (SS#BLOOD_STREAM%COMPONENT x y)))
+;; (B (name blood-stream-movement-map)
+;;    (=> (I#BLOOD_STREAM%MOVEMENT x y :0.9)
+;;        (SS#BLOOD_STREAM%MOVEMENT x y)))
 
 
 ;; Body of Water
@@ -730,12 +786,21 @@
 (B (name sea/mar)
    (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%TYPE x e0 :0.45))
        (mar-nn e0 y)))
+(B (name sea-of/mar-de)
+   (=> (^ (S#BODY_OF_WATER e0 :0.44) (SS#BODY_OF_WATER%TYPE x e0 :0.44))
+       (^ (mar-nn e0 y) (de-in e1 y z))))
 (B (name ocean/océano)
    (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%TYPE x e0 :0.45))
        (océano-nn e0 y)))
+(B (name ocean-of/océano-de)
+   (=> (^ (S#BODY_OF_WATER e0 :0.44) (SS#BODY_OF_WATER%TYPE x e0 :0.44))
+       (^ (océano-nn e0 y) (de-in e1 y z))))
 (B (name river/río)
    (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%TYPE x e0 :0.45))
        (río-nn e0 y)))
+(B (name river-of/río-de)
+   (=> (^ (S#BODY_OF_WATER e0 :0.44) (SS#BODY_OF_WATER%TYPE x e0 :0.44))
+       (^ (río-nn e0 y) (de-in e1 y z))))
 
 
 ;; Body of Water: Movement
@@ -804,15 +869,15 @@
 
 ;; Body of Water: Mapping
 
-(B (name agua-map)
-   (=> (I#BODY_OF_WATER x :0.9)
-       (S#BODY_OF_WATER x)))
-(B (name beber-map)
-   (=> (I#BODY_OF_WATER%DANGER x y :0.9)
-       (SS#BODY_OF_WATER%DANGER x y)))
-(B (name fluir-map)
-   (=> (I#BODY_OF_WATER%MOVEMENT x y :0.9)
-       (SS#BODY_OF_WATER%MOVEMENT x y)))
+;; (B (name body-of-water-map)
+;;    (=> (I#BODY_OF_WATER x :0.9)
+;;        (S#BODY_OF_WATER x)))
+;; (B (name body-of-water-danger-map)
+;;    (=> (I#BODY_OF_WATER%DANGER x y :0.9)
+;;        (SS#BODY_OF_WATER%DANGER x y)))
+;; (B (name body-of-water-movement-map)
+;;    (=> (I#BODY_OF_WATER%MOVEMENT x y :0.9)
+;;        (SS#BODY_OF_WATER%MOVEMENT x y)))
 
 
 ;; Building
@@ -920,23 +985,46 @@
 
 ;; Building: Support
 
-;; TODO: Add support axioms. See English KB.
+(B (name support/soporte)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%SUPPORT x e0 :0.45))
+       (soporte-nn e0 x)))
+(B (name support/apoyar)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%SUPPORT e0 e0 :0.45))
+       (apoyar-vb e0 x y u)))
+
+(B (name buttress/contrafuerte)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%SUPPORT x e0 :0.45))
+       (contrafuerte-nn e0 x)))
+(B (name buttress/reforzarse)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%SUPPORT e0 e0 :0.45))
+       (reforzarse-vb e0 x y u)))
+
+(B (name pillar/pilar)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%SUPPORT x e0 :0.45))
+       (pilar-nn e0 x)))
+(B (name underpinning/apuntalamiento)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%SUPPORT x e0 :0.45))
+       (apuntalamiento-nn e0 x)))
+
+(B (name underpin/apuntalar)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%SUPPORT e0 e0 :0.45))
+       (apuntalar-vb e0 x y u)))
 
 
 ;; Building: Mapping
 
-(B (name building-map)
-   (=> (I#BUILDING x :0.9)
-       (S#BUILDING x)))
-(B (name structure-map)
-   (=> (I#BUILDING%STRUCTURE x y :0.9)
-       (SS#BUILDING%STRUCTURE x y)))
-(B (name creation_destruction-map)
-   (=> (I#BUILDING%CREATION_DESTRUCTION x y :0.9)
-       (SS#BUILDING%CREATION_DESTRUCTION x y)))
-(B (name components-map)
-   (=> (I#BUILDING%COMPONENTS x y :0.9)
-       (SS#BUILDING%COMPONENTS x y)))
+;; (B (name building-map)
+;;    (=> (I#BUILDING x :0.9)
+;;        (S#BUILDING x)))
+;; (B (name building-structure-map)
+;;    (=> (I#BUILDING%STRUCTURE x y :0.9)
+;;        (SS#BUILDING%STRUCTURE x y)))
+;; (B (name building-creation-destruction-map)
+;;    (=> (I#BUILDING%CREATION_DESTRUCTION x y :0.9)
+;;        (SS#BUILDING%CREATION_DESTRUCTION x y)))
+;; (B (name building-components-map)
+;;    (=> (I#BUILDING%COMPONENTS x y :0.9)
+;;        (SS#BUILDING%COMPONENTS x y)))
 
 
 
@@ -944,13 +1032,72 @@
 ;;   The activity of making, buying, or selling goods or providing services
 ;;   in exchange for money.
 
-;; TODO: Write business axioms.
+(B (name business/negocios)
+   (=> (S#BUSINESS e0 :0.9)
+       (negocios-nn e0 x)))
+(B (name company/empresa)
+   (=> (S#BUSINESS e0 :0.9)
+       (empresa-nn e0 x)))
+(B (name manufacturer/fabricante)
+   (=> (S#BUSINESS e0 :0.9)
+       (fabricante-nn e0 x)))
+
+(B (name manufacture/fabricar)
+   (=> (S#BUSINESS e0 :0.9)
+       (fabricar-vb e0 x0 x1 x2)))
+(B (name sell/vender)
+   (=> (S#BUSINESS e0 :0.9)
+       (vender-vb e0 x0 x1 x2)))
+(B (name buy/comprar)
+   (=> (S#BUSINESS e0 :0.9)
+       (comprar-vb e0 x0 x1 x2)))
+
+
+;; Business: Mapping
+
+;; (B (name business-map)
+;;    (=> (I#BUSINESS x :0.9)
+;;        (S#BUSINESS x)))
 
 
 ;; Clothing
 ;;   The things that people wear to cover their bodies.
 
-;; TODO: Write clothing axioms.
+(B (name clothing/ropa)
+   (=> (S#CLOTHING e0 :0.9)
+       (ropa-nn e0 x)))
+(B (name clothing/vestimenta)
+   (=> (S#CLOTHING e0 :0.9)
+       (vestimenta-nn e0 x)))
+
+(B (name shirt/cota)
+   (=> (S#CLOTHING e0 :0.9)
+       (cota-nn e0 x)))
+(B (name shirt/blusa)
+   (=> (S#CLOTHING e0 :0.9)
+       (blusa-nn e0 x)))
+(B (name jacket/chaqueta)
+   (=> (S#CLOTHING e0 :0.9)
+       (chaqueta-nn e0 x)))
+(B (name hat/sombrero)
+   (=> (S#CLOTHING e0 :0.9)
+       (sombrero-nn e0 x)))
+(B (name cloak/capa)
+   (=> (S#CLOTHING e0 :0.9)
+       (capa-nn e0 x)))
+(B (name dress/vestido)
+   (=> (S#CLOTHING e0 :0.9)
+       (vestido-nn e0 x)))
+(B (name skirt/falda)
+   (=> (S#CLOTHING e0 :0.9)
+       (falda-nn e0 x)))
+
+
+;; Clothing: Mapping
+
+;; (B (name clothing-map)
+;;    (=> (I#CLOTHING x :0.9)
+;;        (S#CLOTHING x)))
 
 
 ;; Competition
@@ -960,22 +1107,38 @@
 
 ;; Competition: Type
 
-;; TODO: Write competition type axioms. See English KB.
+(B (name competition/competición)
+   (=> (^ (S#COMPETITION x :0.45) (SS#COMPETITION%TYPE x e0 :0.45))
+       (competición-nn e0 x)))
+(B (name contest/concurso)
+   (=> (^ (S#COMPETITION x :0.45) (SS#COMPETITION%TYPE x e0 :0.45))
+       (concurso-nn e0 x)))
+(B (name race/carrera)
+   (=> (^ (S#COMPETITION x :0.45) (SS#COMPETITION%TYPE x e0 :0.45))
+       (carrera-nn e0 x)))
 
 
 ;; Competition: Component
 
-;; TODO: Write competition component axioms. See English KB.
+(B (name winner/ganador)
+   (=> (^ (S#COMPETITION x :0.45) (SS#COMPETITION%COMPONENT x e0 :0.45))
+       (ganador-nn e0 x)))
+(B (name loser/perdedor)
+   (=> (^ (S#COMPETITION x :0.45) (SS#COMPETITION%COMPONENT x e0 :0.45))
+       (perdedor-nn e0 x)))
+(B (name player/jugador)
+   (=> (^ (S#COMPETITION x :0.45) (SS#COMPETITION%COMPONENT x e0 :0.45))
+       (jugador-nn e0 x)))
 
 
 ;; Competition: Mapping
 
-(B (name competition-map)
-   (=> (I#COMPETITION x :0.9)
-       (S#COMPETITION x)))
-(B (name competition-component-map)
-   (=> (I#COMPETITION%COMPONENT x y :0.9)
-       (SS#COMPETITION%COMPONENT x y)))
+;; (B (name competition-map)
+;;    (=> (I#COMPETITION x :0.9)
+;;        (S#COMPETITION x)))
+;; (B (name competition-component-map)
+;;    (=> (I#COMPETITION%COMPONENT x y :0.9)
+;;        (SS#COMPETITION%COMPONENT x y)))
 
 
 ;; Confinement
@@ -1025,71 +1188,74 @@
 
 ;; Confinement: Restraints
 
-(B (name trampa)
+(B (name trap/trampa)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%RESTRAINTS x e0 :0.45))
        (trampa-nn e0 x)))
-(B (name sifón)
+(B (name siphon/sifón)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%RESTRAINTS x e0 :0.45))
        (sifón-nn e0 x)))
-(B (name neto)
+(B (name net/neto)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%RESTRAINTS x e0 :0.45))
        (neto-nn e0 x)))
-(B (name esposas)
+(B (name handcuffs/esposas)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%RESTRAINTS x e0 :0.45))
        (esposas-nn e0 x)))
-(B (name cadena)
+(B (name chain/cadena)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%RESTRAINTS x e0 :0.45))
        (cadena-nn e0 x)))
-(B (name cautiverio)
+(B (name captivity/cautiverio)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%RESTRAINTS x e0 :0.45))
        (cautiverio-nn e0 x)))
-(B (name cinturón)
+(B (name belt/cinturón)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%RESTRAINTS x e0 :0.45))
        (cinturón-nn e0 x)))
 
-(B (name atrapar)
+(B (name trap/atrapar)
    (=> (^ (S#CONFINEMENT e0 :0.2) (SS#CONFINEMENT%RESTRAINTS e0 e0 :0.2)
           (R#CONFINEMENT-AGENT x e0 :0.2) (R#CONFINEMENT-PATIENT y e0 :0.2))
        (atrapar-vb e0 x y u)))
+(B (name tied-hands/amarra-manos)
+   (=> (S#CONFINEMENT e0 :0.9)
+       (^ (amarra-vb e0 u1 x1 u3) (mano-nn e1 x1))))
 
 
 ;; Confinement: Exit
 
-(B (name puerta)
+(B (name door/puerta)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%EXIT x e0 :0.45))
        (puerta-nn e0 x)))
-(B (name escelara)
+(B (name ladder/escalara)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%EXIT x e0 :0.45))
-       (escelara-nn e0 x)))
-(B (name cuerda)
+       (escalara-nn e0 x)))
+(B (name rope/cuerda)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%EXIT x e0 :0.45))
        (cuerda-nn e0 x)))
-(B (name trampolín)
+(B (name trampoline/trampolín)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%EXIT x e0 :0.45))
        (trampolín-nn e0 x)))
-(B (name línea-de-vida)
+(B (name lifeline/línea-de-vida)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%EXIT x e0 :0.45))
        (^ (línea-nn e0 x) (de-in e1 x y) (vida-nn e2 y))))
-(B (name escape)
+(B (name escape/escape)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%EXIT x e0 :0.45))
        (escape-nn e0 x)))
-(B (name evasion)
+(B (name evasion/evasión)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%EXIT x e0 :0.45))
        (evasión-nn e0 x)))
 
-(B (name escapar)
+(B (name escape/escapar)
    (=> (^ (S#CONFINEMENT e0 :0.3) (SS#CONFINEMENT%EXIT e0 e0 :0.3)
           (R#ESCAPE-AGENT x e0 :0.3))
        (escapar-vb e0 x y u)))
-(B (name evadir)
+(B (name evade/evadir)
    (=> (^ (S#CONFINEMENT e0 :0.3) (SS#CONFINEMENT%EXIT e0 e0 :0.3)
           (R#ESCAPE-AGENT x e0 :0.3))
        (evadir-vb e0 x y u)))
-(B (name salir-de)
+(B (name exit/salir-de)
    (=> (^ (S#CONFINEMENT e0 :0.3) (SS#CONFINEMENT%EXIT e0 e0 :0.3)
           (R#ESCAPE-AGENT x e0 :0.3))
        (^ (salir-vb e0 x y u) (de-in e1 e0 z))))
-(B (name liberar)
+(B (name release/liberar)
    (=> (^ (S#CONFINEMENT e0 :0.23) (SS#CONFINEMENT%EXIT e0 e0 :0.23)
           (R#EXIT-AGENT x e0 :0.23) (R#EXIT-PATIENT y e0 :0.23))
        (liberar-vb e0 x y u)))
@@ -1097,32 +1263,93 @@
 
 ;; Confinement: Mapping
 
-(B (name confinamiento-map)
-   (=> (I#CONFINEMENT x :0.9)
-       (S#CONFINEMENT x)))
-(B (name espaciosonfinado-map)
-   (=> (I#CONFINEMENT%CONFINED_SPACE x y :0.9)
-       (SS#CONFINEMENT%CONFINED_SPACE x y)))
-(B (name restricciones-map)
-   (=> (I#CONFINEMENT%RESTRAINTS x y :0.9)
-       (SS#CONFINEMENT%RESTRAINTS x y)))
-(B (name salida-map)
-   (=> (I#CONFINEMENT%EXIT x y :0.9)
-       (SS#CONFINEMENT%EXIT x y)))
+;; (B (name confinement-map)
+;;    (=> (I#CONFINEMENT x :0.9)
+;;        (S#CONFINEMENT x)))
+;; (B (name confinement-confined-space-map)
+;;    (=> (I#CONFINEMENT%CONFINED_SPACE x y :0.9)
+;;        (SS#CONFINEMENT%CONFINED_SPACE x y)))
+;; (B (name confinement-restraints-map)
+;;    (=> (I#CONFINEMENT%RESTRAINTS x y :0.9)
+;;        (SS#CONFINEMENT%RESTRAINTS x y)))
+;; (B (name confinement-exit-map)
+;;    (=> (I#CONFINEMENT%EXIT x y :0.9)
+;;        (SS#CONFINEMENT%EXIT x y)))
 
 
 ;; Container
 ;;   An object (such as a box or can) that can hold something; a receptacle
 ;;   (as a box or jar) for holding goods.
 
-;; TODO: Add container axioms.
+(B (name container/contenedor)
+   (=> (S#CONTAINER e0 :0.45)
+       (contenedor-nn e0 x)))
+(B (name container/recipiente)
+   (=> (S#CONTAINER e0 :0.45)
+       (recipiente-nn e0 x)))
+
+(B (name box/caja)
+   (=> (S#CONTAINER e0 :0.45)
+       (caja-nn e0 x)))
+(B (name can/puede)
+   (=> (S#CONTAINER e0 :0.45)
+       (puede-nn e0 x)))
+(B (name jar/tarro)
+   (=> (S#CONTAINER e0 :0.45)
+       (tarro-nn e0 x)))
+(B (name jug/jarra)
+   (=> (S#CONTAINER e0 :0.45)
+       (jarra-nn e0 x)))
+(B (name crate/cajón)
+   (=> (S#CONTAINER e0 :0.45)
+       (cajón-nn e0 x)))
+
+
+;; Container: Mapping
+
+;; (B (name container-map)
+;;    (=> (I#CONTAINER x :0.9)
+;;        (S#CONTAINER x)))
 
 
 ;; Contamination
 ;;   To make something less pure or make it poisonous; make (something) impure
-;;   by exposure or addition of a poisonous or polluting substance.
+;;   by exposure or addition of a poisonous or polluting substance. (Includes
+;;   former IMPURITY axioms.)
 
-;; TODO: Add contamination axioms.
+;; Contamination: Type
+
+(B (name dirt/suciedad)
+   (=> (^ (S#CONTAMINATION e0 :0.45) (SS#CONTAMINATION%TYPE x e0 :0.45))
+       (suciedad-nn e0 x)))
+(B (name dust/polvo)
+   (=> (^ (S#CONTAMINATION e0 :0.45) (SS#CONTAMINATION%TYPE x e0 :0.45))
+       (polvo-nn e0 x)))
+(B (name trash/basura)
+   (=> (^ (S#CONTAMINATION e0 :0.45) (SS#CONTAMINATION%TYPE x e0 :0.45))
+       (basura-nn e0 x)))
+
+(B (name dirty/sucio)
+   (=> (^ (S#CONTAMINATION e0 :0.45) (SS#CONTAMINATION%TYPE e0 e0 :0.45))
+       (sucio-adj e0 x)))
+
+(B (name stain/mancha)
+   (=> (^ (S#CONTAMINATION e0 :0.45) (SS#CONTAMINATION%TYPE x e0 :0.45))
+       (mancha-nn e0 x)))
+
+(B (name sully/manchar)
+   (=> (^ (S#CONTAMINATION e0 :0.45) (SS#CONTAMINATION%TYPE e0 e0 :0.45))
+       (manchar-vb e0 x y z)))
+
+
+;; Contamination: Mapping
+
+;; (B (name contamination-map)
+;;    (=> (I#CONTAMINATION x :0.9)
+;;        (S#CONTAMINATION x)))
+;; (B (name contamination-type-map)
+;;    (=> (I#CONTAMINATION%TYPE x y :0.9)
+;;        (SS#CONTAMINATION%TYPE x y)))
 
 
 ;; Crime
@@ -1130,159 +1357,130 @@
 
 ;; Crime: Type
 
-(B (name crimen)
+(B (name crime/crimen)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
        (crimen-nn e0 x)))
-(B (name delito)
+(B (name crime/delito)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
        (delito-nn e0 x)))
-(B (name asalto)
+(B (name assault/asalto)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
        (asalto-nn e0 x)))
-(B (name malhecho)
+(B (name wrongdoing/malhecho)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
        (malhecho-nn e0 x)))
-(B (name delincuencia)
+(B (name delinquency/delincuencia)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
        (delincuencia-nn e0 x)))
 
-(B (name fechoría)
+(B (name misdeed/fechoría)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
        (fechoría-nn e0 x)))
-(B (name violación)
+(B (name violation/violación)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
        (violación-nn e0 x)))
 
-(B (name conducta-culpable)
+(B (name culpable-conduct/conducta-culpable)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
        (^ (conducta-nn e0 x) (culpable-adj e1 x))))
-(B (name criminal-conduct)
+(B (name criminal-conduct/conducta-criminal)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (^ (conduct-nn e0 x) (criminal-adj e1 x))))
+       (^ (conducta-nn e0 x) (criminal-adj e1 x))))
 
-(B (name rape-nn)
+(B (name rape/violación)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (rape-nn e0 x)))
-
-(B (name rape-vb)
+       (violación-nn e0 x)))
+(B (name rape/violar)
    (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2)
           (R#CRIME-AGENT x e0 :0.2) (R#CRIME-VICTIM y e0 :0.2))
-       (rape-vb e0 x y u)))
+       (violar-vb e0 x y u)))
 
-(B (name robar)
+(B (name steal/robar)
    (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2)
           (R#CRIME-AGENT x e0 :0.2) (R#CRIME-THEME z e0 :0.2))
        (robar-vb e0 x z u2)))
-(B (name ratear)
+(B (name filch/ratear)
    (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2)
           (R#CRIME-AGENT x e0 :0.2) (R#CRIME-THEME z e0 :0.2))
        (ratear-vb e0 x z u2)))
-(B (name saquear)
+(B (name loot/saquear)
    (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2)
           (R#CRIME-AGENT x e0 :0.2) (R#CRIME-THEME z e0 :0.2))
        (saquear-vb e0 x z u2)))
-(B (name pillar)
+(B (name pillage/pillar)
    (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2)
           (R#CRIME-AGENT x e0 :0.2) (R#CRIME-THEME z e0 :0.2))
        (pillar-vb e0 x z u2)))
-(B (name matar)
+(B (name kill/matar)
    (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2)
           (R#CRIME-AGENT x e0 :0.2) (R#CRIME-THEME z e0 :0.2))
        (matar-vb e0 x z u2)))
 
-(B (name robo)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (robo-nn e0 x)))
-(B (name hurto)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (hurto-nn e0 x)))
-(B (name latrocinio)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (latrocinio-nn e0 x)))
-
-(B (name pillaje)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (pillaje-nn e0 x)))
-(B (name saqueo)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (saqueo-nn e0 x)))
-(B (name botín)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
-       (botín-nn e0 x)))
-
-(B (name robar)
-   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE x e0 :0.2) (R#CRIME-AGENT x e0 :0.2)
-          (R#CRIME-VICTIM y e0 :0.2))
-       (robar-vb e0 x y u)))
-
-(B (name violencia)
+(B (name violence/violencia)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
        (violencia-nn e0 x)))
 
 
 ;; Crime: Perpetrator
 
-(B (name bandido)
-   (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
-          (R#CRIME-AGENT x e0 :0.3)) (bandido-nn e0 x)))
-(B (name criminal-nn)
+(B (name criminal/criminal-nn)
    (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
           (R#CRIME-AGENT x e0 :0.3))
        (criminal-nn e0 x)))
-(B (name criminal-adj)
+(B (name criminal/criminal-adj)
    (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
           (R#CRIME-AGENT x e0 :0.3))
        (criminal-adj e0 x)))
-(B (name delictivo-nn)
+(B (name criminal/delictivo-nn)
    (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
           (R#CRIME-AGENT x e0 :0.3))
        (delictivo-nn e0 x)))
-(B (name delictivo-adj)
+(B (name criminal/delictivo-adj)
    (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
           (R#CRIME-AGENT x e0 :0.3))
        (delictivo-adj e0 x)))
-(B (name delincuente)
+(B (name offender/delincuente)
    (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
           (R#CRIME-AGENT x e0 :0.3))
        (delincuente-nn e0 x)))
-(B (name proscrito)
+(B (name outlaw/proscrito)
    (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
           (R#CRIME-AGENT x e0 :0.3))
        (proscrito-nn e0 x)))
-(B (name forajido)
+(B (name outlaw/forajido)
    (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
           (R#CRIME-AGENT x e0 :0.3))
        (forajido-nn e0 x)))
-(B (name culpable)
+(B (name guilty/culpable)
    (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
           (R#CRIME-AGENT x e0 :0.3))
        (culpable-nn e0 x)))
-(B (name reo)
+(B (name convict/reo)
    (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
           (R#CRIME-AGENT x e0 :0.3))
        (reo-nn e0 x)))
-(B (name malhechor)
+(B (name wrongdoer/malhechor)
    (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
           (R#CRIME-AGENT x e0 :0.3))
        (malhechor-nn e0 x)))
-(B (name prostituta)
+(B (name prostitute/prostituta)
    (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
           (R#CRIME-AGENT x e0 :0.3))
        (prostituta-nn e0 x)))
 
-(B (name ladrón)
+(B (name thief/ladrón)
    (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR e0 e0 :0.3)
           (R#CRIME-AGENT x e0 :0.3))
        (ladrón-nn e0 x)))
-(B (name ladronzuelo)
+(B (name thief/ladronzuelo)
    (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR e0 e0 :0.3)
           (R#CRIME-AGENT x e0 :0.3))
        (ladronzuelo-nn e0 x)))
-(B (name asaltador)
+(B (name assailant/asaltador)
    (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR e0 e0 :0.3)
           (R#CRIME-AGENT x e0 :0.3))
        (asaltador-nn e0 x)))
-(B (name saqueador)
+(B (name looter/saqueador)
    (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR e0 e0 :0.3)
           (R#CRIME-AGENT x e0 :0.3))
        (saqueador-nn e0 x)))
@@ -1290,46 +1488,43 @@
 
 ;; Crime: Punishment
 
-(B (name castigo)
+(B (name punishment/castigo)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PUNISHMENT x e0 :0.45))
        (castigo-nn e0 x)))
-(B (name pena)
+(B (name penalty/pena)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PUNISHMENT x e0 :0.45))
        (pena-nn e0 x)))
-(B (name sentencia)
+(B (name judgment/sentencia)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PUNISHMENT x e0 :0.45))
        (sentencia-nn e0 x)))
-(B (name penalización)
+(B (name penalty/penalización)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PUNISHMENT x e0 :0.45))
        (penalización-nn e0 x)))
-(B (name multa)
+(B (name fine/multa)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PUNISHMENT x e0 :0.45))
        (multa-nn e0 x)))
-(B (name fine)
-   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PUNISHMENT x e0 :0.45))
-       (fine-nn e0 x)))
-(B (name azote)
+(B (name whip/azote)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PUNISHMENT x e0 :0.45))
        (azote-nn e0 x)))
-(B (name condena)
+(B (name sentence/condena)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PUNISHMENT x e0 :0.45))
        (condena-nn e0 x)))
-(B (name retribución)
+(B (name remuneration/retribución)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PUNISHMENT x e0 :0.45))
        (retribución-nn e0 x)))
 
-(B (name pena-de-prisión)
+(B (name imprisonment/pena-de-prisión)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PUNISHMENT x e0 :0.45))
        (^ (pena-nn e0 y) (de-in e1 y x) (prisión-nn e2 x))))
-(B (name condena-perpetua)
+(B (name life-sentence/condena-perpetua)
    (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PUNISHMENT x e0 :0.45))
        (^ (condena-nn e0 x) (perpetua-nn e1 x))))
 
-(B (name castigar)
+(B (name punish/castigar)
    (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%PUNISHMENT e0 e0 :0.2)
           (R#PUNISHMENT-AGENT x e0 :0.2) (R#PUNISHMENT-VICTIM y e0 :0.2))
        (castigar-vb e0 x y u)))
-(B (name condenar)
+(B (name condemn/condenar)
    (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%PUNISHMENT e0 e0 :0.2)
           (R#PUNISHMENT-AGENT x e0 :0.2) (R#PUNISHMENT-VICTIM y e0 :0.2))
        (condenar-vb e0 x y u)))
@@ -1337,7 +1532,7 @@
 
 ;; Crime: Victim
 
-(B (name víctima)
+(B (name victim/víctima)
    (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%VICTIM x e0 :0.3)
           (R#CRIME-VICTIM x e0 :0.3))
        (víctima-nn e0 x)))
@@ -1345,21 +1540,21 @@
 
 ;; Crime: Mapping
 
-(B (name crimen-map)
-   (=> (I#CRIME x :0.9)
-       (S#CRIME x)))
-(B (name tipodecrimen-map)
-   (=> (I#CRIME%TYPE x y :0.9)
-       (SS#CRIME%TYPE x y)))
-(B (name perpetradors-map)
-   (=> (I#CRIME%PERPETRATOR x y :0.9)
-       (SS#CRIME%PERPETRATOR x y)))
-(B (name castigo-map)
-   (=> (I#CRIME%PUNISHMENT x y :0.9)
-       (SS#CRIME%PUNISHMENT x y)))
-(B (name victima-map)
-   (=> (I#CRIME%VICTIM x y :0.9)
-       (SS#CRIME%VICTIM x y)))
+;; (B (name crime-map)
+;;    (=> (I#CRIME x :0.9)
+;;        (S#CRIME x)))
+;; (B (name crime-type-map)
+;;    (=> (I#CRIME%TYPE x y :0.9)
+;;        (SS#CRIME%TYPE x y)))
+;; (B (name crime-perpetrator-map)
+;;    (=> (I#CRIME%PERPETRATOR x y :0.9)
+;;        (SS#CRIME%PERPETRATOR x y)))
+;; (B (name crime-punishment-map)
+;;    (=> (I#CRIME%PUNISHMENT x y :0.9)
+;;        (SS#CRIME%PUNISHMENT x y)))
+;; (B (name crime-victim-map)
+;;    (=> (I#CRIME%VICTIM x y :0.9)
+;;        (SS#CRIME%VICTIM x y)))
 
 
 ;; Crop
@@ -1369,18 +1564,18 @@
 
 ;; Crop: Planting
 
-(B (name semilla)
+(B (name seed/semilla)
    (=> (^ (S#CROP e0 :0.3) (SS#CROP%PLANTING x e0 :0.3) (R#CROP x e0 :0.3))
        (semilla-nn e0 x)))
-(B (name cultivo)
-   (=> (^ (S#CULTIVO e0 :0.3) (SS#CULTIVO%PLANTING x e0 :0.3)
+(B (name cultivation/cultivo)
+   (=> (^ (S#CROP e0 :0.3) (SS#CROP%PLANTING x e0 :0.3)
           (R#CROP x e0 :0.3))
        (crop-nn e0 x)))
-(B (name sembrar)
+(B (name plant/sembrar)
    (=> (^ (S#CROP e0 :0.23) (SS#CROP%PLANTING e0 e0 :0.23)
           (R#GARDENER x e0 :0.23) (R#CROP y e0 :0.23))
        (sembrar-vb e0 x y u)))
-(B (name plantar)
+(B (name plant/plantar)
    (=> (^ (S#CROP e0 :0.23) (SS#CROP%PLANTING e0 e0 :0.23)
           (R#GARDENER x e0 :0.23) (R#CROP y e0 :0.23))
        (plantar-vb e0 x y u)))
@@ -1388,15 +1583,15 @@
 
 ;; Crop: Cultivation
 
-(B (name crecer)
+(B (name grow-up/crecer/wealth)
    (=> (^ (S#CROP e0 :0.23) (SS#CROP%CULTIVATION e0 e0 :0.23)
           (R#GARDENER x e0 :0.23) (R#CROP y e0 :0.23))
        (^ (TS#WEALTH y) (crecer-vb e0 x y u))))
-(B (name fertitlize)
+(B (name fertilize/fertilizar)
    (=> (^ (S#CROP e0 :0.23) (SS#CROP%CULTIVATION e0 e0 :0.23)
           (R#GARDENER x e0 :0.23) (R#CROP y e0 :0.23))
        (fertilizar-vb e0 x y u)))
-(B (name water)
+(B (name water/regar)
    (=> (^ (S#CROP e0 :0.23) (SS#CROP%CULTIVATION e0 e0 :0.23)
           (R#GARDENER x e0 :0.23) (R#CROP y e0 :0.23))
        (regar-vb e0 x y u)))
@@ -1404,52 +1599,52 @@
 
 ;; Crop: Outcome
 
-(B (name cosechar)
+(B (name harvest/cosechar)
    (=> (^ (S#CROP e0 :0.23) (SS#CROP%OUTCOME e0 e0 :0.23)
           (R#GARDENER x e0 :0.23) (R#CROP x e0 :0.23))
        (cosechar-vb e0 x y u)))
-(B (name profit)
+(B (name profit/lucrar)
    (=> (^ (S#CROP e0 :0.23) (SS#CROP%OUTCOME e0 e0 :0.23)
           (R#GARDENER x e0 :0.23) (R#CROP x e0 :0.23))
        (lucrar-vb e0 x y u)))
-(B (name cosecha)
+(B (name harvest/cosecha)
    (=> (^ (S#CROP e0 :0.3) (SS#CROP%OUTCOME x e0 :0.3) (R#CROP y e0 :0.3))
        (cosecha-nn e0 x)))
 
 
 ;; Crop: Mapping
 
-(B (name crop-map)
-   (=> (I#CROP x :0.9)
-       (S#CROP x)))
-(B (name crop-planting-map)
-   (=> (I#CROP%PLANTING x y :0.9)
-       (SS#CROP%PLANTING x y)))
-(B (name crop-cultivation-map)
-   (=> (I#CROP%CULTIVATION x y :0.9)
-       (SS#CROP%CULTIVATION x y)))
-(B (name crop-outcome-map)
-   (=> (I#CROP%OUTCOME x y :0.9)
-       (SS#CROP%OUTCOME x y)))
+;; (B (name crop-map)
+;;    (=> (I#CROP x :0.9)
+;;        (S#CROP x)))
+;; (B (name crop-planting-map)
+;;    (=> (I#CROP%PLANTING x y :0.9)
+;;        (SS#CROP%PLANTING x y)))
+;; (B (name crop-cultivation-map)
+;;    (=> (I#CROP%CULTIVATION x y :0.9)
+;;        (SS#CROP%CULTIVATION x y)))
+;; (B (name crop-outcome-map)
+;;    (=> (I#CROP%OUTCOME x y :0.9)
+;;        (SS#CROP%OUTCOME x y)))
 
 
 ;; Darkness
 ;;   With little or no light, or having little brightness; the partial or
 ;;   total absence of light.
 
-(B (name oscuridad)
+(B (name darkness/oscuridad)
    (=> (^ (S#DARKNESS e0 :0.45)
           (SS#DARKNESS%DARK_END_OF_RANGE_OF_DARKNESS_LIGHT x e0 :0.45))
        (oscuridad-nn e0 x)))
-(B (name tinieblas)
+(B (name darkness/tinieblas)
    (=> (^ (S#DARKNESS e0 :0.45)
           (SS#DARKNESS%DARK_END_OF_RANGE_OF_DARKNESS_LIGHT x e0 :0.45))
        (tinieblas-nn e0 x)))
-(B (name cueva)
+(B (name cave/cueva)
    (=> (^ (S#DARKNESS e0 :0.45)
           (SS#DARKNESS%DARK_END_OF_RANGE_OF_DARKNESS_LIGHT x e0 :0.45))
        (cueva-nn e0 x)))
-(B (name oscuro)
+(B (name dark/oscuro)
    (=> (^ (S#DARKNESS e0 :0.3)
           (SS#DARKNESS%DARK_END_OF_RANGE_OF_DARKNESS_LIGHT x e0 :0.3)
           (R#DARK x e0 :0.3))
@@ -1458,15 +1653,15 @@
 
 ;; Darkness: Mapping
 
-(B (name darkness-map)
-   (=> (I#DARKNESS x :0.9)
-       (S#DARKNESS x)))
-(B (name dark-end-of-range-map)
-   (=> (I#DARKNESS%DARK_END_OF_RANGE_OF_DARKNESS_LIGHT x y :0.9)
-       (SS#DARKNESS%DARK_END_OF_RANGE_OF_DARKNESS_LIGHT x y)))
-(B (name darkness-movementmap)
-   (=> (I#DARKNESS%MOVEMENT x y :0.9)
-       (SS#DARKNESS%MOVEMENT x y)))
+;; (B (name darkness-map)
+;;    (=> (I#DARKNESS x :0.9)
+;;        (S#DARKNESS x)))
+;; (B (name dark-end-of-range-map)
+;;    (=> (I#DARKNESS%DARK_END_OF_RANGE_OF_DARKNESS_LIGHT x y :0.9)
+;;        (SS#DARKNESS%DARK_END_OF_RANGE_OF_DARKNESS_LIGHT x y)))
+;; (B (name darkness-movementmap)
+;;    (=> (I#DARKNESS%MOVEMENT x y :0.9)
+;;        (SS#DARKNESS%MOVEMENT x y)))
 
 
 ;; Disease
@@ -1483,174 +1678,171 @@
 
 ;; Disease: Type
 
-(B (name enfermedad)
+(B (name disease/enfermedad)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
        (enfermedad-nn e0 x)))
-(B (name náusea)
+(B (name nausea/náusea)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
        (náusea-nn e0 x)))
-(B (name afeccion)
+(B (name condition/afección)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
-       (afeccion-nn e0 x)))
-(B (name morbo)
+       (afección-nn e0 x)))
+(B (name morbidity/morbo)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
        (morbo-nn e0 x)))
-(B (name dolencia)
+(B (name ailment/dolencia)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
        (dolencia-nn e0 x)))
-(B (name condición-grave)
+(B (name serious-condition/condición-grave)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
        (^ (condición -nn e0 x) (grave-adj e1 x))))
-(B (name peste)
+(B (name plague/peste)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
        (peste-nn e0 x)))
-(B (name plaga)
+(B (name plague/plaga)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
        (plaga-nn e0 x)))
-(B (name cáncer)
+(B (name cancer/cáncer)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
        (cáncer-nn e0 x)))
-(B (name gordura)
-   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
-       (gordura-nn e0 x)))
 
-(B (name infección)
+(B (name infection/infección)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
        (infección-nn e0 x)))
-(B (name llaga)
+(B (name sore/llaga)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
        (llaga-nn e0 x)))
-(B (name fiebre)
+(B (name fever/fiebre)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
        (fiebre-nn e0 x)))
-(B (name malestar)
+(B (name discomfort/malestar)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
        (malestar-nn e0 x)))
 
-(B (name padecimiento)
+(B (name condition/padecimiento)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
        (padecimeinto-nn e0 x)))
-(B (name enfermo)
+(B (name sick/enfermo)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TYPE x e0 :0.3) (R#SICK y e0 :0.3))
        (enfermo-adj e0 y)))
-(B (name débil)
+(B (name weak/débil)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TYPE x e0 :0.3) (R#SICK y e0 :0.3))
        (débil-adj e0 y)))
-(B (name dolorido)
+(B (name sore/dolorido)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TYPE x e0 :0.3) (R#SICK y e0 :0.3))
        (dolorido-adj e0 y)))
-(B (name minusválido)
+(B (name disabled/minusválido)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TYPE x e0 :0.3) (R#SICK y e0 :0.3))
        (minusválido-adj e0 y)))
-(B (name discapacitado)
+(B (name disabled/discapacitado)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TYPE x e0 :0.3) (R#SICK y e0 :0.3))
        (discapacitado-adj e0 y)))
-(B (name incapacitado)
+(B (name incapacitated/incapacitado)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TYPE x e0 :0.3) (R#SICK y e0 :0.3))
        (incapacitado-adj e0 y)))
-(B (name lisiado)
+(B (name disabled/lisiado)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TYPE x e0 :0.3) (R#SICK y e0 :0.3))
        (lisiado-adj e0 y)))
 
-(B (name inválido-nn)
+(B (name invalid/inválido-nn)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TYPE x e0 :0.3) (R#SICK y e0 :0.3))
        (inválido-nn e0 y)))
-(B (name enfermo-nn)
+(B (name patient/enfermo-nn)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TYPE x e0 :0.3) (R#SICK y e0 :0.3))
        (enfermo-nn e0 y)))
-(B (name minusválido-nn)
+(B (name disabled/minusválido-nn)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TYPE x e0 :0.3) (R#SICK y e0 :0.3))
        (minusválido-nn e0 y)))
-(B (name paciente)
+(B (name patient/paciente)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TYPE x e0 :0.3) (R#SICK y e0 :0.3))
        (paciente-nn e0 y)))
 
-(B (name epidemia)
+(B (name epidemic/epidemia)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE y e0 :0.45))
-       (epidemic-nn e0 y)))
-(B (name epidémico)
+       (epidemia-nn e0 y)))
+(B (name epidemic/epidémico)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE e0 e0 :0.45))
        (epidémico-adj e0 y)))
-(B (name pandemia)
+(B (name pandemic/pandemia)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE y e0 :0.45))
        (pandemia-nn e0 y)))
-(B (name pandémico)
+(B (name pandemic/pandémico)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE e0 e0 :0.45))
        (pandémico-adj e0 y)))
-(B (name virus)
+(B (name virus/virus)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE y e0 :0.45))
        (virus-nn e0 y)))
 
 
 ;; Disease: Treatment
 
-(B (name tratamiento)
+(B (name treatment/tratamiento)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TREATMENT x e0 :0.45))
        (tratamiento-nn e0 x)))
-(B (name terapia)
+(B (name therapy/terapia)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TREATMENT x e0 :0.45))
        (terapia-nn e0 x)))
-(B (name diagnóstico)
+(B (name diagnosis/diagnóstico)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TREATMENT x e0 :0.45))
        (diagnóstico-nn e0 x)))
-(B (name diagnóstica)
+(B (name diagnostic/diagnóstica)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TREATMENT x e0 :0.45))
        (diagnóstica-nn e0 x)))
 
-(B (name doctor)
+(B (name doctor/doctor)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT y e0 :0.3)
           (R#CURE-AGENT y e0 :0.3))
        (doctor-nn e0 y)))
-(B (name médico)
+(B (name doctor/médico)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT y e0 :0.3)
           (R#CURE-AGENT y e0 :0.3))
        (médico-nn e0 y)))
-(B (name facultativo)
+(B (name physician/facultativo)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT y e0 :0.3)
           (R#CURE-AGENT y e0 :0.3))
        (facultativo-nn e0 y)))
-(B (name medicina)
+(B (name medicine/medicina)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT y e0 :0.3)
           (R#CURE-AGENT y e0 :0.3))
        (medicina-nn e0 y)))
-(B (name remedio)
+(B (name remedy/remedio)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT y e0 :0.3)
           (R#CURE-AGENT y e0 :0.3))
        (remedio-nn e0 y)))
-(B (name vendaje)
+(B (name dressing/vendaje)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT y e0 :0.3)
           (R#CURE-AGENT y e0 :0.3))
        (vendaje-nn e0 y)))
-(B (name venda)
+(B (name bandage/venda)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT y e0 :0.3)
           (R#CURE-AGENT y e0 :0.3))
        (venda-nn e0 y)))
-(B (name tirita)
+(B (name band-aid/tirita)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT y e0 :0.3)
           (R#CURE-AGENT y e0 :0.3))
        (tirita-nn e0 y)))
 
-(B (name tratar)
+(B (name treat/tratar)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT e0 e0 :0.3)
           (R#CURE-AGENT y e0 :0.3))
        (tratar-vb e0 y x u2)))
-(B (name prescribir)
+(B (name prescribe/prescribir)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT e0 e0 :0.3)
           (R#CURE-AGENT y e0 :0.3))
        (prescribir-vb e0 y u1 u2)))
-(B (name diagnosticar)
+(B (name diagnose/diagnosticar)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT e0 e0 :0.3)
           (R#CURE-AGENT y e0 :0.3))
        (diagnosticar-vb e0 y x u2)))
-(B (name aliviar)
+(B (name alleviate/aliviar)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT e0 e0 :0.3)
           (R#CURE-AGENT y e0 :0.3))
        (aliviar-vb e0 y x u2)))
-(B (name disecar)
+(B (name dissect/disecar)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT e0 e0 :0.3)
           (R#CURE-AGENT y e0 :0.3))
        (disecar-vb e0 y u1 u2)))
-(B (name remediar)
+(B (name remedy/remediar)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT e0 e0 :0.3)
           (R#CURE-AGENT y e0 :0.3))
        (remediar-vb e0 y u1 u2)))
@@ -1658,55 +1850,55 @@
 
 ;; Disease: Cure
 
-(B (name cura)
+(B (name cure/cura)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%CURE x e0 :0.45))
        (cura-nn e0 x)))
-(B (name panacea)
+(B (name panacea/panacea)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%CURE x e0 :0.45))
        (panacea-nn e0 x)))
 
-(B (name curar)
+(B (name cure/curar)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%CURE e0 e0 :0.3)
           (R#CURE-AGENT y e0 :0.3))
        (curar-vb e0 y x u2)))
-(B (name sanar)
+(B (name heal/sanar)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%CURE e0 e0 :0.3)
           (R#CURE-AGENT y e0 :0.3))
        (sanar-vb e0 y x u2)))
 
-(B (name irrecuperable)
+(B (name unrecoverable/irrecuperable)
    (=> (^ (S#DISEASE e0 :0.2) (SS#DISEASE%CURE y e0 :0.2) (R#SICK y e1 :0.1))
        (irrecupable-adj e0 y)))
-(B (name incurable)
+(B (name incurable/incurable)
    (=> (^ (S#DISEASE e0 :0.2) (SS#DISEASE%CURE y e0 :0.2) (R#SICK y e1 :0.1))
        (incurable-adj e0 y)))
-(B (name irremediable)
+(B (name irremediable/irremediable)
    (=> (^ (S#DISEASE e0 :0.2) (SS#DISEASE%CURE y e0 :0.2) (R#SICK y e1 :0.1))
        (irremediable-adj e0 y)))
 
 
-(B (name recuperar)
+(B (name recover/recuperar)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%CURE e0 e0 :0.3) (R#SICK y x :0.3))
        (recuperar-vb e0 y u1 u2)))
-(B (name recobrar)
+(B (name recover/recobrar)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%CURE e0 e0 :0.3) (R#SICK y x :0.3))
        (recobrar-vb e0 y u1 u2)))
-(B (name reponerse)
+(B (name get-well/reponerse)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%CURE e0 e0 :0.3) (R#SICK y x :0.3))
        (reponerse-vb e0 y u1 u2)))
-(B (name restablecerse)
+(B (name recuperate/restablecerse)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%CURE e0 e0 :0.3) (R#SICK y x :0.3))
        (restablecerse-vb e0 y u1 u2)))
-(B (name convalecer)
+(B (name convalesce/convalecer)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%CURE e0 e0 :0.3) (R#SICK y x :0.3))
        (convalecer-vb e0 y u1 u2)))
 
-(B (name recuperación)
+(B (name recovery/recuperación)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%CURE x e0 :0.45))
        (recuperación-nn e0 x)))
-(B (name convalencia)
+(B (name convalescence/convalecencia)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%CURE x e0 :0.45))
-       (convalencia-nn e0 x)))
+       (convalecencia-nn e0 x)))
 
 ;; Of - Cure
 (B (name of-cure)
@@ -1716,37 +1908,37 @@
 
 ;; Disease: Symptoms
 
-(B (name síntoma)
+(B (name symptom/síntoma)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%SYMPTOMS y e0 :0.45))
        (síntoma-nn e0 y)))
-(B (name sintomático)
+(B (name symptomatic/sintomático)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%SYMPTOMS e0 x :0.45))
        (sintomático-adj e0 y)))
 
-(B (name sangrante)
+(B (name bleeding/sangrante)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%SYMPTOMS y e0 :0.45))
        (sangrante-adj e0 y)))
-(B (name sensitive)
+(B (name sensitive/sensible)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%SYMPTOMS y e0 :0.45))
        (sensible-adj e0 y)))
-(B (name herida)
+(B (name wound/herida)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%SYMPTOMS y e0 :0.45))
        (herida-nn e0 y)))
-(B (name dolor)
+(B (name pain/dolor)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%SYMPTOMS y e0 :0.45))
        (dolor-nn e0 y)))
-(B (name cicatriz)
+(B (name scar/cicatriz)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%SYMPTOMS y e0 :0.45))
        (cicatriz-nn e0 y)))
-(B (name fiebre)
+(B (name fever/fiebre)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%SYMPTOMS y e0 :0.45))
        (fiebre-nn e0 y)))
 
-(B (name doler)
+(B (name hurt/doler)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%SYMPTOMS e0 e0 :0.3)
           (R#SICK y e0 :0.3))
        (doler-vb e0 y u1 u2)))
-(B (name sangrar)
+(B (name bleed/sangrar)
    (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%SYMPTOMS e0 e0 :0.3)
           (R#SICK y e0 :0.3))
        (sangrar-vb e0 y u1 u2)))
@@ -1759,49 +1951,49 @@
 
 ;; Disease: Mapping
 
-(B (name enfermedad-map)
-   (=> (I#DISEASE x :0.9)
-       (S#DISEASE x)))
-(B (name cura-map)
-   (=> (I#DISEASE%CURE x y :0.9)
-       (SS#DISEASE%CURE x y)))
-(B (name tratamiento-map)
-   (=> (I#DISEASE%TREATMENT x y :0.9)
-       (SS#DISEASE%TREATMENT x y)))
-(B (name sintomas-map)
-   (=> (I#DISEASE%SYMPTOMS x y :0.9)
-       (SS#DISEASE%SYMPTOMS x y)))
+;; (B (name disease-map)
+;;    (=> (I#DISEASE x :0.9)
+;;        (S#DISEASE x)))
+;; (B (name disease-cure-map)
+;;    (=> (I#DISEASE%CURE x y :0.9)
+;;        (SS#DISEASE%CURE x y)))
+;; (B (name disease-treatment-map)
+;;    (=> (I#DISEASE%TREATMENT x y :0.9)
+;;        (SS#DISEASE%TREATMENT x y)))
+;; (B (name disease-symptoms-map)
+;;    (=> (I#DISEASE%SYMPTOMS x y :0.9)
+;;        (SS#DISEASE%SYMPTOMS x y)))
 
 
 ;; Downward Movement
 ;;   Movement from a higher place or level to a lower place or level.
 ;;   (Including axioms that were in LOW_POINT%MOVEMENT_DOWNWARD.)
 
-(B (name deslizar)
+(B (name slide/deslizar)
    (=> (^ (S#DOWNWARD_MOVEMENT e0 :0.3) (R#MOVE-D-PATIENT x e0 :0.3))
        (deslizar-vb e0 x y z)))
-(B (name caer)
+(B (name fall-out/caer)
    (=> (^ (S#DOWNWARD_MOVEMENT e0 :0.3) (R#MOVE-D-PATIENT x e0 :0.3))
        (caer-vb e0 x y z)))
-(B (name deslizarse)
+(B (name slide/deslizarse)
    (=> (^ (S#DOWNWARD_MOVEMENT e0 :0.3) (R#MOVE-D-PATIENT x e0 :0.3))
        (deslizarse-vb e0 x y z)))
-(B (name caerse)
+(B (name fall/caerse)
    (=> (^ (S#DOWNWARD_MOVEMENT e0 :0.3) (R#MOVE-D-PATIENT x e0 :0.3))
        (caerse-vb e0 x y z)))
-(B (name voltear)
+(B (name flip/voltear)
    (=> (^ (S#DOWNWARD_MOVEMENT e0 :0.3) (R#MOVE-D-PATIENT x e0 :0.3))
        (voltear-vb e0 x y z)))
-(B (name hundir)
+(B (name sink/hundir)
    (=> (^ (S#DOWNWARD_MOVEMENT e0 :0.3) (R#MOVE-D-PATIENT x e0 :0.3))
        (hundir-vb e0 x y z)))
-(B (name hundirse)
+(B (name sink/hundirse)
    (=> (^ (S#DOWNWARD_MOVEMENT e0 :0.3) (R#MOVE-D-PATIENT x e0 :0.3))
        (hundirse-vb e0 x y z)))
-(B (name sumergir)
+(B (name submerge/sumergir)
    (=> (^ (S#DOWNWARD_MOVEMENT e0 :0.3) (R#MOVE-D-PATIENT x e0 :0.3))
        (sumergir-vb e0 x y z)))
-(B (name sumergirse)
+(B (name plunge/sumergirse)
    (=> (^ (S#DOWNWARD_MOVEMENT e0 :0.3) (R#MOVE-D-PATIENT x e0 :0.3))
        (sumergirse-vb e0 x y z)))
 (B (name decrease/disminución)
@@ -1823,9 +2015,9 @@
 
 ;; Downward Movement: Mapping
 
-(B (name downward-movement-map)
-   (=> (I#DOWNWARD_MOVEMENT x :0.9)
-       (S#DOWNWARD_MOVEMENT x)))
+;; (B (name downward-movement-map)
+;;    (=> (I#DOWNWARD_MOVEMENT x :0.9)
+;;        (S#DOWNWARD_MOVEMENT x)))
 
 
 ;; Emotion Experiencer
@@ -1833,7 +2025,26 @@
 ;;   as strong feeling usually directed toward a specific object and typically
 ;;   accompanied by physiological and behavioral changes in the body.
 
-;; TODO: Add emotion experiencer axioms.
+(B (name emotion/emoción)
+   (=> (S#EMOTION e0 :0.9)
+       (emoción-nn e0 x)))
+(B (name feeling/sentimiento)
+   (=> (S#EMOTION e0 :0.9)
+       (sentimiento-nn e0 x)))
+
+(B (name anger/cólera)
+   (=> (S#EMOTION e0 :0.9)
+       (anger-nn e0 x)))
+(B (name fear/miedo)
+   (=> (S#EMOTION e0 :0.9)
+       (miedo-nn e0 x)))
+
+
+;; Emotion Experiencer: Mapping
+
+;; (B (name emotion-experiencer-map)
+;;    (=> (I#EMOTION_EXPERIENCER x :0.9)
+;;        (S#EMOTION_EXPERIENCER x)))
 
 
 ;; Energy
@@ -1841,26 +2052,26 @@
 
 ;; Energy: Type
 
-(B (name energía)
+(B (name energy/energía)
    (=> (^ (S#ENERGY e0 :0.45) (SS#ENERGY%TYPE x e0 :0.45))
        (energía-nn e0 x)))
-(B (name electricity)
+(B (name electricity/electricidad)
    (=> (^ (S#ENERGY e0 :0.45) (SS#ENERGY%TYPE x e0 :0.45))
        (electricidad-nn e0 x)))
-(B (name fuel)
+(B (name fuel/combustible)
    (=> (^ (S#ENERGY e0 :0.45) (SS#ENERGY%TYPE x e0 :0.45))
        (combustible-nn e0 x)))
-(B (name fuel)
+(B (name fuel/carburante)
    (=> (^ (S#ENERGY e0 :0.45) (SS#ENERGY%TYPE x e0 :0.45))
        (carburante-nn e0 x)))
-(B (name battery)
+(B (name battery/batería)
    (=> (^ (S#ENERGY e0 :0.45) (SS#ENERGY%TYPE x e0 :0.45))
        (batería-nn e0 x)))
 
 
 ;; Energy: Result
 
-(B (name energize)
+(B (name energize/energizar)
    (=> (^ (S#ENERGY e0 :0.23) (SS#ENERGY%RESULT e0 e0 :0.23)
           (R#RESULT-AGENT x e0 :0.23) (R#RESULT-PATIENT x e0 :0.23))
        (energizar-vb e0 x y z)))
@@ -1868,15 +2079,15 @@
 
 ;; Energy: Mapping
 
-(B (name energy-map)
-   (=> (I#ENERGY x :0.9)
-       (S#ENERGY x)))
-(B (name energy-type-map)
-   (=> (I#ENERGY%TYPE x y :0.9)
-       (SS#ENERGY%TYPE x y)))
-(B (name energy-result-map)
-   (=> (I#ENERGY%RESULT x y :0.9)
-       (SS#ENERGY%RESULT x y)))
+;; (B (name energy-map)
+;;    (=> (I#ENERGY x :0.9)
+;;        (S#ENERGY x)))
+;; (B (name energy-type-map)
+;;    (=> (I#ENERGY%TYPE x y :0.9)
+;;        (SS#ENERGY%TYPE x y)))
+;; (B (name energy-result-map)
+;;    (=> (I#ENERGY%RESULT x y :0.9)
+;;        (SS#ENERGY%RESULT x y)))
 
 
 ;; Enslavement
@@ -1884,54 +2095,50 @@
 
 ;; Enslavement: Servant
 
-(B (name esclavo)
+(B (name slave/esclavo)
    (=> (^ (S#ENSLAVEMENT e0 :0.3) (SS#ENSLAVEMENT%SERVANT e0 e0 :0.3)
           (R#ENSLAVEMENT-PATIENT x e0 :0.3))
        (esclavo-nn e0 x)))
-(B (name esclava)
+(B (name slave/esclava)
    (=> (^ (S#ENSLAVEMENT e0 :0.3) (SS#ENSLAVEMENT%SERVANT e0 e0 :0.3)
           (R#ENSLAVEMENT-PATIENT x e0 :0.3))
        (esclava-nn e0 x)))
-(B (name criado)
-   (=> (^ (S#ENSLAVEMENT e0 :0.3) (SS#ENSLAVEMENT%SERVANT e0 e0 :0.3)
-          (R#ENSLAVEMENT-PATIENT x e0 :0.3))
-       (criado-nn e0 x)))
 
 
 ;; Enslavement: Oppression
 
-(B (name esclavitude)
+(B (name slavery/esclavitud)
    (=> (^ (S#ENSLAVEMENT e0 :0.45) (SS#ENSLAVEMENT%OPPRESSION x e0 :0.45))
-       (esclavitude-nn e0 x)))
-(B (name esclavizado)
+       (esclavitud-nn e0 x)))
+(B (name enslaved/esclavizado)
    (=> (^ (S#ENSLAVEMENT e0 :0.45) (SS#ENSLAVEMENT%OPPRESSION x e0 :0.45))
        (esclavizado-nn e0 x)))
-(B (name esclavizar)
+(B (name enslave/esclavizar)
    (=> (^ (S#ENSLAVEMENT e0 :0.2) (SS#ENSLAVEMENT%OPPRESSION e0 e0 :0.2)
           (R#ENSLAVEMENT-PATIENT y e0 :0.2) (R#ENSLAVEMENT-AGENT x e0 :0.2))
        (esclavizar-nn e0 x y u)))
 
-(B (name opresivo)
+(B (name oppressive/opresivo)
  (=> (^ (S#ENSLAVEMENT e0 :0.45) (SS#ENSLAVEMENT%OPPRESSION x e0 :0.45))
      (opresivo-adj e0 x)))
 
 
 ;; Enslavement: Master
 
-(B (name jefe)
+(B (name chief/jefe)
    (=> (^ (S#ENSLAVEMENT e0 :0.3) (SS#ENSLAVEMENT%MASTER e0 e0 :0.3)
           (R#ENSLAVEMENT-AGENT x e0 :0.3))
        (jefe-nn e0 x)))
-(B (name negrero)
+(B (name slave-driver/negrero)
    (=> (^ (S#ENSLAVEMENT e0 :0.3) (SS#ENSLAVEMENT%MASTER e0 e0 :0.3)
           (R#ENSLAVEMENT-AGENT x e0 :0.3))
        (negrero-nn e0 x)))
-(B (name capataz-de-esclavos)
+(B (name foreman-of-slaves/capataz-de-esclavos)
    (=> (^ (S#ENSLAVEMENT e0 :0.3) (SS#ENSLAVEMENT%MASTER e0 e0 :0.3)
           (R#ENSLAVEMENT-AGENT x e0 :0.3))
        (^ (capataz-nn e0 x) (de-in e1 x y) (esclavo-nn e2 y))))
 
-(B (name reinar)
+(B (name reign/reinar)
    (=> (^ (S#ENSLAVEMENT e0 :0.33) (SS#ENSLAVEMENT%MASTER e0 e0 :0.33)
           (R#ENSLAVEMENT-AGENT x e0 :0.33))
        (reinar-vb e0 x y u)))
@@ -1939,18 +2146,18 @@
 
 ;; Enslavement: Mapping
 
-(B (name enslavement-map)
-   (=> (I#ENSLAVEMENT x :0.9)
-       (S#ENSLAVEMENT x)))
-(B (name servant-map)
-   (=> (I#CONFINEMENT%SERVANT x y :0.9)
-       (SS#CONFINEMENT%SERVANT x y)))
-(B (name oppression-map)
-   (=> (I#CONFINEMENT%OPPRESSION x y :0.9)
-       (SS#CONFINEMENT%OPPRESSION x y)))
-(B (name master-map)
-   (=> (I#CONFINEMENT%MASTER x y :0.9)
-       (SS#CONFINEMENT%MASTER x y)))
+;; (B (name enslavement-map)
+;;    (=> (I#ENSLAVEMENT x :0.9)
+;;        (S#ENSLAVEMENT x)))
+;; (B (name enslavement-servant-map)
+;;    (=> (I#ENSLAVEMENT%SERVANT x y :0.9)
+;;        (SS#ENSLAVEMENT%SERVANT x y)))
+;; (B (name enslavement-oppression-map)
+;;    (=> (I#ENSLAVEMENT%OPPRESSION x y :0.9)
+;;        (SS#ENSLAVEMENT%OPPRESSION x y)))
+;; (B (name enslavement-master-map)
+;;    (=> (I#ENSLAVEMENT%MASTER x y :0.9)
+;;        (SS#ENSLAVEMENT%MASTER x y)))
 
 
 ;; Fabric
@@ -1959,52 +2166,131 @@
 
 ;; Fabric: Type
 
-;; TODO: Add 'fabric', 'cloth', ...
+(B (name fabric/tela)
+  (=> (^ (S#FABRIC x :0.48) (SS#FABRIC%TYPE e0 x :0.48))
+      (tela-nn e0 x)))
+(B (name weave/tejido)
+  (=> (^ (S#FABRIC x :0.48) (SS#FABRIC%TYPE e0 x :0.48))
+      (tejido-nn e0 x)))
 
 
 ;; Fabric: Cut
+;; These are more likely to be Physical Harm.
 
-(B (name cortar)
-   (=> (^ (S#FABRIC e0 :0.3) (SS#FABRIC%CUT e0 y :0.3)
-          (R#CUT-AGENT x e0 :0.3))
-       (cortar-vb e0 x y u2)))
-(B (name cortada)
-   (=> (^ (S#FABRIC e0 :0.45) (SS#FABRIC%CUT e0 y :0.45))
-       (^ (nn e1 x y) (cortada-nn e0 x))))
-(B (name cortada2)
-   (=> (^ (S#FABRIC e0 :0.48) (SS#FABRIC%CUT e0 y :0.48))
-       (cortada-nn e0 x)))
+;; (B (name cut-off/cortar)
+;;    (=> (^ (S#FABRIC e0 :0.3) (SS#FABRIC%CUT e0 y :0.3)
+;;           (R#CUT-AGENT x e0 :0.3))
+;;        (cortar-vb e0 x y u2)))
+;; (B (name cut/cortada)
+;;    (=> (^ (S#FABRIC e0 :0.45) (SS#FABRIC%CUT e0 y :0.45))
+;;        (^ (nn e1 x y) (cortada-nn e0 x))))
+;; (B (name cut/cortada2)
+;;    (=> (^ (S#FABRIC e0 :0.48) (SS#FABRIC%CUT e0 y :0.48))
+;;        (cortada-nn e0 x)))
+
 
 
 ;; Fabric: Mapping
 
-(B (name fabric-map)
-  (=> (I#FABRIC x :0.9)
-      (S#FABRIC x)))
-(B (name fabric-type-map)
-  (=> (I#FABRIC%TYPE x y :0.9)
-      (SS#FABRIC%TYPE x y)))
-(B (name fabric-cut-map)
-  (=> (I#FABRIC%CUT x y :0.9)
-      (SS#FABRIC%CUT x y)))
+;; (B (name fabric-map)
+;;   (=> (I#FABRIC x :0.9)
+;;       (S#FABRIC x)))
+;; (B (name fabric-type-map)
+;;   (=> (I#FABRIC%TYPE x y :0.9)
+;;       (SS#FABRIC%TYPE x y)))
+;; (B (name fabric-cut-map)
+;;   (=> (I#FABRIC%CUT x y :0.9)
+;;       (SS#FABRIC%CUT x y)))
 
 
 ;; Factory
 ;;   A building or group of buildings where products are made.
 
-;; TODO: Add factory axioms.
+(B (name factory/fábrica)
+  (=> (S#FACTORY x :0.9)
+      (fábrica-nn e0 x)))
+
+(B (name industrial/industrial)
+  (=> (S#FACTORY x :0.9)
+      (industrial-adj e0 x)))
+
+
+;; Factory: Mapping
+
+;; (B (name factory-map)
+;;   (=> (I#FACTORY x :0.9)
+;;       (S#FACTORY x)))
 
 
 ;; Family
 ;;   A group of people who are related to each other.
 
-;; TODO: Add family axioms.
+(B (name family/familia)
+  (=> (S#FAMILY x :0.9)
+      (familia-nn e0 x)))
+(B (name household/menaje)
+  (=> (S#FAMILY x :0.9)
+      (menaje-nn e0 x)))
+(B (name clan/clan)
+  (=> (S#FAMILY x :0.9)
+      (clan-nn e0 x)))
+(B (name dynasty/dinastía)
+  (=> (S#FAMILY x :0.9)
+      (dinastía-nn e0 x)))
+
+(B (name ancestor/antepasado)
+  (=> (S#FAMILY x :0.9)
+      (antepasado-nn e0 x)))
+(B (name relative/relativo)
+  (=> (S#FAMILY x :0.9)
+      (relativo-nn e0 x)))
+(B (name brother/hermano)
+  (=> (S#FAMILY x :0.9)
+      (hermano-nn e0 x)))
+(B (name sister/hermana)
+  (=> (S#FAMILY x :0.9)
+      (hermana-nn e0 x)))
+(B (name mother/madre)
+  (=> (S#FAMILY x :0.9)
+      (madre-nn e0 x)))
+(B (name father/padre)
+  (=> (S#FAMILY x :0.9)
+      (padre-nn e0 x)))
+
+
+;; Family: Mapping
+
+;; (B (name family-map)
+;;   (=> (I#FAMILY x :0.9)
+;;       (S#FAMILY x)))
 
 
 ;; Fire
 ;;   The light and heat and especially the flame produced by burning.
 
-;; TODO: Add fire axioms.
+(B (name fire/fuego)
+  (=> (S#FIRE x :0.9)
+      (fuego-nn e0 x)))
+(B (name flame/llama)
+  (=> (S#FIRE x :0.9)
+      (llama-nn e0 x)))
+(B (name blaze/llamarada)
+  (=> (S#FIRE x :0.9)
+      (llamarada-nn e0 x)))
+(B (name smoke/humo)
+  (=> (S#FIRE x :0.9)
+      (humo-nn e0 x)))
+
+(B (name burn/quemar)
+  (=> (S#FIRE x :0.9)
+      (quemar-vb e0 x y u)))
+
+
+;; Fire: Mapping
+
+(B (name fire-map)
+  (=> (I#FIRE x :0.9)
+      (S#FIRE x)))
 
 
 ;; Food
@@ -2013,76 +2299,72 @@
 
 ;; Food: Type
 
-(B (name comida)
+(B (name food/comida)
    (=> (^ (S#FOOD e0 :0.45) (SS#FOOD%TYPE x e0 :0.45))
        (comida-nn e0 x)))
-(B (name pan)
+(B (name bread/pan)
    (=> (^ (S#FOOD e0 :0.45) (SS#FOOD%TYPE x e0 :0.45))
        (pan-nn e0 x)))
-(B (name meat)
+(B (name meat/carne)
    (=> (^ (S#FOOD e0 :0.45) (SS#FOOD%TYPE x e0 :0.45))
        (carne-nn e0 x)))
-(B (name carrot)
+(B (name carrot/zanahoria)
    (=> (^ (S#FOOD e0 :0.45) (SS#FOOD%TYPE x e0 :0.45))
        (zanahoria-nn e0 x)))
-(B (name corn)
+(B (name corn/maíz)
    (=> (^ (S#FOOD e0 :0.45) (SS#FOOD%TYPE x e0 :0.45))
        (maíz-nn e0 x)))
-(B (name potato)
+(B (name potato/patata)
    (=> (^ (S#FOOD e0 :0.45) (SS#FOOD%TYPE x e0 :0.45))
        (patata-nn e0 x)))
-(B (name tortilla)
+(B (name tortilla/tortilla)
    (=> (^ (S#FOOD e0 :0.45) (SS#FOOD%TYPE x e0 :0.45))
        (tortilla-nn e0 x)))
 
 
 ;; Food: Consumption
 
-(B (name sabor)
+(B (name taste/sabor)
    (=> (^ (S#FOOD e0 :0.45) (SS#FOOD%CONSUMPTION x e0 :0.45))
        (sabor-nn e0 x)))
-(B (name taste-of)
+(B (name taste-of/sabor-de)
    (=> (^ (S#FOOD e0 :0.3) (SS#FOOD%CONSUMPTION x e0 :0.3)
           (R#TASTE-OBJECT y e0 :0.3))
        (^ (sabor-nn e0 x) (de-in e1 x y))))
 
-(B (name probar)
+(B (name try-out/probar)
    (=> (^ (S#FOOD e0 :0.23) (SS#FOOD%CONSUMPTION e0 e0 :0.23)
           (R#TASTE-AGENT x e0 :0.23) (R#TASTE-OBJECT y e0 :0.23))
        (probar-vb e0 x y u)))
-(B (name consumir-wealth)
-   (=> (^ (S#FOOD e0 :0.23) (SS#FOOD%CONSUMPTION e0 e0 :0.23)
-          (R#TASTE-AGENT x e0 :0.23) (R#TASTE-OBJECT y e0 :0.23))
-       (^ (TS#WEALTH y) (consumir-vb e0 x y u))))
 (B (name consumir)
    (=> (^ (S#FOOD e0 :0.23) (SS#FOOD%CONSUMPTION e0 e0 :0.23)
           (R#TASTE-AGENT x e0 :0.23) (R#TASTE-OBJECT y e0 :0.23))
        (consumir-vb e0 x y u)))
-(B (name comer)
+(B (name eat/comer)
    (=> (^ (S#FOOD e0 :0.23) (SS#FOOD%CONSUMPTION e0 e0 :0.23)
           (R#TASTE-AGENT x e0 :0.23) (R#TASTE-OBJECT y e0 :0.23))
-       (^ (TS#WEALTH y) (comer-vb e0 x y u))))
-(B (name tragarse)
+       (comer-vb e0 x y u)))
+(B (name swallow/tragarse)
    (=> (^ (S#FOOD e0 :0.23) (SS#FOOD%CONSUMPTION e0 e0 :0.23)
           (R#TASTE-AGENT x e0 :0.23) (R#TASTE-OBJECT y e0 :0.23))
-       (^ (TS#WEALTH y) (tragarse-vb e0 x y u))))
-(B (name masticar)
+       (tragarse-vb e0 x y u)))
+(B (name chew/masticar)
    (=> (^ (S#FOOD e0 :0.23) (SS#FOOD%CONSUMPTION e0 e0 :0.23)
           (R#TASTE-AGENT x e0 :0.23) (R#TASTE-OBJECT y e0 :0.23))
-       (^ (TS#WEALTH y) (masticar-vb e0 x y u))))
+       (masticar-vb e0 x y u)))
 
 
 ;; Food: Mapping
 
-(B (name food-map)
-   (=> (I#FOOD x :0.9)
-       (S#FOOD x)))
-(B (name food-type-map)
-   (=> (I#FOOD%TYPE x y :0.9)
-       (SS#FOOD%TYPE x y)))
-(B (name food-consumption-map)
-   (=> (I#FOOD%CONSUMPTION x y :0.9)
-       (SS#FOOD%CONSUMPTION x y)))
+;; (B (name food-map)
+;;    (=> (I#FOOD x :0.9)
+;;        (S#FOOD x)))
+;; (B (name food-type-map)
+;;    (=> (I#FOOD%TYPE x y :0.9)
+;;        (SS#FOOD%TYPE x y)))
+;; (B (name food-consumption-map)
+;;    (=> (I#FOOD%CONSUMPTION x y :0.9)
+;;        (SS#FOOD%CONSUMPTION x y)))
 
 
 ;; Forceful Extraction
@@ -2090,37 +2372,37 @@
 
 ;; Forceful Extraction: Type
 
-(B (name exprimir)
+(B (name squeeze/exprimir)
    (=> (^ (S#FORCEFUL_EXTRACTION e0 :0.3)
           (SS#FORCEFUL_EXTRACTION%TYPE e0 e0 :0.3)
           (R#EXTRACTION-AGENT x e0 :0.3))
        (exprimir-vb e0 x y u)))
-(B (name erradicar)
+(B (name eradicate/erradicar)
    (=> (^ (S#FORCEFUL_EXTRACTION e0 :0.3)
           (SS#FORCEFUL_EXTRACTION%TYPE e0 e0 :0.3)
           (R#EXTRACTION-AGENT x e0 :0.3))
        (erradicar-vb e0 x y u)))
-(B (name escurrir)
+(B (name drain/escurrir)
    (=> (^ (S#FORCEFUL_EXTRACTION e0 :0.3)
           (SS#FORCEFUL_EXTRACTION%TYPE e0 e0 :0.3)
           (R#EXTRACTION-AGENT x e0 :0.3))
        (escurrir-vb e0 x y u)))
-(B (name extraer)
+(B (name extract/extraer)
    (=> (^ (S#FORCEFUL_EXTRACTION e0 :0.3)
           (SS#FORCEFUL_EXTRACTION%TYPE e0 e0 :0.3)
           (R#EXTRACTION-AGENT x e0 :0.3))
        (extraer-vb e0 x y u)))
-(B (name arrebatar)
+(B (name snatch/arrebatar)
    (=> (^ (S#FORCEFUL_EXTRACTION e0 :0.3)
           (SS#FORCEFUL_EXTRACTION%TYPE e0 e0 :0.3)
           (R#EXTRACTION-AGENT x e0 :0.3))
        (arrebatar-vb e0 x y u)))
-(B (name milk)
+(B (name milk/ordeñar)
    (=> (^ (S#FORCEFUL_EXTRACTION e0 :0.3)
           (SS#FORCEFUL_EXTRACTION%TYPE e0 e0 :0.3)
           (R#EXTRACTION-AGENT x e0 :0.3))
        (ordeñar-vb e0 x y u)))
-(B (name skin)
+(B (name skin/pelar)
    (=> (^ (S#FORCEFUL_EXTRACTION e0 :0.3)
           (SS#FORCEFUL_EXTRACTION%TYPE e0 e0 :0.3)
           (R#EXTRACTION-AGENT x e0 :0.3))
@@ -2157,18 +2439,27 @@
 
 ;; Forceful Extraction: Mapping
 
-(B (name forceful-extraction-map)
-   (=> (I#FORCEFUL_EXTRACTION x :0.9)
-       (S#FORCEFUL_EXTRACTION x)))
-(B (name forceful-extraction-type-map)
-   (=> (I#FORCEFUL_EXTRACTION%TYPE x y :0.9)
-       (SS#FORCEFUL_EXTRACTION%TYPE x y)))
+;; (B (name forceful-extraction-map)
+;;    (=> (I#FORCEFUL_EXTRACTION x :0.9)
+;;        (S#FORCEFUL_EXTRACTION x)))
+;; (B (name forceful-extraction-type-map)
+;;    (=> (I#FORCEFUL_EXTRACTION%TYPE x y :0.9)
+;;        (SS#FORCEFUL_EXTRACTION%TYPE x y)))
 
 
 ;; Forward Motion
 ;;   Movement to or toward what is in front.
 
-;; TODO: Add forward motion axioms (e.g., 'advance').
+(B (name advance/avanzar)
+   (=> (S#FORWARD_MOTION e0 :0.9)
+       (avanzar-vb e0 x y z)))
+
+
+;; Forward Motion: Mapping
+
+;; (B (name forward-motion-map)
+;;    (=> (I#FORWARD_MOTION x :0.9)
+;;        (S#FORWARD_MOTION x)))
 
 
 ;; Game
@@ -2176,91 +2467,92 @@
 ;;   of two or more persons who play according to a set of rules, usually for
 ;;   their own amusement or for that of spectators.
 
-;; TODO: Add sports.
-
 ;; Game: Type
 
-(B (name ajedrez)
+(B (name game/juego)
+   (=> (^ (S#GAME e0 :0.45) (SS#GAME%TYPE x e0 :0.45))
+       (juego-nn e0 x)))
+(B (name chess/ajedrez)
    (=> (^ (S#GAME e0 :0.45) (SS#GAME%TYPE x e0 :0.45))
        (ajedrez-nn e0 x)))
-(B (name chess-game)
+(B (name chess-game/ajedrez-de-juego)
    (=> (^ (S#GAME e0 :0.45) (SS#GAME%TYPE x e0 :0.45))
        (^ (ajedrez-nn e0 x) (de-in e1 y x) (juego-nn e2 y))))
-(B (name chess-match)
+(B (name chess-match/ajedrez-de-partida)
    (=> (^ (S#GAME e0 :0.45) (SS#GAME%TYPE x e0 :0.45))
        (^ (ajedrez-nn e0 x) (de-in e1 y x) (partida-nn e2 y))))
-(B (name póker)
+(B (name poker/póker)
    (=> (^ (S#GAME e0 :0.45) (SS#GAME%TYPE x e0 :0.45))
        (póker-nn e0 x)))
-(B (name puzzle)
-   (=> (^ (S#GAME e0 :0.45) (SS#GAME%TYPE x e0 :0.45))
-       (rompecabezas-nn e0 x)))
-(B (name póker-game)
+(B (name poker-game/póker-de-juego)
    (=> (^ (S#GAME e0 :0.45) (SS#GAME%TYPE x e0 :0.45))
        (^ (póker-nn e0 x) (de-in e1 y x) (juego-nn e2 y))))
+(B (name puzzle/rompecabezas)
+   (=> (^ (S#GAME e0 :0.45) (SS#GAME%TYPE x e0 :0.45))
+       (rompecabezas-nn e0 x)))
 
 
 ;; Game: Components
 
-(B (name chip)
+(B (name chip/chip)
    (=> (^ (S#GAME e0 :0.45) (SS#GAME%COMPONENTS x e0 :0.45))
        (chip-nn e0 x)))
-(B (name peón)
+(B (name pawn/peón)
    (=> (^ (S#GAME e0 :0.45) (SS#GAME%COMPONENTS x e0 :0.45))
        (peón-nn e0 x)))
-(B (name puzzle-piece)
+(B (name puzzle-piece/pieza-del-rompecabezas)
    (=> (^ (S#GAME e0 :0.45) (SS#GAME%COMPONENTS x e0 :0.45))
        (^ (pieza-nn e0 x) (del-in e1 x y) (rompecabezas-nn e2 y))))
 
 
 ;; Game: Actions
 
-(B (name jugada)
-   (=> (^ (S#GAME e0 :0.45) (SS#GAME%ACTIONSx :0.45 e0))
+(B (name move/jugada)
+   (=> (^ (S#GAME e0 :0.45) (SS#GAME%ACTIONS e0 e0 :0.45))
        (jugada-nn e0 x)))
-(B (name jugar)
+(B (name play/jugar)
    (=> (^ (S#GAME e0 :0.3) (SS#GAME%ACTIONS e0 e0 :0.3)
           (R#PLAYER x e0 :0.3))
        (jugar-vb e0 x y u)))
-(B (name premiar)
+(B (name reward/premiar)
    (=> (^ (S#GAME e0 :0.45) (SS#GAME%ACTIONS e0 e0 :0.45))
        (premiar-vb e0 x y u)))
 
 
 ;; Game: Outcomes
 
-(B (name ganar)
+(B (name win/ganar)
    (=> (^ (S#GAME e0 :0.3) (SS#GAME%OUTCOMES e0 e0 :0.3) (R#PLAYER x e0 :0.3))
        (ganar-vb e0 x y u)))
-(B (name perder)
+(B (name lose/perder)
    (=> (^ (S#GAME e0 :0.3) (SS#GAME%OUTCOMES e0 e0 :0.3) (R#PLAYER x e0 :0.3))
        (perder-vb e0 x y u)))
 
-(B (name win)
+(B (name winner/ganador)
    (=> (^ (SS#GAME%OUTCOMES e0 a :0.45) (R#PLAYER x e0 :0.45))
        (^ (S#GAME a) (SS#GAME%TYPE b a) (ganador-nn e0 x))))
-(B (name lose)
+(B (name loser/perdedor)
    (=> (^ (SS#GAME%OUTCOMES e0 a :0.45) (R#PLAYER x e0 :0.45))
        (^ (S#GAME a) (SS#GAME%TYPE b a) (perdedor-nn e0 x))))
 
 
 ;; Game: Mapping
 
-(B (name game-map)
-   (=> (I#GAME x :0.9)
-       (S#GAME x)))
-(B (name game-type-map)
-   (=> (I#GAME%TYPE x y :0.9)
-       (SS#GAME%TYPE x y)))
-(B (name game-components-map)
-   (=> (I#GAME%COMPONENTS x y :0.9)
-       (SS#GAME%COMPONENTS x y)))
-(B (name game-actions-map)
-   (=> (I#GAME%ACTIONS x y :0.9)
-       (SS#GAME%ACTIONS x y)))
-(B (name game-outcomes-map)
-   (=> (I#GAME%OUTCOMES x y :0.9)
-       (SS#GAME%OUTCOMES x y)))
+;; (B (name game-map)
+;;    (=> (I#GAME x :0.9)
+;;        (S#GAME x)))
+;; (B (name game-type-map)
+;;    (=> (I#GAME%TYPE x y :0.9)
+;;        (SS#GAME%TYPE x y)))
+;; (B (name game-components-map)
+;;    (=> (I#GAME%COMPONENTS x y :0.9)
+;;        (SS#GAME%COMPONENTS x y)))
+;; (B (name game-actions-map)
+;;    (=> (I#GAME%ACTIONS x y :0.9)
+;;        (SS#GAME%ACTIONS x y)))
+;; (B (name game-outcomes-map)
+;;    (=> (I#GAME%OUTCOMES x y :0.9)
+;;        (SS#GAME%OUTCOMES x y)))
 
 
 ;; Hazardous Geographic Feature
@@ -2269,15 +2561,15 @@
 
 ;; Hazardous Geographic Feature: Type
 
-(B (name montaña)
+(B (name mountain/montaña)
    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
           (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#MOUNTAIN x e0 :0.3))
        (montaña-nn e0 x)))
-(B (name himalayas)
+(B (name himalayas/himalayas)
    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
           (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#MOUNTAIN x e0 :0.3))
        (himalayas-nn e0 x)))
-(B (name alps)
+(B (name alps/aps)
    (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
           (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#MOUNTAIN x e0 :0.3))
        (alps-nn e0 x)))
@@ -2285,12 +2577,12 @@
 
 ;; Hazardous Geographic Feature: Mapping
 
-(B (name geographic-feature-map)
-   (=> (I#HAZARDOUS_GEOGRAPHIC_FEATURE x :0.9)
-       (S#HAZARDOUS_GEOGRAPHIC_FEATURE x)))
-(B (name geographic-feature-type-map)
-   (=> (I#HAZARDOUS_GEOGRAPHIC_FEATURE%TYPE x y :0.9)
-       (SS#HAZARDOUS_GEOGRAPHIC_FEATURE%TYPE x y)))
+;; (B (name geographic-feature-map)
+;;    (=> (I#HAZARDOUS_GEOGRAPHIC_FEATURE x :0.9)
+;;        (S#HAZARDOUS_GEOGRAPHIC_FEATURE x)))
+;; (B (name geographic-feature-type-map)
+;;    (=> (I#HAZARDOUS_GEOGRAPHIC_FEATURE%TYPE x y :0.9)
+;;        (SS#HAZARDOUS_GEOGRAPHIC_FEATURE%TYPE x y)))
 
 
 ;; High Location
@@ -2335,79 +2627,159 @@
 
 ;; High Location: Mapping Axioms
 
-(B (name high-location-map)
-   (=> (I#HIGH_LOCATION x :0.9)
-       (S#HIGH_LOCATION x)))
-(B (name top-of-econ-scale-map)
-   (=> (I#HIGH_LOCATION%TOP_OF_ECONOMIC_SCALE x y :0.9)
-       (SS#HIGH_LOCATION%TOP_OF_ECONOMIC_SCALE x y)))
+;; (B (name high-location-map)
+;;    (=> (I#HIGH_LOCATION x :0.9)
+;;        (S#HIGH_LOCATION x)))
+;; (B (name high-location-top-of-econ-scale-map)
+;;    (=> (I#HIGH_LOCATION%TOP_OF_ECONOMIC_SCALE x y :0.9)
+;;        (SS#HIGH_LOCATION%TOP_OF_ECONOMIC_SCALE x y)))
 
 
 ;; Human Body
 ;;   The entire physical structure of a human being.
 
 ;; Human Body: Component
-;;   From Google Translate.
 
-(B (name backbone)
+(B (name backbone/columna-vertebral)
    (=> (^ (S#HUMAN_BODY e0 :0.45) (SS#HUMAN_BODY%COMPONENT x e0 :0.45))
        (^ (columna-nn e0 x) (vertebral-adj e1 x))))
-(B (name face)
+(B (name face/rostro)
    (=> (^ (S#HUMAN_BODY e0 :0.45) (SS#HUMAN_BODY%COMPONENT x e0 :0.45))
        (rostro-nn e0 x)))
-(B (name hand)
+(B (name hand/mano)
    (=> (^ (S#HUMAN_BODY e0 :0.45) (SS#HUMAN_BODY%COMPONENT x e0 :0.45))
        (mano-nn e0 x)))
-(B (name skin)
+(B (name skin/pielear)
    (=> (^ (S#HUMAN_BODY e0 :0.45) (SS#HUMAN_BODY%COMPONENT x e0 :0.45))
        (pielear-nn e0 x)))
-(B (name heart)
+(B (name heart/corazón)
    (=> (^ (S#HUMAN_BODY e0 :0.45) (SS#HUMAN_BODY%COMPONENT x e0 :0.45))
        (corazón-nn e0 x)))
-(B (name brain)
+(B (name brain/cerebro)
    (=> (^ (S#HUMAN_BODY e0 :0.45) (SS#HUMAN_BODY%COMPONENT x e0 :0.45))
        (cerebro-nn e0 x)))
 
 
 ;; Human Body: Mapping
 
-(B (name human-body-map)
-   (=> (I#HUMAN_BODY x :0.9)
-       (S#HUMAN_BODY x)))
-(B (name human-body-component-map)
-   (=> (I#HUMAN_BODY%COMPONENT x y :0.9)
-       (SS#HUMAN_BODY%COMPONENT x y)))
+;; (B (name human-body-map)
+;;    (=> (I#HUMAN_BODY x :0.9)
+;;        (S#HUMAN_BODY x)))
+;; (B (name human-body-component-map)
+;;    (=> (I#HUMAN_BODY%COMPONENT x y :0.9)
+;;        (SS#HUMAN_BODY%COMPONENT x y)))
 
 
 ;; Journey
 ;;   An act or instance of traveling from one place to another.
 
-;; TODO: Add journey axioms.
+(B (name journey/viaje)
+   (=> (S#JOURNEY e0 :0.9)
+       (viaje-nn e0 x)))
+(B (name voyage/passaje)
+   (=> (S#JOURNEY e0 :0.9)
+       (passaje-nn e0 x)))
+(B (name trip/paseo)
+   (=> (S#JOURNEY e0 :0.9)
+       (paseo-nn e0 x)))
+(B (name travel/viajes)
+   (=> (S#JOURNEY e0 :0.9)
+       (viajes-nn e0 x)))
+
+(B (name travel/viajar)
+   (=> (S#JOURNEY e0 :0.9)
+       (viajar-vb e0 x y u)))
+
+
+;; Journey: Mapping
+
+;; (B (name journey-map)
+;;    (=> (I#JOURNEY x :0.9)
+;;        (S#JOURNEY x)))
 
 
 ;; Leader
 ;;   A person who manages or controls other people, esp. because of his or
 ;;   her ability or position.
 
-;; TODO: Add leader axioms.
+(B (name leader/líder)
+   (=> (S#LEADER e0 :0.9)
+       (líder-nn e0 x)))
+(B (name boss/jefe)
+   (=> (S#LEADER e0 :0.9)
+       (jefe-nn e0 x)))
+
+
+;; Leader: Mapping
+
+;; (B (name leader-map)
+;;    (=> (I#LEADER x :0.9)
+;;        (S#LEADER x)))
 
 
 ;; Life Stage
 ;;   One of the series of stages through which a living thing passes from the
 ;;   beginning of its life until its death.
 
-;; TODO: Add life stage axioms.
+(B (name infancy/infancia)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (infancia-nn e0 x)))
+(B (name childhood/niñez)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (niñez-nn e0 x)))
+(B (name youth/juventud)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (juventud-nn e0 x)))
+(B (name adolescence/adolescencia)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (adolescencia-nn e0 x)))
+(B (name puberty/pubertad)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (pubertad-nn e0 x)))
+
+(B (name baby/bebé)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (bebé-nn e0 x)))
+(B (name child/niño)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (niño-nn e0 x)))
+(B (name teenager/adolescente)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (adolescente-nn e0 x)))
+
+(B (name young/joven)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (young-adj e0 x)))
+(B (name adolescent/adolescente)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (adolescent-adj e0 x)))
+(B (name prepubescent/impúber)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (impúber-adj e0 x)))
+(B (name pubescent/pubescente)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (pubescente-adj e0 x)))
+(B (name elderly/anciano)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (anciano-adj e0 x)))
+
+
+;; Life Stage: Mapping
+
+;; (B (name life-stage-map)
+;;    (=> (I#LIFE_STAGE x :0.9)
+;;        (S#LIFE_STAGE x)))
 
 
 ;; Light
 ;;   The natural agent that stimulates sight and makes things visible; source
 ;;   of illumination.
 
-(B (name luz)
+(B (name light/luz)
    (=> (^ (S#LIGHT e0 :0.45)
           (SS#LIGHT%LIGHT_END_OF_RANGE_OF_DARKNESS_LIGHT x e0 :0.45))
        (luz-nn e0 x)))
-(B (name iluminación)
+(B (name illumination/iluminación)
    (=> (^ (S#LIGHT e0 :0.45)
           (SS#LIGHT%LIGHT_END_OF_RANGE_OF_DARKNESS_LIGHT x e0 :0.45))
        (iluminación-nn e0 x)))
@@ -2480,15 +2852,15 @@
 
 ;; Light: Mapping
 
-(B (name light-map)
-   (=> (I#LIGHT x :0.9)
-       (S#LIGHT x)))
-(B (name dark-end-of-range-map)
-   (=> (I#LIGHT%LIGHT_END_OF_RANGE_OF_DARKNESS_LIGHT x y :0.9)
-       (SS#LIGHT%LIGHT_END_OF_RANGE_OF_DARKNESS_LIGHT x y)))
-(B (name light-movement-map)
-   (=> (I#LIGHT%MOVEMENT x y :0.9)
-       (SS#LIGHT%MOVEMENT x y)))
+;; (B (name light-map)
+;;    (=> (I#LIGHT x :0.9)
+;;        (S#LIGHT x)))
+;; (B (name light-light-end-of-range-map)
+;;    (=> (I#LIGHT%LIGHT_END_OF_RANGE_OF_DARKNESS_LIGHT x y :0.9)
+;;        (SS#LIGHT%LIGHT_END_OF_RANGE_OF_DARKNESS_LIGHT x y)))
+;; (B (name light-movement-map)
+;;    (=> (I#LIGHT%MOVEMENT x y :0.9)
+;;        (SS#LIGHT%MOVEMENT x y)))
 
 
 ;; Low Location
@@ -2505,7 +2877,6 @@
        (abajo-in e0 x y)))
 
 
-
 ;; Low Location: Bottom of Economic Scale
 
 (B (name bajo-la-linea)
@@ -2520,12 +2891,12 @@
 
 ;; Low Location: Mapping
 
-(B (name low-location-map)
-   (=> (I#LOW_LOCATION x :0.9)
-       (S#LOW_LOCATION x)))
-(B (name bottom-of-econ-scale-map)
-   (=> (I#LOW_LOCATION%BOTTOM_OF_ECONOMIC_SCALE x y :0.9)
-       (SS#LOW_LOCATION%BOTTOM_OF_ECONOMIC_SCALE x y)))
+;; (B (name low-location-map)
+;;    (=> (I#LOW_LOCATION x :0.9)
+;;        (S#LOW_LOCATION x)))
+;; (B (name low-location-bottom-of-econ-scale-map)
+;;    (=> (I#LOW_LOCATION%BOTTOM_OF_ECONOMIC_SCALE x y :0.9)
+;;        (SS#LOW_LOCATION%BOTTOM_OF_ECONOMIC_SCALE x y)))
 
 
 ;; Machine
@@ -2580,18 +2951,18 @@
 
 ;; Machine: Mapping
 
-(B (name machine-map)
-   (=> (I#MACHINE x :0.9)
-       (S#MACHINE x)))
-(B (name machine-type-map)
-   (=> (I#MACHINE%TYPE x y :0.9)
-       (SS#MACHINE%TYPE x y)))
-(B (name machine-parts-map)
-   (=> (I#MACHINE%PARTS x y :0.9)
-       (SS#MACHINE%PARTS x y)))
-(B (name machine-function-map)
-   (=> (I#MACHINE%FUNCTION x y :0.9)
-       (SS#MACHINE%FUNCTION x y)))
+;; (B (name machine-map)
+;;    (=> (I#MACHINE x :0.9)
+;;        (S#MACHINE x)))
+;; (B (name machine-type-map)
+;;    (=> (I#MACHINE%TYPE x y :0.9)
+;;        (SS#MACHINE%TYPE x y)))
+;; (B (name machine-parts-map)
+;;    (=> (I#MACHINE%PARTS x y :0.9)
+;;        (SS#MACHINE%PARTS x y)))
+;; (B (name machine-function-map)
+;;    (=> (I#MACHINE%FUNCTION x y :0.9)
+;;        (SS#MACHINE%FUNCTION x y)))
 
 
 ;; Maze
@@ -2641,18 +3012,18 @@
 
 ;; Maze: Mapping
 
-(B (name maze-map)
-   (=> (I#MAZE x :0.9)
-       (S#MAZE x)))
-(B (name maze-confusing-pathways-map)
-   (=> (I#MAZE%CONFUSING_PATHWAYS x y :0.9)
-       (SS#MAZE%CONFUSING_PATHWAYS x y)))
-(B (name maze-navigation-map)
-   (=> (I#MAZE%NAVIGATION x y :0.9)
-       (SS#MAZE%NAVIGATION x y)))
-(B (name maze-obstruction-map)
-   (=> (I#MAZE%OBSTRUCTION x y :0.9)
-       (SS#MAZE%OBSTRUCTION x y)))
+;; (B (name maze-map)
+;;    (=> (I#MAZE x :0.9)
+;;        (S#MAZE x)))
+;; (B (name maze-confusing-pathways-map)
+;;    (=> (I#MAZE%CONFUSING_PATHWAYS x y :0.9)
+;;        (SS#MAZE%CONFUSING_PATHWAYS x y)))
+;; (B (name maze-navigation-map)
+;;    (=> (I#MAZE%NAVIGATION x y :0.9)
+;;        (SS#MAZE%NAVIGATION x y)))
+;; (B (name maze-obstruction-map)
+;;    (=> (I#MAZE%OBSTRUCTION x y :0.9)
+;;        (SS#MAZE%OBSTRUCTION x y)))
 
 
 ;; Medicine
@@ -2672,12 +3043,12 @@
 
 ;; Medicine: Mapping
 
-(B (name medicine-map)
-   (=> (I#MEDICINE x :0.9)
-       (S#MEDICINE x)))
-(B (name medicine-administration-map)
-   (=> (I#MEDICINE%ADMINISTRATION x y :0.9)
-       (SS#MEDICINE%ADMINISTRATION x y)))
+;; (B (name medicine-map)
+;;    (=> (I#MEDICINE x :0.9)
+;;        (S#MEDICINE x)))
+;; (B (name medicine-administration-map)
+;;    (=> (I#MEDICINE%ADMINISTRATION x y :0.9)
+;;        (SS#MEDICINE%ADMINISTRATION x y)))
 
 
 ;; Monster
@@ -2751,15 +3122,15 @@
 
 ;; Monster: Mapping
 
-(B (name monster-map)
-   (=> (I#MONSTER x :0.9)
-       (S#MONSTER x)))
-(B (name monster-type-map)
-   (=> (I#MONSTER%TYPE x y :0.9)
-       (SS#MONSTER%TYPE x y)))
-(B (name monster-action-map)
-   (=> (I#MONSTER%ACTION x y :0.9)
-       (SS#MONSTER%ACTION x y)))
+;; (B (name monster-map)
+;;    (=> (I#MONSTER x :0.9)
+;;        (S#MONSTER x)))
+;; (B (name monster-type-map)
+;;    (=> (I#MONSTER%TYPE x y :0.9)
+;;        (SS#MONSTER%TYPE x y)))
+;; (B (name monster-action-map)
+;;    (=> (I#MONSTER%ACTION x y :0.9)
+;;        (SS#MONSTER%ACTION x y)))
 
 
 ;; Moral Duty
@@ -2780,12 +3151,12 @@
 
 ;; Moral Duty: Mapping
 
-(B (name moral-duty-map)
-   (=> (I#MORAL_DUTY e0 :0.9)
-       (S#MORAL_DUTY x)))
-(B (name remuneration-map)
-   (=> (I#MORAL_DUTY%REMUNERATION x y :0.9)
-       (SS#MORAL_DUTY%REMUNERATION x y)))
+;; (B (name moral-duty-map)
+;;    (=> (I#MORAL_DUTY e0 :0.9)
+;;        (S#MORAL_DUTY x)))
+;; (B (name remuneration-map)
+;;    (=> (I#MORAL_DUTY%REMUNERATION x y :0.9)
+;;        (SS#MORAL_DUTY%REMUNERATION x y)))
 
 
 ;; Movement
@@ -2819,12 +3190,12 @@
 
 ;; Movement: Mapping
 
-(B (name movement-map)
-   (=> (I#MOVEMENT x :0.9)
-       (S#MOVEMENT x)))
-(B (name movement-movement-map)
-   (=> (I#MOVEMENT%MOVEMENT x y :0.9)
-       (SS#MOVEMENT%MOVEMENT x y)))
+;; (B (name movement-map)
+;;    (=> (I#MOVEMENT x :0.9)
+;;        (S#MOVEMENT x)))
+;; (B (name movement-movement-map)
+;;    (=> (I#MOVEMENT%MOVEMENT x y :0.9)
+;;        (SS#MOVEMENT%MOVEMENT x y)))
 
 
 ;; Natural Physical Force
@@ -2945,15 +3316,15 @@
 
 ;; Natural Physical Force: Mapping
 
-(B (name natural-physical-force-map)
-   (=> (I#NATURAL_PHYSICAL_FORCE x :0.9)
-       (S#NATURAL_PHYSICAL_FORCE x)))
-(B (name natural-physical-force-type-map)
-   (=> (I#NATURAL_PHYSICAL_FORCE%TYPE x y :0.9)
-       (SS#NATURAL_PHYSICAL_FORCE%TYPE x y)))
-(B (name natural-physical-force-result-map)
-   (=> (I#NATURAL_PHYSICAL_FORCE%RESULT x y :0.9)
-       (SS#NATURAL_PHYSICAL_FORCE%RESULT x y)))
+;; (B (name natural-physical-force-map)
+;;    (=> (I#NATURAL_PHYSICAL_FORCE x :0.9)
+;;        (S#NATURAL_PHYSICAL_FORCE x)))
+;; (B (name natural-physical-force-type-map)
+;;    (=> (I#NATURAL_PHYSICAL_FORCE%TYPE x y :0.9)
+;;        (SS#NATURAL_PHYSICAL_FORCE%TYPE x y)))
+;; (B (name natural-physical-force-result-map)
+;;    (=> (I#NATURAL_PHYSICAL_FORCE%RESULT x y :0.9)
+;;        (SS#NATURAL_PHYSICAL_FORCE%RESULT x y)))
 
 
 ;; Obesity
@@ -2974,6 +3345,9 @@
 (B (name girth/circunferencia)
    (=> (^ (S#OBESITY e0 :0.45) (SS#OBESITY%EXCESS_BODY_WEIGHT x e0 :0.45))
        (circunferencia-nn e0 x)))
+(B (name fat/gordura)
+   (=> (^ (S#OBESITY e0 :0.45) (SS#OBESITY%EXCESS_BODY_WEIGHT x e0 :0.45))
+       (gordura-nn e0 x)))
 
 
 ;; Obesity: Excess Consumption
@@ -2999,10 +3373,10 @@
 (B (name obesity-map)
    (=> (I#OBESITY x :0.9)
        (S#OBESITY x)))
-(B (name excess-body-weight-map)
+(B (name obesity-excess-body-weight-map)
    (=> (I#OBESITY%BODY-WEIGHT x y :0.9)
        (SS#OBESITY%EXCESS_BODY_WEIGHT x y)))
-(B (name excess-consumption-map)
+(B (name obesity-excess-consumption-map)
    (=> (I#OBESITY%CONSUMPTION x y :0.9)
        (SS#OBESITY%EXCESS_CONSUMPTION x y)))
 
@@ -3043,15 +3417,15 @@
 
 ;; Parasite: Mapping
 
-(B (name parasite-map)
-   (=> (I#PARASITE x :0.9)
-       (S#PARASITE x)))
-(B (name parasite-destructive-being-map)
-   (=> (I#PARASITE%DESTRUCTIVE_BEING x y :0.9)
-       (SS#PARASITE%DESTRUCTIVE_BEING x y)))
-(B (name parasite-action-map)
-   (=> (I#PARASITE%ACTION x y :0.9)
-       (SS#PARASITE%ACTION x y)))
+;; (B (name parasite-map)
+;;    (=> (I#PARASITE x :0.9)
+;;        (S#PARASITE x)))
+;; (B (name parasite-destructive-being-map)
+;;    (=> (I#PARASITE%DESTRUCTIVE_BEING x y :0.9)
+;;        (SS#PARASITE%DESTRUCTIVE_BEING x y)))
+;; (B (name parasite-action-map)
+;;    (=> (I#PARASITE%ACTION x y :0.9)
+;;        (SS#PARASITE%ACTION x y)))
 
 
 ;; Pathway
@@ -3124,18 +3498,18 @@
 
 ;; Pathway: Mapping
 
-(B (name pathway-map)
-   (=> (I#PATHWAY x :0.9)
-       (S#PATHWAY x)))
-(B (name pathway-type-map)
-   (=> (I#PATHWAY%TYPE x y :0.9)
-       (SS#PATHWAY%TYPE x y)))
-(B (name open-path-map)
-   (=> (I#PATHWAY%OPEN_PATH x y :0.9)
-       (SS#PATHWAY%OPEN_PATH x y)))
-(B (name obstructed-path-map)
-   (=> (I#PATHWAY%OBSTRUCTED_PATH x y :0.9)
-       (SS#PATHWAY%OBSTRUCTED_PATH x y)))
+;; (B (name pathway-map)
+;;    (=> (I#PATHWAY x :0.9)
+;;        (S#PATHWAY x)))
+;; (B (name pathway-type-map)
+;;    (=> (I#PATHWAY%TYPE x y :0.9)
+;;        (SS#PATHWAY%TYPE x y)))
+;; (B (name open-path-map)
+;;    (=> (I#PATHWAY%OPEN_PATH x y :0.9)
+;;        (SS#PATHWAY%OPEN_PATH x y)))
+;; (B (name obstructed-path-map)
+;;    (=> (I#PATHWAY%OBSTRUCTED_PATH x y :0.9)
+;;        (SS#PATHWAY%OBSTRUCTED_PATH x y)))
 
 
 ;; Physical Burden
@@ -3245,18 +3619,18 @@
 
 ;; Physical Burden: Mapping
 
-(B (name physical-burden-map)
-   (=> (I#PHYSICAL_BURDEN  e0 :0.9)
-       (S#PHYSICAL_BURDEN x)))
-(B (name weight-map)
-   (=> (I#PHYSICAL_BURDEN%WEIGHT  x y :0.9)
-       (SS#PHYSICAL_BURDEN%WEIGHT x y)))
-(B (name relief-map)
-   (=> (I#PHYSICAL_BURDEN%RELIEF  x y :0.9)
-       (SS#PHYSICAL_BURDEN%RELIEF x y)))
-(B (name physical-distress-map)
-   (=> (I#PHYSICAL_BURDEN%PHYSICAL_DISTRESS  x y :0.9)
-       (SS#PHYSICAL_BURDEN%xPHYSICAL_DISTRESS x y)))
+;; (B (name physical-burden-map)
+;;    (=> (I#PHYSICAL_BURDEN  e0 :0.9)
+;;        (S#PHYSICAL_BURDEN x)))
+;; (B (name physical-burden-weight-map)
+;;    (=> (I#PHYSICAL_BURDEN%WEIGHT  x y :0.9)
+;;        (SS#PHYSICAL_BURDEN%WEIGHT x y)))
+;; (B (name physical-burden-relief-map)
+;;    (=> (I#PHYSICAL_BURDEN%RELIEF  x y :0.9)
+;;        (SS#PHYSICAL_BURDEN%RELIEF x y)))
+;; (B (name physical-burden-physical-distress-map)
+;;    (=> (I#PHYSICAL_BURDEN%PHYSICAL_DISTRESS  x y :0.9)
+;;        (SS#PHYSICAL_BURDEN%xPHYSICAL_DISTRESS x y)))
 
 
 ;; Physical Harm
@@ -3388,41 +3762,6 @@
           (R#HARM-VICTIM y e0 :0.23))
        (abrumar-vb e0 x y u)))
 
-
-;; Physical Harm: Protection
-
-(B (name shield/escudo)
-   (=> (^ (S#PHYSICAL_HARM e0 :0.45) (SS#PHYSICAL_HARM%PROTECTION x e0 :0.45))
-       (escudo-nn e0 x)))
-(B (name coat/abrigo)
-   (=> (^ (S#PHYSICAL_HARM e0 :0.45) (SS#PHYSICAL_HARM%PROTECTION x e0 :0.45))
-       (abrigo-nn e0 x)))
-(B (name protection/protección)
-   (=> (^ (S#PHYSICAL_HARM e0 :0.45) (SS#PHYSICAL_HARM%PROTECTION x e0 :0.45))
-       (protección-nn e0 x)))
-
-(B (name protect/proteger)
-   (=> (^ (S#PHYSICAL_HARM e0 :0.2) (SS#PHYSICAL_HARM%PROTECTION e0 e0 :0.2)
-          (R#PROTECT-PATIENT y e0 :0.2) (R#PROTECT-AGENT x e0 :0.2))
-       (proteger-vb e0 x y u2)))
-(B (name cover/cubrir)
-   (=> (^ (S#PHYSICAL_HARM e0 :0.2) (SS#PHYSICAL_HARM%PROTECTION e0 e0 :0.2)
-          (R#PROTECT-PATIENT y e0 :0.2) (R#PROTECT-AGENT x e0 :0.2))
-       (cubrir-vb e0 x y u2)))
-
-(B (name evasion/evasión)
-   (=> (^ (S#PHYSICAL_HARM e0 :0.45) (SS#PHYSICAL_HARM%PROTECTION x e0 :0.45))
-       (evasión-nn e0 x)))
-
-(B (name evade/evadir)
-   (=> (^ (S#PHYSICAL_HARM e0 :0.3) (SS#PHYSICAL_HARM%PROTECTION x e0 :0.3)
-          (R#EVADE-AGENT x e0 :0.3))
-       (evadir-vb e0 x y u)))
-(B (name avoid/eludir)
-   (=> (^ (S#PHYSICAL_HARM e0 :0.3) (SS#PHYSICAL_HARM%PROTECTION x e0 :0.3)
-          (R#EVADE-AGENT x e0 :0.3))
-       (eludir-vb e0 x y u)))
-
 (B (name from-theft)
    (=> (R#HARM-VICTIM y e0 :0.9)
        (^ (S#PHYSICAL_HARM-PROTECTION e0) (from-in e1 e0 y))))
@@ -3430,18 +3769,18 @@
 
 ;; Physical Harm: Mapping
 
-(B (name physical-harm-map)
-   (=> (I#PHYSICAL_HARM  x :0.9)
-       (S#PHYSICAL_HARM x)))
-(B (name physical-harm-type-map)
-   (=> (I#PHYSICAL_HARM%TYPE x y :0.9)
-       (SS#PHYSICAL_HARM%TYPE x y)))
-(B (name physical-harm-restraint-map)
-   (=> (I#PHYSICAL_HARM%RESTRAINT x y :0.9)
-       (SS#PHYSICAL_HARM%RESTRAINT x y)))
-(B (name physical-harm-protection-map)
-   (=> (I#PHYSICAL_HARM%PROTECTION x y :0.9)
-       (SS#PHYSICAL_HARM%PROTECTION x y)))
+;; (B (name physical-harm-map)
+;;    (=> (I#PHYSICAL_HARM  x :0.9)
+;;        (S#PHYSICAL_HARM x)))
+;; (B (name physical-harm-type-map)
+;;    (=> (I#PHYSICAL_HARM%TYPE x y :0.9)
+;;        (SS#PHYSICAL_HARM%TYPE x y)))
+;; (B (name physical-harm-restraint-map)
+;;    (=> (I#PHYSICAL_HARM%RESTRAINT x y :0.9)
+;;        (SS#PHYSICAL_HARM%RESTRAINT x y)))
+;; (B (name physical-harm-protection-map)
+;;    (=> (I#PHYSICAL_HARM%PROTECTION x y :0.9)
+;;        (SS#PHYSICAL_HARM%PROTECTION x y)))
 
 
 ;; Physical Location
@@ -3475,30 +3814,26 @@
           (SS#PHYSICAL_LOCATION%DEFINED_REGION x e0 :0.45))
        (frontera-nn e0 x)))
 
-(B (name live-in/vivir-en/poverty)
+(B (name live-in/vivir-en)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.44)
+          (SS#PHYSICAL_LOCATION%DEFINED_REGION w e0 :0.44))
+       (^ (vivir-vb e0 x y z) (en-in e1 e0 w))))
+(B (name reside-in/residir-en)
    (=> (^ (S#PHYSICAL_LOCATION e0 :0.45)
           (SS#PHYSICAL_LOCATION%DEFINED_REGION w e0 :0.45))
-       (^ (TS#POVERTY w) (vivir-vb e0 x y z) (en-in e1 e0 w))))
-(B (name live-in/vivir-en/wealth)
-   (=> (^ (S#PHYSICAL_LOCATION e0 :0.45)
-          (SS#PHYSICAL_LOCATION%DEFINED_REGION w e0 :0.45))
-       (^ (TS#WEALTH w) (vivir-vb e0 x y z) (en-in e1 e0 w))))
-(B (name reside-in/residir-en/poverty)
-   (=> (^ (S#PHYSICAL_LOCATION e0 :0.45)
-          (SS#PHYSICAL_LOCATION%DEFINED_REGION w e0 :0.45))
-       (^ (TS#POVERTY w) (residir-vb e0 x y z) (en-in e1 e0 w))))
+       (^ (residir-vb e0 x y z) (en-in e1 e0 w))))
 (B (name stand-in/permanecer-in)
    (=> (^ (S#PHYSICAL_LOCATION e0 :0.45)
           (SS#PHYSICAL_LOCATION%DEFINED_REGION w e0 :0.45))
-       (^ (TS#POVERTY w) (permanecer-vb e0 x y z) (en-in e1 e0 w))))
+       (^ (permanecer-vb e0 x y z) (en-in e1 e0 w))))
 (B (name remain/permanecer)
    (=> (^ (S#PHYSICAL_LOCATION e0 :0.45)
           (SS#PHYSICAL_LOCATION%DEFINED_REGION w e0 :0.45))
-       (^ (TS#POVERTY w) (permanecer-vb e0 x y z))))
+       (^ (permanecer-vb e0 x y z))))
 (B (name born-in/nacido-en)
    (=> (^ (S#PHYSICAL_LOCATION e0 :0.45)
           (SS#PHYSICAL_LOCATION%DEFINED_REGION w e0 :0.45))
-       (^ (TS#POVERTY w) (nacido-adj e0 x) (en-in e1 x w))))
+       (^ (nacido-adj e0 x) (en-in e1 x w))))
 
 
 ;; Physical Location: Movement Into
@@ -3507,7 +3842,6 @@
    (=> (^ (S#PHYSICAL_LOCATION e0 :0.45)
           (SS#PHYSICAL_LOCATION%MOVEMENT_INTO x e0 :0.45))
        (empuje-nn e0 x)))
-
 
 (B (name push-on/empujar-en)
    (=> (^ (S#PHYSICAL_LOCATION e0 :0.23)
@@ -3644,18 +3978,18 @@
 
 ;; Physical Location: Mapping
 
-(B (name physical-location-map)
-   (=> (I#PHYSICAL_LOCATION x :0.9)
-       (S#PHYSICAL_LOCATION x)))
-(B (name defined-region-map)
-   (=> (I#PHYSICAL_LOCATION%DEFINED_REGION x y :0.9)
-       (SS#PHYSICAL_LOCATION%DEFINED_REGION x y)))
-(B (name movement-into-map)
-   (=> (I#PHYSICAL_LOCATION%MOVEMENT_INTO x y :0.9)
-       (SS#PHYSICAL_LOCATION%MOVEMENT_INTO x y)))
-(B (name physical-location-exit-map)
-   (=> (I#PHYSICAL_LOCATION%EXIT x y :0.9)
-       (SS#PHYSICAL_LOCATION%EXIT x y)))
+;; (B (name physical-location-map)
+;;    (=> (I#PHYSICAL_LOCATION x :0.9)
+;;        (S#PHYSICAL_LOCATION x)))
+;; (B (name physical-location-defined-region-map)
+;;    (=> (I#PHYSICAL_LOCATION%DEFINED_REGION x y :0.9)
+;;        (SS#PHYSICAL_LOCATION%DEFINED_REGION x y)))
+;; (B (name physical-location-movement-into-map)
+;;    (=> (I#PHYSICAL_LOCATION%MOVEMENT_INTO x y :0.9)
+;;        (SS#PHYSICAL_LOCATION%MOVEMENT_INTO x y)))
+;; (B (name physical-location-exit-map)
+;;    (=> (I#PHYSICAL_LOCATION%EXIT x y :0.9)
+;;        (SS#PHYSICAL_LOCATION%EXIT x y)))
 
 
 ;; Plant
@@ -3735,18 +4069,18 @@
 
 ;; Plant: Mapping
 
-(B (name plant-map)
-   (=> (I#PLANT x :0.9)
-       (S#PLANT x)))
-(B (name plant-type-map)
-   (=> (I#PLANT%TYPE x y :0.9)
-       (SS#PLANT%TYPE x y)))
-(B (name plant-parts-map)
-   (=> (I#PLANT%PARTS x y :0.9)
-       (SS#PLANT%PARTS x y)))
-(B (name plant-change-of-state-map)
-   (=> (I#PLANT%CHANGE_OF_STATE x y :0.9)
-       (SS#PLANT%CHANGE_OF_STATE x y)))
+;; (B (name plant-map)
+;;    (=> (I#PLANT x :0.9)
+;;        (S#PLANT x)))
+;; (B (name plant-type-map)
+;;    (=> (I#PLANT%TYPE x y :0.9)
+;;        (SS#PLANT%TYPE x y)))
+;; (B (name plant-parts-map)
+;;    (=> (I#PLANT%PARTS x y :0.9)
+;;        (SS#PLANT%PARTS x y)))
+;; (B (name plant-change-of-state-map)
+;;    (=> (I#PLANT%CHANGE_OF_STATE x y :0.9)
+;;        (SS#PLANT%CHANGE_OF_STATE x y)))
 
 
 ;; Portal
@@ -3787,15 +4121,15 @@
 
 ;; Portal: Mapping
 
-(B (name portal-map)
-   (=> (I#PORTAL e0 :0.9)
-       (S#PORTAL x)))
-(B (name means-of-entry-map)
-   (=> (I#PORTAL%MEANS_OF_ENTRY x y :0.9)
-       (SS#PORTAL%MEANS_OF_ENTRY x y)))
-(B (name obstacles-map)
-   (=> (I#PORTAL%OBSTACLES x y :0.9)
-       (SS#PORTAL%OBSTACLES x y)))
+;; (B (name portal-map)
+;;    (=> (I#PORTAL e0 :0.9)
+;;        (S#PORTAL x)))
+;; (B (name portal-means-of-entry-map)
+;;    (=> (I#PORTAL%MEANS_OF_ENTRY x y :0.9)
+;;        (SS#PORTAL%MEANS_OF_ENTRY x y)))
+;; (B (name portal-obstacles-map)
+;;    (=> (I#PORTAL%OBSTACLES x y :0.9)
+;;        (SS#PORTAL%OBSTACLES x y)))
 
 
 ;; Protection
@@ -3803,7 +4137,42 @@
 ;;   damaged; the act of preventing somebody or something from being harmed
 ;;   or damaged, or the state of being kept safe.
 
-;; TODO: Add protection axioms.
+(B (name shield/escudo)
+   (=> (S#PROTECTION e0 :0.9)
+       (escudo-nn e0 x)))
+(B (name shelter/abrigo)
+   (=> (S#PROTECTION e0 :0.9)
+       (abrigo-nn e0 x)))
+(B (name protection/protección)
+   (=> (S#PROTECTION e0 :0.9)
+       (protección-nn e0 x)))
+
+(B (name protect/proteger)
+   (=> (^ (S#PROTECTION e0 :0.3) (R#PROTECT-PATIENT y e0 :0.3)
+          (R#PROTECT-AGENT x e0 :0.3))
+       (proteger-vb e0 x y u2)))
+(B (name cover/cubrir)
+   (=> (^ (S#PROTECTION e0 :0.3) (R#PROTECT-PATIENT y e0 :0.3)
+          (R#PROTECT-AGENT x e0 :0.3))
+       (cubrir-vb e0 x y u2)))
+
+(B (name evasion/evasión)
+   (=> (S#PROTECTION e0 :0.9)
+       (evasión-nn e0 x)))
+
+(B (name evade/evadir)
+   (=> (^ (S#PROTECTION e0 :0.45) (R#EVADE-AGENT x e0 :0.45))
+       (evadir-vb e0 x y u)))
+(B (name avoid/eludir)
+   (=> (^ (S#PROTECTION e0 :0.45) (R#EVADE-AGENT x e0 :0.45))
+       (eludir-vb e0 x y u)))
+
+
+;; Protection: Mapping
+
+;; (B (name protection-map)
+;;    (=> (I#PROTECTION x :0.9)
+;;        (S#PROTECTION x)))
 
 
 ;; Resource
@@ -3902,42 +4271,115 @@
 
 ;; Resource: Mapping
 
-(B (name resource-map)
-   (=> (I#RESOURCE x :0.9)
-       (S#RESOURCE x)))
-(B (name substance-map)
-   (=> (I#RESOURCE%SUBSTANCE x y :0.9)
-       (SS#RESOURCE%SUBSTANCE x y)))
-(B (name quantity-map)
-   (=> (I#RESOURCE%QUANTITY_SIZE x y :0.9)
-       (SS#RESOURCE%QUANTITY_SIZE x y)))
-(B (name distribution-map)
-   (=> (I#RESOURCE%DISTRIBUTION x y :0.9)
-       (SS#RESOURCE%DISTRIBUTION x y)))
-(B (name develop-resources-map)
-   (=> (I#RESOURCE%DEVELOP_RESOURCES x y :0.9)
-       (SS#RESOURCE%DEVELOP_RESOURCES x y)))
+;; (B (name resource-map)
+;;    (=> (I#RESOURCE x :0.9)
+;;        (S#RESOURCE x)))
+;; (B (name resource-substance-map)
+;;    (=> (I#RESOURCE%SUBSTANCE x y :0.9)
+;;        (SS#RESOURCE%SUBSTANCE x y)))
+;; (B (name resource-quantity-map)
+;;    (=> (I#RESOURCE%QUANTITY_SIZE x y :0.9)
+;;        (SS#RESOURCE%QUANTITY_SIZE x y)))
+;; (B (name resource-distribution-map)
+;;    (=> (I#RESOURCE%DISTRIBUTION x y :0.9)
+;;        (SS#RESOURCE%DISTRIBUTION x y)))
+;; (B (name resource-develop-resources-map)
+;;    (=> (I#RESOURCE%DEVELOP_RESOURCES x y :0.9)
+;;        (SS#RESOURCE%DEVELOP_RESOURCES x y)))
 
 
 ;; Rule Enforcer
 ;;   A person or entity that controls (something) by making sure that rules
 ;;   and regulations are being followed.
 
-;; TODO: Add rule enforcer axioms.
+(B (name enforcer/ejecutor)
+   (=> (S#RULE_ENFORCER e0 :0.9)
+       (ejecutor-nn e0 x)))
+(B (name referee/árbitro)
+   (=> (S#RULE_ENFORCER e0 :0.9)
+       (árbitro-nn e0 x)))
+(B (name police/policía)
+   (=> (S#RULE_ENFORCER e0 :0.9)
+       (policía-nn e0 x)))
+(B (name police/vigilar)
+   (=> (S#RULE_ENFORCER e0 :0.9)
+       (vigilar-vb e0 x y u)))
+
+
+;; Rule Enforcer: Mapping
+
+;; (B (name rule-enforcer-map)
+;;    (=> (I#RULE_ENFORCER x :0.9)
+;;        (S#RULE_ENFORCER x)))
 
 
 ;; Science
 ;;   Knowledge about or study of the natural world based on facts learned
 ;;   through experiments and observation.
 
-;; TODO: Add science axioms.
+(B (name science/ciencia)
+   (=> (S#SCIENCE e0 :0.9)
+       (ciencia-nn e0 x)))
+(B (name physics/física)
+   (=> (S#SCIENCE e0 :0.9)
+       (física-nn e0 x)))
+(B (name experiment/experimento)
+   (=> (S#SCIENCE e0 :0.9)
+       (experimento-nn e0 x)))
+(B (name observation/observación)
+   (=> (S#SCIENCE e0 :0.9)
+       (observación-nn e0 x)))
+(B (name laboratory/laboratorio)
+   (=> (S#SCIENCE e0 :0.9)
+       (laboratorio-nn e0 x)))
+
+(B (name experimental/experimental)
+   (=> (S#SCIENCE e0 :0.9)
+       (experimental-adj e0 x)))
+
+(B (name experiment/experimentar)
+   (=> (S#SCIENCE e0 :0.9)
+       (experimentar-vb e0 x0 x1 x2)))
+
+
+;; Science: Mapping
+
+;; (B (name science-map)
+;;    (=> (I#SCIENCE x :0.9)
+;;        (S#SCIENCE x)))
 
 
 ;; Servant
 ;;   One that serves others; especially, one that performs duties about the
-;;   person or home of a master or personal employer.
+;;   person or home of a master or personal employer. (Including former
+;;   ENSLAVEMENT axioms.)
 
-;; TODO: Add servant axioms.
+(B (name servant/criado)
+   (=> (S#SERVANT e0 :0.9)
+       (criado-nn e0 x)))
+(B (name butler/mayordomo)
+   (=> (S#SERVANT e0 :0.9)
+       (mayordomo-nn e0 x)))
+(B (name maid/mucama)
+   (=> (S#SERVANT e0 :0.9)
+       (mucama-nn e0 x)))
+(B (name housemaid/criada)
+   (=> (S#SERVANT e0 :0.9)
+       (criada-nn e0 x)))
+(B (name cleaner/limpiador)
+   (=> (S#SERVANT e0 :0.9)
+       (limpiador-nn e0 x)))
+
+(B (name serve/servir)
+   (=> (S#SERVANT e0 :0.9)
+       (servir-vb e0 x y u)))
+
+
+;; Servant: Mapping
+
+;; (B (name servant-map)
+;;    (=> (I#SERVANT x :0.9)
+;;        (S#SERVANT x)))
 
 
 ;; Struggle
@@ -4023,29 +4465,144 @@
 
 ;; Struggle: Mapping
 
-(B (name struggle-map)
-   (=> (I#STRUGGLE x :0.9)
-       (S#STRUGGLE x)))
-(B (name struggle-type-map)
-   (=> (I#STRUGGLE%TYPE x e0 :0.9)
-       (SS#STRUGGLE%TYPE x e0)))
-(B (name struggle-adversary-map)
-   (=> (I#STRUGGLE%ADVERSARY x u :0.9)
-       (SS#STRUGGLE%ADVERSARY x u)))
+;; (B (name struggle-map)
+;;    (=> (I#STRUGGLE x :0.9)
+;;        (S#STRUGGLE x)))
+;; (B (name struggle-type-map)
+;;    (=> (I#STRUGGLE%TYPE x e0 :0.9)
+;;        (SS#STRUGGLE%TYPE x e0)))
+;; (B (name struggle-adversary-map)
+;;    (=> (I#STRUGGLE%ADVERSARY x u :0.9)
+;;        (SS#STRUGGLE%ADVERSARY x u)))
 
 
 ;; Temperature
 ;;   A measurement that indicates how hot or cold something is; a measurement
 ;;   in degrees showing the heat of something (such as air or water).
 
-;; TODO: Add temperature axioms.
+(B (name temperature/temperatura)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (temperatura-nn e0 x)))
+(B (name celsius/celsius)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (celsius-nn e0 x)))
+(B (name celsius/centigrado)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (centigrado-adj e0 x)))
+(B (name thermometer/termómetro)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (termómetro-nn e0 x)))
+
+(B (name hot/caliente)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (caliente-adj e0 x)))
+(B (name cold/frío)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (frío-adj e0 x)))
+(B (name warm/cálido)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (cálido-adj e0 x)))
+(B (name cool/fresco)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (cool-adj e0 x)))
+
+(B (name chill/frío)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (frío-nn e0 x)))
+(B (name heat/calor)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (calor-nn e0 x)))
+
+
+;; Temperature: Mapping
+
+;; (B (name temperature-map)
+;;    (=> (I#TEMPERATURE x :0.9)
+;;        (S#TEMPERATURE x)))
 
 
 ;; Theft
 ;;   The felonious taking and removing of personal property with intent to
-;;   deprive the rightful owner of it.
+;;   deprive the rightful owner of it. (Including former CRIME axioms.)
 
-;; TODO: Add theft axioms.
+(B (name theft/robo)
+   (=> (S#THEFT e0 :0.9)
+       (robo-nn e0 x)))
+(B (name theft/hurto)
+   (=> (S#THEFT e0 :0.9)
+       (hurto-nn e0 x)))
+(B (name larceny/latrocinio)
+   (=> (S#THEFT e0 :0.9)
+       (latrocinio-nn e0 x)))
+(B (name larceny/ratería)
+   (=> (S#THEFT e0 :0.9)
+       (ratería-nn e0 x)))
+(B (name pillage/pillaje)
+   (=> (S#THEFT e0 :0.9)
+       (pillaje-nn e0 x)))
+(B (name plundering/saqueando)
+   (=> (S#THEFT e0 :0.9)
+       (saqueando-nn e0 x)))
+(B (name plunder/saqueo)
+   (=> (S#THEFT e0 :0.9)
+       (saqueo-nn e0 x)))
+(B (name booty/botín)
+   (=> (S#THEFT e0 :0.9)
+       (botín-nn e0 x)))
+
+(B (name rob/robar)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#VICTIM y e0 :0.3))
+       (robar-vb e0 x y u)))
+(B (name hijack/secuestrar)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#VICTIM y e0 :0.3))
+       (secuestrar-vb e0 x y u)))
+(B (name steal/hurtar)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#THEME z e0 :0.3))
+       (hurtar-vb e0 x z u2)))
+(B (name filch/ratear)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#THEME z e0 :0.3))
+       (ratear-vb e0 x z u2)))
+(B (name plunder/saquear)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#THEME z e0 :0.3))
+       (saquear-vb e0 x z u2)))
+(B (name pillage/pillar)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#THEME z e0 :0.3))
+       (pillar-vb e0 x z u2)))
+
+(B (name bandit/bandido)
+   (=> (^ (S#THEFT e0 :0.30) (SS#THEFT%PERPETRATOR x e0 :0.30)
+          (R#AGENT x e0 :0.30))
+       (bandit-nn e0 x)))
+(B (name thief/ladrón)
+   (=> (^ (S#THEFT e0 :0.30) (SS#THEFT%PERPETRATOR x e0 :0.30)
+          (R#AGENT x e0 :0.30))
+       (ladrón-nn e0 x)))
+(B (name pilferer/ladronzuelo)
+   (=> (^ (S#THEFT e0 :0.30) (SS#THEFT%PERPETRATOR x e0 :0.30)
+          (R#AGENT x e0 :0.30))
+       (ladronzuelo-nn e0 x)))
+(B (name mugger/asaltador)
+   (=> (^ (S#THEFT e0 :0.30) (SS#THEFT%PERPETRATOR x e0 :0.30)
+          (R#AGENT x e0 :0.30))
+       (asaltador-nn e0 x)))
+(B (name robber/atracador)
+   (=> (^ (S#THEFT e0 :0.30) (SS#THEFT%PERPETRATOR x e0 :0.30)
+          (R#AGENT x e0 :0.30))
+       (atracador-nn e0 x)))
+(B (name plunderer/saqueador)
+   (=> (^ (S#THEFT e0 :0.30) (SS#THEFT%PERPETRATOR x e0 :0.30)
+          (R#AGENT x e0 :0.30))
+       (saqueador-nn e0 x)))
+
+
+;; Theft: Mapping
+
+;; (B (name theft-map)
+;;    (=> (I#THEFT x :0.9)
+;;        (S#THEFT x)))
+;; (B (name theft-perpetrator-map)
+;;    (=> (I#THEFT%PERPETRATOR x e0 :0.9)
+;;        (SS#THEFT%PERPETRATOR x e0)))
 
 
 ;; Upward Movement
@@ -4097,16 +4654,40 @@
 
 ;; Upward Movement: Mapping
 
-(B (name upward-movement-map)
-   (=> (I#UPWARD_MOVEMENT x :0.9)
-       (S#UPWARD_MOVEMENT x)))
+;; (B (name upward-movement-map)
+;;    (=> (I#UPWARD_MOVEMENT x :0.9)
+;;        (S#UPWARD_MOVEMENT x)))
 
 
 ;; Vehicle
 ;;   Something used to transport people or goods, esp. something used on land
 ;;   or roads.
 
-;; TODO: Add vehicle axioms.
+(B (name vehicle/vehículo)
+   (=> (S#VEHICLE e0 :0.9)
+       (vehículo-nn e0 x)))
+(B (name automobile/automóvil)
+   (=> (S#VEHICLE e0 :0.9)
+       (automóvil-nn e0 x)))
+(B (name auto/auto)
+   (=> (S#VEHICLE e0 :0.9)
+       (auto-nn e0 x)))
+(B (name motorcar/coche)
+   (=> (S#VEHICLE e0 :0.9)
+       (coche-nn e0 x)))
+(B (name truck/camión)
+   (=> (S#VEHICLE e0 :0.9)
+       (camión-nn e0 x)))
+(B (name van/van)
+   (=> (S#VEHICLE e0 :0.9)
+       (van-nn e0 x)))
+
+
+;; Vehicle: Mapping
+
+;; (B (name vehicle-map)
+;;    (=> (I#VEHICLE x :0.9)
+;;        (S#VEHICLE x)))
 
 
 ;; War
@@ -4206,6 +4787,6 @@
 
 ;; War: Mapping
 
-(B (name war-map)
-   (=> (I#WAR x :0.9)
-       (S#WAR x)))
+;; (B (name war-map)
+;;    (=> (I#WAR x :0.9)
+;;        (S#WAR x)))

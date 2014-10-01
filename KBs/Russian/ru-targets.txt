@@ -16,7 +16,6 @@
 (B (name bureaucracy/бюрократия)
    (=> (^ (TS#BUREAUCRACY x :0.45) (T#DEMOCRACY u :0.45))
        (бюрократия-nn e0 x)))
-
 (B (name bureaucracy/бюрократизм)
    (=> (^ (TS#BUREAUCRACY x :0.45) (T#DEMOCRACY u :0.45))
        (бюрократизм-nn e0 x)))
@@ -25,12 +24,36 @@
 ;; Democracy: Elections
 
 (B (name election/выборы)
-   (=> (^ (TS#ELECTIONS x :0.45) (T#DEMOCRACY u :0.45))
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#ELECTIONS x :0.45))
        (выборы-nn e0 x)))
+(B (name vote/голоса)
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#ELECTIONS x :0.45))
+       (голоса-nn e0 x)))
 
 (B (name elect/избирать)
-   (=> (^ (TS#ELECTIONS x :0.45) (T#DEMOCRACY u :0.45))
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#ELECTIONS x :0.45))
        (избирать-vb e0 x u1 u2)))
+(B (name vote/голосовать)
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#ELECTIONS x :0.45))
+       (голосовать-vb e0 x u1 u2)))
+
+(B (name elected/избран)
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#ELECTIONS x :0.45))
+       (избран-adj e0 x)))
+
+
+;; Democracy: Government
+
+(B (name government/правительство)
+   (=> (^ (T#DEMOCRACY u :0.45) (TS#GOVERNMENT x :0.45))
+       (правительство-nn e0 x)))
+
+(B (name federal-government/федеральное-правительство)
+   (=> (^ (T#DEMOCRACY u :0.4) (TS#GOVERNMENT x :0.4))
+       (^ (федеральное-adj e0 x) (правительство-nn e0 x))))
+(B (name local-government/местного-самоуправления)
+   (=> (^ (T#DEMOCRACY u :0.4) (TS#GOVERNMENT x :0.4))
+       (^ (местного-adj e0 x) (самоуправления-nn e0 x))))
 
 
 ;; Economic Inequality
@@ -262,9 +285,6 @@
 (B (name duty/пошлина)
    (=> (^ (TS#TAXATION x :0.45) (T#ECONOMIC-INEQUALITY u :0.45))
        (пошлина-nn e0 x)))
-(B (name tribute/дань)
-   (=> (^ (TS#TAXATION x :0.45) (T#ECONOMIC-INEQUALITY u :0.45))
-       (дань-nn e0 x)))
 (B (name tax/налоговая)
    (=> (^ (TS#TAXATION x :0.45) (T#ECONOMIC-INEQUALITY u :0.45))
        (налоговая-nn e0 x)))
@@ -383,10 +403,6 @@
    (=> (^ (TS#WEALTH e0 :0.3) (R#RICH y e0 :0.3)
           (T#ECONOMIC-INEQUALITY u :0.3))
        (богатеть-vb e0 y u1 u2)))
-(B (name thrive/процветать)
-   (=> (^ (TS#WEALTH e0 :0.3) (R#RICH y e0 :0.3)
-          (T#ECONOMIC-INEQUALITY u :0.3))
-       (процветать-vb e0 y u1 u2)))
 (B (name prosper/благоденствовать)
    (=> (^ (TS#WEALTH e0 :0.3) (R#RICH y e0 :0.3)
           (T#ECONOMIC-INEQUALITY u :0.3))
