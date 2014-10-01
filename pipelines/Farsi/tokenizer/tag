@@ -6,11 +6,10 @@ taggedFileName="${2:-/dev/stdout}"
 
 farsiPipelineDir=$METAPHOR_DIR/pipelines/Farsi
 
-taggerDir=$farsiPipelineDir/tokenizer/stanford-postagger
+taggerDir=$METAPHOR_DIR/pipelines/Farsi/tokenizer/stanford-postagger
 
-taggerModelFile=$farsiPipelineDir/tokenizer/farsi.tagger.model.treebank
+taggerModelFile=$METAPHOR_DIR/pipelines/Farsi/tokenizer/farsi.tagger.model.treebank
 
 #POS tag the input file
 cd $taggerDir
-
-java -mx2G  -classpath stanford-postagger.jar edu.stanford.nlp.tagger.maxent.MaxentTagger -prop farsiPropsFile.prop -model $taggerModelFile -textFile $inputFile  > $taggedFileName #2>/dev/null
+java -mx2G  -classpath stanford-postagger.jar edu.stanford.nlp.tagger.maxent.MaxentTagger -prop $taggerDir/farsiPropsFile.prop -model $taggerModelFile -textFile $inputFile  > $taggedFileName # 2>/dev/null
