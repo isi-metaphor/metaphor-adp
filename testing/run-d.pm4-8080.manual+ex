@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# Rebuild manual + automatic KBs and run the dev. set for each language
+# Jonathan Gordon, 2014-10-17
+
+henry -m compile_kb -o \
+../KBs/English/English_compiled_KB.da \
+../KBs/English/en-sources.txt \
+../KBs/English/en-targets.txt \
+../KBs/English/en-examples.txt
+
+henry -m compile_kb -o \
+../KBs/Spanish/Spanish_compiled_KB.da \
+../KBs/Spanish/es-sources.txt \
+../KBs/Spanish/es-targets.txt \
+../KBs/Spanish/es-examples.txt
+
+henry -m compile_kb -o \
+../KBs/Farsi/Farsi_compiled_KB.da \
+../KBs/Farsi/fa-sources.txt \
+../KBs/Farsi/fa-targets.txt \
+../KBs/Farsi/fa-examples.txt
+
+henry -m compile_kb -o \
+../KBs/Russian/Russian_compiled_KB.da \
+../KBs/Russian/ru-targets.txt \
+../KBs/Russian/ru-sources.txt \
+../KBs/Russian/ru-examples.txt
+
+export IDENTIFIER=$RANDOM
+
+scp ../KBs/English/English_compiled_KB.da \
+    metaphor@colo-pm4.isi.edu:kbs/en-$IDENTIFIER.da
+scp ../KBs/Spanish/Spanish_compiled_KB.da \
+    metaphor@colo-pm4.isi.edu:kbs/es-$IDENTIFIER.da
+scp ../KBs/Farsi/Farsi_compiled_KB.da \
+    metaphor@colo-pm4.isi.edu:kbs/fa-$IDENTIFIER.da
+scp ../KBs/Russian/Russian_compiled_KB.da \
+    metaphor@colo-pm4.isi.edu:kbs/ru-$IDENTIFIER.da
+
+./test -l en -i $IDENTIFIER \
+       -u http://colo-pm4.isi.edu:8080 -p '/home/metaphor/kbs/' \
+       data/EN.dev > en-d.pm4-8080.manual+ex.$IDENTIFIER.txt &
+#./test -l es -i $IDENTIFIER \
+#       -u http://colo-pm4.isi.edu:8080 -p '/home/metaphor/kbs/' \
+#       data/ES.dev.200 > es-d.pm4-8080.manual+ex.$IDENTIFIER.txt &
+#./test -l fa -i $IDENTIFIER \
+#       -u http://colo-pm4.isi.edu:8080 -p '/home/metaphor/kbs/' \
+#       data/FA.dev.200 > fa-d.pm4-8080.manual+ex.$IDENTIFIER.txt &
+#./test -l ru -i $IDENTIFIER \
+#       -u http://colo-pm4.isi.edu:8080 -p '/home/metaphor/kbs/' \
+#       data/RU.dev.200 > ru-d.pm4-8080.manual+ex.$IDENTIFIER.txt &
+
+for job in `jobs -p`; do
+    echo $job
+    wait $job || echo "Failed: $job."
+done
+
+ssh metaphor@colo-pm4.isi.edu "rm kbs/en-$IDENTIFIER.da"
+ssh metaphor@colo-pm4.isi.edu "rm kbs/es-$IDENTIFIER.da"
+ssh metaphor@colo-pm4.isi.edu "rm kbs/fa-$IDENTIFIER.da"
+ssh metaphor@colo-pm4.isi.edu "rm kbs/ru-$IDENTIFIER.da"
+
+echo "Done."
