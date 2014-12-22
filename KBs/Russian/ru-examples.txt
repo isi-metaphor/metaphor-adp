@@ -1,3 +1,4 @@
+;; Russian Metaphor Axioms (Automatic, Old Dev Set, High Cost)
 (B (name x) (=> (S#ABYSS e0 :0.96) (^ (в-in e1 e0 x0) (впасть-vb e0 u0 u1 u2))))
 (B (name x) (=> (S#ABYSS e0 :0.96) (^ (в-in e1 e0 x0) (лететь-vb e0 x0 u0 u1) (продолжать-vb e0 x0 e1 u0) (пропасть-nn e0 x0))))
 (B (name x) (=> (S#ABYSS e0 :0.96) (^ (из-in e1 e0 x0) (подняться-vb e0 u0 u1 u2))))
