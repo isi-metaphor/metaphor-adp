@@ -68,8 +68,11 @@
        (^ (خورد#خور-vb e0 x y u2) (NVE e6 z e0))))
 
 
-;; A God
+;; A God / خدا
 ;;   A supreme being; to regard or treat as a god; deify; idolize.
+;;
+;;   خُدا نام اطلاق شده در فارسی به موجود آفریدگار جهان.
+;;   [The given name in Farsi to the creator of the world.]
 
 ;; A God: Type
 
@@ -90,12 +93,10 @@
    (=> (^ (S#A_GOD e0 :0.3) (SS#A_GOD%VENERATION e0 e0 :0.3)
           (R#WORSHIP-AGENT x e0 :0.3))
        (پرستش-nn e0 x y u)))
-
 (B (name pagan-worship/پرستید-پرست)
    (=> (^ (S#A_GOD e0 :0.3) (SS#A_GOD%VENERATION e0 e0 :0.3)
           (R#WORSHIP-AGENT x e0 :0.3))
        (پرستید#پرست-nn e0 x y u)))
-
 (B (name pray-for-the/دعا)
    (=> (^ (S#A_GOD e0 :0.3) (SS#A_GOD%VENERATION e0 e0 :0.3)
           (R#WORSHIP-AGENT x e0 :0.3))
@@ -110,22 +111,14 @@
        (^ (تعظیم#کردن-vb e0 x y u) (به-in e1 e0 z))))
 
 
-;; A God: Mapping
 
-;; (B (name god-map)
-;;    (=> (I#A_GOD x :0.9)
-;;        (S#A_GOD x)))
-;; (B (name god-type-map)
-;;    (=> (I#A_GOD%TYPE x y :0.9)
-;;        (SS#A_GOD%TYPE x y)))
-;; (B (name god-veneration-map)
-;;    (=> (I#A_GOD%VENERATION x y :0.9)
-;;        (SS#A_GOD%VENERATION x y)))
-
-
-;; A Right
+;; A Right / حق
 ;;   That which is due to anyone by just claim, legal guarantees, moral
 ;;   principles, etc.
+;;
+;;   آنچه که از نظر قانون و شرع، متعلق به کسی است و باید به وی داده شود.
+;;   [That which belongs to someone according to the law and religion, and
+;;   has to be given to them.]
 
 ;; A Right: Type
 
@@ -149,19 +142,13 @@
        (^ (مسلم-adj e0 x) (حق-nn e1 x))))
 
 
-;; A Right: Mapping
 
-;; (B (name a_right-map)
-;;    (=> (I#A_RIGHT x :0.9)
-;;        (S#A_RIGHT x)))
-;; (B (name a_right-type-map)
-;;    (=> (I#A_RIGHT%TYPE x y :0.9)
-;;        (SS#A_RIGHT%TYPE x y)))
-
-
-;; Abyss
+;; Abyss /  ورطه
 ;;   A deep, immeasurable space, gulf, or cavity; vast chasm; anything
 ;;   profound, unfathomable, or infinite.
+;;
+;;    هر چیز ترسناک و خطرناک ,حفره بی نهایت عمیق
+;;    [Anything that is scary and dangerous, immeasurably deep cavity.]
 
 ;; Abyss: Type
 
@@ -201,14 +188,14 @@
 (B (name bottomless-pit)
    (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%TYPE x e0 :0.45))
        (^ (بی-انتها-adj e0 x) (گودال-nn e1 x))))
-(B (name abyss)
+(B (name sinkhole/منجلاب)
    (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%TYPE x e0 :0.45))
        (منجلاب-nn e0 x)))
 
-(B (name abyssal)
+(B (name deep/عمیق)
    (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%TYPE e0 e0 :0.45))
        (عمیق-adj e0 x)))
-(B (name abysmal)
+(B (name deep/ژرف)
    (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%TYPE e0 e0 :0.45))
        (ژرف-adj e0 x)))
 
@@ -262,7 +249,7 @@
 (B (name cliff/صخره)
    (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%ENTRANCE x e0 :0.45))
        (صخره-nn e0 x)))
-(B (name precipice)
+(B (name precipice/پرتگاه)
    (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%ENTRANCE x e0 :0.45))
        (پرتگاه-nn e0 x)))
 (B (name push-into)
@@ -316,27 +303,12 @@
        (^ (برآمد#برآ-vb e0 x y u) (از-in e2 e0 z))))
 
 
-;; Abyss: Mapping
 
-;; (B (name abyss-map)
-;;    (=> (I#ABYSS x :0.9)
-;;        (S#ABYSS x)))
-;; (B (name abyss-type-map)
-;;    (=> (I#ABYSS%TYPE x e0 :0.9)
-;;        (SS#ABYSS%TYPE x e0)))
-;; (B (name abyss-depth-map)
-;;    (=> (I#ABYSS%DEPTH x y :0.9)
-;;        (SS#ABYSS%DEPTH x y)))
-;; (B (name abyss-entrance-map)
-;;    (=> (I#ABYSS%ENTRANCE x y :0.9)
-;;        (SS#ABYSS%ENTRANCE x y)))
-;; (B (name abyss-exit-map)
-;;    (=> (I#ABYSS%EXIT x y :0.9)
-;;        (SS#ABYSS%EXIT x y)))
-
-
-;; Accident
+;; Accident / تصادف
 ;;   An unforeseen and unplanned event or circumstance.
+;;
+;;   مقابل و روبرو شدن بدون قصد. برخوردن .
+;;   [Being in front of, coming upon or facing something unintentionally.]
 
 ;; Accident: Type
 
@@ -354,20 +326,14 @@
        (سقوط-nn e0 x)))
 
 
-;; Accident: Mapping
 
-;; (B (name accident-map)
-;;    (=> (I#ACCIDENT x :0.9)
-;;        (S#ACCIDENT x)))
-;; (B (name accident-type-map)
-;;    (=> (I#ACCIDENT%TYPE x y :0.9)
-;;        (SS#ACCIDENT%TYPE x y)))
-
-
-;; Addiction
+;; Addiction / اعتیاد
 ;;   The state of being enslaved to a habit or practice or to something that
 ;;   is psychologically or physically habit-forming, as narcotics, to such an
 ;;   extent that its cessation causes severe trauma.
+;;
+;;    عادت ب چیزی و خوگرفتگی بدان
+;;   [Getting used to something and addiction to it.]
 
 ;; Addiction: Type
 
@@ -410,24 +376,12 @@
        (مست-adj e0 x)))
 
 
-;; Addiction: Mapping
 
-;; (B (name addiction-map)
-;;    (=> (I#ADDICTION x :0.9)
-;;        (S#ADDICTION x)))
-;; (B (name addiction-type-map)
-;;    (=> (I#ADDICTION%TYPE x y :0.9)
-;;        (SS#ADDICTION%TYPE x y)))
-;; (B (name addiction-compulsion-map)
-;;    (=> (I#ADDICTION%COMPULSION x y :0.9)
-;;        (SS#ADDICTION%COMPULSION x y)))
-;; (B (name addiction-result-map)
-;;    (=> (I#ADDICTION%RESULT x y :0.9)
-;;        (SS#ADDICTION%RESULT x y)))
-
-
-;; Animal
+;; Animal / حیوان
 ;;   Any such living thing other than a human being.
+;;
+;;     جانور. زنده، جاندار
+;;   [Animal, alive, living.]
 
 ;; Animal: Type
 
@@ -553,27 +507,12 @@
        (^ (نیش-nn e1 z) (zadan e0 x y z))))
 
 
-;; Animal: Mapping
 
-;; (B (name animal-map)
-;;    (=> (I#ANIMAL x :0.9)
-;;        (S#ANIMAL x)))
-;; (B (name animal-type-map)
-;;    (=> (I#ANIMAL%TYPE x y :0.9)
-;;        (SS#ANIMAL%TYPE x y)))
-;; (B (name animal-component-map)
-;;    (=> (I#ANIMAL%COMPONENT x y :0.9)
-;;        (SS#ANIMAL%COMPONENT x y)))
-;; (B (name animal-function-map)
-;;    (=> (I#ANIMAL%FUNCTION x y :0.9)
-;;        (SS#ANIMAL%FUNCTION x y)))
-;; (B (name animal-action-map)
-;;    (=> (I#ANIMAL%ACTION x y :0.9)
-;;        (SS#ANIMAL%ACTION x y)))
-
-
-;; Backward Movement
+;; Backward Movement / حرکت رو به عقب
 ;;   Movement to or toward what is behind.
+;;
+;;   عمل یا فرایند تغییر مکان دادن به طرف پشت
+;;   [The action or process of changing location towards the back.]
 
 (B (name reverse/معکوس)
    (=> (S#BACKWARD_MOVEMENT e0 :0.9)
@@ -584,16 +523,13 @@
        (reverse-nn e0 x)))
 
 
-;; Backward Movement: Mapping
 
-;; (B (name backward-movement-map)
-;;    (=> (I#BACKWARD_MOVEMENT x :0.9)
-;;        (S#BACKWARD_MOVEMENT x)))
-
-
-;; Barrier
+;; Barrier / مانع
 ;;   Anything used or acting to block someone from going somewhere or from
 ;;   doing something, or to block something from happening.
+;;
+;;   آنچه از انجام دادن کاری یا از رویدادی جلوگیری می کند
+;;   [That which prevents you from  doing something or prevents a happening.]
 
 (B (name barrier/مانع)
    (=> (S#BARRIER e0 :0.9)
@@ -606,47 +542,35 @@
        (موانع-nn e0 x)))
 
 
-;; Barrier: Mapping
 
-;; (B (name barrier-map)
-;;    (=> (I#BARRIER x :0.9)
-;;        (S#BARRIER x)))
-
-
-;; Blood Stream
+;; Blood Stream / جریان خون
 ;;   The flowing blood in a circulatory system; a mainstream of power or
 ;;   vitality. (Formerly BLOOD_SYSTEM.)
+;;
+;;    روان شدن و گردش خون در سراسر بدن بوسیله شریانها
+;;   [Flow and circulation of blood throughout the body via arteries.]
 
 ;; Blood Stream: Component
 
-(B (name blood)
+(B (name blood/خون)
    (=> (^ (S#BLOOD_STREAM e0 :0.30) (SS#BLOOD_STREAM%COMPONENT x e0 :0.30)
           (R#BLOOD x e0 :0.30))
        (خون-nn e0 x)))
-(B (name vein)
+(B (name vein/ورید)
    (=> (^ (S#BLOOD_STREAM e0 :0.45) (SS#BLOOD_STREAM%COMPONENT x e0 :0.45))
        (ورید-nn e0 x)))
-(B (name artery)
+(B (name artery/شریان)
    (=> (^ (S#BLOOD_STREAM e0 :0.45) (SS#BLOOD_STREAM%COMPONENT x e0 :0.45))
        (شریان-nn e0 x)))
 
 
-;; Blood Stream: Mapping
 
-;; (B (name blood-stream-map)
-;;    (=> (I#BLOOD_STREAM x :0.9)
-;;        (S#BLOOD_STREAM x)))
-;; (B (name blood-stream-component-map)
-;;    (=> (I#BLOOD_STREAM%COMPONENT x y :0.9)
-;;        (SS#BLOOD_STREAM%COMPONENT x y)))
-;; (B (name blood-stream-movement-map)
-;;    (=> (I#BLOOD_STREAM%MOVEMENT x y :0.9)
-;;        (SS#BLOOD_STREAM%MOVEMENT x y)))
-
-
-;; Body of Water
+;; Body of Water / منطقه ای پر از اب
 ;;   The part of the Earth's surface covered with water (such as a river or
 ;;   lake or ocean).
+;;
+;;   بخشی از یک پهنه یا سطح پر از آب
+;;   [Part of an area or a zone full of water.]
 
 ;; Body of Water: Type
 
@@ -768,26 +692,16 @@
        (فرورفته-vb e0 x u1 u2)))
 
 
-;; Body of Water: Mapping
 
-;; (B (name water-map)
-;;    (=> (I#BODY_OF_WATER x :0.9)
-;;        (S#BODY_OF_WATER x)))
-;; (B (name water-type-map)
-;;    (=> (I#BODY_OF_WATER%TYPE x y :0.9)
-;;        (SS#BODY_OF_WATER%TYPE x y)))
-;; (B (name movement-map)
-;;    (=> (I#BODY_OF_WATER%MOVEMENT x y :0.9)
-;;        (SS#BODY_OF_WATER%MOVEMENT x y)))
-;; (B (name danger-map)
-;;    (=> (I#BODY_OF_WATER%DANGER x y :0.9)
-;;        (SS#BODY_OF_WATER%DANGER x y)))
-
-
-;; Building
+;; Building / ساختمان
 ;;   A relatively permanent enclosed construction over a plot of land, having
 ;;   a roof and usually windows and often more than one level; anything built
 ;;   or constructed.
+;;
+;;   فضای کمابیش محصور و سرپوشیده داۀمی برای سکونت, کار, نگهداری حیوانات یا کالا که با مصالح
+;;   ساختمانی ساخته شده است
+;;   [A more or less confined and enclosed permanent space made with building
+;;   materials, to live, work, take care of animals or goods.]
 
 ;; Building: Type
 
@@ -1001,25 +915,13 @@
        (^ (تحمل-nn e1 z) (kardan e0 x y z))))
 
 
-;; Building: Mapping
 
-;; (B (name building-map)
-;;    (=> (I#BUILDING x :0.9)
-;;        (S#BUILDING x)))
-;; (B (name structure-map)
-;;    (=> (I#BUILDING%STRUCTURE x y :0.9)
-;;        (SS#BUILDING%STRUCTURE x y)))
-;; (B (name creation_destruction-map)
-;;    (=> (I#BUILDING%CREATION-DESTRUCTION x y :0.9)
-;;        (SS#BUILDING%CREATION_DESTRUCTION x y)))
-;; (B (name components-map)
-;;    (=> (I#BUILDING%COMPONENTS x y :0.9)
-;;        (SS#BUILDING%COMPONENTS x y)))
-
-
-;; Business
+;; Business / تجارت, کاسبی
 ;;   The activity of making, buying, or selling goods or providing services
 ;;   in exchange for money.
+;;
+;;     عمل یا فرایند بازرگانی و خرید و فروش
+;;   [The action or process of commerce, buying and selling.]
 
 (B (name business/تجارت)
    (=> (S#BUSINESS e0 :0.9)
@@ -1042,15 +944,12 @@
        (خریدن-vb e0 x0 x1 x2)))
 
 
-;; Business: Mapping
 
-;; (B (name business-map)
-;;    (=> (I#BUSINESS x :0.9)
-;;        (S#BUSINESS x)))
-
-
-;; Clothing
+;; Clothing / لباس
 ;;   The things that people wear to cover their bodies.
+;;
+;;   هرچه درپوشند
+;;   [Anything they wear.]
 
 (B (name clothing/لباس)
    (=> (S#CLOTHING e0 :0.9)
@@ -1070,17 +969,16 @@
        (عبا-nn e0 x)))
 
 
-;; Clothing: Mapping
 
-;; (B (name clothing-map)
-;;    (=> (I#CLOTHING x :0.9)
-;;        (S#CLOTHING x)))
-
-
-;; Competition
+;; Competition / رقابت
 ;;   Rivalry between two or more persons or groups for an object desired in
 ;;   common, usually resulting in a victor and a loser but not necessarily
 ;;   involving the destruction of the latter.
+;;
+;;   تلاش برای پیشی جستن در کاری یا به دست آوردن چیزی که مورد توجه یا علاقه دیگری یا
+;;   دیگران هم هست
+;;   [Trying to get ahead in something or obtaining something that is also
+;;   of interest to someone else or to others.]
 
 ;; Competition: Type
 
@@ -1108,19 +1006,13 @@
        (بازیکن-nn e0 x)))
 
 
-;; Competition: Mapping
 
-;; (B (name competition-map)
-;;    (=> (I#COMPETITION x :0.9)
-;;        (S#COMPETITION x)))
-;; (B (name competition-component-map)
-;;    (=> (I#COMPETITION%COMPONENT x y :0.9)
-;;        (SS#COMPETITION%COMPONENT x y)))
-
-
-;; Confinement
+;; Confinement / تحدید
 ;;   To enclose within bounds; limit or restrict; to shut or keep in; prevent
 ;;   from leaving a place.
+;;
+;;    محدود شده,  حد چیزی پدید کردن
+;;   [Limited, showing the limit of something.]
 
 ;; Confinement: Confined Space
 
@@ -1300,25 +1192,13 @@
        (^ (رها-nn e1 z) (shodan e0 x u))))
 
 
-;; Confinement: Mapping
 
-;; (B (name confinement-map)
-;;    (=> (I#CONFINEMENT x :0.9)
-;;        (S#CONFINEMENT x)))
-;; (B (name confined-space-map)
-;;    (=> (I#CONFINEMENT%CONFINED_SPACE x y :0.9)
-;;        (SS#CONFINEMENT%CONFINED_SPACE x y)))
-;; (B (name confinement-restraints-map)
-;;    (=> (I#CONFINEMENT%RESTRAINTS x y :0.9)
-;;        (SS#CONFINEMENT%RESTRAINTS x y)))
-;; (B (name exit-map)
-;;    (=> (I#CONFINEMENT%EXIT x y :0.9)
-;;        (SS#CONFINEMENT%EXIT x y)))
-
-
-;; Container
+;; Container / ظرف
 ;;   An object (such as a box or can) that can hold something; a receptacle
 ;;   (as a box or jar) for holding goods.
+;;
+;;    آنچه در آن چیزی نهند
+;;   [Anything one can put something in.]
 
 (B (name container/ظرف)
    (=> (S#CONTAINER e0 :0.45)
@@ -1341,17 +1221,14 @@
        (جعبه-nn e0 x)))
 
 
-;; Container: Mapping
 
-;; (B (name container-map)
-;;    (=> (I#CONTAINER x :0.9)
-;;        (S#CONTAINER x)))
-
-
-;; Contamination
+;; Contamination / آلودگی
 ;;   To make something less pure or make it poisonous; make (something) impure
 ;;   by exposure or addition of a poisonous or polluting substance. (Includes
 ;;   former IMPURITY axioms.)
+;;
+;;   وضع با کیفیت آلوده بودن یا شدن
+;;   [Condition of being or becoming contaminated.]
 
 ;; Contamination: Type
 
@@ -1377,19 +1254,12 @@
        (لکه-nn e0 x)))
 
 
-;; Contamination: Mapping
 
-;; (B (name contamination-map)
-;;    (=> (I#CONTAMINATION x :0.9)
-;;        (S#CONTAMINATION x)))
-;; (B (name contamination-type-map)
-;;    (=> (I#CONTAMINATION%TYPE x y :0.9)
-;;        (SS#CONTAMINATION%TYPE x y)))
-
-
-
-;; Crime
+;; Crime / جرم
 ;;   Any unlawful offense, serious wrongdoing.
+;;
+;;    کاری که قانون آن را منع کرده و مستوجب کیفر دانسته است
+;;   [That which the law has prohibited and has deemed worthy of punishment.]
 
 ;; Crime: Type
 
@@ -1577,36 +1447,25 @@
        (قربانی-nn e0 x)))
 
 
-;; Crime: Mapping
 
-;; (B (name crime-map)
-;;    (=> (I#CRIME x :0.9)
-;;        (S#CRIME x)))
-;; (B (name crime-type-map)
-;;    (=> (I#CRIME%TYPE x y :0.9)
-;;        (SS#CRIME%TYPE x y)))
-;; (B (name crime-perpetrators-map)
-;;    (=> (I#CRIME%PERPETRATOR x y :0.9)
-;;        (SS#CRIME%PERPETRATOR x y)))
-;; (B (name punishment-map)
-;;    (=> (I#CRIME%PUNISHMENT x y :0.9)
-;;        (SS#CRIME%PUNISHMENT x y)))
-;; (B (name crime-perpetrators-map)
-;;    (=> (I#CRIME%VICTIM x y :0.9)
-;;        (SS#CRIME%VICTIM x y)))
-
-
-;; Crop
+;; Crop / محصول
 ;;   The cultivated produce of the ground, while growing or when gathered;
 ;;   the yield of such produce for a particular season; cultivated plant that
 ;;   is grown.
+;;
+;;   آنچه از فعالیتی بدست آمده است, حاصل زراعت و مانند آن
+;;   [What is obtained from an activity, harvest from agriculture and the
+;;   like.]
 
 ;; Crop: Planting
 
-(B (name seed)
+(B (name seed/بذر)
+   (=> (^ (S#CROP e0 :0.3) (SS#CROP%PLANTING x e0 :0.3) (R#CROP x e0 :0.3))
+       (بذر-nn e0 x)))
+(B (name seeds/دانه)
    (=> (^ (S#CROP e0 :0.3) (SS#CROP%PLANTING x e0 :0.3) (R#CROP x e0 :0.3))
        (دانه-nn e0 x)))
-(B (name crop)
+(B (name crop/محصول)
    (=> (^ (S#CROP e0 :0.3) (SS#CROP%PLANTING x e0 :0.3) (R#CROP x e0 :0.3))
        (محصول-nn e0 x)))
 
@@ -1661,25 +1520,13 @@
        (خرمن-nn e0 x)))
 
 
-;; Crop: Mapping
 
-;; (B (name crop-map)
-;;    (=> (I#CROP x :0.9)
-;;        (S#CROP x)))
-;; (B (name crop-planting-map)
-;;    (=> (I#CROP%PLANTING x y :0.9)
-;;        (SS#CROP%PLANTING x y)))
-;; (B (name crop-cultivation-map)
-;;    (=> (I#CROP%CULTIVATION x y :0.9)
-;;        (SS#CROP%CULTIVATION x y)))
-;; (B (name crop-outcome-map)
-;;    (=> (I#CROP%OUTCOME x y :0.9)
-;;        (SS#CROP%OUTCOME x y)))
-
-
-;; Darkness
+;; Darkness / تاریکی
 ;;   With little or no light, or having little brightness; the partial or
 ;;   total absence of light.
+;;
+;;    تیرگی و سیاهی در شب و غیره
+;;   [Darkness and blackness in the night, etc.]
 
 (B (name darkness)
    (=> (^ (S#DARKNESS e0 :0.45)
@@ -1731,24 +1578,16 @@
        (^ (رنگ-nn e1 z) (kardan e0 x y z))))
 
 
-;; Darkness: Mapping
 
-;; (B (name darkness-map)
-;;    (=> (I#DARKNESS x :0.9)
-;;        (S#DARKNESS x)))
-;; (B (name dark-end-of-range-map)
-;;    (=> (I#DARKNESS%DARK_END_OF_RANGE_OF_DARKNESS_LIGHT x y :0.9)
-;;        (SS#DARKNESS%DARK_END_OF_RANGE_OF_DARKNESS_LIGHT x y)))
-;; (B (name darkness-movementmap)
-;;    (=> (I#DARKNESS%MOVEMENT_IN_THE_RANGE x y :0.9)
-;;        (SS#DARKNESS%MOVEMENT_IN_THE_RANGE x y)))
-
-
-;; Disease
+;; Disease / مرض، بیماری
 ;;   A disordered or incorrectly functioning organ, part, structure, or system
 ;;   of the body resulting from the effect of genetic or developmental errors,
 ;;   infection, poisons, nutritional deficiency or imbalance, toxicity, or
 ;;   unfavorable environmental factors; illness; sickness; ailment.
+;;
+;;    آنچه عارض بدن می گردد و آن را از اعتدال خاص خود خارج می سازد، انحراف مزاج بر اثر تغییر
+;;    وضع ساختمان یا عمل انساج
+;;    [What bothers the body and throws it off its special balance.]
 
 ;; Disease: Type
 
@@ -2037,13 +1876,13 @@
 
 ;; Disease: Cure
 
-(B (name cure)
+(B (name cure/علاج)
    (=> (^ (S#DISEASE u :0.45) (SS#DISEASE%CURE x u :0.45))
        (علاج-nn e0 x)))
-(B (name panacea)
+(B (name elixir/اکسیر)
    (=> (^ (S#DISEASE u :0.45) (SS#DISEASE%CURE x u :0.45))
        (اکسیر-nn e0 x)))
-(B (name cure-all)
+(B (name panacea/نوشدارو)
    (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%CURE x e0 :0.45))
        (نوشدارو-nn e0 x)))
 
@@ -2149,28 +1988,13 @@
        (^ (خون-nn e1 z) (aamadan e0 y z))))
 
 
-;; Disease: Mapping
 
-;; (B (name disease-map)
-;;    (=> (I#DISEASE e0 :0.9)
-;;        (S#DISEASE x)))
-;; (B (name disease-type-map)
-;;    (=> (I#DISEASE%TYPE x y :0.9)
-;;        (SS#DISEASE%TYPE x y)))
-;; (B (name disease-cure-map)
-;;    (=> (I#DISEASE%CURE x y :0.9)
-;;        (SS#DISEASE%CURE x y)))
-;; (B (name disease-treatment-map)
-;;    (=> (I#DISEASE%TREATMENT x y :0.9)
-;;        (SS#DISEASE%TREATMENT x y)))
-;; (B (name disease-symptoms-map)
-;;    (=> (I#DISEASE%SYMPTOMS x y :0.9)
-;;        (SS#DISEASE%SYMPTOMS x y)))
-
-
-; Downward Movement
+;; Downward Movement / جنبش رو به پاۀین
 ;;   Movement from a higher place or level to a lower place or level.
 ;;   (Including axioms that were in LOW_POINT%MOVEMENT_DOWNWARD.)
+;;
+;;   عمل یا فرایند تغییر مکان دادن به طرف ارتفاع کمتر
+;;   [The action or process of changing location towards a lower height.]
 
 (B (name slip-slide/لغزید#لغز)
    (=> (^ (S#DOWNWARD_MOVEMENT e0 :0.45) (R#MOVE-D-PATIENT x e0 :0.45))
@@ -2236,42 +2060,38 @@
        (افت-nn e0 x)))
 
 
-;; Downward Movement: Mapping
 
-;; (B (name downward-movement-map)
-;;    (=> (I#DOWNWARD_MOVEMENT x :0.9)
-;;        (S#DOWNWARD_MOVEMENT x)))
-
-
-;; Emotion Experiencer
+;; Emotion Experiencer / تجربه احساسات
 ;;   A conscious mental reaction (as anger or fear) subjectively experienced
 ;;   as strong feeling usually directed toward a specific object and typically
 ;;   accompanied by physiological and behavioral changes in the body.
+;;
+;;   واکنش عاطفی و هیجانی نسبت به کسی یا چیزی
+;;   [A moral and emotional reaction toward someone or something.]
 
 (B (name emotion/احساسات)
-   (=> (S#EMOTION e0 :0.9)
+   (=> (S#EMOTION_EXPERIENCER e0 :0.9)
        (احساسات-nn e0 x)))
+
 (B (name feeling/احساس)
-   (=> (S#EMOTION e0 :0.9)
+   (=> (S#EMOTION_EXPERIENCER e0 :0.9)
        (احساس-nn e0 x)))
 
 (B (name anger/خشم)
-   (=> (S#EMOTION e0 :0.9)
+   (=> (S#EMOTION_EXPERIENCER e0 :0.9)
        (خشم-nn e0 x)))
+
 (B (name fear/ترس)
-   (=> (S#EMOTION e0 :0.9)
+   (=> (S#EMOTION_EXPERIENCER e0 :0.9)
        (ترس-nn e0 x)))
 
 
-;; Emotion Experiencer: Mapping
 
-;; (B (name emotion-experiencer-map)
-;;    (=> (I#EMOTION_EXPERIENCER x :0.9)
-;;        (S#EMOTION_EXPERIENCER x)))
-
-
-;; Energy
+;; Energy / انرژی
 ;;   A capacity to perform work (such as causing motion).
+;;
+;;    توانایی انجام کار
+;;   [Ability to perform work.]
 
 ;; Energy: Type
 
@@ -2294,30 +2114,16 @@
        (^ (سوخت-گیری-nn e1 z) (kardan e0 x y z))))
 
 
-;; Energy: Mapping
 
-;; (B (name energy-map)
-;;    (=> (I#ENERGY x :0.9)
-;;        (S#ENERGY x)))
-;; (B (name energy-type-map)
-;;    (=> (I#ENERGY%TYPE x y :0.9)
-;;        (SS#ENERGY%TYPE x y)))
-;; (B (name energy-result-map)
-;;    (=> (I#ENERGY%RESULT x y :0.9)
-;;        (SS#ENERGY%RESULT x y)))
-
-
-;; Enslavement
+;; Enslavement / اسارت
 ;;   To make a slave of; reduce to slavery; control, dominate.
-
-;; Enslavement: Servant
+;;
+;;   دربند کردن،
+;;   [To enslave.]
 
 (B (name slave)
    (=> (^ (S#ENSLAVEMENT e0 :0.45) (R#ENSLAVEMENT-PATIENT x e0 :0.45))
        (برده-nn e0 x)))
-
-
-;; Enslavement: Oppression
 
 (B (name slavery)
    (=> (^ (S#ENSLAVEMENT e0 :0.45) (SS#ENSLAVEMENT%OPPRESSION x e0 :0.45))
@@ -2338,9 +2144,6 @@
 (B (name oppressive)
    (=> (^ (S#ENSLAVEMENT e0 :0.45) (SS#ENSLAVEMENT%OPPRESSION x e0 :0.45))
        (ظالم-adj e0 x)))
-
-
-;; Enslavement: Master
 
 (B (name master)
    (=> (^ (S#ENSLAVEMENT e0 :0.3) (SS#ENSLAVEMENT%MASTER e0 e0 :0.3)
@@ -2365,24 +2168,13 @@
        (^ (مطیع-nn e1 z) (kardan e0 y x z))))
 
 
-;; Enslavement: Mapping
 
-;; (B (name enslavement-map)
-;;    (=> (I#ENSLAVEMENT x :0.9)
-;;        (S#ENSLAVEMENT x)))
-;; (B (name oppression-map)
-;;    (=> (I#CONFINEMENT%OPPRESSION x y :0.9)
-;;        (SS#CONFINEMENT%OPPRESSION x y)))
-;; (B (name master-map)
-;;    (=> (I#CONFINEMENT%MASTER x y :0.9)
-;;        (SS#CONFINEMENT%MASTER x y)))
-
-
-;; Fabric
+;; Fabric / پارچه
 ;;   Woven or knitted material; the basic structure of something. (Including
 ;;   axioms from MATERIAL.)
-
-;; Fabric: Type
+;;
+;;   هر چیز بافته شده از رشته های تابیده
+;;   [Anything that's woven from spun fibers.]
 
 (B (name fabric/پارچه)
   (=> (^ (S#FABRIC x :0.48) (SS#FABRIC%TYPE e0 x :0.48))
@@ -2395,39 +2187,12 @@
       (بافت-nn e0 x)))
 
 
-;; Fabric: Cut
-;; These are more likely to be Physical Harm.
 
-;(B (name cut)
-;   (=> (^ (S#FABRIC y :0.3) (SS#FABRIC%CUT e0 y :0.3)
-;          (R#CUT-AGENT x e0 :0.3))
-;       (^ (برش-nn e1 z) (dadan e0 x y z))))
-;(B (name cut2)
-;   (=> (^ (S#FABRIC y :0.45) (SS#FABRIC%CUT e0 y :0.45))
-;       (^ (nn e1 x y) (برش-nn e0 x))))
-;(B (name cut3)
-;   (=> (^ (S#FABRIC y :0.45) (SS#FABRIC%CUT e0 y :0.45))
-;       (^ (از-in e1 x y) (قطع-nn e0 x))))
-;(B (name cut4)
-;   (=> (^ (S#FABRIC y :0.48) (SS#FABRIC%CUT e0 y :0.48))
-;       (بریدگی-nn e0 x)))
-
-
-;; Fabric: Mapping
-
-;; (B (name fabric-map)
-;;   (=> (I#FABRIC x :0.9)
-;;       (S#FABRIC x)))
-;; (B (name fabric-type-map)
-;;   (=> (I#FABRIC%TYPE x y :0.9)
-;;       (SS#FABRIC%TYPE x y)))
-;; (B (name fabric-cut-map)
-;;   (=> (I#FABRIC%CUT x y :0.9)
-;;       (SS#FABRIC%CUT x y)))
-
-
-;; Factory
+;; Factory / کارخانه
 ;;   A building or group of buildings where products are made.
+;;
+;;    جایی که عدة بسیاری کارگر به صنعت یا پیشه‌ای مشغول هستند.
+;;   [A place where many workers are busy with an industry or a vocation.]
 
 (B (name factory/کارخانه)
   (=> (S#FACTORY x :0.9)
@@ -2438,15 +2203,12 @@
       (صنعتی-adj e0 x)))
 
 
-;; Factory: Mapping
 
-;; (B (name factory-map)
-;;   (=> (I#FACTORY x :0.9)
-;;       (S#FACTORY x)))
-
-
-;; Family
+;; Family / فامیل
 ;;   A group of people who are related to each other.
+;;
+;;    بستگان و نزدیکان و خویشاوندان
+;;   [Relatives, close friends and family.]
 
 (B (name family/خانواده)
   (=> (S#FAMILY x :0.9)
@@ -2482,16 +2244,12 @@
       (خانوادگی-adj e0 x)))
 
 
-;; Family: Mapping
 
-;; (B (name family-map)
-;;   (=> (I#FAMILY x :0.9)
-;;       (S#FAMILY x)))
-
-
-
-;; Fire
+;; Fire / آتش
 ;;   The light and heat and especially the flame produced by burning.
+;;
+;;    شعله و حرارتی که از سوختن اشیاء حاصل شود
+;;    [The flame and heat that comes from burning objects.]
 
 (B (name fire/حریق)
   (=> (S#FIRE x :0.9)
@@ -2504,16 +2262,13 @@
       (دود-nn e0 x)))
 
 
-;; Fire: Mapping
 
-;; (B (name fire-map)
-;;   (=> (I#FIRE x :0.9)
-;;       (S#FIRE x)))
-
-
-;; Food
+;; Food / غذا
 ;;   Any nourishing substance that is eaten, drunk, or otherwise taken into
 ;;   the body to sustain life, provide energy, promote growth, etc.
+;;
+;;    آنچه به عنوان خوراک اصلی خورده شود
+;;    [What is eaten as the main meal.]
 
 ;; Food: Type
 
@@ -2555,21 +2310,12 @@
        (خورد#خور-vb e0 x y u)))
 
 
-;; Food: Mapping
 
-;; (B (name food-map)
-;;    (=> (I#FOOD x :0.9)
-;;        (S#FOOD x)))
-;; (B (name food-type-map)
-;;    (=> (I#FOOD%TYPE x y :0.9)
-;;        (SS#FOOD%TYPE x y)))
-;; (B (name food-consumption-map)
-;;    (=> (I#FOOD%CONSUMPTION x y :0.9)
-;;        (SS#FOOD%CONSUMPTION x y)))
-
-
-;; Forceful Extraction
+;; Forceful Extraction / استخراج اجباری
 ;;   To get, pull, or draw out, usually with special effort, skill, or force.
+;;
+;;   عمل یا فرایند بیرون آوردن چیزی از جایی بطور ناگزیر
+;;   [The action or process of bringing something out of a place by force.]
 
 ;; Forceful Extraction: Type
 
@@ -2621,31 +2367,23 @@
        (خون-آشام-nn e0 x)))
 
 
-;; Forceful Extraction: Mapping
 
-;; (B (name forceful-extraction-map)
-;;    (=> (I#FORCEFUL_EXTRACTION x :0.9)
-;;        (S#FORCEFUL_EXTRACTION x)))
-;; (B (name forceful-extraction-type-map)
-;;    (=> (I#FORCEFUL_EXTRACTION%TYPE x y :0.9)
-;;        (SS#FORCEFUL_EXTRACTION%TYPE x y)))
-
-
-;; Forward Motion
+;; Forward Movement / حرکت به طرف جلو
 ;;   Movement to or toward what is in front.
+;;
+;;   عمل یا فرایند تغییر مکان دادن رو به پیش
+;;   [The action or process of changing locations toward the front.]
+
+;; XXX
 
 
-;; Forward Motion: Mapping
-
-;; (B (name forward-motion-map)
-;;    (=> (I#FORWARD_MOTION x :0.9)
-;;        (S#FORWARD_MOTION x)))
-
-
-;; Game
+;; Game / بازی
 ;;   A competitive activity involving skill, chance, or endurance on the part
 ;;   of two or more persons who play according to a set of rules, usually for
 ;;   their own amusement or for that of spectators.
+;;
+;;   فعالیت جسمی یا ذهنی برای سرگرمی یا تفریح.
+;;   [Physical or mental activity for entertainment or recreation.]
 
 ;; Game: Type
 
@@ -2726,36 +2464,20 @@
        (شکست-nn e0 x)))
 
 
-;; Game: Mapping
 
-;; (B (name game-map)
-;;    (=> (I#GAME x :0.9)
-;;        (S#GAME x)))
-;; (B (name game-type-map)
-;;    (=> (I#GAME%TYPE x y :0.9)
-;;        (SS#GAME%TYPE x y)))
-;; (B (name game-components-map)
-;;    (=> (I#GAME%COMPONENTS x y :0.9)
-;;        (SS#GAME%COMPONENTS x y)))
-;; (B (name game-actions-map)
-;;    (=> (I#GAME%ACTIONS x y :0.9)
-;;        (SS#GAME%ACTIONS x y)))
-;; (B (name game-outcomes-map)
-;;    (=> (I#GAME%OUTCOMES x y :0.9)
-;;        (SS#GAME%OUTCOMES x y)))
-
-
-;; Hazardous Geographic Feature
+;; Hazardous Geographic Feature / ویژگی جغرافیایی خطرناک
 ;;   Potentially dangerous topographical aspects of the Earth. (Including some
 ;;   of the previous GEOGRAPHIC_FEATURE axioms.)
-
-;; Hazardous Geographic Feature: Type
+;;
+;;    خصوصیات جغرافیایی که ممکن است منجر به خطربشوند
+;;    [Dangerous geographical feature.]
 
 (B (name mountain/کوه)
    (=> (^ (S#HAZARDOUS_GEOGRAPHIC_FEATURE e0 :0.3)
           (SS#HAZARDOUS_GEOGRAPHIC_FEATURE%TYPE x e0 :0.3)
           (R#MOUNTAIN x e0 :0.3))
        (کوه-nn e0 x)))
+
 (B (name himalayas/هیمالیا)
    (=> (^ (S#HAZARDOUS_GEOGRAPHIC_FEATURE e0 :0.3)
           (SS#HAZARDOUS_GEOGRAPHIC_FEATURE%TYPE x e0 :0.3)
@@ -2763,20 +2485,14 @@
        (هیمالیا-nn e0 x)))
 
 
-;; Hazardous Geographic Feature: Mapping
 
-;; (B (name geographic-feature-map)
-;;    (=> (I#HAZARDOUS_GEOGRAPHIC_FEATURE x :0.9)
-;;        (S#HAZARDOUS_GEOGRAPHIC_FEATURE x)))
-;; (B (name geographic-feature-type-map)
-;;    (=> (I#HAZARDOUS_GEOGRAPHIC_FEATURE%TYPE x y :0.9)
-;;        (SS#HAZARDOUS_GEOGRAPHIC_FEATURE%TYPE x y)))
-
-
-;; High Location
+;; High Location / محل بالا
 ;;   Situated or passing above the normal level, surface, base of measurement,
 ;;   or elevation; located far above the ground or another surface. (Including
 ;;   previous HIGH_POINT axioms.)
+;;
+;;   جایی واقع در جای بلندتر
+;;   [A place located in a higher place.]
 
 (B (name hover-above)
    (=> (S#HIGH_LOCATION e0 :0.9)
@@ -2815,17 +2531,12 @@
        (مافوق-adj e0 x)))
 
 
-;; High Location: Mapping
 
-;; (B (name high-location-map)
-;;    (=> (I#HIGH_LOCATION x :0.9)
-;;        (S#HIGH_LOCATION x)))
-
-
-;; Human Body
+;; Human Body / بدن انسان
 ;;   The entire physical structure of a human being.
-
-;; Human Body: Component
+;;
+;;   ساختمان کامل یک موجود زنده.
+;;   [The complete structure of a living being.]
 
 (B (name backbone)
    (=> (^ (S#HUMAN_BODY e0 :0.45) (SS#HUMAN_BODY%COMPONENT x e0 :0.45))
@@ -2850,18 +2561,12 @@
        (مغز-nn e0 x)))
 
 
-;; Human Body: Mapping
 
-;; (B (name human-body-map)
-;;    (=> (I#HUMAN_BODY x :0.9)
-;;        (S#HUMAN_BODY x)))
-;; (B (name human-body-component-map)
-;;    (=> (I#HUMAN_BODY%COMPONENT x y :0.9)
-;;        (SS#HUMAN_BODY%COMPONENT x y)))
-
-
-;; Journey
+;; Journey / سفر
 ;;   An act or instance of traveling from one place to another.
+;;
+;;    از شهر یا کشوری به شهر یا کشور دیگر رفتن
+;;   [Going from one town or country to another town or country.]
 
 (B (name journey/سفر)
    (=> (S#JOURNEY e0 :0.9)
@@ -2871,16 +2576,13 @@
        (سیاحت-nn e0 x)))
 
 
-;; Journey: Mapping
 
-;; (B (name journey-map)
-;;    (=> (I#JOURNEY x :0.9)
-;;        (S#JOURNEY x)))
-
-
-;; Leader
+;; Leader / رهبر
 ;;   A person who manages or controls other people, esp. because of his or
 ;;   her ability or position.
+;;
+;;   آنکه به دیگران راه نشان میدهد و آنان را به پیروی وا می دارد
+;;   [The person who shows the way to others and entices them to follow.]
 
 (B (name leader/رهبر)
    (=> (S#LEADER e0 :0.9)
@@ -2890,16 +2592,13 @@
        (رئیس-nn e0 x)))
 
 
-;; Leader: Mapping
 
-;; (B (name leader-map)
-;;    (=> (I#LEADER x :0.9)
-;;        (S#LEADER x)))
-
-
-;; Life Stage
+;; Life Stage / مرحله زندگی
 ;;   One of the series of stages through which a living thing passes from the
 ;;   beginning of its life until its death.
+;;
+;;   هر یک از یک رشته موضعها یا ایستگاههای یکی بعد از دیگری زندگی
+;;   [Any of a series of positions or stations one after the another of life.]
 
 (B (name childhood/کودکی)
    (=> (S#LIFE_STAGE e0 :0.9)
@@ -2935,16 +2634,14 @@
        (سالمندان-adj e0 x)))
 
 
-;; Life Stage: Mapping
 
-;; (B (name life-stage-map)
-;;    (=> (I#LIFE_STAGE x :0.9)
-;;        (S#LIFE_STAGE x)))
-
-
-;; Light
+;; Light / نور
 ;;   The natural agent that stimulates sight and makes things visible; source
 ;;   of illumination.
+;;
+;;   کیفیتی که بوسیله حس بینائی درک میشود و به وساطت آن اشیا دیده می شود
+;;   [The quality that is perceived by the sense of sight through which
+;;   objects can be seen.]
 
 (B (name light/نور)
    (=> (^ (S#LIGHT e0 :0.45)
@@ -2993,24 +2690,15 @@
        (روشن-سازی-nn e0 x)))
 
 
-;; Light: Mapping
 
-;; (B (name light-map)
-;;    (=> (I#LIGHT x :0.9)
-;;        (S#LIGHT x)))
-;; (B (name dark-end-of-range-map)
-;;    (=> (I#LIGHT%LIGHT_END_OF_RANGE_OF_DARKNESS_LIGHT x y :0.9)
-;;        (SS#LIGHT%LIGHT_END_OF_RANGE_OF_DARKNESS_LIGHT x y)))
-;; (B (name light-movement-map)
-;;    (=> (I#LIGHT%MOVEMENT x y :0.9)
-;;        (SS#LIGHT%MOVEMENT x y)))
-
-
-;; Low Location
+;; Low Location / محل پایین
 ;;   Situated or passing below the normal level, surface, or base of
 ;;   measurement; marking a nadir or bottom; not located far above the ground
 ;;   or another surface. (Including the LOW_POINT axioms and some
 ;;   VERTICAL_SCALE ones.)
+;;
+;;   جایی واقع در ارتفاع کمتر
+;;   [A place located at a lower height.]
 
 (B (name the-pits)
    (=> (S#LOW_LOCATION e0 :0.9)
@@ -3023,16 +2711,14 @@
        (^ (ته-nn e0 x) (دیگ-nn e1 y) (nn e2 x y))))
 
 
-;; Low Location: Mapping
 
-;; (B (name low-location-map)
-;;    (=> (I#LOW_LOCATION x :0.9)
-;;        (S#LOW_LOCATION x)))
-
-
-;; Machine
+;; Machine / دستگاه
 ;;   An apparatus consisting of interrelated parts with separate functions,
 ;;   used in the performance of some kind of work.
+;;
+;;   هر مجموعه ابزار و آلاتی که برای انجام کاری فراهم شده باشد
+;;   [Any set of tools or devices gathered for the purpose of accomplishing
+;;   something.]
 
 ;; Machine: Type
 
@@ -3070,26 +2756,14 @@
        (^ (سوخت-گیری-nn e1 z) (kardan e0 x y z))))
 
 
-;; Machine: Mapping
 
-;; (B (name machine-map)
-;;    (=> (I#MACHINE x :0.9)
-;;        (S#MACHINE x)))
-;; (B (name machine-type-map)
-;;    (=> (I#MACHINE%TYPE x y :0.9)
-;;        (SS#MACHINE%TYPE x y)))
-;; (B (name machine-parts-map)
-;;    (=> (I#MACHINE%PARTS x y :0.9)
-;;        (SS#MACHINE%PARTS x y)))
-;; (B (name machine-function-map)
-;;    (=> (I#MACHINE%FUNCTION x y :0.9)
-;;        (SS#MACHINE%FUNCTION x y)))
-
-
-;; Maze
+;; Maze / جای پر پیچ وخم
 ;;   A confusing network of intercommunicating paths or passages; labyrinth;
 ;;   any complex system or arrangement that causes bewilderment, confusion, or
 ;;   perplexity.
+;;
+;;   جایی که چند پیچ, انحنا, یا گردش متوالی دارد
+;;   [A place that has a number of continuous twists, curves or turns.]
 
 ;; Maze: Confusing Pathways
 
@@ -3138,25 +2812,13 @@
        (^ (گره-nn e1 z) (khordan e0 x y z))))
 
 
-;; Maze: Mapping
 
-;; (B (name maze-map)
-;;    (=> (I#MAZE x :0.9)
-;;        (S#MAZE x)))
-;; (B (name maze-confusing-pathways-map)
-;;    (=> (I#MAZE%CONFUSING_PATHWAYS x y :0.9)
-;;        (SS#MAZE%CONFUSING_PATHWAYS x y)))
-;; (B (name maze-navigation-map)
-;;    (=> (I#MAZE%NAVIGATION x y :0.9)
-;;        (SS#MAZE%NAVIGATION x y)))
-;; (B (name maze-obstruction-map)
-;;    (=> (I#MAZE%OBSTRUCTION x y :0.9)
-;;        (SS#MAZE%OBSTRUCTION x y)))
-
-
-;; Medicine
+;; Medicine / دارو، دوا
 ;;   Any substance or substances used in treating disease or illness;
 ;;   medicament; remedy.
+;;
+;;    آن چه پزشک برای درمان بیمار تجویز می‌کند.
+;;   [What doctors prescribe to heal patients.]
 
 ;; Medicine: Administration
 
@@ -3165,22 +2827,20 @@
           (R#ADMINISTRATION-AGENT x e0 :0.33))
        (^ (تزریق-nn e1 z) (kardan e0 x y z))))
 
-
-;; Medicine: Mapping
-
-;; (B (name medicine-map)
-;;    (=> (I#MEDICINE x :0.9)
-;;        (S#MEDICINE x)))
-;; (B (name medicine-administration-map)
-;;    (=> (I#MEDICINE%ADMINISTRATION x y :0.9)
-;;        (SS#MEDICINE%ADMINISTRATION x y)))
+(B (name injection/تزریق)
+   (=> (S#MEDICINE e0 :0.9)
+       (تزریق-nn e0 x)))
 
 
-;; Monster
+
+;; Monster / هیولا
 ;;   A legendary animal combining features of animal and human form or having
 ;;   the forms of various animals in combination; any creature so ugly or
 ;;   monstrous as to frighten people; any animal or human grotesquely
 ;;   deviating from the normal shape, behavior, or character.
+;;
+;;   غول، موجودی افسانه‌ای که هیکلی درشت و ترسناک دارد.
+;;   [A legendary being that has a large and scary body.]
 
 ;; Monster: Type
 
@@ -3229,48 +2889,30 @@
        (^ (S#MONSTER e1) (SS#MONSTER%TYPE x e1) (مکید#مک-vb e0 x y u))))
 
 
-;; Monster: Mapping
 
-;; (B (name monster-map)
-;;    (=> (I#MONSTER x :0.9)
-;;        (S#MONSTER x)))
-;; (B (name monster-type-map)
-;;    (=> (I#MONSTER%TYPE x y :0.9)
-;;        (SS#MONSTER%TYPE x y)))
-;; (B (name monster-action-map)
-;;    (=> (I#MONSTER%ACTION x y :0.9)
-;;        (SS#MONSTER%ACTION x y)))
-
-
-;; Moral Duty
+;; Moral Duty / وظیفه اخلاقی
 ;;   Something that you must do because it is morally right.
-
-;; Moral Duty: Remuneration
+;;
+;;   رفتار یا وظیفه اخلاقی که از شخص ناشی می شود
+;;   [Conduct or ethical obligation that arises from the person himself.]
 
 (B (name duty/وظیفه)
    (=> (^ (S#MORAL_DUTY e0 :0.45) (SS#MORAL_DUTY%REMUNERATION x e0 :0.45))
        (وظیفه-nn e0 x)))
+
 (B (name due/تکلیف)
    (=> (^ (S#MORAL_DUTY e0 :0.45) (SS#MORAL_DUTY%REMUNERATION x e0 :0.45))
        (تکلیف-nn e0 x)))
 
 
-;; Moral Duty: Mapping
 
-;; (B (name moral-duty-map)
-;;    (=> (I#MORAL_DUTY e0 :0.9)
-;;        (S#MORAL_DUTY x)))
-;; (B (name remuneration-map)
-;;    (=> (I#MORAL_DUTY%REMUNERATION x y :0.9)
-;;        (SS#MORAL_DUTY%REMUNERATION x y)))
-
-
-;; Movement
+;; Movement / حرکت
 ;;   To pass from one place or position to another.
-;; NB: Don't include things that should be under DOWNWARD_MOVEMENT or
-;;   UPWARD_MOVEMENT.
-
-;; Movement: Movement
+;;   NB: Don't include things that should be under DOWNWARD_MOVEMENT or
+;;       UPWARD_MOVEMENT.
+;;
+;;   خروج از حالت موجود به طور تدریج
+;;   [Gradually exiting the existing state.]
 
 (B (name movement/جنبش)
    (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT x e0 :0.45))
@@ -3283,17 +2925,8 @@
        (تحرک-nn e0 x)))
 
 
-;; Movement: Mapping
 
-;; (B (name movement-map)
-;;    (=> (I#MOVEMENT x :0.9)
-;;        (S#MOVEMENT x)))
-;; (B (name movement-movement-map)
-;;    (=> (I#MOVEMENT%MOVEMENT x y :0.9)
-;;        (SS#MOVEMENT%MOVEMENT x y)))
-
-
-;; Natural Physical Force
+;; Natural Physical Force / نیروی طبیعی فیزیکی
 ;;   Uncontrollable force of nature that poses potential harm; [nature: all
 ;;   the animals and plants in the world and all the features, forces, and
 ;;   processes that exist or happen independently of people, such as the
@@ -3301,6 +2934,9 @@
 ;;   beyond one's control; a any event or force of nature that has
 ;;   catastrophic consequences, such as avalanche, earthquake, flood, forest
 ;;   fire, hurricane, lightning, tornado, tsunami, and volcanic eruption.
+;;
+;;   نیروی غیر قابل کنترل طبیعت که امکان آسیب زدن دارد
+;;   [Uncontrollable force of nature that might be harmful.]
 
 ;; Natural Physical Force: Type
 
@@ -3406,23 +3042,14 @@
        (گم-adj e0 x)))
 
 
-;; Natural Physical Force: Mapping
 
-;; (B (name natural-physical-force-map)
-;;    (=> (I#NATURAL_PHYSICAL_FORCE x :0.9)
-;;        (S#NATURAL_PHYSICAL_FORCE x)))
-;; (B (name natural-physical-force-type-map)
-;;    (=> (I#NATURAL_PHYSICAL_FORCE%TYPE x y :0.9)
-;;        (SS#NATURAL_PHYSICAL_FORCE%TYPE x y)))
-;; (B (name natural-physical-force-result-map)
-;;    (=> (I#NATURAL_PHYSICAL_FORCE%RESULT x y :0.9)
-;;        (SS#NATURAL_PHYSICAL_FORCE%RESULT x y)))
-
-
-;; Obesity
+;; Obesity / مرض چاقی
 ;;   A condition characterized by the excessive accumulation and storage of
 ;;   fat in the body; Excessive body fat. It is usually caused by sedentary
 ;;   habits and a diet high in fat, alcohol, or total calories.
+;;
+;;   داشتن چربی بیش از حد در بدن
+;;   [Having too much fat in the body.]
 
 ;; Obesity: Excess Body Weight
 
@@ -3451,24 +3078,16 @@
        (گرسنه-adj e0 x)))
 
 
-;; Obesity
 
-;; (B (name obesity-map)
-;;    (=> (I#OBESITY x :0.9)
-;;        (S#OBESITY x)))
-;; (B (name excess-body-weight-map)
-;;    (=> (I#OBESITY%BODY-WEIGHT x y :0.9)
-;;        (SS#OBESITY%EXCESS_BODY_WEIGHT x y)))
-;; (B (name excess-consumption-map)
-;;    (=> (I#OBESITY%CONSUMPTION x y :0.9)
-;;        (SS#OBESITY%EXCESS_CONSUMPTION x y)))
-
-
-;; Parasite
+;; Parasite / انگل
 ;;   An animal or plant that lives in or on another animal or plant and gets
 ;;   food or protection from it;  person or thing that takes something from
 ;;   someone or something else and does not do anything to earn it or deserve
 ;;   it.
+;;
+;;    گیاه یا جانوری که تمام یا قسمتی از عمرش را به موجود دیگری بچسبد و از جسم او تغذیه کند
+;;   [A plant or being that sticks to another being for all or part of its
+;;   life and feeds from its body.]
 
 ;; Parasite: Destructive Being
 
@@ -3505,22 +3124,13 @@
        (زالو-nn e1 x)))
 
 
-;; Parasite: Mapping
 
-;; (B (name parasite-map)
-;;    (=> (I#PARASITE x :0.9)
-;;        (S#PARASITE x)))
-;; (B (name parasite-destructive-being-map)
-;;    (=> (I#PARASITE%DESTRUCTIVE_BEING x y :0.9)
-;;        (SS#PARASITE%DESTRUCTIVE_BEING x y)))
-;; (B (name parasite-action-map)
-;;    (=> (I#PARASITE%ACTION x y :0.9)
-;;        (SS#PARASITE%ACTION x y)))
-
-
-;; Pathway
+;; Pathway / مسیر
 ;;   A path, course, route, or way; a route to or way of access to; way of
 ;;   reaching or achieving something.
+;;
+;;   جای رفت و آمد.
+;;   [A place to come and go.]
 
 ;; Pathway: Type
 
@@ -3639,24 +3249,12 @@
        (^ (سد-nn e0 y ) (nn e1 y x))))
 
 
-;; Pathway: Mapping
 
-;; (B (name pathway-map)
-;;    (=> (I#PATHWAY x :0.9)
-;;        (S#PATHWAY x)))
-;; (B (name pathway-type-map)
-;;    (=> (I#PATHWAY%TYPE x y :0.9)
-;;        (SS#PATHWAY%TYPE x y)))
-;; (B (name open-path-map)
-;;    (=> (I#PATHWAY%OPEN_PATH x y :0.9)
-;;        (SS#PATHWAY%OPEN_PATH x y)))
-;; (B (name obstructed-path-map)
-;;    (=> (I#PATHWAY%OBSTRUCTED_PATH x y :0.9)
-;;        (SS#PATHWAY%OBSTRUCTED_PATH x y)))
-
-
-;; Physical Burden
+;; Physical Burden / بار فیزیکی
 ;;   That which is borne with difficulty.
+;;
+;;   هر چیز که سنگینی فشار یا زحمت آن بر چیز دیگری بیفتد
+;;   [Anything whose heavy pressure or burden falls onto something else.]
 
 ;; Physical Burden: Weight
 
@@ -3780,24 +3378,12 @@
        (تنش-nn e0 y)))
 
 
-;; Physical Burden: Mapping
 
-;; (B (name physical-burden-map)
-;;    (=> (I#PHYSICAL_BURDEN  e0 :0.9)
-;;        (S#PHYSICAL_BURDEN x)))
-;; (B (name weight-map)
-;;    (=> (I#PHYSICAL_BURDEN%WEIGHT  x y :0.9)
-;;        (SS#PHYSICAL_BURDEN%WEIGHT x y)))
-;; (B (name relief-map)
-;;    (=> (I#PHYSICAL_BURDEN%RELIEF  x y :0.9)
-;;        (SS#PHYSICAL_BURDEN%RELIEF x y)))
-;; (B (name physical-distress-map)
-;;    (=> (I#PHYSICAL_BURDEN%PHYSICAL_DISTRESS  x y :0.9)
-;;        (SS#PHYSICAL_BURDEN%xPHYSICAL_DISTRESS x y)))
-
-
-;; Physical Harm
+;; Physical Harm / آسیب فیزیکی
 ;;   Physical injury or damage.
+;;
+;;   هر گونه پدیده ای که تندرستی را بر هم می زند
+;;   [Any phenomenon that undermines health.]
 
 ;; Physical Harm: Type
 
@@ -3993,22 +3579,13 @@
        (^ (S#PHYSICAL_HARM-PROTECTION e0) (nn e1 e0 y))))
 
 
-;; Physical Harm: Mapping
 
-;; (B (name physical-harm-map)
-;;    (=> (I#PHYSICAL_HARM  x :0.9)
-;;        (S#PHYSICAL_HARM x)))
-;; (B (name physical-harm-type-map)
-;;    (=> (I#PHYSICAL_HARM%TYPE x y :0.9)
-;;        (SS#PHYSICAL_HARM%TYPE x y)))
-;; (B (name physical-harm-restraint-map)
-;;    (=> (I#PHYSICAL_HARM%RESTRAINT x y :0.9)
-;;        (SS#PHYSICAL_HARM%RESTRAINT x y)))
-
-
-;; Physical Location
+;; Physical Location / مکان فیزیکی
 ;;   A place of settlement, activity, or residence; a place or situation
 ;;   occupied.
+;;
+;;   فضایی که جسمی مادی آن را اشغال کرده یا بر آن قرار گرفته است
+;;   [The space that something has occupied or has laid upon.]
 
 ;; Physical Location: Defined Region
 
@@ -4167,35 +3744,23 @@
        (^ (گریزگاه-nn e1 x))))
 
 
-;; Physical Location: Mapping
 
-;; (B (name physical-location-map)
-;;    (=> (I#PHYSICAL_LOCATION x :0.9)
-;;        (S#PHYSICAL_LOCATION x)))
-;; (B (name defined-region-map)
-;;    (=> (I#PHYSICAL_LOCATION%DEFINED_REGION x y :0.9)
-;;        (SS#PHYSICAL_LOCATION%DEFINED_REGION x y)))
-;; (B (name movement-into-map)
-;;    (=> (I#PHYSICAL_LOCATION%MOVEMENT_INTO x y :0.9)
-;;        (SS#PHYSICAL_LOCATION%MOVEMENT_INTO x y)))
-;; (B (name physical-location-exit-map)
-;;    (=> (I#PHYSICAL_LOCATION%EXIT x y :0.9)
-;;        (SS#PHYSICAL_LOCATION%EXIT x y)))
-
-
-;; Plant
+;; Plant / گیاه
 ;;   A living thing that usually produces seeds and typically has a stem,
 ;;   leaves, branches, roots, and sometimes flowers.
+;;
+;;   هر رستنی که از زمین بروید.
+;;   [Any vegetation that grows from the earth.]
 
 ;; Plant: Type
 
-(B (name plant)
+(B (name plant/گیاه)
    (=> (^ (S#PLANT e0 :0.45) (SS#PLANT%TYPE x e0 :0.45))
        (گیاه-nn e0 x)))
-(B (name tree)
+(B (name tree/درخت)
    (=> (^ (S#PLANT e0 :0.45) (SS#PLANT%TYPE x e0 :0.45))
        (درخت-nn e0 x)))
-(B (name weed)
+(B (name weed/علف)
    (=> (^ (S#PLANT e0 :0.3) (SS#PLANT%TYPE x e0 :0.3) (R#UNWANTED x e0 :0.3))
        (علف-nn e0 x)))
 (B (name flower)
@@ -4252,24 +3817,12 @@
        (ریشه-کن-کردن-vb e0 x y u)))
 
 
-;; Plant: Mapping
 
-;; (B (name plant-map)
-;;    (=> (I#PLANT x :0.9)
-;;        (S#PLANT x)))
-;; (B (name plant-type-map)
-;;    (=> (I#PLANT%TYPE x y :0.9)
-;;        (SS#PLANT%TYPE x y)))
-;; (B (name plant-parts-map)
-;;    (=> (I#PLANT%PARTS x y :0.9)
-;;        (SS#PLANT%PARTS x y)))
-;; (B (name plant-change-of-state-map)
-;;    (=> (I#PLANT%CHANGE_OF_STATE x y :0.9)
-;;        (SS#PLANT%CHANGE_OF_STATE x y)))
-
-
-;; Portal
+;; Portal / دروازه
 ;;   A door, gate, or entrance, especially one of imposing appearance.
+;;
+;;   دری بزرگ که از آن به شهر یا قلعه وارد می شدند
+;;   [A big door through which they would enter into a town or fort.]
 
 ;; Portal: Means of Entry
 
@@ -4312,23 +3865,14 @@
        (^ (SS#PORTAL%MEANS_OF_ENTRY x e0) (باریک-adj e0 x))))
 
 
-;; Portal: Mapping
 
-;; (B (name portal-map)
-;;    (=> (I#PORTAL e0 :0.9)
-;;        (S#PORTAL x)))
-;; (B (name means-of-entry-map)
-;;    (=> (I#PORTAL%MEANS_OF_ENTRY x y :0.9)
-;;        (SS#PORTAL%MEANS_OF_ENTRY x y)))
-;; (B (name obstacles-map)
-;;    (=> (I#PORTAL%OBSTACLES x y :0.9)
-;;        (SS#PORTAL%OBSTACLES x y)))
-
-
-;; Protection
+;; Protection / حمایت
 ;;   Something that prevents somebody or something from being harmed or
 ;;   damaged; the act of preventing somebody or something from being harmed
 ;;   or damaged, or the state of being kept safe.
+;;
+;;   نگهبانی از کسی یا چیزی در برابر خطر یا آسیب
+;;   [To guard someone or something against danger or harm.]
 
 (B (name shield/سپر)
    (=> (S#PROTECTION e0 :0.9)
@@ -4346,16 +3890,12 @@
        (^ (سپر-nn e1 z) (shodan e0 y w) (nn e2 z y))))
 
 
-;; Protection: Mapping
 
-;; (B (name protection-map)
-;;    (=> (I#PROTECTION x :0.9)
-;;        (S#PROTECTION x)))
-
-
-
-;; Resource
+;; Resource / منبع
 ;;   A place or thing that provides something useful.
+;;
+;;   محل پیدایش چیزی
+;;   [The place where something emerges.]
 
 ;; Resource: Substance
 
@@ -4489,28 +4029,13 @@
        (طبقه-nn e0 x)))
 
 
-;; Resource: Mapping
 
-;; (B (name resource-map)
-;;    (=> (I#RESOURCE x :0.9)
-;;        (S#RESOURCE x)))
-;; (B (name substance-map)
-;;    (=> (I#RESOURCE%SUBSTANCE x y :0.9)
-;;        (SS#RESOURCE%SUBSTANCE x y)))
-;; (B (name quantity-map)
-;;    (=> (I#RESOURCE%QUANTITY_SIZE x y :0.9)
-;;        (SS#RESOURCE%QUANTITY_SIZE x y)))
-;; (B (name distribution-map)
-;;    (=> (I#RESOURCE%DISTRIBUTION x y :0.9)
-;;        (SS#RESOURCE%DISTRIBUTION x y)))
-;; (B (name develop-resources-map)
-;;    (=> (I#RESOURCE%DEVELOP_RESOURCES x y :0.9)
-;;        (SS#RESOURCE%DEVELOP_RESOURCES x y)))
-
-
-;; Rule Enforcer
+;; Rule Enforcer / مجری قانون
 ;;   A person or entity that controls (something) by making sure that rules
 ;;   and regulations are being followed.
+;;
+;;   مامور اجرا, کسی که عمل به رسمیت شناخته شده را اجرا میکند
+;;   [The executor, one who enforces the recognized action.]
 
 (B (name enforcer/مجری)
    (=> (S#RULE_ENFORCER e0 :0.9)
@@ -4523,16 +4048,13 @@
        (پلیس-nn e0 x)))
 
 
-;; Rule Enforcer: Mapping
 
-;; (B (name rule-enforcer-map)
-;;    (=> (I#RULE_ENFORCER x :0.9)
-;;        (S#RULE_ENFORCER x)))
-
-
-;; Science
+;; Science / علم
 ;;   Knowledge about or study of the natural world based on facts learned
 ;;   through experiments and observation.
+;;
+;;   وضع دانستن
+;;   [The situation of knowing.]
 
 (B (name science/علم)
    (=> (S#SCIENCE e0 :0.9)
@@ -4558,17 +4080,14 @@
        (مشاهده-adj e0 x)))
 
 
-;; Science: Mapping
 
-;; (B (name science-map)
-;;    (=> (I#SCIENCE x :0.9)
-;;        (S#SCIENCE x)))
-
-
-;; Servant
+;; Servant / خدمتکار
 ;;   One that serves others; especially, one that performs duties about the
 ;;   person or home of a master or personal employer. (Including former
 ;;   ENSLAVEMENT axioms.)
+;;
+;;   کسی که در برابر دریافت مزد یا مزایای مالی در خانه ای کار میکند
+;;   [The person who works in homes for wages or financial benefits.]
 
 (B (name servant/نوکر)
    (=> (S#SERVANT e0 :0.9)
@@ -4584,15 +4103,12 @@
        (خدمتگزار-nn e0 x)))
 
 
-;; Servant: Mapping
 
-;; (B (name servant-map)
-;;    (=> (I#SERVANT x :0.9)
-;;        (S#SERVANT x)))
-
-
-;; Struggle
+;; Struggle / مبارزه
 ;;   To contend with an adversary or opposing force.
+;;
+;;   جنگیدن ,کوشش سخت برای دست یافتن به هدفی
+;;   [Fighting, striving hard to achieve a goal.]
 
 ;; Struggle: Type
 
@@ -4667,22 +4183,14 @@
        (^ (SS#STRUGGLE%ADVERSARY x e0) (of-in e1 x y))))
 
 
-;; Struggle: Mapping
 
-;; (B (name struggle-map)
-;;    (=> (I#STRUGGLE x :0.9)
-;;        (S#STRUGGLE x)))
-;; (B (name struggle-type-map)
-;;    (=> (I#STRUGGLE%TYPE x e0 :0.9)
-;;        (SS#STRUGGLE%TYPE x e0)))
-;; (B (name struggle-adversary-map)
-;;    (=> (I#STRUGGLE%ADVERSARY x u :0.9)
-;;        (SS#STRUGGLE%ADVERSARY x u)))
-
-
-;; Temperature
+;; Temperature / درجه حرارت
 ;;   A measurement that indicates how hot or cold something is; a measurement
 ;;   in degrees showing the heat of something (such as air or water).
+;;
+;;    گرما یا سرمای بدن یا محیط ,حد و اندازة حرارت
+;;   [The heat or cold of a body or an area; the extent and measurement of
+;;   heat.]
 
 (B (name temperature/دما)
    (=> (S#TEMPERATURE e0 :0.9)
@@ -4721,16 +4229,14 @@
        (حرارت-nn e0 x)))
 
 
-;; Temperature: Mapping
 
-;; (B (name temperature-map)
-;;    (=> (I#TEMPERATURE x :0.9)
-;;        (S#TEMPERATURE x)))
-
-
-;; Theft
+;; Theft / دزدی, سرقت و راه زنی
 ;;   The felonious taking and removing of personal property with intent to
 ;;   deprive the rightful owner of it. (Including former CRIME axioms.)
+;;
+;;     بردن مال کسی در پنهانی و بطور مکر و فریب که صاحب مال خبردار نشود
+;;   [Taking someone's belongings in secret, deceit and ruse, in such a way
+;;   that the owner does not realize it.]
 
 (B (name theft/سرقت)
    (=> (S#THEFT e0 :0.9)
@@ -4832,19 +4338,13 @@
        (چپاولگر-nn e0 x)))
 
 
-;; Theft: Mapping
 
-;; (B (name theft-map)
-;;    (=> (I#THEFT x :0.9)
-;;        (S#THEFT x)))
-;; (B (name theft-perpetrator-map)
-;;    (=> (I#THEFT%PERPETRATOR x e0 :0.9)
-;;        (SS#THEFT%PERPETRATOR x e0)))
-
-
-;; Upward Movement
+;; Upward Movement / حرکت رو به بالا
 ;;   Movement from a lower place or level to a higher place or level.
 ;;   (Including axioms from LOW_POINT%MOVEMENT_UPWARD.)
+;;
+;;   عمل یا فرایند تغییر مکان دادن به طرف بالا
+;;   [The movement or process of changing location upward.]
 
 (B (name jump)
    (=> (^ (S#UPWARD_MOVEMENT a :0.45) (R#MOVE-U-PATIENT x e0 :0.45))
@@ -4919,7 +4419,7 @@
           (R#MOVER x e0 :0.3))
        (^ (بالا-nn e1 z) (raftan e0 x y z))))
 
-(B (name increase)
+(B (name increase/افزایش)
    (=> (^ (S#UPWARD_MOVEMENT e0 :0.45) (R#MOVE-UP x e0 :0.45))
        (افزایش-nn e0 x)))
 (B (name rising/بالارونده)
@@ -4939,16 +4439,13 @@
        (روزافزون-adj e0 x)))
 
 
-;; Upward Movement: Mapping
 
-;; (B (name upward-movement-map)
-;;    (=> (I#UPWARD_MOVEMENT x :0.9)
-;;        (S#UPWARD_MOVEMENT x)))
-
-
-;; Vehicle
+;; Vehicle / ناقل، حامل
 ;;   Something used to transport people or goods, esp. something used on land
 ;;   or roads.
+;;
+;;   وسیله نقلیه
+;;   [Means of transportation.]
 
 (B (name vehicle/خودرو)
    (=> (S#VEHICLE e0 :0.9)
@@ -4967,18 +4464,15 @@
        (ون-nn e0 x)))
 
 
-;; Vehicle: Mapping
 
-;; (B (name vehicle-map)
-;;    (=> (I#VEHICLE x :0.9)
-;;        (S#VEHICLE x)))
-
-
-;; War
+;; War / جنگ
 ;;   A conflict carried on by force of arms, as between nations or between
 ;;   parties within a nation; warfare, as by land, sea, or air; a contest
 ;;   carried on by force of arms, as in a series of battles or campaigns.
 ;;   (Includes previous STRUGGLE axioms.)
+;;
+;;   حالت زد و خورد مسلحانه عمدی میان کشورها, ملتها یا گروههای دشمن
+;;   [Deliberate armed skirmish between countries, nations or enemy groups.]
 
 (B (name war/جنگ)
    (=> (^ (S#WAR e0 :0.45) (SS#WAR%TYPE x e0 :0.45))
@@ -5123,10 +4617,3 @@
 (B (name armory)
    (=> (^ (S#WAR e0 :0.45) (R#WEAPON x e0 :0.45))
        (زراد-خانه-nn e0 x)))
-
-
-;; War: Mapping
-
-;; (B (name war-map)
-;;    (=> (I#WAR x :0.9)
-;;        (S#WAR x)))

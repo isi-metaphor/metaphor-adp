@@ -1,3 +1,4 @@
+;; Farsi Metaphor Axioms (Automatic, Old Dev Set, High Cost)
 (B (name x) (=> (S#ABYSS e0 :0.96) (^ (در-in e0 u0 x0) (سقوط-nn e0 x0) (پرتگاه-nn e0 x0))))
 (B (name x) (=> (S#ABYSS e0 :0.96) (^ (از-in e0 x0 x1) (سقوط-nn e0 x0) (پرتگاه-nn e0 x0))))
 (B (name x) (=> (S#ABYSS e0 :0.96) (^ (از-in e0 x0 x1) (خروج-nn e0 x0))))
