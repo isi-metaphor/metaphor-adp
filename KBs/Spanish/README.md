@@ -1,5 +1,5 @@
 # Spanish Knowledge Bases
-Jonathan Gordon, 2014-08-14
+Jonathan Gordon, 2014-12-22
 
 This directory contains the knowledge bases of Spanish axioms for
 metaphor recognition and interpretation.
@@ -9,10 +9,6 @@ manually authored axioms.
 
 es-examples.txt are axioms learned automatically from the example
 sentences in the development set.
-
-es-wordnet.txt gives synonymy axioms from WordNet that expand the
-coverage of other KBs. (This is out of date and should not currently be
-used.)
 
 To recompile the current highest-precision KB (Spanish_compiled_KB.da), run:
 
