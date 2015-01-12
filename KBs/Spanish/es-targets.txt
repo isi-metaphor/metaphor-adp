@@ -1,0 +1,297 @@
+;; -*- Mode: Lisp -*-
+
+;;
+;; Spanish Metaphor Targets
+;;
+
+
+;; Economic Inequality / Desigualdad Economica
+
+;; Economic Inequality: Poverty / Pobreza
+
+(B (name poverty/pobreza)
+   (=> (^ (TS#POVERTY x :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
+       (pobreza-nn e0 x)))
+(B (name indigence/indigencia)
+   (=> (^ (TS#POVERTY x :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
+       (indigencia-nn e0 x)))
+(B (name misery/miseria)
+   (=> (^ (TS#POVERTY x :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
+       (miseria-nn e0 x)))
+(B (name penury/penuria)
+   (=> (^ (TS#POVERTY x :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
+       (penuria-nn e0 x)))
+(B (name shortage/escasez)
+   (=> (^ (TS#POVERTY x :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
+       (escasez-nn e0 x)))
+(B (name hunger/hambre)
+   (=> (^ (TS#POVERTY x :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
+       (hambre-nn e0 x)))
+
+(B (name poor/pobre)
+   (=> (^ (TS#POVERTY e0 :0.3) (T#ECONOMIC_INEQUALITY u :0.3)
+          (R#POOR y e0 :0.3))
+       (pobre-adj e0 y)))
+(B (name miserable/miserable)
+   (=> (^ (TS#POVERTY e0 :0.3) (T#ECONOMIC_INEQUALITY u :0.3)
+          (R#POOR y e0 :0.3))
+       (miserable-adj e0 y)))
+(B (name indigent/indigente)
+   (=> (^ (TS#POVERTY e0 :0.3) (T#ECONOMIC_INEQUALITY u :0.3)
+          (R#POOR y e0 :0.3))
+       (indigente-adj e0 y)))
+(B (name bare/pelado)
+   (=> (^ (TS#POVERTY e0 :0.3) (T#ECONOMIC_INEQUALITY u :0.3)
+          (R#POOR y e0 :0.3))
+       (pelado-adj e0 y)))
+(B (name broke/bollado)
+   (=> (^ (TS#POVERTY e0 :0.3) (T#ECONOMIC_INEQUALITY u :0.3)
+          (R#POOR y e0 :0.3))
+       (bollado-adj e0 y)))
+(B (name impoverished/empobrecido)
+   (=> (^ (TS#POVERTY e0 :0.3) (T#ECONOMIC_INEQUALITY u :0.3)
+          (R#POOR y e0 :0.3))
+       (empobrecido-adj e0 y)))
+(B (name needy/necesitado)
+   (=> (^ (TS#POVERTY e0 :0.3) (T#ECONOMIC_INEQUALITY u :0.3)
+          (R#POOR y e0 :0.3))
+       (necesitado-adj e0 y)))
+(B (name homeless/sin-hogar)
+   (=> (^ (TS#POVERTY e0 :0.3) (T#ECONOMIC_INEQUALITY u :0.3)
+          (R#POOR y e0 :0.3))
+       (^ (sin-in e0 x y) (hogar-nn e0 y))))
+(B (name homeless/sin-techo)
+   (=> (^ (TS#POVERTY e0 :0.3) (T#ECONOMIC_INEQUALITY u :0.3)
+          (R#POOR y e0 :0.3))
+       (^ (sin-in e0 x y) (techo-nn e0 y))))
+
+(B (name indigent/indigente)
+   (=> (^ (TS#POVERTY e0 :0.3) (T#ECONOMIC_INEQUALITY u :0.3)
+          (R#POOR y e0 :0.3))
+       (indigente-nn e0 y)))
+(B (name beggar/mendigo)
+   (=> (^ (TS#POVERTY e0 :0.3) (T#ECONOMIC_INEQUALITY u :0.3)
+          (R#POOR y e0 :0.3))
+       (mendigo-nn e0 y)))
+(B (name helpless/desamparado)
+   (=> (^ (TS#POVERTY e0 :0.3) (T#ECONOMIC_INEQUALITY u :0.3)
+          (R#POOR y e0 :0.3))
+       (desamparado-nn e0 y)))
+
+;; Become poor
+(B (name impoverish/empobrecer)
+   (=> (^ (TS#POVERTY e0 :0.3) (T#ECONOMIC_INEQUALITY u :0.3)
+          (R#POOR x e0 :0.3))
+       (empobrecer-vb e0 x u1 u2)))
+(B (name impoverished/empobrecerse)
+   (=> (^ (TS#POVERTY e0 :0.3) (T#ECONOMIC_INEQUALITY u :0.3)
+          (R#POOR x e0 :0.3))
+       (empobrecerse-vb e0 x u1 u2)))
+(B (name pauperize/depauperar)
+   (=> (^ (TS#POVERTY e0 :0.3) (T#ECONOMIC_INEQUALITY u :0.3)
+          (R#POOR x e0 :0.3))
+       (depauperar-vb e0 x u1 u2)))
+
+(B (name debt/deuda)
+   (=> (^ (TS#POVERTY u1 :0.3) (T#ECONOMIC-INEQUALITY u :0.3))
+       (deuda-nn e0 x)))
+
+;; Of - poor
+(B (name de-poor)
+   (=> (R#POOR y x :0.9)
+       (^ (TS#POVERTY x) (de-in e1 x y))))
+
+(B (name poor-area/barrio-bajo)
+   (=> (^ (TS#POVERTY e0 :0.3) (T#ECONOMIC_INEQUALITY u :0.3)
+          (R#POOR y e0 :0.3))
+       (^ (barrio-nn e0 y) (bajo-adj e1 y))))
+
+
+
+;; Economic Inequality: Taxation / Impuestos
+
+(B (name tax/impuesto)
+   (=> (^ (TS#TAXATION x :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
+       (impuesto-nn e0 x)))
+(B (name tax/impositiva)
+   (=> (^ (TS#TAXATION x :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
+       (impositiva-nn e0 x)))
+(B (name contribution/contribución)
+   (=> (^ (TS#TAXATION x :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
+       (contribución-nn e0 x)))
+(B (name tribute/tributo)
+   (=> (^ (TS#TAXATION x :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
+       (tributo-nn e0 x)))
+
+(B (name impose/imponer)
+   (=> (^ (TS#TAXATION e0 :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
+       (imponer-vb e0 x y z)))
+
+(B (name fiscal/fiscal-nn)
+   (=> (^ (TS#TAXATION x :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
+       (fiscal-nn e0 x)))
+(B (name fiscal/fiscal-adj)
+   (=> (^ (TS#TAXATION e0 :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
+       (fiscal-adj e0 x)))
+(B (name tax/tributario-adj)
+   (=> (^ (TS#TAXATION e0 :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
+       (tributario-adj e0 x)))
+
+(B (name tax-revenue/tributario-ingreso)
+   (=> (^ (TS#TAXATION e0 :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
+       (^ (tributario-adj e1 x0) (ingreso-nn e0 x0))))
+
+(B (name taxpayer/contribuyente)
+   (=> (^ (TS#TAXATION y :0.3) (T#ECONOMIC_INEQUALITY u :0.3)
+          (R#TAX-PAYER y e0 :0.3))
+       (contribuyente-nn e0 y)))
+
+
+;; Economic Inequality: Wealth / Riqueza
+
+(B (name wealth/riqueza)
+   (=> (^ (TS#WEALTH x :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
+       (riqueza-nn e0 x)))
+(B (name prosperity/prosperidad)
+   (=> (^ (TS#WEALTH x :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
+       (prosperidad-nn e0 x)))
+(B (name welfare/bienestar)
+   (=> (^ (TS#WEALTH x :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
+       (bienestar-nn e0 x)))
+(B (name goods/bienes)
+   (=> (^ (TS#WEALTH x :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
+       (bienes-nn e0 x)))
+(B (name capital/capital)
+   (=> (^ (TS#WEALTH x :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
+       (capital-nn e0 x)))
+(B (name income/ingreso)
+   (=> (^ (TS#WEALTH x :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
+       (ingreso-nn e0 x)))
+(B (name enrichment/enriquecimiento)
+   (=> (^ (TS#WEALTH x :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
+       (enriquecimiento-nn e0 x)))
+
+(B (name rich/rico-adj)
+   (=> (^ (TS#WEALTH e0 :0.3) (R#RICH y e0 :0.3)
+          (T#ECONOMIC_INEQUALITY u :0.3))
+       (rico-adj e0 y)))
+(B (name rich/rico-nn)
+   (=> (^ (TS#WEALTH e0 :0.3) (R#RICH y e0 :0.3)
+          (T#ECONOMIC_INEQUALITY u :0.3))
+       (rico-nn e0 y)))
+(B (name opulent/opulento)
+   (=> (^ (TS#WEALTH e0 :0.3) (R#RICH y e0 :0.3)
+          (T#ECONOMIC_INEQUALITY u :0.3))
+       (opulento-adj e0 y)))
+(B (name abundant/abundante)
+   (=> (^ (TS#WEALTH e0 :0.3) (R#RICH y e0 :0.3)
+          (T#ECONOMIC_INEQUALITY u :0.3))
+       (abundante-adj e0 y)))
+(B (name sumptuous/suntuoso)
+   (=> (^ (TS#WEALTH e0 :0.3) (R#RICH y e0 :0.3)
+          (T#ECONOMIC_INEQUALITY u :0.3))
+       (suntuoso-adj e0 y)))
+
+(B (name become-rich/enriquecerse)
+   (=> (^ (TS#WEALTH e0 :0.3) (R#RICH y e0 :0.3)
+          (T#ECONOMIC_INEQUALITY u :0.3))
+       (enriquecerse-vb e0 y u1 u2)))
+(B (name fund-itself/fondearse)
+   (=> (^ (TS#WEALTH e0 :0.3) (R#RICH y e0 :0.3)
+          (T#ECONOMIC_INEQUALITY u :0.3))
+       (fondearse-vb e0 y u1 u2)))
+(B (name prosper/prosperar)
+   (=> (^ (TS#WEALTH e0 :0.3) (R#RICH y e0 :0.3)
+          (T#ECONOMIC_INEQUALITY u :0.3))
+       (prosperar-vb e0 y u1 u2)))
+
+(B (name de-rich)
+   (=> (R#RICH y x :0.9)
+       (^ (TS#WEALTH x) (de-in e1 x y))))
+
+(B (name money/dinero)
+   (=> (^ (TS#WEALTH x :0.3) (T#ECONOMIC-INEQUALITY u :0.3))
+       (dinero-nn e0 x)))
+(B (name cash/efectivo)
+   (=> (^ (TS#WEALTH x :0.3) (T#ECONOMIC-INEQUALITY u :0.3))
+       (efectivo-nn e0 x)))
+(B (name coin/moneda)
+   (=> (^ (TS#WEALTH x :0.3) (T#ECONOMIC-INEQUALITY u :0.3))
+       (moneda-nn e0 x)))
+(B (name cent/centavo)
+   (=> (^ (TS#WEALTH x :0.3) (T#ECONOMIC-INEQUALITY u :0.3))
+       (centavo-nn e0 x)))
+(B (name penny/plata)
+   (=> (^ (TS#WEALTH x :0.3) (T#ECONOMIC-INEQUALITY u :0.3))
+       (plata-nn e0 x)))
+(B (name dime/pisto)
+   (=> (^ (TS#WEALTH x :0.3) (T#ECONOMIC-INEQUALITY u :0.3))
+       (pisto-nn e0 x)))
+(B (name nickel/divisa)
+   (=> (^ (TS#WEALTH x :0.3) (T#ECONOMIC-INEQUALITY u :0.3))
+       (divisa-nn e0 x)))
+(B (name quarter/peso)
+   (=> (^ (TS#WEALTH x :0.3) (T#ECONOMIC-INEQUALITY u :0.3))
+       (peso-nn e0 x)))
+(B (name monetary/monetario)
+   (=> (^ (TS#WEALTH e0 :0.3) (T#ECONOMIC-INEQUALITY u :0.3))
+       (monetario-adj e0 x)))
+
+
+;; Governance / Gobernacion
+
+;; Governance: Bureaucracy / Burocracia
+
+(B (name bureaucracy/burocracia)
+   (=> (^ (T#GOVERNANCE u :0.45) (TS#BUREAUCRACY x :0.45))
+       (burocracia-nn e0 x)))
+
+
+;; Governance: Democracy / Democracia
+
+(B (name democracy/democracia)
+   (=> (^ (T#GOVERNANCE u :0.45) (TS#DEMOCRACY x :0.45))
+       (democracia-nn e0 x)))
+
+
+;; Governance: Elections / Elecciones
+
+(B (name election/elección)
+   (=> (^ (T#GOVERNANCE u :0.45) (TS#ELECTIONS x :0.45))
+       (elección-nn e0 x)))
+(B (name vote/voto)
+   (=> (^ (T#GOVERNANCE u :0.45) (TS#ELECTIONS x :0.45))
+       (voto-nn e0 x)))
+
+(B (name elect/electo)
+   (=> (^ (T#GOVERNANCE u :0.45) (TS#ELECTIONS x :0.45))
+       (elegir-vb e0 x u1 u2)))
+(B (name vote/votar)
+   (=> (^ (T#GOVERNANCE u :0.45) (TS#ELECTIONS x :0.45))
+       (votar-vb e0 x u1 u2)))
+
+(B (name elected/elegido)
+   (=> (^ (T#GOVERNANCE u :0.45) (TS#ELECTIONS x :0.45))
+       (elegido-adj e0 x)))
+
+
+;; Governance: Government / Gobierno
+
+(B (name government/gobierno-nn)
+   (=> (^ (T#GOVERNANCE u :0.45) (TS#GOVERNMENT x :0.45))
+       (gobierno-nn e0 x)))
+
+(B (name federal-government/gobierno-federal)
+   (=> (^ (T#GOVERNANCE u :0.4) (TS#GOVERNMENT x :0.4))
+       (^ (federal-adj e0 x) (gobierno-nn e0 x))))
+(B (name local-government/gobierno-local)
+   (=> (^ (T#GOVERNANCE u :0.4) (TS#GOVERNMENT x :0.4))
+       (^ (local-adj e0 x) (gobierno-nn e0 x))))
+
+(B (name regulation/regla-nn)
+   (=> (^ (T#GOVERNANCE u :0.45) (TS#GOVERNMENT x :0.45))
+       (regla-nn e0 x)))
+
+(B (name authority/autoridad-nn)
+   (=> (^ (T#GOVERNANCE u :0.45) (TS#GOVERNMENT x :0.45))
+       (autoridad-nn e0 x)))

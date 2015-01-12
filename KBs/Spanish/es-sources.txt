@@ -1,0 +1,4438 @@
+;; -*- Mode: Lisp -*-
+
+;;
+;; Spanish Metaphor Source Axioms
+;; Katya Ovchinnikova, Ross Israel, Jonathan Gordon
+;;
+
+
+;; A God / Dios
+;;   A supreme being; to regard or treat as a god; deify; idolize.
+;;
+;;   E.g., persona destacada y muy admirada por alguna cualidad; nombre
+;;   de ser supremo.
+;;   [A notable person and very admired for some quality; name of supreme
+;;   being.]
+
+(B (name god/dios-nn)
+   (=> (^ (S#A_GOD e0 :0.45) (SS#A_GOD%TYPE x e0 :0.45))
+       (dios-nn e0 x)))
+
+(B (name goddess/diosa-nn)
+   (=> (^ (S#A_GOD e0 :0.45) (SS#A_GOD%TYPE x e0 :0.45))
+       (diosa-nn e0 x)))
+
+(B (name deity/deidad-nn)
+   (=> (^ (S#A_GOD e0 :0.45) (SS#A_GOD%TYPE x e0 :0.45))
+       (deidad-nn e0 x)))
+
+(B (name idol/ídolo-nn)
+   (=> (^ (S#A_GOD e0 :0.45) (SS#A_GOD%TYPE x e0 :0.45))
+       (ídolo-nn e0 x)))
+
+(B (name divine/divina-adj)
+   (=> (^ (S#A_GOD e0 :0.45) (SS#A_GOD%TYPE e0 e0 :0.45))
+       (divina-adj e0 x)))
+(B (name divine/divino-adj)
+   (=> (^ (S#A_GOD e0 :0.45) (SS#A_GOD%TYPE e0 e0 :0.45))
+       (divino-adj e0 x)))
+
+(B (name resurrection/resurrección)
+   (=> (^ (S#A_GOD e0 :0.45) (SS#A_GOD%TYPE e0 e0 :0.45))
+       (resurrección-nn e0 x)))
+
+
+;; A God: Veneration
+
+(B (name worship/adorar)
+   (=> (^ (S#A_GOD e0 :0.3) (SS#A_GOD%VENERATION e0 e0 :0.3)
+          (R#WORSHIP-AGENT x e0 :0.3))
+       (adorar-vb e0 x y u)))
+(B (name pray/orar)
+   (=> (^ (S#A_GOD e0 :0.3) (SS#A_GOD%VENERATION e0 e0 :0.3)
+          (R#WORSHIP-AGENT x e0 :0.3))
+       (orar-vb e0 x y u)))
+(B (name pray/rezar)
+   (=> (^ (S#A_GOD e0 :0.3) (SS#A_GOD%VENERATION e0 e0 :0.3)
+          (R#WORSHIP-AGENT x e0 :0.3))
+       (rezar-vb e0 x y u)))
+(B (name submit-to/someterse-a)
+   (=> (^ (S#A_GOD e0 :0.3) (SS#A_GOD%VENERATION e0 e0 :0.3)
+          (R#WORSHIP-AGENT x e0 :0.3))
+       (^ (someterse-vb e0 x y u) (a-in e1 e0 z))))
+(B (name deify/deificar)
+   (=> (^ (S#A_GOD e0 :0.3) (SS#A_GOD%VENERATION e0 e0 :0.3)
+          (R#WORSHIP-AGENT x e0 :0.3))
+       (deificar-vb e0 x y u)))
+
+(B (name worship/culto)
+   (=> (^ (S#A_GOD u :0.45) (SS#A_GOD%VENERATION x u :0.45))
+       (culto-nn e0 x)))
+(B (name worship/adoración)
+   (=> (^ (S#A_GOD u :0.45) (SS#A_GOD%VENERATION x u :0.45))
+       (adoración-nn e0 x)))
+(B (name deification/deificación)
+   (=> (^ (S#A_GOD u :0.45) (SS#A_GOD%VENERATION x u :0.45))
+       (deificación-nn e0 x)))
+
+(B (name temple/templo)
+   (=> (^ (S#A_GOD u :0.45) (SS#A_GOD%VENERATION x u :0.45))
+       (templo-nn e0 x)))
+(B (name altar/altar)
+   (=> (^ (S#A_GOD u :0.45) (SS#A_GOD%VENERATION x u :0.45))
+       (аltar-nn e0 x)))
+(B (name minister/ministro)
+   (=> (^ (S#A_GOD u :0.45) (SS#A_GOD%VENERATION x u :0.45))
+       (ministro-nn e0 x)))
+(B (name acolyte/acólito)
+   (=> (^ (S#A_GOD u :0.45) (SS#A_GOD%VENERATION x u :0.45))
+       (acólito-nn e0 x)))
+
+
+
+;; A Right / Derecho
+;;   That which is due to anyone by just claim, legal guarantees, moral
+;;   principles, etc.
+;;
+;;   Conjunto de principios y normas, expresivos de una idea de justicia
+;;   y de orden, que regulan las relaciones humanas en toda sociedad y cuya
+;;   observancia puede ser impuesta de manera coactiva.
+;;   [A body of principles and norms, expressive of an idea of justice and
+;;   order, that regulate human relations in all of society and whose
+;;   observance can be imposed in a coercive manner.]
+;;
+;;   Note: There is no mention of a right due to anyone in Spanish.
+
+
+(B (name right-to/derecho-a)
+   (=> (^ (S#A_RIGHT e0 :0.45) (SS#A_RIGHT%TYPE x e0 :0.45))
+       (^ (derecho-nn e0 x) (a-in e1 x y ))))
+(B (name inalienable-right/derecho-inalienable)
+   (=> (^ (S#A_RIGHT e0 :0.45) (SS#A_RIGHT%TYPE x e0 :0.45))
+       (^ (inalienable-adj e0 x) (derecho-nn e1 x ))))
+
+
+
+;; Abyss / Abismo
+;;   A deep, immeasurable space, gulf, or cavity; vast chasm; anything
+;;   profound, unfathomable, or infinite.
+;;
+;;   Profundidad grande, imponente y peligrosa, como la de los mares, la
+;;   de un tajo, la de una sima, etc.
+;;   [A great depth, imposing and dangerous, like that of the oceans,
+;;   that of a sheer drop, that of a chasm, etc.]
+
+
+(B (name abyss/abismo)
+   (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%TYPE x e0 :0.45))
+       (abismo-nn e0 x)))
+(B (name hell/infierno)
+   (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%TYPE x e0 :0.45))
+       (infierno-nn e0 x)))
+(B (name sinkhole/sumidero)
+   (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%TYPE x e0 :0.45))
+       (sumidero-nn e0 x)))
+(B (name hole/hoyo)
+   (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%TYPE x e0 :0.45))
+       (hoyo-nn e0 x)))
+(B (name chasm/sima)
+   (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%TYPE x e0 :0.45))
+       (sima-nn e0 x)))
+(B (name pit/pozo)
+   (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%TYPE x e0 :0.45))
+       (pozo-nn e0 x)))
+(B (name pit/foso)
+   (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%TYPE x e0 :0.45))
+       (foso-nn e0 x)))
+(B (name pit/fosa)
+   (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%TYPE x e0 :0.45))
+       (fosa-nn e0 x)))
+(B (name cave/cueva)
+   (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%TYPE x e0 :0.45))
+       (cueva-nn e0 x)))
+(B (name cavern/caverna)
+   (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%TYPE x e0 :0.45))
+       (caverna-nn e0 x)))
+(B (name abysm/abysm)
+   (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%TYPE x e0 :0.45))
+       (abysm-nn e0 x)))
+(B (name trench/zanja)
+   (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%TYPE x e0 :0.45))
+       (zanja-nn e0 x)))
+(B (name hollow/hueco)
+   (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%TYPE x e0 :0.45))
+       (hueco-nn e0 x)))
+(B (name black-hole/hoyo-negro)
+   (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%TYPE x e0 :0.45))
+       (^ (hoyo-nn e1 x) (negro-adj e0 x))))
+(B (name black-hole/agujero-negro)
+   (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%TYPE x e0 :0.45))
+       (^ (agujero-nn e1 x) (negro-adj e0 x))))
+
+(B (name abyssal/abisal)
+   (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%TYPE e0 e0 :0.45))
+       (abisal-adj e0 x)))
+(B (name abysmal/abismal)
+   (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%TYPE e0 e0 :0.45))
+       (abismal-adj e0 x)))
+(B (name hollow/hueco)
+   (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%TYPE e0 e0 :0.45))
+       (hueco-adj e0 x)))
+
+
+;; Abyss: Depth
+
+(B (name depth/profundidad)
+   (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%DEPTH x e0 :0.45))
+       (profundidad-nn e0 x)))
+(B (name deep/profunda)
+   (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%DEPTH x e0 :0.45))
+       (profunda-nn e0 x)))
+
+(B (name deep/profundo)
+   (=> (^ (S#ABYSS e0 :0.3) (SS#ABYSS%DEPTH e0 e0 :0.3)
+          (R#ABYSS-THEME x e0 :0.3))
+       (profundo-adj e0 x)))
+(B (name deep/hondo)
+   (=> (^ (S#ABYSS e0 :0.3) (SS#ABYSS%DEPTH e0 e0 :0.3)
+          (R#ABYSS-THEME x e0 :0.3))
+       (hondo-adj e0 x)))
+
+(B (name deeply/profundamente)
+   (=> (^ (S#ABYSS e0 :0.45) (SS#ABYSS%DEPTH e0 e0 :0.45))
+       (profundamente-rb e0 x)))
+
+
+;; Abyss: Entrance
+
+(B (name push-on/empujar-en)
+   (=> (^ (SS#ABYSS%ENTRANCE e0 e2 :0.2) (R#ABYSS-THEME y e2 :0.2)
+          (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2) (empujar-vb e0 x y u2)
+          (en-in e1 e0 z))))
+(B (name push-on/empujar-en/poverty)
+   (=> (^ (S#ABYSS e0 :0.2) (SS#ABYSS%ENTRANCE e0 e0 :0.2)
+          (R#ABYSS-THEME y e2 :0.2) (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (TS#POVERTY z) (empujar-vb e0 x y u2) (en-in e1 e0 z))))
+(B (name push-to/empujar-a)
+   (=> (^ (SS#ABYSS%ENTRANCE e0 e2 :0.2) (R#ABYSS-THEME y e2 :0.2)
+          (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2) (empujar-vb e0 x y u2)
+          (a-in e1 e0 z))))
+(B (name push-to/empujar-a/poverty)
+   (=> (^ (S#ABYSS e0 :0.2) (SS#ABYSS%ENTRANCE e0 e0 :0.2)
+          (R#ABYSS-THEME y e2 :0.2) (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (TS#POVERTY z) (empujar-vb e0 x y u2) (a-in e1 e0 z))))
+(B (name drive-in/conducir-en)
+   (=> (^ (SS#ABYSS%ENTRANCE e0 e2 :0.2) (R#ABYSS-THEME y e2 :0.2)
+          (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2) (conducir-vb e0 x y u2)
+          (en-in e1 e0 z))))
+(B (name drive-in/conducir-en/poverty)
+   (=> (^ (S#ABYSS e0 :0.2) (SS#ABYSS%ENTRANCE e0 e0 :0.2)
+          (R#ABYSS-THEME y e2 :0.2) (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (TS#POVERTY z) (conducir-vb e0 x y u2) (en-in e1 e0 z))))
+(B (name drive-to/conducir-a)
+   (=> (^ (SS#ABYSS%ENTRANCE e0 e2 :0.2) (R#ABYSS-THEME y e2 :0.2)
+          (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2) (conducir-vb e0 x y u2)
+          (a-in e1 e0 z))))
+(B (name drive-to/conducir-a/poverty)
+   (=> (^ (S#ABYSS e0 :0.2) (SS#ABYSS%ENTRANCE e0 e0 :0.2)
+          (R#ABYSS-THEME y e2 :0.2) (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (TS#POVERTY z) (conducir-vb e0 x y u2) (a-in e1 e0 z))))
+(B (name suck-in/chupar-en)
+   (=> (^ (SS#ABYSS%ENTRANCE e0 e2 :0.2) (R#ABYSS-THEME y e2 :0.2)
+          (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2) (chupar-vb e0 x y u2)
+          (en-in e1 e0 z))))
+(B (name suck-in/chupar-en/poverty)
+   (=> (^ (S#ABYSS e0 :0.2) (SS#ABYSS%ENTRANCE e0 e0 :0.2)
+          (R#ABYSS-THEME y e2 :0.2) (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (TS#POVERTY z) (chupar-vb e0 x y u2) (en-in e1 e0 z))))
+(B (name suck-to/chupar-a)
+   (=> (^ (SS#ABYSS%ENTRANCE e0 e2 :0.2) (R#ABYSS-THEME y e2 :0.2)
+          (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2) (chupar-vb e0 x y u2)
+          (a-in e1 e0 z))))
+(B (name suck-to/chupar-a/poverty)
+   (=> (^ (S#ABYSS e0 :0.2) (SS#ABYSS%ENTRANCE e0 e0 :0.2)
+          (R#ABYSS-THEME y e2 :0.2) (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (TS#POVERTY z) (chupar-vb e0 x y u2) (a-in e1 e0 z))))
+(B (name drag-in/arrastrar-en)
+   (=> (^ (SS#ABYSS%ENTRANCE e0 e2 :0.2) (R#ABYSS-THEME y e2 :0.2)
+          (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2) (arrastrar-vb e0 x y u2)
+          (en-in e1 e0 z))))
+(B (name drag-in/arrastrar-en/poverty)
+   (=> (^ (S#ABYSS e0 :0.2) (SS#ABYSS%ENTRANCE e0 e0 :0.2)
+          (R#ABYSS-THEME y e2 :0.2) (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (TS#POVERTY z) (arrastrar-vb e0 x y u2) (en-in e1 e0 z))))
+(B (name drag-to/arrastrar-a)
+   (=> (^ (SS#ABYSS%ENTRANCE e0 e2 :0.2) (R#ABYSS-THEME y e2 :0.2)
+          (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2) (arrastrar-vb e0 x y u2)
+          (a-in e1 e0 z))))
+(B (name drag-to/arrastrar-a/poverty)
+   (=> (^ (S#ABYSS e0 :0.2) (SS#ABYSS%ENTRANCE e0 e0 :0.2)
+          (R#ABYSS-THEME y e2 :0.2) (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (TS#POVERTY z) (arrastrar-vb e0 x y u2) (a-in e1 e0 z))))
+(B (name descend-in/descender-en)
+   (=> (^ (SS#ABYSS%ENTRANCE e0 e2 :0.2) (R#ABYSS-THEME y e2 :0.2)
+          (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2) (descender-vb e0 x y u2)
+          (en-in e1 e0 z))))
+(B (name descend-in/descender-en/poverty)
+   (=> (^ (S#ABYSS e0 :0.2) (SS#ABYSS%ENTRANCE e0 e0 :0.2)
+          (R#ABYSS-THEME y e2 :0.2) (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (TS#POVERTY z) (descender-vb e0 x y u2) (en-in e1 e0 z))))
+(B (name descend-to/descender-a)
+   (=> (^ (SS#ABYSS%ENTRANCE e0 e2 :0.2) (R#ABYSS-THEME y e2 :0.2)
+          (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2) (descender-vb e0 x y u2)
+          (a-in e1 e0 z))))
+(B (name descend-to/descender-a/poverty)
+   (=> (^ (S#ABYSS e0 :0.2) (SS#ABYSS%ENTRANCE e0 e0 :0.2)
+          (R#ABYSS-THEME y e2 :0.2) (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (TS#POVERTY z) (descender-vb e0 x y u2) (a-in e1 e0 z))))
+(B (name sink-in/hundirse-en)
+   (=> (^ (SS#ABYSS%ENTRANCE e0 e2 :0.2) (R#ABYSS-THEME y e2 :0.2)
+          (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2) (hundirse-vb e0 x y u2)
+          (en-in e1 e0 z))))
+(B (name sink-in/hundirse-en/poverty)
+   (=> (^ (S#ABYSS e0 :0.2) (SS#ABYSS%ENTRANCE e0 e0 :0.2)
+          (R#ABYSS-THEME y e2 :0.2) (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (TS#POVERTY z) (hundirse-vb e0 x y u2) (en-in e1 e0 z))))
+(B (name sink-to/hundirse-a)
+   (=> (^ (SS#ABYSS%ENTRANCE e0 e2 :0.2) (R#ABYSS-THEME y e2 :0.2)
+          (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2) (hundirse-vb e0 x y u2)
+          (a-in e1 e0 z))))
+(B (name sink-to/hundirse-a/poverty)
+   (=> (^ (S#ABYSS e0 :0.2) (SS#ABYSS%ENTRANCE e0 e0 :0.2)
+          (R#ABYSS-THEME y e2 :0.2) (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (TS#POVERTY z) (hundirse-vb e0 x y u2) (a-in e1 e0 z))))
+(B (name drop-in/caída-en)
+   (=> (^ (SS#ABYSS%ENTRANCE e0 e2 :0.2) (R#ABYSS-THEME y e2 :0.2)
+          (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2)
+          (caída-vb e0 x y u2) (en-in e1 e0 z))))
+(B (name drop-in/caída-en/poverty)
+   (=> (^ (S#ABYSS e0 :0.2) (SS#ABYSS%ENTRANCE e0 e0 :0.2)
+          (R#ABYSS-THEME y e2 :0.2) (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (TS#POVERTY z) (caída-vb e0 x y u2) (en-in e1 e0 z))))
+(B (name drop-to/caída-a)
+   (=> (^ (SS#ABYSS%ENTRANCE e0 e2 :0.2) (R#ABYSS-THEME y e2 :0.2)
+          (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2)
+          (caída-vb e0 x y u2) (a-in e1 e0 z))))
+(B (name drop-to/caída-a/poverty)
+   (=> (^ (S#ABYSS e0 :0.2) (SS#ABYSS%ENTRANCE e0 e0 :0.2)
+          (R#ABYSS-THEME y e2 :0.2) (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (TS#POVERTY z) (caída-vb e0 x y u2) (a-in e1 e0 z))))
+(B (name throw-in/tirar-en)
+   (=> (^ (SS#ABYSS%ENTRANCE e0 e2 :0.2) (R#ABYSS-THEME y e2 :0.2)
+          (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2)
+          (tirar-vb e0 x y u2) (en-in e1 e0 z))))
+(B (name throw-in/tirar-en/poverty)
+   (=> (^ (S#ABYSS e0 :0.2) (SS#ABYSS%ENTRANCE e0 e0 :0.2)
+          (R#ABYSS-THEME y e2 :0.2) (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (TS#POVERTY z) (tirar-vb e0 x y u2) (en-in e1 e0 z))))
+(B (name throw-to/tirar-a)
+   (=> (^ (SS#ABYSS%ENTRANCE e0 e2 :0.2) (R#ABYSS-THEME y e2 :0.2)
+          (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2)
+          (tirar-vb e0 x y u2) (a-in e1 e0 z))))
+(B (name throw-to/tirar-a/poverty)
+   (=> (^ (S#ABYSS e0 :0.2) (SS#ABYSS%ENTRANCE e0 e0 :0.2)
+          (R#ABYSS-THEME y e2 :0.2) (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (TS#POVERTY z) (tirar-vb e0 x y u2) (a-in e1 e0 z))))
+(B (name fall-in/caer-en)
+   (=> (^ (SS#ABYSS%ENTRANCE e0 e2 :0.2) (R#ABYSS-THEME y e2 :0.2)
+          (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (S#ABYSS e2) (SS#ABYSS%TYPE z e2)
+          (caer-vb e0 x y u2) (en-in e1 e0 z))))
+(B (name fall-in/caer-en/poverty)
+   (=> (^ (S#ABYSS e0 :0.2) (SS#ABYSS%ENTRANCE e0 e0 :0.2)
+          (R#ABYSS-THEME y e2 :0.2) (R#ABYSS-CAUSE x e2 :0.2))
+       (^ (TS#POVERTY z) (caer-vb e0 x y u2) (en-in e1 e0 z))))
+(B (name fall-in/caer-en)
+   (=> (^ (S#ABYSS e0 :0.2) (SS#ABYSS%ENTRANCE e0 e0 :0.3)
+          (R#ABYSS-THEME x e0 :0.3))
+       (^ (caer-vb e0 x y u2) (en-in e1 e0 z))))
+
+
+;; Abyss: Exit
+
+(B (name overcome/superarla)
+   (=> (^ (S#ABYSS e0 :0.3) (SS#ABYSS%EXIT e0 e0 :0.3)
+          (R#ABYSS-THEME x e0 :0.3))
+       (superarla-vb e0 x y u)))
+
+
+
+;; Accident / Accidente
+;;   An unforeseen and unplanned event or circumstance.
+;;
+;;   Suceso imprevisto que altera la marcha normal o prevista de las
+;;   cosas, especialmente una desgracia.
+;;   [Unplanned event that alters the normal process or forecast of
+;;   things, especially like that of a misfortune.]
+;;
+;;   Note: In Spanish this has a more specific definition specifying a
+;;   negative outcome.
+
+(B (name accident/accidente)
+   (=> (^ (S#ACCIDENT e0 :0.45) (SS#ACCIDENT%TYPE x e0 :0.45))
+       (accidente-nn e0 x)))
+
+(B (name unforeseen/imprevista)
+   (=> (^ (S#ACCIDENT e0 :0.45) (SS#ACCIDENTY%TYPE x e0 :0.45))
+       (imprevista-adj e0 x)))
+
+(B (name misfortune/desgracia-nn)
+   (=> (^ (S#ACCIDENT e0 :0.45) (SS#ACCIDENTY%TYPE x e0 :0.45))
+       (desgracia-nn e0 x)))
+
+
+
+;; Addiction / Adicción
+;;   The state of being enslaved to a habit or practice or to something that
+;;   is psychologically or physically habit-forming, as narcotics, to such an
+;;   extent that its cessation causes severe trauma.
+;;
+;;   Hábito de quien se deja dominar por el uso de alguna o algunas
+;;   drogas tóxicas, o por la afición desmedida a ciertos juegos.
+;;   [Some one who is habitually dominated by the use of one or more
+;;   toxic drugs, or by the disproportionate passion for some games.]
+;;
+;;   Note: No mention in Spanish of the physical or psychological
+;;   habit-forming tendencies.
+
+(B (name drug/droga)
+   (=> (^ (S#ADDICTION e0 :0.3) (SS#ADDICTION%TYPE x e0 :0.3)
+          (R#SUBSTANCE x e0 :0.3))
+       (droga-nn e0 x)))
+
+(B (name alcohol/alcohol)
+   (=> (^ (S#ADDICTION e0 :0.3) (SS#ADDICTION%TYPE x e0 :0.3)
+          (R#SUBSTANCE x e0 :0.3))
+       (alcohol-nn e0 x)))
+(B (name vodka/vodka)
+   (=> (^ (S#ADDICTION e0 :0.3) (SS#ADDICTION%TYPE x e0 :0.3)
+          (R#SUBSTANCE x e0 :0.3))
+       (vodka-nn e0 x)))
+(B (name wine/vino)
+   (=> (^ (S#ADDICTION e0 :0.3) (SS#ADDICTION%TYPE x e0 :0.3)
+          (R#SUBSTANCE x e0 :0.3))
+       (vino-nn e0 x)))
+
+(B (name narcotic/narcotic-nn)
+   (=> (^ (S#ADDICTION e0 :0.3) (SS#ADDICTION%TYPE x e0 :0.3)
+          (R#SUBSTANCE x e0 :0.3))
+       (narcótico-nn e0 x)))
+(B (name narcotic/narcotic-adj)
+   (=> (^ (S#ADDICTION e0 :0.3) (SS#ADDICTION%TYPE x e0 :0.3)
+          (R#SUBSTANCE x e0 :0.3))
+       (narcótico-adj e0 x)))
+(B (name cocaine/cocaína)
+   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%TYPE x e0 :0.45))
+       (cocaína-nn e0 x)))
+(B (name opium/opio)
+   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%TYPE x e0 :0.45))
+       (opio-nn e0 x)))
+(B (name opiate/opiáceo)
+   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%TYPE x e0 :0.45))
+       (opiáceo-nn e0 x)))
+
+
+;; Addiction: Compulsion
+
+(B (name addiction/adicción)
+   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%COMPULSION x e0 :0.45))
+       (adicción-nn e0 x)))
+(B (name habit/hábito)
+   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%COMPULSION x e0 :0.45))
+       (hábito-nn e0 x)))
+(B (name vice/vicio)
+   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%COMPULSION x e0 :0.45))
+       (vicio-nn e0 x)))
+
+(B (name addict/adicto)
+   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%COMPULSION x e0 :0.45))
+       (adicto-adj e0 x)))
+
+
+;; Addiction: Result
+
+(B (name intoxication/intoxicación)
+   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%RESULT x e0 :0.45))
+       (intoxicación-nn e0 x)))
+(B (name binge/borrachera)
+   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%RESULT x e0 :0.45))
+       (borrachera-nn e0 x)))
+(B (name overdose/sobredosis)
+   (=> (^ (S#ADDICTION e0 :0.30) (SS#ADDICTION%RESULT x e0 :0.30))
+       (sobredosis-nn e0 x)))
+
+(B (name drunk/borracho)
+   (=> (^ (S#ADDICTION e0 :0.30) (SS#ADDICTION%RESULT e0 e0 :0.30)
+          (R#ADDICTED x e0 :0.30))
+       (borracho-adj e0 x)))
+(B (name intoxicated/intoxicado)
+   (=> (^ (S#ADDICTION e0 :0.30) (SS#ADDICTION%RESULT e0 e0 :0.30)
+          (R#ADDICTED x e0 :0.30))
+       (intoxicado-adj e0 x)))
+
+
+
+;; Animal / Animal
+;;   Any such living thing other than a human being.
+;;
+;;   Grupo taxonómico, con categoría de reino, constituido por estos
+;;   seres vivos.
+;;   [Taxonomic group, with the category of kingdom, constituted by
+;;   these living beings.]
+;;
+;;   Note: There was no specific definition in Spanish separating living
+;;   things from humans.
+
+(B (name animal/animal)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (animal-nn e0 x)))
+(B (name beast/bestia)
+   (=> (^ (S#ANIMAL e0 :0.4) (SS#ANIMAL%TYPE x e0 :0.4))
+       (bestia-nn e0 x)))
+(B (name bear/oso)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (oso-nn e0 x)))
+(B (name dog/perro)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (perro-nn e0 x)))
+(B (name cat/gato)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (gato-nn e0 x)))
+(B (name lion/león)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (león-nn e0 x)))
+(B (name tiger/tigre)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (tigre-nn e0 x)))
+(B (name shark/tiburón)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (tiburón-nn e0 x)))
+(B (name whale/ballena)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (ballena-nn e0 x)))
+(B (name bird/pájaro)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (pájaro-nn e0 x)))
+(B (name bird/ave)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (ave-nn e0 x)))
+(B (name wolf/lobo)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (lobo-nn e0 x)))
+(B (name lamb/cordero)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (cordero-nn e0 x)))
+(B (name sheep/oveja)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (oveja-nn e0 x)))
+(B (name deer/ciervo)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (ciervo-nn e0 x)))
+
+(B (name gorilla/gorila)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (gorila-nn e0 x)))
+(B (name monkey/mono)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (mono-nn e0 x)))
+(B (name goat/cabra)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (cabra-nn e0 x)))
+(B (name horse/caballo)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (caballo-nn e0 x)))
+(B (name turtle/tortuga)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (tortuga-nn e0 x)))
+(B (name cow/vaca)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (vaca-nn e0 x)))
+(B (name bull/toro)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (toro-nn e0 x)))
+(B (name snake/serpiente)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (serpiente-nn e0 x)))
+(B (name fox/zorro)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (zorro-nn e0 x)))
+(B (name beaver/castor)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (castor-nn e0 x)))
+(B (name bee/abeja)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (abeja-nn e0 x)))
+(B (name hornet/avispón)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (avispón-nn e0 x)))
+(B (name wasp/avispa)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (avispa-nn e0 x)))
+(B (name mole/topo)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (topo-nn e0 x)))
+(B (name owl/búho)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (búho-nn e0 x)))
+(B (name owl/lechuza)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (lechuza-nn e0 x)))
+(B (name elephant/elefante)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (elefante-nn e0 x)))
+(B (name hound/sabueso)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (sabueso-nn e0 x)))
+(B (name cuckoo/cuco)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (cuco-nn e0 x)))
+(B (name otter/nutria)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (nutria-nn e0 x)))
+(B (name hyena/hiena)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (hiena-nn e0 x)))
+(B (name chicken/pollo)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%TYPE x e0 :0.45))
+       (pollo-nn e0 x)))
+
+
+;; Animal: Component
+
+(B (name face/cara)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%COMPONENT x e0 :0.45))
+       (cara-nn e0 x)))
+(B (name feature/rasgo)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%COMPONENT x e0 :0.45))
+       (rasgo-nn e0 x)))
+(B (name footprint/huella)
+   (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%COMPONENT x e0 :0.45))
+       (huella-nn e0 x)))
+;; Hand is more likely to be HUMAN_BODY.
+;; (B (name hand/mano)
+;;    (=> (^ (S#ANIMAL e0 :0.45) (SS#ANIMAL%COMPONENT x e0 :0.45))
+;;        (mano-nn e0 x)))
+
+
+;; Animal: Function
+
+(B (name swallow/tragarse)
+   (=> (^ (S#ANIMAL e0 :0.23) (SS#ANIMAL%FUNCTION e0 e0 :0.23)
+          (R#FUNCTION-AGENT x e0 :0.23) (R#FUNCTION-PATIENT y e0 :0.23))
+       (tragarse-vb e0 x y u)))
+
+
+;; Animal: Action
+
+(B (name eat/comer/poverty)
+   (=> (^ (S#ANIMAL e0 :0.23) (SS#ANIMAL%ACTION e0 e0 :0.23)
+          (R#ACTION-AGENT x e0 :0.23) (R#ACTION-PATIENT y e0 :0.23))
+       (^ (TS#POVERTY x) (comer-vb e0 x y u))))
+(B (name eat/comer/taxation)
+   (=> (^ (S#ANIMAL e0 :0.23) (SS#ANIMAL%ACTION e0 e0 :0.23)
+          (R#ACTION-AGENT x e0 :0.23) (R#ACTION-PATIENT y e0 :0.23))
+       (^ (TS#TAXATION w) (comer-vb e0 x y u))))
+(B (name chew/masticar/poverty)
+   (=> (^ (S#ANIMAL e0 :0.23) (SS#ANIMAL%ACTION e0 e0 :0.23)
+          (R#ACTION-AGENT x e0 :0.23) (R#ACTION-PATIENT y e0 :0.23))
+       (^ (TS#POVERTY x) (masticar-vb e0 x y u))))
+(B (name chew/masticar/poverty)
+   (=> (^ (S#ANIMAL e0 :0.23) (SS#ANIMAL%ACTION e0 e0 :0.23)
+          (R#ACTION-AGENT x e0 :0.23) (R#ACTION-PATIENT y e0 :0.23))
+       (^ (TS#TAXATION w) (masticar-vb e0 x y u))))
+(B (name digest/digerir/poverty)
+   (=> (^ (S#ANIMAL e0 :0.23) (SS#ANIMAL%ACTION e0 e0 :0.23)
+          (R#ACTION-AGENT x e0 :0.23) (R#ACTION-PATIENT y e0 :0.23))
+       (^ (TS#POVERTY x) (digerir-vb e0 x y u))))
+(B (name digest/digerir/taxation)
+   (=> (^ (S#ANIMAL e0 :0.23) (SS#ANIMAL%ACTION e0 e0 :0.23)
+          (R#ACTION-AGENT x e0 :0.23) (R#ACTION-PATIENT y e0 :0.23))
+       (^ (TS#TAXATION w) (digerir-vb e0 x y u))))
+(B (name swallow/tragarse/poverty)
+   (=> (^ (S#ANIMAL e0 :0.23) (SS#ANIMAL%ACTION e0 e0 :0.23)
+          (R#ACTION-AGENT x e0 :0.23) (R#ACTION-PATIENT y e0 :0.23))
+       (^ (TS#POVERTY x) (tragarse-vb e0 x y u))))
+(B (name swallow/tragarse/taxation)
+   (=> (^ (S#ANIMAL e0 :0.23) (SS#ANIMAL%ACTION e0 e0 :0.23)
+          (R#ACTION-AGENT x e0 :0.23) (R#ACTION-PATIENT y e0 :0.23))
+       (^ (TS#TAXATION w) (tragarse-vb e0 x y u))))
+
+(B (name touch/tocar)
+   (=> (^ (S#ANIMAL e0 :0.23) (SS#ANIMAL%ACTION e0 e0 :0.23)
+          (R#ACTION-AGENT x e0 :0.23) (R#ACTION-PATIENT y e0 :0.23))
+       (tocar-vb e0 x y u)))
+(B (name bark/ladrar)
+   (=> (^ (S#ANIMAL e0 :0.23) (SS#ANIMAL%ACTION e0 e0 :0.23)
+          (R#ACTION-AGENT x e0 :0.23) (R#ACTION-PATIENT y e0 :0.23))
+       (ladrar-vb e0 x y u)))
+(B (name roar/rugir)
+   (=> (^ (S#ANIMAL e0 :0.23) (SS#ANIMAL%ACTION e0 e0 :0.23)
+          (R#ACTION-AGENT x e0 :0.23) (R#ACTION-PATIENT y e0 :0.23))
+       (rugir-vb e0 x y u)))
+(B (name swim/nadar)
+   (=> (^ (S#ANIMAL e0 :0.23) (SS#ANIMAL%ACTION e0 e0 :0.23)
+          (R#ACTION-AGENT x e0 :0.23) (R#ACTION-PATIENT y e0 :0.23))
+       (nadar-vb e0 x y u)))
+(B (name reproduce/reproduzca)
+   (=> (^ (S#ANIMAL e0 :0.23) (SS#ANIMAL%ACTION e0 e0 :0.23)
+          (R#ACTION-AGENT x e0 :0.23) (R#ACTION-PATIENT y e0 :0.23))
+       (reproduzca-vb e0 x y u)))
+(B (name stampede/estampida)
+   (=> (^ (S#ANIMAL e0 :0.23) (SS#ANIMAL%ACTION e0 e0 :0.23)
+          (R#ACTION-AGENT x e0 :0.23) (R#ACTION-PATIENT y e0 :0.23))
+       (estampida-vb e0 x y u)))
+(B (name gallop/galopar)
+   (=> (^ (S#ANIMAL e0 :0.23) (SS#ANIMAL%ACTION e0 e0 :0.23)
+          (R#ACTION-AGENT x e0 :0.23) (R#ACTION-PATIENT y e0 :0.23))
+       (galopar-vb e0 x y u)))
+
+(B (name galloping/galopante)
+   (=> (^ (S#ANIMAL e0 :0.3) (SS#ANIMAL%ACTION e0 e0 :0.3)
+          (R#ACTION-AGENT x e0 :0.3))
+       (galopante-adj e0 x)))
+(B (name gallop/galope)
+   (=> (^ (S#ANIMAL e0 :0.3) (SS#ANIMAL%ACTION e0 e0 :0.3)
+          (R#ACTION-AGENT x e0 :0.3))
+       (galope-nn e0 x )))
+(B (name galloping-nn/galopante-nn)
+   (=> (^ (S#ANIMAL e0 :0.3) (SS#ANIMAL%ACTION e0 e0 :0.3)
+          (R#ACTION-AGENT x e0 :0.3))
+       (galopante-nn e0 x )))
+(B (name reproduction/reproduccion)
+   (=> (^ (S#ANIMAL e0 :0.3) (SS#ANIMAL%ACTION e0 e0 :0.3)
+          (R#ACTION-AGENT x e0 :0.3))
+       (reproducción-nn e0 x )))
+
+
+
+;; Backward Movement / Retroceder
+;;   Movement to or toward what is behind.
+;;
+;;   Movimiento hacia atrás en el tiempo o en el espacio.
+;;   [Backwards movement in time or space.]
+
+(B (name retroceder-vb)
+   (=> (S#BACKWARD_MOVEMENT e0 :0.9)
+       (retroceder-vb e0 x0 x1 x2)))
+
+
+
+;; Barrier / Barrera
+;;   Anything used or acting to block someone from going somewhere or from
+;;   doing something, or to block something from happening.
+;;
+;;   Obstáculo fijo o móvil que impide el paso por un lugar.
+;;   [Fixed or movable object that impedes passage through a place.]
+
+(B (name barrier/barrera)
+   (=> (S#BARRIER e0 :0.9)
+       (barrera-nn e0 x)))
+
+(B (name barricade/barricada)
+   (=> (S#BARRIER e0 :0.9)
+       (barricada-nn e0 x)))
+
+(B (name obstacle/obstáculo)
+   (=> (S#BARRIER e0 :0.9)
+       (obstáculo-nn e0 x)))
+
+(B (name block/bloquear)
+   (=> (S#BARRIER e0 :0.9)
+       (bloquear-vb e0 x0 x1 x2)))
+
+(B (name obstruct/obstruir)
+   (=> (S#BARRIER e0 :0.9)
+       (obstruir-vb e0 x0 x1 x2)))
+
+
+
+;; Blood Stream / Flujo Sanguíneo
+;;   The flowing blood in a circulatory system; a mainstream of power or
+;;   vitality. (Formerly BLOOD_SYSTEM.)
+;;
+;;   Es el volumen de sangre que pasa atraves de la sección transversal de
+;;   un vaso por unidad de tiempo.
+;;   [The volume of blood that passes through a transversal section of a
+;;   vessel for a unit of time.]
+
+(B (name blood/sangre)
+   (=> (^ (S#BLOOD_STREAM e0 :0.3) (SS#BLOOD_STREAM%COMPONENT x e0 :0.3)
+          (R#BLOOD x e0 :0.3))
+       (sangre-nn e0 x)))
+(B (name vein/vena)
+   (=> (^ (S#BLOOD_STREAM e0 :0.45) (SS#BLOOD_STREAM%COMPONENT x e0 :0.45))
+       (vena-nn e0 x)))
+(B (name artery/ateria)
+   (=> (^ (S#BLOOD_STREAM e0 :0.45) (SS#BLOOD_STREAM%COMPONENT x e0 :0.45))
+       (ateria-nn e0 x)))
+(B (name arterial/arterial)
+   (=> (^ (S#BLOOD_STREAM e0 :0.45) (SS#BLOOD_STREAM%COMPONENT x e0 :0.45))
+       (arterial-adj e0 x)))
+
+(B (name hemorrhage/sangrar)
+   (=> (^ (S#BLOOD_STREAM e0 :0.45) (SS#BLOOD_STREAM%MOVEMENT e0 e0 :0.45))
+       (sangrar-vb e0 x y z)))
+(B (name coagulate/coagular)
+   (=> (^ (S#BLOOD_STREAM e0 :0.45) (SS#BLOOD_STREAM%MOVEMENT e0 e0 :0.45))
+       (coagular-vb e0 x y z)))
+(B (name transfusion/transfusión)
+   (=> (^ (S#BLOOD_STREAM e0 :0.45) (SS#BLOOD_STREAM%MOVEMENT x e0 :0.45))
+       (transfusión-nn e0 x)))
+
+
+
+;; Body of Water / Cuerpo de Agua
+;;   The part of the Earth's surface covered with water (such as a river or
+;;   lake or ocean).
+;;
+;;   Una masa o extensión de agua como un lago, mar u océano que cubre parte
+;;   de la Tierra u otro planeta.
+;;   [A mass or extension of water such as a lake, sea or ocean that covers
+;;   part of the Earth or other planet.]
+
+(B (name water/agua)
+   (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%TYPE x e0 :0.45))
+       (agua-nn e0 x)))
+(B (name foam/agua)
+   (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%TYPE x e0 :0.45))
+       (espuma-nn e0 x)))
+(B (name seawater/agua-de-mar)
+   (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%TYPE x e0 :0.45))
+       (^ (agua-nn e0 x) (de-in e1 x y) (mar-nn e2 y))))
+
+(B (name sea/mar)
+   (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%TYPE x e0 :0.45))
+       (mar-nn e0 y)))
+(B (name sea-of/mar-de)
+   (=> (^ (S#BODY_OF_WATER e0 :0.44) (SS#BODY_OF_WATER%TYPE x e0 :0.44))
+       (^ (mar-nn e0 y) (de-in e1 y z))))
+(B (name ocean/océano)
+   (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%TYPE x e0 :0.45))
+       (océano-nn e0 y)))
+(B (name ocean-of/océano-de)
+   (=> (^ (S#BODY_OF_WATER e0 :0.44) (SS#BODY_OF_WATER%TYPE x e0 :0.44))
+       (^ (océano-nn e0 y) (de-in e1 y z))))
+(B (name river/río)
+   (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%TYPE x e0 :0.45))
+       (río-nn e0 y)))
+(B (name river-of/río-de)
+   (=> (^ (S#BODY_OF_WATER e0 :0.44) (SS#BODY_OF_WATER%TYPE x e0 :0.44))
+       (^ (río-nn e0 y) (de-in e1 y z))))
+
+
+;; Body of Water: Movement
+
+(B (name flow/fluir)
+   (=> (^ (S#BODY_OF_WATER e0 :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 e0 :0.3)
+          (R#STREAMING x e0 :0.3))
+       (fluir-vb e0 x u1 u2)))
+(B (name seep/filtrarse)
+   (=> (^ (S#BODY_OF_WATER e0 :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 e0 :0.3)
+          (R#STREAMING x e0 :0.3))
+       (filtrarse-vb e0 x u1 u2)))
+(B (name drip/gotear)
+   (=> (^ (S#BODY_OF_WATER e0 :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 e0 :0.3)
+          (R#STREAMING x e0 :0.3))
+       (gotear-vb e0 x u1 u2)))
+(B (name stagnant/estancar)
+   (=> (^ (S#BODY_OF_WATER e0 :0.3) (SS#BODY_OF_WATER%MOVEMENT e0 e0 :0.3)
+          (R#STILL x e0 :0.3))
+       (estancar-vb e0 x u1 u2)))
+
+(B (name current/corriente)
+   (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%MOVEMENT y e0 :0.45))
+       (corriente-nn e0 y)))
+(B (name flow/flujo)
+   (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%MOVEMENT y e0 :0.45))
+       (flujo-nn e0 y)))
+(B (name leakage/fuga)
+   (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%MOVEMENT y e0 :0.45))
+       (fuga-nn e0 y)))
+(B (name wave/onda)
+   (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%MOVEMENT y e0 :0.45))
+       (onda-nn e0 y)))
+(B (name tide/marea)
+   (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%MOVEMENT y e0 :0.45))
+       (marea-nn e0 y)))
+
+
+;; Body of Water: Danger
+
+(B (name tsunami/tsunami)
+   (=> (^ (S#BODY_OF_WATER e0 :0.47) (SS#BODY_OF_WATER%DANGER y e0 :0.47))
+       (tsunami-nn e0 y)))
+(B (name swamp/pantano)
+   (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%DANGER y e0 :0.45))
+       (pantano-nn e0 y)))
+(B (name mire/fango)
+   (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%DANGER y e0 :0.45))
+       (fango-nn e0 y)))
+(B (name undersea/submarino)
+   (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%DANGER y e0 :0.45))
+       (submarino-nn e0 y)))
+(B (name underwater/acuícola)
+   (=> (^ (S#BODY_OF_WATER e0 :0.45) (SS#BODY_OF_WATER%DANGER y e0 :0.45))
+       (acuícola-nn e0 y)))
+
+(B (name drown/ahogar)
+   (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%DANGER e0 y :0.3)
+          (R#DROWN-PATIENT x e0 :0.3))
+       (ahogar-vb e0 x u1 u2)))
+(B (name submerse/sumir)
+   (=> (^ (S#BODY_OF_WATER y :0.3) (SS#BODY_OF_WATER%DANGER e0 y :0.3)
+          (R#DROWN-PATIENT x e0 :0.3))
+       (sumir-vb e0 x u1 u2)))
+
+
+
+;; Building / Edificio
+;;   A relatively permanent enclosed construction over a plot of land, having
+;;   a roof and usually windows and often more than one level; anything built
+;;   or constructed.
+;;
+;;   Construcción fija, hecha con materiales resistentes, para habitación
+;;   humana o para otros usos.
+;;   [Fixed construction, made of resistant materials, for human habitation
+;;   or other uses.]
+
+(B (name home/casa)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%TYPE x e0 :0.45))
+       (casa-nn e0 x)))
+(B (name palace/palacio)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%TYPE x e0 :0.45))
+       (palacio-nn e0 x)))
+(B (name castle/castillo)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%TYPE x e0 :0.45))
+       (castillo-nn e0 x)))
+(B (name factory/fabricá)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%TYPE x e0 :0.45))
+       (fabricá-nn e0 x)))
+
+(B (name structure/estructura)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%STRUCTURE x e0 :0.45))
+       (estructura-nn e0 x)))
+(B (name building/edificio)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%STRUCTURE x e0 :0.45))
+       (edificio-nn e0 x)))
+(B (name basement/sótano)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%STRUCTURE x e0 :0.45))
+       (sótano-nn e0 x)))
+(B (name construction/construcción)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%STRUCTURE x e0 :0.45))
+       (construcción-nn e0 x)))
+
+(B (name build-up/construir)
+   (=> (^ (S#BUILDING e0 :0.3) (SS#BUILDING%CREATION_DESTRUCTION e0 e0 :0.3)
+          (R#CREATING e0 e0 :0.3))
+       (construir-vb e0 x y u)))
+(B (name build/edificar)
+   (=> (^ (S#BUILDING e0 :0.3) (SS#BUILDING%CREATION_DESTRUCTION e0 e0 :0.3)
+          (R#CREATING e0 e0 :0.3))
+       (edificar-vb e0 x y u)))
+(B (name fabricate/fabricar)
+   (=> (^ (S#BUILDING e0 :0.3) (SS#BUILDING%CREATION_DESTRUCTION e0 e0 :0.3)
+          (R#CREATING e0 e0 :0.3))
+       (fabricar-vb e0 x y u)))
+(B (name form/formar)
+   (=> (^ (S#BUILDING e0 :0.3) (SS#BUILDING%CREATION_DESTRUCTION e0 e0 :0.3)
+          (R#CREATING e0 e0 :0.3))
+       (formar-vb e0 x y u)))
+(B (name fortify/fortalecer-vb)
+   (=> (S#BUILDING e0 :0.9)
+       (fortalecer-vb e0 x0 x1 x2)))
+
+(B (name base/base)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%STRUCTURE x e0 :0.45))
+       (base-nn e0 x)))
+(B (name cement/cemento)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%COMPONENTS x e0 :0.45))
+       (cemento-nn e0 x)))
+(B (name brick/ladrillo)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%COMPONENTS x e0 :0.45))
+       (ladrillo-nn e0 x)))
+(B (name concrete/hormigón)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%COMPONENTS x e0 :0.45))
+       (hormigón-nn e0 x)))
+(B (name mortar/mortero)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%COMPONENTS x e0 :0.45))
+       (mortero-nn e0 x)))
+(B (name stone/piedra)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%COMPONENTS x e0 :0.45))
+       (piedra-nn e0 x)))
+(B (name keystone/piedra-clave)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%COMPONENTS x e0 :0.45))
+       (^ (piedra-nn e0 x) (clave-nn e1 y))))
+(B (name wall/pared)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%COMPONENTS x e0 :0.45))
+       (pared-nn e0 x)))
+(B (name wall/muro)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%COMPONENTS x e0 :0.45))
+       (muro-nn e0 x)))
+
+(B (name support/soporte)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%SUPPORT x e0 :0.45))
+       (soporte-nn e0 x)))
+(B (name support/apoyar)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%SUPPORT e0 e0 :0.45))
+       (apoyar-vb e0 x y u)))
+
+(B (name buttress/contrafuerte)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%SUPPORT x e0 :0.45))
+       (contrafuerte-nn e0 x)))
+(B (name buttress/reforzarse)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%SUPPORT e0 e0 :0.45))
+       (reforzarse-vb e0 x y u)))
+
+(B (name pillar/pilar)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%SUPPORT x e0 :0.45))
+       (pilar-nn e0 x)))
+(B (name underpinning/apuntalamiento)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%SUPPORT x e0 :0.45))
+       (apuntalamiento-nn e0 x)))
+
+(B (name underpin/apuntalar)
+   (=> (^ (S#BUILDING e0 :0.45) (SS#BUILDING%SUPPORT e0 e0 :0.45))
+       (apuntalar-vb e0 x y u)))
+
+
+
+;; Business / Negocio
+;;   The activity of making, buying, or selling goods or providing services
+;;   in exchange for money.
+;;
+;;   Toda actividad consistente en la adquisición de renta en función de la
+;;   entrega de bienes y servicios como contraparte.
+;;   [All activity that is consistent with the acquisition of income coupled
+;;   with the delivery of goods and services as a counterpart.]
+
+(B (name business/negocios)
+   (=> (S#BUSINESS e0 :0.9)
+       (negocios-nn e0 x)))
+(B (name company/empresa)
+   (=> (S#BUSINESS e0 :0.9)
+       (empresa-nn e0 x)))
+(B (name manufacturer/fabricante)
+   (=> (S#BUSINESS e0 :0.9)
+       (fabricante-nn e0 x)))
+
+(B (name manufacture/fabricar)
+   (=> (S#BUSINESS e0 :0.9)
+       (fabricar-vb e0 x0 x1 x2)))
+(B (name sell/vender)
+   (=> (S#BUSINESS e0 :0.9)
+       (vender-vb e0 x0 x1 x2)))
+(B (name buy/comprar)
+   (=> (S#BUSINESS e0 :0.9)
+       (comprar-vb e0 x0 x1 x2)))
+
+
+
+;; Clothing / Ropa
+;;   The things that people wear to cover their bodies.
+;;
+;;   Prenda de tela que sirve para vestir.
+;;   [Any type of article of clothing/fabric that can be used to dress.]
+
+(B (name clothing/ropa)
+   (=> (S#CLOTHING e0 :0.9)
+       (ropa-nn e0 x)))
+(B (name clothing/vestimenta)
+   (=> (S#CLOTHING e0 :0.9)
+       (vestimenta-nn e0 x)))
+
+(B (name shirt/cota)
+   (=> (S#CLOTHING e0 :0.9)
+       (cota-nn e0 x)))
+(B (name shirt/blusa)
+   (=> (S#CLOTHING e0 :0.9)
+       (blusa-nn e0 x)))
+(B (name jacket/chaqueta)
+   (=> (S#CLOTHING e0 :0.9)
+       (chaqueta-nn e0 x)))
+(B (name hat/sombrero)
+   (=> (S#CLOTHING e0 :0.9)
+       (sombrero-nn e0 x)))
+(B (name cloak/capa)
+   (=> (S#CLOTHING e0 :0.9)
+       (capa-nn e0 x)))
+(B (name dress/vestido)
+   (=> (S#CLOTHING e0 :0.9)
+       (vestido-nn e0 x)))
+(B (name skirt/falda)
+   (=> (S#CLOTHING e0 :0.9)
+       (falda-nn e0 x)))
+
+
+
+;; Competition / Competición
+;;   Rivalry between two or more persons or groups for an object desired in
+;;   common, usually resulting in a victor and a loser but not necessarily
+;;   involving the destruction of the latter.
+;;
+;;   Competencia o rivalidad de quienes se disputan una misma cosa o la
+;;   pretenden.
+;;   [Competitiveness or rivalry of those who dispute the same object or that
+;;   expect/hope to have it.]
+
+(B (name competition/competición)
+   (=> (^ (S#COMPETITION x :0.45) (SS#COMPETITION%TYPE x e0 :0.45))
+       (competición-nn e0 x)))
+(B (name contest/concurso)
+   (=> (^ (S#COMPETITION x :0.45) (SS#COMPETITION%TYPE x e0 :0.45))
+       (concurso-nn e0 x)))
+(B (name race/carrera)
+   (=> (^ (S#COMPETITION x :0.45) (SS#COMPETITION%TYPE x e0 :0.45))
+       (carrera-nn e0 x)))
+
+(B (name winner/ganador)
+   (=> (^ (S#COMPETITION x :0.45) (SS#COMPETITION%COMPONENT x e0 :0.45))
+       (ganador-nn e0 x)))
+(B (name loser/perdedor)
+   (=> (^ (S#COMPETITION x :0.45) (SS#COMPETITION%COMPONENT x e0 :0.45))
+       (perdedor-nn e0 x)))
+(B (name player/jugador)
+   (=> (^ (S#COMPETITION x :0.45) (SS#COMPETITION%COMPONENT x e0 :0.45))
+       (jugador-nn e0 x)))
+(B (name finalist/finalista)
+   (=> (^ (S#COMPETITION x :0.45) (SS#COMPETITION%COMPONENT x e0 :0.45))
+       (finalista-nn e0 x)))
+
+
+
+;; Confinement / Confinamiento
+;;   To enclose within bounds; limit or restrict; to shut or keep in; prevent
+;;   from leaving a place.
+;;
+;;   Encierro de una persona o animal en un sitio limitado o cerrado.
+;;   [Enclosure of a person or animal in a limited or closed place.]
+
+(B (name prison/prisión)
+   (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%CONFINED_SPACE x e0 :0.45))
+       (prisión-nn e0 x)))
+(B (name jail/cárcel)
+   (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%CONFINED_SPACE x e0 :0.45))
+       (cárcel-nn e0 x)))
+(B (name cage/jaula)
+   (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%CONFINED_SPACE x e0 :0.45))
+       (jaula-nn e0 x)))
+(B (name dungeon/mazmorra)
+   (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%CONFINED_SPACE x e0 :0.45))
+       (mazmorra-nn e0 x)))
+(B (name dungeon/calabozo)
+   (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%CONFINED_SPACE x e0 :0.45))
+       (calabozo-nn e0 x)))
+(B (name penitentiary/penitenciario)
+   (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%CONFINED_SPACE x e0 :0.45))
+       (penitenciario-nn e0 x)))
+(B (name presidio/presidio)
+   (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%CONFINED_SPACE x e0 :0.45))
+       (presidio-nn e0 x)))
+(B (name cul-de-sac/callejón-sin-salida)
+   (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%CONFINED_SPACE x e0 :0.45))
+       (^ (callejón-nn e0 x) (sin-in e1 x y) (salida-nn e2 y))))
+
+(B (name imprison/encarcelar)
+   (=> (^ (S#CONFINEMENT e0 :0.2) (SS#CONFINEMENT%CONFINED_SPACE e0 e0 :0.2)
+          (R#CONFINEMENT-AGENT x e0 :0.2) (R#CONFINEMENT-PATIENT y e0 :0.2))
+       (encarcelar-vb e0 x y u)))
+(B (name confine/confinar)
+   (=> (^ (S#CONFINEMENT e0 :0.2) (SS#CONFINEMENT%CONFINED_SPACE e0 e0 :0.2)
+          (R#CONFINEMENT-AGENT x e0 :0.2) (R#CONFINEMENT-PATIENT y e0 :0.2))
+       (confinar-vb e0 x y u)))
+(B (name imprison/aprisionar)
+   (=> (^ (S#CONFINEMENT e0 :0.2) (SS#CONFINEMENT%CONFINED_SPACE e0 e0 :0.2)
+          (R#CONFINEMENT-AGENT x e0 :0.2) (R#CONFINEMENT-PATIENT y e0 :0.2))
+       (aprisionar-vb e0 x y u)))
+
+(B (name trap/trampa)
+   (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%RESTRAINTS x e0 :0.45))
+       (trampa-nn e0 x)))
+(B (name siphon/sifón)
+   (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%RESTRAINTS x e0 :0.45))
+       (sifón-nn e0 x)))
+(B (name net/neto)
+   (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%RESTRAINTS x e0 :0.45))
+       (neto-nn e0 x)))
+(B (name handcuffs/esposas)
+   (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%RESTRAINTS x e0 :0.45))
+       (esposas-nn e0 x)))
+(B (name chain/cadena)
+   (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%RESTRAINTS x e0 :0.45))
+       (cadena-nn e0 x)))
+(B (name captivity/cautiverio)
+   (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%RESTRAINTS x e0 :0.45))
+       (cautiverio-nn e0 x)))
+(B (name belt/cinturón)
+   (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%RESTRAINTS x e0 :0.45))
+       (cinturón-nn e0 x)))
+
+(B (name trap/atrapar)
+   (=> (^ (S#CONFINEMENT e0 :0.2) (SS#CONFINEMENT%RESTRAINTS e0 e0 :0.2)
+          (R#CONFINEMENT-AGENT x e0 :0.2) (R#CONFINEMENT-PATIENT y e0 :0.2))
+       (atrapar-vb e0 x y u)))
+(B (name tied-hands/amarra-manos)
+   (=> (S#CONFINEMENT e0 :0.9)
+       (^ (amarra-vb e0 u1 x1 u3) (mano-nn e1 x1))))
+
+(B (name door/puerta)
+   (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%EXIT x e0 :0.45))
+       (puerta-nn e0 x)))
+(B (name ladder/escalara)
+   (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%EXIT x e0 :0.45))
+       (escalara-nn e0 x)))
+(B (name rope/cuerda)
+   (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%EXIT x e0 :0.45))
+       (cuerda-nn e0 x)))
+(B (name trampoline/trampolín)
+   (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%EXIT x e0 :0.45))
+       (trampolín-nn e0 x)))
+(B (name lifeline/línea-de-vida)
+   (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%EXIT x e0 :0.45))
+       (^ (línea-nn e0 x) (de-in e1 x y) (vida-nn e2 y))))
+(B (name escape/escape)
+   (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%EXIT x e0 :0.45))
+       (escape-nn e0 x)))
+(B (name evasion/evasión)
+   (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%EXIT x e0 :0.45))
+       (evasión-nn e0 x)))
+
+(B (name escape/escapar)
+   (=> (^ (S#CONFINEMENT e0 :0.3) (SS#CONFINEMENT%EXIT e0 e0 :0.3)
+          (R#ESCAPE-AGENT x e0 :0.3))
+       (escapar-vb e0 x y u)))
+(B (name evade/evadir)
+   (=> (^ (S#CONFINEMENT e0 :0.3) (SS#CONFINEMENT%EXIT e0 e0 :0.3)
+          (R#ESCAPE-AGENT x e0 :0.3))
+       (evadir-vb e0 x y u)))
+(B (name exit/salir-de)
+   (=> (^ (S#CONFINEMENT e0 :0.3) (SS#CONFINEMENT%EXIT e0 e0 :0.3)
+          (R#ESCAPE-AGENT x e0 :0.3))
+       (^ (salir-vb e0 x y u) (de-in e1 e0 z))))
+(B (name release/liberar)
+   (=> (^ (S#CONFINEMENT e0 :0.23) (SS#CONFINEMENT%EXIT e0 e0 :0.23)
+          (R#EXIT-AGENT x e0 :0.23) (R#EXIT-PATIENT y e0 :0.23))
+       (liberar-vb e0 x y u)))
+
+
+
+;; Container / Contenedor
+;;   An object (such as a box or can) that can hold something; a receptacle
+;;   (as a box or jar) for holding goods.
+;;
+;;   Recipiente amplio para depositar residuos diversos; Embalaje metálico
+;;   grande y recuperable, de tipos y dimensiones normalizados
+;;   internacionalmente y con dispositivos para facilitar su manejo.
+;;   [Spacious container to deposit diverse residuals; large and recuperable
+;;   metallic package, of various types and dimensions according to
+;;   international standards and with devices to facilitate their handling.]
+
+(B (name container/contenedor)
+   (=> (S#CONTAINER e0 :0.45)
+       (contenedor-nn e0 x)))
+(B (name container/recipiente)
+   (=> (S#CONTAINER e0 :0.45)
+       (recipiente-nn e0 x)))
+
+(B (name box/caja)
+   (=> (S#CONTAINER e0 :0.45)
+       (caja-nn e0 x)))
+(B (name can/puede)
+   (=> (S#CONTAINER e0 :0.45)
+       (puede-nn e0 x)))
+(B (name jar/tarro)
+   (=> (S#CONTAINER e0 :0.45)
+       (tarro-nn e0 x)))
+(B (name jug/jarra)
+   (=> (S#CONTAINER e0 :0.45)
+       (jarra-nn e0 x)))
+(B (name crate/cajón)
+   (=> (S#CONTAINER e0 :0.45)
+       (cajón-nn e0 x)))
+
+
+
+;; Contamination / Contaminación
+;;   To make something less pure or make it poisonous; make (something) impure
+;;   by exposure or addition of a poisonous or polluting substance. (Includes
+;;   former IMPURITY axioms.)
+;;
+;;   Degradación que sufre el medio ambiente por las sustancias perjudiciales
+;;   que se vierten en él.
+;;   [Degradation that the environment suffers from damaging substances that
+;;   are spilled in it.]
+
+(B (name contamination/contaminación-nn)
+   (=> (^ (S#CONTAMINATION e0 :0.45) (SS#CONTAMINATION%TYPE x e0 :0.45))
+       (contaminación-nn e0 x)))
+
+(B (name dirt/suciedad)
+   (=> (^ (S#CONTAMINATION e0 :0.45) (SS#CONTAMINATION%TYPE x e0 :0.45))
+       (suciedad-nn e0 x)))
+(B (name dust/polvo)
+   (=> (^ (S#CONTAMINATION e0 :0.45) (SS#CONTAMINATION%TYPE x e0 :0.45))
+       (polvo-nn e0 x)))
+(B (name trash/basura)
+   (=> (^ (S#CONTAMINATION e0 :0.45) (SS#CONTAMINATION%TYPE x e0 :0.45))
+       (basura-nn e0 x)))
+
+(B (name dirty/sucio)
+   (=> (^ (S#CONTAMINATION e0 :0.45) (SS#CONTAMINATION%TYPE e0 e0 :0.45))
+       (sucio-adj e0 x)))
+
+(B (name stain/mancha)
+   (=> (^ (S#CONTAMINATION e0 :0.45) (SS#CONTAMINATION%TYPE x e0 :0.45))
+       (mancha-nn e0 x)))
+
+(B (name sully/manchar)
+   (=> (^ (S#CONTAMINATION e0 :0.45) (SS#CONTAMINATION%TYPE e0 e0 :0.45))
+       (manchar-vb e0 x y z)))
+
+
+
+;; Crime / Crimen
+;;   Any unlawful offense, serious wrongdoing.
+;;
+;;   Delito grave que consiste en matar, herir o hacer daño a una persona.
+;;   [Serious crime that consists of killing, injuring or harming another
+;;   person.]
+;;
+;;   Note: The Spanish-language definition focuses on extreme harm to a
+;;   person, e.g., killing (likely due to socio-cultural context of their
+;;   language).
+
+(B (name crime/crimen)
+   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
+       (crimen-nn e0 x)))
+(B (name crime/delito)
+   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
+       (delito-nn e0 x)))
+(B (name assault/asalto)
+   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
+       (asalto-nn e0 x)))
+(B (name wrongdoing/malhecho)
+   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
+       (malhecho-nn e0 x)))
+(B (name delinquency/delincuencia)
+   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
+       (delincuencia-nn e0 x)))
+
+(B (name misdeed/fechoría)
+   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
+       (fechoría-nn e0 x)))
+(B (name violation/violación)
+   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
+       (violación-nn e0 x)))
+
+(B (name culpable-conduct/conducta-culpable)
+   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
+       (^ (conducta-nn e0 x) (culpable-adj e1 x))))
+(B (name criminal-conduct/conducta-criminal)
+   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
+       (^ (conducta-nn e0 x) (criminal-adj e1 x))))
+
+;(B (name rape/violación)
+;   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
+;       (violación-nn e0 x)))
+(B (name rape/violar)
+   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2)
+          (R#CRIME-AGENT x e0 :0.2) (R#CRIME-VICTIM y e0 :0.2))
+       (violar-vb e0 x y u)))
+
+(B (name steal/robar)
+   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2)
+          (R#CRIME-AGENT x e0 :0.2) (R#CRIME-THEME z e0 :0.2))
+       (robar-vb e0 x z u2)))
+(B (name filch/ratear)
+   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2)
+          (R#CRIME-AGENT x e0 :0.2) (R#CRIME-THEME z e0 :0.2))
+       (ratear-vb e0 x z u2)))
+(B (name loot/saquear)
+   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2)
+          (R#CRIME-AGENT x e0 :0.2) (R#CRIME-THEME z e0 :0.2))
+       (saquear-vb e0 x z u2)))
+(B (name pillage/pillar)
+   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2)
+          (R#CRIME-AGENT x e0 :0.2) (R#CRIME-THEME z e0 :0.2))
+       (pillar-vb e0 x z u2)))
+(B (name kill/matar)
+   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%TYPE e0 e0 :0.2)
+          (R#CRIME-AGENT x e0 :0.2) (R#CRIME-THEME z e0 :0.2))
+       (matar-vb e0 x z u2)))
+
+(B (name violence/violencia)
+   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%TYPE x e0 :0.45))
+       (violencia-nn e0 x)))
+
+
+;; Crime: Perpetrator
+
+(B (name criminal/criminal-nn)
+   (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
+          (R#CRIME-AGENT x e0 :0.3))
+       (criminal-nn e0 x)))
+(B (name criminal/criminal-adj)
+   (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
+          (R#CRIME-AGENT x e0 :0.3))
+       (criminal-adj e0 x)))
+(B (name criminal/delictivo-nn)
+   (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
+          (R#CRIME-AGENT x e0 :0.3))
+       (delictivo-nn e0 x)))
+(B (name criminal/delictivo-adj)
+   (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
+          (R#CRIME-AGENT x e0 :0.3))
+       (delictivo-adj e0 x)))
+(B (name offender/delincuente)
+   (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
+          (R#CRIME-AGENT x e0 :0.3))
+       (delincuente-nn e0 x)))
+(B (name outlaw/proscrito)
+   (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
+          (R#CRIME-AGENT x e0 :0.3))
+       (proscrito-nn e0 x)))
+(B (name outlaw/forajido)
+   (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
+          (R#CRIME-AGENT x e0 :0.3))
+       (forajido-nn e0 x)))
+(B (name guilty/culpable)
+   (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
+          (R#CRIME-AGENT x e0 :0.3))
+       (culpable-nn e0 x)))
+(B (name convict/reo)
+   (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
+          (R#CRIME-AGENT x e0 :0.3))
+       (reo-nn e0 x)))
+(B (name wrongdoer/malhechor)
+   (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
+          (R#CRIME-AGENT x e0 :0.3))
+       (malhechor-nn e0 x)))
+(B (name prostitute/prostituta)
+   (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR x e0 :0.3)
+          (R#CRIME-AGENT x e0 :0.3))
+       (prostituta-nn e0 x)))
+
+(B (name thief/ladrón)
+   (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR e0 e0 :0.3)
+          (R#CRIME-AGENT x e0 :0.3))
+       (ladrón-nn e0 x)))
+(B (name thief/ladronzuelo)
+   (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR e0 e0 :0.3)
+          (R#CRIME-AGENT x e0 :0.3))
+       (ladronzuelo-nn e0 x)))
+(B (name assailant/asaltador)
+   (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR e0 e0 :0.3)
+          (R#CRIME-AGENT x e0 :0.3))
+       (asaltador-nn e0 x)))
+(B (name looter/saqueador)
+   (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%PERPETRATOR e0 e0 :0.3)
+          (R#CRIME-AGENT x e0 :0.3))
+       (saqueador-nn e0 x)))
+
+
+;; Crime: Punishment
+
+(B (name punishment/castigo)
+   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PUNISHMENT x e0 :0.45))
+       (castigo-nn e0 x)))
+(B (name penalty/pena)
+   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PUNISHMENT x e0 :0.45))
+       (pena-nn e0 x)))
+(B (name judgment/sentencia)
+   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PUNISHMENT x e0 :0.45))
+       (sentencia-nn e0 x)))
+(B (name penalty/penalización)
+   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PUNISHMENT x e0 :0.45))
+       (penalización-nn e0 x)))
+(B (name fine/multa)
+   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PUNISHMENT x e0 :0.45))
+       (multa-nn e0 x)))
+(B (name whip/azote)
+   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PUNISHMENT x e0 :0.45))
+       (azote-nn e0 x)))
+(B (name sentence/condena)
+   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PUNISHMENT x e0 :0.45))
+       (condena-nn e0 x)))
+(B (name remuneration/retribución)
+   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PUNISHMENT x e0 :0.45))
+       (retribución-nn e0 x)))
+
+(B (name imprisonment/pena-de-prisión)
+   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PUNISHMENT x e0 :0.45))
+       (^ (pena-nn e0 y) (de-in e1 y x) (prisión-nn e2 x))))
+(B (name life-sentence/condena-perpetua)
+   (=> (^ (S#CRIME e0 :0.45) (SS#CRIME%PUNISHMENT x e0 :0.45))
+       (^ (condena-nn e0 x) (perpetua-nn e1 x))))
+
+(B (name punish/castigar)
+   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%PUNISHMENT e0 e0 :0.2)
+          (R#PUNISHMENT-AGENT x e0 :0.2) (R#PUNISHMENT-VICTIM y e0 :0.2))
+       (castigar-vb e0 x y u)))
+(B (name condemn/condenar)
+   (=> (^ (S#CRIME e0 :0.2) (SS#CRIME%PUNISHMENT e0 e0 :0.2)
+          (R#PUNISHMENT-AGENT x e0 :0.2) (R#PUNISHMENT-VICTIM y e0 :0.2))
+       (condenar-vb e0 x y u)))
+
+(B (name victim/víctima)
+   (=> (^ (S#CRIME e0 :0.3) (SS#CRIME%VICTIM x e0 :0.3)
+          (R#CRIME-VICTIM x e0 :0.3))
+       (víctima-nn e0 x)))
+
+
+
+;; Crop / Cosecha
+;;   The cultivated produce of the ground, while growing or when gathered;
+;;   the yield of such produce for a particular season; cultivated plant that
+;;   is grown.
+;;
+;;   Conjunto de frutos, generalmente de un cultivo, que se recogen de la
+;;   tierra al llegar a la sazón; como de trigo, cebada, uva, aceituna, etc.
+;;   [A group of produce, generally from a farm, that are picked when ripe.]
+
+
+(B (name seed/semilla-nn)
+   (=> (^ (S#CROP e0 :0.3) (SS#CROP%PLANTING x e0 :0.3) (R#CROP x e0 :0.3))
+       (semilla-nn e0 x)))
+
+(B (name cultivation/cultivo-nn)
+   (=> (^ (S#CROP e0 :0.3) (SS#CROP%PLANTING x e0 :0.3)
+          (R#CROP x e0 :0.3))
+       (cultivo-nn e0 x)))
+
+(B (name plant/sembrar-vb)
+   (=> (^ (S#CROP e0 :0.23) (SS#CROP%PLANTING e0 e0 :0.23)
+          (R#GARDENER x e0 :0.23) (R#CROP y e0 :0.23))
+       (sembrar-vb e0 x y u)))
+
+(B (name plant/plantar-vb)
+   (=> (^ (S#CROP e0 :0.23) (SS#CROP%PLANTING e0 e0 :0.23)
+          (R#GARDENER x e0 :0.23) (R#CROP y e0 :0.23))
+       (plantar-vb e0 x y u)))
+
+(B (name grow-up/crecer/wealth)
+   (=> (^ (S#CROP e0 :0.23) (SS#CROP%CULTIVATION e0 e0 :0.23)
+          (R#GARDENER x e0 :0.23) (R#CROP y e0 :0.23))
+       (^ (TS#WEALTH y) (crecer-vb e0 x y u))))
+
+(B (name fertilize/fertilizar)
+   (=> (^ (S#CROP e0 :0.23) (SS#CROP%CULTIVATION e0 e0 :0.23)
+          (R#GARDENER x e0 :0.23) (R#CROP y e0 :0.23))
+       (fertilizar-vb e0 x y u)))
+
+(B (name water/regar)
+   (=> (^ (S#CROP e0 :0.23) (SS#CROP%CULTIVATION e0 e0 :0.23)
+          (R#GARDENER x e0 :0.23) (R#CROP y e0 :0.23))
+       (regar-vb e0 x y u)))
+
+(B (name harvest/cosechar)
+   (=> (^ (S#CROP e0 :0.23) (SS#CROP%OUTCOME e0 e0 :0.23)
+          (R#GARDENER x e0 :0.23) (R#CROP x e0 :0.23))
+       (cosechar-vb e0 x y u)))
+(B (name profit/lucrar)
+   (=> (^ (S#CROP e0 :0.23) (SS#CROP%OUTCOME e0 e0 :0.23)
+          (R#GARDENER x e0 :0.23) (R#CROP x e0 :0.23))
+       (lucrar-vb e0 x y u)))
+(B (name harvest/cosecha)
+   (=> (^ (S#CROP e0 :0.3) (SS#CROP%OUTCOME x e0 :0.3) (R#CROP y e0 :0.3))
+       (cosecha-nn e0 x)))
+
+
+
+;; Darkness / Oscuridad
+;;   With little or no light, or having little brightness; the partial or
+;;   total absence of light.
+;;
+;;   Falta de luz para percibir las cosas.
+;;   [Absence of light to perceive things.]
+
+(B (name darkness/oscuridad)
+   (=> (^ (S#DARKNESS e0 :0.45)
+          (SS#DARKNESS%DARK_END_OF_RANGE_OF_DARKNESS_LIGHT x e0 :0.45))
+       (oscuridad-nn e0 x)))
+
+(B (name darkness/tinieblas)
+   (=> (^ (S#DARKNESS e0 :0.45)
+          (SS#DARKNESS%DARK_END_OF_RANGE_OF_DARKNESS_LIGHT x e0 :0.45))
+       (tinieblas-nn e0 x)))
+
+(B (name cave/cueva)
+   (=> (^ (S#DARKNESS e0 :0.45)
+          (SS#DARKNESS%DARK_END_OF_RANGE_OF_DARKNESS_LIGHT x e0 :0.45))
+       (cueva-nn e0 x)))
+
+(B (name dark/oscuro)
+   (=> (^ (S#DARKNESS e0 :0.3)
+          (SS#DARKNESS%DARK_END_OF_RANGE_OF_DARKNESS_LIGHT x e0 :0.3)
+          (R#DARK x e0 :0.3))
+       (oscuro-adj e0 x)))
+
+
+
+;; Disease / Enfermedad
+;;   A disordered or incorrectly functioning organ, part, structure, or system
+;;   of the body resulting from the effect of genetic or developmental errors,
+;;   infection, poisons, nutritional deficiency or imbalance, toxicity, or
+;;   unfavorable environmental factors; illness; sickness; ailment.
+;;
+;;   Alteración leve o grave del funcionamiento normal de un organismo o de
+;;   alguna de sus partes debido a una causa interna o externa.
+;;   [Slight or serious alternation of the normal functioning of an organism
+;;   or of one its parts due to an internal or external cause.]
+
+;; Of - Disease
+(B (name of-disease)
+   (=> (R#SICK  y x :0.9)
+       (^ (S#DISEASE x) (de-in e1 x y))))
+
+(B (name disease/enfermedad)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
+       (enfermedad-nn e0 x)))
+(B (name nausea/náusea)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
+       (náusea-nn e0 x)))
+(B (name condition/afección)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
+       (afección-nn e0 x)))
+(B (name morbidity/morbo)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
+       (morbo-nn e0 x)))
+(B (name ailment/dolencia)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
+       (dolencia-nn e0 x)))
+(B (name serious-condition/condición-grave)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
+       (^ (condición -nn e0 x) (grave-adj e1 x))))
+(B (name plague/peste)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
+       (peste-nn e0 x)))
+(B (name plague/plaga)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
+       (plaga-nn e0 x)))
+(B (name cancer/cáncer)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
+       (cáncer-nn e0 x)))
+
+(B (name infection/infección)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
+       (infección-nn e0 x)))
+(B (name sore/llaga)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
+       (llaga-nn e0 x)))
+(B (name fever/fiebre)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
+       (fiebre-nn e0 x)))
+(B (name discomfort/malestar)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
+       (malestar-nn e0 x)))
+
+(B (name condition/padecimiento)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE x e0 :0.45))
+       (padecimeinto-nn e0 x)))
+(B (name sick/enfermo)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TYPE x e0 :0.3) (R#SICK y e0 :0.3))
+       (enfermo-adj e0 y)))
+(B (name weak/débil)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TYPE x e0 :0.3) (R#SICK y e0 :0.3))
+       (débil-adj e0 y)))
+(B (name sore/dolorido)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TYPE x e0 :0.3) (R#SICK y e0 :0.3))
+       (dolorido-adj e0 y)))
+(B (name disabled/minusválido)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TYPE x e0 :0.3) (R#SICK y e0 :0.3))
+       (minusválido-adj e0 y)))
+(B (name disabled/discapacitado)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TYPE x e0 :0.3) (R#SICK y e0 :0.3))
+       (discapacitado-adj e0 y)))
+(B (name incapacitated/incapacitado)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TYPE x e0 :0.3) (R#SICK y e0 :0.3))
+       (incapacitado-adj e0 y)))
+(B (name disabled/lisiado)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TYPE x e0 :0.3) (R#SICK y e0 :0.3))
+       (lisiado-adj e0 y)))
+
+(B (name invalid/inválido-nn)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TYPE x e0 :0.3) (R#SICK y e0 :0.3))
+       (inválido-nn e0 y)))
+(B (name patient/enfermo-nn)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TYPE x e0 :0.3) (R#SICK y e0 :0.3))
+       (enfermo-nn e0 y)))
+(B (name disabled/minusválido-nn)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TYPE x e0 :0.3) (R#SICK y e0 :0.3))
+       (minusválido-nn e0 y)))
+(B (name patient/paciente)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TYPE x e0 :0.3) (R#SICK y e0 :0.3))
+       (paciente-nn e0 y)))
+
+(B (name epidemic/epidemia)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE y e0 :0.45))
+       (epidemia-nn e0 y)))
+(B (name epidemic/epidémico)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE e0 e0 :0.45))
+       (epidémico-adj e0 y)))
+(B (name pandemic/pandemia)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE y e0 :0.45))
+       (pandemia-nn e0 y)))
+(B (name pandemic/pandémico)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE e0 e0 :0.45))
+       (pandémico-adj e0 y)))
+(B (name virus/virus)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TYPE y e0 :0.45))
+       (virus-nn e0 y)))
+
+
+;; Disease: Treatment
+
+(B (name treatment/tratamiento)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TREATMENT x e0 :0.45))
+       (tratamiento-nn e0 x)))
+(B (name therapy/terapia)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TREATMENT x e0 :0.45))
+       (terapia-nn e0 x)))
+(B (name diagnosis/diagnóstico)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TREATMENT x e0 :0.45))
+       (diagnóstico-nn e0 x)))
+(B (name diagnostic/diagnóstica)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%TREATMENT x e0 :0.45))
+       (diagnóstica-nn e0 x)))
+
+(B (name doctor/doctor)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT y e0 :0.3)
+          (R#CURE-AGENT y e0 :0.3))
+       (doctor-nn e0 y)))
+(B (name doctor/médico)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT y e0 :0.3)
+          (R#CURE-AGENT y e0 :0.3))
+       (médico-nn e0 y)))
+(B (name physician/facultativo)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT y e0 :0.3)
+          (R#CURE-AGENT y e0 :0.3))
+       (facultativo-nn e0 y)))
+(B (name medicine/medicina)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT y e0 :0.3)
+          (R#CURE-AGENT y e0 :0.3))
+       (medicina-nn e0 y)))
+(B (name remedy/remedio)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT y e0 :0.3)
+          (R#CURE-AGENT y e0 :0.3))
+       (remedio-nn e0 y)))
+(B (name dressing/vendaje)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT y e0 :0.3)
+          (R#CURE-AGENT y e0 :0.3))
+       (vendaje-nn e0 y)))
+(B (name bandage/venda)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT y e0 :0.3)
+          (R#CURE-AGENT y e0 :0.3))
+       (venda-nn e0 y)))
+(B (name band-aid/tirita)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT y e0 :0.3)
+          (R#CURE-AGENT y e0 :0.3))
+       (tirita-nn e0 y)))
+
+(B (name treat/tratar)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT e0 e0 :0.3)
+          (R#CURE-AGENT y e0 :0.3))
+       (tratar-vb e0 y x u2)))
+(B (name prescribe/prescribir)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT e0 e0 :0.3)
+          (R#CURE-AGENT y e0 :0.3))
+       (prescribir-vb e0 y u1 u2)))
+(B (name diagnose/diagnosticar)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT e0 e0 :0.3)
+          (R#CURE-AGENT y e0 :0.3))
+       (diagnosticar-vb e0 y x u2)))
+(B (name alleviate/aliviar)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT e0 e0 :0.3)
+          (R#CURE-AGENT y e0 :0.3))
+       (aliviar-vb e0 y x u2)))
+(B (name dissect/disecar)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT e0 e0 :0.3)
+          (R#CURE-AGENT y e0 :0.3))
+       (disecar-vb e0 y u1 u2)))
+(B (name remedy/remediar)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%TREATMENT e0 e0 :0.3)
+          (R#CURE-AGENT y e0 :0.3))
+       (remediar-vb e0 y u1 u2)))
+
+
+;; Disease: Cure
+
+(B (name cure/cura)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%CURE x e0 :0.45))
+       (cura-nn e0 x)))
+(B (name panacea/panacea)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%CURE x e0 :0.45))
+       (panacea-nn e0 x)))
+
+(B (name cure/curar)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%CURE e0 e0 :0.3)
+          (R#CURE-AGENT y e0 :0.3))
+       (^ (curar-vb e0 y x u2) (TARGET x))))
+(B (name heal/sanar)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%CURE e0 e0 :0.3)
+          (R#CURE-AGENT y e0 :0.3))
+       (sanar-vb e0 y x u2)))
+
+(B (name unrecoverable/irrecuperable)
+   (=> (^ (S#DISEASE e0 :0.2) (SS#DISEASE%CURE y e0 :0.2) (R#SICK y e1 :0.1))
+       (irrecupable-adj e0 y)))
+(B (name incurable/incurable)
+   (=> (^ (S#DISEASE e0 :0.2) (SS#DISEASE%CURE y e0 :0.2) (R#SICK y e1 :0.1))
+       (incurable-adj e0 y)))
+(B (name irremediable/irremediable)
+   (=> (^ (S#DISEASE e0 :0.2) (SS#DISEASE%CURE y e0 :0.2) (R#SICK y e1 :0.1))
+       (irremediable-adj e0 y)))
+
+
+(B (name recover/recuperar)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%CURE e0 e0 :0.3) (R#SICK y x :0.3))
+       (recuperar-vb e0 y u1 u2)))
+(B (name recover/recobrar)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%CURE e0 e0 :0.3) (R#SICK y x :0.3))
+       (recobrar-vb e0 y u1 u2)))
+(B (name get-well/reponerse)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%CURE e0 e0 :0.3) (R#SICK y x :0.3))
+       (reponerse-vb e0 y u1 u2)))
+(B (name recuperate/restablecerse)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%CURE e0 e0 :0.3) (R#SICK y x :0.3))
+       (restablecerse-vb e0 y u1 u2)))
+(B (name convalesce/convalecer)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%CURE e0 e0 :0.3) (R#SICK y x :0.3))
+       (convalecer-vb e0 y u1 u2)))
+
+(B (name recovery/recuperación)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%CURE x e0 :0.45))
+       (recuperación-nn e0 x)))
+(B (name convalescence/convalecencia)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%CURE x e0 :0.45))
+       (convalecencia-nn e0 x)))
+
+;; Of - Cure
+(B (name of-cure)
+   (=> (S#DISEASE e0 :0.9)
+       (^ (SS#DISEASE%CURE x e0) (de-in e1 x y))))
+
+
+;; Disease: Symptoms
+
+(B (name symptom/síntoma)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%SYMPTOMS y e0 :0.45))
+       (síntoma-nn e0 y)))
+(B (name symptomatic/sintomático)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%SYMPTOMS e0 x :0.45))
+       (sintomático-adj e0 y)))
+
+(B (name bleeding/sangrante)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%SYMPTOMS y e0 :0.45))
+       (sangrante-adj e0 y)))
+(B (name sensitive/sensible)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%SYMPTOMS y e0 :0.45))
+       (sensible-adj e0 y)))
+(B (name wound/herida)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%SYMPTOMS y e0 :0.45))
+       (herida-nn e0 y)))
+(B (name pain/dolor)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%SYMPTOMS y e0 :0.45))
+       (dolor-nn e0 y)))
+(B (name scar/cicatriz)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%SYMPTOMS y e0 :0.45))
+       (cicatriz-nn e0 y)))
+(B (name fever/fiebre)
+   (=> (^ (S#DISEASE e0 :0.45) (SS#DISEASE%SYMPTOMS y e0 :0.45))
+       (fiebre-nn e0 y)))
+
+(B (name hurt/doler)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%SYMPTOMS e0 e0 :0.3)
+          (R#SICK y e0 :0.3))
+       (doler-vb e0 y u1 u2)))
+(B (name bleed/sangrar)
+   (=> (^ (S#DISEASE e0 :0.3) (SS#DISEASE%SYMPTOMS e0 e0 :0.3)
+          (R#SICK y e0 :0.3))
+       (sangrar-vb e0 y u1 u2)))
+
+;; Of - Symptom
+(B (name of-symptom)
+   (=> (S#DISEASE e0 :0.9)
+       (^ (SS#DISEASE%SYMPTOMS x e0) (de-in e1 x y))))
+
+
+
+;; Downward Movement / Hácia Abajo
+;;   Movement from a higher place or level to a lower place or level.
+;;   (Including axioms that were in LOW_POINT%MOVEMENT_DOWNWARD.)
+;;
+;;   En dirección a lo que está más bajo respecto de lo que está más alto.
+;;   [In the direction of what is lower with respect to what is higher.]
+;;
+;;   Note: In Spanish the term "direction" is used over "movement" in
+;;   English.
+
+(B (name slide/deslizar)
+   (=> (^ (S#DOWNWARD_MOVEMENT e0 :0.3) (R#MOVE-D-PATIENT x e0 :0.3))
+       (deslizar-vb e0 x y z)))
+(B (name fall-out/caer)
+   (=> (^ (S#DOWNWARD_MOVEMENT e0 :0.3) (R#MOVE-D-PATIENT x e0 :0.3))
+       (caer-vb e0 x y z)))
+(B (name slide/deslizarse)
+   (=> (^ (S#DOWNWARD_MOVEMENT e0 :0.3) (R#MOVE-D-PATIENT x e0 :0.3))
+       (deslizarse-vb e0 x y z)))
+(B (name fall/caerse)
+   (=> (^ (S#DOWNWARD_MOVEMENT e0 :0.3) (R#MOVE-D-PATIENT x e0 :0.3))
+       (caerse-vb e0 x y z)))
+(B (name flip/voltear)
+   (=> (^ (S#DOWNWARD_MOVEMENT e0 :0.3) (R#MOVE-D-PATIENT x e0 :0.3))
+       (voltear-vb e0 x y z)))
+(B (name sink/hundir)
+   (=> (^ (S#DOWNWARD_MOVEMENT e0 :0.3) (R#MOVE-D-PATIENT x e0 :0.3))
+       (hundir-vb e0 x y z)))
+(B (name sink/hundirse)
+   (=> (^ (S#DOWNWARD_MOVEMENT e0 :0.3) (R#MOVE-D-PATIENT x e0 :0.3))
+       (hundirse-vb e0 x y z)))
+(B (name submerge/sumergir)
+   (=> (^ (S#DOWNWARD_MOVEMENT e0 :0.3) (R#MOVE-D-PATIENT x e0 :0.3))
+       (sumergir-vb e0 x y z)))
+(B (name plunge/sumergirse)
+   (=> (^ (S#DOWNWARD_MOVEMENT e0 :0.3) (R#MOVE-D-PATIENT x e0 :0.3))
+       (sumergirse-vb e0 x y z)))
+(B (name decrease/disminución)
+   (=> (^ (S#DOWNWARD_MOVEMENT e0 :0.45) (R#MOVE-DOWN x e0 :0.45))
+       (^ (TS#TAXATION w) (disminución-nn e0 x))))
+(B (name decrease/disminuir)
+   (=> (^ (S#DOWNWARD_MOVEMENT e0 :0.33) (R#MOVE-DOWN e0 e0 :0.33)
+          (R#MOVER x e0 :0.33))
+       (^ (TS#TAXATION w) (disminuir-vb e0 x y u))))
+(B (name drop/soltar)
+   (=> (^ (S#DOWNWARD_MOVEMENT e0 :0.33) (R#MOVE-DOWN e0 e0 :0.33)
+          (R#MOVER x e0 :0.33))
+       (soltar-vb e0 x y u)))
+(B (name plummet/plomada)
+   (=> (^ (S#DOWNWARD_MOVEMENT e0 :0.33) (R#MOVE-DOWN e0 e0 :0.33)
+          (R#MOVER x e0 :0.23))
+       (plomada-vb e0 x y u)))
+
+(B (name fall/caída)
+   (=> (S#DOWNWARD_MOVEMENT e0 :0.9)
+       (caída-nn e0 x1)))
+
+
+
+;; Emotion Experiencer / Experimentador Emocional
+;;   A conscious mental reaction (as anger or fear) subjectively experienced
+;;   as strong feeling usually directed toward a specific object and typically
+;;   accompanied by physiological and behavioral changes in the body.
+;;
+;;   Que experimenta o hace experiencias perteneciente o relativo a la emoción.
+;;   [One who experiments or conducts experiments pertaining or relative to an
+;;   emotion.]
+
+(B (name emotion/emoción)
+   (=> (S#EMOTION_EXPERIENCER e0 :0.9)
+       (emoción-nn e0 x)))
+
+(B (name feeling/sentimiento)
+   (=> (S#EMOTION_EXPERIENCER e0 :0.9)
+       (sentimiento-nn e0 x)))
+
+(B (name anger/cólera)
+   (=> (S#EMOTION_EXPERIENCER e0 :0.9)
+       (anger-nn e0 x)))
+
+(B (name fear/miedo)
+   (=> (S#EMOTION_EXPERIENCER e0 :0.9)
+       (miedo-nn e0 x)))
+
+
+
+;; Energy / Energía
+;;   A capacity to perform work (such as causing motion).
+;;
+;;   Capacidad de los cuerpos para producir un trabajo.
+;;   [The capacity of bodies to produce work.]
+
+(B (name energy/energía-nn)
+   (=> (^ (S#ENERGY e0 :0.45) (SS#ENERGY%TYPE x e0 :0.45))
+       (energía-nn e0 x)))
+(B (name energy/energia-nn)
+   (=> (^ (S#ENERGY e0 :0.45) (SS#ENERGY%TYPE x e0 :0.45))
+       (energia-nn e0 x)))
+
+(B (name electricity/electricidad)
+   (=> (^ (S#ENERGY e0 :0.45) (SS#ENERGY%TYPE x e0 :0.45))
+       (electricidad-nn e0 x)))
+(B (name fuel/combustible)
+   (=> (^ (S#ENERGY e0 :0.45) (SS#ENERGY%TYPE x e0 :0.45))
+       (combustible-nn e0 x)))
+(B (name fuel/carburante)
+   (=> (^ (S#ENERGY e0 :0.45) (SS#ENERGY%TYPE x e0 :0.45))
+       (carburante-nn e0 x)))
+(B (name battery/batería)
+   (=> (^ (S#ENERGY e0 :0.45) (SS#ENERGY%TYPE x e0 :0.45))
+       (batería-nn e0 x)))
+
+(B (name energize/energizar)
+   (=> (^ (S#ENERGY e0 :0.23) (SS#ENERGY%RESULT e0 e0 :0.23)
+          (R#RESULT-AGENT x e0 :0.23) (R#RESULT-PATIENT x e0 :0.23))
+       (energizar-vb e0 x y z)))
+
+
+
+;; Enslavement / Esclavitud
+;;   To make a slave of; reduce to slavery; control, dominate.
+;;
+;;   Sujeción excesiva por la cual se ve sometida una persona a otra, o a
+;;   un trabajo u obligación.
+;;   [Excessive subjection by which a person is subjugated to another, or
+;;   to work or an obligation.]
+
+(B (name slave/esclavo)
+   (=> (^ (S#ENSLAVEMENT e0 :0.3) (SS#ENSLAVEMENT%SERVANT e0 e0 :0.3)
+          (R#ENSLAVEMENT-PATIENT x e0 :0.3))
+       (esclavo-nn e0 x)))
+(B (name slave/esclava)
+   (=> (^ (S#ENSLAVEMENT e0 :0.3) (SS#ENSLAVEMENT%SERVANT e0 e0 :0.3)
+          (R#ENSLAVEMENT-PATIENT x e0 :0.3))
+       (esclava-nn e0 x)))
+
+(B (name slavery/esclavitud)
+   (=> (^ (S#ENSLAVEMENT e0 :0.45) (SS#ENSLAVEMENT%OPPRESSION x e0 :0.45))
+       (esclavitud-nn e0 x)))
+(B (name enslaved/esclavizado)
+   (=> (^ (S#ENSLAVEMENT e0 :0.45) (SS#ENSLAVEMENT%OPPRESSION x e0 :0.45))
+       (esclavizado-nn e0 x)))
+(B (name enslave/esclavizar)
+   (=> (^ (S#ENSLAVEMENT e0 :0.2) (SS#ENSLAVEMENT%OPPRESSION e0 e0 :0.2)
+          (R#ENSLAVEMENT-PATIENT y e0 :0.2) (R#ENSLAVEMENT-AGENT x e0 :0.2))
+       (esclavizar-nn e0 x y u)))
+
+(B (name oppressive/opresivo)
+ (=> (^ (S#ENSLAVEMENT e0 :0.45) (SS#ENSLAVEMENT%OPPRESSION x e0 :0.45))
+     (opresivo-adj e0 x)))
+
+(B (name chief/jefe)
+   (=> (^ (S#ENSLAVEMENT e0 :0.3) (SS#ENSLAVEMENT%MASTER e0 e0 :0.3)
+          (R#ENSLAVEMENT-AGENT x e0 :0.3))
+       (jefe-nn e0 x)))
+(B (name slave-driver/negrero)
+   (=> (^ (S#ENSLAVEMENT e0 :0.3) (SS#ENSLAVEMENT%MASTER e0 e0 :0.3)
+          (R#ENSLAVEMENT-AGENT x e0 :0.3))
+       (negrero-nn e0 x)))
+(B (name foreman-of-slaves/capataz-de-esclavos)
+   (=> (^ (S#ENSLAVEMENT e0 :0.3) (SS#ENSLAVEMENT%MASTER e0 e0 :0.3)
+          (R#ENSLAVEMENT-AGENT x e0 :0.3))
+       (^ (capataz-nn e0 x) (de-in e1 x y) (esclavo-nn e2 y))))
+
+(B (name reign/reinar)
+   (=> (^ (S#ENSLAVEMENT e0 :0.33) (SS#ENSLAVEMENT%MASTER e0 e0 :0.33)
+          (R#ENSLAVEMENT-AGENT x e0 :0.33))
+       (reinar-vb e0 x y u)))
+
+
+
+;; Fabric / Tela
+;;   Woven or knitted material; the basic structure of something. (Including
+;;   axioms from MATERIAL.)
+;;
+;;   Obra hecha de muchos hilos, que, entrecruzados alternativa y
+;;   regularmente en toda su longitud, forman como una lámina.
+;;   [A work made up of many threads that are inter-crossed alternatively and
+;;   regularly in its entire length, and form a type of sheet.]
+
+
+(B (name fabric/tela-nn)
+  (=> (S#FABRIC x :0.9)
+      (tela-nn e0 x)))
+
+(B (name weave/tejido-nn)
+  (=> (S#FABRIC x :0.9)
+      (tejido-nn e0 x)))
+
+(B (name thread/hilo-nn)
+  (=> (S#FABRIC x :0.9)
+      (hilo-nn e0 x)))
+
+
+
+;; Factory / Empresa
+;;   A building or group of buildings where products are made.
+;;
+;;   Unidad de organización dedicada a actividades industriales, mercantiles
+;;   o de prestación de servicios con fines lucrativos.
+;;   [An organizational unit dedicated to industrial activities, mercantile
+;;   or those of loan services with profitable goals.]
+
+(B (name factory/fábrica-nn)
+  (=> (S#FACTORY x :0.9)
+      (fábrica-nn e0 x)))
+
+(B (name industrial/industrial-adj)
+  (=> (S#FACTORY x :0.9)
+      (industrial-adj e0 x)))
+
+
+
+;; Family / Familia
+;;   A group of people who are related to each other.
+;;
+;;   Conjunto de ascendientes, descendientes, colaterales y afines de un
+;;   linaje.
+;;   [A group of ascendants, descendants, distant, and proximate to a
+;;   lineage.]
+
+(B (name family/familia-nn)
+  (=> (S#FAMILY x :0.9)
+      (familia-nn e0 x)))
+
+(B (name household/menaje-nn)
+  (=> (S#FAMILY x :0.9)
+      (menaje-nn e0 x)))
+
+(B (name clan/clan-nn)
+  (=> (S#FAMILY x :0.9)
+      (clan-nn e0 x)))
+
+(B (name dynasty/dinastía-nn)
+  (=> (S#FAMILY x :0.9)
+      (dinastía-nn e0 x)))
+
+(B (name lineage/linaje-nn)
+  (=> (S#FAMILY x :0.9)
+      (linaje-nn e0 x)))
+
+(B (name ancestor/antepasado-nn)
+  (=> (S#FAMILY x :0.9)
+      (antepasado-nn e0 x)))
+
+(B (name ascendant/ascendiente-nn)
+  (=> (S#FAMILY x :0.9)
+      (ascendiente-nn e0 x)))
+
+(B (name descendant/descendiente-nn)
+  (=> (S#FAMILY x :0.9)
+      (descendiente-nn e0 x)))
+
+(B (name relative/relativo-nn)
+  (=> (S#FAMILY x :0.9)
+      (relativo-nn e0 x)))
+
+(B (name brother/hermano-nn)
+  (=> (S#FAMILY x :0.9)
+      (hermano-nn e0 x)))
+
+(B (name sister/hermana-nn)
+  (=> (S#FAMILY x :0.9)
+      (hermana-nn e0 x)))
+
+(B (name mother/madre-nn)
+  (=> (S#FAMILY x :0.9)
+      (madre-nn e0 x)))
+
+(B (name father/padre-nn)
+  (=> (S#FAMILY x :0.9)
+      (padre-nn e0 x)))
+
+
+
+;; Fire / Fuego
+;;   The light and heat and especially the flame produced by burning.
+;;
+;;   Calor y luz producidos por la combustión.
+;;   [Heat and light that are produced by combustion.]
+
+(B (name fire/fuego-nn)
+  (=> (S#FIRE x :0.9)
+      (fuego-nn e0 x)))
+
+(B (name flame/llama-nn)
+  (=> (S#FIRE x :0.9)
+      (llama-nn e0 x)))
+
+(B (name blaze/llamarada-nn)
+  (=> (S#FIRE x :0.9)
+      (llamarada-nn e0 x)))
+
+(B (name smoke/humo-nn)
+  (=> (S#FIRE x :0.9)
+      (humo-nn e0 x)))
+
+(B (name combustion/combustión-nn)
+  (=> (S#FIRE x :0.9)
+      (combustión-nn e0 x)))
+
+(B (name burn/quemar-vb)
+  (=> (S#FIRE x :0.9)
+      (quemar-vb e0 x y u)))
+
+
+
+;; Food / Comida
+;;   Any nourishing substance that is eaten, drunk, or otherwise taken into
+;;   the body to sustain life, provide energy, promote growth, etc.
+;;
+;;   Conjunto de cosas que se comen o beben para subsistir.
+;;   [A group of items that are eaten or drunk for subsistence.]
+
+(B (name food/comida-nn)
+   (=> (^ (S#FOOD e0 :0.45) (SS#FOOD%TYPE x e0 :0.45))
+       (comida-nn e0 x)))
+
+(B (name bread/pan-nn)
+   (=> (^ (S#FOOD e0 :0.45) (SS#FOOD%TYPE x e0 :0.45))
+       (pan-nn e0 x)))
+
+(B (name tortilla/tortilla-nn)
+   (=> (^ (S#FOOD e0 :0.45) (SS#FOOD%TYPE x e0 :0.45))
+       (tortilla-nn e0 x)))
+
+(B (name meat/carne-nn)
+   (=> (^ (S#FOOD e0 :0.45) (SS#FOOD%TYPE x e0 :0.45))
+       (carne-nn e0 x)))
+
+(B (name carrot/zanahoria-nn)
+   (=> (^ (S#FOOD e0 :0.45) (SS#FOOD%TYPE x e0 :0.45))
+       (zanahoria-nn e0 x)))
+
+(B (name corn/maíz-nn)
+   (=> (^ (S#FOOD e0 :0.45) (SS#FOOD%TYPE x e0 :0.45))
+       (maíz-nn e0 x)))
+
+(B (name potato/patata-nn)
+   (=> (^ (S#FOOD e0 :0.45) (SS#FOOD%TYPE x e0 :0.45))
+       (patata-nn e0 x)))
+
+(B (name taste/sabor-nn)
+   (=> (^ (S#FOOD e0 :0.45) (SS#FOOD%CONSUMPTION x e0 :0.45))
+       (sabor-nn e0 x)))
+
+(B (name taste-of/sabor-de)
+   (=> (^ (S#FOOD e0 :0.3) (SS#FOOD%CONSUMPTION x e0 :0.3)
+          (R#TASTE-OBJECT y e0 :0.3))
+       (^ (sabor-nn e0 x) (de-in e1 x y))))
+
+(B (name try-out/probar-vb)
+   (=> (^ (S#FOOD e0 :0.23) (SS#FOOD%CONSUMPTION e0 e0 :0.23)
+          (R#TASTE-AGENT x e0 :0.23) (R#TASTE-OBJECT y e0 :0.23))
+       (probar-vb e0 x y u)))
+
+(B (name consume/consumir-vb)
+   (=> (^ (S#FOOD e0 :0.23) (SS#FOOD%CONSUMPTION e0 e0 :0.23)
+          (R#TASTE-AGENT x e0 :0.23) (R#TASTE-OBJECT y e0 :0.23))
+       (consumir-vb e0 x y u)))
+
+(B (name eat/comer-vb)
+   (=> (^ (S#FOOD e0 :0.23) (SS#FOOD%CONSUMPTION e0 e0 :0.23)
+          (R#TASTE-AGENT x e0 :0.23) (R#TASTE-OBJECT y e0 :0.23))
+       (comer-vb e0 x y u)))
+
+(B (name swallow/tragarse-vb)
+   (=> (^ (S#FOOD e0 :0.23) (SS#FOOD%CONSUMPTION e0 e0 :0.23)
+          (R#TASTE-AGENT x e0 :0.23) (R#TASTE-OBJECT y e0 :0.23))
+       (tragarse-vb e0 x y u)))
+
+(B (name chew/masticar-vb)
+   (=> (^ (S#FOOD e0 :0.23) (SS#FOOD%CONSUMPTION e0 e0 :0.23)
+          (R#TASTE-AGENT x e0 :0.23) (R#TASTE-OBJECT y e0 :0.23))
+       (masticar-vb e0 x y u)))
+
+
+
+;; Forceful Extraction / Extracción Forzosa
+;;   To get, pull, or draw out, usually with special effort, skill, or force.
+;;
+;;   Acto de sacar algo que está hundido, inmerso o sepultado en algo
+;;   forzosamente.
+;;   [Action of forcibly removing something that is sunk, immersed, or buried
+;;   in something.]
+
+(B (name squeeze/exprimir)
+   (=> (^ (S#FORCEFUL_EXTRACTION e0 :0.3)
+          (SS#FORCEFUL_EXTRACTION%TYPE e0 e0 :0.3)
+          (R#EXTRACTION-AGENT x e0 :0.3))
+       (exprimir-vb e0 x y u)))
+(B (name eradicate/erradicar)
+   (=> (^ (S#FORCEFUL_EXTRACTION e0 :0.3)
+          (SS#FORCEFUL_EXTRACTION%TYPE e0 e0 :0.3)
+          (R#EXTRACTION-AGENT x e0 :0.3))
+       (erradicar-vb e0 x y u)))
+(B (name drain/escurrir)
+   (=> (^ (S#FORCEFUL_EXTRACTION e0 :0.3)
+          (SS#FORCEFUL_EXTRACTION%TYPE e0 e0 :0.3)
+          (R#EXTRACTION-AGENT x e0 :0.3))
+       (escurrir-vb e0 x y u)))
+(B (name extract/extraer)
+   (=> (^ (S#FORCEFUL_EXTRACTION e0 :0.3)
+          (SS#FORCEFUL_EXTRACTION%TYPE e0 e0 :0.3)
+          (R#EXTRACTION-AGENT x e0 :0.3))
+       (extraer-vb e0 x y u)))
+(B (name snatch/arrebatar)
+   (=> (^ (S#FORCEFUL_EXTRACTION e0 :0.3)
+          (SS#FORCEFUL_EXTRACTION%TYPE e0 e0 :0.3)
+          (R#EXTRACTION-AGENT x e0 :0.3))
+       (arrebatar-vb e0 x y u)))
+(B (name milk/ordeñar)
+   (=> (^ (S#FORCEFUL_EXTRACTION e0 :0.3)
+          (SS#FORCEFUL_EXTRACTION%TYPE e0 e0 :0.3)
+          (R#EXTRACTION-AGENT x e0 :0.3))
+       (ordeñar-vb e0 x y u)))
+(B (name skin/pelar)
+   (=> (^ (S#FORCEFUL_EXTRACTION e0 :0.3)
+          (SS#FORCEFUL_EXTRACTION%TYPE e0 e0 :0.3)
+          (R#EXTRACTION-AGENT x e0 :0.3))
+       (pelar-vb e0 x y u)))
+(B (name fleece/esquilar)
+   (=> (^ (S#FORCEFUL_EXTRACTION e0 :0.3)
+          (SS#FORCEFUL_EXTRACTION%TYPE e0 e0 :0.3)
+          (R#EXTRACTION-AGENT x e0 :0.3))
+       (esquilar-vb e0 x y u)))
+(B (name wring/estrujan)
+   (=> (^ (S#FORCEFUL_EXTRACTION e0 :0.3)
+          (SS#FORCEFUL_EXTRACTION%TYPE e0 e0 :0.3)
+          (R#EXTRACTION-AGENT x e0 :0.3))
+       (estrujan-vb e0 x y u)))
+
+(B (name tug/halar)
+   (=> (^ (S#FORCEFUL_EXTRACTION e0 :0.3)
+          (SS#FORCEFUL_EXTRACTION%TYPE e0 e0 :0.3)
+          (R#EXTRACTION-AGENT x e0 :0.3))
+       (halar-vb e0 x y u)))
+(B (name extraction/extracción)
+   (=> (^ (S#FORCEFUL_EXTRACTION e0 :0.45)
+          (SS#FORCEFUL_EXTRACTION%TYPE x e0 :0.45))
+       (extracción-nn e0 x)))
+(B (name extortion/extorsión)
+   (=> (^ (S#FORCEFUL_EXTRACTION e0 :0.45)
+          (SS#FORCEFUL_EXTRACTION%TYPE x e0 :0.45))
+       (extorsión-nn e0 x)))
+(B (name eradication/erradicación)
+   (=> (^ (S#FORCEFUL_EXTRACTION e0 :0.45)
+          (SS#FORCEFUL_EXTRACTION%TYPE x e0 :0.45))
+       (erradicación-nn e0 x)))
+
+
+
+;; Forward Movement / Hácia Delante
+;;   Movement to or toward what is in front.
+;;
+;;   Mover o llevar hacia adelante.
+;;   [To move or take forward, toward something.]
+;;
+;;   Note: Hacia delante/adelante is not to be confused with 'adelantar' (a
+;;   different sense of 'advance').
+
+(B (name advance/avanzar-vb)
+   (=> (S#FORWARD_MOVEMENT e0 :0.9)
+       (avanzar-vb e0 x y z)))
+
+(B (name advance/avance-nn)
+   (=> (S#FORWARD_MOVEMENT e0 :0.9)
+       (avance-nn e0 x0)))
+
+
+
+;; Game / Juego
+;;   A competitive activity involving skill, chance, or endurance on the part
+;;   of two or more persons who play according to a set of rules, usually for
+;;   their own amusement or for that of spectators.
+;;
+;;   Actividad recreativa sometida a reglas en el que unos ganan y otros
+;;   pierden.
+;;   [Recreational activity with rules in which some win and other lose.]
+
+(B (name game/juego)
+   (=> (^ (S#GAME e0 :0.45) (SS#GAME%TYPE x e0 :0.45))
+       (juego-nn e0 x)))
+(B (name chess/ajedrez)
+   (=> (^ (S#GAME e0 :0.45) (SS#GAME%TYPE x e0 :0.45))
+       (ajedrez-nn e0 x)))
+(B (name chess-game/ajedrez-de-juego)
+   (=> (^ (S#GAME e0 :0.45) (SS#GAME%TYPE x e0 :0.45))
+       (^ (ajedrez-nn e0 x) (de-in e1 y x) (juego-nn e2 y))))
+(B (name chess-match/ajedrez-de-partida)
+   (=> (^ (S#GAME e0 :0.45) (SS#GAME%TYPE x e0 :0.45))
+       (^ (ajedrez-nn e0 x) (de-in e1 y x) (partida-nn e2 y))))
+(B (name poker/póker)
+   (=> (^ (S#GAME e0 :0.45) (SS#GAME%TYPE x e0 :0.45))
+       (póker-nn e0 x)))
+(B (name poker-game/póker-de-juego)
+   (=> (^ (S#GAME e0 :0.45) (SS#GAME%TYPE x e0 :0.45))
+       (^ (póker-nn e0 x) (de-in e1 y x) (juego-nn e2 y))))
+(B (name puzzle/rompecabezas)
+   (=> (^ (S#GAME e0 :0.45) (SS#GAME%TYPE x e0 :0.45))
+       (rompecabezas-nn e0 x)))
+
+(B (name chip/chip)
+   (=> (^ (S#GAME e0 :0.45) (SS#GAME%COMPONENTS x e0 :0.45))
+       (chip-nn e0 x)))
+(B (name pawn/peón)
+   (=> (^ (S#GAME e0 :0.45) (SS#GAME%COMPONENTS x e0 :0.45))
+       (peón-nn e0 x)))
+(B (name puzzle-piece/pieza-del-rompecabezas)
+   (=> (^ (S#GAME e0 :0.45) (SS#GAME%COMPONENTS x e0 :0.45))
+       (^ (pieza-nn e0 x) (del-in e1 x y) (rompecabezas-nn e2 y))))
+
+(B (name move/jugada)
+   (=> (^ (S#GAME e0 :0.45) (SS#GAME%ACTIONS e0 e0 :0.45))
+       (jugada-nn e0 x)))
+(B (name play/jugar)
+   (=> (^ (S#GAME e0 :0.3) (SS#GAME%ACTIONS e0 e0 :0.3)
+          (R#PLAYER x e0 :0.3))
+       (jugar-vb e0 x y u)))
+(B (name reward/premiar)
+   (=> (^ (S#GAME e0 :0.45) (SS#GAME%ACTIONS e0 e0 :0.45))
+       (premiar-vb e0 x y u)))
+
+(B (name win/ganar)
+   (=> (^ (S#GAME e0 :0.3) (SS#GAME%OUTCOMES e0 e0 :0.3) (R#PLAYER x e0 :0.3))
+       (ganar-vb e0 x y u)))
+(B (name lose/perder)
+   (=> (^ (S#GAME e0 :0.3) (SS#GAME%OUTCOMES e0 e0 :0.3) (R#PLAYER x e0 :0.3))
+       (perder-vb e0 x y u)))
+
+(B (name winner/ganador)
+   (=> (^ (SS#GAME%OUTCOMES e0 a :0.45) (R#PLAYER x e0 :0.45))
+       (^ (S#GAME a) (SS#GAME%TYPE b a) (ganador-nn e0 x))))
+(B (name loser/perdedor)
+   (=> (^ (SS#GAME%OUTCOMES e0 a :0.45) (R#PLAYER x e0 :0.45))
+       (^ (S#GAME a) (SS#GAME%TYPE b a) (perdedor-nn e0 x))))
+
+
+
+;; Hazardous Geographic Feature / Característica Geográfica Peligrosa
+;;   Potentially dangerous topographical aspects of the Earth. (Including some
+;;   of the previous GEOGRAPHIC_FEATURE axioms.)
+;;
+;;   Una caracteristica perteneciente o relativo a la geografía que tiene
+;;   riesgo o puede ocasionar daño.
+;;   [A characteristic pertaining or relative to geography that includes risk
+;;   or can cause harm.]
+
+(B (name mountain/montaña-nn)
+   (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
+          (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#MOUNTAIN x e0 :0.3))
+       (montaña-nn e0 x)))
+
+(B (name himalayas/himalayas-nn)
+   (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
+          (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#MOUNTAIN x e0 :0.3))
+       (himalayas-nn e0 x)))
+
+(B (name alps/aps-nn)
+   (=> (^ (S#GEOGRAPHIC_FEATURE e0 :0.3)
+          (SS#GEOGRAPHIC_FEATURE%TYPE x e0 :0.3) (R#MOUNTAIN x e0 :0.3))
+       (alps-nn e0 x)))
+
+
+
+;; High Location / Ubicación Elevada
+;;   Situated or passing above the normal level, surface, base of measurement,
+;;   or elevation; located far above the ground or another surface. (Including
+;;   previous HIGH_POINT axioms.)
+;;
+;;   Lugar elevado en que está ubicado algo.
+;;   [An elevated site in which something is located.]
+
+(B (name high/alto)
+   (=> (^ (S#HIGH_LOCATION e0 :0.47) (R#FIXED-POINT x e0 :0.47))
+       (alto-adj e0 x)))
+(B (name pico)
+   (=> (^ (S#HIGH_LOCATION e0 :0.45)
+          (SS#HIGH_LOCATION%TOP_OF_ECONOMIC_SCALE x e0 :0.45))
+       (pico-nn e0 x)))
+(B (name cima)
+   (=> (^ (S#HIGH_LOCATION e0 :0.45)
+          (SS#HIGH_LOCATION%TOP_OF_ECONOMIC_SCALE x e0 :0.45))
+       (cima-nn e0 x)))
+(B (name cumbre)
+   (=> (^ (S#HIGH_LOCATION e0 :0.45)
+          (SS#HIGH_LOCATION%TOP_OF_ECONOMIC_SCALE x e0 :0.45))
+       (cumbre-nn e0 x)))
+(B (name cresta)
+   (=> (^ (S#HIGH_LOCATION e0 :0.45)
+          (SS#HIGH_LOCATION%TOP_OF_ECONOMIC_SCALE x e0 :0.45))
+       (cresta-nn e0 x)))
+(B (name parte-superior)
+   (=> (^ (S#HIGH_LOCATION e0 :0.45)
+          (SS#HIGH_LOCATION%TOP_OF_ECONOMIC_SCALE x e0 :0.45))
+       (^ (parte-nn e0 x) (superior-adj e1 x))))
+(B (name superior/superior)
+   (=> (^ (S#HIGH_LOCATION e0 :0.3)
+          (SS#HIGH_LOCATION%CONTRAST_OF_POSITIONS e0 e0 :0.3)
+          (R#ABOVE x e0 :0.3))
+       (superior-adj e0 x)))
+(B (name above/arriba)
+   (=> (^ (S#HIGH_LOCATION e0 :0.3)
+          (SS#HIGH_LOCATION%CONTRAST_OF_POSITIONS e0 e0 :0.3)
+          (R#ABOVE x e0 :0.3))
+       (arriba-in e0 x)))
+
+
+
+;; Human Body / Cuerpo Humano
+;;   The entire physical structure of a human being.
+;;
+;;   Conjunto de los sistemas orgánicos que constituyen un ser vivo.
+;;   [A combination of organic systems that constitute a human being.]
+
+(B (name backbone/columna-vertebral)
+   (=> (^ (S#HUMAN_BODY e0 :0.45) (SS#HUMAN_BODY%COMPONENT x e0 :0.45))
+       (^ (columna-nn e0 x) (vertebral-adj e1 x))))
+
+(B (name face/rostro)
+   (=> (^ (S#HUMAN_BODY e0 :0.45) (SS#HUMAN_BODY%COMPONENT x e0 :0.45))
+       (rostro-nn e0 x)))
+
+(B (name hand/mano)
+   (=> (^ (S#HUMAN_BODY e0 :0.45) (SS#HUMAN_BODY%COMPONENT x e0 :0.45))
+       (mano-nn e0 x)))
+
+(B (name skin/pielear)
+   (=> (^ (S#HUMAN_BODY e0 :0.45) (SS#HUMAN_BODY%COMPONENT x e0 :0.45))
+       (pielear-nn e0 x)))
+
+(B (name heart/corazón)
+   (=> (^ (S#HUMAN_BODY e0 :0.45) (SS#HUMAN_BODY%COMPONENT x e0 :0.45))
+       (corazón-nn e0 x)))
+
+(B (name brain/cerebro)
+   (=> (^ (S#HUMAN_BODY e0 :0.45) (SS#HUMAN_BODY%COMPONENT x e0 :0.45))
+       (cerebro-nn e0 x)))
+
+
+
+;; Journey / Viaje
+;;   An act or instance of traveling from one place to another.
+;;
+;;   Traslado que se hace de una parte a otra por aire, mar o tierra.
+;;   [A transfer that is done from place to another by air, sea, or land.]
+
+(B (name journey/viaje-nn)
+   (=> (S#JOURNEY e0 :0.9)
+       (viaje-nn e0 x)))
+
+(B (name voyage/passaje-nn)
+   (=> (S#JOURNEY e0 :0.9)
+       (passaje-nn e0 x)))
+
+(B (name trip/paseo-nn)
+   (=> (S#JOURNEY e0 :0.9)
+       (paseo-nn e0 x)))
+
+(B (name travel/viajes-nn)
+   (=> (S#JOURNEY e0 :0.9)
+       (viajes-nn e0 x)))
+
+(B (name travel/viajar-vb)
+   (=> (S#JOURNEY e0 :0.9)
+       (viajar-vb e0 x y u)))
+
+
+
+;; Leader / Líder
+;;   A person who manages or controls other people, esp. because of his or
+;;   her ability or position.
+;;
+;;   Persona a la que un grupo sigue, reconociéndola como jefe u orientadora.
+;;   [A person whom a group follows, recognizing that person as their boss or
+;;   advisor.]
+
+(B (name leader/líder)
+   (=> (S#LEADER e0 :0.9)
+       (líder-nn e0 x)))
+
+(B (name boss/jefe)
+   (=> (S#LEADER e0 :0.9)
+       (jefe-nn e0 x)))
+
+
+
+;; Life Stage / Etapa de la Vida
+;;   One of the series of stages through which a living thing passes from the
+;;   beginning of its life until its death.
+;;
+;;   Una etapa siempre implica la sucesión de eventos o fenómenos (tanto
+;;   humanos como naturales) que han sido ordenados y clasificados lógicamente
+;;   en la comprensión del ser humano.
+;;   [A stage always implies the succession of events or phenomena (as much
+;;   human as natural) that have been  logically ordered and classified in
+;;   the compression of the human being.]
+
+(B (name infancy/infancia)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (infancia-nn e0 x)))
+(B (name childhood/niñez)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (niñez-nn e0 x)))
+(B (name youth/juventud)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (juventud-nn e0 x)))
+(B (name adolescence/adolescencia)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (adolescencia-nn e0 x)))
+(B (name puberty/pubertad)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (pubertad-nn e0 x)))
+
+(B (name baby/bebé)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (bebé-nn e0 x)))
+(B (name child/niño)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (niño-nn e0 x)))
+(B (name teenager/adolescente)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (adolescente-nn e0 x)))
+
+(B (name young/joven)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (young-adj e0 x)))
+(B (name adolescent/adolescente)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (adolescent-adj e0 x)))
+(B (name prepubescent/impúber)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (impúber-adj e0 x)))
+(B (name pubescent/pubescente)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (pubescente-adj e0 x)))
+(B (name elderly/anciano)
+   (=> (S#LIFE_STAGE e0 :0.9)
+       (anciano-adj e0 x)))
+
+
+
+;; Light / Luz
+;;   The natural agent that stimulates sight and makes things visible; source
+;;   of illumination.
+;;
+;;   Agente físico que hace visibles los objetos.
+;;   [A physical agent that makes objects visible.]
+
+(B (name light/luz)
+   (=> (^ (S#LIGHT e0 :0.45)
+          (SS#LIGHT%LIGHT_END_OF_RANGE_OF_DARKNESS_LIGHT x e0 :0.45))
+       (luz-nn e0 x)))
+(B (name illumination/iluminación)
+   (=> (^ (S#LIGHT e0 :0.45)
+          (SS#LIGHT%LIGHT_END_OF_RANGE_OF_DARKNESS_LIGHT x e0 :0.45))
+       (iluminación-nn e0 x)))
+(B (name sol)
+   (=> (^ (S#LIGHT e0 :0.45)
+          (SS#LIGHT%LIGHT_END_OF_RANGE_OF_DARKNESS_LIGHT x e0 :0.45))
+       (sol-nn e0 x)))
+(B (name brillantez)
+   (=> (^ (S#LIGHT e0 :0.45)
+          (SS#LIGHT%LIGHT_END_OF_RANGE_OF_DARKNESS_LIGHT x e0 :0.45))
+       (brillantez-nn e0 x)))
+(B (name resplandor)
+   (=> (^ (S#LIGHT e0 :0.45)
+          (SS#LIGHT%LIGHT_END_OF_RANGE_OF_DARKNESS_LIGHT x e0 :0.45))
+       (resplandor-nn e0 x)))
+(B (name destello)
+   (=> (^ (S#LIGHT e0 :0.45)
+          (SS#LIGHT%LIGHT_END_OF_RANGE_OF_DARKNESS_LIGHT x e0 :0.45))
+       (destello-nn e0 x)))
+(B (name deslumbramiento)
+   (=> (^ (S#LIGHT e0 :0.45)
+          (SS#LIGHT%LIGHT_END_OF_RANGE_OF_DARKNESS_LIGHT x e0 :0.45))
+       (deslumbramiento-nn e0 x)))
+(B (name luster)
+   (=> (^ (S#LIGHT e0 :0.45)
+          (SS#LIGHT%LIGHT_END_OF_RANGE_OF_DARKNESS_LIGHT x e0 :0.45))
+       (lustre-nn e0 x)))
+
+(B (name light-a)
+   (=> (^ (S#LIGHT e0 :0.3)
+          (SS#LIGHT%LIGHT_END_OF_RANGE_OF_DARKNESS_LIGHT x e0 :0.3)
+          (R#LIGHT x e0 :0.3))
+       (^ (de-in e1 e2 x) (luz-nn e0 x))))
+(B (name soleado)
+   (=> (^ (S#LIGHT e0 :0.3)
+          (SS#LIGHT%LIGHT_END_OF_RANGE_OF_DARKNESS_LIGHT x e0 :0.3)
+          (R#LIGHT x e0 :0.3))
+       (soleado-adj e0 x)))
+(B (name brillante)
+   (=> (^ (S#LIGHT e0 :0.3)
+          (SS#LIGHT%LIGHT_END_OF_RANGE_OF_DARKNESS_LIGHT x e0 :0.3)
+          (R#LIGHT x e0 :0.3))
+       (brillante-adj e0 x)))
+
+(B (name clarify)
+   (=> (^ (S#LIGHT e0 :0.3) (SS#LIGHT%MOVEMENT e0 e0 :0.3)
+          (R#LIGHT x e0 :0.3))
+       (aclarar-vb e0 x y z)))
+
+
+;; Light: Illumination
+
+(B (name brillar)
+   (=> (^ (S#LIGHT e0 :0.3) (SS#LIGHT%ILLUMINATION e0 e0 :0.3)
+          (R#LIGHT x e0 :0.3))
+       (brillar-vb e0 x y z)))
+(B (name iluminar)
+   (=> (^ (S#LIGHT e0 :0.3) (SS#LIGHT%MOVEMENT e0 e0 :0.3)
+          (R#LIGHT x e0 :0.3))
+       (iluminar-vb e0 x y z)))
+(B (name reflejar)
+   (=> (^ (S#LIGHT e0 :0.3) (SS#LIGHT%MOVEMENT e0 e0 :0.3)
+          (R#LIGHT x e0 :0.3))
+       (reflejar-vb e0 x y z)))
+(B (name reflexion)
+   (=> (^ (S#LIGHT e0 :0.3) (SS#LIGHT%ILLUMINATION e0 e0 :0.3)
+          (R#LIGHT x e0 :0.3))
+       (reflexión-nn e0 x)))
+
+
+
+;; Low Location / Ubicación Baja
+;;   Situated or passing below the normal level, surface, or base of
+;;   measurement; marking a nadir or bottom; not located far above the ground
+;;   or another surface. (Including the LOW_POINT axioms and some
+;;   VERTICAL_SCALE ones.)
+;;
+;;   Lugar inferior, o bajo, en que esta ubicado algo.
+;;   [A low site in which something is located.]
+
+(B (name low/bajo)
+   (=> (^ (S#LOW_LOCATION e0 :0.47) (R#FIXED-POINT x e0 :0.47))
+       (bajo-adj e0 x)))
+
+(B (name below/abajo)
+   (=> (^ (S#LOW_LOCATION e0 :0.45) (R#ABAJO x e0 :0.45))
+       (abajo-in e0 x y)))
+
+(B (name bajo-la-linea)
+   (=> (^ (S#LOW_LOCATION e0 :0.45)
+          (SS#LOW_LOCATION%BOTTOM_OF_ECONOMIC_SCALE x e0 :0.45))
+       (^ (bajo-nn e0 x) (la-in e1 x y) (linea-nn e2 y))))
+
+(B (name fondo)
+   (=> (^ (S#LOW_LOCATION e0 :0.45)
+          (SS#LOW_LOCATION%BOTTOM_OF_ECONOMIC_SCALE x e0 :0.45))
+       (fondo-nn e0 x)))
+
+
+
+;; Machine / Máquina
+;;   An apparatus consisting of interrelated parts with separate functions,
+;;   used in the performance of some kind of work.
+;;
+;;   Conjunto de mecanismos dispuestos para producir, aprovechar o regular
+;;   una energía motriz.
+;;   [A group of mechanisms designed to produce, take advantage of or regulate
+;;   a motorized energy.]
+
+(B (name machine/máquina-nn)
+   (=> (^ (S#MACHINE e0 :0.45) (SS#MACHINE%TYPE x e0 :0.45))
+       (máquina-nn e0 x)))
+
+(B (name mechanism/mecanismo-nn)
+   (=> (^ (S#MACHINE e0 :0.45) (SS#MACHINE%TYPE x e0 :0.45))
+       (mecanismo-nn e0 x)))
+
+(B (name bulldozer/excavadora-nn)
+   (=> (^ (S#MACHINE e0 :0.45) (SS#MACHINE%TYPE x e0 :0.45))
+       (excavadora-nn e0 x)))
+
+(B (name steamroller/apisonadora-nn)
+   (=> (^ (S#MACHINE e0 :0.45) (SS#MACHINE%TYPE x e0 :0.45))
+       (apisonadora-nn e0 x)))
+
+(B (name car/coche-nn)
+   (=> (^ (S#MACHINE e0 :0.45) (SS#MACHINE%TYPE x e0 :0.45))
+       (coche-nn e0 x)))
+
+(B (name truck/camión-nn)
+   (=> (^ (S#MACHINE e0 :0.45) (SS#MACHINE%TYPE x e0 :0.45))
+       (camión-nn e0 x)))
+
+(B (name crane/grúa-nn)
+   (=> (^ (S#MACHINE e0 :0.45) (SS#MACHINE%TYPE x e0 :0.45))
+       (grúa-nn e0 x)))
+
+(B (name motor)
+   (=> (^ (S#MACHINE e0 :0.45) (SS#MACHINE%PARTS x e0 :0.45))
+       (motor-nn e0 x)))
+(B (name engine)
+   (=> (^ (S#MACHINE e0 :0.45) (SS#MACHINE%PARTS x e0 :0.45))
+       (rueda-nn e0 x)))
+(B (name brake)
+   (=> (^ (S#MACHINE e0 :0.45) (SS#MACHINE%PARTS x e0 :0.45))
+       (freno-nn e0 x)))
+
+(B (name girar)
+   (=> (^ (S#MACHINE e0 :0.23) (SS#MACHINE%FUNCTION e0 e0 :0.23)
+          (R#FUNCTION-AGENT x e0 :0.23) (R#FUNCTION-PATIENT y e0 :0.23))
+       (^ (motor-nn e1 x) (girar-vb e0 x y u))))
+
+
+
+;; Maze / Laberinto
+;;   A confusing network of intercommunicating paths or passages; labyrinth;
+;;   any complex system or arrangement that causes bewilderment, confusion, or
+;;   perplexity.
+;;
+;;   Lugar formado artificiosamente por calles y encrucijadas, para confundir
+;;   a quien se adentre en él, de modo que no pueda acertar con la salida;
+;;   cosa confusa.
+;;   [A place artificially formed by streets and intersections, to confuse
+;;   someone who enters in it, by way that they cannot ascertain the exit; a
+;;   confusing thing.]
+
+(B (name telaraña)
+   (=> (^ (S#MAZE e0 :0.45) (SS#MAZE%CONFUSING_PATHWAYS x e0 :0.45))
+       (telaraña-nn e0 x)))
+(B (name nudo)
+   (=> (^ (S#MAZE e0 :0.45) (SS#MAZE%CONFUSING_PATHWAYS x e0 :0.45))
+       (nudo-nn e0 x)))
+(B (name laberinto)
+   (=> (^ (S#MAZE e0 :0.45) (SS#MAZE%CONFUSING_PATHWAYS x e0 :0.45))
+       (laberinto-nn e0 x)))
+
+(B (name navegar-por)
+   (=> (^ (S#MAZE e0 :0.3) (SS#MAZE%NAVIGATION e0 e0 :0.3)
+          (R#NAVIGATION-AGENT x e0 :0.3))
+       (^ (navegar-vb e0 x y u) (por-in e1 e0 z))))
+
+(B (name enredo)
+   (=> (^ (S#MAZE e0 :0.45) (SS#MAZE%OBSTRUCTION x e0 :0.45))
+       (enredo-nn e0 x)))
+(B (name captura)
+   (=> (^ (S#MAZE e0 :0.45) (SS#MAZE%OBSTRUCTION x e0 :0.45))
+       (captura-nn e0 x)))
+
+(B (name coger)
+   (=> (^ (S#MAZE e0 :0.23) (SS#MAZE%OBSTRUCTION e0 e0 :0.23)
+          (R#OBSTRUCTION-AGENT x e0 :0.23) (R#OBSTRUCTION-PATIENT y e0 :0.23))
+       (coger-vb e0 x y u)))
+(B (name enredo)
+   (=> (^ (S#MAZE e0 :0.3) (SS#MAZE%OBSTRUCTION e0 e0 :0.3)
+          (R#OBSTRUCTION-PATIENT y e0 :0.3))
+       (enredo-vb e0 u y u1)))
+
+
+
+;; Medicine / Medicina
+;;   Any substance or substances used in treating disease or illness;
+;;   medicament; remedy.
+;;
+;;   Sustancia que, administrada interior o exteriormente a un organismo
+;;   animal, sirve para prevenir, curar o aliviar la enfermedad y corregir
+;;   o reparar las secuelas de esta.
+;;   [A substance that, administered internally or externally to a living
+;;   animal, serves to prevent, cure, or alleviate sickness and correct or
+;;   repair the scars of this one.]
+
+(B (name inject/inyectar-vb)
+   (=> (^ (S#MEDICINE e0 :0.45) (SS#MEDICINE%ADMINISTRATION x e0 :0.45)
+          (R#ADMINISTRATION-AGENT x e0 :0.33))
+       (inyectar-vb e0 x y z)))
+
+(B (name injection/inyección-nn)
+   (=> (^ (S#MEDICINE e0 :0.45) (SS#MEDICINE%ADMINISTRATION x e0 :0.45))
+       (inyección-nn e0 x)))
+
+
+
+;; Monster / Monstruo
+;;   A legendary animal combining features of animal and human form or having
+;;   the forms of various animals in combination; any creature so ugly or
+;;   monstrous as to frighten people; any animal or human grotesquely
+;;   deviating from the normal shape, behavior, or character.
+;;
+;;   Ser contrario a la naturaleza por diferir de forma notable de los de su
+;;   especie; Persona, animal o cosa desmesurada en tamaño o fealdad, y que
+;;   por ello causa extrañeza y rechazo; persona muy cruel o malvada.
+;;   [A being contrary to nature due to how it differs in a significant
+;;   fashion from others of its species; person, animal or things
+;;   disproportionate in size or ugliness, and because of that causes
+;;   bewilderment and rejection; a very cruel or evil person.]
+
+(B (name monster/monstruo-nn)
+   (=> (^ (S#MONSTER e0 :0.45) (SS#MONSTER%TYPE x e0 :0.45))
+       (monstruo-nn e0 x)))
+
+(B (name frankenstein)
+   (=> (^ (S#MONSTER e0 :0.45) (SS#MONSTER%TYPE x e0 :0.45))
+       (frankenstein-nn e0 x)))
+(B (name chupacabra)
+   (=> (^ (S#MONSTER e0 :0.45) (SS#MONSTER%TYPE x e0 :0.45))
+       (chupacabra-nn e0 x)))
+(B (name bestia)
+   (=> (^ (S#MONSTER e0 :0.45) (SS#MONSTER%TYPE x e0 :0.45))
+       (bestia-nn e0 x)))
+(B (name criatura)
+   (=> (^ (S#MONSTER e0 :0.45) (SS#MONSTER%TYPE x e0 :0.45))
+       (criatura-nn e0 x)))
+(B (name demonio)
+   (=> (^ (S#MONSTER e0 :0.45) (SS#MONSTER%TYPE x e0 :0.45))
+       (demonio-nn e0 x)))
+(B (name gigante)
+   (=> (^ (S#MONSTER e0 :0.45) (SS#MONSTER%TYPE x e0 :0.45))
+       (gigante-nn e0 x)))
+(B (name gnomo)
+   (=> (^ (S#MONSTER e0 :0.45) (SS#MONSTER%TYPE x e0 :0.45))
+       (gnomo-nn e0 x)))
+(B (name hombre-lobo)
+   (=> (^ (S#MONSTER e0 :0.45) (SS#MONSTER%TYPE x e0 :0.45))
+       (hombre-lobo-nn e0 x)))
+(B (name zombi)
+   (=> (^ (S#MONSTER e0 :0.45) (SS#MONSTER%TYPE x e0 :0.45))
+       (zombi-nn e0 x)))
+(B (name vampiro)
+   (=> (^ (S#MONSTER e0 :0.45) (SS#MONSTER%TYPE x e0 :0.45))
+       (vampiro-nn e0 x)))
+(B (name dragón)
+   (=> (^ (S#MONSTER e0 :0.45) (SS#MONSTER%TYPE x e0 :0.45))
+       (dragón-nn e0 x)))
+(B (name godzilla)
+   (=> (^ (S#MONSTER e0 :0.45) (SS#MONSTER%TYPE x e0 :0.45))
+       (godzilla-nn e0 x)))
+
+(B (name asustar)
+   (=> (^ (S#MONSTER e0 :0.45) (SS#MONSTER%ACTION e0 e0 :0.45))
+       (asustar-vb e0 x y u)))
+(B (name chupar)
+   (=> (^ (S#MONSTER e0 :0.45) (SS#MONSTER%ACTION e0 e0 :0.45))
+       (chupar-vb e0 x y u)))
+
+(B (name terrify/atterorizar)
+   (=> (^ (S#MONSTER e0 :0.45) (SS#MONSTER%ACTION e0 e0 :0.45))
+       (aterrorizar-vb e0 x y u)))
+(B (name devour/devorar)
+   (=> (^ (S#MONSTER e0 :0.45) (SS#MONSTER%ACTION e0 e0 :0.45))
+       (devorar-vb e0 x y u)))
+(B (name threaten/amenaza)
+   (=> (^ (S#MONSTER e0 :0.45) (SS#MONSTER%ACTION e0 e0 :0.45))
+       (amenaza-vb e0 x y u)))
+
+
+
+;; Moral Duty / Obligación Moral
+;;   Something that you must do because it is morally right.
+;;
+;;   Imposición o exigencia moral que debe regir la voluntad libre.
+;;   [Moral imposition or demand that should govern free will.]
+
+(B (name deber)
+   (=> (^ (S#MORAL_DUTY e0 :0.45) (SS#MORAL_DUTY%REMUNERATION x e0 :0.45))
+       (deber-nn e0 x)))
+
+(B (name debido)
+   (=> (^ (S#MORAL_DUTY e0 :0.45) (SS#MORAL_DUTY%REMUNERATION x e0 :0.45))
+       (debido-nn e0 x)))
+
+
+(B (name obligation/obligación)
+   (=> (^ (S#MORAL_DUTY e0 :0.45) (SS#MORAL_DUTY%REMUNERATION x e0 :0.45))
+       (obligación-nn e0 x)))
+
+
+
+;; Movement / Movimiento
+;;   To pass from one place or position to another.
+;;
+;;   Estado de los cuerpos mientras cambian de lugar o de posición.
+;;   [The state of being of bodies while they move from place or position.]
+
+(B (name movement/movimento)
+   (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT x e0 :0.45))
+       (movimiento-nn e0 x)))
+(B (name mobility/movilidad)
+   (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT x e0 :0.45))
+       (movilidad-nn e0 x)))
+(B (name paso)
+   (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT x e0 :0.45))
+       (paso-nn e0 x)))
+(B (name circulo)
+   (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT x e0 :0.45))
+       (círculo-nn e0 x)))
+
+(B (name mover)
+   (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT e0 e0 :0.45))
+       (mover-vb e0 x y z)))
+(B (name pasar)
+   (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT e0 e0 :0.45))
+       (pasar-vb e0 x y z)))
+(B (name circular)
+   (=> (^ (S#MOVEMENT e0 :0.45) (SS#MOVEMENT%MOVEMENT e0 e0 :0.45))
+       (circular-vb e0 x y z)))
+
+
+
+;; Natural Physical Force / Fenómeno Catastrófico
+;;   Uncontrollable force of nature that poses potential harm; [nature: all
+;;   the animals and plants in the world and all the features, forces, and
+;;   processes that exist or happen independently of people, such as the
+;;   weather, the sea, mountains, reproduction, and growth]; circumstances
+;;   beyond one's control; a any event or force of nature that has
+;;   catastrophic consequences, such as avalanche, earthquake, flood, forest
+;;   fire, hurricane, lightning, tornado, tsunami, and volcanic eruption.
+;;
+;;   La escala de violencia de los fenómenos naturales y lo que ha sufrido
+;;   una sociedad debido a ellos. Tales fenómenos tienen como consecuencia
+;;   grandes destrozos, pérdidas humanas y económicas y pueden arrasar
+;;   ecosistemas de manera irreversible.
+;;   [The scale of violence of the natural phenomena and what society has
+;;   suffered due to them...these kinds of phenomena (natural catastophes)
+;;   have as a consequence significant destruction, loss of human life and
+;;   economics, and can irreversibly devastate ecosystems.]
+
+(B (name avalanche/avalancha)
+   (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
+          (SS#NATURAL_PHYSICAL_FORCE%TYPE x e0 :0.45))
+       (avalancha-nn e0 x)))
+(B (name rain/lluvia)
+   (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
+          (SS#NATURAL_PHYSICAL_FORCE%TYPE x e0 :0.45))
+       (lluvia-nn e0 x)))
+(B (name aguacero/downpour)
+   (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
+          (SS#NATURAL_PHYSICAL_FORCE%TYPE x e0 :0.45))
+       (aguacero-nn e0 x)))
+(B (name rain-shower/chaparrón)
+   (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
+          (SS#NATURAL_PHYSICAL_FORCE%TYPE x e0 :0.45))
+       (chaparrón-nn e0 x)))
+
+(B (name tsunami/tsunami)
+   (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
+          (SS#NATURAL_PHYSICAL_FORCE%TYPE x e0 :0.45))
+       (tsunami-nn e0 x)))
+(B (name deluge/diluvio)
+   (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
+          (SS#NATURAL_PHYSICAL_FORCE%TYPE x e0 :0.45))
+       (diluvio-nn e0 x)))
+(B (name flood/inundación)
+   (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
+          (SS#NATURAL_PHYSICAL_FORCE%TYPE x e0 :0.45))
+       (inundación-nn e0 x)))
+(B (name tornado/tornado)
+   (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
+          (SS#NATURAL_PHYSICAL_FORCE%TYPE x e0 :0.45))
+       (tornado-nn e0 x)))
+(B (name hurricane/huracán)
+   (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
+          (SS#NATURAL_PHYSICAL_FORCE%TYPE x e0 :0.45))
+       (huracán-nn e0 x)))
+(B (name cyclone/ciclón)
+   (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
+          (SS#NATURAL_PHYSICAL_FORCE%TYPE x e0 :0.45))
+       (ciclón-nn e0 x)))
+(B (name natural-disaster/naturales-desastres)
+   (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
+          (SS#NATURAL_PHYSICAL_FORCE%TYPE x e0 :0.45))
+       (^ (naturales-adj e0 x) (desastres-nn e1 x))))
+(B (name typhoon/tifón)
+   (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
+          (SS#NATURAL_PHYSICAL_FORCE%TYPE x e0 :0.45))
+       (tifón-nn e0 x)))
+(B (name earthquake/terremoto)
+   (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
+          (SS#NATURAL_PHYSICAL_FORCE%TYPE x e0 :0.45))
+       (terremoto-nn e0 x)))
+(B (name eruption/erupción)
+   (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
+          (SS#NATURAL_PHYSICAL_FORCE%TYPE x e0 :0.45))
+       (erupción-nn e0 x)))
+(B (name hailstorm/granizada)
+   (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
+          (SS#NATURAL_PHYSICAL_FORCE%TYPE x e0 :0.45))
+       (granizada-nn e0 x)))
+(B (name storm/tormenta)
+   (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
+          (SS#NATURAL_PHYSICAL_FORCE%TYPE x e0 :0.45))
+       (tormenta-nn e0 x)))
+(B (name drought/sequía)
+   (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
+          (SS#NATURAL_PHYSICAL_FORCE%TYPE x e0 :0.45))
+       (sequía-nn e0 x)))
+(B (name vortex/vorágine)
+   (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
+          (SS#NATURAL_PHYSICAL_FORCE%TYPE x e0 :0.45))
+       (vorágine-nn e0 x)))
+(B (name heat-wave/ola-de-calor)
+   (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
+          (SS#NATURAL_PHYSICAL_FORCE%TYPE x e0 :0.45))
+       (^ (ola-nn e0 x) (de-in e1 x y) (calor-nn e2 x))))
+(B (name rock-slide/deslizamiento-de-rocas)
+   (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
+          (SS#NATURAL_PHYSICAL_FORCE%TYPE x e0 :0.45))
+       (^ (deslizamiento-nn e0 x) (de-in e1 x y) (rocas-nn e2 x))))
+(B (name mud-slide/avalancha-de-lodo)
+   (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
+          (SS#NATURAL_PHYSICAL_FORCE%TYPE x e0 :0.45))
+       (^ (avalancha-nn e0 x) (de-in e1 x y) (lodo-nn e2 x))))
+
+(B (name devastating/devastadores)
+   (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
+          (SS#NATURAL_PHYSICAL_FORCE%TYPE e0 e0 :0.45))
+       (devastadores-adj e0 x)))
+(B (name devastating/devastadores-nn)
+   (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.45)
+          (SS#NATURAL_PHYSICAL_FORCE%TYPE x e0 :0.45))
+       (devastadores-nn e0 x)))
+
+(B (name destroy/destruir)
+   (=> (^ (S#NATURAL_PHYSICAL_FORCE e0 :0.23)
+          (SS#NATURAL_PHYSICAL_FORCE%RESULT e0 e0 :0.23)
+          (R#DESTROY-AGENT x e0 :0.23) (R#DESTROY-PATIENT y e0 :0.23))
+       (destruir-vb e0 x y u)))
+
+
+
+;; Obesity / Obesidad
+;;   A condition characterized by the excessive accumulation and storage of
+;;   fat in the body; Excessive body fat. It is usually caused by sedentary
+;;   habits and a diet high in fat, alcohol, or total calories.
+;;
+;;   Exceso de peso por acumulación de grasa.
+;;   [Excess weight due to the accumulation of fat.]
+
+(B (name bloated/hinchado)
+   (=> (^ (S#OBESITY e0 :0.3) (SS#OBESITY%EXCESS_BODY_WEIGHT x e0 :0.3)
+          (R#OVERWEIGHT x e0 :0.3))
+       (hinchado-adj e0 x)))
+(B (name fatter/mas-gordo)
+   (=> (^ (S#OBESITY e0 :0.3) (SS#OBESITY%EXCESS_BODY_WEIGHT x e0 :0.3)
+          (R#OVERWEIGHT x e0 :0.3))
+       (^ (mas-rb e0 x) (gordo-adj e1 x))))
+(B (name girth/circunferencia)
+   (=> (^ (S#OBESITY e0 :0.45) (SS#OBESITY%EXCESS_BODY_WEIGHT x e0 :0.45))
+       (circunferencia-nn e0 x)))
+(B (name fat/gordura)
+   (=> (^ (S#OBESITY e0 :0.45) (SS#OBESITY%EXCESS_BODY_WEIGHT x e0 :0.45))
+       (gordura-nn e0 x)))
+
+(B (name gluttony/gula)
+   (=> (^ (S#OBESITY e0 :0.45) (SS#OBESITY%EXCESS_CONSUMPTION x e0 :0.45))
+       (gula-nn e0 x)))
+(B (name gluttony/glotonería)
+   (=> (^ (S#OBESITY e0 :0.45) (SS#OBESITY%EXCESS_CONSUMPTION x e0 :0.45))
+       (glotonería-nn e0 x)))
+(B (name gobble/engullir)
+   (=> (^ (S#OBESITY e0 :0.3) (SS#OBESITY%EXCESS_CONSUMPTION x e0 :0.3)
+          (R#OVERWEIGHT x e0 :0.3))
+       (engullir-vb e0 x y u)))
+(B (name ravenous/voraz)
+   (=> (^ (S#OBESITY e0 :0.3) (SS#OBESITY%EXCESS_CONSUMPTION x e0 :0.3)
+          (R#OVERWEIGHT x e0 :0.3))
+       (voraz-adj e0 x)))
+
+
+
+;; Parasite / Parásito
+;;   An animal or plant that lives in or on another animal or plant and gets
+;;   food or protection from it;  person or thing that takes something from
+;;   someone or something else and does not do anything to earn it or deserve
+;;   it.
+;;
+;;   Dicho de un ser vivo: Utilizar como alimento a otro ser vivo sin llegar
+;;   a matarlo; Organismo] vegetal o animal que vive a costa de otro
+;;   [organismo] de distinta especie, alimentándose de las sustancias que
+;;   este elabora y perjudicándole, aunque sin llegar a producirle la muerte;
+;;   aprovecharse de las ideas de otro.
+;;   [Said of a living being:  to use another living being as nourishment
+;;   without killing them; an organism, vegetable or animal that lives at the
+;;   cost of another [organism] of a different species, nourishing themselves
+;;   of the substances that it (the host) produces, and harms it, although
+;;   without causing its death; to take advantage of the ideas of another.]
+
+;; Parasite: Destructive Being
+
+(B (name parasite/parásito)
+   (=> (^ (S#PARASITE e0 :0.45) (SS#PARASITE%DESTRUCTIVE_BEING x e0 :0.45))
+       (parásito-nn e0 x)))
+(B (name leech/sanguijuela)
+   (=> (^ (S#PARASITE e0 :0.45) (SS#PARASITE%DESTRUCTIVE_BEING x e0 :0.45))
+       (sanguijuela-nn e0 x)))
+(B (name louse/piojo)
+   (=> (^ (S#PARASITE e0 :0.45) (SS#PARASITE%DESTRUCTIVE_BEING x e0 :0.45))
+       (piojo-nn e0 x)))
+(B (name mosquito/mosquito)
+   (=> (^ (S#PARASITE e0 :0.45) (SS#PARASITE%DESTRUCTIVE_BEING x e0 :0.45))
+       (mosquito-nn e0 x)))
+
+
+;; Parasite: Action
+
+(B (name drain-the-blood/drenar-la-sangre)
+   (=> (^ (S#PARASITE e0 :0.33) (SS#PARASITE%ACTION e0 e0 :0.33)
+          (R#PARASITE-AGENT x e0 :0.33))
+       (^ (drenar-vb e0 x y u) (sangre-nn e1 y))))
+(B (name suck-the-blood/chupar-la-sangre)
+   (=> (^ (S#PARASITE e0 :0.33) (SS#PARASITE%ACTION e0 e0 :0.33)
+          (R#PARASITE-AGENT x e0 :0.33))
+       (^ (chupar-vb e0 x y u) (sangre-nn e1 y))))
+
+
+
+;; Pathway / Senda
+;;   A path, course, route, or way; a route to or way of access to; way of
+;;   reaching or achieving something.
+;;
+;;   Camino más estrecho que la vereda; procedimiento o medio para hacer o
+;;   lograr algo.
+;;   [A more narrow path than the real one; a procedure or means to do or
+;;   achieve something.]
+
+;; Pathway: Type
+
+(B (name pathway/camino)
+   (=> (^ (S#PATHWAY e0 :0.45) (SS#PATHWAY%TYPE x e0 :0.45))
+       (camino-nn e0 x)))
+(B (name road/carratera)
+   (=> (^ (S#PATHWAY e0 :0.45) (SS#PATHWAY%TYPE x e0 :0.45))
+       (carratera-nn e0 x)))
+(B (name bridge/puente)
+   (=> (^ (S#PATHWAY e0 :0.45) (SS#PATHWAY%TYPE x e0 :0.45))
+       (puente-nn e0 x)))
+(B (name passage/pasaje)
+   (=> (^ (S#PATHWAY e0 :0.45) (SS#PATHWAY%TYPE x e0 :0.45))
+       (pasaje-nn e0 x)))
+(B (name route/ruta)
+   (=> (^ (S#PATHWAY e0 :0.45) (SS#PATHWAY%TYPE x e0 :0.45))
+       (ruta-nn e0 x)))
+(B (name street/calle)
+   (=> (^ (S#PATHWAY e0 :0.45) (SS#PATHWAY%TYPE x e0 :0.45))
+       (calle-nn e0 x)))
+(B (name avenue/avenida)
+   (=> (^ (S#PATHWAY e0 :0.45) (SS#PATHWAY%TYPE x e0 :0.45))
+       (avenida-nn e0 x)))
+(B (name trail/rastro)
+   (=> (^ (S#PATHWAY e0 :0.45) (SS#PATHWAY%TYPE x e0 :0.45))
+       (rastro-nn e0 x)))
+(B (name trail/sendero)
+   (=> (^ (S#PATHWAY e0 :0.45) (SS#PATHWAY%TYPE x e0 :0.45))
+       (sendero-nn e0 x)))
+(B (name corridor/corredor)
+   (=> (^ (S#PATHWAY e0 :0.45) (SS#PATHWAY%TYPE x e0 :0.45))
+       (corredor-nn e0 x)))
+(B (name walkway/pasarela)
+   (=> (^ (S#PATHWAY e0 :0.45) (SS#PATHWAY%TYPE x e0 :0.45))
+       (pasarela-nn e0 x)))
+
+
+;; Pathway: Open Path
+
+(B (name clear-path/camino-claro)
+   (=> (SS#PATHWAY%OPEN_PATH e0 e0 :0.9)
+       (^ (S#PATHWAY e1) (SS#PATHWAY%TYPE x e1) (claro-adj e0 x))))
+
+
+;; Pathway: Obstructed Path
+
+(B (name obstructed-path/obstruido-path)
+   (=> (SS#PATHWAY%OBSTRUCTED_PATH e0 e0 :0.90)
+       (^ (S#PATHWAY e1) (SS#PATHWAY%TYPE x e1) (obstruido-adj e0 x))))
+(B (name blocked-path/path-bloqueado)
+   (=> (SS#PATHWAY%OBSTRUCTED_PATH e0 e0 :0.90)
+       (^ (S#PATHWAY e1) (SS#PATHWAY%TYPE x e1) (bloqueado-adj e0 x))))
+
+(B (name barricade/barricada)
+   (=> (^ (S#PATHWAY e0 :0.45) (SS#PATHWAY%OBSTRUCTED_PATH x e0 :0.45))
+       (barricada-nn e0 x)))
+(B (name barrier/barrera)
+   (=> (^ (S#PATHWAY e0 :0.45) (SS#PATHWAY%OBSTRUCTED_PATH x e0 :0.45))
+       (barrera-nn e0 x)))
+(B (name impediment/impedimento)
+   (=> (^ (S#PATHWAY e0 :0.45) (SS#PATHWAY%OBSTRUCTED_PATH x e0 :0.45))
+       (impedimento-nn e0 x)))
+
+
+
+;; Physical Burden / Carga Fisica
+;;   That which is borne with difficulty.
+;;
+;;   Accion y efecto de carga; una cosa que hace peso sobre otra.
+;;   [The action of and effect of carrying a burden; something that weights
+;;   on something else.]
+
+;; Physical Burden: Weight
+
+(B (name burden/carga)
+   (=> (^ (S#PHYSICAL_BURDEN e0 :0.45) (SS#PHYSICAL_BURDEN%WEIGHT x e0 :0.45))
+       (carga-nn e0 x)))
+(B (name weight/peso)
+   (=> (^ (S#PHYSICAL_BURDEN e0 :0.45) (SS#PHYSICAL_BURDEN%WEIGHT x e0 :0.45))
+       (peso-nn e0 x)))
+(B (name load/carga)
+   (=> (^ (S#PHYSICAL_BURDEN e0 :0.45) (SS#PHYSICAL_BURDEN%WEIGHT x e0 :0.45))
+       (carga-nn e0 x)))
+(B (name load/cargo)
+   (=> (^ (S#PHYSICAL_BURDEN e0 :0.45) (SS#PHYSICAL_BURDEN%WEIGHT x e0 :0.45))
+       (cargo-nn e0 x)))
+;(B (name encumbrance/gravamen)
+;   (=> (^ (S#PHYSICAL_BURDEN e0 :0.45) (SS#PHYSICAL_BURDEN%WEIGHT x e0 :0.45))
+;       (gravamen-nn e0 x)))
+(B (name ballast/lastre)
+   (=> (^ (S#PHYSICAL_BURDEN e0 :0.45) (SS#PHYSICAL_BURDEN%WEIGHT x e0 :0.45))
+       (lastre-nn e0 x)))
+(B (name anchor/ancla)
+   (=> (^ (S#PHYSICAL_BURDEN e0 :0.45) (SS#PHYSICAL_BURDEN%WEIGHT x e0 :0.45))
+       (ancla-nn e0 x)))
+
+(B (name heavy/pesado)
+   (=> (^ (S#PHYSICAL_BURDEN e0 :0.45) (SS#PHYSICAL_BURDEN%WEIGHT e0 e0 :0.45))
+       (pesado-adj e0 x)))
+
+(B (name load/cargar)
+   (=> (^ (S#PHYSICAL_BURDEN e0 :0.2) (SS#PHYSICAL_BURDEN%WEIGHT e0 e0 :0.2)
+          (R#BURDEN-CAUSE x e0 :0.2) (R#BURDEN-VICTIM y e0 :0.2))
+       (cargar-vb e0 x y u)))
+(B (name haul/arrastrar)
+   (=> (^ (S#PHYSICAL_BURDEN e0 :0.2) (SS#PHYSICAL_BURDEN%WEIGHT e0 e0 :0.2)
+          (R#BURDEN-CAUSE x e0 :0.2) (R#BURDEN-VICTIM y e0 :0.2))
+       (arrastrar-vb e0 x y u)))
+(B (name load/cargarse)
+   (=> (^ (S#PHYSICAL_BURDEN e0 :0.2) (SS#PHYSICAL_BURDEN%WEIGHT e0 e0 :0.2)
+          (R#BURDEN-CAUSE x e0 :0.2) (R#BURDEN-VICTIM y e0 :0.2))
+       (cargarse-vb e0 x y u)))
+(B (name weigh/ponderar)
+   (=> (^ (S#PHYSICAL_BURDEN e0 :0.45) (SS#PHYSICAL_BURDEN%WEIGHT e0 e0 :0.45))
+       (ponderar-vb e0 x y u)))
+(B (name weigh/pesar)
+   (=> (^ (S#PHYSICAL_BURDEN e0 :0.45) (SS#PHYSICAL_BURDEN%WEIGHT e0 e0 :0.45))
+       (pesar-vb e0 x y u)))
+
+
+;; Physical Burden: Relief
+
+(B (name relief/alivio)
+   (=> (^ (S#PHYSICAL_BURDEN e0 :0.45) (SS#PHYSICAL_BURDEN%RELIEF x e0 :0.45))
+       (alivio-nn e0 x)))
+(B (name ease/facilidad)
+   (=> (^ (S#PHYSICAL_BURDEN e0 :0.45) (SS#PHYSICAL_BURDEN%RELIEF x e0 :0.45))
+       (facilidad-nn e0 x)))
+(B (name relief/socorro)
+   (=> (^ (S#PHYSICAL_BURDEN e0 :0.45) (SS#PHYSICAL_BURDEN%RELIEF x e0 :0.45))
+       (socorro-nn e0 x)))
+
+(B (name lighten/aligerar)
+   (=> (^ (S#PHYSICAL_BURDEN e0 :0.2) (SS#PHYSICAL_BURDEN%RELIEF x e0 :0.2)
+          (R#CAUSE-RELIEF x e0) (R#BURDEN-VICTIM y e0 :0.2))
+       (aligerar-vb e0 x y u)))
+(B (name relieve/aliviar)
+   (=> (^ (S#PHYSICAL_BURDEN e0 :0.2) (SS#PHYSICAL_BURDEN%RELIEF x e0 :0.2)
+          (R#CAUSE-RELIEF x e0) (R#BURDEN-VICTIM y e0 :0.2))
+       (aliviar-vb e0 x y u)))
+
+
+;; Physical Burden: Physical Distress
+
+(B (name untenable/insostenible)
+   (=> (^ (S#PHYSICAL_BURDEN e0 :0.45)
+          (SS#PHYSICAL_BURDEN%PHYSICAL_DISTRESS e0 e0 :0.45))
+       (insostenible-adj e0 y)))
+(B (name cumbersome/incómodo)
+   (=> (^ (S#PHYSICAL_BURDEN e0 :0.45)
+          (SS#PHYSICAL_BURDEN%PHYSICAL_DISTRESS e0 e0 :0.45))
+       (incómodo-adj e0 y)))
+
+(B (name pressure/presión)
+   (=> (^ (S#PHYSICAL_BURDEN e0 :0.45)
+          (SS#PHYSICAL_BURDEN%PHYSICAL_DISTRESS x e0 :0.45))
+       (presión-nn e0 x)))
+(B (name tension/tensión)
+   (=> (^ (S#PHYSICAL_BURDEN e0 :0.45)
+          (SS#PHYSICAL_BURDEN%PHYSICAL_DISTRESS x e0 :0.45))
+       (tensión-nn e0 x)))
+
+(B (name overwhelm/abrumar)
+   (=> (^ (S#PHYSICAL_BURDEN e0 :0.3)
+          (SS#PHYSICAL_BURDEN%PHYSICAL_DISTRESS e0 e0 :0.3)
+          (R#BURDEN-CAUSE x e0 :0.3))
+       (abrumar-vb e0 x y u)))
+(B (name suffer/sufrir)
+   (=> (^ (S#PHYSICAL_BURDEN e0 :0.3)
+          (SS#PHYSICAL_BURDEN%PHYSICAL_DISTRESS e0 e0 :0.3)
+          (R#BURDEN-PATIENT x e0 :0.3))
+       (sufrir-vb e0 x y u)))
+
+
+
+;; Physical Harm / Dano Físico
+;;   Physical injury or damage.
+;;
+;;   Causar dolor, daño o perjuicio.
+;;   [To cause pain, damage, or prejudice.]
+
+;; Physical Harm: Type
+
+(B (name hurt/lastimar)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.2) (SS#PHYSICAL_HARM%TYPE e0 e0 :0.2)
+          (R#HARM-VICTIM y e0 :0.2) (R#HARM-AGENT x e0 :0.2))
+       (lastimar-vb e0 x y u2)))
+(B (name hurt/lastimando)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.2) (SS#PHYSICAL_HARM%TYPE e0 e0 :0.2)
+          (R#HARM-VICTIM y e0 :0.2) (R#HARM-AGENT x e0 :0.2))
+       (lastimando-vb e0 x y u2)))
+(B (name would-hurt/lastimarían)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.2) (SS#PHYSICAL_HARM%TYPE e0 e0 :0.2)
+          (R#HARM-VICTIM y e0 :0.2) (R#HARM-AGENT x e0 :0.2))
+       (lastimarían-vb e0 x y u2)))
+(B (name beat/pegar)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.2) (SS#PHYSICAL_HARM%TYPE e0 e0 :0.2)
+          (R#HARM-VICTIM y e0 :0.2) (R#HARM-AGENT x e0 :0.2))
+       (pegar-vb e0 x y u2)))
+(B (name bruise/herir)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.2) (SS#PHYSICAL_HARM%TYPE e0 e0 :0.2)
+          (R#HARM-VICTIM y e0 :0.2) (R#HARM-AGENT x e0 :0.2))
+       (herir-vb e0 x y u2)))
+(B (name hit/golpear)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.2) (SS#PHYSICAL_HARM%TYPE e0 e0 :0.2)
+          (R#HARM-VICTIM y e0 :0.2) (R#HARM-AGENT x e0 :0.2))
+       (golpear-vb e0 x y u2)))
+(B (name harm/dañar)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.2) (SS#PHYSICAL_HARM%TYPE e0 e0 :0.2)
+          (R#HARM-VICTIM y e0 :0.2) (R#HARM-AGENT x e0 :0.2))
+       (dañar-vb e0 x y u2)))
+(B (name crush/aplastar)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.2) (SS#PHYSICAL_HARM%TYPE e0 e0 :0.2)
+          (R#HARM-VICTIM y e0 :0.2) (R#HARM-AGENT x e0 :0.2))
+       (aplastar-vb e0 x y u2)))
+(B (name harm/perjudicar)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.2) (SS#PHYSICAL_HARM%TYPE e0 e0 :0.2)
+          (R#HARM-VICTIM y e0 :0.2) (R#HARM-AGENT x e0 :0.2))
+       (perjudicar-vb e0 x y u2)))
+(B (name screw/atornillar)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.2) (SS#PHYSICAL_HARM%TYPE e0 e0 :0.2)
+          (R#HARM-VICTIM y e0 :0.2) (R#HARM-AGENT x e0 :0.2))
+       (atornillar-vb e0 x y u2)))
+(B (name torture/torturar)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.2) (SS#PHYSICAL_HARM%TYPE e0 e0 :0.2)
+          (R#HARM-VICTIM y e0 :0.2) (R#HARM-AGENT x e0 :0.2))
+       (torturar-vb e0 x y u2)))
+(B (name mutilate/mutilar)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.2) (SS#PHYSICAL_HARM%TYPE e0 e0 :0.2)
+          (R#HARM-VICTIM y e0 :0.2) (R#HARM-AGENT x e0 :0.2))
+       (mutilar-vb e0 x y u2)))
+(B (name traumatize/traumatizar)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.2) (SS#PHYSICAL_HARM%TYPE e0 e0 :0.2)
+          (R#HARM-VICTIM y e0 :0.2) (R#HARM-AGENT x e0 :0.2))
+       (traumatizar-vb e0 x y u2)))
+(B (name injure/lesionar)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.2) (SS#PHYSICAL_HARM%TYPE e0 e0 :0.2)
+          (R#HARM-VICTIM y e0 :0.2) (R#HARM-AGENT x e0 :0.2))
+       (lesionar-vb e0 x y u2)))
+(B (name limp/cojear)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.2) (SS#PHYSICAL_HARM%TYPE e0 e0 :0.2)
+          (R#HARM-VICTIM y e0 :0.2) (R#HARM-AGENT x e0 :0.2))
+       (cojear-vb e0 x y u2)))
+(B (name hurt/doler)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.2) (SS#PHYSICAL_HARM%TYPE e0 e0 :0.2)
+          (R#HARM-VICTIM y e0 :0.2) (R#HARM-AGENT x e0 :0.2))
+       (doler-vb e0 x y u2)))
+;; This axiomi is incorrect but is included because the tagger thinks this
+;; is the lemma for 'hurt'.
+(B (name hurt/dolar)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.2) (SS#PHYSICAL_HARM%TYPE e0 e0 :0.2)
+          (R#HARM-VICTIM y e0 :0.2) (R#HARM-AGENT x e0 :0.2))
+       (dolar-vb e0 x y u2)))
+(B (name flagellate/flagelar)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.2) (SS#PHYSICAL_HARM%TYPE e0 e0 :0.2)
+          (R#HARM-VICTIM y e0 :0.2) (R#HARM-AGENT x e0 :0.2))
+       (flagelar-vb e0 x y u2)))
+
+
+(B (name suffering/dolientes)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.3) (SS#PHYSICAL_HARM%TYPE e0 e0 :0.3)
+          (R#HARM-VICTIM x e0 :0.3))
+       (dolientes-adj e0 x)))
+(B (name suffering/doliente)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.3) (SS#PHYSICAL_HARM%TYPE e0 e0 :0.3)
+          (R#HARM-VICTIM x e0 :0.3))
+       (dolientes-adj e0 x)))
+
+(B (name lacerating/lacerante)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.45) (SS#PHYSICAL_HARM%TYPE x e0 :0.45))
+       (lacerante-nn e0 x)))
+
+(B (name damage/daño)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.45) (SS#PHYSICAL_HARM%TYPE x e0 :0.45))
+       (daño-nn e0 x)))
+(B (name agglomeration/aglomeración)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.45) (SS#PHYSICAL_HARM%TYPE x e0 :0.45))
+       (aglomeración-nn e0 x)))
+(B (name damage/perjuicio)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.45) (SS#PHYSICAL_HARM%TYPE x e0 :0.45))
+       (perjucio-nn e0 x)))
+(B (name torture/tortura)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.45) (SS#PHYSICAL_HARM%TYPE x e0 :0.45))
+       (tortura-nn e0 x)))
+(B (name trauma/trauma)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.45) (SS#PHYSICAL_HARM%TYPE x e0 :0.45))
+       (trauma-nn e0 x)))
+(B (name injury/lesión)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.45) (SS#PHYSICAL_HARM%TYPE x e0 :0.45))
+       (lesión-nn e0 x)))
+(B (name screw/tornillo)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.45) (SS#PHYSICAL_HARM%TYPE x e0 :0.45))
+       (tornillo-nn e0 x)))
+(B (name hit/golpe)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.45) (SS#PHYSICAL_HARM%TYPE x e0 :0.45))
+       (golpe-nn e0 x)))
+
+
+;; Physical Harm: Restraint
+
+(B (name hobble/cojear)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.23)
+          (SS#PHYSICAL_HARM%RESTRICTION e0 e0 :0.23) (R#HARM-AGENT x e0 :0.23)
+          (R#HARM-VICTIM y e0 :0.23))
+       (cojear-vb e0 x y u)))
+(B (name overwhelm/abrumar)
+   (=> (^ (S#PHYSICAL_HARM e0 :0.23)
+          (SS#PHYSICAL_HARM%RESTRICTION e0 e0 :0.23) (R#HARM-AGENT x e0 :0.23)
+          (R#HARM-VICTIM y e0 :0.23))
+       (abrumar-vb e0 x y u)))
+
+(B (name from-theft)
+   (=> (R#HARM-VICTIM y e0 :0.9)
+       (^ (S#PHYSICAL_HARM%PROTECTION e0) (from-in e1 e0 y))))
+
+
+
+;; Physical Location / Sitio Físico
+;;   A place of settlement, activity, or residence; a place or situation
+;;   occupied.
+;;
+;;   Espacio que es ocupado o puede serlo por algo.
+;;   [A space that is occupied or can be by something.]
+
+;; Physical Location: Defined Region
+
+(B (name boundary/límite)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.45)
+          (SS#PHYSICAL_LOCATION%DEFINED_REGION x e0 :0.45))
+       (límite-nn e0 x)))
+(B (name destination/destino)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.45)
+          (SS#PHYSICAL_LOCATION%DEFINED_REGION x e0 :0.45))
+       (destino-nn e0 x)))
+(B (name edge/borde)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.45)
+          (SS#PHYSICAL_LOCATION%DEFINED_REGION x e0 :0.45))
+       (borde-nn e0 x)))
+(B (name margin/margen)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.45)
+          (SS#PHYSICAL_LOCATION%DEFINED_REGION x e0 :0.45))
+       (margen-nn e0 x)))
+(B (name fringe/franja)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.45)
+          (SS#PHYSICAL_LOCATION%DEFINED_REGION x e0 :0.45))
+       (franja-nn e0 x)))
+(B (name border/frontera)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.45)
+          (SS#PHYSICAL_LOCATION%DEFINED_REGION x e0 :0.45))
+       (frontera-nn e0 x)))
+
+(B (name live-in/vivir-en)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.44)
+          (SS#PHYSICAL_LOCATION%DEFINED_REGION w e0 :0.44))
+       (^ (vivir-vb e0 x y z) (en-in e1 e0 w))))
+(B (name reside-in/residir-en)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.45)
+          (SS#PHYSICAL_LOCATION%DEFINED_REGION w e0 :0.45))
+       (^ (residir-vb e0 x y z) (en-in e1 e0 w))))
+(B (name stand-in/permanecer-in)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.45)
+          (SS#PHYSICAL_LOCATION%DEFINED_REGION w e0 :0.45))
+       (^ (permanecer-vb e0 x y z) (en-in e1 e0 w))))
+(B (name remain/permanecer)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.45)
+          (SS#PHYSICAL_LOCATION%DEFINED_REGION w e0 :0.45))
+       (^ (permanecer-vb e0 x y z))))
+(B (name born-in/nacido-en)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.45)
+          (SS#PHYSICAL_LOCATION%DEFINED_REGION w e0 :0.45))
+       (^ (nacido-adj e0 x) (en-in e1 x w))))
+
+
+;; Physical Location: Movement Into
+
+(B (name push/empuje)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.45)
+          (SS#PHYSICAL_LOCATION%MOVEMENT_INTO x e0 :0.45))
+       (empuje-nn e0 x)))
+
+(B (name push-on/empujar-en)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.23)
+          (SS#PHYSICAL_LOCATION%MOVEMENT_INTO e0 e0 :0.23)
+          (R#PROPEL-AGENT x e0 :0.23) (R#PROPEL-PATIENT y e0 :0.23))
+       (^ (TS#POVERTY w) (empujar-vb e0 x y z) (en-in e1 e0 w))))
+(B (name push-to/empujar-a)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.23)
+          (SS#PHYSICAL_LOCATION%MOVEMENT_INTO e0 e0 :0.23)
+          (R#PROPEL-AGENT x e0 :0.23) (R#PROPEL-PATIENT y e0 :0.23))
+       (^ (TS#POVERTY w) (empujar-vb e0 x y z) (a-in e1 e0 w))))
+(B (name drive-in/conducir-en)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.23)
+          (SS#PHYSICAL_LOCATION%MOVEMENT_INTO e0 e0 :0.23)
+          (R#PROPEL-AGENT x e0 :0.23) (R#PROPEL-PATIENT y e0 :0.23))
+       (^ (TS#POVERTY w) (conducir-vb e0 x y z) (en-in e1 e0 w))))
+(B (name drive-to/conducir-a)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.23)
+          (SS#PHYSICAL_LOCATION%MOVEMENT_INTO e0 e0 :0.23)
+          (R#PROPEL-AGENT x e0 :0.23) (R#PROPEL-PATIENT y e0 :0.23))
+       (^ (TS#POVERTY w) (conducir-vb e0 x y z) (a-in e1 e0 w))))
+(B (name draw-in/dibujar-en)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.23)
+          (SS#PHYSICAL_LOCATION%MOVEMENT_INTO e0 e0 :0.23)
+          (R#PROPEL-AGENT x e0 :0.23) (R#PROPEL-PATIENT y e0 :0.23))
+       (^ (TS#POVERTY w) (dibujar-vb e0 x y z) (en-in e1 e0 w))))
+(B (name draw-to/dibujar-a)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.23)
+          (SS#PHYSICAL_LOCATION%MOVEMENT_INTO e0 e0 :0.23)
+          (R#PROPEL-AGENT x e0 :0.23) (R#PROPEL-PATIENT y e0 :0.23))
+       (^ (TS#POVERTY w) (dibujar-vb e0 x y z) (a-in e1 e0 w))))
+(B (name drag-in/arrastre-en)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.23)
+          (SS#PHYSICAL_LOCATION%MOVEMENT_INTO e0 e0 :0.23)
+          (R#PROPEL-AGENT x e0 :0.23) (R#PROPEL-PATIENT y e0 :0.23))
+       (^ (TS#POVERTY w) (arrastre-vb e0 x y z) (en-in e1 e0 w))))
+(B (name drag-to/arrastre-a)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.23)
+          (SS#PHYSICAL_LOCATION%MOVEMENT_INTO e0 e0 :0.23)
+          (R#PROPEL-AGENT x e0 :0.23) (R#PROPEL-PATIENT y e0 :0.23))
+       (^ (TS#POVERTY w) (arrastre-vb e0 x y z) (a-in e1 e0 w))))
+(B (name force-in/forzar-en)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.23)
+          (SS#PHYSICAL_LOCATION%MOVEMENT_INTO e0 e0 :0.23)
+          (R#PROPEL-AGENT x e0 :0.23) (R#PROPEL-PATIENT y e0 :0.23))
+       (^ (TS#POVERTY w) (forzar-vb e0 x y z) (en-in e1 e0 w))))
+(B (name force-to/forzar-a)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.23)
+          (SS#PHYSICAL_LOCATION%MOVEMENT_INTO e0 e0 :0.23)
+          (R#PROPEL-AGENT x e0 :0.23) (R#PROPEL-PATIENT y e0 :0.23))
+       (^ (TS#POVERTY w) (forzar-vb e0 x y z) (a-in e1 e0 w))))
+(B (name move-in/mover-en)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.23)
+          (SS#PHYSICAL_LOCATION%MOVERMENT-INTO e0 e0 :0.23)
+          (R#PROPEL-AGENT x e0 :0.23) (R#PROPEL-PATIENT y e0 :0.23))
+       (^ (TS#POVERTY w) (mover-vb e0 x y z) (en-in e1 e0 w))))
+(B (name move-to/mover-a)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.23)
+          (SS#PHYSICAL_LOCATION%MOVERMENT-INTO e0 e0 :0.23)
+          (R#PROPEL-AGENT x e0 :0.23) (R#PROPEL-PATIENT y e0 :0.23))
+       (^ (TS#POVERTY w) (mover-vb e0 x y z) (a-in e1 e0 w))))
+(B (name throw-in/tirar-en)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.23)
+          (SS#PHYSICAL_LOCATION%MOVEMENT_INTO e0 e0 :0.23)
+          (R#PROPEL-AGENT x e0 :0.23) (R#PROPEL-PATIENT y e0 :0.23))
+       (^ (TS#POVERTY w) (tirar-vb e0 x y z) (en-in e1 e0 w))))
+(B (name throw-to/tirar-a)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.23)
+          (SS#PHYSICAL_LOCATION%MOVEMENT_INTO e0 e0 :0.23)
+          (R#PROPEL-AGENT x e0 :0.23) (R#PROPEL-PATIENT y e0 :0.23))
+       (^ (TS#POVERTY w) (tirar-vb e0 x y z) (a-in e1 e0 w))))
+(B (name stop-in/detener-en)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.23)
+          (SS#PHYSICAL_LOCATION%MOVEMENT_INTO e0 e0 :0.23)
+          (R#PROPEL-AGENT x e0 :0.23) (R#PROPEL-PATIENT y e0 :0.23))
+       (^ (TS#POVERTY w) (detener-vb e0 x y z) (en-in e1 e0 w))))
+(B (name stop-to/detener-a)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.23)
+          (SS#PHYSICAL_LOCATION%MOVEMENT_INTO e0 e0 :0.23)
+          (R#PROPEL-AGENT x e0 :0.23) (R#PROPEL-PATIENT y e0 :0.23))
+       (^ (TS#POVERTY w) (detener-vb e0 x y z) (a-in e1 e0 w))))
+(B (name throw-in/lanzar-en)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.23)
+          (SS#PHYSICAL_LOCATION%MOVEMENT_INTO e0 e0 :0.23)
+          (R#PROPEL-AGENT x e0 :0.23) (R#PROPEL-PATIENT y e0 :0.23))
+       (^ (TS#POVERTY w) (lanzar-vb e0 x y z) (en-in e1 e0 w))))
+(B (name throw-to/lanzar-a)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.23)
+          (SS#PHYSICAL_LOCATION%MOVEMENT_INTO e0 e0 :0.23)
+          (R#PROPEL-AGENT x e0 :0.23) (R#PROPEL-PATIENT y e0 :0.23))
+       (^ (TS#POVERTY w) (lanzar-vb e0 x y z) (a-in e1 e0 w))))
+(B (name reach/alcanzar)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.23)
+          (SS#PHYSICAL_LOCATION%MOVEMENT_INTO e0 e0 :0.23)
+          (R#PROPEL-AGENT x e0 :0.23) (R#PROPEL-PATIENT y e0 :0.23))
+       (^ (TS#WEALTH y) (alcanzar-vb e0 x y z))))
+
+
+;; Physical Location: Exit
+
+;(B (name pop-up/surgir)
+;   (=> (^ (S#PHYSICAL_LOCATION e0 :0.23)
+;          (SS#PHYSICAL_LOCATION%EXIT e0 e0 :0.23) (R#EXIT-AGENT x e0 :0.23))
+;       (surgir-vb e0 x y u)))
+;(B (name emerge/emerger)
+;   (=> (^ (S#PHYSICAL_LOCATION e0 :0.23)
+;          (SS#PHYSICAL_LOCATION%EXIT e0 e0 :0.23) (R#EXIT-AGENT x e0 :0.23))
+;       (emerger-vb e0 x y u)))
+;(B (name emergent/emergente)
+;   (=> (^ (S#PHYSICAL_LOCATION e0 :0.45)
+;          (SS#PHYSICAL_LOCATION%EXIT e0 e0 :0.45))
+;       (emergente-adj e0 x)))
+(B (name exit/salir-de)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.23)
+          (SS#PHYSICAL_LOCATION%EXIT e0 e0 :0.23) (R#EXIT-AGENT x e0 :0.23))
+       (^ (salir-vb e0 x y u) (de-in e1 e0 w))))
+(B (name passport/pasaporte)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.45)
+          (SS#PHYSICAL_LOCATION%EXIT x e0 :0.45))
+       (pasaporte-nn e0 x)))
+(B (name ticket/billete)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.45)
+          (SS#PHYSICAL_LOCATION%EXIT x e0 :0.45))
+       (billete-nn e0 x)))
+(B (name exit/salida)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.45)
+          (SS#PHYSICAL_LOCATION%SALIDA x e0 :0.45))
+       (salida-nn e0 x)))
+(B (name free-pass/libre-pase)
+   (=> (^ (S#PHYSICAL_LOCATION e0 :0.45)
+          (SS#PHYSICAL_LOCATION%EXIT x e0 :0.45))
+       (^ (libre-adj e0 x) (pase-nn e1 x))))
+
+
+
+;; Plant / Planta
+;;   A living thing that usually produces seeds and typically has a stem,
+;;   leaves, branches, roots, and sometimes flowers.
+;;
+;;   Vegetal, ser orgánico que se caracteriza por crecer y vivir fijo en un
+;;   lugar determinado, realizar la fotosíntesis y tener células complejas
+;;   agrupadas en tejidos, órganos, aparatos y sistemas.
+;;   [A vegetable, organic being, that grows and lives rooted in one
+;;   pre-determined place, conducts photosynthesis and has complex cells
+;;   grouped together in a weave, organs and systems.]
+
+;; Plant: Type
+
+(B (name plant/planta)
+   (=> (^ (S#PLANT e0 :0.45) (SS#PLANT%TYPE x e0 :0.45))
+       (planta-nn e0 x)))
+(B (name tree/árbol)
+   (=> (^ (S#PLANT e0 :0.45) (SS#PLANT%TYPE x e0 :0.45))
+       (árbol-nn e0 x)))
+(B (name weed/mala-hierba)
+   (=> (^ (S#PLANT e0 :0.3) (SS#PLANT%TYPE x e0 :0.3) (R#UNWANTED x e0 :0.3))
+       (^ (mala-adj e0 x) (hierba-nn e1 x))))
+(B (name flower/flor)
+   (=> (^ (S#PLANT e0 :0.45) (SS#PLANT%TYPE x e0 :0.45))
+       (flor-nn e0 x)))
+(B (name grass/hierba)
+   (=> (^ (S#PLANT e0 :0.45) (SS#PLANT%TYPE x e0 :0.45))
+       (hierba-nn e0 x)))
+
+
+;; Plant: Parts
+
+(B (name root/raíz)
+   (=> (^ (S#PLANT e0 :0.3) (SS#PLANT%PARTS x e0 :0.3)
+          (R#PLANT-ROOT x e0 :0.3))
+       (raíz-nn e0 x)))
+(B (name fruit/fruta)
+   (=> (^ (S#PLANT e0 :0.3) (SS#PLANT%PARTS x e0 :0.3)
+          (R#PLANT-EXTERNAL x e0 :0.3))
+       (fruta-nn e0 x)))
+(B (name seed/semilla)
+   (=> (^ (S#PLANT e0 :0.3) (SS#PLANT%PARTS x e0 :0.3)
+          (R#PLANT-GENESIS x e0 :0.3))
+       (semilla-nn e0 x)))
+(B (name sheet/hoja)
+   (=> (^ (S#PLANT e0 :0.3) (SS#PLANT%PARTS x e0 :0.3)
+          (R#PLANT-EXTERNAL x e0 :0.3))
+       (hoja-nn e0 x)))
+
+(B (name leafy/frondosa)
+   (=> (S#PLANT e0 :0.9)
+       (frondosa-adj e0 x0)))
+
+
+;; Plant: Change of State
+
+(B (name grow-up/crecer)
+   (=> (^ (S#PLANT e0 :0.3) (SS#PLANT%CHANGE_OF_STATE e0 e0 :0.3)
+          (R#CHANGING-THING x e0 :0.3))
+       (crecer-vb e0 x y u)))
+(B (name thrive/medrar)
+   (=> (^ (S#PLANT e0 :0.3) (SS#PLANT%CHANGE_OF_STATE e0 e0 :0.3)
+          (R#CHANGING-THING x e0 :0.3))
+       (medrar-vb e0 x y u)))
+
+(B (name growth/crecimiento)
+   (=> (^ (S#PLANT e0 :0.3) (SS#PLANT%CHANGE_OF_STATE x e0 :0.3))
+       (crecimiento-nn e0 x)))
+
+
+
+;; Portal / Portal
+;;   A door, gate, or entrance, especially one of imposing appearance.
+;;
+;;   Zaguán o primera pieza de la casa, por donde se entra a las demás,
+;;   y en la cual está la puerta principal.
+;;   [A hallway or primary part of the house, through which one accesses
+;;   the rest, and in which is the principal door.]
+;;
+;;   Note: The Spanish definition is clearly wrong.
+
+;; Portal: Means of Entry
+
+(B (name entrance/entrada)
+   (=> (^ (S#PORTAL e0 :0.45) (SS#PORTAL%MEANS_OF_ENTRY x e0 :0.45))
+       (entrada-nn e0 x)))
+(B (name gate/puerta)
+   (=> (^ (S#PORTAL e0 :0.45) (SS#PORTAL%MEANS_OF_ENTRY x e0 :0.45))
+       (puerta-nn e0 x)))
+(B (name threshold/umbral)
+   (=> (^ (S#PORTAL e0 :0.45) (SS#PORTAL%MEANS_OF_ENTRY x e0 :0.45))
+       (umbral-nn e0 x)))
+(B (name entry/ingreso)
+   (=> (^ (S#PORTAL e0 :0.45) (SS#PORTAL%MEANS_OF_ENTRY x e0 :0.45))
+       (ingreso-nn e0 x)))
+(B (name portal/portal)
+   (=> (^ (S#PORTAL e0 :0.45) (SS#PORTAL%MEANS_OF_ENTRY x e0 :0.45))
+       (portal-nn e0 x)))
+
+
+;; Portal: Obstacles
+
+(B (name narrow/estrecho)
+   (=> (SS#PORTAL%OBSTACLES x e0 :0.90)
+       (^ (S#PORTAL e0) (SS#PORTAL%MEANS_OF_ENTRY x e0) (estrecho-adj e0 x))))
+
+(B (name obstructed-portal/portal-obstruido)
+   (=> (SS#PORTAL%OBSTACLES x e0 :0.90)
+       (^ (S#PORTAL e1) (SS#PORTAL%MEANS_OF_ENTRY x e1) (obstruido-adj e0 x))))
+(B (name blocked-portal/path-bloqueado)
+   (=> (SS#PORTAL%OBSTACLES x e0 :0.90)
+       (^ (S#PORTAL e1) (SS#PORTAL%MEANS_OF_ENTRY x e1) (bloqueado-adj e0 x))))
+
+
+
+;; Protection / Protección
+;;   Something that prevents somebody or something from being harmed or
+;;   damaged; the act of preventing somebody or something from being harmed
+;;   or damaged, or the state of being kept safe.
+;;
+;;   Defensa que se hace de alguna cosa para evitarle un daño o perjuicio.
+;;   [A defense of some item to avoid causing it harm or prejudice.]
+
+(B (name shield/escudo)
+   (=> (S#PROTECTION e0 :0.9)
+       (escudo-nn e0 x)))
+(B (name shelter/abrigo)
+   (=> (S#PROTECTION e0 :0.9)
+       (abrigo-nn e0 x)))
+(B (name protection/protección)
+   (=> (S#PROTECTION e0 :0.9)
+       (protección-nn e0 x)))
+(B (name defense/defensa)
+   (=> (S#PROTECTION e0 :0.9)
+       (defensa-nn e0 x)))
+
+(B (name protect/proteger)
+   (=> (^ (S#PROTECTION e0 :0.3) (R#PROTECT-PATIENT y e0 :0.3)
+          (R#PROTECT-AGENT x e0 :0.3))
+       (proteger-vb e0 x y u2)))
+(B (name cover/cubrir)
+   (=> (^ (S#PROTECTION e0 :0.3) (R#PROTECT-PATIENT y e0 :0.3)
+          (R#PROTECT-AGENT x e0 :0.3))
+       (cubrir-vb e0 x y u2)))
+
+(B (name evasion/evasión)
+   (=> (S#PROTECTION e0 :0.9)
+       (evasión-nn e0 x)))
+
+(B (name evade/evadir)
+   (=> (^ (S#PROTECTION e0 :0.45) (R#EVADE-AGENT x e0 :0.45))
+       (evadir-vb e0 x y u)))
+(B (name avoid/eludir)
+   (=> (^ (S#PROTECTION e0 :0.45) (R#EVADE-AGENT x e0 :0.45))
+       (eludir-vb e0 x y u)))
+
+
+
+;; Resource / Recurso
+;;   A place or thing that provides something useful.
+;;
+;;   Conjunto de elementos disponibles para resolver una necesidad o llevar
+;;   a cabo una empresa.
+;;   [A group of disposable elements that solve a need or enable a company
+;;   to carry out its tasks.]
+
+;; Resource: Substance
+
+(B (name mass/masa)
+   (=> (^ (S#RESOURCE e0 :0.45) (SS#RESOURCE%RESOURCE_SUBSTANCE x e0 :0.45))
+       (masa-nn e0 x)))
+(B (name material/material)
+   (=> (^ (S#RESOURCE e0 :0.45) (SS#RESOURCE%RESOURCE_SUBSTANCE x e0 :0.45))
+       (material-nn e0 x)))
+(B (name concentration/concentración)
+   (=> (^ (S#RESOURCE e0 :0.45) (SS#RESOURCE%RESOURCE_SUBSTANCE x e0 :0.45))
+       (concentración-nn e0 x)))
+(B (name concentrated/concentrado)
+   (=> (^ (S#RESOURCE e0 :0.45) (SS#RESOURCE%RESOURCE_SUBSTANCE x e0 :0.45))
+       (concentrado-nn e0 x)))
+
+
+;; Resource: Quantity/Size
+
+(B (name volume/caudal)
+   (=> (^ (S#RESOURCE e0 :0.45) (SS#RESOURCE%QUANTITY_SIZE x e0 :0.45))
+       (caudal-nn e0 x)))
+(B (name clipping/recorte)
+   (=> (^ (S#RESOURCE e0 :0.47) (SS#RESOURCE%QUANTITY_SIZE x e0 :0.47))
+       (recorte-nn e0 x)))
+(B (name reduction/reducción)
+   (=> (^ (S#RESOURCE e0 :0.47) (SS#RESOURCE%QUANTITY_SIZE x e0 :0.47))
+       (reducción-nn e0 x)))
+(B (name tax-cuts)
+   (=> (^ (S#RESOURCE e0 :0.45) (SS#RESOURCE%QUANTITY_SIZE x e0 :0.45))
+       (^ (recorte-nn e0 x) (TS#TAXATION u))))
+
+(B (name exhaust/agotar)
+   (=> (^ (S#RESOURCE e0 :0.45) (SS#RESOURCE%QUANTITY_SIZE y e0 :0.45))
+       (agotar-vb e0 x y u)))
+(B (name cut-off/cortar)
+   (=> (^ (S#RESOURCE e0 :0.45) (SS#RESOURCE%QUANTITY_SIZE y e0 :0.45))
+       (cortar-vb e0 x y u)))
+
+
+;; Resource: Develop Resources
+
+(B (name invest/invertir)
+   (=> (^ (S#RESOURCE e0 :0.3) (SS#RESOURCE%DEVELOP_RESOURCES x e0 :0.3)
+          (R#DEVELOPER x e0 :0.3))
+       (invertir-vb e0 x y u)))
+(B (name deposit/depósito)
+   (=> (^ (S#RESOURCE e0 :0.3) (SS#RESOURCE%DEVELOP_RESOURCES x e0 :0.3)
+          (R#DEVELOPER x e0 :0.3))
+       (depósito-vb e0 x y u)))
+(B (name accumulate/acumular)
+   (=> (^ (S#RESOURCE e0 :0.3) (SS#RESOURCE%DEVELOP_RESOURCES x e0 :0.3)
+          (R#DEVELOPER x e0 :0.3))
+       (acumular-vb e0 x y u)))
+(B (name amplify/ampliar)
+   (=> (^ (S#RESOURCE e0 :0.3) (SS#RESOURCE%DEVELOP_RESOURCES x e0 :0.3)
+          (R#DEVELOPER x e0 :0.3))
+       (^ (TS#WEALTH y) (ampliar-vb e0 x y u))))
+
+(B (name bank/banco)
+   (=> (^ (S#RESOURCE e0 :0.45) (SS#RESOURCE%DEVELOP_RESOURCES x e0 :0.45))
+       (banco-nn e0 x)))
+(B (name investment/inversión)
+   (=> (^ (S#RESOURCE e0 :0.45) (SS#RESOURCE%DEVELOP_RESOURCES x e0 :0.45))
+       (inversión-nn e0 x)))
+(B (name accumulation/acumulación)
+   (=> (^ (S#RESOURCE e0 :0.45) (SS#RESOURCE%DEVELOP_RESOURCES x e0 :0.45))
+       (acumulación-nn e0 x)))
+(B (name growth/crecimiento)
+   (=> (^ (S#RESOURCE e0 :0.45) (SS#RESOURCE%DEVELOP_RESOURCES x e0 :0.45))
+       (crecimiento-nn e0 x)))
+
+
+;; Resource: Distribution
+
+(B (name transfer/transferir)
+   (=> (^ (S#RESOURCE e0 :0.33) (SS#RESOURCE%DISTRIBUTION x e0 :0.33)
+          (R#DISTRIBUTOR x e0 :0.33))
+       (transferir-vb e0 x y u)))
+(B (name distribute/distribuir)
+   (=> (^ (S#RESOURCE e0 :0.33) (SS#RESOURCE%DISTRIBUTION x e0 :0.33)
+          (R#DISTRIBUTOR x e0 :0.33))
+       (distribuir-vb e0 x y u)))
+
+(B (name distribution/distribución)
+   (=> (^ (S#RESOURCE e0 :0.45) (SS#RESOURCE%DISTRIBUTION x e0 :0.45))
+       (distribución-nn e0 x)))
+
+
+
+;; Rule Enforcer / Encargado de Hacer Cumplir la Regla
+;;   A person or entity that controls (something) by making sure that rules
+;;   and regulations are being followed.
+;;
+;;   Persona que tiene algo a su cargo en representación del dueño o
+;;   interesado y ejecuta, lleva a cabo las reglas.
+;;   [An agent who enforces the principal agent's rules.]
+
+(B (name enforcer/ejecutor)
+   (=> (S#RULE_ENFORCER e0 :0.9)
+       (ejecutor-nn e0 x)))
+(B (name referee/árbitro)
+   (=> (S#RULE_ENFORCER e0 :0.9)
+       (árbitro-nn e0 x)))
+(B (name police/policía)
+   (=> (S#RULE_ENFORCER e0 :0.9)
+       (policía-nn e0 x)))
+(B (name police/vigilar)
+   (=> (S#RULE_ENFORCER e0 :0.9)
+       (vigilar-vb e0 x y u)))
+
+
+
+;; Science / Ciencia
+;;   Knowledge about or study of the natural world based on facts learned
+;;   through experiments and observation.
+;;
+;;   Conjunto de conocimientos obtenidos mediante la observación y el
+;;   razonamiento, sistemáticamente estructurados y de los que se deducen
+;;   principios y leyes generales.
+;;   [A combination of knowledge obtained by way of observation and
+;;   reasoning, systematically structured and from which principals and
+;;   general laws are deduced.]
+
+(B (name science/ciencia)
+   (=> (S#SCIENCE e0 :0.9)
+       (ciencia-nn e0 x)))
+(B (name physics/física)
+   (=> (S#SCIENCE e0 :0.9)
+       (física-nn e0 x)))
+(B (name experiment/experimento)
+   (=> (S#SCIENCE e0 :0.9)
+       (experimento-nn e0 x)))
+(B (name observation/observación)
+   (=> (S#SCIENCE e0 :0.9)
+       (observación-nn e0 x)))
+(B (name laboratory/laboratorio)
+   (=> (S#SCIENCE e0 :0.9)
+       (laboratorio-nn e0 x)))
+
+(B (name experimental/experimental)
+   (=> (S#SCIENCE e0 :0.9)
+       (experimental-adj e0 x)))
+
+(B (name experiment/experimentar)
+   (=> (S#SCIENCE e0 :0.9)
+       (experimentar-vb e0 x0 x1 x2)))
+
+
+
+;; Servant / Sirviente
+;;   One that serves others; especially, one that performs duties about the
+;;   person or home of a master or personal employer. (Including former
+;;   ENSLAVEMENT axioms.)
+;;
+;;   Servidor o criado.
+;;   [Servant or maid.]
+
+(B (name servant/criado)
+   (=> (S#SERVANT e0 :0.9)
+       (criado-nn e0 x)))
+(B (name butler/mayordomo)
+   (=> (S#SERVANT e0 :0.9)
+       (mayordomo-nn e0 x)))
+(B (name maid/mucama)
+   (=> (S#SERVANT e0 :0.9)
+       (mucama-nn e0 x)))
+(B (name housemaid/criada)
+   (=> (S#SERVANT e0 :0.9)
+       (criada-nn e0 x)))
+(B (name cleaner/limpiador)
+   (=> (S#SERVANT e0 :0.9)
+       (limpiador-nn e0 x)))
+
+(B (name serve/servir)
+   (=> (S#SERVANT e0 :0.9)
+       (servir-vb e0 x y u)))
+
+
+
+;; Struggle / Forcejear
+;;   To contend with an adversary or opposing force.
+;;
+;;   Hacer fuerza o esfuerzos para vencer alguna resistencia.
+;;   [To force or make effort to overcome with some resistance.]
+
+;; Struggle: Type
+
+(B (name fight/lucha)
+   (=> (^ (S#STRUGGLE e0 :0.45) (SS#STRUGGLE%TYPE x e0 :0.45))
+       (lucha-nn e0 x)))
+(B (name quarrel/pelea)
+   (=> (^ (S#STRUGGLE e0 :0.45) (SS#STRUGGLE%TYPE x e0 :0.45))
+       (pelea-nn e0 x)))
+(B (name struggle/forcejeo)
+   (=> (^ (S#STRUGGLE e0 :0.45) (SS#STRUGGLE%TYPE x e0 :0.45))
+       (forcejeo-nn e0 x)))
+(B (name crusade/cruzada)
+   (=> (^ (S#STRUGGLE e0 :0.45) (SS#STRUGGLE%TYPE x e0 :0.45))
+       (cruzada-nn e0 x)))
+(B (name attack/ataque)
+   (=> (^ (S#STRUGGLE e0 :0.45) (SS#STRUGGLE%TYPE x e0 :0.45))
+       (ataque-nn e0 x)))
+
+(B (name struggle/forcejear)
+   (=> (^ (S#STRUGGLE e0 :0.3) (SS#STRUGGLE%TYPE e0 e0 :0.3)
+          (R#BATTLE-AGENT x e0 :0.3))
+       (forcejear-vb e0 x u1 u2)))
+(B (name fight-against/luchar-contra)
+   (=> (^ (S#STRUGGLE e0 :0.3) (SS#STRUGGLE%TYPE e0 e0 :0.3)
+          (R#BATTLE-AGENT x e0 :0.3))
+       (^ (luchar-vb e0 x u1 u2) (contra-in e1 e0 z))))
+(B (name fight/luchar)
+   (=> (^ (S#STRUGGLE e0 :0.3) (SS#STRUGGLE%TYPE e0 e0 :0.3)
+          (R#BATTLE-AGENT x e0 :0.3))
+       (luchar-vb e0 x u1 u2)))
+
+(B (name attack/atacar)
+   (=> (^ (S#STRUGGLE e0 :0.2) (SS#STRUGGLE%TYPE e0 e0 :0.2)
+          (R#BATTLE-AGENT x e0 :0.2) (R#BATTLE-ENEMY y e0 :0.2))
+       (atacar-vb e0 x y u2)))
+(B (name conquistar/conquer)
+   (=> (^ (S#STRUGGLE e0 :0.3) (R#BATTLE-AGENT x e0 :0.3)
+          (R#BATTLE-ENEMY y e0 :0.3))
+       (conquistar-vb e0 x y z)))
+
+(B (name fight-with/luchar-con)
+   (=> (R#BATTLE-ENEMY y x :0.90)
+       (^ (SS#STRUGGLE%TYPE x e0) (con-in e0 x y))))
+(B (name fight-against/luchar-contra)
+   (=> (R#BATTLE-ENEMY y x :0.90)
+       (^ (SS#STRUGGLE%TYPE x e0) (contra-in e1 e0 y))))
+(B (name fight-for/luchar-de)
+   (=> (R#BATTLE-AGENT y x :0.90)
+       (^ (SS#STRUGGLE%TYPE x e0) (de-in e0 x y))))
+(B (name fight-in/luchar-en)
+   (=> (R#BATTLE-AGENT y x :0.90)
+       (^ (SS#STRUGGLE%TYPE x e0) (en-in e0 x y))))
+
+
+;; Struggle: Adversary
+
+(B (name enemy/enemigo)
+   (=> (^ (S#STRUGGLE e0 :0.3) (SS#STRUGGLE%ADVERSARY x e0 :0.3)
+          (R#BATTLE-ENEMY x u :0.3))
+       (enemigo-nn e1 x)))
+(B (name adversary/adversario)
+   (=> (^ (S#STRUGGLE e0 :0.3) (SS#STRUGGLE%ADVERSARY x e0 :0.3)
+          (R#BATTLE-ENEMY x u :0.3))
+       (adversario-nn e1 x)))
+(B (name rival/rival)
+   (=> (^ (S#STRUGGLE e0 :0.3) (SS#STRUGGLE%ADVERSARY x e0 :0.3)
+          (R#BATTLE-ENEMY x u :0.3))
+       (rival-nn e1 x)))
+(B (name opponent-contrincante)
+   (=> (^ (S#STRUGGLE e0 :0.3) (SS#STRUGGLE%ADVERSARY x e0 :0.3)
+          (R#BATTLE-ENEMY x u :0.3))
+       (contrincante-nn e1 x)))
+(B (name opponent/contrario)
+   (=> (^ (S#STRUGGLE e0 :0.3) (SS#STRUGGLE%ADVERSARY x e0 :0.3)
+          (R#BATTLE-ENEMY x u :0.3))
+       (contrario-nn e1 x)))
+
+(B (name enemy-of/enemigo-de)
+   (=> (R#BATTLE-AGENT y e0 :0.90)
+       (^ (R#BATTLE-ENEMY x e0) (de-in e1 x y))))
+
+
+
+;; Temperature / Temperatura
+;;   A measurement that indicates how hot or cold something is; a measurement
+;;   in degrees showing the heat of something (such as air or water).
+;;
+;;   Magnitud física que expresa el grado o nivel de calor de los cuerpos o
+;;   del ambiente.
+;;   [Physical scale that expresses the grade or level of heat of bodies or
+;;   of the environment.]
+
+(B (name temperature/temperatura)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (temperatura-nn e0 x)))
+(B (name celsius/celsius)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (celsius-nn e0 x)))
+(B (name celsius/centigrado)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (centigrado-adj e0 x)))
+(B (name thermometer/termómetro)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (termómetro-nn e0 x)))
+
+(B (name hot/caliente)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (caliente-adj e0 x)))
+(B (name cold/frío)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (frío-adj e0 x)))
+(B (name warm/cálido)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (cálido-adj e0 x)))
+(B (name cool/fresco)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (cool-adj e0 x)))
+
+(B (name chill/frío)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (frío-nn e0 x)))
+(B (name heat/calor)
+   (=> (S#TEMPERATURE e0 :0.9)
+       (calor-nn e0 x)))
+
+
+
+;; Theft / Robo
+;;   The felonious taking and removing of personal property with intent to
+;;   deprive the rightful owner of it. (Including former CRIME axioms.)
+;;
+;;   Apropiación indebida de algo ajeno, contra la voluntad de su poseedor,
+;;   especialmente si se hace con violencia.
+;;   [Wrongful appropriation of someone else's object, against the will of
+;;   the owner, especially if it is committed with violence.]
+
+(B (name theft/robo)
+   (=> (S#THEFT e0 :0.9)
+       (robo-nn e0 x)))
+(B (name theft/hurto)
+   (=> (S#THEFT e0 :0.9)
+       (hurto-nn e0 x)))
+(B (name larceny/latrocinio)
+   (=> (S#THEFT e0 :0.9)
+       (latrocinio-nn e0 x)))
+(B (name larceny/ratería)
+   (=> (S#THEFT e0 :0.9)
+       (ratería-nn e0 x)))
+(B (name pillage/pillaje)
+   (=> (S#THEFT e0 :0.9)
+       (pillaje-nn e0 x)))
+(B (name plundering/saqueando)
+   (=> (S#THEFT e0 :0.9)
+       (saqueando-nn e0 x)))
+(B (name plunder/saqueo)
+   (=> (S#THEFT e0 :0.9)
+       (saqueo-nn e0 x)))
+(B (name booty/botín)
+   (=> (S#THEFT e0 :0.9)
+       (botín-nn e0 x)))
+
+(B (name rob/robar)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#VICTIM y e0 :0.3))
+       (robar-vb e0 x y u)))
+(B (name hijack/secuestrar)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#VICTIM y e0 :0.3))
+       (secuestrar-vb e0 x y u)))
+(B (name steal/hurtar)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#THEME z e0 :0.3))
+       (hurtar-vb e0 x z u2)))
+(B (name filch/ratear)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#THEME z e0 :0.3))
+       (ratear-vb e0 x z u2)))
+(B (name plunder/saquear)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#THEME z e0 :0.3))
+       (saquear-vb e0 x z u2)))
+(B (name pillage/pillar)
+   (=> (^ (S#THEFT e0 :0.3) (R#AGENT x e0 :0.3) (R#THEME z e0 :0.3))
+       (pillar-vb e0 x z u2)))
+
+(B (name bandit/bandido)
+   (=> (^ (S#THEFT e0 :0.30) (SS#THEFT%PERPETRATOR x e0 :0.30)
+          (R#AGENT x e0 :0.30))
+       (bandit-nn e0 x)))
+(B (name thief/ladrón)
+   (=> (^ (S#THEFT e0 :0.30) (SS#THEFT%PERPETRATOR x e0 :0.30)
+          (R#AGENT x e0 :0.30))
+       (ladrón-nn e0 x)))
+(B (name pilferer/ladronzuelo)
+   (=> (^ (S#THEFT e0 :0.30) (SS#THEFT%PERPETRATOR x e0 :0.30)
+          (R#AGENT x e0 :0.30))
+       (ladronzuelo-nn e0 x)))
+(B (name mugger/asaltador)
+   (=> (^ (S#THEFT e0 :0.30) (SS#THEFT%PERPETRATOR x e0 :0.30)
+          (R#AGENT x e0 :0.30))
+       (asaltador-nn e0 x)))
+(B (name robber/atracador)
+   (=> (^ (S#THEFT e0 :0.30) (SS#THEFT%PERPETRATOR x e0 :0.30)
+          (R#AGENT x e0 :0.30))
+       (atracador-nn e0 x)))
+(B (name plunderer/saqueador)
+   (=> (^ (S#THEFT e0 :0.30) (SS#THEFT%PERPETRATOR x e0 :0.30)
+          (R#AGENT x e0 :0.30))
+       (saqueador-nn e0 x)))
+
+
+
+;; Upward Movement / Hácia arriba
+;;   Movement from a lower place or level to a higher place or level.
+;;   (Including axioms from LOW_POINT%MOVEMENT_UPWARD.)
+;;
+;;   Hacia lo alto.
+;;   [Upwards.]
+
+(B (name rise-above/sobreponer-a)
+   (=> (^ (S#UPWARD_MOVEMENT e0 :0.45) (R#MOVE-U-PATIENT x e0 :0.45))
+       (^ (sobreponer-vb e0 x y z) (a-in e1 e0 y))))
+(B (name rise-from/resurgir-de)
+   (=> (^ (S#UPWARD_MOVEMENT e0 :0.45) (R#MOVE-U-PATIENT x e0 :0.45))
+       (^ (resurgir-vb e0 x y z) (de-in e1 e0 y))))
+(B (name rise/subir)
+   (=> (^ (S#UPWARD_MOVEMENT e0 :0.45) (R#MOVE-U-PATIENT x e0 :0.45))
+       (^ (subir-vb e0 x y z))))
+(B (name jump/saltar)
+   (=> (^ (S#UPWARD_MOVEMENT e0 :0.45) (R#MOVE-U-PATIENT x e0 :0.45))
+       (^ (saltar-vb e0 x y z))))
+(B (name jump/brincar)
+   (=> (^ (S#UPWARD_MOVEMENT e0 :0.45) (R#MOVE-U-PATIENT x e0 :0.45))
+       (^ (brincar-vb e0 x y z))))
+(B (name escalate/escalar)
+   (=> (^ (S#UPWARD_MOVEMENT e0 :0.33) (R#MOVE-UP e0 e0 :0.33)
+          (R#MOVER x e0 :0.33))
+       (escalar-vb e0 x y u)))
+(B (name ascend/ascender)
+   (=> (^ (S#UPWARD_MOVEMENT e0 :0.33) (R#MOVE-UP e0 e0 :0.33)
+          (R#MOVER x e0 :0.33))
+       (ascender-vb e0 x y u)))
+(B (name ascent/ascenso)
+   (=> (^ (S#UPWARD_MOVEMENT e0 :0.45) (R#MOVE-UP x e0 :0.45))
+       (ascenso-nn e0 x)))
+(B (name elevate/elevar)
+   (=> (^ (S#UPWARD_MOVEMENT e0 :0.33) (R#MOVE-UP e0 e0 :0.33)
+          (R#MOVER x e0 :0.33))
+       (elevar-vb e0 x y u)))
+(B (name elevated/elevado)
+   (=> (^ (S#UPWARD_MOVEMENT e0 :0.33) (R#MOVE-UP e0 e0 :0.33)
+          (R#MOVER x e0 :0.33))
+       (elevado-adj e0 x)))
+(B (name increase/aumentar)
+   (=> (^ (S#UPWARD_MOVEMENT e0 :0.33) (R#MOVE-UP e0 e0 :0.33)
+          (R#MOVER x e0 :0.33))
+       (aumentar-vb e0 x y z)))
+(B (name increase/aumento)
+   (=> (^ (S#UPWARD_MOVEMENT e0 :0.45) (R#MOVE-UP x e0 :0.45))
+       (^ (TS#TAXATION w) (aumento-nn e0 x))))
+
+
+
+;; Vehicle / Vehículo
+;;   Something used to transport people or goods, esp. something used on land
+;;   or roads.
+;;
+;;   Medio de locomoción o transporte, en especial el automóvil.
+;;   [Means of locomotion or transport, especially by car.]
+
+(B (name vehicle/vehículo)
+   (=> (S#VEHICLE e0 :0.9)
+       (vehículo-nn e0 x)))
+(B (name automobile/automóvil)
+   (=> (S#VEHICLE e0 :0.9)
+       (automóvil-nn e0 x)))
+(B (name auto/auto)
+   (=> (S#VEHICLE e0 :0.9)
+       (auto-nn e0 x)))
+(B (name motorcar/coche)
+   (=> (S#VEHICLE e0 :0.9)
+       (coche-nn e0 x)))
+(B (name truck/camión)
+   (=> (S#VEHICLE e0 :0.9)
+       (camión-nn e0 x)))
+(B (name van/van)
+   (=> (S#VEHICLE e0 :0.9)
+       (van-nn e0 x)))
+
+
+
+;; War / Guerra
+;;   A conflict carried on by force of arms, as between nations or between
+;;   parties within a nation; warfare, as by land, sea, or air; a contest
+;;   carried on by force of arms, as in a series of battles or campaigns.
+;;   (Includes previous STRUGGLE axioms.)
+;;
+;;   Lucha armada entre dos o más naciones o entre bandos de una misma nación.
+;;   [Armed struggle between two or more nations or between two groups of the
+;;   same nation.]
+
+(B (name war/guerra)
+   (=> (S#WAR e0 :0.9)
+       (guerra-nn e0 x)))
+(B (name battle/batalla)
+   (=> (S#WAR e0 :0.9)
+       (batalla-nn e0 x)))
+(B (name combat/combate)
+   (=> (S#WAR e0 :0.9)
+       (combate-nn e0 x)))
+(B (name air-bombing/bombardeo-aéreo)
+   (=> (S#WAR e0 :0.9)
+       (^ (bombardeo-nn e0 x) (aéreo-adj e1 x))))
+(B (name bombing/bombardeo)
+   (=> (S#WAR e0 :0.9)
+       (bombardeo-nn e0 x)))
+(B (name invasion/invasión)
+   (=> (S#WAR e0 :0.9)
+       (invasión-nn e0 x)))
+
+(B (name combat/combatir)
+   (=> (^ (S#WAR e0 :0.45) (R#WAR-AGENT x e0 :0.45))
+       (combatir-vb e0 x u1 u2)))
+(B (name assault/asaltar)
+   (=> (^ (S#WAR e0 :0.3) (R#WAR-AGENT x e0 :0.3) (R#WAR-ENEMY y e0 :0.3))
+       (asaltar-vb e0 x y u2)))
+(B (name invade/invadir)
+   (=> (^ (S#WAR e0 :0.3) (R#WAR-AGENT x e0 :0.3) (R#WAR-ENEMY y e0 :0.3))
+       (invadir-vb e0 x y u2)))
+
+(B (name weapon/arma)
+   (=> (^ (S#WAR e0 :0.33) (SS#WAR%TYPE x e0 :0.33)
+          (R#WEAPON x e0 :0.33))
+       (arma-nn e0 x)))
+(B (name pistol/pistola)
+   (=> (^ (S#WAR e0 :0.33) (SS#WAR%TYPE x e0 :0.33)
+          (R#WEAPON x e0 :0.33))
+       (pistola-nn e0 x)))
+(B (name cannon/cañón)
+   (=> (^ (S#WAR e0 :0.33) (SS#WAR%TYPE x e0 :0.33)
+          (R#WEAPON x e0 :0.33))
+       (cañón-nn e0 x)))
+(B (name rifle/fusil)
+   (=> (^ (S#WAR e0 :0.33) (SS#WAR%TYPE x e0 :0.33)
+          (R#WEAPON x e0 :0.33))
+       (fusil-nn e0 x)))
+(B (name knife/cuchillo)
+   (=> (^ (S#WAR e0 :0.33) (SS#WAR%TYPE x e0 :0.33)
+          (R#WEAPON x e0 :0.33))
+       (cuchillo-nn e0 x)))
+(B (name bomb/bomba)
+   (=> (^ (S#WAR e0 :0.33) (SS#WAR%TYPE x e0 :0.33)
+          (R#WEAPON x e0 :0.33))
+       (bomba-nn e0 x)))
+(B (name shotgun/escopeta)
+   (=> (^ (S#WAR e0 :0.33) (SS#WAR%TYPE x e0 :0.33)
+          (R#WEAPON x e0 :0.33))
+       (escopeta-nn e0 x)))
+(B (name firearm/arma-de-fuego)
+   (=> (^ (S#WAR e0 :0.33) (SS#WAR%TYPE x e0 :0.33)
+          (R#WEAPON x e0 :0.33))
+       (^ (arma-nn e0 x) (de-in e1 x z) (fuego-nn e2 z))))
+(B (name artillery/artillería)
+   (=> (^ (S#WAR e0 :0.33) (SS#WAR%TYPE x e0 :0.33)
+          (R#WEAPON x e0 :0.33))
+       (artillería-nn e0 x)))
+(B (name revolver/revólver)
+   (=> (^ (S#WAR e0 :0.33) (SS#WAR%TYPE x e0 :0.33)
+          (R#WEAPON x e0 :0.33))
+       (revólver-nn e0 x)))
+(B (name sword/espada)
+   (=> (^ (S#WAR e0 :0.33) (SS#WAR%TYPE x e0 :0.33)
+          (R#WEAPON x e0 :0.33))
+       (espada-nn e0 x)))
+(B (name rapier/estoque)
+   (=> (^ (S#WAR e0 :0.33) (SS#WAR%TYPE x e0 :0.33)
+          (R#WEAPON x e0 :0.33))
+       (estoque-nn e0 x)))
+
+(B (name soldier/soldado)
+   (=> (^ (S#WAR e0 :0.45) (SS#WAR%ADVERSARY y e0 :0.45))
+       (soldado-nn e0 y)))
+(B (name military/militar)
+   (=> (^ (S#WAR e0 :0.45) (SS#WAR%ADVERSARY y e0 :0.45))
+       (militar-nn e0 y)))
+(B (name army/ejército)
+   (=> (^ (S#WAR e0 :0.45) (SS#WAR%ADVERSARY y e0 :0.45))
+       (ejército-nn e0 y)))
