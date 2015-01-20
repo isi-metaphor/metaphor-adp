@@ -1,0 +1,104 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# Generate axioms based on annotated sentences
+# Jonathan Gordon, 2014-08-08
+
+# Usage:
+#  ./from-examples data/en.dev-parse > en-from-examples.kb
+
+import csv
+import re
+from collections import defaultdict
+import codecs
+import sys
+
+UTF8Writer = codecs.getwriter('utf8')
+sys.stdout = UTF8Writer(sys.stdout)
+
+count = 0
+correct_sources = 0
+correct_targets = 0
+
+word_sources = dict()
+word_targets = dict()
+
+most_source_matches = 0
+
+for line in csv.reader(codecs.open(sys.argv[1], 'rb'), delimiter='\t'):
+    line = [x.decode('utf8') for x in line]
+    # Format:
+    #   [0]id, [1]sentence, [2]source_span, [3]good_sources, [4]target_span,
+    #   [5]good_targets, [6]parse LF
+    sentence_id = line[0]
+    sentence = line[1]
+    source_span = line[2].lower()
+    good_sources = line[3]
+    target_span = line[4].lower()
+    good_targets = line[5]
+    parse = line[6].lower()
+
+    antecedent = set([])
+
+    predications = parse.split(' ^ ')
+    for pred in predications:
+        pred = re.sub('(.+)\((.+)\)', r'(\1 \2)', pred)
+        pred = re.sub(',', ' ', pred)
+        count = 0
+        new_pred = pred
+        for e in sorted(set(re.findall(r'(e[0-9]+)[ )]', pred))):
+            new_pred = re.sub(e, 'e' + str(count), new_pred)
+            count += 1
+        count = 0
+        pred = new_pred
+        for x in sorted(set(re.findall(r'(x[0-9]+)[ )]', pred))):
+            new_pred = re.sub(x, 'x' + str(count), new_pred)
+            count += 1
+        count = 0
+        pred = new_pred
+        for u in sorted(set(re.findall(r'(u[0-9]+)[ )]', pred))):
+            new_pred = re.sub(u, 'u' + str(count), new_pred)
+            count += 1
+        pred = new_pred
+        antecedent.add(pred)
+
+    source_antecedent = set([])
+    target_antecedent = set([])
+    for pred in antecedent:
+        m = re.match('\(([^ ()<>]+)-(?:nn|adj|vb|rb|in)', pred)
+        if not m: continue
+        pref = m.group(1)
+        pref = pref[:3]
+        if re.search(pref, source_span):
+            source_antecedent.add(pred)
+        if re.search(pref, target_span):
+            target_antecedent.add(pred)
+
+    sources = set(good_sources.split(':'))
+    ant = ' '.join(sorted(source_antecedent))
+    if ant in word_sources:
+        word_sources[ant] = word_sources[ant].intersection(sources)
+    else:
+        word_sources[ant] = sources
+
+    targets = set(good_targets.split(':'))
+    ant = ' '.join(sorted(target_antecedent))
+    if ant in word_targets:
+        word_targets[ant] = word_targets[ant].intersection(targets)
+    else:
+        word_targets[ant] = targets
+
+for (antecedent, sources) in word_sources.iteritems():
+    if re.match(u'\((en|in|from|to|de|بر|با|به|برای|از|حول|по|с|в|из|для|на)-in [^)]+\)$', antecedent):
+        continue
+    if len(sources) == 1 and antecedent:
+        print '(B (name x) (=> (S#' + list(sources)[0] + ' e0 :0.96) (^ ' + \
+          antecedent + ')))'
+
+for (antecedent, targets) in word_targets.iteritems():
+    # Predicates reserved for source axioms.
+    if '(hell-nn' in antecedent:
+        continue
+    if len(targets) == 1 and antecedent:
+        print '(B (name x) (=> (TS#' + list(targets)[0] + ' e0 :0.96) (^ ' + \
+          antecedent + ')))'
