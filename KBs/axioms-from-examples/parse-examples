@@ -19,6 +19,7 @@ parser = argparse.ArgumentParser(description='Parse source and target in TSV.')
 parser.add_argument('-l', dest='lang', default='EN', help='language')
 parser.add_argument('-u', dest='url', default='http://colo-vm19.isi.edu:8080',
                     help='URL for server')
+parser.add_argument('file')
 
 try:
     options = parser.parse_args()
@@ -28,7 +29,7 @@ except IOError, msg:
 language = options.lang.upper()
 url = options.url
 
-for line in csv.reader(codecs.open(sys.argv[1], 'rb'), delimiter='\t'):
+for line in csv.reader(codecs.open(options.file, 'rb'), delimiter='\t'):
     line = [x.decode('utf8') for x in line]
 
     # Format:
@@ -69,7 +70,8 @@ for line in csv.reader(codecs.open(sys.argv[1], 'rb'), delimiter='\t'):
         parse_etc = record['isiAbductiveExplanation']
         parse_etc = re.sub('\n.*', '', parse_etc)
         parse_etc = re.sub(' \^ !?=[^ ]+', '', parse_etc)
-        parse_etc = re.sub(' \^ (T|TS|TSS|SS|S)#[^ ]+', '', parse_etc)
+        parse_etc = re.sub(' \^ (T|TS|TSS|SS|S|R)#[^ ]+', '', parse_etc)
+        parse_etc = re.sub(' \^ (TARGET|SOURCE)[^ ]+', '', parse_etc)
     except KeyError:
         continue
 
