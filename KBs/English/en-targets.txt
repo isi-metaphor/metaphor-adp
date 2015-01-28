@@ -12,7 +12,7 @@
 ;; Economic Inequality
 
 (B (name inequality-nn)
-   (=> (T#ECONOMIC-INEQUALITY u :0.9)
+   (=> (T#ECONOMIC_INEQUALITY u :0.9)
        (inequality-nn e0 x)))
 
 
@@ -23,11 +23,11 @@
        (TS#POVERTY x)))
 
 (B (name poverty-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY x :0.45))
        (poverty-nn e0 x)))
 
 (B (name poorness-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY x :0.45))
        (poorness-nn e0 x)))
 
 (B (name impoverishment-nn)
@@ -35,163 +35,163 @@
        (impoverishment-nn e0 x)))
 
 (B (name indigence-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY x :0.45))
        (indigence-nn e0 x)))
 
 (B (name penury-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY x :0.45))
        (penury-nn e0 x)))
 
 (B (name beggary-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY x :0.45))
        (beggary-nn e0 x)))
 
 (B (name begging-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY x :0.45))
        (begging-nn e0 x)))
 
 (B (name mendicancy-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY x :0.45))
        (mendicancy-nn e0 x)))
 
 (B (name misery-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY x :0.45))
        (misery-nn e0 x)))
 
 (B (name bareness-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY x :0.45))
        (bareness-nn e0 x)))
 
 (B (name need-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY x :0.45))
        (need-nn e0 x)))
 
 (B (name necessity-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY x :0.45))
        (necessity-nn e0 x)))
 
 (B (name squalor-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY x :0.45))
        (squalor-nn e0 x)))
 
 (B (name bankruptcy-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY x :0.45))
        (bankruptcy-nn e0 x)))
 
 (B (name poor-adj)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (poor-adj e0 y)))
 
 (B (name poor-people)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.40) (TS#POVERTY e0 :0.40))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.40) (TS#POVERTY e0 :0.40))
        (^ (poor-adj e0 y) (people-nn e1 y))))
 
 (B (name poorer-adj)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (poorer-adj e0 y)))
 
 (B (name poorest-adj)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (poorest-adj e0 y)))
 
 (B (name poorest-people)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.40) (TS#POVERTY e0 :0.40))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.40) (TS#POVERTY e0 :0.40))
        (^ (poorest-adj e0 y) (people-nn e1 y))))
 
 (B (name broke-adj)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (broke-adj e0 y)))
 
 (B (name bankrupt-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (bankrupt-adj e0 y)))
 
 (B (name destitute-adj)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (destitute-adj e0 y)))
 
 (B (name impoverished-adj)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (impoverished-adj e0 y)))
 
 (B (name lean-adj)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (lean-adj e0 y)))
 
 (B (name needy-adj)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (needy-adj e0 y)))
 
 (B (name shabby-adj)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (shabby-adj e0 y)))
 
 (B (name indigent-adj)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (indigent-adj e0 y)))
 
 (B (name homeless-adj)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (homeless-adj e0 y)))
 
 (B (name poor-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (poor-nn e0 x)))
 
 (B (name pauper-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (pauper-nn e0 y)))
 
 (B (name peasant-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (peasant-nn e0 y)))
 
 (B (name mendicant-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (mendicant-nn e0 y)))
 
 (B (name beggar-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (beggar-nn e0 y)))
 
 (B (name hobo-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (hobo-nn e0 y)))
 
 (B (name homeless-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (homeless-nn e0 y)))
 
 (B (name become-poor)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (^ (become-vb e1 x e0 u) (poor-adj e0 y))))
 
 (B (name grow-poor)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (^ (grow-vb e1 x e0 u) (poor-adj e0 y))))
 
 (B (name slum-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (slum-nn e0 y)))
 
 (B (name ghetto-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (ghetto-nn e0 y)))
 
 (B (name shantytown-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (shantytown-nn e0 y)))
 
 (B (name skid-row)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (^ (skid-adj e1 y) (row-nn e0 y))))
 
 (B (name debt-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (debt-nn e0 x)))
 
 (B (name arrears-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#POVERTY e0 :0.45))
        (arrears-nn e0 x)))
 
 
@@ -202,71 +202,71 @@
        (TS#TAXATION x)))
 
 (B (name tax-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.30) (TS#TAXATION x :0.30))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.30) (TS#TAXATION x :0.30))
        (tax-nn e0 x)))
 
 (B (name tax-of-dollar)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#TAXATION x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#TAXATION x :0.45))
        (^ (tax-nn e0 x) (of-in e2 y x) (dollar-nn e1 y))))
 
 (B (name income-tax-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#TAXATION x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#TAXATION x :0.45))
        (income-tax-nn e0 x)))
 
 (B (name income-tax)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.10) (TS#TAXATION x1 :0.10))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.10) (TS#TAXATION x1 :0.10))
        (^ (income-nn e0 x0) (tax-nn e1 x1) (of-in e2 x1 x0))))
 
 (B (name taxation-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.30) (TS#TAXATION x :0.30))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.30) (TS#TAXATION x :0.30))
        (taxation-nn e0 x)))
 
 (B (name impost-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#TAXATION x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#TAXATION x :0.45))
        (impost-nn e0 x)))
 
 (B (name contribution-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.47) (TS#TAXATION x :0.47))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.47) (TS#TAXATION x :0.47))
        (contribution-nn e0 x)))
 
 (B (name duty-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.47) (TS#TAXATION x :0.47))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.47) (TS#TAXATION x :0.47))
        (duty-nn e0 x)))
 
 (B (name toll-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.47) (TS#TAXATION x :0.47))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.47) (TS#TAXATION x :0.47))
        (toll-nn e0 x)))
 
 (B (name assessment-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#TAXATION x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#TAXATION x :0.45))
        (assessment-nn e0 x)))
 
 (B (name custom-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.47) (TS#TAXATION x :0.47))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.47) (TS#TAXATION x :0.47))
        (custom-nn e0 x)))
 
 (B (name levy-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#TAXATION x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#TAXATION x :0.45))
        (levy-nn e0 x)))
 
 (B (name fiscal-adj)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#TAXATION x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#TAXATION x :0.45))
        (fiscal-adj e0 x)))
 
 (B (name taxpayer-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#TAXATION e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#TAXATION e0 :0.45))
        (taxpayer-nn e0 y)))
 
 (B (name ratepayer-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#TAXATION e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#TAXATION e0 :0.45))
        (ratepayer-nn e0 y)))
 
 (B (name tax-payer-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#TAXATION e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#TAXATION e0 :0.45))
        (tax-payer-nn e0 y)))
 
 (B (name tax-payer)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#TAXATION e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#TAXATION e0 :0.45))
        (^ (tax-nn e0 x) (payer-nn e1 y) (nn e2 y x))))
 
 
@@ -277,211 +277,211 @@
        (TS#WEALTH x)))
 
 (B (name wealth-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (wealth-nn e0 x)))
 
 (B (name capital-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (capital-nn e0 x)))
 
 (B (name wealthy-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (wealthy-nn e0 x)))
 
 (B (name richness-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (richness-nn e0 x)))
 
 (B (name rich-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (rich-nn e0 x)))
 
 (B (name rich-people)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.40) (TS#WEALTH x :0.40))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.40) (TS#WEALTH x :0.40))
        (^ (rich-adj e0 y) (people-nn e1 y))))
 
 (B (name resplendence-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (resplendence-nn e0 x)))
 
 (B (name gorgeousness-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (gorgeousness-nn e0 x)))
 
 (B (name luxury-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (luxury-nn e0 x)))
 
 (B (name treasure-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (treasure-nn e0 x)))
 
 (B (name fortune-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (fortune-nn e0 x)))
 
 (B (name profusion-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (profusion-nn e0 x)))
 
 (B (name means-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (means-nn e0 x)))
 
 (B (name affluence-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (affluence-nn e0 x)))
 
 (B (name property-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (property-nn e0 x)))
 
 (B (name wall-street)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (^ (wall-nn e0 x) (street-nn e1 x))))
 
 (B (name middle-class)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (^ (middle-adj e0 x) (class-nn e1 x))))
 
 (B (name upper-class)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (^ (upper-adj e0 x) (class-nn e1 x))))
 
 (B (name rich-adj)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (rich-adj e0 y)))
 
 (B (name richer-adj)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (richer-adj e0 y)))
 
 (B (name richest-adj)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (richest-adj e0 y)))
 
 (B (name richest-people)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (^ (richest-adj e0 y) (people-nn e1 y))))
 
 (B (name prosperous-adj)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH e0 :0.45))
        (prosperous-adj e0 y)))
 
 (B (name money-bags-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH e0 :0.45))
        (money-bags-nn e0 y)))
 
 (B (name multi-millionaire-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH e0 :0.45))
        (multi-millionaire-nn e0 y)))
 
 (B (name billionaire-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH e0 :0.45))
        (billionaire-nn e0 y)))
 
 (B (name millionaire-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH e0 :0.45))
        (millionaire-nn e0 y)))
 
 (B (name wealthy-adj)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH e0 :0.45))
        (wealthy-adj e0 x)))
 
 (B (name prosper-vb)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH e0 :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH e0 :0.45))
        (prosper-vb e0 x u1 u2)))
 
 (B (name money-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (money-nn e0 x)))
 
 (B (name cash-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (cash-nn e0 x)))
 
 (B (name coin-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (coin-nn e0 x)))
 
 (B (name cent-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (cent-nn e0 x)))
 
 (B (name penny-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (penny-nn e0 x)))
 
 (B (name dime-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (dime-nn e0 x)))
 
 (B (name nickel-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (nickel-nn e0 x)))
 
 (B (name quarter-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (quarter-nn e0 x)))
 
 (B (name currency-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (currency-nn e0 x)))
 
 (B (name dollar-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (dollar-nn e0 x)))
 
 (B (name greenback-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (greenback-nn e0 x)))
 
 (B (name euro-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (euro-nn e0 x)))
 
 (B (name peso-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (peso-nn e0 x)))
 
 (B (name rupee-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (rupee-nn e0 x)))
 
 (B (name yen-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (yen-nn e0 x)))
 
 (B (name gold-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (gold-nn e0 x)))
 
 (B (name silver-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (silver-nn e0 x)))
 
 (B (name income-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (income-nn e0 x)))
 
 (B (name salary-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (salary-nn e0 x)))
 
 (B (name wage-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (wage-nn e0 x)))
 
 (B (name wallet-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (wallet-nn e0 x)))
 
 (B (name checkbook-nn)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (checkbook-nn e0 x)))
 
 (B (name credit-card)
-   (=> (^ (T#ECONOMIC-INEQUALITY u :0.45) (TS#WEALTH x :0.45))
+   (=> (^ (T#ECONOMIC_INEQUALITY u :0.45) (TS#WEALTH x :0.45))
        (^ (credit-nn e0 x) (of-in e3 e2 e1) (card-nn e2 y))))
 
 
