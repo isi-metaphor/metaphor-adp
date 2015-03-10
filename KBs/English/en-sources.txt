@@ -25,9 +25,9 @@
 ;;   - R#BENEFICIAL or necessary things (e.g., beating hearts, food, doctors)
 
 
-(B (name map-health-and-safety)
-   (=> (SOURCE e0 :0.99)
-       (C#HEALTH_AND_SAFETY e0)))
+;(B (name map-health-and-safety)
+;   (=> (SOURCE e0 :0.99)
+;       (C#HEALTH_AND_SAFETY e0)))
 
 
 ;;   Addiction
@@ -35,9 +35,9 @@
 ;;     that is psychologically or physically habit-forming, as narcotics,
 ;;     to such an extent that its cessation causes severe trauma.
 
-(B (name map-addiction) (MX category)
-   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
-       (S#BLOOD_STREAM e0)))
+;(B (name map-addiction) (MX category)
+;   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
+;       (S#BLOOD_STREAM e0)))
 
 
 ;; E.g., 'gun laws won't end gun addiction'
@@ -163,9 +163,9 @@
 ;;     The flowing blood in a circulatory system; a mainstream of power or
 ;;     vitality.
 
-(B (name map-blood-stream) (MX category)
-   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
-       (S#BLOOD_STREAM e0)))
+;(B (name map-blood-stream) (MX category)
+;   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
+;       (S#BLOOD_STREAM e0)))
 
 
 ;;   X is part of the blood stream
@@ -285,12 +285,12 @@
 
 ;; NB: Body of Water metaphors occur in several uber-schemas, so we need to be
 ;; more specific with these rules than others.
-(B (name map-body-of-water-health-and-safety1) (MX category)
-   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
-       (^ (R#THREAT x0 e0) (S#BODY_OF_WATER e0))))
-(B (name map-body-of-water-health-and-safety2) (MX category)
-   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
-       (^ (R#THREATENED x0 e0) (S#BODY_OF_WATER e0))))
+;(B (name map-body-of-water-health-and-safety1) (MX category)
+;   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
+;       (^ (R#THREAT x0 e0) (S#BODY_OF_WATER e0))))
+;(B (name map-body-of-water-health-and-safety2) (MX category)
+;   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
+;       (^ (R#THREATENED x0 e0) (S#BODY_OF_WATER e0))))
 
 
 ;;   X is someone/something sinking in water.
@@ -319,9 +319,9 @@
 ;;     impure by exposure or addition of a poisonous or polluting substance.
 ;;     (Includes former IMPURITY axioms.)
 
-(B (name map-contamination) (MX category)
-   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
-       (S#CONTAMINATION e0)))
+;(B (name map-contamination) (MX category)
+;   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
+;       (S#CONTAMINATION e0)))
 
 
 ;;   X is a contaminant.
@@ -422,9 +422,9 @@
 ;;     imbalance, toxicity, or unfavorable environmental factors; illness;
 ;;     sickness; ailment.
 
-(B (name map-disease) (MX category)
-   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
-       (S#DISEASE e0)))
+;(B (name map-disease) (MX category)
+;   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
+;       (S#DISEASE e0)))
 
 (B (name map-disease-role)
    (=> (R#THREAT x0 e0 :0.99)
@@ -843,13 +843,13 @@
 
 ;; NB: Fire metaphors occur in several uber-schemas, so we need to be
 ;; more specific with these rules.
-(B (name map-fire1) (MX category)
-   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
-       (^ (R#THREAT x0 e0) (S#FIRE e0))))
+;(B (name map-fire1) (MX category)
+;   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
+;       (^ (R#THREAT x0 e0) (S#FIRE e0))))
 
-(B (name map-fire2) (MX category)
-   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
-       (^ (R#THREATENED x0 e0) (S#FIRE e0))))
+;(B (name map-fire2) (MX category)
+;   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
+;       (^ (R#THREATENED x0 e0) (S#FIRE e0))))
 
 
 ;;   X is a threatening flame.
@@ -877,9 +877,9 @@
 ;;     Any nourishing substance that is eaten, drunk, or otherwise taken into
 ;;     the body to sustain life, provide energy, promote growth, etc.
 
-(B (name map-food) (MX category)
-   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
-       (S#FOOD e0)))
+;(B (name map-food) (MX category)
+;   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
+;       (S#FOOD e0)))
 
  (B (name map-food-role)
    (=> (R#BENEFICIAL x0 e0)
@@ -1043,9 +1043,9 @@
 ;;     Potentially dangerous topographical aspects of the Earth. (Including
 ;;     some of the previous GEOGRAPHIC_FEATURE axioms.)
 
-(B (name map-hazardous-geographic-feature) (MX category)
-   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
-       (S#HAZARDOUS_GEOGRAPHIC_FEATURE e0)))
+;(B (name map-hazardous-geographic-feature) (MX category)
+;   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
+;       (S#HAZARDOUS_GEOGRAPHIC_FEATURE e0)))
 
 
 ;;   X is a hazardous geographic feature.
@@ -1082,9 +1082,9 @@
 ;;     Any substance or substances used in treating disease or illness;
 ;;     medicament; remedy.
 
-(B (name map-medicine) (MX category)
-   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
-       (S#MEDICINE e0)))
+;(B (name map-medicine) (MX category)
+;   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
+;       (S#MEDICINE e0)))
 
 (B (name map-medicine-role)
    (=> (R#PROTECTION x0 e0 :0.99)
@@ -1341,10 +1341,10 @@
 ;; Best guess: metaphors about anesthesia are about being numbed to a problem
 ;; rather than treating it -- a placebo.
 ;; E.g., 'democracy anesthetizes the populace'
-(B (anesthetize-vb)
+(B (name anesthetize-vb)
    (=> (^ (S#MEDICINE e0 :0.45) (R#BAD_MEDICINE x0 e0 :0.45))
        (anesthetize-vb e0 x0 x1 x2)))
-(B (anaesthetize-vb)
+(B (name anaesthetize-vb)
    (=> (^ (S#MEDICINE e0 :0.45) (R#BAD_MEDICINE x0 e0 :0.45))
        (anaesthetize-vb e0 x0 x1 x2)))
 
@@ -1369,9 +1369,9 @@
 ;;     so ugly or monstrous as to frighten people; any animal or human
 ;;     grotesquely deviating from the normal shape, behavior, or character.
 
-(B (name map-monster) (MX category)
-   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
-       (S#MONSTER e0)))
+;(B (name map-monster) (MX category)
+;   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
+;       (S#MONSTER e0)))
 
 
 ;;   X is a monster.
@@ -1552,9 +1552,9 @@
 ;;     catastrophic consequences, such as avalanche, earthquake, flood, forest
 ;;     fire, hurricane, lightning, tornado, tsunami, and volcanic eruption.
 
-(B (name map-natural-physical-force) (MX category)
-   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
-       (S#NATURAL_PHYSICAL_FORCE e0)))
+;(B (name map-natural-physical-force) (MX category)
+;   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
+;       (S#NATURAL_PHYSICAL_FORCE e0)))
 
 
 ;;   X is a natural physical force that threatens safety.
@@ -1815,9 +1815,9 @@
 ;;     fat in the body; Excessive body fat. It is usually caused by sedentary
 ;;     habits and a diet high in fat, alcohol, or total calories.
 
-(B (name map-obesity) (MX category)
-   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
-       (S#OBESITY e0)))
+;(B (name map-obesity) (MX category)
+;   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
+;       (S#OBESITY e0)))
 
 
 ;;   X is obese.
@@ -1898,9 +1898,9 @@
 ;;     someone or something else and does not do anything to earn it or deserve
 ;;     it.
 
-(B (name map-parasite) (MX category)
-   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
-       (S#PARASITE e0)))
+;(B (name map-parasite) (MX category)
+;   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
+;       (S#PARASITE e0)))
 
 
 ;;   X is a parasite.
@@ -2009,9 +2009,9 @@
 ;;   Physical Harm
 ;;     Physical injury or damage.
 
-(B (name map-physical-harm) (MX category)
-   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
-       (S#PHYSICAL_HARM e0)))
+;(B (name map-physical-harm) (MX category)
+;   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
+;       (S#PHYSICAL_HARM e0)))
 
 (B (name map-victim-role)
    (=> (R#THREATENED x0 e0 :0.99)
@@ -2267,9 +2267,9 @@
 ;;     damaged; the act of preventing somebody or something from being harmed
 ;;     or damaged, or the state of being kept safe.
 
-(B (name map-protection) (MX category)
-   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
-       (S#PROTECTION e0)))
+;(B (name map-protection) (MX category)
+;   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
+;       (S#PROTECTION e0)))
 
 
 ;;   X protects from harmful things.
@@ -3569,17 +3569,18 @@
 ;;   common, usually resulting in a victor and a loser but not necessarily
 ;;   involving the destruction of the latter.
 
-;; Competition: Type
-
 (B (name competition-nn)
    (=> (^ (S#COMPETITION e0 :0.45) (SS#COMPETITION%TYPE x e0 :0.45))
        (competition-nn e0 x)))
+
 (B (name contest-nn)
    (=> (^ (S#COMPETITION e0 :0.45) (SS#COMPETITION%TYPE x e0 :0.45))
        (contest-nn e0 x)))
+
 (B (name race-nn)
    (=> (^ (S#COMPETITION e0 :0.45) (SS#COMPETITION%TYPE x e0 :0.45))
        (race-nn e0 x)))
+
 (B (name fair-shot-at)
    (=> (^ (S#COMPETITION e1 :0.45) (SS#COMPETITION%TYPE x e1 :0.45))
        (^ (fair-adj e0 x) (shot-nn e1 x) (at-in e3 x y))))
@@ -3587,6 +3588,7 @@
 (B (name winner-nn)
    (=> (^ (S#COMPETITION e0 :0.45) (SS#COMPETITION%COMPONENT x e0 :0.45))
        (winner-nn e0 x)))
+
 (B (name loser-nn)
    (=> (^ (S#COMPETITION e0 :0.45) (SS#COMPETITION%COMPONENT x e0 :0.45))
        (loser-nn e0 x)))
@@ -3602,30 +3604,39 @@
 (B (name prison)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%CONFINED_SPACE x e0 :0.45))
        (prison-nn e0 x)))
+
 (B (name jail)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%CONFINED_SPACE x e0 :0.45))
        (jail-nn e0 x)))
+
 (B (name gaol)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%CONFINED_SPACE x e0 :0.45))
        (gaol-nn e0 x)))
+
 (B (name cage)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%CONFINED_SPACE x e0 :0.45))
        (cage-nn e0 x)))
+
 (B (name dungeon)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%CONFINED_SPACE x e0 :0.45))
        (dungeon-nn e0 x)))
+
 (B (name penitentiary)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%CONFINED_SPACE x e0 :0.45))
        (penitentiary-nn e0 x)))
+
 (B (name dead-end)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%CONFINED_SPACE x e0 :0.45))
        (dead-end-nn e0 x)))
+
 (B (name alcatraz)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%CONFINED_SPACE x e0 :0.45))
        (alcatraz-nn e0 x)))
+
 (B (name cell)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%CONFINED_SPACE x e0 :0.45))
        (cell-nn e0 x)))
+
 (B (name closet)
    (=> (^ (S#CONFINEMENT e0 :0.45) (SS#CONFINEMENT%CONFINED_SPACE x e0 :0.45))
        (closet-nn e0 x)))
@@ -3638,22 +3649,27 @@
    (=> (^ (S#CONFINEMENT e0 :0.2) (SS#CONFINEMENT%CONFINED_SPACE e0 e0 :0.2)
           (R#AGENT x e0 :0.2) (R#PATIENT y e0 :0.2))
        (imprison-vb e0 x y u)))
+
 (B (name confine)
    (=> (^ (S#CONFINEMENT e0 :0.2) (SS#CONFINEMENT%CONFINED_SPACE e0 e0 :0.2)
           (R#AGENT x e0 :0.2) (R#PATIENT y e0 :0.2))
        (confine-vb e0 x y u)))
+
 (B (name incarcerate)
    (=> (^ (S#CONFINEMENT e0 :0.2) (SS#CONFINEMENT%CONFINED_SPACE e0 e0 :0.2)
           (R#AGENT x e0 :0.2) (R#PATIENT y e0 :0.2))
        (incarcerate-vb e0 x y u)))
+
 (B (name lock)
    (=> (^ (S#CONFINEMENT e0 :0.2) (SS#CONFINEMENT%CONFINED_SPACE e0 e0 :0.2)
           (R#AGENT x e0 :0.2) (R#PATIENT y e0 :0.2))
        (lock-vb e0 x y u)))
+
 (B (name constrain)
    (=> (^ (S#CONFINEMENT e0 :0.2) (SS#CONFINEMENT%CONFINED_SPACE e0 e0 :0.2)
           (R#AGENT x e0 :0.2) (R#PATIENT y e0 :0.2))
        (constrain-vb e0 x y u)))
+
 (B (name jail-vb)
    (=> (^ (S#CONFINEMENT e0 :0.2) (SS#CONFINEMENT%CONFINED_SPACE e0 e0 :0.2)
           (R#AGENT x e0 :0.2) (R#PATIENT y e0 :0.2))
@@ -3725,26 +3741,32 @@
    (=> (^ (S#CONFINEMENT e0 :0.30) (SS#CONFINEMENT%EXIT e0 e0 :0.30)
           (R#ESCAPE-AGENT x e0 :0.30))
        (^ (get-vb e0 x y u) (out-in e1 e0) (of-in e2 e0 w))))
+
 (B (name get-out)
    (=> (^ (S#CONFINEMENT e0 :0.30) (SS#CONFINEMENT%EXIT e0 e0 :0.30)
           (R#ESCAPE-AGENT x e0 :0.30))
        (^ (get-vb e0 x y u) (out-in e1 e0))))
+
 (B (name break-out-of)
    (=> (^ (S#CONFINEMENT e0 :0.30) (SS#CONFINEMENT%EXIT e0 e0 :0.30)
           (R#ESCAPE-AGENT x e0 :0.30))
        (^ (break-vb e0 x y u) (out-in e1 e0) (of-in e2 e0 w))))
+
 (B (name break-out-in)
    (=> (^ (S#CONFINEMENT e0 :0.30) (SS#CONFINEMENT%EXIT e0 e0 :0.30)
           (R#ESCAPE-AGENT x e0 :0.30))
        (^ (break-vb e0 x y u) (out-in e1 e0))))
+
 (B (name break-out-rb)
    (=> (^ (S#CONFINEMENT e0 :0.30) (SS#CONFINEMENT%EXIT e0 e0 :0.30)
           (R#ESCAPE-AGENT x e0 :0.30))
        (^ (break-vb e0 x y u) (out-rb e1 e0))))
+
 (B (name break-free-adj)
    (=> (^ (S#CONFINEMENT e0 :0.25) (SS#CONFINEMENT%EXIT e0 e0 :0.25)
           (R#ESCAPE-AGENT x e0 :0.25))
        (^ (break-vb e0 x y u) (free-adj e1 x))))
+
 (B (name liberate-vb)
    (=> (^ (S#CONFINEMENT u1 :0.30) (SS#CONFINEMENT%EXIT e0 u1 :0.30)
           (R#EXIT-AGENT x e0 :0.30) (R#EXIT-PATIENT y e0 :0.30))
@@ -6060,9 +6082,10 @@
    (=> (^ (S#RESOURCE e0 :0.45) (SS#RESOURCE%QUANTITY_SIZE y e0 :0.45))
        (^ (cut-vb e0 x y u) (TS#TAXATION y))))
 
-(B (name reduce-taxes)
-   (=> (^ (S#RESOURCE e0 :0.45) (SS#RESOURCE%QUANTITY_SIZE y e0 :0.45))
-       (^ (reduce-vb e0 x y u) (TS#TAXATION y))))
+;; Too ambiguous in the data with Downard Movement.
+;; (B (name reduce-taxes)
+;;    (=> (^ (S#RESOURCE e0 :0.45) (SS#RESOURCE%QUANTITY_SIZE y e0 :0.45))
+;;        (^ (reduce-vb e0 x y u) (TS#TAXATION y))))
 
 
 ;; Resource: Develop Resources
