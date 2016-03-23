@@ -188,11 +188,11 @@ for (antecedent, source_counts) in sources.iteritems():
     if (total < 5 and long(source_counts[sorted_counts[0]]) > 0.65 * total) \
         or (long(source_counts[sorted_counts[0]]) >= 0.8 * total):
         print '(B (name ex) (=> (S#' + sorted_counts[0] + \
-          ' e0 :0.96) (^ ' + antecedent + ')))'
+          ' e0 :0.2) (^ ' + antecedent + ')))'
     if len(sorted_counts) > 1 and \
        source_counts[sorted_counts[0]] == source_counts[sorted_counts[1]]:
         print '(B (name ex) (=> (S#' + sorted_counts[1] + \
-          ' e0 :0.96) (^ ' + antecedent + ')))'
+          ' e0 :0.2) (^ ' + antecedent + ')))'
 
 for (antecedent, target_counts) in targets.iteritems():
     # Block if it's *only* a preposition or other stopword.
@@ -209,8 +209,8 @@ for (antecedent, target_counts) in targets.iteritems():
     if (total < 5 and long(target_counts[sorted_counts[0]]) > 0.65 * total) \
         or (long(target_counts[sorted_counts[0]]) >= 0.8 * total):
         print '(B (name ex) (=> (TS#' + sorted_counts[0] + \
-          ' e0 :0.96) (^ ' + antecedent + ')))'
+          ' e0 :0.2) (^ ' + antecedent + ')))'
     if len(sorted_counts) > 1 and \
        target_counts[sorted_counts[0]] == target_counts[sorted_counts[1]]:
         print '(B (name ex) (=> (TS#' + sorted_counts[1] + \
-          ' e0 :0.96) (^ ' + antecedent + ')))'
+          ' e0 :0.2) (^ ' + antecedent + ')))'
