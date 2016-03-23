@@ -1,0 +1,105 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# Generate synonymy axioms from WordNet
+# Jonathan Gordon, 2014-08-07
+
+import sys
+from nltk.corpus import wordnet as wn
+import re
+import codecs
+
+# Languages: en [not eng], spa, fas
+
+lang = 'en'
+
+UTF8Writer = codecs.getwriter('utf8')
+sys.stdout = UTF8Writer(sys.stdout)
+
+# all_synsets is cleaner, but it's monolingual.
+for s in sorted(set(sum([wn.synsets(l, pos='n', lang=lang)
+                         for l in wn.all_lemma_names(pos='n', lang=lang)],
+                        []))):
+    if not s.hypernyms():
+        continue
+    if not s.lemmas(lang=lang):
+        continue
+    sname = re.sub('\.n\.([0-9]+)$', r'-\1-nn', s.name())
+    for l in [lem.name().lower() for lem in s.lemmas(lang=lang)]:
+        # TODO: Skipping multi-word expressions for now.
+        if '_' in l:
+            continue
+        if lang == 'en' and not re.match('^[a-z]', l[0]):
+            continue
+        print '(B (name wn-syn1-%s)' % (sname)
+        print '   (=> (wn-%s s e :1.2)' % (sname)
+        print '       (%s-nn e x)))' % (l)
+        print '(B (name wn-syn2-%s)' % (sname)
+        print '   (=> (%s-nn e x :1.2)' % (l)
+        print '       (wn-%s s e)))' % (sname)
+    # for h in s.hypernyms():
+    #     hname = re.sub('\.n\.([0-9]+)$', r'-\1-nn', h.name())
+    #     print '(B (name wn-hyp-%s-%s)' % (sname, hname)
+    #     print '   (=> (wn-%s s e :2.50) ' % (hname)
+    #     print '       (wn-%s s e)))' % (sname)
+
+
+for s in sorted(set(sum([wn.synsets(l, pos='a', lang=lang)
+                         for l in wn.all_lemma_names(pos='a', lang=lang)],
+                        []))):
+    sname = re.sub('\.a\.([0-9]+)$', r'-\1-adj', s.name())
+    try:
+        for l in [lem.name().lower() for lem in s.lemmas(lang=lang)]:
+            # TODO: Skipping multi-word expressions for now.
+            if '_' in l:
+                continue
+            if lang == 'en' and not re.match('^[a-z]', l[0]):
+                continue
+            print '(B (name wn-syn1-%s)' % (sname)
+            print '   (=> (wn-%s s e :1.2) ' % (sname)
+            print '       (%s-adj e x)))' % (l)
+            print '(B (name wn-syn2-%s)' % (sname)
+            print '   (=> (%s-adj e x :1.2)' % (l)
+            print '       (wn-%s s e)))' % (sname)
+    except TypeError:
+        continue
+
+for s in sorted(set(sum([wn.synsets(l, pos='v', lang=lang)
+                         for l in wn.all_lemma_names(pos='v', lang=lang)],
+                        []))):
+    sname = re.sub('\.v\.([0-9]+)$', r'-\1-vb', s.name())
+    try:
+        for l in [lem.name().lower() for lem in s.lemmas(lang=lang)]:
+            # TODO: Skipping multi-word expressions for now.
+            if '_' in l:
+                continue
+            if lang == 'en' and not re.match('^[a-z]', l[0]):
+                continue
+            print '(B (name wn-syn-%s)' % (sname)
+            print '   (=> (wn-%s s e :1.2) ' % (sname)
+            print '       (%s-vb e x y z)))' % (l)
+            print '(B (name wn-syn2-%s)' % (sname)
+            print '   (=> (%s-vb e x y z :1.2)' % (l)
+            print '       (wn-%s s e)))' % (sname)
+    except TypeError:
+        continue
+
+for s in sorted(set(sum([wn.synsets(l, pos='r', lang=lang)
+                         for l in wn.all_lemma_names(pos='r', lang=lang)],
+                        []))):
+    sname = re.sub('\.r\.([0-9]+)$', r'-\1-rb', s.name())
+    try:
+        for l in [lem.name().lower() for lem in s.lemmas(lang=lang)]:
+            # TODO: Skipping multi-word expressions for now.
+            if '_' in l:
+                continue
+            if lang == 'en' and not re.match('^[a-z]', l[0]):
+                continue
+            print '(B (name wn-syn-%s)' % (sname)
+            print '   (=> (wn-%s s e0 :1.0) ' % (sname)
+            print '       (%s-rb e0 e1)))' % (l)
+            print '(B (name wn-syn2-%s)' % (sname)
+            print '   (=> (%s-rb e0 e1 :1.0)' % (l)
+            print '       (wn-%s s e0)))' % (sname)
+    except TypeError:
+        continue
