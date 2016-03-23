@@ -1,10 +1,9 @@
-﻿===========
-Farsi semantic parsing pipeline
-===========
+Farsi Semantic Parsing Pipeline
+===============================
 
 A pipeline that tokenizes, POS tags, parses and creates logical form for Farsi sentences.
 
-###Running the pipeline
+### Running the pipeline
 
 ```
 ./LF_Pipeline [<input file>][<output file>]
@@ -34,7 +33,7 @@ Running logical form generator
 ./createLF [<input file>][<output file>]
 ```
 
-###External Tools & Resources
+### External Tools & Resources
 
 - Tokenization
  - [utf-8 tokenizer]( http://corpus.leeds.ac.uk/tools/utf8-tokenize.pl)

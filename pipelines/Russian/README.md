@@ -1,5 +1,5 @@
-Russian semantic parsing pipeline
-===
+Russian Semantic Parsing Pipeline
+=================================
 
 **DESCRIPTION**
 

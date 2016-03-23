@@ -1,5 +1,5 @@
-English semantic parsing pipeline
-===
+English Semantic Parsing Pipeline
+=================================
 
 **DESCRIPTION**
 
