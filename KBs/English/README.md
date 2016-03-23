@@ -1,5 +1,5 @@
 # English Knowledge Bases
-Jonathan Gordon, 2014-12-22.txt
+Jonathan Gordon, 2014-12-22
 
 This directory contains the knowledge bases of English axioms for
 metaphor recognition and interpretation.

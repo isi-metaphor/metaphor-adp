@@ -1,9 +1,130 @@
 ;; -*- Mode: Lisp -*-
 
 ;;
-;; Spanish Metaphor Source Axioms
-;; Katya Ovchinnikova, Ross Israel, Jonathan Gordon
+;; Spanish Metaphor Source Axioms (Manual)
+;; Jonathan Gordon, Ross Israel, Katya Ovchinnikova
 ;;
+
+;; Notation:
+;;   [I] = invented example
+
+
+
+;;
+;; Health and Safety
+;;
+;;   It is desirable to maintain the well being of a body. Some things in
+;;   the world are beneficial for human health and safety. Other things are
+;;   threats to human health and safety.
+;;
+;;   Targets are mapped to:
+;;   - R#THREAT (e.g., monsters, tsunamis, diseases, parasites)
+;;   - R#THREATENED (e.g., sick people, infested people, contaminated
+;;     things)
+;;   - R#PROTECTION or mitigation of threats (e.g., medicine, protection,
+;;     shelter)
+;;   - R#BENEFICIAL or necessary things (e.g., beating hearts, food, doctors)
+
+
+;(B (name map-health-and-safety)
+;   (=> (SOURCE e0 :0.99)
+;       (C#HEALTH_AND_SAFETY e0)))
+
+
+;;   Addiction / Adicción
+;;     The state of being enslaved to a habit or practice or to something
+;;     that is psychologically or physically habit-forming, as narcotics,
+;;     to such an extent that its cessation causes severe trauma.
+;;
+;;     Hábito de quien se deja dominar por el uso de alguna o algunas
+;;     drogas tóxicas, o por la afición desmedida a ciertos juegos.
+;;     [Some one who is habitually dominated by the use of one or more
+;;     toxic drugs, or by the disproportionate passion for some games.]
+
+;(B (name map-addiction) (MX category)
+;   (=> (C#HEALTH_AND_SAFETY e0 :0.99)
+;       (S#BLOOD_STREAM e0)))
+
+
+(B (name addiction/adicción)
+   (=> (^ (S#ADDICTION e0 :0.45) (R#THREAT x0 e0 :0.45))
+       (adicción-nn e0 x0)))
+
+(B (name drug/droga)
+   (=> (^ (S#ADDICTION e0 :0.45) (R#THREAT x0 e0 :0.45))
+       (droga-nn e0 x0)))
+
+(B (name alcohol/alcohol)
+   (=> (^ (S#ADDICTION e0 :0.3) (SS#ADDICTION%TYPE x e0 :0.3)
+          (R#SUBSTANCE x e0 :0.3))
+       (alcohol-nn e0 x)))
+(B (name vodka/vodka)
+   (=> (^ (S#ADDICTION e0 :0.3) (SS#ADDICTION%TYPE x e0 :0.3)
+          (R#SUBSTANCE x e0 :0.3))
+       (vodka-nn e0 x)))
+(B (name wine/vino)
+   (=> (^ (S#ADDICTION e0 :0.3) (SS#ADDICTION%TYPE x e0 :0.3)
+          (R#SUBSTANCE x e0 :0.3))
+       (vino-nn e0 x)))
+
+(B (name narcotic/narcotic-nn)
+   (=> (^ (S#ADDICTION e0 :0.3) (SS#ADDICTION%TYPE x e0 :0.3)
+          (R#SUBSTANCE x e0 :0.3))
+       (narcótico-nn e0 x)))
+(B (name narcotic/narcotic-adj)
+   (=> (^ (S#ADDICTION e0 :0.3) (SS#ADDICTION%TYPE x e0 :0.3)
+          (R#SUBSTANCE x e0 :0.3))
+       (narcótico-adj e0 x)))
+(B (name cocaine/cocaína)
+   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%TYPE x e0 :0.45))
+       (cocaína-nn e0 x)))
+(B (name opium/opio)
+   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%TYPE x e0 :0.45))
+       (opio-nn e0 x)))
+(B (name opiate/opiáceo)
+   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%TYPE x e0 :0.45))
+       (opiáceo-nn e0 x)))
+
+(B (name habit/hábito)
+   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%COMPULSION x e0 :0.45))
+       (hábito-nn e0 x)))
+(B (name vice/vicio)
+   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%COMPULSION x e0 :0.45))
+       (vicio-nn e0 x)))
+
+(B (name addict/adicto)
+   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%COMPULSION x e0 :0.45))
+       (adicto-adj e0 x)))
+
+(B (name intoxication/intoxicación)
+   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%RESULT x e0 :0.45))
+       (intoxicación-nn e0 x)))
+(B (name binge/borrachera)
+   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%RESULT x e0 :0.45))
+       (borrachera-nn e0 x)))
+(B (name overdose/sobredosis)
+   (=> (^ (S#ADDICTION e0 :0.30) (SS#ADDICTION%RESULT x e0 :0.30))
+       (sobredosis-nn e0 x)))
+
+(B (name drunk/borracho)
+   (=> (^ (S#ADDICTION e0 :0.30) (SS#ADDICTION%RESULT e0 e0 :0.30)
+          (R#ADDICTED x e0 :0.30))
+       (borracho-adj e0 x)))
+(B (name intoxicated/intoxicado)
+   (=> (^ (S#ADDICTION e0 :0.30) (SS#ADDICTION%RESULT e0 e0 :0.30)
+          (R#ADDICTED x e0 :0.30))
+       (intoxicado-adj e0 x)))
+
+
+
+
+
+
+
+
+
+
+
 
 
 ;; A God / Dios
@@ -395,96 +516,6 @@
 (B (name misfortune/desgracia-nn)
    (=> (^ (S#ACCIDENT e0 :0.45) (SS#ACCIDENTY%TYPE x e0 :0.45))
        (desgracia-nn e0 x)))
-
-
-
-;; Addiction / Adicción
-;;   The state of being enslaved to a habit or practice or to something that
-;;   is psychologically or physically habit-forming, as narcotics, to such an
-;;   extent that its cessation causes severe trauma.
-;;
-;;   Hábito de quien se deja dominar por el uso de alguna o algunas
-;;   drogas tóxicas, o por la afición desmedida a ciertos juegos.
-;;   [Some one who is habitually dominated by the use of one or more
-;;   toxic drugs, or by the disproportionate passion for some games.]
-;;
-;;   Note: No mention in Spanish of the physical or psychological
-;;   habit-forming tendencies.
-
-(B (name drug/droga)
-   (=> (^ (S#ADDICTION e0 :0.3) (SS#ADDICTION%TYPE x e0 :0.3)
-          (R#SUBSTANCE x e0 :0.3))
-       (droga-nn e0 x)))
-
-(B (name alcohol/alcohol)
-   (=> (^ (S#ADDICTION e0 :0.3) (SS#ADDICTION%TYPE x e0 :0.3)
-          (R#SUBSTANCE x e0 :0.3))
-       (alcohol-nn e0 x)))
-(B (name vodka/vodka)
-   (=> (^ (S#ADDICTION e0 :0.3) (SS#ADDICTION%TYPE x e0 :0.3)
-          (R#SUBSTANCE x e0 :0.3))
-       (vodka-nn e0 x)))
-(B (name wine/vino)
-   (=> (^ (S#ADDICTION e0 :0.3) (SS#ADDICTION%TYPE x e0 :0.3)
-          (R#SUBSTANCE x e0 :0.3))
-       (vino-nn e0 x)))
-
-(B (name narcotic/narcotic-nn)
-   (=> (^ (S#ADDICTION e0 :0.3) (SS#ADDICTION%TYPE x e0 :0.3)
-          (R#SUBSTANCE x e0 :0.3))
-       (narcótico-nn e0 x)))
-(B (name narcotic/narcotic-adj)
-   (=> (^ (S#ADDICTION e0 :0.3) (SS#ADDICTION%TYPE x e0 :0.3)
-          (R#SUBSTANCE x e0 :0.3))
-       (narcótico-adj e0 x)))
-(B (name cocaine/cocaína)
-   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%TYPE x e0 :0.45))
-       (cocaína-nn e0 x)))
-(B (name opium/opio)
-   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%TYPE x e0 :0.45))
-       (opio-nn e0 x)))
-(B (name opiate/opiáceo)
-   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%TYPE x e0 :0.45))
-       (opiáceo-nn e0 x)))
-
-
-;; Addiction: Compulsion
-
-(B (name addiction/adicción)
-   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%COMPULSION x e0 :0.45))
-       (adicción-nn e0 x)))
-(B (name habit/hábito)
-   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%COMPULSION x e0 :0.45))
-       (hábito-nn e0 x)))
-(B (name vice/vicio)
-   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%COMPULSION x e0 :0.45))
-       (vicio-nn e0 x)))
-
-(B (name addict/adicto)
-   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%COMPULSION x e0 :0.45))
-       (adicto-adj e0 x)))
-
-
-;; Addiction: Result
-
-(B (name intoxication/intoxicación)
-   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%RESULT x e0 :0.45))
-       (intoxicación-nn e0 x)))
-(B (name binge/borrachera)
-   (=> (^ (S#ADDICTION e0 :0.45) (SS#ADDICTION%RESULT x e0 :0.45))
-       (borrachera-nn e0 x)))
-(B (name overdose/sobredosis)
-   (=> (^ (S#ADDICTION e0 :0.30) (SS#ADDICTION%RESULT x e0 :0.30))
-       (sobredosis-nn e0 x)))
-
-(B (name drunk/borracho)
-   (=> (^ (S#ADDICTION e0 :0.30) (SS#ADDICTION%RESULT e0 e0 :0.30)
-          (R#ADDICTED x e0 :0.30))
-       (borracho-adj e0 x)))
-(B (name intoxicated/intoxicado)
-   (=> (^ (S#ADDICTION e0 :0.30) (SS#ADDICTION%RESULT e0 e0 :0.30)
-          (R#ADDICTED x e0 :0.30))
-       (intoxicado-adj e0 x)))
 
 
 
