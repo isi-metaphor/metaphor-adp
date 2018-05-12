@@ -1,0 +1,80 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# Parse example sentences (from the development set) to use for generating
+# axioms.
+
+import sys
+import argparse
+import csv
+import json
+import urllib2
+import re
+import codecs
+
+UTF8Writer = codecs.getwriter('utf8')
+sys.stdout = UTF8Writer(sys.stdout)
+
+parser = argparse.ArgumentParser(description='Parse source and target in TSV.')
+parser.add_argument('-l', dest='lang', default='EN', help='language')
+parser.add_argument('-u', dest='url', default='http://colo-vm19.isi.edu:8080',
+                    help='URL for server')
+parser.add_argument('file')
+
+try:
+    options = parser.parse_args()
+except IOError, msg:
+    parser.error(str(msg))
+
+language = options.lang.upper()
+url = options.url
+
+for line in csv.reader(codecs.open(options.file, 'rb'), delimiter='\t'):
+    line = [x.decode('utf8') for x in line]
+
+    # Format:
+    #   [0]id, [1]sentence, [2]creation_time, [3]metaphoricity,
+    #   [4]good_protagonists, [5]good_sources, [6]good_targets,
+    #   etc. See README in data directory.
+    sentence_id = line[0]
+    sentence = line[1]
+    good_sources = line[5]
+    good_targets = line[6]
+
+    # For the sentence, the source span is marked by <<>> and the target by
+    # [[]].
+    try:
+        source_span = re.search('<<(.+)>>', sentence).group(1)
+        target_span = re.search('\[\[(.+)\]\]', sentence).group(1)
+    except AttributeError:
+        print >> sys.stderr, ' ++ Bad sentence:', sentence
+        continue
+    sentence = re.sub('(<<|>>|\[\[|\]\])', '', sentence)
+
+    # Send request to server.
+    data = {'enableDebug': False,
+            'language': language,
+            'step': 3,
+            'metaphorAnnotationRecords':
+                [{'source': source_span,
+                  'target': target_span,
+                  'sentenceId': sentence_id,
+                  'linguisticMetaphor': source_span + ' ' + target_span}]}
+
+    req = urllib2.Request(url)
+    req.add_header('Content-Type', 'application/json')
+    response = urllib2.urlopen(req, json.dumps(data)).read().encode('utf8')
+
+    try:
+        record = json.loads(response)['metaphorAnnotationRecords'][0]
+        parse_etc = record['isiAbductiveExplanation']
+        parse_etc = re.sub('\n.*', '', parse_etc)
+        parse_etc = re.sub(' \^ !?=[^ ]+', '', parse_etc)
+        parse_etc = re.sub(' \^ (T|TS|TSS|SS|S|R)#[^ ]+', '', parse_etc)
+        parse_etc = re.sub(' \^ (TARGET|SOURCE)[^ ]+', '', parse_etc)
+    except KeyError:
+        continue
+
+    print u'\t'.join([sentence_id, sentence, source_span, good_sources,
+                      target_span, good_targets, parse_etc])
+    sys.stdout.flush()

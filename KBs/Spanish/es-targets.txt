@@ -4,34 +4,10 @@
 ;; Spanish Metaphor Targets
 ;;
 
-;; Democracy
 
-(B (name democracy/democracia)
-   (=> (^ (TS#DEMOCRACY x :0.45) (T#DEMOCRACY u :0.45))
-       (democracia-nn e0 x)))
+;; Economic Inequality / Desigualdad Economica
 
-
-;; Democracy: Bureaucracy
-
-(B (name bureaucracy/burocracia)
-   (=> (^ (TS#BUREAUCRACY x :0.45) (T#DEMOCRACY u :0.45))
-       (burocracia-nn e0 x)))
-
-
-;; Democracy: Elections
-
-(B (name election/elección)
-   (=> (^ (TS#ELECTIONS x :0.45) (T#DEMOCRACY u :0.45))
-       (elección-nn e0 x)))
-
-(B (name elect/electo)
-   (=> (^ (TS#ELECTIONS x :0.45) (T#DEMOCRACY u :0.45))
-       (electo-vb e0 x u1 u2)))
-
-
-;; Economic Inequality
-
-;; Economic Inequality: Poverty
+;; Economic Inequality: Poverty / Pobreza
 
 (B (name poverty/pobreza)
    (=> (^ (TS#POVERTY x :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
@@ -117,7 +93,7 @@
        (depauperar-vb e0 x u1 u2)))
 
 (B (name debt/deuda)
-   (=> (^ (TS#POVERTY u1 :0.3) (T#ECONOMIC-INEQUALITY u :0.3))
+   (=> (^ (TS#POVERTY u1 :0.3) (T#ECONOMIC_INEQUALITY u :0.3))
        (deuda-nn e0 x)))
 
 ;; Of - poor
@@ -132,7 +108,7 @@
 
 
 
-;; Economic Inequality: Taxation
+;; Economic Inequality: Taxation / Impuestos
 
 (B (name tax/impuesto)
    (=> (^ (TS#TAXATION x :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
@@ -151,12 +127,19 @@
    (=> (^ (TS#TAXATION e0 :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
        (imponer-vb e0 x y z)))
 
-(B (name fiscal/fiscal)
+(B (name fiscal/fiscal-nn)
    (=> (^ (TS#TAXATION x :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
        (fiscal-nn e0 x)))
 (B (name fiscal/fiscal-adj)
    (=> (^ (TS#TAXATION e0 :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
        (fiscal-adj e0 x)))
+(B (name tax/tributario-adj)
+   (=> (^ (TS#TAXATION e0 :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
+       (tributario-adj e0 x)))
+
+(B (name tax-revenue/tributario-ingreso)
+   (=> (^ (TS#TAXATION e0 :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
+       (^ (tributario-adj e1 x0) (ingreso-nn e0 x0))))
 
 (B (name taxpayer/contribuyente)
    (=> (^ (TS#TAXATION y :0.3) (T#ECONOMIC_INEQUALITY u :0.3)
@@ -164,7 +147,7 @@
        (contribuyente-nn e0 y)))
 
 
-;; Economic Inequality: Wealth
+;; Economic Inequality: Wealth / Riqueza
 
 (B (name wealth/riqueza)
    (=> (^ (TS#WEALTH x :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
@@ -181,6 +164,9 @@
 (B (name capital/capital)
    (=> (^ (TS#WEALTH x :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
        (capital-nn e0 x)))
+(B (name income/ingreso)
+   (=> (^ (TS#WEALTH x :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
+       (ingreso-nn e0 x)))
 (B (name enrichment/enriquecimiento)
    (=> (^ (TS#WEALTH x :0.45) (T#ECONOMIC_INEQUALITY u :0.45))
        (enriquecimiento-nn e0 x)))
@@ -224,29 +210,88 @@
        (^ (TS#WEALTH x) (de-in e1 x y))))
 
 (B (name money/dinero)
-   (=> (^ (TS#WEALTH x :0.3) (T#ECONOMIC-INEQUALITY u :0.3))
+   (=> (^ (TS#WEALTH x :0.3) (T#ECONOMIC_INEQUALITY u :0.3))
        (dinero-nn e0 x)))
 (B (name cash/efectivo)
-   (=> (^ (TS#WEALTH x :0.3) (T#ECONOMIC-INEQUALITY u :0.3))
+   (=> (^ (TS#WEALTH x :0.3) (T#ECONOMIC_INEQUALITY u :0.3))
        (efectivo-nn e0 x)))
 (B (name coin/moneda)
-   (=> (^ (TS#WEALTH x :0.3) (T#ECONOMIC-INEQUALITY u :0.3))
+   (=> (^ (TS#WEALTH x :0.3) (T#ECONOMIC_INEQUALITY u :0.3))
        (moneda-nn e0 x)))
 (B (name cent/centavo)
-   (=> (^ (TS#WEALTH x :0.3) (T#ECONOMIC-INEQUALITY u :0.3))
+   (=> (^ (TS#WEALTH x :0.3) (T#ECONOMIC_INEQUALITY u :0.3))
        (centavo-nn e0 x)))
 (B (name penny/plata)
-   (=> (^ (TS#WEALTH x :0.3) (T#ECONOMIC-INEQUALITY u :0.3))
+   (=> (^ (TS#WEALTH x :0.3) (T#ECONOMIC_INEQUALITY u :0.3))
        (plata-nn e0 x)))
 (B (name dime/pisto)
-   (=> (^ (TS#WEALTH x :0.3) (T#ECONOMIC-INEQUALITY u :0.3))
+   (=> (^ (TS#WEALTH x :0.3) (T#ECONOMIC_INEQUALITY u :0.3))
        (pisto-nn e0 x)))
 (B (name nickel/divisa)
-   (=> (^ (TS#WEALTH x :0.3) (T#ECONOMIC-INEQUALITY u :0.3))
+   (=> (^ (TS#WEALTH x :0.3) (T#ECONOMIC_INEQUALITY u :0.3))
        (divisa-nn e0 x)))
 (B (name quarter/peso)
-   (=> (^ (TS#WEALTH x :0.3) (T#ECONOMIC-INEQUALITY u :0.3))
+   (=> (^ (TS#WEALTH x :0.3) (T#ECONOMIC_INEQUALITY u :0.3))
        (peso-nn e0 x)))
 (B (name monetary/monetario)
-   (=> (^ (TS#WEALTH e0 :0.3) (T#ECONOMIC-INEQUALITY u :0.3))
+   (=> (^ (TS#WEALTH e0 :0.3) (T#ECONOMIC_INEQUALITY u :0.3))
        (monetario-adj e0 x)))
+
+
+;; Governance / Gobernacion
+
+;; Governance: Bureaucracy / Burocracia
+
+(B (name bureaucracy/burocracia)
+   (=> (^ (T#GOVERNANCE u :0.45) (TS#BUREAUCRACY x :0.45))
+       (burocracia-nn e0 x)))
+
+
+;; Governance: Democracy / Democracia
+
+(B (name democracy/democracia)
+   (=> (^ (T#GOVERNANCE u :0.45) (TS#DEMOCRACY x :0.45))
+       (democracia-nn e0 x)))
+
+
+;; Governance: Elections / Elecciones
+
+(B (name election/elección)
+   (=> (^ (T#GOVERNANCE u :0.45) (TS#ELECTIONS x :0.45))
+       (elección-nn e0 x)))
+(B (name vote/voto)
+   (=> (^ (T#GOVERNANCE u :0.45) (TS#ELECTIONS x :0.45))
+       (voto-nn e0 x)))
+
+(B (name elect/electo)
+   (=> (^ (T#GOVERNANCE u :0.45) (TS#ELECTIONS x :0.45))
+       (elegir-vb e0 x u1 u2)))
+(B (name vote/votar)
+   (=> (^ (T#GOVERNANCE u :0.45) (TS#ELECTIONS x :0.45))
+       (votar-vb e0 x u1 u2)))
+
+(B (name elected/elegido)
+   (=> (^ (T#GOVERNANCE u :0.45) (TS#ELECTIONS x :0.45))
+       (elegido-adj e0 x)))
+
+
+;; Governance: Government / Gobierno
+
+(B (name government/gobierno-nn)
+   (=> (^ (T#GOVERNANCE u :0.45) (TS#GOVERNMENT x :0.45))
+       (gobierno-nn e0 x)))
+
+(B (name federal-government/gobierno-federal)
+   (=> (^ (T#GOVERNANCE u :0.4) (TS#GOVERNMENT x :0.4))
+       (^ (federal-adj e0 x) (gobierno-nn e0 x))))
+(B (name local-government/gobierno-local)
+   (=> (^ (T#GOVERNANCE u :0.4) (TS#GOVERNMENT x :0.4))
+       (^ (local-adj e0 x) (gobierno-nn e0 x))))
+
+(B (name regulation/regla-nn)
+   (=> (^ (T#GOVERNANCE u :0.45) (TS#GOVERNMENT x :0.45))
+       (regla-nn e0 x)))
+
+(B (name authority/autoridad-nn)
+   (=> (^ (T#GOVERNANCE u :0.45) (TS#GOVERNMENT x :0.45))
+       (autoridad-nn e0 x)))

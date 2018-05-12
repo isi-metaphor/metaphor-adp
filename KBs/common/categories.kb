@@ -1,0 +1,184 @@
+;; -*- Mode: Lisp -*-
+
+;;
+;; Map Sources to Categories
+;; Jonathan Gordon, 2014-12-19
+;;
+
+
+;; Ambiguous
+;;   These are split off here so the weights can be adjusted.
+
+(B (=> (C#JOURNEY e0 :0.9) (S#VEHICLE e0)))
+(B (=> (C#ENGINEERING_AND_BUSINESS e0 :0.9) (S#VEHICLE e0)))
+
+(B (=> (C#HEALTH_AND_SAFETY e0 :0.9) (S#FIRE e0)))
+(B (=> (C#NATURE e0 :0.9) (S#FIRE e0)))
+
+
+;; Conflict
+
+(B (=> (C#CONFLICT e0 :0.9) (S#COMPETITION e0)))
+(B (=> (C#CONFLICT e0 :0.9) (S#GAME e0)))
+(B (=> (C#CONFLICT e0 :0.9) (S#STRUGGLE e0)))
+(B (=> (C#CONFLICT e0 :0.9) (S#WAR e0)))
+
+
+;; Embodied Experience
+
+;; Embodied Experience: Clothing
+
+(B (=> (C#EMBODIED_EXPERIENCE e0 :0.9) (S#CLOTHING e0)))
+
+
+;; Embodied Experience: Darkness and Light
+
+(B (=> (C#EMBODIED_EXPERIENCE e0 :0.9) (S#DARKNESS e0)))
+(B (=> (C#EMBODIED_EXPERIENCE e0 :0.9) (S#LIGHT e0)))
+
+
+;; Embodied Experience: High and Low
+
+(B (=> (C#EMBODIED_EXPERIENCE e0 :0.9) (S#DOWNWARD_MOVEMENT e0)))
+(B (=> (C#EMBODIED_EXPERIENCE e0 :0.9) (S#HIGH_LOCATION e0)))
+(B (=> (C#EMBODIED_EXPERIENCE e0 :0.9) (S#LOW_LOCATION e0)))
+(B (=> (C#EMBODIED_EXPERIENCE e0 :0.9) (S#UPWARD_MOVEMENT e0)))
+
+
+;; Embodied Experience: Human Body
+
+(B (=> (C#EMBODIED_EXPERIENCE e0 :0.9) (S#HUMAN_BODY e0)))
+
+
+;; Embodied Experience: Temperature
+
+(B (=> (C#EMBODIED_EXPERIENCE e0 :0.9) (S#TEMPERATURE e0)))
+
+
+;; Embodied Experience: Not Handled
+
+(B (=> (C#EMBODIED_EXPERIENCE e0 :0.9) (S#CONTAINER e0)))
+(B (=> (C#EMBODIED_EXPERIENCE e0 :0.9) (S#EMOTION_EXPERIENCER e0)))
+
+
+;; Engineering and Business
+
+;; Engineering and Business: Business
+
+(B (=> (C#ENGINEERING_AND_BUSINESS e0 :0.9) (S#BUSINESS e0)))
+
+
+;; Engineering and Business: Engineering
+
+(B (=> (C#ENGINEERING_AND_BUSINESS e0 :0.9) (S#BUILDING e0)))
+(B (=> (C#ENGINEERING_AND_BUSINESS e0 :0.9) (S#FABRIC e0)))
+(B (=> (C#ENGINEERING_AND_BUSINESS e0 :0.9) (S#MACHINE e0)))
+;; Vehicle is ambiguous and is at the top of the file.
+
+
+;; Engineering and Business: Resource
+
+(B (=> (C#ENGINEERING_AND_BUSINESS e0 :0.9) (S#ENERGY e0)))
+(B (=> (C#ENGINEERING_AND_BUSINESS e0 :0.9) (S#FORCEFUL_EXTRACTION e0)))
+(B (=> (C#ENGINEERING_AND_BUSINESS e0 :0.9) (S#RESOURCE e0)))
+
+
+;; Engineering and Business: Not Handled
+
+(B (=> (C#ENGINEERING_AND_BUSINESS e0 :0.9) (S#FACTORY e0)))
+
+
+;; Health and Safety
+
+(B (=> (C#HEALTH_AND_SAFETY e0 :0.9) (S#ADDICTION e0)))
+(B (=> (C#HEALTH_AND_SAFETY e0 :0.9) (S#BLOOD_STREAM e0)))
+(B (=> (C#HEALTH_AND_SAFETY e0 :0.9) (S#CONTAMINATION e0)))
+(B (=> (C#HEALTH_AND_SAFETY e0 :0.9) (S#DISEASE e0)))
+;; Fire is ambiguous and is at the top of the file.
+(B (=> (C#HEALTH_AND_SAFETY e0 :0.9) (S#FOOD e0)))
+(B (=> (C#HEALTH_AND_SAFETY e0 :0.9) (S#HAZARDOUS_GEOGRAPHIC_FEATURE e0)))
+(B (=> (C#HEALTH_AND_SAFETY e0 :0.9) (S#MEDICINE e0)))
+(B (=> (C#HEALTH_AND_SAFETY e0 :0.9) (S#MONSTER e0)))
+(B (=> (C#HEALTH_AND_SAFETY e0 :0.9) (S#NATURAL_PHYSICAL_FORCE e0)))
+(B (=> (C#HEALTH_AND_SAFETY e0 :0.9) (S#OBESITY e0)))
+(B (=> (C#HEALTH_AND_SAFETY e0 :0.9) (S#PARASITE e0)))
+(B (=> (C#HEALTH_AND_SAFETY e0 :0.9) (S#PHYSICAL_HARM e0)))
+(B (=> (C#HEALTH_AND_SAFETY e0 :0.9) (S#PROTECTION e0)))
+
+
+;; Human Life Cycle and Family Relations
+
+(B (=> (C#HUMAN_LIFE_CYCLE_AND_FAMILY_RELATIONS e0 :0.9) (S#FAMILY e0)))
+(B (=> (C#HUMAN_LIFE_CYCLE_AND_FAMILY_RELATIONS e0 :0.9) (S#LIFE_STAGE e0)))
+
+
+;; Journey
+
+(B (=> (C#JOURNEY e0 :0.9) (S#ABYSS e0)))
+(B (=> (C#JOURNEY e0 :0.9) (S#ACCIDENT e0)))
+(B (=> (C#JOURNEY e0 :0.9) (S#BACKWARD_MOVEMENT e0)))
+(B (=> (C#JOURNEY e0 :0.9) (S#BARRIER e0)))
+(B (=> (C#JOURNEY e0 :0.9) (S#CONFINEMENT e0)))
+(B (=> (C#JOURNEY e0 :0.9) (S#FORWARD_MOTION e0)))
+(B (=> (C#JOURNEY e0 :0.9) (S#JOURNEY e0)))
+(B (=> (C#JOURNEY e0 :0.9) (S#MAZE e0)))
+(B (=> (C#JOURNEY e0 :0.9) (S#MOVEMENT e0)))
+(B (=> (C#JOURNEY e0 :0.9) (S#PATHWAY e0)))
+(B (=> (C#JOURNEY e0 :0.9) (S#PHYSICAL_BURDEN e0)))
+(B (=> (C#JOURNEY e0 :0.9) (S#PHYSICAL_LOCATION e0)))
+(B (=> (C#JOURNEY e0 :0.9) (S#PORTAL e0)))
+;; Vehicle is ambiguous and is at the top of the file.
+
+
+;; Morality and Justice
+
+(B (=> (C#MORALITY_AND_JUSTICE e0 :0.9) (S#A_RIGHT e0)))
+(B (=> (C#MORALITY_AND_JUSTICE e0 :0.9) (S#CRIME e0)))
+(B (=> (C#MORALITY_AND_JUSTICE e0 :0.9) (S#MORAL_DUTY e0)))
+(B (=> (C#MORALITY_AND_JUSTICE e0 :0.9) (S#RULE_ENFORCER e0)))
+(B (=> (C#MORALITY_AND_JUSTICE e0 :0.9) (S#THEFT e0)))
+
+
+;; Nature
+
+;; Nature: Animals
+
+(B (=> (C#NATURE e0 :0.9) (S#ANIMAL e0)))
+
+
+;; Nature: Body of Water
+
+(B (=> (C#NATURE e0 :0.9) (S#BODY_OF_WATER e0)))
+
+
+;; Nature: Fire
+
+;; Fire is ambiguous and is at the top of the file.
+
+
+;; Plants
+
+(B (=> (C#PLANTS e0 :0.9) (S#CROP e0)))
+(B (=> (C#PLANTS e0 :0.9) (S#PLANT e0)))
+
+
+;; Power and Control
+
+;; Power and Control: God
+
+(B (=> (C#POWER_AND_CONTROL e0 :0.9) (S#A_GOD e0)))
+
+
+;; Power and Control: Humans
+
+(B (=> (C#POWER_AND_CONTROL e0 :0.9) (S#ENSLAVEMENT e0)))
+(B (=> (C#POWER_AND_CONTROL e0 :0.9) (S#LEADER e0)))
+(B (=> (C#POWER_AND_CONTROL e0 :0.9) (S#SERVANT e0)))
+
+
+;; Systematic Explanations
+
+(B (=> (C#SYSTEMATIC_EXPLANATIONS e0 :0.9) (S#SCIENCE e0)))
+
+
+

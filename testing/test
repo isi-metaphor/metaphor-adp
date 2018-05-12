@@ -1,0 +1,250 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# Test performance at metaphor recognition.
+# Jonathan Gordon, 2014-10-27
+
+# Usage:
+#  ./test -l en -u http://colo-vm19.isi.edu:8080 data/2014-06-17-filtered/EN.dev
+
+import sys
+import argparse
+import codecs
+import urllib2
+import csv
+import json
+import re
+import textwrap
+import errno
+
+UTF8Writer = codecs.getwriter('utf8')
+sys.stdout = UTF8Writer(sys.stdout)
+
+debug = False
+
+if debug:
+    http_logger = urllib2.HTTPHandler(debuglevel = 1)
+    opener = urllib2.build_opener(http_logger)
+    urllib2.install_opener(opener)
+
+def main():
+    parser = argparse.ArgumentParser(description='Test performance at '
+                                     'metaphor recognition.')
+    parser.add_argument('-l', dest='lang', default='EN', help='language')
+    parser.add_argument('-u', dest='url',
+                        default='http://colo-vm19.isi.edu:8080',
+                        help='URL for server')
+    parser.add_argument('-p', dest='kb_path',
+                        default='/nfs/isd/jgordon/kbs/',
+                        help='Path for KBs')
+    parser.add_argument('-i', dest='identifier',
+                        help='An identifier for the KB to use.')
+    parser.add_argument('infile', nargs='?', type=argparse.FileType('r'),
+                        default=sys.stdin)
+    parser.add_argument('-s', action='store_true',
+                        help='Try sending just the spans.')
+    parser.add_argument('-n', action='store_true',
+                        help='Do not send span information.')
+    parser.add_argument('-d', action='store_true',
+                        help="Don't specify a KB; use the default.")
+    parser.add_argument('-f', action='store_true',
+                        help='Fallback to full sentence if spans fail.')
+
+    try:
+        options = parser.parse_args()
+    except IOError, msg:
+        parser.error(str(msg))
+
+    language = options.lang.upper()
+    url = options.url
+    kb_path = options.kb_path
+    identifier = options.identifier
+    file = options.infile
+    span_first = True if options.s else False
+    fallback = True if options.f else False
+    no_span = True if options.n else False
+    default_kb = True if options.d else False
+
+    count = 0.0
+    count_out = 0.0
+    correct_sources = 0.0
+    correct_targets = 0.0
+
+    for line in csv.reader(file, delimiter='\t'):
+        line = [x.decode('utf8') for x in line]
+
+        # Format:
+        #   [0]id, [1]sentence, [2]creation_time, [3]metaphoricity,
+        #   [4]good_protagonists, [5]good_sources, [6]good_targets, etc.
+        # See README in data directory.
+        sentence_id = line[0]
+        sentence = line[1]
+        good_sources = line[5]
+        good_targets = line[6]
+
+        # For the sentence, the source span is marked by <<>> and the target by
+        # [[]].
+        try:
+            source_span = re.search('<<(.+)>>', sentence).group(1)
+            target_span = re.search('\[\[(.+)\]\]', sentence).group(1)
+        except AttributeError:
+            print '-- Bad sentence:', sentence
+            continue
+        sentence = re.sub('(<<|>>|\[\[|\]\])', '', sentence)
+
+        print textwrap.fill('Sentence: ' + sentence, initial_indent='-- ',
+                            subsequent_indent='--  ', break_on_hyphens=False)
+
+        print '-- Source span:', source_span
+        print '-- Target span:', target_span
+
+        kb = None
+        if identifier:
+            if language == 'EN':
+                kb = 'en-' + identifier + '.da'
+            elif language == 'ES':
+                kb = 'es-' + identifier + '.da'
+            elif language == 'FA':
+                kb = 'fa-' + identifier + '.da'
+            else:
+                kb = 'ru-' + identifier + '.da'
+            kb = kb_path + kb
+
+        # Send request to server.
+        data = {'task_id': None,
+                'dograph': True,
+                'language': language,
+                'metaphorAnnotationRecords':
+                    [{'sentenceId': sentence_id,
+                      'linguisticMetaphor': source_span + ' ' + target_span
+                                            if span_first else sentence,
+                      'annotationMappings': [{}]}]}
+        if not default_kb:
+            data['kb'] = kb
+        if not no_span:
+            data['metaphorAnnotationRecords'][0]['source'] = source_span
+            data['metaphorAnnotationRecords'][0]['target'] = target_span
+            data['metaphorAnnotationRecords'][0]['annotationMappings'][0]['source'] = source_span
+            data['metaphorAnnotationRecords'][0]['annotationMappings'][0]['target'] = target_span
+
+        req = urllib2.Request(url)
+        req.add_header('Content-Type', 'application/json')
+        try:
+            response = urllib2.urlopen(req, json.dumps(data)).read()
+            if debug:
+                print '--', response
+        except urllib2.URLError as e:
+            print '--', response
+            if e.errno != errno.ECONNRESET:
+                raise
+            print '-- Connection reset by peer.'
+            pass
+        response = response.decode('utf8')
+
+        count += 1
+
+        record = dict()
+        output_source = 'NO_ANSWER'
+        output_target = 'NO_ANSWER'
+
+        try:
+            r = json.loads(response)
+            print '-- Task ID:', r['task_id'] or 'NONE'
+            record = r['metaphorAnnotationRecords'][0]
+            print textwrap.fill('Abductive Explanation: ' +
+                                record.get('isiAbductiveExplanation', ''),
+                                initial_indent='-- ', subsequent_indent='--  ',
+                                break_on_hyphens=False)
+            output_source = record.get('sourceFrame', 'NO_ANSWER')
+        except KeyError: pass
+
+        try:
+            output_target = record.get('targetConceptSubDomain',
+                                       'NO_ANSWER')
+        except KeyError: pass
+
+        if span_first and fallback and \
+          'NO_ANSWER' in [output_source, output_target]:
+            print '-- Trying again with the full sentence.'
+            # Send request to server.
+            data = {'task_id': None,
+                    'dograph': True,
+                    'language': language,
+                    'metaphorAnnotationRecords':
+                        [{'sentenceId': sentence_id,
+                          'linguisticMetaphor': sentence,
+                          'annotationMappings': [{}]}]}
+            if not default_kb:
+                data['kb'] = kb
+            if not no_span:
+                data['metaphorAnnotationRecords'][0]['source'] = source_span
+                data['metaphorAnnotationRecords'][0]['target'] = target_span
+                data['metaphorAnnotationRecords'][0]['annotationMappings'][0]['source'] = source_span
+                data['metaphorAnnotationRecords'][0]['annotationMappings'][0]['target'] = target_span
+
+            req = urllib2.Request(url)
+            req.add_header('Content-Type', 'application/json')
+            try:
+                response = urllib2.urlopen(req, json.dumps(data)).read()
+                if debug:
+                    print '--', response
+            except urllib2.URLError as e:
+                print '--', response
+                if e.errno != errno.ECONNRESET:
+                    raise
+                print '-- Connection reset by peer.'
+                pass
+            response = response.decode('utf8')
+
+            try:
+                r = json.loads(response)
+                print '-- Task ID:', r['task_id'] or 'NONE'
+                record = r['metaphorAnnotationRecords'][0]
+                print textwrap.fill('Abductive Explanation: ' +
+                                record.get('isiAbductiveExplanation', ''),
+                                initial_indent='-- ', subsequent_indent='--  ',
+                                break_on_hyphens=False)
+                output_source = record.get('sourceFrame', 'NO_ANSWER')
+            except KeyError: pass
+
+            try:
+                output_target = record.get('targetConceptSubDomain',
+                                           'NO_ANSWER')
+            except KeyError: pass
+
+
+        ov = [sentence_id]
+        ov.append(good_sources)
+        ov.append(output_source)
+
+        if output_source != 'NO_ANSWER':
+            count_out += 1
+        if output_source.lower() in good_sources.lower().split(':'):
+            correct_sources += 1
+            ov.append('1')
+        else:
+            ov.append('0')
+
+        ov.append(good_targets)
+        ov.append(output_target)
+        if output_target.lower() in good_targets.lower().split(':'):
+            correct_targets += 1
+            ov.append('1')
+        else:
+            ov.append('0')
+
+        print '\t'.join(ov)
+        print '----'
+        sys.stdout.flush()
+
+    print 'Sources: %d out of %d total' % (correct_sources, count)
+
+    print 'Source precision:', round(correct_sources/count_out, 3)
+    print 'Source recall:', round(correct_sources/count, 3)
+
+    print 'Targets: %d out of %d total' % (correct_targets, count)
+    print 'Target precision:', round(correct_targets/count_out, 3)
+    print 'Target recall:', round(correct_targets/count, 3)
+
+if __name__ == '__main__':
+  main()

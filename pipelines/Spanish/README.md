@@ -1,24 +1,27 @@
-===========
-Spanish semantic parsing pipeline
-===========
+Spanish Semantic Parsing Pipeline
+=================================
 
-This file describes the Spanish semantic parsing pipeline. 
-It has directions for running the pipeline, as well 
-as descriptions of the scripts, tools, and resources 
-used within the pipeline.
+This file describes the Spanish semantic parsing pipeline. It has directions
+for running the pipeline, as well as descriptions of the scripts, tools, and
+resources used within the pipeline.
 
-###Running the pipeline
+
+### Running the pipeline
 
 ```
 ./run_spanish.sh [<absolute path to input> [<absolute path to output>]]
 ```
-To run the pipeline, call run_spanish.sh with the absolute path to the input file as an argument. 
-By default the system outputs the logical forms of the sentences in the input file to stdout.
-The second (optional) argument can be a file or a directory. If the optional argument is a file, 
-the system output will be redirected there. If it is a directory, the intermediate files (tokenized, tagged, etc.)
-will be put into that directory, and the final output will go to stdout.
 
-###Subdirectories
+To run the pipeline, call run_spanish.sh with the absolute path to the input
+file as an argument. By default the system outputs the logical forms of the
+sentences in the input file to stdout. The second (optional) argument can be a
+file or a directory. If the optional argument is a file, the system output
+will be redirected there. If it is a directory, the intermediate files
+(tokenized, tagged, etc.) will be put into that directory, and the final
+output will go to stdout.
+
+
+### Subdirectories
 
 **Scripts**
 - to_malt.py - Create conll style output. Input file should be output from treetagger. Outputs to stdout.
@@ -53,7 +56,8 @@ python malt_to_prop.py -i <input_file>
    - spanish_text.conll.malt - dependency parsed output of spanish_translations
    - spanish_text.props - logical forms of spanish_translations
 
-###External Tools & Resources
+### External Tools & Resources
+
 - Tokenization
  - nltk_tokenize.py - Written by Vladamir Zaytsev
    - uses nltk.tokenize (PunktSentenceTokenizer,WordPunctTokenizer, and TreebankWordTokenizer)

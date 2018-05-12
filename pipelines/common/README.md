@@ -3,13 +3,14 @@ Abductive Discourse Processing Pipeline
 
 **SCRIPTS**
 
-- NLPipeline_MULT_metaphor.py
-- NLPipeline_MULT_metaphor_CM.py
 - NLPipeline_MULT_stdinout.py
 - NLPipeline_MULT_stdinout_CM.py
+These are the abductive discourse processing pipeline scripts, with and
+without conceptual metaphor identification.
 
-These are the abductive discourse processing pipeline scripts.
-TODO: What are the differences between these four?
+- NLPipeline_MULT_metaphor.py
+- NLPipeline_MULT_metaphor_CM.py
+These are the same but for use by the web service?
 
 Which use:
 - extract_CMs_from_hypotheses.py

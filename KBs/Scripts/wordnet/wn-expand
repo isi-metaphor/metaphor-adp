@@ -1,0 +1,78 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import fileinput
+from collections import defaultdict
+import itertools as it
+import re
+from nltk.corpus import wordnet as wn
+import sys
+import codecs
+
+# en [not eng], fas, spa
+lang = 'en'
+
+UTF8Writer = codecs.getwriter('utf8')
+sys.stdout = UTF8Writer(sys.stdout)
+
+for line in fileinput.input():
+    line = line.strip()
+    line = line.decode('utf8')
+    if not re.search('-(nn|adj|rb|nn)', line):
+        continue
+    terms = len(re.findall(':(0.[0-9]+)\)', line))
+    weight = 0.99/float(terms)
+    line = re.sub(' :[0-9.]+\)', ' :' + str(weight) + ')', line)
+
+    subs = dict()
+    subs2 = dict()
+    for word in re.findall('([^ ()]+-(?:nn|adj|rb|vb)) ', line):
+        if '-nn' in word: pos = 'n'
+        elif '-adj' in word: pos = 'a'
+        elif '-vb' in word: pos = 'v'
+        elif '-rb' in word: pos = 'r'
+        base = re.sub('-(?:nn|adj|rb|vb)', '', word)
+        for syn in wn.synsets(base, pos=pos, lang=lang):
+            try:
+                lemmas = set([l.name().lower() for l in syn.lemmas(lang=lang)])
+            except TypeError:
+                continue
+            if not word in subs:
+                subs[word] = lemmas
+            else:
+                subs[word] = subs[word].intersection(lemmas)
+        for syn in wn.synsets(base, pos=pos, lang=lang):
+            for hyp in syn.hypernyms():
+                try:
+                    lemmas = set([l.name().lower() for l in hyp.lemmas(lang=lang)])
+                except TypeError:
+                    continue
+                if not word in subs2:
+                    subs2[word] = lemmas
+                else:
+                    subs2[word] = subs2[word].intersection(lemmas)
+    for (k, v) in subs2.iteritems():
+        subs[k] = subs.get(k, set()).union(v)
+
+    subnames = sorted(subs)
+    combinations = [dict(zip(subnames, prod)) for prod in
+                    it.product(*(subs[subname] for subname in subnames))]
+
+    for combination in combinations:
+        newline = line
+        newline = re.sub('\(name ', '(name wn-expand-', newline)
+
+        # Skip if it's identical to the original axiom (with a diff. weight)
+        diff = False
+        for (k, v) in combination.iteritems():
+            pos = re.findall('(nn|adj|rb|vb)', k)[0]
+            if k != v + '-' + pos:
+                diff = True
+                break
+        if not diff:
+            continue
+
+        for (word, repl) in combination.iteritems():
+            pos = re.findall('(nn|adj|rb|vb)', word)[0]
+            newline = re.sub(word, repl + '-' + pos, newline)
+        print newline

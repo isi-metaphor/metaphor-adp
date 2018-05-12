@@ -1,0 +1,216 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# Generate axioms based on annotated sentences
+# Jonathan Gordon, 2015-01-25
+
+# Usage:
+#  ./from-examples data/en.dev-parse | sort | uniq > en-examples.kb
+
+import sys
+import codecs
+import csv
+import re
+import collections
+
+from collections import defaultdict
+
+# http://code.activestate.com/recipes/576694/
+# MIT License.
+class OrderedSet(collections.MutableSet):
+    def __init__(self, iterable=None):
+        self.end = end = []
+        end += [None, end, end]         # sentinel node for doubly linked list
+        self.map = {}                   # key --> [key, prev, next]
+        if iterable is not None:
+            self |= iterable
+
+    def __len__(self):
+        return len(self.map)
+
+    def __contains__(self, key):
+        return key in self.map
+
+    def add(self, key):
+        if key not in self.map:
+            end = self.end
+            curr = end[1]
+            curr[2] = end[1] = self.map[key] = [key, curr, end]
+
+    def discard(self, key):
+        if key in self.map:
+            key, prev, next = self.map.pop(key)
+            prev[2] = next
+            next[1] = prev
+
+    def __iter__(self):
+        end = self.end
+        curr = end[2]
+        while curr is not end:
+            yield curr[0]
+            curr = curr[2]
+
+    def __reversed__(self):
+        end = self.end
+        curr = end[1]
+        while curr is not end:
+            yield curr[0]
+            curr = curr[1]
+
+    def pop(self, last=True):
+        if not self:
+            raise KeyError('set is empty')
+        key = self.end[1][0] if last else self.end[2][0]
+        self.discard(key)
+        return key
+
+    def __repr__(self):
+        if not self:
+            return '%s()' % (self.__class__.__name__,)
+        return '%s(%r)' % (self.__class__.__name__, list(self))
+
+    def __eq__(self, other):
+        if isinstance(other, OrderedSet):
+            return len(self) == len(other) and list(self) == list(other)
+        return set(self) == set(other)
+
+
+UTF8Writer = codecs.getwriter('utf8')
+sys.stdout = UTF8Writer(sys.stdout)
+
+print ';; Axioms generated from examples.'
+
+
+sources = defaultdict(dict)
+source_example_counts = defaultdict(int)
+targets = defaultdict(dict)
+target_example_counts = defaultdict(int)
+
+
+
+for line in csv.reader(codecs.open(sys.argv[1], 'rb'), delimiter='\t'):
+    line = [x.decode('utf8') for x in line]
+    # Format:
+    #   [0]id, [1]sentence, [2]source_span, [3]good_sources, [4]target_span,
+    #   [5]good_targets, [6]parse LF
+    sentence_id = line[0]
+    sentence = line[1]
+    source_span = line[2].lower()
+    good_sources = line[3]
+    target_span = line[4].lower()
+    good_targets = line[5]
+    parse = line[6].lower()
+
+    # Change to Lisp-formatted predications.
+    antecedent = set([])
+    for pred in parse.split(' ^ '):
+        pred = re.sub('(.+)\((.+)\)', r'(\1 \2)', pred)
+        pred = re.sub(',', ' ', pred)
+        antecedent.add(pred)
+
+    source_antecedent = set([])
+    target_antecedent = set([])
+
+
+    for word in re.split('[ ,!.]', source_span):
+        found = False
+        for l in range(len(word), 1, -1):
+            for pred in antecedent:
+                m = re.search(re.escape(word[:l]) + '[^ ]*-(?:nn|adj|vb|rb|in)',
+                              pred)
+                if not m:
+                    continue
+                source_antecedent.add(pred)
+                found = True
+                break
+            if found:
+                break
+
+    for word in re.split('[ ,!.]', target_span):
+        found = False
+        for l in range(len(word), 1, -1):
+            for pred in antecedent:
+                m = re.search(re.escape(word[:l]) + '[^ ]*-(?:nn|adj|vb|rb|in)',
+                              pred)
+                if not m:
+                    continue
+                target_antecedent.add(pred)
+                found = True
+                break
+            if found:
+                break
+
+    if source_antecedent:
+        source_set = set(good_sources.split(':'))
+        ant = ' '.join(sorted(source_antecedent))
+
+        # Rename variables.
+        new_ant = ant
+        count = 0
+        for var in OrderedSet(re.findall(r'([xeus][0-9]+)[ )]', ant)):
+            new_ant = re.sub(var + r'([ )])', 'z' + str(count) + r'\1', new_ant)
+            count += 1
+        ant = new_ant
+
+        for source in source_set:
+            sources[ant][source] = sources[ant].get(source, 0) + 1
+        source_example_counts[ant] += 1
+
+    if target_antecedent:
+        target_set = set(good_targets.split(':'))
+        ant = ' '.join(sorted(target_antecedent))
+
+        # Rename variables.
+        new_ant = ant
+        count = 0
+        for var in OrderedSet(re.findall(r'([xeus][0-9]+)[ )]', ant)):
+            new_ant = re.sub(var + r'([ )])', 'z' + str(count) + r'\1', new_ant)
+            count += 1
+        ant = new_ant
+
+        for target in target_set:
+            targets[ant][target] = targets[ant].get(target, 0) + 1
+        target_example_counts[ant] += 1
+
+
+for (antecedent, source_counts) in sources.iteritems():
+    # Block if it's *only* a preposition or other stopword.
+    if re.match(u'^\((en|in|of|from|to|de|بر|با|به|برای|از|حول|по|с|в|из|для|на)-in [^)]+\)$', antecedent):
+        continue
+
+    total = source_example_counts[antecedent]#sum(source_counts.values())
+    # Check if it's more common as a target than a source.
+    if targets[antecedent] and sum(targets[antecedent].values()) > total:
+        continue
+    # Sort by counts, descending.
+    sorted_counts = sorted(source_counts, key=source_counts.get,
+                           reverse=True)
+    if (total < 5 and long(source_counts[sorted_counts[0]]) > 0.65 * total) \
+        or (long(source_counts[sorted_counts[0]]) >= 0.8 * total):
+        print '(B (name ex) (=> (S#' + sorted_counts[0] + \
+          ' e0 :0.2) (^ ' + antecedent + ')))'
+    if len(sorted_counts) > 1 and \
+       source_counts[sorted_counts[0]] == source_counts[sorted_counts[1]]:
+        print '(B (name ex) (=> (S#' + sorted_counts[1] + \
+          ' e0 :0.2) (^ ' + antecedent + ')))'
+
+for (antecedent, target_counts) in targets.iteritems():
+    # Block if it's *only* a preposition or other stopword.
+    if re.match(u'^\((en|in|of|from|to|de|بر|با|به|برای|از|حول|по|с|в|из|для|на)-in [^)]+\)$', antecedent):
+        continue
+
+    total = target_example_counts[antecedent]#sum(target_counts.values())
+    # Check if it's more common as a source than a target.
+    if sources[antecedent] and sum(sources[antecedent].values()) > total:
+        continue
+    # Sort by counts, descending.
+    sorted_counts = sorted(target_counts, key=target_counts.get,
+                           reverse=True)
+    if (total < 5 and long(target_counts[sorted_counts[0]]) > 0.65 * total) \
+        or (long(target_counts[sorted_counts[0]]) >= 0.8 * total):
+        print '(B (name ex) (=> (TS#' + sorted_counts[0] + \
+          ' e0 :0.2) (^ ' + antecedent + ')))'
+    if len(sorted_counts) > 1 and \
+       target_counts[sorted_counts[0]] == target_counts[sorted_counts[1]]:
+        print '(B (name ex) (=> (TS#' + sorted_counts[1] + \
+          ' e0 :0.2) (^ ' + antecedent + ')))'

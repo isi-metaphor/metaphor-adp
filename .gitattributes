@@ -1,0 +1,4 @@
+external-tools/* linguist-vendored
+# This isn't quite right, but I don't want logic counted as Lisp source code
+*.txt linguist-documentation=true
+*.da linguist-generated=true
