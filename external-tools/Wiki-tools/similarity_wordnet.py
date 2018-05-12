@@ -241,6 +241,7 @@ def min_path_words(word1,pos1,word2,pos2,max):
 
 #outside module should call this function
 def path_similarity(word1,pos1,word2,pos2):
+    global loaded
     if loaded == False:
         loadAll()
         loaded = True

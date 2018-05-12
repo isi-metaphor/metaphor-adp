@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 # similarity.py
-# calculate similarity between a word and a paragraph
+# calculate similarity between a word and a list of words
 # support language: EN,FA,ES,RU
 #
-# Author: Xing Shi
-# contact: xingshi@usc.edu
+# Author: Katya Ovchinnikova
+# contact: katya@usc.edu
 # 
 # see demo() for help
 # outside modules should call path_similarity(word1,pos1,word2,pos2) to calculate similarity
@@ -23,18 +23,13 @@ import similarity_translation as st
 POSMAP = {'vb': wn.VERB, 'nn': wn.NOUN, 'rb': wn.ADV,  'adj': wn.ADJ}
 
 
-def process_obs(obs,prog,lang):
+def process_lines(lines,lang):
     results=[]
-    list = re.findall(prog,obs)
-    ll=[]
-    for l in list:
-        l = l[1:-1].split()[0]
-        if '-' in l:
-            ll.append(l)
-    for l in ll:
-        lll = l.split('-')
-        word = lll[0]
-        pos = lll[1]
+
+    for line in lines:
+        larr = line.split('-')
+        word = larr[0]
+        pos = larr[1]
         if not pos in POSMAP:
             continue
         if lang == 'EN':
@@ -89,22 +84,15 @@ def similarity(results, tword,tpos ,method,output,lang):
 
 def main(tword,tpos,inputFile,output,lang):
     input = open(inputFile,'r')
-    obssB = False
-    obss = []
+    lines = []
     for line in input:
         if not line:
             break
-        if line == '<obss>\n':
-            obssB = True
-            continue
-        if obssB:
-            obs = line.strip()
-            obss.append(obs)
-    results = []
-    prog = re.compile(r'\([^\(\)\[\]]+\[[0-9a-zA-Z]+\]\)')
-    for obs in obss:
-        results += process_obs(obs,prog,lang)
-    
+        else:
+            line = line.strip()
+            lines.append(line)
+    results = process_lines(lines,lang)
+
     # similarity
     outputFile = open(output,'w')
     if lang == 'EN':
