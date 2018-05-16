@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# This is a variant of install-prereq-mac.sh for using Homebrew instead of
-# MacPorts.
-# Jonathan Gordon, 2014-06-05
-
-
 # Prerequisities for Henry
 
 echo Install Git:
@@ -35,4 +30,3 @@ echo Update NLTK:
 git clone git://github.com/nltk/nltk.git
 cd nltk
 sudo python setup.py install
-

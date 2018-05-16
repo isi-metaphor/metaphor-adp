@@ -1,31 +1,31 @@
 #!/bin/bash
 
-#for henry
-echo install git
+# Prerequisites for Henry
+
+echo Install Git:
 sudo apt-get install git-core
 sudo apt-get install g++
 
-echo install sqlite
+echo Install Sqlite:
 sudo apt-get install libsqlite3-dev
 
-echo install python related packages
-#sudo apt-get install python
+echo Install Python-related packages:
 sudo apt-get install python-dev
 sudo apt-get install python-lxml
 sudo apt-get install python-nltk
 
-echo install graphviz
+echo Install Graphviz:
 sudo apt-get install graphviz
 
-#for boxer
-echo installing subversion
+# Prerequisites for Boxer
+
+echo Install Subversion:
 sudo apt-get install subversion
 
-echo installing SWI Prolog
+echo Install Prolog:
 sudo apt-get install gprolog swi-prolog
 
-echo updating nltk
+echo Update NLTK:
 git clone git://github.com/nltk/nltk.git
 cd nltk
 sudo python setup.py install
-
