@@ -14,7 +14,7 @@ The system is largely based on ideas summarized in [[Hobbs, 1993]](http://www.is
 
 Our abductive Natural Language Understanding pipeline is shown below.
 
-![Fig.](https://raw.github.com/metaphor-adp/Metaphor-ADP/master/docs/pics/pipeline-pic.png)
+![Fig.](https://raw.github.com/isi-metaphor/Metaphor-ADP/master/docs/pics/pipeline-pic.png)
 
 Text fragments are given as input to the pipeline. The text fragments are
 parsed. For Russian and Spanish tagging, we use
@@ -43,7 +43,7 @@ The reasoner produces flat first order logic interpretations in the
 textual format and proof graphs in the PDF format.
 
 More details about each component can be found
-[here](https://github.com/metaphor-adp/Metaphor-ADP/blob/master/pipelines/README.md).
+[here](https://github.com/isi-metaphor/Metaphor-ADP/blob/master/pipelines/README.md).
 
 
 ## Installation and running
@@ -51,12 +51,12 @@ More details about each component can be found
 - Clone Metaphor-ADP repository
 
 ```
-git clone https://github.com/metaphor-adp/Metaphor-ADP
+git clone https://github.com/isi-metaphor/Metaphor-ADP
 ```
 
-- Install external packages and software; see instructions [here](https://github.com/metaphor-adp/Metaphor-ADP/tree/master/installation)
+- Install external packages and software; see instructions [here](https://github.com/isi-metaphor/Metaphor-ADP/tree/master/installation)
 
-- Run the system; see instructions [here](https://github.com/metaphor-adp/Metaphor-ADP/blob/master/pipelines/common/README.md)
+- Run the system; see instructions [here](https://github.com/isi-metaphor/Metaphor-ADP/blob/master/pipelines/common/README.md)
 
 
 ## System Requirements
