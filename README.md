@@ -48,15 +48,31 @@ More details about each component can be found
 
 ## Installation and running
 
-- Clone Metaphor-ADP repository
+
+1. Clone Metaphor-ADP repository:
 
 ```
 git clone https://github.com/isi-metaphor/Metaphor-ADP
 ```
 
-- Install external packages and software; see instructions [here](https://github.com/isi-metaphor/Metaphor-ADP/tree/master/installation)
+2. Build Docker image:
 
-- Run the system; see instructions [here](https://github.com/isi-metaphor/Metaphor-ADP/blob/master/pipelines/common/README.md)
+```
+./build
+```
+
+3. Run Docker image:
+
+```
+./run
+```
+
+4. Run the system. See
+[instructions](https://github.com/isi-metaphor/Metaphor-ADP/blob/master/pipelines/common/README.md)
+
+
+Note: If you prefer to run natively rather than using Docker, see
+[instructions](https://github.com/isi-metaphor/Metaphor-ADP/tree/master/installation)
 
 
 ## System Requirements
