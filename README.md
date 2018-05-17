@@ -113,3 +113,14 @@ git clone https://github.com/isi-metaphor/Metaphor-ADP
   Processing](http://www.aclweb.org/anthology/W/W11/W11-0124.pdf). In
   *Proceedings the 9th International Conference on Computational Semantics
   (IWCS'11)*, pp. 225-234.
+
+## Acknowledgments
+
+This work was supported by the Intelligence Advanced Research Projects
+Activity (IARPA) via Department of Defense US Army Research Lab contract
+W911NF-12-C-0025. The US Government is authorized to reproduce and
+distribute reprints for Governmental purposes notwithstanding any
+copyright annotation thereon. Disclaimer: The views and conclusions
+contained herein are those of the authors and should not be interpreted as
+necessarily representing the official policies or endorsements, either
+expressed or implied, of IARPA, DoD/ARL, or the US Government.
