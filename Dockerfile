@@ -39,6 +39,17 @@ RUN mkdir -p $GUROBI_INSTALL && \
     rm -f gurobi5.6.3_linux64.tar.gz
 
 
+# Install Henry.
+
+WORKDIR /adp/external-tools
+
+RUN git clone https://github.com/isi-metaphor/henry-n700.git henry
+
+WORKDIR /adp/external-tools/henry
+
+RUN make -B
+
+
 ## Install Boxer.
 
 WORKDIR /adp/external-tools
@@ -71,5 +82,8 @@ COPY testing /adp/testing
 
 
 RUN yes yes | /adp/installation/scripts-linux/setenv-linux64.py /adp
+
+
+# Done
 
 WORKDIR /adp

@@ -13,7 +13,7 @@ export ADP_HOME=$install_dir
 source ./setenv-linux64.sh
 
 mkdir -p $ADP_HOME/test
-cd $ADP_HOME/henry-n700
+cd $ADP_HOME/external-tools/henry
 
 ./bin/henry -m infer -e models/h93.py -O proofgraph toy/hello.lisp \
             > $ADP_HOME/test/out.henry
