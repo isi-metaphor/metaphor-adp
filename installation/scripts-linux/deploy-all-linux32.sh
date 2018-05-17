@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ $# != 6 ]; then
-echo Usage: "$0 install_dir gurobi_file_location gurobi_license_key boxer_username boxer_password boxer_models"
+    echo Usage: "$0 install_dir gurobi_file_location gurobi_license_key boxer_username boxer_password boxer_models"
 exit 1
 fi
 
@@ -12,7 +12,7 @@ boxer_username=$4
 boxer_password=$5
 boxer_models=$6
 
-#create install_dir if it doesn't exist
+# Create install_dir if it doesn't exist
 mkdir -p $install_dir
 
 if [ ! -d "$install_dir" ]; then
@@ -21,13 +21,11 @@ fi
 
 source ./setenv-linux32.sh
 
-#install gurobi
+# Install gurobi
 ./install-gurobi-linux.sh $gurobi_file $gurobi_license_key
 
-#install henry
+# Install henry
 ./install-henry.sh
 
-#install boxer
+# Install boxer
 ./install-boxer-linux.sh $boxer_username $boxer_password $boxer_models
-
-

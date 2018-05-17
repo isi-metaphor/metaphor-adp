@@ -3,24 +3,25 @@
 import os
 import sys
 
-if len(sys.argv)!=2:
+if len(sys.argv) != 2:
     print("Usage:" + sys.argv[0] + " install_dir")
     sys.exit()
 
-install_dir=sys.argv[1]
+install_dir = sys.argv[1]
 
 setvars = raw_input("This script modifies your .bashrc file, and sets environment variables relevant for this application. Continue? [yes/no]")
 
-if setvars == "yes": 
+if setvars == "yes":
+    bashrc_file = os.environ['HOME'] + "/.bashrc"
 
-    bashrc_file=os.environ['HOME'] + "/.bashrc"
+    f = open(bashrc_file, "a+")
 
-    f=open(bashrc_file, "a+")
-    
-    f.write("\n#Metaphor ADP\n")
-    f.write("export ADP_HOME="+install_dir+"\n")
-    f.write("export GUROBI_HOME=$ADP_HOME/gurobi511/linux64\n")
-    f.write("export GRB_LICENSE_FILE=$ADP_HOME/gurobi.lic\n")
+    f.write("\n# Metaphor ADP\n")
+    f.write("export ADP_HOME=" + install_dir + "\n")
+    f.write("export METAPHOR_DIR=" + install_dir + "\n")
+    f.write("export BOXER_DIR=" + install_dir + "/boxer\n")
+    f.write("export GUROBI_HOME=$ADP_HOME/external-tools/gurobi/linux64\n")
+    f.write("export GRB_LICENSE_FILE=$ADP_HOME/external-tools/gurobi/license/gurobi.lic\n")
 
     if os.environ.get('PATH') is None:
         f.write("export PATH=$GUROBI_HOME/bin\n")
@@ -41,4 +42,3 @@ if setvars == "yes":
         f.write("export CPLUS_INCLUDE_PATH=$GUROBI_HOME/include:/usr/include/python2.7\n")
     else:
         f.write("export CPLUS_INCLUDE_PATH=$GUROBI_HOME/include:/usr/include/python2.7:$CPLUS_INCLUDE_PATH\n")
-

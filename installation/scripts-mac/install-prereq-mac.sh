@@ -1,32 +1,32 @@
 #!/bin/bash
 
-#for henry
-echo install git
-sudo port install git-core
+# Prerequisities for Henry
 
-echo install sqlite
-sudo port install sqlite3
+echo Install Git:
+brew install git
 
-echo install python related packages
-sudo port install python27
+echo Install Sqlite:
+brew install sqlite3
+
+echo Install Python-related packages:
 sudo easy_install lxml
 
-echo install graphviz
-sudo port install graphviz
+echo Install Graphviz:
+brew install graphviz
 
-#for boxer
-echo installing subversion
-sudo port install subversion
+# Prerequisites for Boxer
 
-echo installing SWI Prolog
-sudo port install gprolog
-sudo port install swi-prolog
+#echo Install Subversion:
+#brew install subversion
 
-echo installing wget
-sudo port install wget
+echo Install Prolog:
+brew install gnu-prolog
+brew install swi-prolog
 
-echo updating nltk
+echo Install wget:
+brew install wget
+
+echo Update NLTK:
 git clone git://github.com/nltk/nltk.git
 cd nltk
 sudo python setup.py install
-

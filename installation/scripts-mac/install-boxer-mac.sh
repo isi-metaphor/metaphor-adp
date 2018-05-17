@@ -11,7 +11,8 @@ boxer_username=$1
 boxer_password=$2
 boxer_models=$3
 
-svn co http://svn.ask.it.usyd.edu.au/candc/trunk $ADP_HOME/boxer --username $boxer_username --password $boxer_password
+svn co http://svn.ask.it.usyd.edu.au/candc/trunk $ADP_HOME/boxer \
+    --username $boxer_username --password $boxer_password
 
 cd $ADP_HOME/boxer
 ln -s Makefile.macosx Makefile
@@ -24,4 +25,3 @@ echo Unpack models:
 cp $boxer_models .
 tar -xzf models*.*
 rm -f models*.*
-

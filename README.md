@@ -14,7 +14,7 @@ The system is largely based on ideas summarized in [[Hobbs, 1993]](http://www.is
 
 Our abductive Natural Language Understanding pipeline is shown below.
 
-![Fig.](https://raw.github.com/metaphor-adp/Metaphor-ADP/master/docs/pics/pipeline-pic.png)
+![Fig.](https://raw.github.com/isi-metaphor/Metaphor-ADP/master/docs/pics/pipeline-pic.png)
 
 Text fragments are given as input to the pipeline. The text fragments are
 parsed. For Russian and Spanish tagging, we use
@@ -43,20 +43,36 @@ The reasoner produces flat first order logic interpretations in the
 textual format and proof graphs in the PDF format.
 
 More details about each component can be found
-[here](https://github.com/metaphor-adp/Metaphor-ADP/blob/master/pipelines/README.md).
+[here](https://github.com/isi-metaphor/Metaphor-ADP/blob/master/pipelines/README.md).
 
 
 ## Installation and running
 
-- Clone Metaphor-ADP repository
+
+1. Clone Metaphor-ADP repository:
 
 ```
-git clone https://github.com/metaphor-adp/Metaphor-ADP
+git clone https://github.com/isi-metaphor/Metaphor-ADP
 ```
 
-- Install external packages and software; see instructions [here](https://github.com/metaphor-adp/Metaphor-ADP/tree/master/installation)
+2. Build Docker image:
 
-- Run the system; see instructions [here](https://github.com/metaphor-adp/Metaphor-ADP/blob/master/pipelines/common/README.md)
+```
+./build
+```
+
+3. Run Docker image:
+
+```
+./run
+```
+
+4. Run the system. See
+[instructions](https://github.com/isi-metaphor/Metaphor-ADP/blob/master/pipelines/common/README.md)
+
+
+Note: If you prefer to run natively rather than using Docker, see
+[instructions](https://github.com/isi-metaphor/Metaphor-ADP/tree/master/installation)
 
 
 ## System Requirements
@@ -113,3 +129,14 @@ git clone https://github.com/metaphor-adp/Metaphor-ADP
   Processing](http://www.aclweb.org/anthology/W/W11/W11-0124.pdf). In
   *Proceedings the 9th International Conference on Computational Semantics
   (IWCS'11)*, pp. 225-234.
+
+## Acknowledgments
+
+This work was supported by the Intelligence Advanced Research Projects
+Activity (IARPA) via Department of Defense US Army Research Lab contract
+W911NF-12-C-0025. The US Government is authorized to reproduce and
+distribute reprints for Governmental purposes notwithstanding any
+copyright annotation thereon. Disclaimer: The views and conclusions
+contained herein are those of the authors and should not be interpreted as
+necessarily representing the official policies or endorsements, either
+expressed or implied, of IARPA, DoD/ARL, or the US Government.

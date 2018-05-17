@@ -5,7 +5,7 @@ if [ $# != 2 ]; then
     exit 1
 fi
 
-echo Installing GUROBI:
+echo Installing Gurobi:
 
 gurobi_file=$1
 gurobi_license_key=$2
