@@ -15,7 +15,7 @@ cd scripts-linux
 3. Register on the [Gurobi website](http://www.gurobi.com) and download
    the Gurobi package.
 
-- Go to Download/Gurobi Optimizer and download package version 5.1.1
+- Go to Download/Gurobi Optimizer and download package version 5.6.3
   appropriate for your environment.
 
 - Go to Download/License and get a Gurobi license key. Save the key in a

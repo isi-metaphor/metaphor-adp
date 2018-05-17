@@ -1,7 +1,7 @@
 #!/bin/bash
 
-export GUROBI_HOME=$ADP_HOME/gurobi511/linux32
-export GRB_LICENSE_FILE=$ADP_HOME/gurobi.lic
+export GUROBI_HOME=$ADP_HOME/external-tools/gurobi/linux32
+export GRB_LICENSE_FILE=$ADP_HOME/external-tools/gurobi/license/gurobi.lic
 
 if [ X"$PATH" == X ]; then
     export PATH=$GUROBI_HOME/bin

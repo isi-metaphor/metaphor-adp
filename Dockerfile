@@ -24,18 +24,19 @@ ENV GUROBI_HOME $GUROBI_INSTALL/linux64
 ENV PATH $PATH:$GUROBI_HOME/bin
 ENV CPLUS_INCLUDE_PATH $GUROBI_HOME/include:$CPLUS_INCLUDE_PATH
 ENV LD_LIBRARY_PATH $GUROBI_HOME/lib:$LD_LIBRARY_PATH
+ENV LIBRARY_PATH $GUROBI_HOME/lib:$LIBRARY_PATH
 ENV GRB_LICENSE_FILE $GUROBI_INSTALL/license/gurobi.lic
 
 RUN mkdir -p $GUROBI_INSTALL && \
-    wget http://packages.gurobi.com/5.1/gurobi5.1.1_linux64.tar.gz && \
-    tar xvzf gurobi5.1.1_linux64.tar.gz && \
-    mv gurobi511/linux64 $GUROBI_INSTALL && \
+    wget http://packages.gurobi.com/5.6/gurobi5.6.3_linux64.tar.gz && \
+    tar xvzf gurobi5.6.3_linux64.tar.gz && \
+    mv gurobi563/linux64 $GUROBI_INSTALL && \
     mkdir $GUROBI_HOME/scripts && \
     rm -rf $GUROBI_HOME/docs && \
     rm -rf $GUROBI_HOME/examples && \
     rm -rf $GUROBI_HOME/src && \
-    rm -rf gurobi511 && \
-    rm -f gurobi5.1.1_linux64.tar.gz
+    rm -rf gurobi563 && \
+    rm -f gurobi5.6.3_linux64.tar.gz
 
 
 ## Install Boxer.
