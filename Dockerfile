@@ -54,22 +54,16 @@ RUN make -B
 
 WORKDIR /adp/external-tools
 
-RUN git clone https://github.com/chrzyki/candc.git
+RUN git clone https://github.com/jgordon/boxer
 
-RUN cd /adp/external-tools/candc/candc && \
-    make clean && \
+RUN cd boxer && \
     make && \
     make bin/boxer && \
     make bin/tokkie
 
-RUN cd /adp/external-tools/candc/models && \
-    tar xvzf models-1.02.tgz && \
-    rm *.tgz && \
-    mv models/* . && \
-    rm -r models
-
-RUN ln -s /adp/external-tools/candc/candc /adp/boxer && \
-    ln -s /adp/external-tools/candc/models /adp/boxer/models
+RUN cd boxer && \
+    tar xvjf models-1.02.tar.bz2 && \
+    rm models-1.02.tar.bz2
 
 
 # Add the application code to the Docker image.

@@ -19,7 +19,7 @@ if setvars == "yes":
     f.write("\n# Metaphor ADP\n")
     f.write("export ADP_HOME=" + install_dir + "\n")
     f.write("export METAPHOR_DIR=" + install_dir + "\n")
-    f.write("export BOXER_DIR=" + install_dir + "/boxer\n")
+    f.write("export BOXER_DIR=" + install_dir + "/external-tools/boxer\n")
     f.write("export GUROBI_HOME=$ADP_HOME/external-tools/gurobi/linux32\n")
     f.write("export GRB_LICENSE_FILE=$ADP_HOME/external-tools/gurobi/license/gurobi.lic\n")
 
