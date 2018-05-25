@@ -1,9 +1,9 @@
-#! /bin/bash
+#!/bin/bash
 
 parsedInputFile="${1:-/dev/stdin}"
 lfFileName="${2:-/dev/stdout}"
 
 RU_PIPELINE_DIR=$METAPHOR_DIR/pipelines/Russian
 
-cat $parsedInputFile | python $RU_PIPELINE_DIR/LFGen/malt_ru.py > $lfFileName
+cat $parsedInputFile | python2.7 $RU_PIPELINE_DIR/LFGen/malt_ru.py > $lfFileName
 
