@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 PLATFORM=linux
 
 RU_PIPELINE_DIR=$METAPHOR_DIR/pipelines/Russian
