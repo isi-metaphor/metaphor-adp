@@ -12,7 +12,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -q -y --fix-missing && \
     apt-get install -q -y --fix-missing --no-install-recommends \
         bzip2 ca-certificates g++ git-core graphviz libsqlite3-dev make \
-        python-dev python-lxml python-nltk swi-prolog wget
+        openjdk-7-jre python-dev python-lxml python-nltk swi-prolog wget
 
 RUN apt-get clean -q
 
