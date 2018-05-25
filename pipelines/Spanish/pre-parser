@@ -12,7 +12,7 @@
 #   ./run_spanish.sh
 # <input> and <output> should be absolute paths.
 
-PLATFORM="linux"
+PLATFORM=$(uname -s | tr '[:upper:]' '[:lower:]')
 
 ES_PIPELINE_DIR=$METAPHOR_DIR/pipelines/Spanish
 

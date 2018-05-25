@@ -1,10 +1,9 @@
 #!/bin/sh
 
-# Set these paths appropriately
 
-BIN=/Users/zvm/code/nlp/Metaphor-ADP/external-tools/tree-tagger-3.2-linux-64bit/bin
-CMD=/Users/zvm/code/nlp/Metaphor-ADP/external-tools/tree-tagger-3.2-linux-64bit/cmd
-LIB=/Users/zvm/code/nlp/Metaphor-ADP/external-tools/tree-tagger-3.2-linux-64bit/lib
+BIN=$METAPHOR_DIR/external-tools/tree-tagger-3.2/linux/bin
+CMD=$METAPHOR_DIR/external-tools/tree-tagger-3.2/linux/cmd
+LIB=$METAPHOR_DIR/external-tools/tree-tagger-3.2/linux/lib
 
 GERMANTAGGER=${CMD}/tree-tagger-german-utf8
 TAGGER=${BIN}/tree-tagger
