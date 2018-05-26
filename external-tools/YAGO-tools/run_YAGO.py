@@ -1,32 +1,37 @@
-﻿#!/usr/bin/python2.7
+#!/usr/bin/env python2.7
 # -*- coding: utf-8 -*-
 
 import sys
 import os
 
 if __name__ == "__main__":
-	lang = sys.argv[1]
+    lang = sys.argv[1]
 
-	# default is exact match
-	substring = ''
-	if len(sys.argv)==3:
-		#substring match
-		if sys.argv[2]=='-s': substring=" -s"
+    # Default is exact match
+    substring = ''
+    if len(sys.argv) == 3:
+        # Substring match
+        if sys.argv[2] == '-s':
+            substring = " -s"
 
-	en_string = 'Barack Obama'
+    en_string = 'Barack Obama'
 
-	es_string = 'Juan Carlos I de España'
-	
-	ru_string = 'Путин'
+    es_string = 'Juan Carlos I de España'
 
-	fa_string = 'محمود احمدی‌نژاد'
+    ru_string = 'Путин'
 
-	if lang == 'EN': input = en_string 
-	elif lang == 'ES': input = es_string
-	elif lang == 'RU': input = ru_string 
-	elif lang == 'FA': input = fa_string 
-	else: print 'Unknown language: '+lang+'\n'
+    fa_string = 'محمود احمدی‌نژاد'
 
-	cmd = 'python2.7 get_categories.py "' + input + '" ' + lang + substring
-	os.system(cmd)
+    if lang == 'EN':
+        input = en_string
+    elif lang == 'ES':
+        input = es_string
+    elif lang == 'RU':
+        input = ru_string
+    elif lang == 'FA':
+        input = fa_string
+    else:
+        print 'Unknown language: ' + lang + '\n'
 
+    cmd = 'python2.7 get_categories.py "' + input + '" ' + lang + substring
+    os.system(cmd)

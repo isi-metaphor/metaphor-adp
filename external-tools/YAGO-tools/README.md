@@ -23,44 +23,46 @@ postgres=#  GRANT ALL PRIVILEGES ON DATABASE yago to yago;
 postgres=# \q
 ```
 
-* Open database port 
+* Open database port
 
-NOTE: This step is needed if you plan to give outside access to the database. If you plan to use it from localhost this step is not needed.
+NOTE: This step is needed if you plan to give outside access to the
+database. If you plan to use it from localhost this step is not needed.
 
 Example for giving access to ISI network:
 
-in /etc/postgresql/9.1/main/pg_hba.conf
-add this line (this gives access to ISI network):
+In `/etc/postgresql/9.1/main/pg_hba.conf`, add this line (this gives
+access to ISI network):
 ```
 # TYPE  DATABASE    USER        CIDR-ADDRESS          METHOD
 host    all    all         128.9.0.0/16          md5
 ```
 
-in /etc/postgresql/9.1/main/postgresql.conf
-add this:
+In `/etc/postgresql/9.1/main/postgresql.conf`, add this:
 ```
 listen_addresses='*'
 port=5432
 ```
 
-NOTE: Sometimes these files are found in: /var/lib/pgsql/data/
+NOTE: Sometimes these files are found in: `/var/lib/pgsql/data/`
 
 
 * Restart Database
 
-If at this point you are "postgres" or "yago" user, su to a user that has root access (you can use "exit" command to go back to previous user). Then restart database:
+If at this point you are "postgres" or "yago" user, su to a user that
+has root access (you can use "exit" command to go back to previous
+user). Then restart database:
 ```
 sudo  etc/init.d/postgresql restart
 ```
-
-
 
 * Done with database setup
 
 #### Download SIMPLETEX Theme
 
-* Download yagoSimpleTaxonomy:http://www.mpi-inf.mpg.de/yago-naga/yago/download/yago/yagoSimpleTaxonomy.tsv.7z
-* Download yagoSimpleTypes:http://www.mpi-inf.mpg.de/yago-naga/yago/download/yago/yagoSimpleTypes.tsv.7z
+* Download yagoSimpleTaxonomy:
+  http://www.mpi-inf.mpg.de/yago-naga/yago/download/yago/yagoSimpleTaxonomy.tsv.7z
+* Download yagoSimpleTypes:
+  http://www.mpi-inf.mpg.de/yago-naga/yago/download/yago/yagoSimpleTypes.tsv.7z
 
 #### Download MULTILINGUAL Theme
 
@@ -77,7 +79,7 @@ sudo  etc/init.d/postgresql restart
 * Download: http://www.mpi-inf.mpg.de/yago-naga/yago/download/yago/postgres.sql.7z
 * Import Data
 
-got to directory of the YAGO TSV files and run:
+Go to directory of the YAGO TSV files and run:
 ```
 psql -a -d <database> -h <hostname> -U <user> -f <thisScript>
 ```
@@ -104,34 +106,36 @@ sudo apt-get install python-psycopg2
 ```
 * Edit Connect String
 
-In get_categories.py edit CONN_STRING to reflect your database
+In `get_categories.py` edit `CONN_STRING` to reflect your database
 settings.
 
 * Run program
 
-Usage: get_categories.py [options]
+Usage: `get_categories.py [options]`
 
 * Options:
 
   * -h, --help (show this help message and exit)
-  * -i INSTRING, --input=INSTRING (input string; example:"Barak Obama")
+  * -i INSTRING, --input=INSTRING (input string; example: "Barack Obama")
   * -l LANG, --lang=LANG  (language; one of EN|RU|ES|FA)
   * -s, --substring (match input string as substring; default is exact match)
-  * -c, --casesensitive (match input string as case-sensitive;default is case-insensitive)
-  * -p, --preferredmeaning (return preferred meaning of category; default is NOT preferred, match on rdfs:label)
+  * -c, --casesensitive (match input string as case-sensitive; default is
+    case-insensitive)
+  * -p, --preferredmeaning (return preferred meaning of category; default is
+    NOT preferred, match on rdfs:label)
 
 
 example exact match, case insensitive:
 ```
-python get_categories.py -i "Barack Obama" -l EN
+python2.7 get_categories.py -i "Barack Obama" -l EN
 ```
 example substring match, case insensitive:
 ```
-python get_categories.py -i "Barack Obama" -l EN -s
+python2.7 get_categories.py -i "Barack Obama" -l EN -s
 ```
 example exact match, case sensitive:
 ```
-python get_categories.py -i "Barack Obama" -l EN -c
+python2.7 get_categories.py -i "Barack Obama" -l EN -c
 ```
 
 returns:
@@ -154,34 +158,36 @@ sudo apt-get install python-psycopg2
 ```
 * Edit Connect String
 
-In get_supercategories.py edit CONN_STRING to reflect your database
+In `get_supercategories.py` edit `CONN_STRING` to reflect your database
 settings.
 
 * Run program
 
-Usage: get_supercategories.py [options]
+Usage: `get_supercategories.py [options]`
 
 * Options:
 
   * -h, --help (show this help message and exit)
-  * -i INSTRING, --input=INSTRING (input string; example:"Barak Obama")
+  * -i INSTRING, --input=INSTRING (input string; example: "Barack Obama")
   * -l LANG, --lang=LANG  (language; one of EN|RU|ES|FA)
   * -s, --substring (match input string as substring; default is exact match)
-  * -c, --casesensitive (match input string as case-sensitive;default is case-insensitive)
-  * -p, --preferredmeaning (return preferred meaning of category; default is NOT preferred, match on rdfs:label)
+  * -c, --casesensitive (match input string as case-sensitive; default is
+    case-insensitive)
+  * -p, --preferredmeaning (return preferred meaning of category; default is
+    NOT preferred, match on rdfs:label)
 
-example exact match:
+Example exact match:
 ```
-python get_supercategories.py -i "Barack Obama" -l EN
+python2.7 get_supercategories.py -i "Barack Obama" -l EN
 ```
-example substring match:
+Example substring match:
 ```
-python get_supercategories.py -i "Barack Obama" -l EN -s
+python2.7 get_supercategories.py -i "Barack Obama" -l EN -s
 ```
 
 Returns a dictionary where key = category and value = list of supercategories.
 
-example:
+Example:
 ```
 {'<wordnet_state_108654360>': set(['<yagoGeoEntity>']), 
 '<wordnet_dish_103206908>': set(['<wordnet_artifact_100021939>']), 
@@ -201,36 +207,38 @@ sudo apt-get install python-psycopg2
 ```
 * Edit Connect String
 
-In get_relations.py edit CONN_STRING to reflect your database
+In `get_relations.py` edit `CONN_STRING` to reflect your database
 settings.
 
 * Run program
 
-Usage: get_relations.py [options]
+Usage: `get_relations.py [options]`
 
 * Options:
 
   * -h, --help (show this help message and exit)
-  * -i INSTRING, --input=INSTRING (input string; example:"Barak Obama")
+  * -i INSTRING, --input=INSTRING (input string; example: "Barack Obama")
   * -l LANG, --lang=LANG  (language; one of EN|RU|ES|FA)
   * -s, --substring (match input string as substring; default is exact match)
-  * -c, --casesensitive (match input string as case-sensitive;default is case-insensitive)
-  * -p, --preferredmeaning (return preferred meaning of category; default is NOT preferred, match on rdfs:label)
-  * -r RELATIONS, --relations=RELATIONS (list of relations; example:"<hasName>,<hasGender>,..."; default is
-                        "allRelations")
+  * -c, --casesensitive (match input string as case-sensitive; default is
+    case-insensitive)
+  * -p, --preferredmeaning (return preferred meaning of category; default is
+    NOT preferred, match on rdfs:label)
+  * -r RELATIONS, --relations=RELATIONS (list of relations; example:
+    "<hasName>,<hasGender>,..."; default is "allRelations")
 
-example get all relations:
+Example get all relations:
 ```
-python get_relations.py -i "Barack Obama" -l EN -s
+python2.7 get_relations.py -i "Barack Obama" -l EN -s
 ```
 example get specific relations:
 ```
-python get_relations.py -i "Barack Obama" -l EN -s -r "<isMarriedTo>,<hasWebsite>,<isLocatedIn>"
+python2.7 get_relations.py -i "Barack Obama" -l EN -s -r "<isMarriedTo>,<hasWebsite>,<isLocatedIn>"
 ```
 
 Returns a dictionary where key = relation and value = list of values.
 
-example:
+Example:
 ```
 {'<Barack_Obama,_Sr.>': 
   {'<diedIn>': set(['<Nairobi>']),
@@ -253,34 +261,36 @@ sudo apt-get install python-psycopg2
 ```
 * Edit Connect String
 
-In get_glosses.py edit CONN_STRING to reflect your database
+In `get_glosses.py` edit `CONN_STRING` to reflect your database
 settings.
 
 * Run program
 
-Usage: get_glosses.py [options]
+Usage: `get_glosses.py [options]`
 
 * Options:
 
   * -h, --help (show this help message and exit)
-  * -i INSTRING, --input=INSTRING (input string; example:"Barak Obama")
+  * -i INSTRING, --input=INSTRING (input string; example: "Barack Obama")
   * -l LANG, --lang=LANG  (language; one of EN|RU|ES|FA)
   * -s, --substring (match input string as substring; default is exact match)
-  * -c, --casesensitive (match input string as case-sensitive;default is case-insensitive)
-  * -p, --preferredmeaning (return preferred meaning of category; default is NOT preferred, match on rdfs:label)
+  * -c, --casesensitive (match input string as case-sensitive; default is
+    case-insensitive)
+  * -p, --preferredmeaning (return preferred meaning of category; default is
+    NOT preferred, match on rdfs:label)
 
 
-example exact match, case insensitive:
+Example exact match, case insensitive:
 ```
-python get_glosses.py -i "Barack Obama" -l EN
+python2.7 get_glosses.py -i "Barack Obama" -l EN
 ```
-example substring match, case insensitive:
+Example substring match, case insensitive:
 ```
-python get_glosses.py -i "Barack Obama" -l EN -s
+python2.7 get_glosses.py -i "Barack Obama" -l EN -s
 ```
-example exact match, case sensitive:
+Example exact match, case sensitive:
 ```
-python get_glosses.py -i "Barack Obama" -l EN -c
+python2.7 get_glosses.py -i "Barack Obama" -l EN -c
 ```
 
 returns:
