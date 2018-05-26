@@ -1,11 +1,13 @@
-#! /bin/bash
+#!/bin/bash
 
-taggedInputFile="${1:-/dev/stdin}"
-parsedFileName="${2:-/dev/stdout}"
+# Parse Russian
+
+TAGGED_INPUT_FILE="${1:-/dev/stdin}"
+PARSED_FILE_NAME="${2:-/dev/stdout}"
 
 MALT_PARSER_DIR=$METAPHOR_DIR/external-tools/malt-1.5
-RU_PARSER_DIR=$METAPHOR_DIR/external-tools/malt-ru
-cat $taggedInputFile | java -cp $MALT_PARSER_DIR/dist/malt/malt.jar:$RU_PARSER_DIR maltParserWrap_RU > $parsedFileName
 
-#cd $RU_PARSER_DIR
-#java -Xmx16g -jar $MALT_PARSER_DIR/dist/malt/malt.jar -c rus-test.mco -m parse -v off
+cat $TAGGED_INPUT_FILE | \
+java -Xmx16g -cp $MALT_PARSER_DIR/dist/malt/malt.jar:$MALT_PARSER_DIR \
+     MaltParserWrap -c rus-test.mco -m parse -w $MALT_PARSER_DIR \
+     -lfi parser-ru.log > $PARSED_FILE_NAME

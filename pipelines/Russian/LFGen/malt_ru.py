@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2.7
 # -*- coding: utf-8 -*-
 
 # Contributors:
@@ -22,7 +22,6 @@ from fol import FOLWriter, MaltConverter, fol_transform
 
 
 def main():
-
     parser = argparse.ArgumentParser(
         description="MaltParser output processing pipeline for Russian.")
     parser.add_argument(

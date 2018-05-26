@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python2.7
 
 import os
 import sys
@@ -11,11 +11,12 @@ install_dir = sys.argv[1]
 
 setvars = raw_input("This script modifies your .bashrc file, and sets environment variables relevant for this application. Continue? [yes/no]")
 
-if setvars == "yes":
-    bashrc_file = os.environ['HOME'] + "/.bashrc"
+if setvars != "yes":
+    sys.exit()
 
-    f = open(bashrc_file, "a+")
+bashrc_file = os.environ['HOME'] + "/.bashrc"
 
+with open(bashrc_file, 'a+') as f:
     f.write("\n# Metaphor ADP\n")
     f.write("export ADP_HOME=" + install_dir + "\n")
     f.write("export METAPHOR_DIR=" + install_dir + "\n")
@@ -26,7 +27,7 @@ if setvars == "yes":
     if os.environ.get('PATH') is None:
         f.write("export PATH=$GUROBI_HOME/bin\n")
     else:
-        f.write("export PATH=$GUROBI_HOME/bin:$PATH\n")
+        f.write("export PATH=$PATH:$GUROBI_HOME/bin\n")
 
     if os.environ.get('LD_LIBRARY_PATH') is None:
         f.write("export LD_LIBRARY_PATH=$GUROBI_HOME/lib\n")

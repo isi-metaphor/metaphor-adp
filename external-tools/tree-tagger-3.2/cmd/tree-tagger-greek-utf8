@@ -1,0 +1,20 @@
+#!/bin/sh
+
+PLATFORM=$(uname -s | tr '[:upper:]' '[:lower:]')
+
+BIN=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/bin
+CMD=$METAPHOR_DIR/external-tools/tree-tagger-3.2/cmd
+LIB=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/lib
+
+OPTIONS="-token -lemma -sgml"
+
+TOKENIZER=${CMD}/utf8-tokenize.perl
+MWL=${CMD}/mwl-lookup-greek-utf8.perl
+TAGGER=${BIN}/tree-tagger
+PARFILE=${LIB}/greek-utf8.par
+
+$TOKENIZER $* |
+# recognition of MWLs
+$MWL |
+# tagging
+$TAGGER $OPTIONS $PARFILE

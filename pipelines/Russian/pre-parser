@@ -1,16 +1,16 @@
-#! /bin/bash
-PLATFORM=linux
+#!/bin/bash
+
+PLATFORM=$(uname -s | tr '[:upper:]' '[:lower:]')
 
 RU_PIPELINE_DIR=$METAPHOR_DIR/pipelines/Russian
 
 TREE_TAGGER_BIN=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/bin
-TREE_TAGGER_CMD=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/cmd
+TREE_TAGGER_CMD=$METAPHOR_DIR/external-tools/tree-tagger-3.2/cmd
 TREE_TAGGER_LIB=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/lib
 TREE_TAGGER_OPT="-lemma -token -sgml -quiet"
 TAGGER_BIN=$TREE_TAGGER_BIN/tree-tagger
 
 MALT_DIR=$METAPHOR_DIR/external-tools/malt-1.5
-MALT_RU_DIR=$METAPHOR_DIR/external-tools/malt-ru
 
 TOKENIZER_BIN=$RU_PIPELINE_DIR/tokenizer/nltk_rtokenizer.py
 TAGGER_PAR=$RU_PIPELINE_DIR/tokenizer/russian.par

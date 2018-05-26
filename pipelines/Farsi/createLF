@@ -10,4 +10,4 @@ farsiWordsDict=$farsiPipelineDir/LFGen/farsiWordsForLFCreation.txt
 
 # convert the parse results to LF
 
-python $parseToLFConverter $inputFileName $outputFileName $farsiWordsDict
+python2.7 $parseToLFConverter $inputFileName $outputFileName $farsiWordsDict

@@ -12,12 +12,12 @@
 #   ./run_spanish.sh
 # <input> and <output> should be absolute paths.
 
-PLATFORM="linux"
+PLATFORM=$(uname -s | tr '[:upper:]' '[:lower:]')
 
 ES_PIPELINE_DIR=$METAPHOR_DIR/pipelines/Spanish
 
 TREE_TAGGER_BIN=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/bin
-TREE_TAGGER_CMD=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/cmd
+TREE_TAGGER_CMD=$METAPHOR_DIR/external-tools/tree-tagger-3.2/cmd
 TREE_TAGGER_LIB=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/lib
 TREE_TAGGER_OPT="-lemma -token -sgml"
 
@@ -41,15 +41,15 @@ PARFILE=$TREE_TAGGER_LIB/spanish-utf8.par
 MWLFILE=$TREE_TAGGER_LIB/spanish-mwls-utf8
 
 if [ -d "$2" ]; then
-   python $TOKENIZER_BIN --sentid 1 --normquotes 1 < "${1:-/dev/stdin}" |
+   python2.7 $TOKENIZER_BIN --sentid 1 --normquotes 1 < "${1:-/dev/stdin}" |
    tee $2/tokenizer_o.txt |
    $MWL -f $MWLFILE |
    $TAGGER $OPTIONS $PARFILE |
    tee $2/tagger_o.txt |
-   $MALT_IFORMAT  
+   $MALT_IFORMAT
 else
-   python $TOKENIZER_BIN --sentid 1 --normquotes 1 < "${1:-/dev/stdin}" |
+   python2.7 $TOKENIZER_BIN --sentid 1 --normquotes 1 < "${1:-/dev/stdin}" |
    $MWL -f $MWLFILE |
    $TAGGER $OPTIONS $PARFILE |
-   $MALT_IFORMAT 
+   $MALT_IFORMAT
 fi

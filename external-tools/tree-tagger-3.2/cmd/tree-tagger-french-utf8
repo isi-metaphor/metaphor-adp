@@ -1,0 +1,17 @@
+#!/bin/sh
+
+PLATFORM=$(uname -s | tr '[:upper:]' '[:lower:]')
+
+BIN=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/bin
+CMD=$METAPHOR_DIR/external-tools/tree-tagger-3.2/cmd
+LIB=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/lib
+
+OPTIONS="-token -lemma -sgml"
+
+TOKENIZER=${CMD}/utf8-tokenize.perl
+TAGGER=${BIN}/tree-tagger
+ABBR_LIST=${LIB}/french-abbreviations-utf8
+PARFILE=${LIB}/french-utf8.par
+
+$TOKENIZER -f -a $ABBR_LIST $* |
+$TAGGER $OPTIONS $PARFILE

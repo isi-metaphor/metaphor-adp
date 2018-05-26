@@ -1,10 +1,10 @@
 #!/bin/sh
 
-# Set these paths appropriately
+PLATFORM=$(uname -s | tr '[:upper:]' '[:lower:]')
 
-BIN=../../external-tools/tree-tagger-3.2/darwin/bin
-CMD=../../external-tools/tree-tagger-3.2/darwin/cmd
-LIB=../../external-tools/tree-tagger-3.2/darwin/lib
+BIN=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/bin
+CMD=$METAPHOR_DIR/external-tools/tree-tagger-3.2/cmd
+LIB=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/lib
 
 OPTIONS="-token -lemma -sgml"
 

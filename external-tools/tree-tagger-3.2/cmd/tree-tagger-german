@@ -1,0 +1,24 @@
+#!/bin/sh
+
+PLATFORM=$(uname -s | tr '[:upper:]' '[:lower:]')
+
+BIN=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/bin
+CMD=$METAPHOR_DIR/external-tools/tree-tagger-3.2/cmd
+LIB=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/lib
+
+OPTIONS="-token -lemma -sgml -pt-with-lemma"
+
+TOKENIZER=${CMD}/tokenize.pl
+TAGGER=${BIN}/tree-tagger
+ABBR_LIST=${LIB}/german-abbreviations
+PARFILE=${LIB}/german.par
+LEXFILE=${LIB}/german-lexicon.txt
+FILTER=${CMD}/filter-german-tags
+
+$TOKENIZER -a $ABBR_LIST $* |
+# external lexicon lookup
+perl $CMD/lookup.perl $LEXFILE |
+# tagging
+$TAGGER $OPTIONS $PARFILE  | 
+# error correction
+$FILTER

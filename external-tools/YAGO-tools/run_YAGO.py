@@ -1,4 +1,4 @@
-﻿#!/usr/bin/python
+﻿#!/usr/bin/python2.7
 # -*- coding: utf-8 -*-
 
 import sys
@@ -27,6 +27,6 @@ if __name__ == "__main__":
 	elif lang == 'FA': input = fa_string 
 	else: print 'Unknown language: '+lang+'\n'
 
-	cmd = 'python get_categories.py "' + input + '" ' + lang + substring
+	cmd = 'python2.7 get_categories.py "' + input + '" ' + lang + substring
 	os.system(cmd)
 
