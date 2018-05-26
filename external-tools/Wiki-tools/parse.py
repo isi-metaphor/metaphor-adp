@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python2.7
 # -*- coding: utf-8 -*-
 
 import os
@@ -16,7 +16,7 @@ def parse(abstract,commonDir,tempFile,lang,std):
     sf = open(tempFile,'w')
     sf.write(abstract)
     sf.close()
-    command = "python nltk_tokenizer.py -l __lang__ --input __path__"
+    command = "python2.7 nltk_tokenizer.py -l __lang__ --input __path__"
     command = command.replace('__lang__',lang)
     command = command.replace('__path__',tempFile)
     subprocess.call(command.split())
@@ -36,7 +36,7 @@ def parse(abstract,commonDir,tempFile,lang,std):
     for line in sents:
         sf.write(line)
     sf.close()
-    command = 'python __commonDir__/NLPipeline_MULT_stdinout.py --lang __lang__ --input __path__ --parse'
+    command = 'python2.7 __commonDir__/NLPipeline_MULT_stdinout.py --lang __lang__ --input __path__ --parse'
     command = command.replace('__commonDir__',commonDir)
     command = command.replace('__lang__',lang)
     command = command.replace('__path__',sentFile)

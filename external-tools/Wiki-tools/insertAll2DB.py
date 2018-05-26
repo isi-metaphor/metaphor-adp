@@ -1,5 +1,4 @@
-
-#!/usr/bin/python
+#!/usr/bin/env python2.7
 # -*- coding: utf-8 -*-
 
 import sys
@@ -35,7 +34,7 @@ def main():
     errorlangs={}
 
     for i in range(0,len(files)):
-        command = 'python insertFile2DB.py -s 1 -l '+langs[i]+' -f '+ dirPath + '/'+files[i]+" -x "+suffixes[i]
+        command = 'python2.7 insertFile2DB.py -s 1 -l '+langs[i]+' -f '+ dirPath + '/'+files[i]+" -x "+suffixes[i]
         commands.append(command)
         print 'Processing '+files[i]+" ..."
         print command

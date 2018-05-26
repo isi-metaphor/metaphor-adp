@@ -77,12 +77,12 @@ bash insertAll2DB.sh
 
 * Build the Index
 ```
-python buildIndex.py
+python2.7 buildIndex.py
 ```
 
 * process the Bijective Inter-Language Link:
 ```
-python process_bijective_link.py -d DIR_PATH
+python2.7 process_bijective_link.py -d DIR_PATH
 ```
 
 ### Download the Yago Database
@@ -133,17 +133,17 @@ Usage: get_paragraph.py [options]
 
 example exact match, case insensitive:
 ```
-python get_paragraph.py -i "Barack Obama" -l EN
+python2.7 get_paragraph.py -i "Barack Obama" -l EN
 ```
 
 example substring match, case insensitive:
 ```
-python get_paragraph.py -i "Barack Obama" -l EN -s
+python2.7 get_paragraph.py -i "Barack Obama" -l EN -s
 ```
 
 example exact match, case sensitive:
 ```
-python get_paragraph.py -i "Barack Obama" -l EN -c
+python2.7 get_paragraph.py -i "Barack Obama" -l EN -c
 ```
 
 returns:
@@ -164,7 +164,7 @@ In foreign policy, he ended the war in Iraq, increased troop levels in Afghanist
 
 * Download NLTK Data: wordnet corpus.
 ```
-python
+python2.7
 import nltk
 nltk.download()
 ```
@@ -210,13 +210,13 @@ Please refer to http://nltk.googlecode.com/svn/trunk/doc/howto/wordnet.html
 
 * First, use the get_paragraph.py to find the paragraph which you are interested in, and parse it.
 ```
-python get_paragraph.py -i 'Nation' -l EN --stdout| python parse.py -l --common commonDIR --temp temp/temp.txt EN >temp/nation.txt
+python2.7 get_paragraph.py -i 'Nation' -l EN --stdout| python2.7 parse.py -l --common commonDIR --temp temp/temp.txt EN >temp/nation.txt
 ```
 where commonDIR = $METAPHOR_DIR/pipelines/common
 
 * Use similarity.py to compute similarty:
 ```
-python similarity.py -w nation -p nn -i temp/nation.txt -o temp/nation.rank.txt
+python2.7 similarity.py -w nation -p nn -i temp/nation.txt -o temp/nation.rank.txt
 ```
 -w options should follows the target word, and -p options should follow the target word's POS tag, which should be compatible with LF form's suffix, i.e. nn,rb,vb,adj.
 
