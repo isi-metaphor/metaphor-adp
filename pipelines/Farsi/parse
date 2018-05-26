@@ -9,5 +9,5 @@ MALT_PARSER_DIR=$METAPHOR_DIR/external-tools/malt-1.5
 
 cat $TAGGED_INPUT_FILE | \
 java -cp $MALT_PARSER_DIR/dist/malt/malt.jar:$MALT_PARSER_DIR \
-     MaltParserWrap -c farsiMALTModel -m parse -w $MALT_PARSER_DIR \
-     -lfi parser.log > $PARSED_FILE_NAME
+     MaltParserWrap -c farsiMALTModel.mco -m parse -w $MALT_PARSER_DIR \
+     -lfi parser-fa.log > $PARSED_FILE_NAME
