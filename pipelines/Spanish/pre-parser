@@ -41,15 +41,15 @@ PARFILE=$TREE_TAGGER_LIB/spanish-utf8.par
 MWLFILE=$TREE_TAGGER_LIB/spanish-mwls-utf8
 
 if [ -d "$2" ]; then
-   python $TOKENIZER_BIN --sentid 1 --normquotes 1 < "${1:-/dev/stdin}" |
+   python2.7 $TOKENIZER_BIN --sentid 1 --normquotes 1 < "${1:-/dev/stdin}" |
    tee $2/tokenizer_o.txt |
    $MWL -f $MWLFILE |
    $TAGGER $OPTIONS $PARFILE |
    tee $2/tagger_o.txt |
-   $MALT_IFORMAT  
+   $MALT_IFORMAT
 else
-   python $TOKENIZER_BIN --sentid 1 --normquotes 1 < "${1:-/dev/stdin}" |
+   python2.7 $TOKENIZER_BIN --sentid 1 --normquotes 1 < "${1:-/dev/stdin}" |
    $MWL -f $MWLFILE |
    $TAGGER $OPTIONS $PARFILE |
-   $MALT_IFORMAT 
+   $MALT_IFORMAT
 fi

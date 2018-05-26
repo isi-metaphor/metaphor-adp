@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 taggedInputFile="${1:-/dev/stdin}"
 parsedFileName="${2:-/dev/stdout}"
