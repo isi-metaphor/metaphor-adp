@@ -4,9 +4,9 @@ export GUROBI_HOME=/Library/gurobi563/mac64
 export GRB_LICENSE_FILE=$ADP_HOME/gurobi.lic
 
 if [ X"$PATH" == X ]; then
-    export PATH=$GUROBI_HOME/bin:/usr/local/bin:/usr/bin
+    export PATH=/usr/local/bin:/usr/bin:$GUROBI_HOME/bin
 else
-    export PATH=$GUROBI_HOME/bin:$PATH
+    export PATH=$PATH:$GUROBI_HOME/bin
 fi
 
 if [ X"$LD_LIBRARY_PATH" == X ]; then

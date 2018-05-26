@@ -6,7 +6,7 @@ export GRB_LICENSE_FILE=$ADP_HOME/external-tools/gurobi/license/gurobi.lic
 if [ X"$PATH" == X ]; then
     export PATH=$GUROBI_HOME/bin
 else
-    export PATH=$GUROBI_HOME/bin:$PATH
+    export PATH=$PATH:$GUROBI_HOME/bin
 fi
 
 if [ X"$LD_LIBRARY_PATH" == X ]; then
