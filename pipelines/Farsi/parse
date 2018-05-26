@@ -1,5 +1,13 @@
 #!/bin/bash
 
-parserDir=$METAPHOR_DIR/external-tools/malt-1.5
+# Parse Farsi
 
-java -cp $parserDir/dist/malt/malt.jar:$parserDir maltParserWrap_FA
+TAGGED_INPUT_FILE="${1:-/dev/stdin}"
+PARSED_FILE_NAME="${2:-/dev/stdout}"
+
+MALT_PARSER_DIR=$METAPHOR_DIR/external-tools/malt-1.5
+
+cat $TAGGED_INPUT_FILE | \
+java -cp $MALT_PARSER_DIR/dist/malt/malt.jar:$MALT_PARSER_DIR \
+     MaltParserWrap -c farsiMALTModel -m parse -w $MALT_PARSER_DIR \
+     -lfi parser.log > $PARSED_FILE_NAME

@@ -1,11 +1,13 @@
 #!/bin/bash
 
-taggedInputFile="${1:-/dev/stdin}"
-parsedFileName="${2:-/dev/stdout}"
+# Parse Spanish
+
+TAGGED_INPUT_FILE="${1:-/dev/stdin}"
+PARSED_FILE_NAME="${2:-/dev/stdout}"
 
 MALT_PARSER_DIR=$METAPHOR_DIR/external-tools/maltparser-1.7.2
 
-cat $taggedInputFile | java -cp $MALT_PARSER_DIR/maltparser-1.7.2.jar:$MALT_PARSER_DIR maltParserWrap_ES > $parsedFileName
-
-#cd $MALT_PARSER_DIR
-#java -Xmx16g -jar maltparser-1.7.2.jar -c ancora_under40.mco -m parse -v off
+cat $TAGGED_INPUT_FILE | \
+java -cp $MALT_PARSER_DIR/maltparser-1.7.2.jar:$MALT_PARSER_DIR \
+     MaltParserWrap -c ancora_under40 -m parse -w $MALT_PARSER_DIR \
+     -lfi parser.log > $PARSED_FILE_NAME
