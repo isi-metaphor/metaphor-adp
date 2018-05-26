@@ -1,7 +1,10 @@
 #!/bin/sh
-BIN=/home/tminer/work/tmusers/wiebke/nlptools/treetagger/bin
-CMD=/home/tminer/work/tmusers/wiebke/nlptools/treetagger/cmd
-LIB=/home/tminer/work/tmusers/wiebke/nlptools/treetagger/lib
+
+PLATFORM=$(uname -s | tr '[:upper:]' '[:lower:]')
+
+BIN=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/bin
+CMD=$METAPHOR_DIR/external-tools/tree-tagger-3.2/cmd
+LIB=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/lib
 
 LEX=$LIB/pos-lex
 

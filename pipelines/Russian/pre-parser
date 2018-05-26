@@ -1,10 +1,11 @@
 #!/bin/bash
-PLATFORM=linux
+
+PLATFORM=$(uname -s | tr '[:upper:]' '[:lower:]')
 
 RU_PIPELINE_DIR=$METAPHOR_DIR/pipelines/Russian
 
 TREE_TAGGER_BIN=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/bin
-TREE_TAGGER_CMD=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/cmd
+TREE_TAGGER_CMD=$METAPHOR_DIR/external-tools/tree-tagger-3.2/cmd
 TREE_TAGGER_LIB=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/lib
 TREE_TAGGER_OPT="-lemma -token -sgml -quiet"
 TAGGER_BIN=$TREE_TAGGER_BIN/tree-tagger

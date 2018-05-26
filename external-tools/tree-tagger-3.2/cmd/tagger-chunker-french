@@ -2,10 +2,11 @@
 
 #The training corpus had 17739 sentences, 524004 tokens for 4266 types taken from the French Treebank. Information on the phrasal tagsets can be found at http://www.llf.cnrs.fr/Gens/Abeille/French-Treebank-fr.php
 
+PLATFORM=$(uname -s | tr '[:upper:]' '[:lower:]')
 
-BIN=$METAPHOR_DIR/external-tools/tree-tagger-3.2/linux/bin
-CMD=$METAPHOR_DIR/external-tools/tree-tagger-3.2/linux/cmd
-LIB=$METAPHOR_DIR/external-tools/tree-tagger-3.2/linux/lib
+BIN=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/bin
+CMD=$METAPHOR_DIR/external-tools/tree-tagger-3.2/cmd
+LIB=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/lib
 
 OPTIONS1="-token -lemma -sgml"
 OPTIONS2="-token -sgml -eps 0.00000001 -hyphen-heuristics -quiet"

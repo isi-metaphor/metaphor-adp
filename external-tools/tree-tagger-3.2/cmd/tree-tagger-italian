@@ -8,15 +8,10 @@ LIB=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/lib
 
 OPTIONS="-token -lemma -sgml"
 
-TOKENIZER=${CMD}/utf8-tokenize.perl
-MWL=${CMD}/mwl-lookup.perl
 TAGGER=${BIN}/tree-tagger
-ABBR_LIST=${LIB}/spanish-abbreviations
-PARFILE=${LIB}/spanish-utf8.par
-MWLFILE=${LIB}/spanish-mwls-utf8
+TOKENIZER=${CMD}/tokenize.pl
+ABBR_LIST=${LIB}/italian-abbreviations
+PARFILE=${LIB}/italian.par
 
-#$TOKENIZER -a $ABBR_LIST $* |
-# recognition of MWLs
-$MWL -f $MWLFILE $*|
-# tagging
+$TOKENIZER -i -a $ABBR_LIST $* |
 $TAGGER $OPTIONS $PARFILE
