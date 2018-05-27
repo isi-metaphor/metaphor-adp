@@ -1,6 +1,6 @@
-### WIKI Installation Instructions
+### Wiki Installation Instructions
 
-#### Set Up PostgreSQL Database for WIKI
+#### Set Up PostgreSQL Database for Wiki
 
 * Install PostgreSQL
 
@@ -31,22 +31,27 @@ postgres=# \q
 If at this point you are "postgres" or "wiki" user, su to a user that has root access (you can use "exit" command to go back to previous user). Then restart database:
 
 ```
-sudo  etc/init.d/postgresql restart
+sudo etc/init.d/postgresql restart
 ```
 
 * Done with database setup
 
-#### Download DBPedia Dataset
+#### Download DBpedia Dataset
 
-* Download long_abstracts_en.nt.bz2:http://downloads.dbpedia.org/3.8/en/long_abstracts_en.nt.bz2
+* Download `long_abstracts_en.nt.bz2`:
+http://downloads.dbpedia.org/3.8/en/long_abstracts_en.nt.bz2
 
-* Download long_abstracts_es.nt.bz2:http://downloads.dbpedia.org/3.8/es/long_abstracts_es.nt.bz2
+* Download `long_abstracts_es.nt.bz2`:
+http://downloads.dbpedia.org/3.8/es/long_abstracts_es.nt.bz2
 
-* Download long_abstracts_ru.nt.bz2:http://downloads.dbpedia.org/3.8/ru/long_abstracts_ru.nt.bz2
+* Download `long_abstracts_ru.nt.bz2`:
+http://downloads.dbpedia.org/3.8/ru/long_abstracts_ru.nt.bz2
 
-* Download long_abstracts_fa.nt.bz2:http://downloads.dbpedia.org/3.8/fa/long_abstracts_fa.nt.bz2
+* Download `long_abstracts_fa.nt.bz2`:
+http://downloads.dbpedia.org/3.8/fa/long_abstracts_fa.nt.bz2
 
-* Download Bijective Inter-Language Links:http://downloads.dbpedia.org/3.8/en/interlanguage_links_same_as_en.nt.bz2
+* Download Bijective Inter-Language Links:
+http://downloads.dbpedia.org/3.8/en/interlanguage_links_same_as_en.nt.bz2
 
 * Uncompress the *.bz2 files
 
@@ -64,12 +69,13 @@ sudo apt-get install python-psycopg2
 
 * Edit Connect String
 
-In global_setting.py edit CONN_STRING to reflect your database
+In `global_setting.py` edit `CONN_STRING` to reflect your database
 settings.
 
 * Insert the data into PostgreSQL database
 
-* Edit the DOWNLOAD_DIR in insertAll2DB.sh to where you download all the *.nt files
+* Edit the `DOWNLOAD_DIR` in `insertAll2DB.sh` to where you downloaded all
+the *.nt files
 ```
 bash insertAll2DB.sh
 ```
@@ -80,25 +86,27 @@ bash insertAll2DB.sh
 python2.7 buildIndex.py
 ```
 
-* process the Bijective Inter-Language Link:
+* Process the Bijective Inter-Language Link:
 ```
 python2.7 process_bijective_link.py -d DIR_PATH
 ```
 
 ### Download the Yago Database
 
-* Download yagoLabels:http://www.mpi-inf.mpg.de/yago-naga/yago/download/yago/yagoLabels.tsv.7z
+* Download yagoLabels:
+http://www.mpi-inf.mpg.de/yago-naga/yago/download/yago/yagoLabels.tsv.7z
 
-* Download yagoMultilingualInstanceLabels:http://www.mpi-inf.mpg.de/yago-naga/yago/download/yago/yagoMultilingualInstanceLabels.tsv.7z
+* Download yagoMultilingualInstanceLabels:
+http://www.mpi-inf.mpg.de/yago-naga/yago/download/yago/yagoMultilingualInstanceLabels.tsv.7z
 
-* Download yagoMultilingualClassLabels:http://www.mpi-inf.mpg.de/yago-naga/yago/download/yago/yagoMultilingualClassLabels.tsv.7z
+* Download yagoMultilingualClassLabels:
+http://www.mpi-inf.mpg.de/yago-naga/yago/download/yago/yagoMultilingualClassLabels.tsv.7z
 
-* Download yagoWikipediaInfo: http://www.mpi-inf.mpg.de/yago-naga/yago/download/yago/yagoWikipediaInfo.tsv.7z
+* Download yagoWikipediaInfo:
+http://www.mpi-inf.mpg.de/yago-naga/yago/download/yago/yagoWikipediaInfo.tsv.7z
 
 
-
-
-* import tsv files into database 
+* Import tsv files into database:
 ```
 psql -a -d 'wiki' -h 'localhost' -U 'wiki' -f importYago.sql
 ```
@@ -112,20 +120,20 @@ psql -d yago
 should contains 6 relevent tables and 20 relevant indexes.
 
 
-### Extract the first paragraph of wiki: get_paragraph.py
+### Extract the first paragraph of wiki: `get_paragraph.py`
 
 * Edit Connect String
 
-In global_setting.py edit CONN_STRING to reflect your database
+In `global_setting.py` edit `CONN_STRING` to reflect your database
 settings.
 
 * Run program
 
-Usage: get_paragraph.py [options]
+Usage: `get_paragraph.py [options]`
 
 * Options:
   * -h, --help show this help message and exit
-  * -i INWORD, --input=INWORD, input string(example:"Barak Obama")
+  * -i INWORD, --input=INWORD, input string (example:"Barack Obama")
   * -l LANG, --lang=LANG, language (one of EN|RU|ES|FA)
   * -s, --substring, match input string as substring (default is exact match)
   * -c, --casesensitive, match input string as case-sensitive (default is case-insensitive)
@@ -160,7 +168,7 @@ In foreign policy, he ended the war in Iraq, increased troop levels in Afghanist
 
 #### Setup NLTK tools
 
-* Download and install nltk on your machine. Here is the guide : http://nltk.org/install.html
+* Download and install NLTK on your machine. Here is the guide: http://nltk.org/install.html
 
 * Download NLTK Data: wordnet corpus.
 ```
@@ -185,30 +193,30 @@ postgres=# \q
 
 * Download the conceptnet database: http://conceptnet5.media.mit.edu/downloads/current/conceptnet5.1.2-20121212-csv.tar.bz2
 
-* Extract all files to a Directory, let's call this directory $cnDIR.
+* Extract all files to a directory, let's call this directory $cnDIR.
 
-* In build_conceptnet.sh, change CONCEPTNET_DIR to $cnDIR.
+* In `build_conceptnet.sh`, change `CONCEPTNET_DIR` to $cnDIR.
 
 * build the conceptnet tables and translation tables.
 ```
 bash build_conceptnet.sh
 ```
 
-#### Compute Similarity between two words
+#### Compute similarity between two words
 
-* Using wordnet's own similarity package
+* Using WordNet's own similarity package
 
 Please refer to http://nltk.googlecode.com/svn/trunk/doc/howto/wordnet.html
 
-* similarity_wordnet.py: using wordnet's relations: hypernym, hyponym, derivationlly related form, antonyms and similary meanings. Only support for English.
+* `similarity_wordnet.py`: using WordNet's relations: hypernym, hyponym, derivationlly related form, antonyms and similary meanings. Only support for English.
 
-* similarity_conceptnet.py: Using conceptnet's graph to calculate the shortest path between two words. The similarity is 1/ length of the path. Only support for FA,ES,RU. The only issue is that the graph is too sparse and amount of nodes is small, so it often doesn't work.
+* `similarity_conceptnet.py`: Using conceptnet's graph to calculate the shortest path between two words. The similarity is 1/ length of the path. Only support for FA,ES,RU. The only issue is that the graph is too sparse and amount of nodes is small, so it often doesn't work.
 
-* similarity_translation.py: Using wiktionary.org' translation information, first translate two words into English, and then call similarity_wordnet.py to calculate similarity between the two English words. Support for ES,FA,RU.
+* `similarity_translation.py`: Using wiktionary.org' translation information, first translate two words into English, and then call similarity_wordnet.py to calculate similarity between the two English words. Support for ES,FA,RU.
 
 #### Get similarity results for a wiki paragraph
 
-* First, use the get_paragraph.py to find the paragraph which you are interested in, and parse it.
+* First, use the `get_paragraph.py` to find the paragraph which you are interested in, and parse it.
 ```
 python2.7 get_paragraph.py -i 'Nation' -l EN --stdout| python2.7 parse.py -l --common commonDIR --temp temp/temp.txt EN >temp/nation.txt
 ```
@@ -227,9 +235,9 @@ create database conceptnet;
 grant all privileges on database conceptnet to wiki;
 ```
 
-### known bugs
+### Known bugs
 
-1. get_paragraph.py: We can not support Russian caseinsensetive option due to 'ilike' in Postgresql is not support with Russian. So please initalized the first letter when you deal with Russian.
+1. `get_paragraph.py`: We can not support Russian caseinsensetive option due to 'ilike' in Postgresql is not support with Russian. So please initalized the first letter when you deal with Russian.
 
-2. similarity.py: Can not support Farsi, for we need to read .obs file to get the predicate. However, these predicate is not native Farsi, but some English-letters, so can not calculate similarity.
+2. `similarity.py`: Can not support Farsi, for we need to read .obs file to get the predicate. However, these predicate is not native Farsi, but some English-letters, so can not calculate similarity.
 
