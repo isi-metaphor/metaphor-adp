@@ -21,7 +21,7 @@ TREE_TAGGER_CMD=$METAPHOR_DIR/external-tools/tree-tagger-3.2/cmd
 TREE_TAGGER_LIB=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/lib
 TREE_TAGGER_OPT="-lemma -token -sgml"
 
-MALT_DIR=$METAPHOR_DIR/external-tools/maltparser-1.7.2
+MALT_DIR=$METAPHOR_DIR/external-tools/malt-1.7.2
 
 SPANISH_TT=$ES_PIPELINE_DIR/tokenizer/tree-tagger-spanish-utf8
 
