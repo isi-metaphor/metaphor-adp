@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# This is a quick hack; clean.
+# Compare testing log files.
 # Jonathan Gordon, 2014-10-17
 
 import sys
@@ -17,7 +17,8 @@ etc2 = ''
 etc1done = False
 
 for line in open(file1, 'r'):
-    if re.search('----', line): continue
+    if re.search('----', line):
+        continue
     if re.search('^--', line):
         if re.search('^-- [0-9]+$', line) or 'Task ID' in line:
             etc2 += line
@@ -27,11 +28,14 @@ for line in open(file1, 'r'):
         else:
             etc1 += line
         continue
-    if not re.search('^[0-9]+', line): continue
+    if not re.search('^[0-9]+', line):
+        continue
     for row in csv.reader([line], delimiter='\t'):
         row = [x.decode('utf8') for x in row]
-        [id, good_source, real_source, source_match, good_target, real_target, target_match] = row
-        f1res[id] = [good_source, real_source, good_target, real_target, etc1, etc2]
+        [id, good_source, real_source, source_match, good_target,
+         real_target, target_match] = row
+        f1res[id] = [good_source, real_source, good_target, real_target,
+                     etc1, etc2]
         etc1 = ''
         etc2 = ''
         etc1done = False
@@ -43,7 +47,8 @@ etc2 = ''
 etc1done = False
 
 for line in open(file2, 'r'):
-    if re.search('----', line): continue
+    if re.search('----', line):
+        continue
     if re.search('^--', line):
         if re.search('^-- [0-9]+$', line) or 'Task ID' in line:
             etc2 += line
@@ -53,11 +58,14 @@ for line in open(file2, 'r'):
         else:
             etc1 += line
         continue
-    if not re.search('^[0-9]+', line): continue
+    if not re.search('^[0-9]+', line):
+        continue
     for row in csv.reader([line], delimiter='\t'):
         row = [x.decode('utf8') for x in row]
-        [id, good_source, real_source, source_match, good_target, real_target, target_match] = row
-        f2res[id] = [good_source, real_source, good_target, real_target, etc1, etc2]
+        [id, good_source, real_source, source_match, good_target,
+         real_target, target_match] = row
+        f2res[id] = [good_source, real_source, good_target, real_target,
+                     etc1, etc2]
         etc1 = ''
         etc2 = ''
         etc1done = False
@@ -73,7 +81,7 @@ for id in f1res.keys():
     f2_etc1 = f2res[id][4]
     f1_etc2 = f1res[id][5]
     f2_etc2 = f2res[id][5]
-    if f1_source == good_source and not f2_source in good_source.split(':'):
+    if f1_source == good_source and f2_source not in good_source.split(':'):
         print 'Sentence', id
         print f1_etc1,
         print 'Source was', f1_source, 'which is right, but is now', f2_source
@@ -84,10 +92,12 @@ for id in f1res.keys():
         print '----'
         print
 
-    if f1_source == 'NO_ANSWER' and f2_source != 'NO_ANSWER' and not f2_source in good_source.split(':'):
+    if f1_source == 'NO_ANSWER' and f2_source != 'NO_ANSWER' and \
+       f2_source not in good_source.split(':'):
         print 'Sentence', id
         print f1_etc1,
-        print 'Source was NO_ANSWER, but is now', f2_source, 'when it should be', good_source
+        print 'Source was NO_ANSWER, but is now', f2_source, \
+            'when it should be', good_source
         print 'Old explanation:'
         print f1_etc2,
         print 'New explanation:'
@@ -95,7 +105,7 @@ for id in f1res.keys():
         print '----'
         print
 
-    if f1_target == good_target and not f2_target in good_target.split(':'):
+    if f1_target == good_target and f2_target not in good_target.split(':'):
         print 'Sentence', id
         print f1_etc1,
         print 'Target was', f1_target, 'which is right, but is now', f2_target
@@ -106,14 +116,15 @@ for id in f1res.keys():
         print '----'
         print
 
-    if f1_target == 'NO_ANSWER' and f2_target != 'NO_ANSWER' and not f2_target in good_target.split(':'):
+    if f1_target == 'NO_ANSWER' and f2_target != 'NO_ANSWER' and \
+       f2_target not in good_target.split(':'):
         print 'Sentence', id
         print f1_etc1,
-        print 'Target was NO_ANSWER, but is now', f2_target, 'when it should be', good_target
+        print 'Target was NO_ANSWER, but is now', f2_target, \
+            'when it should be', good_target
         print 'Old explanation:'
         print f1_etc2,
         print 'New explanation:'
         print f2_etc2
         print '----'
         print
-

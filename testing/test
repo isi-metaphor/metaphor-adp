@@ -5,7 +5,8 @@
 # Jonathan Gordon, 2014-10-27
 
 # Usage:
-#  ./test -l en -u http://colo-vm19.isi.edu:8080 data/2014-06-17-filtered/EN.dev
+#  ./test -l en -u http://colo-vm19.isi.edu:8080 \
+#         data/2014-06-17-filtered/EN.dev
 
 import sys
 import argparse
@@ -23,9 +24,10 @@ sys.stdout = UTF8Writer(sys.stdout)
 debug = False
 
 if debug:
-    http_logger = urllib2.HTTPHandler(debuglevel = 1)
+    http_logger = urllib2.HTTPHandler(debuglevel=1)
     opener = urllib2.build_opener(http_logger)
     urllib2.install_opener(opener)
+
 
 def main():
     parser = argparse.ArgumentParser(description='Test performance at '
@@ -85,12 +87,12 @@ def main():
         # For the sentence, the source span is marked by <<>> and the target by
         # [[]].
         try:
-            source_span = re.search('<<(.+)>>', sentence).group(1)
-            target_span = re.search('\[\[(.+)\]\]', sentence).group(1)
+            source_span = re.search(r'<<(.+)>>', sentence).group(1)
+            target_span = re.search(r'\[\[(.+)\]\]', sentence).group(1)
         except AttributeError:
             print '-- Bad sentence:', sentence
             continue
-        sentence = re.sub('(<<|>>|\[\[|\]\])', '', sentence)
+        sentence = re.sub(r'(<<|>>|\[\[|\]\])', '', sentence)
 
         print textwrap.fill('Sentence: ' + sentence, initial_indent='-- ',
                             subsequent_indent='--  ', break_on_hyphens=False)
@@ -111,14 +113,19 @@ def main():
             kb = kb_path + kb
 
         # Send request to server.
-        data = {'task_id': None,
-                'dograph': True,
-                'language': language,
-                'metaphorAnnotationRecords':
-                    [{'sentenceId': sentence_id,
-                      'linguisticMetaphor': source_span + ' ' + target_span
-                                            if span_first else sentence,
-                      'annotationMappings': [{}]}]}
+        data = {
+            'task_id': None,
+            'dograph': True,
+            'language': language,
+            'metaphorAnnotationRecords': [
+                {
+                    'sentenceId': sentence_id,
+                    'linguisticMetaphor': source_span + ' ' + target_span
+                    if span_first else sentence,
+                    'annotationMappings': [{}]
+                }
+            ]
+        }
         if not default_kb:
             data['kb'] = kb
         if not no_span:
@@ -151,29 +158,38 @@ def main():
             r = json.loads(response)
             print '-- Task ID:', r['task_id'] or 'NONE'
             record = r['metaphorAnnotationRecords'][0]
-            print textwrap.fill('Abductive Explanation: ' +
-                                record.get('isiAbductiveExplanation', ''),
-                                initial_indent='-- ', subsequent_indent='--  ',
-                                break_on_hyphens=False)
+            print textwrap.fill(
+                'Abductive Explanation: ' +
+                record.get('isiAbductiveExplanation', ''),
+                initial_indent='-- ',
+                subsequent_indent='--  ',
+                break_on_hyphens=False)
             output_source = record.get('sourceFrame', 'NO_ANSWER')
-        except KeyError: pass
+        except KeyError:
+            pass
 
         try:
             output_target = record.get('targetConceptSubDomain',
                                        'NO_ANSWER')
-        except KeyError: pass
+        except KeyError:
+            pass
 
         if span_first and fallback and \
-          'NO_ANSWER' in [output_source, output_target]:
+           'NO_ANSWER' in [output_source, output_target]:
             print '-- Trying again with the full sentence.'
             # Send request to server.
-            data = {'task_id': None,
-                    'dograph': True,
-                    'language': language,
-                    'metaphorAnnotationRecords':
-                        [{'sentenceId': sentence_id,
-                          'linguisticMetaphor': sentence,
-                          'annotationMappings': [{}]}]}
+            data = {
+                'task_id': None,
+                'dograph': True,
+                'language': language,
+                'metaphorAnnotationRecords': [
+                    {
+                        'sentenceId': sentence_id,
+                        'linguisticMetaphor': sentence,
+                        'annotationMappings': [{}]
+                    }
+                ]
+            }
             if not default_kb:
                 data['kb'] = kb
             if not no_span:
@@ -200,18 +216,21 @@ def main():
                 r = json.loads(response)
                 print '-- Task ID:', r['task_id'] or 'NONE'
                 record = r['metaphorAnnotationRecords'][0]
-                print textwrap.fill('Abductive Explanation: ' +
-                                record.get('isiAbductiveExplanation', ''),
-                                initial_indent='-- ', subsequent_indent='--  ',
-                                break_on_hyphens=False)
+                print textwrap.fill(
+                    'Abductive Explanation: ' +
+                    record.get('isiAbductiveExplanation', ''),
+                    initial_indent='-- ',
+                    subsequent_indent='--  ',
+                    break_on_hyphens=False)
                 output_source = record.get('sourceFrame', 'NO_ANSWER')
-            except KeyError: pass
+            except KeyError:
+                pass
 
             try:
                 output_target = record.get('targetConceptSubDomain',
                                            'NO_ANSWER')
-            except KeyError: pass
-
+            except KeyError:
+                pass
 
         ov = [sentence_id]
         ov.append(good_sources)
@@ -246,5 +265,6 @@ def main():
     print 'Target precision:', round(correct_targets/count_out, 3)
     print 'Target recall:', round(correct_targets/count, 3)
 
+
 if __name__ == '__main__':
-  main()
+    main()
