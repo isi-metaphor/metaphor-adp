@@ -4,20 +4,20 @@
 # Jonathan Gordon, 2014-10-17
 
 henry -m compile_kb -o \
-../KBs/English/English_compiled_KB.da \
-../KBs/English/en-examples.txt
+    ../KBs/English/English_compiled_KB.da \
+    ../KBs/English/en-examples.txt
 
 henry -m compile_kb -o \
-../KBs/Spanish/Spanish_compiled_KB.da \
-../KBs/Spanish/es-examples.txt
+    ../KBs/Spanish/Spanish_compiled_KB.da \
+    ../KBs/Spanish/es-examples.txt
 
 henry -m compile_kb -o \
-../KBs/Farsi/Farsi_compiled_KB.da \
-../KBs/Farsi/fa-examples.txt
+    ../KBs/Farsi/Farsi_compiled_KB.da \
+    ../KBs/Farsi/fa-examples.txt
 
 henry -m compile_kb -o \
-../KBs/Russian/Russian_compiled_KB.da \
-../KBs/Russian/ru-examples.txt
+    ../KBs/Russian/Russian_compiled_KB.da \
+    ../KBs/Russian/ru-examples.txt
 
 export IDENTIFIER=$RANDOM
 
@@ -31,17 +31,17 @@ scp ../KBs/Russian/Russian_compiled_KB.da \
     colo-vm19.isi.edu:kbs/ru-$IDENTIFIER.da
 
 ./test -l en -i $IDENTIFIER \
-       -u http://colo-vm19.isi.edu:8080 \
-       data/EN.test > en-t.vm19-8080.ex.$IDENTIFIER.txt &
+    -u http://colo-vm19.isi.edu:8080 \
+    data/en.test.tsv > en-t.vm19-8080.ex.$IDENTIFIER.txt &
 ./test -l es -i $IDENTIFIER \
-       -u http://colo-vm19.isi.edu:8080 \
-       data/ES.test > es-t.vm19-8080.ex.$IDENTIFIER.txt &
+    -u http://colo-vm19.isi.edu:8080 \
+    data/es.test.tsv > es-t.vm19-8080.ex.$IDENTIFIER.txt &
 ./test -l fa -i $IDENTIFIER \
-       -u http://colo-vm19.isi.edu:8080 \
-       data/FA.test > fa-t.vm19-8080.ex.$IDENTIFIER.txt &
+    -u http://colo-vm19.isi.edu:8080 \
+    data/fa.test.tsv > fa-t.vm19-8080.ex.$IDENTIFIER.txt &
 ./test -l ru -i $IDENTIFIER \
-       -u http://colo-vm19.isi.edu:8080 \
-       data/RU.test > ru-t.vm19-8080.ex.$IDENTIFIER.txt &
+    -u http://colo-vm19.isi.edu:8080 \
+    data/ru.test.tsv > ru-t.vm19-8080.ex.$IDENTIFIER.txt &
 
 for job in `jobs -p`; do
     echo $job

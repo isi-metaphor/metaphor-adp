@@ -4,24 +4,24 @@
 # Jonathan Gordon, 2014-10-17
 
 henry -m compile_kb -o \
-../KBs/English/English_compiled_KB.da \
-../KBs/English/en-sources.txt \
-../KBs/English/en-targets.txt
+    ../KBs/English/English_compiled_KB.da \
+    ../KBs/English/en-sources.txt \
+    ../KBs/English/en-targets.txt
 
 henry -m compile_kb -o \
-../KBs/Spanish/Spanish_compiled_KB.da \
-../KBs/Spanish/es-sources.txt \
-../KBs/Spanish/es-targets.txt
+    ../KBs/Spanish/Spanish_compiled_KB.da \
+    ../KBs/Spanish/es-sources.txt \
+    ../KBs/Spanish/es-targets.txt
 
 henry -m compile_kb -o \
-../KBs/Farsi/Farsi_compiled_KB.da \
-../KBs/Farsi/fa-sources.txt \
-../KBs/Farsi/fa-targets.txt
+    ../KBs/Farsi/Farsi_compiled_KB.da \
+    ../KBs/Farsi/fa-sources.txt \
+    ../KBs/Farsi/fa-targets.txt
 
 henry -m compile_kb -o \
-../KBs/Russian/Russian_compiled_KB.da \
-../KBs/Russian/ru-targets.txt \
-../KBs/Russian/ru-sources.txt
+    ../KBs/Russian/Russian_compiled_KB.da \
+    ../KBs/Russian/ru-sources.txt \
+    ../KBs/Russian/ru-targets.txt
 
 export IDENTIFIER=$RANDOM
 
@@ -35,17 +35,17 @@ scp ../KBs/Russian/Russian_compiled_KB.da \
     colo-vm19.isi.edu:kbs/ru-$IDENTIFIER.da
 
 ./test -l en -i $IDENTIFIER \
-       -u http://colo-vm19.isi.edu:8080 \
-      data/EN.test > en-t.vm19-8080.manual.$IDENTIFIER.txt &
+    -u http://colo-vm19.isi.edu:8080 \
+    data/en.test.tsv > en-t.vm19-8080.manual.$IDENTIFIER.txt &
 ./test -l es -i $IDENTIFIER \
-       -u http://colo-vm19.isi.edu:8080 \
-      data/ES.test > es-t.vm19-8080.manual.$IDENTIFIER.txt &
+    -u http://colo-vm19.isi.edu:8080 \
+    data/es.test.tsv > es-t.vm19-8080.manual.$IDENTIFIER.txt &
 ./test -l fa -i $IDENTIFIER \
-       -u http://colo-vm19.isi.edu:8080 \
-      data/FA.test > fa-t.vm19-8080.manual.$IDENTIFIER.txt &
+    -u http://colo-vm19.isi.edu:8080 \
+    data/fa.test.tsv > fa-t.vm19-8080.manual.$IDENTIFIER.txt &
 ./test -l ru -i $IDENTIFIER \
-       -u http://colo-vm19.isi.edu:8080 \
-      data/RU.test > ru-t.vm19-8080.manual.$IDENTIFIER.txt &
+    -u http://colo-vm19.isi.edu:8080 \
+    data/ru.test.tsv > ru-t.vm19-8080.manual.$IDENTIFIER.txt &
 
 for job in `jobs -p`; do
     echo $job
