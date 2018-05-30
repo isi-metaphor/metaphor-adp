@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2.7
 
 # Compare testing log files.
 # Jonathan Gordon, 2014-10-17
