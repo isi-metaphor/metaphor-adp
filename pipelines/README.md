@@ -1,20 +1,18 @@
-Abductive discourse processing pipelines
-===
+# Abductive Discourse Processing Pipelines
 
-This directory contains semantic parsing pipelines, converters into observations, 
-and scripts for running the whole abduction-based discrourse processing.
+This directory contains semantic parsing pipelines, converters into
+observations, and scripts for running the whole abduction-based discourse
+processing.
 
----
+## Semantic parsing pipelines
 
-**Semantic parsing pipelines**
-
-Semantic parsing pipelines are implemented for 4 languages:
+Semantic parsing pipelines are implemented for four languages:
 - [English](https://github.com/isi-metaphor/Metaphor-ADP/tree/master/pipelines/English)
 - [Spanish](https://github.com/isi-metaphor/Metaphor-ADP/tree/master/pipelines/Spanish)
 - [Russian](https://github.com/isi-metaphor/Metaphor-ADP/tree/master/pipelines/Russian)
 - [Farsi](https://github.com/isi-metaphor/Metaphor-ADP/tree/master/pipelines/Farsi)
 
-The pipelines take unrelated sentences or coherent text as input.
+The pipelines can take unrelated sentences or coherent text as input.
 
 Input example 1 (unrelated sentences)
 
@@ -36,11 +34,13 @@ After progress earlier this week in fiscal cliff negotiations, President Barack 
 The negotiations had focused on a $2 trillion package of new revenue, spending cuts and entitlement changes the two sides have shaped into a broad deficit reduction plan.
 ```
 
-The pipelines output logical forms for the input text fragments. A logical form 
-is a conjunction of propositions, which have generalized eventuality arguments that can be used for 
-showing relationships among the propositions. We use logical representations of natural language texts as 
-described in [[Hobbs, 1995]](http://www.isi.edu/~hobbs/op-acl85.pdf). The description of the logical form generation
-can be found [here](https://github.com/isi-metaphor/Metaphor-ADP/blob/master/pipelines/INSTRUCTIONS.md).
+The pipelines output logical forms for the input text fragments. A logical
+form is a conjunction of propositions, which have generalized eventuality
+arguments that can be used for showing relationships among the
+propositions. We use logical representations of natural language texts as
+described in [[Hobbs, 1995]](https://isi.edu/~hobbs/op-acl85.pdf). The
+description of the logical form generation can be found
+[here](https://github.com/isi-metaphor/Metaphor-ADP/blob/master/docs/LFs.md).
 
 Output example English:
 
@@ -69,11 +69,10 @@ id(1).
 [3002]:более-rb(e1,e10) & [3005]:специалист-nn(e2,x1) & [3006]:прогнозировать-vb(e3,x1,u1,u2) & [3007]:в-in(e4,e3,x2) & [3009]:год-nn(e5,x2) & [3010]:новый-adj(e6,x3) & [3011]:волна-nn(e7,x3) & [3012]:финансовый-adj(e8,x4) & [3013]:кризис-nn(e9,x4) & of-in(e11,x3,x4)
 ```
 
----
+## Converting logical forms into observations
 
-**Converting logical forms into observations**
-
-In order to be processed by the [abductive inference engine](http://code.google.com/p/henry-n700/), 
+To be processed by the
+[abductive inference engine](http://code.google.com/p/henry-n700/),
 logical forms of sentences need to be converted into observations.
 
 Observations are generated from logical forms by the following scripts:
@@ -100,16 +99,32 @@ The format of an observation is as follows:
 Example:
 
 ```
-(O (name 2) (^ (for-in e18 x0 x1 :1:2-1:[2003]) (begin-vb x5 x0 u16 u17 :1:2-2:[2005]) (fight-nn e15 x4 :1:2-3:[2008]) (labor-nn e14 x2 :1:2-4:[2010]) (nn e13 x3 x2 :1:2-5:[ID5]) (rights-nn e12 x3 :1:2-6:[2011]) (over-in e11 x4 x3 :1:2-7:[2009]) (as-in e10 x5 x4 :1:2-8:[2006]) (wisconsin-nn e8 x1 :1:2-9:[2004]) (org e9 x1 :1:2-10:[2004]) (war-nn e6 x0 :1:2-11:[2002]) (org e7 x0 :1:2-12:[2002]) (!= e6 e7) (!= e8 e9) (!= e9 e7)))
+(O (name 2)
+  (^ (for-in e18 x0 x1 :1:2-1:[2003])
+     (begin-vb x5 x0 u16 u17 :1:2-2:[2005])
+     (fight-nn e15 x4 :1:2-3:[2008])
+     (labor-nn e14 x2 :1:2-4:[2010])
+     (nn e13 x3 x2 :1:2-5:[ID5])
+     (rights-nn e12 x3 :1:2-6:[2011])
+     (over-in e11 x4 x3 :1:2-7:[2009])
+     (as-in e10 x5 x4 :1:2-8:[2006])
+     (wisconsin-nn e8 x1 :1:2-9:[2004])
+     (org e9 x1 :1:2-10:[2004])
+     (war-nn e6 x0 :1:2-11:[2002])
+     (org e7 x0 :1:2-12:[2002])
+     (!= e6 e7)
+     (!= e8 e9)
+     (!= e9 e7)))
 ```
 
----
+## Abductive inference
 
-**Abductive inference**
-
-[ILP-based abductive reasoner](https://github.com/naoya-i/henry-n700) briefly described [here](http://code.google.com/p/henry-n700/)
-is used to obtain interpretations for observations given a [knowledge base](https://github.com/isi-metaphor/Metaphor-ADP/blob/master/KBs/README.md).
-The reasoner produces flat first order logic interpretations in textual format and proof graphs in PDF format.
+The [ILP-based abductive reasoner](https://github.com/naoya-i/henry-n700)
+briefly described [here](https://github.com/naoya-i/henry-n700/wiki)
+is used to obtain interpretations for observations given a
+[knowledge base](https://github.com/isi-metaphor/Metaphor-ADP/blob/master/KBs/README.md).
+The reasoner produces flat first-order logic interpretations in textual
+format and proof graphs in PDF format.
 
 Example of an abductive output in textual format:
 
@@ -136,10 +151,9 @@ for-in(e18,x0,x1) ^ begin-vb(x5,x0,u16,u17) ^ fight-nn(e15,x4) ^ labor-nn(e14,x2
 A ![proofgraph](https://raw.github.com/isi-metaphor/Metaphor-ADP/master/docs/pics/proofgraph_example.pdf) 
 corresponds to this interpretation.
 
----
 
-**RUNNING abduction-based discrourse processing**
+## Running abduction-based discourse processing
 
-[NLPipeline_MULT_stdinout.py](https://github.com/isi-metaphor/Metaphor-ADP/blob/master/pipelines/common/NLPipeline_MULT_stdinout.py) script running multilinguial abduction-based discourse processing 
+The [NLPipeline_MULT_stdinout.py](https://github.com/isi-metaphor/Metaphor-ADP/blob/master/pipelines/common/NLPipeline_MULT_stdinout.py)
+script running multilingual abduction-based discourse processing
 is described [here](https://github.com/isi-metaphor/Metaphor-ADP/blob/master/pipelines/common/README.md).
-
