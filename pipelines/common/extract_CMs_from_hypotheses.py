@@ -79,8 +79,8 @@ def findIndexes(SubStr, MainStr):
 # Process parse output and generate index->argument dict
 def extractWordsIds(parse):
     Wids = dict()
-    obs_pattern = \
-      re.compile('\(([^\s\()]+)([^:\()]+):[^:]+:[^:]+:\[([\d,]+)\]\)')
+    obs_pattern \
+        = re.compile(r'\(([^\s\()]+)([^:\()]+):[^:]+:[^:]+:\[([\d,]+)\]\)')
 
     snumb = 1
 
@@ -95,12 +95,12 @@ def extractWordsIds(parse):
             tid = int(pid) - snumb * 1000
 
             if pname.endswith('-vb') or pname.endswith('-rb') or \
-              pname.endswith('-adj') and len(args) > 0:
+               pname.endswith('-adj') and len(args) > 0:
                 Wids[tid] = [args[0]]
             elif pname.endswith('-nn') and len(args) > 1:
-                Wids[tid] = [args[0],args[1]]
+                Wids[tid] = [args[0], args[1]]
 
-    #print json.dumps(Wids, ensure_ascii=False)
+    # print json.dumps(Wids, ensure_ascii=False)
     return Wids
 
 
@@ -110,10 +110,10 @@ def findArgs(inputIDs, wordIDs):
 
     for iid in inputIDs:
         wid = iid+1
-        if wordIDs.has_key(wid):
+        if wid in wordIDs:
             oArgs += wordIDs[wid]
 
-    #print json.dumps(oArgs, ensure_ascii=False)
+    # print json.dumps(oArgs, ensure_ascii=False)
     return oArgs
 
 
@@ -124,7 +124,7 @@ def wordStr2print(Args, WordProps, Equalities):
     for arg in Args:
         newwords = findWords(arg, WordProps, Equalities, False)
         for word in newwords:
-            if not word in words:
+            if word not in words:
                 words.append(word)
 
     for word in words:
@@ -143,12 +143,13 @@ def wordStr2print_Mapping(mappings, WordProps, Equalities):
 
         firstargs = []
         for args in mappings[propName]:
-            #for arg in args:
-            #output only first ARG instead of all
+            # for arg in args:
+            # output only first ARG instead of all
             firstargs.append(args[0])
-            newwords = findWords(args[0], WordProps, Equalities,True)
+            newwords = findWords(args[0], WordProps, Equalities, True)
             for word in newwords:
-                if not word in words: words.append(word)
+                if word not in words:
+                    words.append(word)
 
         output_str += ', ' + propName + '['
         if len(words) > 0:
@@ -160,13 +161,13 @@ def wordStr2print_Mapping(mappings, WordProps, Equalities):
 
         output_str = output_str[:-1] + ']'
 
-    #print json.dumps(output_str[2:], ensure_ascii=False)
+    # print json.dumps(output_str[2:], ensure_ascii=False)
     return output_str[2:]
 
 
 def findWords(ARG, WordProps, Equalities, isMapping):
     all_args = []
-    if isMapping and Equalities.has_key(ARG):
+    if isMapping and ARG in Equalities:
         all_args = Equalities[ARG].keys()
 
     all_args.append(ARG)
@@ -174,10 +175,10 @@ def findWords(ARG, WordProps, Equalities, isMapping):
     words = []
     for arg in all_args:
         if not arg.startswith('_') and not arg.startswith('u'):
-            for (propName,args) in WordProps:
-                if arg == args[0] and (propName.endswith('-vb') or \
-                                       propName.endswith('-rb') or \
-                                       propName.endswith('-adj') or \
+            for (propName, args) in WordProps:
+                if arg == args[0] and (propName.endswith('-vb') or
+                                       propName.endswith('-rb') or
+                                       propName.endswith('-adj') or
                                        propName.endswith('-nn')):
                     if propName.endswith('-adj'):
                         if not propName[:-4] in words:
@@ -185,14 +186,15 @@ def findWords(ARG, WordProps, Equalities, isMapping):
                     else:
                         if not propName[:-3] in words:
                             words.append(propName[:-3])
-                elif len(args) > 1 and arg == args[1] :
+                elif len(args) > 1 and arg == args[1]:
                     if propName.endswith('-nn'):
                         if not propName[:-3] in words:
                             words.append(propName[:-3])
-                    elif propName=='person':
-                        if not 'person' in words: words.append('person')
+                    elif propName == 'person':
+                        if 'person' not in words:
+                            words.append('person')
                 # TODO: Enable this when Boxer starts working correctly.
-                # elif propName == 'subset-of' and arg == args[2] :
+                # elif propName == 'subset-of' and arg == args[2]:
                 #    output_str += ',' + findWords(args[1], WordProps,
                 #                                  Equalities, isMapping)
 
@@ -202,7 +204,7 @@ def findWords(ARG, WordProps, Equalities, isMapping):
     return words
 
 
-def createDStruc(superD,subD,inputVars,checkVars):
+def createDStruc(superD, subD, inputVars, checkVars):
     outputstrucs = defaultdict(dict)
 
     for superd in superD:
@@ -212,23 +214,26 @@ def createDStruc(superD,subD,inputVars,checkVars):
                 if not superArgs[0] in inputVars:
                     includeD = False
 
-            if includeD and (not outputstrucs.has_key(superd) or \
-                             not outputstrucs[superd].has_key(superArgs[0])):
+            if includeD and (superd not in outputstrucs or
+                             superArgs[0] not in outputstrucs[superd]):
                 outputstrucs[superd][superArgs[0]] = []
 
             for subd in subD:
                 for subArgs in subD[subd]:
                     if len(subArgs) > 1 and superArgs[0] == subArgs[1]:
                         if checkVars:
-                            if subArgs[0] in inputVars:
-                                if not includeD:
-                                    if not outputstrucs.has_key(superd) or \
-                                      not outputstrucs[superd].has_key(superArgs[0]):
-                                        outputstrucs[superd][superArgs[0]] = []
-                                    includeD = True
-                                outputstrucs[superd][superArgs[0]].append((subd,subArgs[0]))
+                            if subArgs[0] not in inputVars:
+                                continue
+                            if not includeD:
+                                if superd not in outputstrucs or \
+                                   superArgs[0] not in outputstrucs[superd]:
+                                    outputstrucs[superd][superArgs[0]] = []
+                                includeD = True
+                            outputstrucs[superd][superArgs[0]].append(
+                                (subd, subArgs[0]))
                         else:
-                            outputstrucs[superd][superArgs[0]].append((subd,subArgs[0]))
+                            outputstrucs[superd][superArgs[0]].append(
+                                (subd, subArgs[0]))
 
     return outputstrucs
 
@@ -237,15 +242,15 @@ def collectVars(struc, superkey, equalities):
     output = []
 
     for arg in struc[superkey]:
-        if not arg.startswith('_') and not arg in output:
+        if not arg.startswith('_') and arg not in output:
             output.append(arg)
-            if equalities.has_key(arg):
+            if arg in equalities:
                 for a in equalities[arg]:
                     output.append(a)
-        for (subd,subarg) in struc[superkey][arg]:
-            if not subarg.startswith('_') and not subarg in output:
+        for (subd, subarg) in struc[superkey][arg]:
+            if not subarg.startswith('_') and subarg not in output:
                 output.append(subarg)
-                if equalities.has_key(subarg):
+                if subarg in equalities:
                     for a in equalities[subarg]:
                         output.append(a)
     return output
@@ -274,21 +279,25 @@ def isLinkedbyParse(v1, v2, word_props, equalities, input_been, pathlength):
         return pathlength
 
     been = list(input_been)
-    if (v1,v2) in been: return 9
-    been.append((v1,v2))
-    been.append((v2,v1))
+    if (v1, v2) in been:
+        return 9
+    been.append((v1, v2))
+    been.append((v2, v1))
 
-    #print (v1,v2,pathlength)
+    # print (v1, v2, pathlength)
 
-    #if equalities.has_key(v1) and equalities[v1].has_key(v2): return 2
+    # if v1 in equalities and v2 in equalities[v1]:
+    #     return 2
 
     nbrs = []
     for (propName, args) in word_props:
         if v1 in args:
-            if v2 in args: return pathlength
+            if v2 in args:
+                return pathlength
 
             for a in args:
-                if a!=v1: nbrs.append(a)
+                if a != v1:
+                    nbrs.append(a)
 
     pl = 9
     for n in nbrs:
@@ -298,7 +307,7 @@ def isLinkedbyParse(v1, v2, word_props, equalities, input_been, pathlength):
     return pl
 
 
-def filterMappings(BestArgs,mappings):
+def filterMappings(BestArgs, mappings):
     bestMapping = dict()
     toremove = dict()
 
@@ -310,11 +319,11 @@ def filterMappings(BestArgs,mappings):
                     included = True
                     break
             if included:
-                if not bestMapping.has_key(predName):
+                if predName not in bestMapping:
                     bestMapping[predName] = []
                 bestMapping[predName].append(args)
             else:
-                if not toremove.has_key(predName):
+                if predName not in toremove:
                     toremove[predName] = []
                 toremove[predName].append(args)
 
@@ -327,17 +336,19 @@ def filterMappings(BestArgs,mappings):
                         if arg in args2:
                             included = True
                             break
-                    if included: break
-                if included: break
+                    if included:
+                        break
+                if included:
+                    break
             if included:
-                if not bestMapping.has_key(predName):
+                if predName not in bestMapping:
                     bestMapping[predName] = []
                 bestMapping[predName].append(args)
 
     return bestMapping
 
-def transitive_closure(A):
 
+def transitive_closure(A):
     while True:
         newlink = False
 
@@ -345,7 +356,7 @@ def transitive_closure(A):
         for x in A.keys():
             for y in A[x].keys():
                 for z in A[y].keys():
-                    if x!=z and not A[x].has_key(z):
+                    if x != z and z not in A[x]:
                         newA[x][z] = 1
                         newA[z][x] = 1
                         newlink = True
@@ -373,22 +384,21 @@ def extract_CM_mapping(sid, inputString, parse, DESCRIPTION, LCCannotation):
     sourceTask = False
     if LCCannotation:
         if "sourceFrame" in LCCannotation and \
-          "targetFrame" in LCCannotation and \
-          "targetConceptSubDomain" in LCCannotation:
+           "targetFrame" in LCCannotation and \
+           "targetConceptSubDomain" in LCCannotation:
             if LCCannotation["sourceFrame"] and \
-              len(LCCannotation["sourceFrame"])>0:
+               len(LCCannotation["sourceFrame"]) > 0:
                 if LCCannotation["targetConceptSubDomain"] and \
-                  len(LCCannotation["targetConceptSubDomain"])>0:
+                   len(LCCannotation["targetConceptSubDomain"]) > 0:
                     if LCCannotation["targetConceptSubDomain"] == 'DEBT':
                         LCCannotation["targetConceptSubDomain"] = 'POVERTY'
                     elif LCCannotation["targetConceptSubDomain"] == 'MONEY':
                         LCCannotation["targetConceptSubDomain"] = 'WEALTH'
-                    if LCCannotation["targetFrame"] and \
-                      len(LCCannotation["targetFrame"]) > 0:
-                        sourceTask = True
+                        if LCCannotation["targetFrame"] and \
+                           len(LCCannotation["targetFrame"]) > 0:
+                            sourceTask = True
 
-
-    prop_pattern = re.compile('([^\(]+)\(([^\)]+)\)')
+    prop_pattern = re.compile(r'([^\(]+)\(([^\)]+)\)')
 
     propositions = inputString.split(' ^ ')
     prop_list = []
@@ -400,44 +410,46 @@ def extract_CM_mapping(sid, inputString, parse, DESCRIPTION, LCCannotation):
             args = arg_str.split(',')
 
             if prop_name.startswith('T#'):
-                if not targets.has_key(prop_name[2:]):
+                if prop_name[2:] not in targets:
                     targets[prop_name[2:]] = []
                 if args not in targets[prop_name[2:]]:
                     targets[prop_name[2:]].append(args)
             elif prop_name.startswith('TS#'):
                 dname = prop_name[3:]
                 if not sourceTask or \
-                  dname == LCCannotation["targetConceptSubDomain"]:
-                    if not subtargets.has_key(dname):
+                   dname == LCCannotation["targetConceptSubDomain"]:
+                    if dname not in subtargets:
                         subtargets[dname] = []
                     if args not in subtargets[dname]:
                         subtargets[dname].append(args)
             elif prop_name.startswith('TSS#'):
                 dname = prop_name[4:]
                 if not sourceTask or dname == LCCannotation["targetFrame"]:
-                    if not subsubtargets.has_key(dname):
+                    if dname not in subsubtargets:
                         subsubtargets[dname] = []
                     if args not in subsubtargets[dname]:
                         subsubtargets[dname].append(args)
             elif prop_name.startswith('S#'):
                 dname = prop_name[2:]
                 if not sourceTask or dname == LCCannotation["sourceFrame"]:
-                    if not sources.has_key(dname):
+                    if dname not in sources:
                         sources[dname] = []
                     if args not in sources[dname]:
                         sources[dname].append(args)
             elif prop_name.startswith('SS#'):
                 ss_data = prop_name[3:].split('%')
-                if len(ss_data)>1: prop_name = ss_data[1]
-                else: prop_name = ss_data[0]
+                if len(ss_data) > 1:
+                    prop_name = ss_data[1]
+                else:
+                    prop_name = ss_data[0]
 
-                if not subsources.has_key(prop_name):
+                if prop_name not in subsources:
                     subsources[prop_name] = []
                 if args not in subsources[prop_name]:
                     subsources[prop_name].append(args)
             elif prop_name.startswith('M#'):
                 mname = prop_name[2:]
-                if not mappings.has_key(mname):
+                if mname not in mappings:
                     mappings[mname] = []
                 if args not in mappings[mname]:
                     mappings[mname].append(args)
@@ -451,24 +463,26 @@ def extract_CM_mapping(sid, inputString, parse, DESCRIPTION, LCCannotation):
                     j = i + 1
                     while j < len(args):
                         arg2 = args[j]
-                        equalities[arg1][arg2]=1
-                        equalities[arg2][arg1]=1
+                        equalities[arg1][arg2] = 1
+                        equalities[arg2][arg1] = 1
                         j += 1
-            elif prop_name == '!=': continue
+            elif prop_name == '!=':
+                continue
             elif prop_name == 'equal':
-                equalities[args[1]][args[2]]=1
-                equalities[args[2]][args[1]]=1
-            else: word_props.append((prop_name,args))
+                equalities[args[1]][args[2]] = 1
+                equalities[args[2]][args[1]] = 1
+            else:
+                word_props.append((prop_name, args))
 
-    #print json.dumps(targets, ensure_ascii=False)
-    #print json.dumps(subtargets, ensure_ascii=False)
-    #print json.dumps(sources, ensure_ascii=False)
-    #print json.dumps(subsources, ensure_ascii=False)
-    #print json.dumps(word_props, ensure_ascii=False)
-    #print json.dumps(mappings, ensure_ascii=False)
-    #exit(0)
+    # print json.dumps(targets, ensure_ascii=False)
+    # print json.dumps(subtargets, ensure_ascii=False)
+    # print json.dumps(sources, ensure_ascii=False)
+    # print json.dumps(subsources, ensure_ascii=False)
+    # print json.dumps(word_props, ensure_ascii=False)
+    # print json.dumps(mappings, ensure_ascii=False)
+    # exit(0)
 
-    #print json.dumps(equalities, ensure_ascii=False)
+    # print json.dumps(equalities, ensure_ascii=False)
 
     # Transitive closure of equalities
     equalities = transitive_closure(equalities)
@@ -478,7 +492,7 @@ def extract_CM_mapping(sid, inputString, parse, DESCRIPTION, LCCannotation):
     inputSourceArgs = []
     checkVars = False
     if LCCannotation and 'annotationMappings' in LCCannotation and \
-      len(LCCannotation['annotationMappings']) > 0:
+       len(LCCannotation['annotationMappings']) > 0:
         firstAnn = LCCannotation['annotationMappings'][0]
         if 'target' in firstAnn and 'source' in firstAnn:
             checkVars = True
@@ -493,19 +507,19 @@ def extract_CM_mapping(sid, inputString, parse, DESCRIPTION, LCCannotation):
             inputTargetArgs = findArgs(inputTargetIds, Wids)
             inputSourceArgs = findArgs(inputSourceIds, Wids)
 
-    #print json.dumps(inputTargetArgs, ensure_ascii=False)
-    #print json.dumps(inputSourceArgs, ensure_ascii=False)
+    # print json.dumps(inputTargetArgs, ensure_ascii=False)
+    # print json.dumps(inputSourceArgs, ensure_ascii=False)
 
     target_strucs = createDStruc(subtargets, subsubtargets, inputTargetArgs,
                                  checkVars)
     source_strucs = createDStruc(sources, subsources, inputSourceArgs,
                                  checkVars)
 
-    #print json.dumps(target_strucs, ensure_ascii=False)
-    #print json.dumps(source_strucs, ensure_ascii=False)
+    # print json.dumps(target_strucs, ensure_ascii=False)
+    # print json.dumps(source_strucs, ensure_ascii=False)
 
-    #print json.dumps(equalities, ensure_ascii=False)
-    #exit(0)
+    # print json.dumps(equalities, ensure_ascii=False)
+    # exit(0)
 
     output_struct_item = {}
     if not LCCannotation:
@@ -528,54 +542,57 @@ def extract_CM_mapping(sid, inputString, parse, DESCRIPTION, LCCannotation):
         for targ in target_strucs[targetS]:
             if len(target_strucs[targetS][targ]) == 0 and \
               (targetS, targetS) not in Tdomains:
-                Tdomains.append((targetS,targetS))
+                Tdomains.append((targetS, targetS))
             else:
                 for (tsubd, tsubarg) in target_strucs[targetS][targ]:
                     if (targetS, tsubd) not in Tdomains:
-                        Tdomains.append((targetS,tsubd))
+                        Tdomains.append((targetS, tsubd))
 
-        #print "Tdomans:"
-        #print json.dumps(Tdomains, ensure_ascii=False)
-        #print json.dumps(tV, ensure_ascii=False)
+        # print "Tdomans:"
+        # print json.dumps(Tdomains, ensure_ascii=False)
+        # print json.dumps(tV, ensure_ascii=False)
 
         Sdomains = []
         bestSVars = []
         for sourceS in source_strucs:
             for sarg in source_strucs[sourceS]:
-                for (ssubS,ssarg) in source_strucs[sourceS][sarg]:
+                for (ssubS, ssarg) in source_strucs[sourceS][sarg]:
                     sargs = [ssarg]
                     sargs += equalities[ssarg].keys()
                     link = 9
-                    #print (sourceS,ssubS,sargs)
+                    # print (sourceS,ssubS,sargs)
                     for tv in tV:
                         for sv in sargs:
                             newlink = isLinkedbyParse(tv, sv, word_props,
                                                       equalities, [], 0)
-                            #print "%s,%s,%s,%s,%s,%s" % (targetS,sourceS,ssubS,tv,sv,newlink)
+                            # print "%s,%s,%s,%s,%s,%s" % (targetS, sourceS, ssubS, tv, sv, newlink)
                             if newlink < link:
                                 link = newlink
                                 if newlink < 2:
                                     break
-                        if link < 2: break
-                    Sdomains.append((sourceS, ssubS, (1-0.05-0.1*link)))
-                    #print "%s,%s,%s" % (sourceS,ssubS,(1-0.05-0.1*link))
-                    #exit(0)
+                        if link < 2:
+                            break
+                    Sdomains.append((sourceS, ssubS, (1 - 0.05 - 0.1 * link)))
+                    # print "%s,%s,%s" % (sourceS, ssubS, (1 - 0.05 - 0.1 * link))
+                    # exit(0)
 
                     for (t, ts) in Tdomains:
                         for (s, ss, c) in Sdomains:
-                                #explanationAppendix += "ECONOMIC_INEQUALITY,%s,%s,%s,%s,%s\n" % (t,ts,s,ss,c)
+                                # explanationAppendix += "ECONOMIC_INEQUALITY,%s,%s,%s,%s,%s\n" % (t,ts,s,ss,c)
 
-                                TSpair = "%s,%s,%s,%s" % (t,ts,s,ss)
-                                if CMs.has_key(TSpair):
-                                    if CMs[TSpair] < c: CMs[TSpair] = c
-                                else: CMs[TSpair] = c
+                                TSpair = "%s,%s,%s,%s" % (t, ts, s, ss)
+                                if TSpair in CMs:
+                                    if CMs[TSpair] < c:
+                                        CMs[TSpair] = c
+                                else:
+                                    CMs[TSpair] = c
 
-                                if c>bestlink:
+                                if c > bestlink:
                                     bestlink = c
-                                    bestCM = "%s,%s,%s,%s" % (t,ts,s,ss)
+                                    bestCM = "%s,%s,%s,%s" % (t, ts, s, ss)
 
-    #print 'BEST: ' + bestCM
-    #exit(0)
+    # print 'BEST: ' + bestCM
+    # exit(0)
 
     if len(Tdomains) == 0 or len(Sdomains) == 0:
         if len(Tdomains) == 0:
@@ -583,7 +600,7 @@ def extract_CM_mapping(sid, inputString, parse, DESCRIPTION, LCCannotation):
                 Tdomains.append((LCCannotation["targetConceptSubDomain"],
                                  LCCannotation["targetFrame"]))
             else:
-                Tdomains.append(('POVERTY','POVERTY'))
+                Tdomains.append(('POVERTY', 'POVERTY'))
 
             if len(source_strucs) > 0:
                 for sourceS in source_strucs:
@@ -591,12 +608,12 @@ def extract_CM_mapping(sid, inputString, parse, DESCRIPTION, LCCannotation):
                         continue
 
                     for sarg in source_strucs[sourceS]:
-                        for (ssubS,ssarg) in source_strucs[sourceS][sarg]:
-                            Sdomains.append((sourceS,ssubS,0.001))
+                        for (ssubS, ssarg) in source_strucs[sourceS][sarg]:
+                            Sdomains.append((sourceS, ssubS, 0.001))
 
         if len(Sdomains) == 0:
             if sourceTask:
-                if SSforS.has_key(LCCannotation["sourceFrame"]):
+                if LCCannotation["sourceFrame"] in SSforS:
                     Sdomains.append((LCCannotation["sourceFrame"],
                                      SSforS[LCCannotation["sourceFrame"]],
                                      0.001))
@@ -608,15 +625,18 @@ def extract_CM_mapping(sid, inputString, parse, DESCRIPTION, LCCannotation):
 
         for (t, ts) in Tdomains:
             for (s, ss, c) in Sdomains:
-                #explanationAppendix += "ECONOMIC_INEQUALITY,%s,%s,%s,%s,%s\n" % (t,ts,s,ss,c)
+                # explanationAppendix \
+                #    += "ECONOMIC_INEQUALITY,%s,%s,%s,%s,%s\n" % \
+                #       (t, ts, s, ss, c)
                 TSpair = "%s,%s,%s,%s" % (t, ts, s, ss)
-                if CMs.has_key(TSpair):
+                if TSpair in CMs:
                     if CMs[TSpair] < c:
                         CMs[TSpair] = c
-                else: CMs[TSpair] = c
+                else:
+                    CMs[TSpair] = c
                 bestCM = "%s,%s,%s,%s" % (t, ts, s, ss)
 
-    #print bestCM
+    # print bestCM
 
     explanationAppendix = "\n%%BEGIN_CM_LIST\n"
     for TSpair in CMs.keys():
@@ -624,8 +644,8 @@ def extract_CM_mapping(sid, inputString, parse, DESCRIPTION, LCCannotation):
           (TSpair, CMs[TSpair])
     explanationAppendix += "%%END_CM_LIST"
 
-    output_struct_item['isiAbductiveExplanation'] = inputString + \
-      explanationAppendix.encode("utf-8")
+    output_struct_item['isiAbductiveExplanation'] \
+        = inputString + explanationAppendix.encode("utf-8")
     output_struct_item["targetConceptDomain"] = 'ECONOMIC_INEQUALITY'
     data = bestCM.split(',')
     output_struct_item["targetConceptSubDomain"] = data[0]
@@ -636,19 +656,19 @@ def extract_CM_mapping(sid, inputString, parse, DESCRIPTION, LCCannotation):
     else:
         output_struct_item["sourceConceptSubDomain"] = data[3]
 
-    targetArgs = collectVars2(target_strucs,data[0],data[1])
-    sourceArgs = collectVars2(source_strucs,data[2],data[3])
+    targetArgs = collectVars2(target_strucs, data[0], data[1])
+    sourceArgs = collectVars2(source_strucs, data[2], data[3])
 
-    mappings = filterMappings(targetArgs.keys()+sourceArgs.keys(),mappings)
-    #print json.dumps(mappings, ensure_ascii=False)
-    mapping_str = wordStr2print_Mapping(mappings,word_props,equalities)
+    mappings = filterMappings(targetArgs.keys() + sourceArgs.keys(), mappings)
+    # print json.dumps(mappings, ensure_ascii=False)
+    mapping_str = wordStr2print_Mapping(mappings, word_props, equalities)
 
     annotationMappings_struc = dict()
     annotationMappings_struc['explanation'] = mapping_str
 
     if not checkVars:
-        targetWords = wordStr2print(targetArgs,word_props,())
-        sourceWords = wordStr2print(sourceArgs,word_props,())
+        targetWords = wordStr2print(targetArgs, word_props, ())
+        sourceWords = wordStr2print(sourceArgs, word_props, ())
         annotationMappings_struc['target'] = targetWords
         annotationMappings_struc['source'] = sourceWords
         if len(targetWords) > 0:
@@ -662,6 +682,6 @@ def extract_CM_mapping(sid, inputString, parse, DESCRIPTION, LCCannotation):
 
     output_struct_item['annotationMappings'] = [annotationMappings_struc]
 
-    #print json.dumps(output_struct_item, ensure_ascii=False)
+    # print json.dumps(output_struct_item, ensure_ascii=False)
 
     return output_struct_item

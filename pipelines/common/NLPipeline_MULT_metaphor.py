@@ -8,8 +8,8 @@
 # External tools used:
 # - English NLP pipeline (Metaphor-ADP/pipelines/English)
 # - Spanish NLP pipeline (Metaphor-ADP/pipelines/Spanish)
-# - Russian NLP pipeline (Metaphor-ADP/pipelines/Russian)
 # - Farsi NLP pipeline (Metaphor-ADP/pipelines/Farsi)
+# - Russian NLP pipeline (Metaphor-ADP/pipelines/Russian)
 # - Henry abductive reasoner (https://github.com/naoya-i/henry-n700)
 
 # This script requires the environment variables METAPHOR_DIR, HENRY_DIR,
@@ -32,15 +32,15 @@ TMP_DIR = os.environ['TMP_DIR']
 BOXER2HENRY = "%s/pipelines/English/Boxer2Henry.py" % METAPHOR_DIR
 PARSER2HENRY = "%s/pipelines/common/IntParser2Henry.py" % METAPHOR_DIR
 
-FARSI_PIPELINE = "%s/pipelines/Farsi/LF_Pipeline" % METAPHOR_DIR
-SPANISH_PIPELINE = "%s/pipelines/Spanish/run_spanish.sh" % METAPHOR_DIR
-RUSSIAN_PIPELINE = "%s/pipelines/Russian/run_russian.sh" % METAPHOR_DIR
+ES_PIPELINE = "%s/pipelines/Spanish/run_spanish.sh" % METAPHOR_DIR
+FA_PIPELINE = "%s/pipelines/Farsi/LF_Pipeline" % METAPHOR_DIR
+RU_PIPELINE = "%s/pipelines/Russian/run_russian.sh" % METAPHOR_DIR
 
 # Compiled knowledge bases
 EN_KBPATH = "%s/KBs/English/English_compiled_KB.da" % METAPHOR_DIR
 ES_KBPATH = "%s/KBs/Spanish/Spanish_compiled_KB.da" % METAPHOR_DIR
-RU_KBPATH = "%s/KBs/Russian/Russian_compiled_KB.da" % METAPHOR_DIR
 FA_KBPATH = "%s/KBs/Farsi/Farsi_compiled_KB.da" % METAPHOR_DIR
+RU_KBPATH = "%s/KBs/Russian/Russian_compiled_KB.da" % METAPHOR_DIR
 
 # Switches
 kbcompiled = True
@@ -126,29 +126,28 @@ def ADP(request_body_dict, input_metaphors, language, with_pdf_content):
 
     # Parser pipeline
     parser_proc = ""
-    if language == "FA":
-        parser_proc = FARSI_PIPELINE + " | python " + PARSER2HENRY + \
-          " --nonmerge sameid freqpred"
-        KBPATH = FA_KBPATH
-    elif language == "ES":
-        parser_proc = SPANISH_PIPELINE + " | python " + PARSER2HENRY + \
-          " --nonmerge sameid freqpred"
-        KBPATH = ES_KBPATH
-    elif language == "RU":
-        parser_proc = RUSSIAN_PIPELINE + " | python " + PARSER2HENRY + \
-          " --nonmerge sameid freqpred"
-        KBPATH = RU_KBPATH
-    elif language == "EN":
+    if language == 'EN':
         tokenizer = BOXER_DIR + "/bin/tokkie --stdin"
         candcParser = BOXER_DIR + "/bin/candc --models " + BOXER_DIR + \
-          "/models/boxer --candc-printer boxer"
+                      "/models/boxer --candc-printer boxer"
         boxer = BOXER_DIR + '/bin/boxer --semantics tacitus --resolve true ' \
-          + '--stdin'
-        b2h = "python " + BOXER2HENRY + " --nonmerge sameid freqpred"
-        parser_proc = tokenizer + " | " + candcParser + " | " + boxer + " | " \
-          + b2h
+                + '--stdin'
+        b2h = "python2.7 " + BOXER2HENRY + " --nonmerge sameid freqpred"
+        parser_proc = tokenizer + " | " + candcParser + " | " + boxer + \
+                      " | " + b2h
         KBPATH = EN_KBPATH
-
+    elif language == "ES":
+        parser_proc = ES_PIPELINE + " | python2.7 " + PARSER2HENRY + \
+                      " --nonmerge sameid freqpred"
+        KBPATH = ES_KBPATH
+    elif language == "FA":
+        parser_proc = FA_PIPELINE + " | python2.7 " + PARSER2HENRY + \
+                      " --nonmerge sameid freqpred"
+        KBPATH = FA_KBPATH
+    elif language == "RU":
+        parser_proc = RU_PIPELINE + " | python2.7 " + PARSER2HENRY + \
+                      " --nonmerge sameid freqpred"
+        KBPATH = RU_KBPATH
 
     parser_pipeline = Popen(parser_proc, shell=True, stdin=PIPE, stdout=PIPE,
                             stderr=None, close_fds=True)
@@ -173,12 +172,13 @@ def ADP(request_body_dict, input_metaphors, language, with_pdf_content):
     # Henry processing
     if kbcompiled:
         henry_proc = HENRY_DIR + "/bin/henry -m infer -e " + HENRY_DIR + \
-                     "/models/h93.py -d 3 -t 4 -O proofgraph,statistics -T " + \
-                     time_unit_henry + " -b " + KBPATH
+                     "/models/h93.py -d 3 -t 4 " + \
+                     "-O proofgraph,statistics -T " + time_unit_henry + \
+                     " -b " + KBPATH
     else:
         henry_proc = HENRY_DIR + "/bin/henry -m infer -e " + HENRY_DIR + \
-                     "/models/h93.py -d 3 -t 4 -O proofgraph,statistics -T " + \
-                     time_unit_henry
+                     "/models/h93.py -d 3 -t 4 " + \
+                     "-O proofgraph,statistics -T " + time_unit_henry
 
     henry_pipeline = Popen(henry_proc,
                            shell=True,
@@ -199,7 +199,6 @@ def ADP(request_body_dict, input_metaphors, language, with_pdf_content):
         # Start graphical generation in thread; don't wait for it to finish
         thread.start_new_thread(generate_graph,
                                 (input_metaphors, henry_output, unique_id))
-
 
     hypotheses = extract_hypotheses(henry_output, unique_id, with_pdf_content)
 
@@ -248,23 +247,22 @@ def generate_graph(input_dict, henry_output, unique_id):
         print "Generating a proofgraph for " + key
         graph_output = os.path.join(graph_dir, unique_id + "_" + key + ".pdf")
 
-        viz = "python " + HENRY_DIR + "/tools/proofgraph.py --graph " + key + \
-              " | dot -T pdf > " + graph_output
+        viz = "python2.7 " + HENRY_DIR + "/tools/proofgraph.py --graph " + \
+              key + " | dot -T pdf > " + graph_output
 
         graphical_processing = Popen(viz, shell=True, stdin=PIPE, stdout=PIPE,
                                      stderr=None, close_fds=True)
 
         graphical_processing.communicate(input=henry_output)
-        #print "sleep"
-        #time.sleep(3)
+        # print "sleep"
+        # time.sleep(3)
 
     print "Done generating proof graphs."
 
 
 # Returns contents of PDF file in base-64
 def get_base64(pdf_file_path):
-    f = open(pdf_file_path, "rb")
-    binary_str = f.read()
-    f.close()
+    with open(pdf_file_path, "rb") as f:
+        binary_str = f.read()
     encoded_str = binary_str.encode("base64")
     return encoded_str
