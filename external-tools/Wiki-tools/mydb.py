@@ -4,8 +4,10 @@
 import psycopg2
 import sys
 
+
 def get_CONN():
     return "host='localhost' dbname='wiki' user='wiki' password='wiki'"
+
 
 def getCon(CONN_STRING):
     try:
@@ -15,15 +17,17 @@ def getCon(CONN_STRING):
     except psycopg2.DatabaseError, e:
         print 'Error %s' % e
         sys.exit(-1)
-    
+
+
 def closeCon(con):
     if con:
         con.close()
-     
-def executeManyQuery(con,querys,debug):
+
+
+def executeManyQuery(con, queries, debug):
     try:
         cur = con.cursor()
-        for query in querys:
+        for query in queries:
             if debug:
                 print query
             cur.execute(query)
@@ -32,7 +36,8 @@ def executeManyQuery(con,querys,debug):
         print 'Error %s' % e
         sys.exit(-1)
 
-def executeQuery(con,query,debug):
+
+def executeQuery(con, query, debug):
     try:
         cur = con.cursor()
         if debug:
@@ -43,24 +48,26 @@ def executeQuery(con,query,debug):
         print 'Error %s' % e
         sys.exit(-1)
 
-def executeQueryRecords(con,query,records,debug):
+
+def executeQueryRecords(con, query, records, debug):
     try:
         cur = con.cursor()
         if debug:
             print query
-        cur.executemany(query,records)
+        cur.executemany(query, records)
         con.commit()
     except psycopg2.DatabaseError, e:
         print 'Error %s' % e
         sys.exit(-1)
 
-def executeQueryResult(con,query,debug):
+
+def executeQueryResult(con, query, debug):
     try:
         cur = con.cursor()
         if debug:
             print query
         cur.execute(query)
-        rows=cur.fetchall()
+        rows = cur.fetchall()
         return rows
     except psycopg2.DatabaseError, e:
         print 'Error %s' % e

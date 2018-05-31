@@ -35,17 +35,21 @@ scp ../KBs/Russian/Russian_compiled_KB.da \
     metaphor@colo-pm4.isi.edu:kbs/ru-$IDENTIFIER.da
 
 ./test -l en -i $IDENTIFIER \
-    -u http://colo-pm4.isi.edu:8082 -p '/home/metaphor/kbs/' \
-    data/en.test.tsv > en-t.pm4-8082.manual.$IDENTIFIER.txt &
+    -u http://colo-pm4.isi.edu:8084 -p '/home/metaphor/kbs/' \
+    data/en.test.tsv \
+    > en-t.pm4-8084.manual.$IDENTIFIER.txt &
 ./test -l es -i $IDENTIFIER \
-    -u http://colo-pm4.isi.edu:8082 -p '/home/metaphor/kbs/' \
-    data/es.test.tsv > es-t.pm4-8082.manual.$IDENTIFIER.txt &
+    -u http://colo-pm4.isi.edu:8084 -p '/home/metaphor/kbs/' \
+    data/es.test.tsv \
+    > es-t.pm4-8084.manual.$IDENTIFIER.txt &
 ./test -l fa -i $IDENTIFIER \
-    -u http://colo-pm4.isi.edu:8082 -p '/home/metaphor/kbs/' \
-    data/fa.test.tsv > fa-t.pm4-8082.manual.$IDENTIFIER.txt &
+    -u http://colo-pm4.isi.edu:8084 -p '/home/metaphor/kbs/' \
+    data/fa.test.tsv \
+    > fa-t.pm4-8084.manual.$IDENTIFIER.txt &
 ./test -l ru -i $IDENTIFIER \
-    -u http://colo-pm4.isi.edu:8082 -p '/home/metaphor/kbs/' \
-    data/ru.test.tsv > ru-t.pm4-8082-manual.$IDENTIFIER.txt &
+    -u http://colo-pm4.isi.edu:8084 -p '/home/metaphor/kbs/' \
+    data/ru.test.tsv \
+    > ru-t.pm4-8084.manual.$IDENTIFIER.txt &
 
 for job in `jobs -p`; do
     echo $job

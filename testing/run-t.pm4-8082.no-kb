@@ -6,17 +6,17 @@
 export IDENTIFIER=$RANDOM
 
 ./test -d -l en -i $IDENTIFIER \
-       -u http://colo-pm4.isi.edu:8082 data/EN.test \
-       > en-t.pm4-8082.no-kb.$IDENTIFIER.txt &
+    -u http://colo-pm4.isi.edu:8082 data/en.test.tsv \
+    > en-t.pm4-8082.no-kb.$IDENTIFIER.txt &
 ./test -d -l es -i $IDENTIFIER \
-       -u http://colo-pm4.isi.edu:8082 data/ES.test \
-       > es-t.pm4-8082.no-kb.$IDENTIFIER.txt &
+    -u http://colo-pm4.isi.edu:8082 data/es.test.tsv \
+    > es-t.pm4-8082.no-kb.$IDENTIFIER.txt &
 ./test -d -l fa -i $IDENTIFIER \
-       -u http://colo-pm4.isi.edu:8082 data/FA.test \
-       > fa-t.pm4-8082.no-kb.$IDENTIFIER.txt &
+    -u http://colo-pm4.isi.edu:8082 data/fa.test.tsv \
+    > fa-t.pm4-8082.no-kb.$IDENTIFIER.txt &
 ./test -d -l ru -i $IDENTIFIER \
-       -u http://colo-pm4.isi.edu:8082 data/RU.test \
-       > ru-t.pm4-8082.no-kb.$IDENTIFIER.txt &
+    -u http://colo-pm4.isi.edu:8082 data/ru.test.tsv \
+    > ru-t.pm4-8082.no-kb.$IDENTIFIER.txt &
 
 for job in `jobs -p`; do
     echo $job

@@ -5,7 +5,7 @@
 TAGGED_INPUT_FILE="${1:-/dev/stdin}"
 PARSED_FILE_NAME="${2:-/dev/stdout}"
 
-MALT_PARSER_DIR=$METAPHOR_DIR/external-tools/maltparser-1.7.2
+MALT_PARSER_DIR=$METAPHOR_DIR/external-tools/malt-1.7.2
 
 cat $TAGGED_INPUT_FILE | \
 java -cp $MALT_PARSER_DIR/maltparser-1.7.2.jar:$MALT_PARSER_DIR \

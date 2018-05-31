@@ -12,16 +12,18 @@ from nltk.tokenize import TreebankWordTokenizer
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-l',dest = 'lang')
-parser.add_argument('--input',dest = 'file')
+parser.add_argument('-l', dest='lang')
+parser.add_argument('--input', dest='file')
 
 pa = parser.parse_args()
 lang = pa.lang
 filePath = pa.file
-outputPath = filePath+'.sent'
-if __name__ == "__main__":    
-    file = open(filePath,'r')
-    output = open(outputPath,'w')
+outputPath = filePath + '.sent'
+
+
+if __name__ == "__main__":
+    file = open(filePath, 'r')
+    output = open(outputPath, 'w')
     sst = None
     if lang == 'EN':
         sst = nltk.data.load('nltk:tokenizers/punkt/english.pickle')
@@ -30,7 +32,6 @@ if __name__ == "__main__":
     else:
         sst = PunktSentenceTokenizer()
     for line in file:
-        
         if line == "\n":
             sys.stdout.write(line)
             continue
