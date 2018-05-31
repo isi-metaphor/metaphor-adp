@@ -1,444 +1,482 @@
-===============
-VERBS
-===============
+# Verbs
 
-1) Link arguments: subject - second arg, direct object - third arg, indirect object - fourth arg
+## Predicate Argument Structure
 
-```
-% John gives Mary a book.
-john-nn(e1,x1) & give-vb(e2,x1,x2,x3) & mary-nn(e3,x3) & book-nn(e4,x2)
-```
+`(*-vb e x y u)`
 
-Direct obj can be a clause; then the head of the clause should be used as the verb argument.
+- e: eventuality
+- x: subject
+- y: direct object
+- u: indirect object
 
-```
-% John said that Mary read.
-john-nn(e1,x1) & say-vb(e2,x1,e3,u1) & mary-nn(e4,x2) & read-vb(e3,x2,u2,u3)
-```
+The eventuality is used to express the tense or adverbial modification.
 
-Note that there is no "that" in the logical form above.
 
-2) Argument control: first arguments of both verbs are the same
+## Examples
 
-```
-% John tried to go.
-john-nn(e1,x1) & try-vb(e2,x1,e3,u1) & go-vb(e3,x1,u2,u3)
-```
+Intransitive:
 
-3) Other arguments
+    x sleeps
+    sleep(x)
 
-If in the language you are working with there are more than 3 cases which can be expressed without prepositions (e.g. Russian), then introduce additional predicates expressing these cases is need.
-Use compl if you don't know how to call the additional predicates.
+Transitive:
 
-For example, in English
+    x reads y
+    read(x, y)
 
-```
-% John makes this house a home
-john-nn(e1,x1) & make-vb(e2,x1,x2,u2) & house-nn(e3,x2) & home-nn(e4,x3) & compl(e5,e2,x3)
-```
+Ditransitive:
 
-One more example, Russian instrumental
+    x gives y to z
+    give(x, y, z)
 
-```
-% Я пишу карандашом (I write with a pencil)
-писать-vb(e1,x1,u1,u2) & карандаш-nn(e2,x2) & instr(e3,e1,x2)
-```
+    x tells y to leave
+    tell(x, y, e) & leave'(e, y)
 
-Note that Russian genitive, if coming after a verb, indicates direct object
+    John gives Mary a book.
+    John-nn(e1, x1) & give-vb(e2, x1, x2, x3) & Mary-nn(e3, x3) &
+        book-nn(e4,x2)
 
-```
-% Я боюсь высоты (I am afraid of heights)
-бояться-vb(e2,x1,x2,u1) & высота-nn(e2,x2)
-```
+The direct object can be a clause; then the head of the clause should be used
+as the verb argument:
 
-4) Add tense information if available from the parser (if past or future)
+    John said that Mary read.
+    John-nn(e1, x1) & say-vb(e2, x1, e3, u1) & Mary-nn(e4, x2) &
+        read-vb(e3, x2, u2, u3)
 
-```
-% John runs.
-john-nn(e1,x1) & run-vb(e2,x1,u1,u2)
+Not that there is no 'that' in the logical form above.
 
-% John ran.
-john-nn(e1,x1) & run-vb(e2,x1,u1,u2) & past(e3,e2)
 
-% John will run.
-john-nn(e1,x1) & run-vb(e2,x1,u1,u2) & future(e3,e2)
-```
+## Argument control
 
-5) Copula
+The first argument of each verb is the same:
 
-a) Noun+adj
+    John tried to go.
+    john-nn(e1,x1) & try-vb(e2,x1,e3,u1) & go-vb(e3,x1,u2,u3)
 
-```
-% the book is red
-red-adj(e1,x1) & book-nn(e2,x1)
-```
 
-b) Noun+noun
+## Other arguments
 
-```
-% John is my brother
-john-nn(e1,x1) & brother(e2,x2) & equal(e3,x1,x2)
-```
+If the language has more than three cases that can be expressed with
+prepositions (e.g., Russian), you need to introduce additional predicates
+expressing these cases. If you don't know what to call these additional
+predicates, use `compl`.
 
-c) Noun+prep
+E.g., in English,
 
-```
-% John is in the room
-john-nn(e1,x1) & in-in(e2,x1,x2) & room-nn(e3,x2)
-```
+    John makes this house a home.
+    john-nn(e1,x1) & make-vb(e2,x1,x2,u2) & house-nn(e3,x2) & home-nn(e4,x3) &
+        compl(e5,e2,x3)
 
-d) Noun+verb phrase/clause
+The Russian instrumental:
 
-```
-% My intension is to leave/that you leave
-intension-nn(e1,x1) & leave(e2,x2,u1,u2) & be(e3,x1,e2)
-```
+    Я пишу карандашом. (I write with a pencil.)
+    писать-vb(e1,x1,u1,u2) & карандаш-nn(e2,x2) & instr(e3,e1,x2)
 
-6) Passive
+The Russian genitive, if coming after a verb, marks a direct object:
 
-Subj in a passive construction is the third arg of the corresponding verb
+    Я боюсь высоты. (I am afraid of heights.)
+    бояться-vb(e2,x1,x2,u1) & высота-nn(e2,x2)
 
-```
-% John was born in London.
-john-nn(e1,x) & bear-vb(e2,u1,x,u2)
-```
 
-7) Participle
+## Tense
 
-Participles should be treated as normal verbs
+Add tense information if available from the parser:
 
-a) active
+    John runs.
+    john-nn(e1, x1) & run-vb(e2, x1, u1, u2) [ & Present(e1) ]
 
-```
-% The man building a house
-man-nn(e1,x1) & build-vb(e2,x1,x2,u) & house-nn(e3,x2)
-```
+    John ran.
+    john-nn(e1, x1) & run-vb(e2, x1, u1, u2) & Past(e2)
 
-b) passive
+    John will run.
+    john-nn(e1, x1) & run-vb(e2, x1, u1, u2) & Future(e2)
 
-```
-% The house built here
-build-vb(e1,u1,x1,u2) & house-nn(e2,x1)
-```
+    He is arriving.
+    arrive'(e1, x) & Progressive'(e2, e1) & Present(e2)
 
-============
-NOUNS
-============
+`Progressive` unwinds a point-like event into a durational event.
 
-1) Noun compounds: if there are noun compounds in the language you are working with, use the predicate "nn" to express it
+    x gave y to z yesterday.
+    Past(e) & give'(e, x, y, z) & yesterday(e)
 
-```
-% book store
-book-nn(e1,x1) & store-nn(e2,x2) & nn(e1,x1,x2)
-```
 
-2) Genitive: always use the predicate "of-in" for expressing genitives
+## Copula
 
-```
-% John's book
-john-nn(e1,x1) & book-nn(e2,x2) & of-in(e3,x2,x1)
-```
-3) Add number information if available from the parser (if plural)
+Adjective:
 
-```
-% books
-book-nn(e1,x1) & typelt(e2,x1,s)
-```
+    The book is red.
+    red-adj(e1,x1) & book-nn(e2,x1)
 
-4) If there is other information available from the parser (e.g. type of the named entity), please add it
+Noun:
 
-```
-% John went to London.
-john-nn(e1,x1) & per(e2,x1) & go-vb(e3,x1,u1,u2) & to-in(e4,e3,x2) & london-nn(e5,x2) & loc(e6,x2)
-```
+    John is my brother.
+    john-nn(e1,x1) & brother(e2,x2) & equal(e3,x1,x2)
 
-5) Coreferent Nouns
+Prepositional phrase:
 
-```
-%Barrack_Obama, the president, said ...
-Barrack_Obama-nn(e1,x1) & president-nn(e2,x1) & said-vb(e3,x1,u1,u2)
-```
+    John is in the room.
+    john-nn(e1,x1) & in-in(e2,x1,x2) & room-nn(e3,x2)
 
-==============
-ADJECTIVES
-==============
+Verb phrase or clause:
 
-Adjectives share the second argument with the noun they are modifying
+    My intension is to leave/that you leave.
+    intension-nn(e1,x1) & leave(e2,x2,u1,u2) & be(e3,x1,e2)
 
-```
-% red book
-red-adj(e1,x1) & book-nn(e2,x1)
-```
 
-Russian: adj + verb
+## Passive
 
-```
-% должен идти
-должен-adj(e1,x1) & идти-vb(e2,x1,u1,u2) & compl(e3,e1,e2)
-```
+The subject in a passive construction is the third argument of the
+corresponding verb:
 
-Russian: adj + noun dat
+    John was born in London.
+    john-nn(e1,x) & bear-vb(e2,u1,x,u2)
 
-```
-% близкий мне
-близкий-adj(e1,x1)& person(e2,x2) & compl(e3,e1,x2)
-```
 
-==============
-ADVERBS
-==============
+## Participle
 
-Second args of adverbs are preds they are modifying
+Participles should be treated as normal verbs.
 
-```
-% John runs fast.
-run-vb(e1,x1,u1,u2) & fast-rb(e2,e1)
+Active:
 
-& still obvious
-still-rb(e1,e2) & obvious-adj(e1,e3)
+    The man building a house...
+    man-nn(e1,x1) & build-vb(e2,x1,x2,u) & house-nn(e3,x2)
 
-& very fast 
-very-rb(e1,e2) & fast-rb(e1,e3)
-```
+Passive:
 
-==============
-PREPOSITIONS
-==============
+    The house built here...
+    build-vb(e1,u1,x1,u2) & house-nn(e2,x1)
 
-1) Verb+noun
 
-```
-% John goes to school.
-go-vb(e1,x1,u1,u2) & to-in(e2,e1,x2) & school-nn(e3,x2)
-```
+# Nouns
 
-2) Noun+noun
+## Predicate-Argument Structure
 
-```
-% book for Mary
-book-nn(e1,x1) & for-in(e2,x1,x2) & mary-nn(e2,x2)
-```
+`(*-nn e x)`
 
-3) Second arg is a prep
+- e: eventuality
+- x: subject
 
-```
-% John goes out of the store.
-go-vb(e1,x1,u1,u2) & out-in(e2,e1,u3) & of-in(e3,e2,x2) & store-nn(e4,x2) 
-```
 
+## Compound Nouns
 
-4) Verb+verb
+Use the `nn` predicate to express compound nouns:
 
-```
-% Thank you for not smoking.
-thank-vb(e1,u1,x1,u2) & person(e1,x1) & for-in(e3,e1,e4) & not(e4,e5) & smoke-vb(e5,u3,u4,u5)
-```
+    book store
+    book-nn(e1,x1) & store-nn(e2,x2) & nn(e1,x1,x2)
 
-5) Adj+noun
 
-```
-% This solution is good for John.
-solution-nn(e1,x1) & good-adj(e2,x1) & for-in(e3,e2,x2) & john-nn(e4,x2)
-```
+## Genitives
 
-=====================
-PRONOUNS
-=====================
+Always use the `of-in` predicate to express genitives:
 
-```
-"he" -> male(e1,x1)
-"she"->female(e1,x1)
-"it"->neuter(e1,x1)
-"I"->person(e1,x1)
-"we"->person(e1,x1) & typelt(e2,x1,s)
-"you"->person(e1,x1)
-"they"->thing(e1,x1) & typelt(e2,x1,s)
-"this","that" -> thing(e1,x1)
-```
+    John's book
+    john-nn(e1,x1) & book-nn(e2,x2) & of-in(e3,x2,x1)
 
-Reflexives:
 
-```
-% John washed himself
-john-nn(e1,x1) & wash-vb(e2,x1,x1,u)
-```
+## Plurals
 
-Please don't forget possessive pronouns:
+    books
+    book-nn(e1, x1) & typelt(e2, x1, s)
 
-```
-% his book
-book-nn(e1,x1) & male(e2,x2) & of-in(e3,x1,x2)
-```
+That is, `x1` is a book and is a typical element of the set `s`.
 
-=====================
-NUMERALS
-=====================
 
-Use card/3 predicate to express numerals (third argument is a number)
+## Type of Named Entity
 
-```
-% John has two books.
-have-vb(e1,x1,x2,u1) & book-nn(e2,x2) & card(e3,x2,2)
-```
+E.g., John is a person:
 
-Convert numbers from 0 to 9 into digits, otherwise use lemmas as third args of card
+    John went to London.
+    john-nn(e1,x1) & per(e2,x1) & go-vb(e3,x1,u1,u2) & to-in(e4,e3,x2) &
+        london-nn(e5,x2) & loc(e6,x2)
 
-=====================
-COORDINATIONS
-=====================
 
-Coordinative conjuctions (except for "and") are 3-place predicates.
+## Coreferent Nouns
 
-```
-% John sits and reads.
-john-nn(e1,x1) & sit-vb(e2,x1,u1,u2) & read-vb(e3,x1,u1,u2)
+    Barack Obama, the president, said...
+    Barack_Obama-nn(e1,x1) & president-nn(e2,x1) & said-vb(e3,x1,u1,u2)
 
-% House as a Mirror of Self
-house-nn(e1,x1) & as(e2,x1,x2) & mirror-nn(e3,x2)
-```
 
-If a dependent of a head (it can be any POS, although examples below include verbs only) is a coordination, then this head needs to be duplicated; both duplicates should be assigned the same word ID. Note that there can be more than two coordinated elements and sometimes "and" and "or" can be expressed by a comma. 
+# Adjectives
 
-```
-% John sits or runs.
-john-nn(e1,x1) & sit-vb(e2,x1,u1,u2) & run-vb(e3,x1,u1,u2) & or(e4,e2,e3)
+## Predicate Argument Structure
 
-% John and Mary run.
-john-nn(e1,x1) & run-vb(e2,x1,u1,u2) & mary-nn(e3,x2) & run-vb(e4,x2,u3,u4)
+`(*-adj e x)`
 
-% John reads a book and a newspaper
-john-nn(e1,x1) & read-vb(e2,x1,x3,u2) & book-nn(e3,x2) & read-vb(e4,x1,x4,u2) & newspaper-nn(e5,x4)
+- e: eventuality
+- x: object of modification
 
-% John reads a book or a newspaper
-john-nn(e1,x1) & read-vb(e2,x1,x3,u2) & book-nn(e3,x2) & read-vb(e4,x1,x4,u2) & newspaper-nn(e5,x4) & or(e6,e2,e4)
-```
 
-=====================
-SUBORDINATE CLAUSES
-=====================
+## Examples
 
-1) Relative clauses
+Adjectives share the second argument with the noun they are modifying:
 
-```
-% The man who lives in this house
-man-nn(e1,x1) & live-vb(e2,x1,u1,u2) & person(e3,x1)
+    red book
+    red-adj(e1, x1) & book-nn(e2, x1)
 
-% The house that/which was built
-house-nn(e1,x1) & build-vb(e2,u1,x1,u2)
+Russian: adjective + verb:
 
-% the man whom I saw
-man-nn(e1,x1) & see-vb(e3,x2,x1,u1) & person(e4,x1) & person(e5,x2)
+    должен идти
+    должен-adj(e1,x1) & идти-vb(e2,x1,u1,u2) & compl(e3,e1,e2)
 
-% the place where I live
-place-nn(e1,x1) & live-vb(e2,x2,u1,u2) & loc(e3,x1,e2) & person(e5,x2)
+Russian: adjective + noun dat:
 
-% the reason why I leave
-reason-nn(e1,x1) & live-vb(e2,x2,u1,u2) & reason(e3,x1,e2) & person(e5,x2)
+    близкий мне
+    близкий-adj(e1,x1) & person(e2,x2) & compl(e3,e1,x2)
 
-% the day when I left
-day-nn(e1,x1) & leave-vb(e2,x2,u1,u2) & time(e3,x1,e2) & person(e5,x2)
 
-% the way how I left
-way-nn(e1,x1) & leave-vb(e2,x2,u1,u2) & manner(e3,x1,e2) & person(e5,x2)
+# Adverbs
 
-% the place I live
-place-nn(e1,x1) & live-vb(e2,x2,u1,u2) & compl(e3,x1,e2) & person(e5,x2)
+## Predicate Argument Structure
 
-% the reason I leave
-reason-nn(e1,x1) & leave-vb(e2,x2,u1,u2) & compl(e3,x1,e2) & person(e5,x2)
-```
+`(*-rb e1 e2)`
 
-2) WH-nominals (noun clauses)
+- e1: The eventuality of the adverb modification
+- e2: The eventuality being modified
 
-```
-% I know that he comes
-know-vb(e1,x1,e2,u1) & come-vb(e2,x2,u2,u3) & male(e3,x2) & person(e5,x1)
 
-% I'm sure (that) he comes
-sure-adj(e1,x1) & come-vb(e2,x2,u1,u2) & compl(e3,e1,e2) & male(e4,x2) & person(e5,x1)
+## Examples
 
-% I know what you want
-know-vb(e1,x1,e3,u2) & want-vb(e2,x2,x3,u4) & wh(e3,x3) & thing(e4,x3) & person(e5,x2) & person(e6,x1)
+    John runs fast.
+    run-vb(e1, x1, u1, u2) & fast-rb(e2, e1)
 
-% I know whom you saw
-know-vb(e1,x1,e3,u2) & saw-vb(e2,x2,x3,u4) & wh(e3,x3) & person(e4,x3) & person(e5,x2) & person(e6,x1)
+    still obvious
+    still-rb(e1, e2) & obvious-adj(e1, e3)
 
-% I know where you live
-know-vb(e1,x1,e3,u2) & live-vb(e2,x2,u3,u4) & wh(e3,x3) & loc(e4,x3,e2) & person(e5,x2)& person(e6,x1)
+    very fast
+    very-rb(e1, e2) & fast-rb(e1, e3)
 
-% I know how you live
-know-vb(e1,x1,e3,u2) & live-vb(e2,x2,u3,u4) & wh(e3,x3) & manner(e4,x3,e2) & person(e5,x2) & person(e6,x1)
 
-% I know when you come
-know-vb(e1,x1,e3,u2) & come-vb(e2,x2,u3,u4) & wh(e3,x3) & time(e4,x3,e2) & person(e5,x2) & person(e6,x1)
+# Prepositions
 
-% I know why you go
-know-vb(e1,x1,e3,u2) & go-vb(e2,x2,u3,u4) & wh(e3,x3) & reason(e4,x3,e2) & person(e5,x2) & person(e6,x1)
+## Predicate Argument Structure
 
-% Whatever you do
-do-vb(e1,x1,x2,u1) & thing(e2,x2) & person(e3,x1)
+`(*-in e x y)`
 
-% Wherever you go
-go-vb(e1,x1,u1,u2) & loc(e2,x2,e1) & person(e3,x1)
-```
+- e: eventuality
+- x: head (verb or noun)
+- y: dependent
 
-The same treatment for: whoever, whenever, however
 
-3) because, while, when, as, after, since...
+## Examples
 
-```
-% John reads , because he has time .
-read-vb(e1,x1,u1,u2) & have-vb(e2,x2,u3,u4) & because-in(e3,e1,e2) & male(e4,x2)
-```
+Verb-noun:
 
-4) if ... then
+    John goes to school.
+    go-vb(e1, x1, u1, u2) & to-in(e2, e1, x2) & school-nn(e3, x2)
 
-```
-% If John comes then I meet him .
-john-nn(e1,x1) & come-vb(e2,x1,u1,u1) & person(e3,x2) & meet-vb(e4,x2,x3,u3) & male(e5,x3) & imp(e6,e2,e4)
-```
+Noun-noun:
 
-=====================
-NEGATION
-=====================
+    ... book for Mary
+    book-nn(e1, x1) & for-in(e2, x1, x2) & mary-nn(e2, x2)
 
-Represent all negation using the predicate not/2
+Preposition-preposition:
 
-```
-% John does not read
-read-vb(e1,x1,u1,u2) & not(e2,e1)
+    John goes out of the store.
+    go-vb(e1, x1, u1, u2) & out-in(e2, e1, u3) & of-in(e3, e2, x2) &
+        store-nn(e4, x2)
 
-% not John
-not(e1,x1) & john-nn(e2,x1)
-```
+Verb-verb:
 
-Russian: нет + genitive
+    Thank you for not smoking.
+    thank-vb(e1, u1, x1, u2) & person(e1, x1) & for-in(e3, e1, e4) &
+        not(e4, e5) & smoke-vb(e5, u3, u4, u5)
 
-```
-% нет меня
-not(e1,e2) & be(e2,x1,u) & person(e3,x1)
-```
+Adjective-noun:
 
-=====================
-QUESTIONS
-=====================
+    This solution is good for John.
+    solution-nn(e1, x1) & good-adj(e2, x1) & for-in(e3, e2, x2) &
+        john-nn(e4, x2)
 
-```
-% What did you do?
-do-vb(e1,x1,x2,u2) & whq(e2,x2) & thing(e3,x2) & person(e4,x1)
 
-% Whom did you see?
-see-vb(e1,x1,x2,u2) & whq(e2,x2) & person (e3,x2) & person(e4,x1)
+# Pronouns
 
-% When did you come?
-come-vb(e1,x1,u1,u2) & whq(e2,x2) & time(e3,x2,e1) & person(e4,x1)
+Pronouns are mapped to their meaning:
 
-% Why did you come?
-come-vb(e1,x1,u1,u2) & whq(e2,x2) & reason(e3,x2,e1) & person(e4,x1)
+- "he" -> `male(e1,x1)`
+- "she" -> `female(e1,x1)`
+- "it" -> `neuter(e1,x1)`
+- "I" -> `person(e1,x1)`
+- "we" -> `person(e1,x1) & typelt(e2,x1,s)`
+- "you" -> `person(e1,x1)`
+- "they" -> `thing(e1,x1) & typelt(e2,x1,s)`
+- "this", "that" -> `thing(e1,x1)`
 
-% How did you come?
-come-vb(e1,x1,u1,u2) & whq(e2,x2) & manner(e3,x2,e1) & person(e4,x1)
+Reflexives are marked in the argument structure:
 
-% Where did you come?
-come-vb(e1,x1,u1,u2) & whq(e2,x2) & loc(e3,x2,e1) & person(e4,x1)
-```
+    John washed himself.
+    john-nn(e1,x1) & wash-vb(e2,x1,x1,u)
+
+Possessive pronouns are treated as genitives:
+
+    his book
+    book-nn(e1,x1) & male(e2,x2) & of-in(e3,x1,x2)
+
+
+# Numerals
+
+Use the `card` predicate to express numerals, with the third argument
+being a number:
+
+    John has two books.
+    have-vb(e1,x1,x2,u1) & book-nn(e2,x2) & card(e3,x2,2)
+
+Convert numbers from 0 to 9 into digits. Otherwise, use lemmas as the
+third args of `card`.
+
+
+# Coordinations
+
+Coordinative conjuctions (except for "and") are 3-place predicates:
+
+    John sits and reads.
+    john-nn(e1,x1) & sit-vb(e2,x1,u1,u2) & read-vb(e3,x1,u1,u2)
+
+    House as a Mirror of Self
+    house-nn(e1,x1) & as(e2,x1,x2) & mirror-nn(e3,x2)
+
+If a dependent of a head is a coordination, then the head needs to be
+duplicated; both duplicates should be assigned the same word ID. Note that
+there can be more than two coordinated elements, and sometimes "and" and
+"or" can be expressed by a comma.
+
+    John sits or runs.
+    john-nn(e1,x1) & sit-vb(e2,x1,u1,u2) & run-vb(e3,x1,u1,u2) & or(e4,e2,e3)
+
+    John and Mary run.
+    john-nn(e1,x1) & run-vb(e2,x1,u1,u2) & mary-nn(e3,x2) & run-vb(e4,x2,u3,u4)
+
+    John reads a book and a newspaper
+    john-nn(e1,x1) & read-vb(e2,x1,x3,u2) & book-nn(e3,x2) &
+        read-vb(e4,x1,x4,u2) & newspaper-nn(e5,x4)
+
+    John reads a book or a newspaper
+    john-nn(e1,x1) & read-vb(e2,x1,x3,u2) & book-nn(e3,x2) &
+        read-vb(e4,x1,x4,u2) & newspaper-nn(e5,x4) & or(e6,e2,e4)
+
+
+# Subordinate Clauses
+
+## Relative Clauses
+
+    The man who lives in this house
+    man-nn(e1,x1) & live-vb(e2,x1,u1,u2) & person(e3,x1)
+
+    The house that/which was built
+    house-nn(e1,x1) & build-vb(e2,u1,x1,u2)
+
+    the man whom I saw
+    man-nn(e1,x1) & see-vb(e3,x2,x1,u1) & person(e4,x1) & person(e5,x2)
+
+    the place where I live
+    place-nn(e1,x1) & live-vb(e2,x2,u1,u2) & loc(e3,x1,e2) & person(e5,x2)
+
+    the reason why I leave
+    reason-nn(e1,x1) & live-vb(e2,x2,u1,u2) & reason(e3,x1,e2) & person(e5,x2)
+
+    the day when I left
+    day-nn(e1,x1) & leave-vb(e2,x2,u1,u2) & time(e3,x1,e2) & person(e5,x2)
+
+    the way how I left
+    way-nn(e1,x1) & leave-vb(e2,x2,u1,u2) & manner(e3,x1,e2) & person(e5,x2)
+
+    the place I live
+    place-nn(e1,x1) & live-vb(e2,x2,u1,u2) & compl(e3,x1,e2) & person(e5,x2)
+
+    the reason I leave
+    reason-nn(e1,x1) & leave-vb(e2,x2,u1,u2) & compl(e3,x1,e2) &
+    person(e5,x2)
+
+
+## Wh-Nominals
+
+    I know that he comes.
+    know-vb(e1,x1,e2,u1) & come-vb(e2,x2,u2,u3) & male(e3,x2) & person(e5,x1)
+
+    I'm sure (that) he comes.
+    sure-adj(e1,x1) & come-vb(e2,x2,u1,u2) & compl(e3,e1,e2) & male(e4,x2)
+        & person(e5,x1)
+
+    I know what you want.
+    know-vb(e1,x1,e3,u2) & want-vb(e2,x2,x3,u4) & wh(e3,x3) & thing(e4,x3)
+        & person(e5,x2) & person(e6,x1)
+
+    I know whom you saw.
+    know-vb(e1,x1,e3,u2) & saw-vb(e2,x2,x3,u4) & wh(e3,x3) & person(e4,x3)
+        & person(e5,x2) & person(e6,x1)
+
+    I know where you live.
+    know-vb(e1,x1,e3,u2) & live-vb(e2,x2,u3,u4) & wh(e3,x3) &
+        loc(e4,x3,e2) & person(e5,x2)& person(e6,x1)
+
+    I know how you live.
+    know-vb(e1,x1,e3,u2) & live-vb(e2,x2,u3,u4) & wh(e3,x3) &
+        manner(e4,x3,e2) & person(e5,x2) & person(e6,x1)
+
+    I know when you come.
+    know-vb(e1,x1,e3,u2) & come-vb(e2,x2,u3,u4) & wh(e3,x3) &
+        time(e4,x3,e2) & person(e5,x2) & person(e6,x1)
+
+    I know why you go.
+    know-vb(e1,x1,e3,u2) & go-vb(e2,x2,u3,u4) & wh(e3,x3) &
+        reason(e4,x3,e2) & person(e5,x2) & person(e6,x1)
+
+    Whatever you do.
+    do-vb(e1,x1,x2,u1) & thing(e2,x2) & person(e3,x1)
+
+    Wherever you go.
+    go-vb(e1,x1,u1,u2) & loc(e2,x2,e1) & person(e3,x1)
+
+The treatment for "whoever", "whenever", and "however" is similar.
+
+
+## Because, while, when, as, after, since...
+
+    John reads, because he has time.
+    read-vb(e1,x1,u1,u2) & have-vb(e2,x2,u3,u4) & because-in(e3,e1,e2) &
+        male(e4,x2)
+
+
+## If...then
+
+    If John comes then I meet him.
+    john-nn(e1,x1) & come-vb(e2,x1,u1,u1) & person(e3,x2) &
+        meet-vb(e4,x2,x3,u3) & male(e5,x3) & imp(e6,e2,e4)
+
+
+# Negation
+
+We represent negation using the two-place predicate `not`:
+
+    John does not read
+    read-vb(e1,x1,u1,u2) & not(e2,e1)
+
+    not John
+    not(e1,x1) & john-nn(e2,x1)
+
+Russian: нет + genitive:
+
+    нет меня
+    not(e1,e2) & be(e2,x1,u) & person(e3,x1)
+
+
+# Questions
+
+    What did you do?
+    do-vb(e1,x1,x2,u2) & whq(e2,x2) & thing(e3,x2) & person(e4,x1)
+
+    Whom did you see?
+    see-vb(e1,x1,x2,u2) & whq(e2,x2) & person (e3,x2) & person(e4,x1)
+
+    When did you come?
+    come-vb(e1,x1,u1,u2) & whq(e2,x2) & time(e3,x2,e1) & person(e4,x1)
+
+    Why did you come?
+    come-vb(e1,x1,u1,u2) & whq(e2,x2) & reason(e3,x2,e1) &
+    person(e4,x1)
+
+    How did you come?
+    come-vb(e1,x1,u1,u2) & whq(e2,x2) & manner(e3,x2,e1) &
+    person(e4,x1)
+
+    Where did you come?
+    come-vb(e1,x1,u1,u2) & whq(e2,x2) & loc(e3,x2,e1) & person(e4,x1)
