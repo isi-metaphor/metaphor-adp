@@ -158,7 +158,7 @@ def main():
         nl_output = lf2h_proc.communicate(input=parser_output)[0]
 
         # Save observations.
-        with open(os.path.join(outputdir, fname + ".obs"), "w") as f_l2h:
+        with open(os.path.join(outputdir, fname + ".obs"), "w") as f_lf2h:
             f_lf2h.write(nl_output)
 
     # Henry processing
