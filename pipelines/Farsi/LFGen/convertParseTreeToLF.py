@@ -920,7 +920,7 @@ while line != "":
             # sys.stdout.write(lfToString(lf).encode("utf-8"))
 
             # Get new paragraph id and reset everything
-            paragraphId = sentence.replace("<META>", "").replace("%", "").
+            paragraphId = sentence.replace("<META>", "").replace("%", "")
             paragraphId = paragraphId.replace(".", "").strip()
             paragraph = ""
             paragraphLF = ""
