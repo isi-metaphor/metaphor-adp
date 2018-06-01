@@ -1,5 +1,4 @@
-Spanish Semantic Parsing Pipeline
-=================================
+# Spanish Semantic Parsing Pipeline
 
 This file describes the Spanish semantic parsing pipeline. It has directions
 for running the pipeline, as well as descriptions of the scripts, tools, and
@@ -24,43 +23,48 @@ output will go to stdout.
 ### Subdirectories
 
 **Scripts**
-- to_malt.py - Create conll style output. Input file should be output from treetagger. Outputs to stdout.
-   - To run: 
+- `to_malt.py`: Create conll style output. Input file should be output
+  from treetagger. Outputs to stdout. To run:
 
 ```
-python to_malt.py -i <input_file>
+python2.7 to_malt.py -i <input_file>
 ```
 
-- malt_to_prop.py - Create logical form output. Input file should be output from MaltParser. Outputs to stdout.
-   - To run: 
+- `malt_to_prop.py`: Create logical form output. Input file should be
+  output from MaltParser. Outputs to stdout. To run:
 
 ```
-python malt_to_prop.py -i <input_file>
+python2.7 malt_to_prop.py -i <input_file>
 ```
 
 
 **Examples**
- - spanish_text.txt - raw file (one sentence per line) of spanish text collected from web
-   - spanish_text.tree.tagged - POS tagged spanish_text
-   - spanish_text.conll - spanish_text input for MaltParser
-   - spanish_text.conll.malt - dependency parsed output of spanish_text
-   - spanish_text.props - logical forms of spanish_text
- - spanish_metaphors.txt - raw file (one sentence per line) of spanish metaphor test sentences
-   - spanish_text.tree.tagged - POS tagged spanish_metaphors
-   - spanish_text.conll - spanish_metaphors input for MaltParser
-   - spanish_text.conll.malt - dependency parsed output of spanish_metaphors
-   - spanish_text.props - logical forms of spanish_metaphors
- - spanish_translations.txt - raw file of sentences from pipelines/README.md translated into Spanish
-   - spanish_text.tree.tagged - POS tagged spanish_translations
-   - spanish_text.conll - spanish_translations input for MaltParser
-   - spanish_text.conll.malt - dependency parsed output of spanish_translations
-   - spanish_text.props - logical forms of spanish_translations
+- `spanish_text.txt`: raw file (one sentence per line) of Spanish text
+  collected from web
+  - `spanish_text.tree.tagged`: POS-tagged `spanish_text`
+  - `spanish_text.conll`: `spanish_text` input for MaltParser
+  - `spanish_text.conll.malt`: dependency parsed output of `spanish_text`
+  - `spanish_text.props`: logical forms of `spanish_text`
+- `spanish_metaphors.txt`: raw file (one sentence per line) of Spanish
+  metaphor test sentences
+  - `spanish_text.tree.tagged`: POS-tagged `spanish_metaphors`
+  - `spanish_text.conll`: `spanish_metaphors` input for MaltParser
+  - `spanish_text.conll.malt`: dependency parsed output of `spanish_metaphors`
+  - `spanish_text.props`: logical forms of `spanish_metaphors`
+- `spanish_translations.txt`: raw file of sentences from
+  pipelines/README.md translated into Spanish
+  - `spanish_text.tree.tagged`: POS-tagged `spanish_translations`
+  - `spanish_text.conll`: `spanish_translations` input for MaltParser
+  - `spanish_text.conll.malt`: dependency parsed output of
+    `spanish_translations`
+  - `spanish_text.props`: logical forms of `spanish_translations`
 
 ### External Tools & Resources
 
 - Tokenization
- - nltk_tokenize.py - Written by Vladamir Zaytsev
-   - uses nltk.tokenize (PunktSentenceTokenizer,WordPunctTokenizer, and TreebankWordTokenizer)
+ - `nltk_tokenize.py`: Written by Vladamir Zaytsev
+   - uses nltk.tokenize (PunktSentenceTokenizer, WordPunctTokenizer, and
+     TreebankWordTokenizer)
 - POS Tagging
  - treetagger 3.2 (http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/)
    - Spanish parameter file available from the same page
@@ -74,6 +78,7 @@ python malt_to_prop.py -i <input_file>
 
 NOTE: These steps do not need to be re-run.
 
-1. Created conll-style file using instances from the Ancora corpus > ancora.malt
+1. Created conll-style file using instances from the Ancora corpus >
+   ancora.malt
 
 2. Made MaltParser model with maltparse1.5 using ancora.malt > ancora.model
