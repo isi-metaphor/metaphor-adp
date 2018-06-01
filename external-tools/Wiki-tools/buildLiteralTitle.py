@@ -3,10 +3,6 @@
 
 # Build a literal-title table
 
-import sys
-import psycopg2
-import codecs
-import psycopg2.extras
 import get_paragraph_prefer
 
 
@@ -27,7 +23,6 @@ def generateLiteral():
 
 def writeRecord():
     literalFile = open('eng.txt', 'r')
-    ltFile = open('eng.lt.txt', 'w')
     while True:
         line = literalFile.readline()
         if line is None:
