@@ -8,15 +8,17 @@ output_fl = sys.stdout
 dict_fl = open(sys.argv[1], "rb")
 
 badChars1 = {
-    u"ۀ":u"ه",
-    u"ي":u"ی",
-    u"ك":u"ک"}
+    u"ۀ": u"ه",
+    u"ي": u"ی",
+    u"ك": u"ک"
+}
 
 PREFIXES = [
     u"می",
     u"نمی",
     u"بی",
-    u"نا"]
+    u"نا"
+]
 
 POSTFIXES = [
     u"ام",
@@ -56,7 +58,8 @@ POSTFIXES = [
     u"ترینهایی",
     u"ترینی",
     u"ترانی",
-    u"تری"]
+    u"تری"
+]
 
 PREFIXES = [p.encode("utf-8") for p in PREFIXES]
 POSTFIXES = [p.encode("utf-8") for p in POSTFIXES]
@@ -154,7 +157,7 @@ def check_with_dict(tokens):
 
 
 for line in input_fl:
-    #line = line.replace("\n", "")
+    # line = line.replace("\n", "")
     line = line.strip()
 
     if line == "":
@@ -165,14 +168,14 @@ for line in input_fl:
         line = line.replace(ch, badChars[ch])
 
     tokens = line.split(" ")
-    lastToken=tokens[-1]
+    lastToken = tokens[-1]
 
     removedChar = ""
     lastChar = lastToken[-1]
 
     if lastChar in [".", ",", ";", "?", "!", ":"]:
-        removedChar=lastChar
-        tokens[-1] = tokens[-1][:(len(tokens[-1]) -1)]
+        removedChar = lastChar
+        tokens[-1] = tokens[-1][:(len(tokens[-1]) - 1)]
 
     tokens = check_with_dict(tokens)
 
@@ -180,4 +183,4 @@ for line in input_fl:
     tokens = list(preprocess_postfixes(tokens))
 
     output_fl.write(" ".join(tokens))
-    output_fl.write("%s\n"%removedChar)
+    output_fl.write("%s\n" % removedChar)

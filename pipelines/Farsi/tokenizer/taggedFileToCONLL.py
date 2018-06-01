@@ -8,9 +8,9 @@ import re
 
 # inputFormat: Each sentence is in a line:
 #    word1_POS1 word2_POS2 ...
-# outputFormat: Each token is in a line. Sentences are separated by a blank line
-#    each line contains these 10 items, separated by tab:
-#    (id,word,lemma,CoarsePOS,FinePOS,etc1,dep,rel,etc2,etc3)
+# outputFormat: Each token is in a line. Sentences are separated by a blank
+#    line each line contains these 10 items, separated by tab:
+#    (id, word, lemma, CoarsePOS, FinePOS, etc1, dep, rel, etc2, etc3)
 
 inputFile = codecs.open(sys.argv[1], encoding='utf-8') \
   if len(sys.argv) > 1 \
@@ -20,70 +20,76 @@ outputFile = codecs.open(sys.argv[2], encoding='utf-8', mode="w") \
   if len(sys.argv) > 2 \
   else codecs.getreader("utf-8")(sys.stdout)
 
-#tmpFile = codecs.open("/temp/testdelme.txt", encoding='utf-8', mode="w")
+# tmpFile = codecs.open("/temp/testdelme.txt", encoding='utf-8', mode="w")
 
 metaphorDir = os.environ['METAPHOR_DIR']
 lemmaFile = codecs.open("%s/pipelines/Farsi/tokenizer/lemmatizationDict.txt"
                         % metaphorDir, encoding='utf-8')
-#testLemmaFile = codecs.open("%s/pipelines/Farsi/testLemmatizationDict.txt"
-#                       % metaphorDir, encoding='utf-8', mode="w")
+# testLemmaFile = codecs.open("%s/pipelines/Farsi/testLemmatizationDict.txt"
+#                        % metaphorDir, encoding='utf-8', mode="w")
 
-#pronounList=[u'\u0627\u0634',u'\u062a\u0627\u0646',u'\u0627\u0645',u'\u062a',
-#             u'\u0634',u'\u0634\u0627\u0646',u'\u0645\u0627\u0646',u'\u0645',
-#             u'\u0627\u062a']
+# pronounList = [
+#     u'\u0627\u0634', u'\u062a\u0627\u0646', u'\u0627\u0645', u'\u062a',
+#     u'\u0634', u'\u0634\u0627\u0646', u'\u0645\u0627\u0646', u'\u0645',
+#     u'\u0627\u062a'
+# ]
 
 # nondashPostFixes are used for identifying postfixes that are attached to
 # the word without dash.
-nonDashPostFixes = {u"ا":[u"یم",u"یت",u"یش",u"یمان",u"یتان",u"یشان",u"یی"],
-                    u"و":[u"یم",u"یت",u"یش",u"یمان",u"یتان",u"یشان",u"یی"],
-                    "":[u"م",u"ت",u"ش",u"مان",u"تان",u"شان",u"ها",u"های",u"هایی",
-                        u"هایم",u"هایت",u"هایمان",u"هایتان",u"هایشان",u"ی"]}
+nonDashPostFixes = {
+    u"ا": [u"یم", u"یت", u"یش", u"یمان", u"یتان", u"یشان", u"یی"],
+    u"و": [u"یم", u"یت", u"یش", u"یمان", u"یتان", u"یشان", u"یی"],
+    "": [u"م", u"ت", u"ش", u"مان", u"تان", u"شان", u"ها", u"های", u"هایی",
+         u"هایم", u"هایت", u"هایمان", u"هایتان", u"هایشان", u"ی"]
+}
 
-adjPostFixes = [u"تر",u"ترین",u"تران",u"ترها",u"ترینها",u"ترهای",u"ترینهای",u"ترانی",
-                u"ترینهایی",u"ترینی",u"ترانی",u"تری"]
-
-POSTFIXES = [# Used for "word-postfix"
-        u"ام",
-        u"ات",
-        u"اش",
-        u"ایم",
-        u"اید",
-        u"اند",
-        u"یم",
-        u"یت",
-        u"یش",
-        u"یمان",
-        u"یتان",
-        u"یشان",
-        u"ها",
-        u"تر",
-        u"ترین",
-        u"هایم",
-        u"های",
-        u"هایی",
-        u"هایمان",
-        u"هایتان",
-        u"هایت",
-        u"هایش",
-        u"هایشان",
-        u"ای",
-        u"ایم",
-        u"اید",
-        u"اند",
-        u"ترین",
-        u"تران",
-        u"ترها",
-        u"ترینها",
-        u"ترهای",
-        u"ترینهای",
-        u"ترانی",
-        u"ترینهایی",
-        u"ترینی",
-        u"ترانی",
-        u"تری"
+adjPostFixes = [
+    u"تر", u"ترین", u"تران", u"ترها", u"ترینها", u"ترهای", u"ترینهای",
+    u"ترانی", u"ترینهایی", u"ترینی", u"ترانی", u"تری"
 ]
 
-#POSTFIXES = [p.encode("utf-8") for p in POSTFIXES]
+POSTFIXES = [  # Used for "word-postfix"
+    u"ام",
+    u"ات",
+    u"اش",
+    u"ایم",
+    u"اید",
+    u"اند",
+    u"یم",
+    u"یت",
+    u"یش",
+    u"یمان",
+    u"یتان",
+    u"یشان",
+    u"ها",
+    u"تر",
+    u"ترین",
+    u"هایم",
+    u"های",
+    u"هایی",
+    u"هایمان",
+    u"هایتان",
+    u"هایت",
+    u"هایش",
+    u"هایشان",
+    u"ای",
+    u"ایم",
+    u"اید",
+    u"اند",
+    u"ترین",
+    u"تران",
+    u"ترها",
+    u"ترینها",
+    u"ترهای",
+    u"ترینهای",
+    u"ترانی",
+    u"ترینهایی",
+    u"ترینی",
+    u"ترانی",
+    u"تری"
+]
+
+# POSTFIXES = [p.encode("utf-8") for p in POSTFIXES]
 
 
 def loadLemmaDict(lemmaFile):
@@ -93,15 +99,15 @@ def loadLemmaDict(lemmaFile):
     lineNumber = 1
     while line != "":
         if line.strip() == "":
-            line=lemmaFile.readline()
-            lineNumber+=1
+            line = lemmaFile.readline()
+            lineNumber += 1
             continue
-#        print lineNumber
+        # print lineNumber
         (word, POS, lemma) = line.replace(u'\u200e', "").strip().split("\t")
         lemmaSet.add((POS, lemma))
-        lemmaDict[(word,POS)] = lemma
-        #testLemmaFile.write("%s\t%s\n"%(word,str((word,POS))))
-        line=lemmaFile.readline()
+        lemmaDict[(word, POS)] = lemma
+        # testLemmaFile.write("%s\t%s\n"%(word, str((word,POS))))
+        line = lemmaFile.readline()
         lineNumber += 1
     return (lemmaDict, lemmaSet)
 
@@ -114,7 +120,7 @@ def getLemma(word, POS, lemmaDict, lemmaSet):
             dashIndex = i
             break
     if dashIndex > -1 and word[dashIndex+1:] in POSTFIXES:
-        #tmpFile.write("%s\n"%word[0:dashIndex])
+        # tmpFile.write("%s\n"%word[0:dashIndex])
         return word[0:dashIndex]
 
     # Otherwise, refer to lemmatization dict
@@ -175,11 +181,10 @@ while line != "":
 
     for i in range(0, len(words)):
         lemma = getLemma(words[i], POSs[i], lemmaDict, lemmaSet)
-        items = (str(i+1), words[i], lemma, POSs[i], POSs[i], "_", "_", "_",
-                 "_", "_")
-        outputFile.write(("%s\n"%"\t".join(items)).encode('utf-8'))
-        #outputFile.write(("%s\n"%"\t".join(items)))
-
+        items = (str(i + 1), words[i], lemma, POSs[i], POSs[i], "_", "_",
+                 "_", "_", "_")
+        outputFile.write(("%s\n" % "\t".join(items)).encode('utf-8'))
+        # outputFile.write(("%s\n"%"\t".join(items)))
 
     outputFile.write(("\n"))
     line = inputFile.readline()
@@ -187,5 +192,5 @@ while line != "":
 outputFile.write("END\n")
 inputFile.close()
 outputFile.close()
-#testLemmaFile.close()
-#tmpFile.close()
+# testLemmaFile.close()
+# tmpFile.close()
