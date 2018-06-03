@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # python2.7 similarity.py -w nation -p nn -i temp/nation.txt \
 #           -o temp/nation.rank.txt &
 # python2.7 similarity.py -w crime -p nn -i temp/crime.txt \
