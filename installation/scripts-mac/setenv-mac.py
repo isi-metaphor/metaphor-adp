@@ -9,7 +9,9 @@ if len(sys.argv) != 2:
 
 install_dir = sys.argv[1]
 
-setvars = raw_input("This script modifies your .bash_profile file, and sets environment variables relevant for this application. Continue? [yes/no]")
+setvars = raw_input("This script modifies your .bash_profile file, and sets "
+                    "environment variables\n"
+                    "relevant for this application. Continue? [yes/no] ")
 
 if setvars != "yes":
     sys.exit()
@@ -39,6 +41,9 @@ with open(bashrc_file, 'a+') as f:
         f.write("export LIBRARY_PATH=$GUROBI_HOME/lib:$LIBRARY_PATH\n")
 
     if os.environ.get('CPLUS_INCLUDE_PATH') is None:
-        f.write("export CPLUS_INCLUDE_PATH=$GUROBI_HOME/include:/usr/include/python2.7\n")
+        f.write("export CPLUS_INCLUDE_PATH="
+                "$GUROBI_HOME/include:/usr/include/python2.7\n")
     else:
-        f.write("export CPLUS_INCLUDE_PATH=$GUROBI_HOME/include:/usr/include/python2.7:$CPLUS_INCLUDE_PATH\n")
+        f.write("export CPLUS_INCLUDE_PATH="
+                "$GUROBI_HOME/include:/usr/include/python2.7:"
+                "$CPLUS_INCLUDE_PATH\n")
