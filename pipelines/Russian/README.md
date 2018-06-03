@@ -1,37 +1,41 @@
-Russian Semantic Parsing Pipeline
-=================================
+# Russian Semantic Parsing Pipeline
 
-**DESCRIPTION**
+## Description
 
 Semantic parsing pipeline for Russian.
 
-* `malt_ru.py` – converter for Malt parser output to Logical Form format:
+- `LFGen/malt_ru.py`: converter for Malt parser output to logical form format:
 
 ```
-python malt_ru.py [--input <input file>] [--output <output file>] [--nnnumber 1] [--vbtense 1]
+python2.7 malt_ru.py [--input <input file>] [--output <output file>] \
+                     [--nnnumber 1] [--vbtense 1]
 ```
 
-Output should be generated using [this](http://corpus.leeds.ac.uk/mocky/msd-ru.html) part of speech tagset.
+Output should be generated using
+[this](http://corpus.leeds.ac.uk/mocky/msd-ru.html) part of speech tagset.
 
-* `run_russian.sh` – this script runs the full processing pipline for parsing Russian:
+- `run_russian.sh`: this script runs the full processing pipline for
+  parsing Russian:
 
 ```
 ./run_russian.sh [<absolute path to input> [<absolute path to output>]]
 ```
 
 
-Script runs tokenizing (using nltk), lemmatization (using TreeTagger on OS X or [CSTLEMMA](http://cst.dk/online/lemmatiser/uk/) on Linux), POS tagging (usign TreeTagger), converting TreeTagger output to Malt compatible [format](http://nextens.uvt.nl/depparse-wiki/DataFormat) and dependency parsing (using [MaltParser](http://www.maltparser.org/) 1.5 with [these](http://corpus.leeds.ac.uk/mocky/) tools).
+Script runs tokenizing (using nltk), lemmatization (using TreeTagger on
+macOS or [CSTLEMMA](http://cst.dk/online/lemmatiser/uk) on Linux), POS
+tagging (usign TreeTagger), converting TreeTagger output to Malt
+compatible [format](http://nextens.uvt.nl/depparse-wiki/DataFormat) and
+dependency parsing (using [MaltParser](http://www.maltparser.org) 1.5
+with [these](http://corpus.leeds.ac.uk/mocky/) tools).
 
 
----
+## Dependencies
 
-**DEPENDECIES**
+- NLTK – [nltk.org](nltk.org/)
 
-* NLTK – [nltk.org](nltk.org/)
 
----
-
-**OUTPUT EXAMPLES**
+## Output Examples
 
 Text:
 

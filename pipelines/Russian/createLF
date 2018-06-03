@@ -5,5 +5,4 @@ lfFileName="${2:-/dev/stdout}"
 
 RU_PIPELINE_DIR=$METAPHOR_DIR/pipelines/Russian
 
-cat $parsedInputFile | python2.7 $RU_PIPELINE_DIR/LFGen/malt_ru.py > $lfFileName
-
+< $parsedInputFile python2.7 $RU_PIPELINE_DIR/LFGen/malt_ru.py > $lfFileName
