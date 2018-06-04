@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Run the test set for each language with the server default KB
+# Jonathan Gordon, 2018-06-03
+
+export IDENTIFIER=$RANDOM
+
+./test -d -l en -i $IDENTIFIER \
+    -u http://localhost:8000 data/en.test.tsv \
+    > en-t.local.no-kb.$IDENTIFIER.txt &
+./test -d -l es -i $IDENTIFIER \
+    -u http://localhost:8000 data/es.test.tsv \
+    > es-t.local.no-kb.$IDENTIFIER.txt &
+./test -d -l fa -i $IDENTIFIER \
+    -u http://localhost:8000 data/fa.test.tsv \
+    > fa-t.local.no-kb.$IDENTIFIER.txt &
+./test -d -l ru -i $IDENTIFIER \
+    -u http://localhost:8000 data/ru.test.tsv \
+    > ru-t.local.no-kb.$IDENTIFIER.txt &
+
+for job in `jobs -p`; do
+    echo $job
+    wait $job || echo "Failed: $job."
+done
+
+echo "Done."
