@@ -8,8 +8,8 @@
 # External tools used:
 # - English NLP pipeline (Metaphor-ADP/pipelines/English)
 # - Spanish NLP pipeline (Metaphor-ADP/pipelines/Spanish)
-# - Russian NLP pipeline (Metaphor-ADP/pipelines/Russian)
 # - Farsi NLP pipeline (Metaphor-ADP/pipelines/Farsi)
+# - Russian NLP pipeline (Metaphor-ADP/pipelines/Russian)
 # - Henry abductive reasoner (https://github.com/naoya-i/henry-n700)
 
 # This script requires the environment variables METAPHOR_DIR, HENRY_DIR,
@@ -18,10 +18,10 @@
 # To see options, run
 #   ./NLPipeline_MULT_stdinout.py -h
 
-import os
 import sys
-import re
+import os
 import argparse
+import re
 
 from subprocess import Popen, PIPE, STDOUT
 
@@ -33,14 +33,14 @@ TMP_DIR = os.environ['TMP_DIR']
 BOXER2HENRY = "%s/pipelines/English/Boxer2Henry.py" % METAPHOR_DIR
 PARSER2HENRY = "%s/pipelines/common/IntParser2Henry.py" % METAPHOR_DIR
 
-ENGLISH_PIPELINE = "%s/pipelines/English/Boxer_pipeline.py" % METAPHOR_DIR
-FARSI_PIPELINE = "%s/pipelines/Farsi/LF_Pipeline" % METAPHOR_DIR
-SPANISH_PIPELINE = "%s/pipelines/Spanish/run_spanish.sh" % METAPHOR_DIR
-RUSSIAN_PIPELINE = "%s/pipelines/Russian/run_russian.sh" % METAPHOR_DIR
+EN_PIPELINE = "%s/pipelines/English/Boxer_pipeline.py" % METAPHOR_DIR
+ES_PIPELINE = "%s/pipelines/Spanish/run_spanish.sh" % METAPHOR_DIR
+FA_PIPELINE = "%s/pipelines/Farsi/LF_Pipeline" % METAPHOR_DIR
+RU_PIPELINE = "%s/pipelines/Russian/run_russian.sh" % METAPHOR_DIR
 
 
 def generate_proofgraph(id, fname, graph_input, henry_output, outputdir):
-    viz = 'python ' + HENRY_DIR + '/tools/proofgraph.py' + graph_input + \
+    viz = 'python2.7 ' + HENRY_DIR + '/tools/proofgraph.py' + graph_input + \
         ' --graph ' + id + ' | dot -T pdf > ' + \
         os.path.join(outputdir, fname + '_' + id + '.pdf')
     graphical_proc = Popen(viz, shell=True, stdin=PIPE, stdout=PIPE,
@@ -55,14 +55,13 @@ def generate_proofgraph(id, fname, graph_input, henry_output, outputdir):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Multilingual (English, '
-                                     'Spanish, Farsi, Russian) abductive '
+    parser = argparse.ArgumentParser(description='Multilingual abductive '
                                      'discourse processing pipeline.')
     parser.add_argument('--lang', default='EN',
-                        help='Input language: EN, ES, RU, FA.')
+                        help='Input language: EN, ES, FA, RU.')
     parser.add_argument('--input', default=None,
-                        help='Input file: plain text (possibly with text IDs), '
-                        'observation file, Henry file.')
+                        help='Input file: plain text (possibly with text '
+                        'IDs), observation file, Henry file.')
     parser.add_argument('--outputdir', default=None,
                         help='Output directory. If input file defined, then '
                         'default is input file dir. Otherwise it\'s TMP_DIR.')
@@ -112,27 +111,27 @@ def main():
     # Parser pipeline
     if pa.parse:
         # Parsing and generating logical forms
-        if pa.lang == 'FA':
-            PARSER_PIPELINE = FARSI_PIPELINE
-            if pa.input:
-                PARSER_PIPELINE += ' ' + pa.input + ' ' + outputdir
-            LF2HENRY = 'python ' + PARSER2HENRY
-        elif pa.lang == 'ES':
-            PARSER_PIPELINE = SPANISH_PIPELINE
-            if pa.input:
-                PARSER_PIPELINE += ' ' + pa.input + ' ' + outputdir
-            LF2HENRY = 'python ' + PARSER2HENRY
-        elif pa.lang == 'RU':
-            PARSER_PIPELINE = RUSSIAN_PIPELINE
-            if pa.input:
-                PARSER_PIPELINE += ' ' + pa.input + ' ' + outputdir
-            LF2HENRY = 'python ' + PARSER2HENRY
-        elif pa.lang == 'EN':
-            PARSER_PIPELINE = 'python ' + ENGLISH_PIPELINE + \
+        if pa.lang == 'EN':
+            PARSER_PIPELINE = 'python2.7 ' + EN_PIPELINE + \
                 ' --tok --outputdir ' + outputdir + ' --fname ' + fname
             if pa.input:
                 PARSER_PIPELINE += ' --input ' + pa.input
-            LF2HENRY = 'python ' + BOXER2HENRY
+            LF2HENRY = 'python2.7 ' + BOXER2HENRY
+        elif pa.lang == 'ES':
+            PARSER_PIPELINE = ES_PIPELINE
+            if pa.input:
+                PARSER_PIPELINE += ' ' + pa.input + ' ' + outputdir
+            LF2HENRY = 'python2.7 ' + PARSER2HENRY
+        elif pa.lang == 'FA':
+            PARSER_PIPELINE = FA_PIPELINE
+            if pa.input:
+                PARSER_PIPELINE += ' ' + pa.input + ' ' + outputdir
+            LF2HENRY = 'python2.7 ' + PARSER2HENRY
+        elif pa.lang == 'RU':
+            PARSER_PIPELINE = RU_PIPELINE
+            if pa.input:
+                PARSER_PIPELINE += ' ' + pa.input + ' ' + outputdir
+            LF2HENRY = 'python2.7 ' + PARSER2HENRY
 
         parser_proc = Popen(PARSER_PIPELINE, shell=True, stdin=PIPE,
                             stdout=PIPE, stderr=None, close_fds=True)
@@ -159,7 +158,7 @@ def main():
         nl_output = lf2h_proc.communicate(input=parser_output)[0]
 
         # Save observations.
-        with open(os.path.join(outputdir, fname + ".obs"), "w") as f_l2h:
+        with open(os.path.join(outputdir, fname + ".obs"), "w") as f_lf2h:
             f_lf2h.write(nl_output)
 
     # Henry processing
@@ -213,7 +212,7 @@ def main():
     # Graphical output
     if pa.graph:
         # Parse possible 'allN' value
-        matchObj = re.match(r'all(\d+)', pa.graph, re.M|re.I)
+        matchObj = re.match(r'all(\d+)', pa.graph, re.M | re.I)
 
         # Henry inference done then use Henry output as input
         if not pa.henry and pa.input:
@@ -225,7 +224,7 @@ def main():
         # Generate proofgraphs for all sentences/texts with IDs ranging
         # from 1 to N
         if matchObj:
-            for i in range(1, int(matchObj.group(1))+1):
+            for i in range(1, int(matchObj.group(1)) + 1):
                 generate_proofgraph(str(i), fname, graph_input,
                                     henry_output, outputdir)
         # Generate proofgraph for specific sentence/text

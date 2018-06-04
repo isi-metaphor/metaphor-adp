@@ -15,7 +15,7 @@ class Argument(object):
     """
 
     def __init__(self, arg_type):
-        self.aid = None         # Unique ID of argument
+        self.aid = None  # Unique ID of argument
         self.type = arg_type
         self.index = None
         self.link = None
@@ -97,10 +97,10 @@ class Predicate(AbsPredicate):
         super(Predicate, self).__init__()
         self.word = word
         self.prefix = word.lemma
-        self.args = list(args) # TODO(zaytsev@usc.edu): remove list call
+        self.args = list(args)  # TODO(zaytsev@usc.edu): remove list call
         self.show_index = True
         self.show_postag = True
-        
+
     def __int__(self):
         return 0 if self.pred is None else 1
 
@@ -113,7 +113,7 @@ class EPredicate(AbsPredicate):
     def __init__(self, prefix, args=tuple()):
         super(EPredicate, self).__init__()
         self.prefix = prefix
-        self.args = list(args) # TODO(zaytsev@usc.edu): remove list call
+        self.args = list(args)  # TODO(zaytsev@usc.edu): remove list call
 
     def __repr__(self):
         return u"<EPredicate(prefix=%s, args=%r)>" % (self.prefix, self.args, )
@@ -270,7 +270,6 @@ class MaltConverter(object):
         self.s_count = 1
 
     def process(self, sent_count):
-
         self.initialize_words()
         self.preprocess()
 
@@ -413,9 +412,9 @@ class MaltConverter(object):
                         for i, a in enumerate(ep.args):
                             if a.resolve_link() == e_arg:
                                 if ep.prefix == "past":
-                                #     ep.args[i] = Argument.link(new_e)
-                                # else:
-                                        ep.args[i] = Argument.link(x_arg)
+                                    # ep.args[i] = Argument.link(new_e)
+                                    # else:
+                                    ep.args[i] = Argument.link(x_arg)
 
                 # # finally, add "exist" predicate
                 # ep = EPredicate("exist", args=[
@@ -461,7 +460,6 @@ class MaltConverter(object):
         #             self.extra_preds.append(ep)
 
     def handle_tense(self):
-
         for w in self.words:
             if w.vb and w.pred and not w.confirm_remove:
 
@@ -472,17 +470,15 @@ class MaltConverter(object):
                     ))
                     self.extra_preds.append(ep)
 
-                elif w.feats[3] == "f" and w.pred:  # if furure
+                elif w.feats[3] == "f" and w.pred:  # if future
                     ep = EPredicate("future", args=(
                         Argument.E(),
                         Argument.link(w.pred.e),
                     ))
                     self.extra_preds.append(ep)
 
-
     # TODO(zaytsev@usc.edu): deprecated
     def __reassign_copulas(self):
-
         copulas = dict()
         other_w = []
         words = self.words[:]
@@ -561,7 +557,8 @@ class MaltConverter(object):
             if w.pr:
                 if not hhead:
                     continue
-                if w.lemma in self.person_relative_pr and head.vb and hhead.nn and head.pred:
+                if w.lemma in self.person_relative_pr and head.vb and \
+                   hhead.nn and head.pred:
                     if hhead.feats[5] == "y" and hhead.pred:  # if animate
                         # 1. Person
                         ep = EPredicate("person", args=(
@@ -589,8 +586,8 @@ class MaltConverter(object):
                             )
 
                 # 4. Location
-                elif w.lemma in self.location_relative_pr and \
-                   head.vb and hhead.nn and head.pred and hhead.pred:
+                elif (w.lemma in self.location_relative_pr and
+                      head.vb and hhead.nn and head.pred and hhead.pred):
                     ep = EPredicate("loc", args=(
                         Argument.E(),
                         Argument.link(hhead.pred.args[1]),
@@ -652,7 +649,6 @@ class MaltConverter(object):
                     self.extra_preds.append(ep)
 
     def subordinate_whnominals(self):
-
         for w in self.words:
 
             head = w.head
@@ -682,7 +678,7 @@ class MaltConverter(object):
 
             # 4. I know whom you saw.
             if (w.lemma == u"кто" or w.lemma == u"что") and \
-               w.pr and head and head.pred and head.vb and\
+               w.pr and head and head.pred and head.vb and \
                hhead and hhead.vb and \
                (head.deprel == u"1-компл" or head.deprel == u"2-компл"):
                 new_x = Argument.X()
@@ -703,7 +699,8 @@ class MaltConverter(object):
                         break
 
             # 5. I know where you live.
-            if w.lemma == u"где" and head and hhead and head.pred and head.vb and hhead.vb:
+            if w.lemma == u"где" and head and hhead and head.pred and \
+               head.vb and hhead.vb:
                 for d in head.deps(filtr=["pr"]):
                     if d.deprel == u"предик":
                         new_x = Argument.X()
@@ -745,7 +742,8 @@ class MaltConverter(object):
 
             # 8. I know why you go.
             if (w.lemma == u"зачем" or w.lemma == u"почему") and \
-               head and head.vb and head.pred and hhead and hhead.pred and hhead.vb:
+               head and head.vb and head.pred and hhead and hhead.pred and \
+               hhead.vb:
                 new_x = Argument.X()
                 new_e = Argument.E()
                 ep1 = EPredicate("wh", args=(new_e, new_x))
@@ -881,7 +879,6 @@ class MaltConverter(object):
     copula_verbs = [u"быть", u"являться", u"находиться"]
 
     def apply_vb_rules(self, word):
-
         # 1. Link arguments: subject - second arg, direct object - third arg,
         #    indirect object - fourth arg. Direct obj can be a clause; then the
         #    head of the clause should be used as the verb argument.
@@ -893,14 +890,15 @@ class MaltConverter(object):
         deps = reversed(sorted(word.deps(), key=lambda d: d.deprel))
 
         for dep in deps:
-            
+
             if dep.pred:
-            
+
                 ddeps = list(dep.deps())
 
                 if dep.pr and len(ddeps) > 0:
                     d_object = dep.pred.e
-                elif dep.rb and dep.pred: # TODO(zaytsev@usc.edu): check when it does not have pred
+                elif dep.rb and dep.pred:
+                    # TODO(zaytsev@usc.edu): check when it does not have pred
                     d_object = dep.pred.e
                 elif not dep.nn:
                     new_dep = dep.unfold_dep(until_tag="nn")
@@ -1029,13 +1027,13 @@ class MaltConverter(object):
                 if len(ddeps) == 1 and ddeps[0].nn and \
                    nouns[0].pred and ddeps[0].pred and preps[0].pred:
                     preps[0].pred.args[1].link_to(nouns[0].pred.args[1],
-                        force=True)
+                                                  force=True)
                     preps[0].pred.args[2].link_to(ddeps[0].pred.args[1],
-                        force=True)
+                                                  force=True)
 
         # 6. Passive
         if head and head.vb and \
-            head.lemma == u"быть" and head.feats[3] == "s":
+           head.lemma == u"быть" and head.feats[3] == "s":
             for dep in head.deps(filtr=["nn"]):
                 if dep.deprel == u"предик" and dep.pred:
                     word.pred.args[2].link_to(dep.pred.args[1])
@@ -1134,9 +1132,8 @@ class MaltConverter(object):
     ]
 
     def apply_nn_rules(self, word):
-
-        # 1. Noun compounds: if there are noun compounds in the language you are
-        #    working with, use the predicate "nn" to express it.
+        # 1. Noun compounds: if there are noun compounds in the language you
+        #    are working with, use the predicate "nn" to express it.
 
         # TODO(zaytsev@udc.edu): implement this
 
@@ -1149,7 +1146,8 @@ class MaltConverter(object):
 
             if head.feats[4] == word.feats[4] and word.deprel == u"аппоз":
                 pass
-            elif word.feats[4] == "g" and head.pred and head.pred.args:  # if genitive case
+            # if genitive case
+            elif word.feats[4] == "g" and head.pred and head.pred.args:
                 ep = EPredicate("of-in", args=(
                     Argument.E(),
                     Argument.link(head.pred.args[1]),
@@ -1196,7 +1194,6 @@ class MaltConverter(object):
                 word.pred.args[1].link_to(head.pred.args[1])
 
     def apply_adj_rules(self, word):
-
         # 1. Adjectives share the second argument with the noun they are
         #    modifying
 
@@ -1205,7 +1202,6 @@ class MaltConverter(object):
             word.pred.args[1].link_to(head.pred.args[1])
 
     def apply_rb_rules(self, word):
-
         # 1. Second args of adverbs are verbs they are modifying.
 
         head = word.head
@@ -1213,7 +1209,6 @@ class MaltConverter(object):
             word.pred.args[1].link_to(head.pred.e)
 
     def apply_in_rules(self, word):
-
         head = word.head
 
         # 1. Verb + noun.
@@ -1398,10 +1393,9 @@ class MaltConverter(object):
                 ))
                 self.extra_preds.append(ep)
 
-
         # 3. because, while, when
 
-        # TODO(zaytsev@udc.edu): implement this
+        # TODO(zaytsev@usc.edu): implement this
 
     def apply_par_rules(self, word):
         self.remove_pred(word)
@@ -1462,11 +1456,13 @@ class MaltConverter(object):
                         break
             if not arg_2:
                 for p in self.initial_preds:
-                    if p != word.head.pred and p.word.vb and p.word.pred.args[2].resolve_link() == \
-                            word.head.pred.args[0].resolve_link():
+                    if p != word.head.pred and p.word.vb and \
+                       p.word.pred.args[2].resolve_link() == \
+                       word.head.pred.args[0].resolve_link():
                         target = p.args[1].resolve_link()
                         for dep in p.word.deps():
-                            if dep.pred and dep.nn and dep.pred.args[1].resolve_link() == target:
+                            if dep.pred and dep.nn and \
+                               dep.pred.args[1].resolve_link() == target:
                                 arg_2 = dep
                                 break
         elif word.head.pr:

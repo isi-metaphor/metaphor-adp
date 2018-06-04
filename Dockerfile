@@ -21,11 +21,6 @@ RUN apt-get clean -q
 
 ENV GUROBI_INSTALL /adp/external-tools/gurobi
 ENV GUROBI_HOME $GUROBI_INSTALL/linux64
-ENV PATH $PATH:$GUROBI_HOME/bin
-ENV CPLUS_INCLUDE_PATH $GUROBI_HOME/include:$CPLUS_INCLUDE_PATH
-ENV LD_LIBRARY_PATH $GUROBI_HOME/lib:$LD_LIBRARY_PATH
-ENV LIBRARY_PATH $GUROBI_HOME/lib:$LIBRARY_PATH
-ENV GRB_LICENSE_FILE $GUROBI_INSTALL/license/gurobi.lic
 
 RUN mkdir -p $GUROBI_INSTALL && \
     wget http://packages.gurobi.com/5.6/gurobi5.6.3_linux64.tar.gz && \
@@ -38,15 +33,19 @@ RUN mkdir -p $GUROBI_INSTALL && \
     rm -rf gurobi563 && \
     rm -f gurobi5.6.3_linux64.tar.gz
 
+ENV PATH $PATH:$GUROBI_HOME/bin
+ENV CPLUS_INCLUDE_PATH $GUROBI_HOME/include:$CPLUS_INCLUDE_PATH
+ENV LD_LIBRARY_PATH $GUROBI_HOME/lib:$LD_LIBRARY_PATH
+ENV LIBRARY_PATH $GUROBI_HOME/lib:$LIBRARY_PATH
+ENV GRB_LICENSE_FILE $GUROBI_INSTALL/license/gurobi.lic
+
 
 # Install Henry.
 
 WORKDIR /adp/external-tools
-
 RUN git clone https://github.com/isi-metaphor/henry-n700.git henry
 
 WORKDIR /adp/external-tools/henry
-
 RUN make -B
 
 

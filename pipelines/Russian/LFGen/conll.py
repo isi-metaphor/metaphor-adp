@@ -74,6 +74,7 @@ class CNJHelper(POSHelper):
 class PARHelper(POSHelper):
     pass
 
+
 class WordToken(object):
     postag_map = dict(V=("vb", 4, VBHelper), A=("adj", 2, ADJHelper),
                       N=("nn", 2, NNHelper), R=("rb", 2, RBHelper),
@@ -114,31 +115,37 @@ class WordToken(object):
         if not line and not word:
             return
 
-        self.id = int(line[0])      # ID. Token counter, starting at 1 for each
-                                    # new sentence.
-        self.form = line[1]         # FORM. Word form or punctuation symbol.
-        self.lemma = line[2]        # LEMMA. Lemma or stem (depending on
-                                    # particular data set) of word form, or an
-                                    # underscore if not available.
-        cpostag = line[3]           # CPOSTAG. Coarse-grained part-of-speech
-                                    # tag, where tagset depends on the language.
-        self.feats = line[5]        # FEATS. Unordered set of syntactic and/or
-                                    # morphological features (depending on the
-                                    # particular language), separated by a
-                                    # vertical bar (|), or an underscore if not
-                                    # available. See this for more details:
-                                    # corpus.leeds.ac.uk/mocky/msd-ru.html
-        self.head_id = int(line[6]) # HEAD. language HEAD. Head of the current
-                                    # token, which is either a value of ID or
-                                    # zero ('0'). Note that depending on the
-                                    # original treebank annotation, there may
-                                    # be multiple tokens with an ID of zero.
-        self.deprel = line[7]       # DEPREL. Dependency relation to the HEAD.
-                                    # The set of dependency relations depends
-                                    # on the particular language. Note that
-                                    # depending on the original treebank
-                                    # annotation, the dependency relation may
-                                    # be meaningful or simply 'ROOT'.
+        # ID. Token counter, starting at 1 for each new sentence.
+        self.id = int(line[0])
+
+        # FORM. Word form or punctuation symbol.
+        self.form = line[1]
+
+        # LEMMA. Lemma or stem (depending on particular data set) of word
+        # form, or an underscore if not available.
+        self.lemma = line[2]
+
+        # CPOSTAG. Coarse-grained part-of-speech tag, where tagset depends
+        # on the language.
+        cpostag = line[3]
+
+        # FEATS. Unordered set of syntactic and/or morphological features
+        # (depending on the particular language), separated by a vertical
+        # bar (|), or an underscore if not available. See this for more
+        # details: corpus.leeds.ac.uk/mocky/msd-ru.html
+        self.feats = line[5]
+
+        # HEAD. language HEAD. Head of the current token, which is either a
+        # value of ID or zero ('0'). Note that depending on the original
+        # treebank annotation, there may be multiple tokens with an ID of
+        # zero.
+        self.head_id = int(line[6])
+
+        # DEPREL. Dependency relation to the HEAD. The set of dependency
+        # relations depend on the particular language. Note that depending
+        # on the original treebank annotation, the dependency relation may
+        # be meaningful or simply 'ROOT'.
+        self.deprel = line[7]
 
         # Deprel types are defined in the following article:
         # http://www.aclweb.org/anthology-new/C/C08/C08-1081.pdf

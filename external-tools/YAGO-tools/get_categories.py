@@ -1,11 +1,10 @@
 #!/usr/bin/env python2.7
 # -*- coding: utf-8 -*-
 
+import sys
+from optparse import OptionParser
 import psycopg2
 import psycopg2.extras
-import sys
-import codecs
-from optparse import OptionParser
 
 CONN_STRING = "host='localhost' dbname='yago' user='yago' password='yago'"
 con = None
@@ -18,30 +17,48 @@ parser.add_option("-i", "--input", dest="inword",
 parser.add_option("-l", "--lang", dest="lang",
                   help="language (one of EN|RU|ES|FA)")
 parser.add_option("-s", "--substring", dest="substring", action="store_true",
-                  help="match input string as substring (default is exact match)",
+                  help="match input string as substring (default is exact "
+                  "match)",
                   default=False)
 parser.add_option("-c", "--casesensitive", dest="case_sensitive",
                   action="store_true",
-                  help="match input string as case-sensitive (default is case-insensitive)",
+                  help="match input string as case-sensitive (default is "
+                  "case-insensitive)",
                   default=False)
 parser.add_option("-p", "--preferredmeaning", dest="preferred_meaning",
                   action="store_true",
-                  help="return preferred meaning of category (default is NOT preferred)",
+                  help="return preferred meaning of category (default is "
+                  "NOT preferred)",
                   default=False)
 (options, args) = parser.parse_args()
 
 
 def main():
-    # Using distinct and only the category as output will not give duplicates
-    query = "(select distinct yf1.object as category from yagofacts yf1, yagofacts yf2 where yf2.predicate='rdfs:label' and yf2.object ilike '@@@word@@@' and yf2.subject=yf1.subject and yf1.predicate='rdf:type') UNION (select distinct yf2.subject as category from yagofacts yf2 where yf2.object ilike '@@@word@@@' and yf2.predicate='rdfs:label')"
+    # Using distinct and only the category as output; will not give duplicates
+    query = "(select distinct yf1.object as category " + \
+            "from yagofacts yf1, yagofacts yf2 " + \
+            "where yf2.predicate='rdfs:label' and " + \
+            "yf2.object ilike '@@@word@@@' and yf2.subject=yf1.subject " + \
+            "and yf1.predicate='rdf:type') UNION " + \
+            "(select distinct yf2.subject as category from yagofacts yf2 " +\
+            "where yf2.object ilike '@@@word@@@' and " + \
+            "yf2.predicate='rdfs:label')"
     # USE ONLY FOR TESTING; returns both subject and category, so category
-    # will not be distinct
-    # query_for_testing = "(select distinct yf2.object as subject,yf1.object as category from yagofacts yf1, yagofacts yf2 where yf2.predicate='rdfs:label' and yf2.object ilike '@@@word@@@' and yf2.subject ilike yf1.subject and yf1.predicate='rdf:type') UNION (select distinct yf2.object as subject,yf2.subject as category from yagofacts yf2 where yf2.object ilike '@@@word@@@' and yf2.predicate='rdfs:label')"
+    # will not be distinct.
+    # query_for_testing = "(select distinct yf2.object as subject, " + \
+    #     "yf1.object as category from yagofacts yf1, yagofacts yf2 where " + \
+    #     "yf2.predicate='rdfs:label' and yf2.object ilike '@@@word@@@' " + \
+    #     "and yf2.subject ilike yf1.subject and " + \
+    #     "yf1.predicate='rdf:type') UNION (select distinct yf2.object as " + \
+    #     "subject,yf2.subject as category from yagofacts yf2 where " + \
+    #     "yf2.object ilike '@@@word@@@' and yf2.predicate='rdfs:label')"
 
     if not options.inword:
-        parser.error("Must supply input string. (Example: -i \"Barack Obama\")")
+        parser.error("Must supply input string. "
+                     "(Example: -i \"Barack Obama\")")
     if not options.lang:
-        parser.error("Must supply language. (Example: -l EN ; allowed languages: EN|ES|RU|FA)")
+        parser.error("Must supply language. "
+                     "(Example: -l EN; allowed languages: EN|ES|RU|FA)")
 
     inword = options.inword
     lang = options.lang
