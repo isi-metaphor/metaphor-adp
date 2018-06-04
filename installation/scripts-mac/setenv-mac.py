@@ -22,6 +22,7 @@ with open(bashrc_file, 'a+') as f:
     f.write("\n# Metaphor ADP\n")
     f.write("export ADP_HOME=" + install_dir + "\n")
     f.write("export BOXER_DIR=" + install_dir + "/external-tools/boxer\n")
+    f.write("export HENRY_DIR=" + install_dir + "/external-tools/henry\n")
     f.write("export GUROBI_HOME=/Library/gurobi563/mac64\n")
     f.write("export GRB_LICENSE_FILE=$ADP_HOME/gurobi.lic\n")
 
