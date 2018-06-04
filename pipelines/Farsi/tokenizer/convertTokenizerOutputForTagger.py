@@ -24,12 +24,12 @@ while line != "":
 
     line = inputFile.readline()
     if line != "" and line.strip() == "":
-        outputFile.write(("%s" % " ".join(tokens)).encode('utf-8'))
+        outputFile.write(" ".join(tokens))
         tokens = []
         while (line != "" and line.strip() == ""):
             line = inputFile.readline()
 
-outputFile.write(("%s" % " ".join(tokens)).encode('utf-8'))
+outputFile.write(" ".join(tokens))
 
 inputFile.close()
 outputFile.close()
