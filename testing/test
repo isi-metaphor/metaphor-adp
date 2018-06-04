@@ -135,12 +135,14 @@ def main():
 
         req = urllib2.Request(url)
         req.add_header('Content-Type', 'application/json')
+        response = None
         try:
             response = urllib2.urlopen(req, json.dumps(data)).read()
             if debug:
                 print '--', response
         except urllib2.URLError as e:
-            print '--', response
+            if response:
+                print '--', response
             if e.errno != errno.ECONNRESET:
                 raise
             print '-- Connection reset by peer.'
