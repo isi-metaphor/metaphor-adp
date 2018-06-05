@@ -208,21 +208,29 @@ bash build_conceptnet.sh
 
 Please refer to http://nltk.googlecode.com/svn/trunk/doc/howto/wordnet.html
 
-* `similarity_wordnet.py`: using WordNet's relations: hypernym, hyponym, derivationlly related form, antonyms and similary meanings. Only support for English.
+* `similarity_wordnet.py`: using WordNet's relations: hypernym, hyponym,
+derivationally related form, antonyms and similary meanings. Only
+support for English.
 
-* `similarity_conceptnet.py`: Using conceptnet's graph to calculate the shortest path between two words. The similarity is 1/ length of the path. Only support for FA,ES,RU. The only issue is that the graph is too sparse and amount of nodes is small, so it often doesn't work.
+* `similarity_conceptnet.py`: Using conceptnet's graph to calculate the
+shortest path between two words. The similarity is 1 / length of the
+path. Only support for FA, ES, RU. The only issue is that the graph is
+too sparse and amount of nodes is small, so it often doesn't work.
 
-* `similarity_translation.py`: Using wiktionary.org' translation information, first translate two words into English, and then call similarity_wordnet.py to calculate similarity between the two English words. Support for ES,FA,RU.
+* `similarity_translation.py`: Using wiktionary.org' translation
+information, first translate two words into English, and then call
+`similarity_wordnet.py` to calculate similarity between the two English
+words. Support for ES, FA, RU.
 
 #### Get similarity results for a wiki paragraph
 
 * First, use the `get_paragraph.py` to find the paragraph which you are interested in, and parse it.
 ```
-python2.7 get_paragraph.py -i 'Nation' -l EN --stdout| python2.7 parse.py -l --common commonDIR --temp temp/temp.txt EN >temp/nation.txt
+python2.7 get_paragraph.py -i 'Nation' -l EN --stdout | python2.7 parse.py -l --common commonDIR --temp temp/temp.txt EN >temp/nation.txt
 ```
-where commonDIR = $METAPHOR_DIR/pipelines/common
+where commonDIR = `$METAPHOR_DIR/pipelines/common`
 
-* Use similarity.py to compute similarty:
+* Use `similarity.py` to compute similarity:
 ```
 python2.7 similarity.py -w nation -p nn -i temp/nation.txt -o temp/nation.rank.txt
 ```
