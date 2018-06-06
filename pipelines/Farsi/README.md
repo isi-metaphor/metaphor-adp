@@ -6,7 +6,7 @@ Farsi sentences.
 ## Running
 
 Tokenizing, tagging, parsing and LF generation can be invoked individually
-or altogether in a sequence using the LF_Pipeline module. It is also
+or altogether in a sequence using the `LF_Pipeline` module. It is also
 possible to pipe the output of each module to the next module.
 
 ### Running the Pipeline
@@ -25,16 +25,16 @@ Then run `LF_Pipeline`:
 ```
 
 If input and/or output files are not given as arguments, they are read
-from standard stream. Input file should be given as absolute paths.
+from standard stream. Input file should be given as absolute path.
 
 Example commands:
 
 ```
-./LF_Pipeline $METAPHOR_DIR/pipelines/Farsi/samples/sentence.txt \
-    $METAPHOR_DIR/pipelines/Farsi/samples/lf.txt
+./LF_Pipeline $METAPHOR_DIR/pipelines/Farsi/farsiText \
+    $METAPHOR_DIR/pipelines/Farsi/farsiText.lf
 
-< $METAPHOR_DIR/pipelines/Farsi/samples/sentence.txt \
-    ./LF_Pipeline > $METAPHOR_DIR/pipelines/Farsi/samples/lf.txt
+< $METAPHOR_DIR/pipelines/Farsi/farsiText \
+    ./LF_Pipeline > $METAPHOR_DIR/pipelines/Farsi/farsiText.lf
 ```
 
 ### Running Individual Modules
@@ -44,12 +44,12 @@ the Metaphor-ADP project and use absolute paths for input files.
 
 Running tokenizer:
 ```
-./tokenize [<input file>] [<output file>]
+./tokenizer/tokenize [<input file>] [<output file>]
 ```
 
 Running tagger:
 ```
-./tag [<input file>] [<output file>]
+./tokenizer/tag [<input file>] [<output file>]
 ```
 
 Running parser:
