@@ -5,7 +5,7 @@ import argparse
 import sys
 import os
 
-from subprocess import Popen, PIPE, STDOUT
+from subprocess import Popen, PIPE
 
 
 BOXER_DIR = os.environ['BOXER_DIR']
@@ -24,9 +24,7 @@ def main():
     pa = parser.parse_args()
 
     outputdir = pa.outputdir
-    fname = pa.fname
-    if not fname:
-        fname = 'tmp'
+    fname = pa.fname or 'tmp'
 
     # Tokenize
     if pa.tok:
@@ -47,26 +45,26 @@ def main():
 
     # Parse
     if pa.tok:
-        candcParser = BOXER_DIR + '/bin/candc ' + \
+        candc_parser = BOXER_DIR + '/bin/candc ' + \
                       '--models ' + BOXER_DIR + '/models/boxer ' + \
                       '--candc-printer boxer'
-        candc_proc = Popen(candcParser, shell=True, stdin=PIPE, stdout=PIPE,
+        candc_proc = Popen(candc_parser, shell=True, stdin=PIPE, stdout=PIPE,
                            stderr=None, close_fds=True)
         candc_output = candc_proc.communicate(input=tok_output)[0]
     else:
         if pa.input:
-            candcParser = BOXER_DIR + '/bin/candc ' + \
+            candc_parser = BOXER_DIR + '/bin/candc ' + \
                           '--input ' + pa.input + \
                           ' --models ' + BOXER_DIR + '/models/boxer ' + \
                           '--candc-printer boxer'
-            candc_proc = Popen(candcParser, shell=True, stdin=PIPE,
+            candc_proc = Popen(candc_parser, shell=True, stdin=PIPE,
                                stdout=PIPE, stderr=None, close_fds=True)
             candc_output = candc_proc.communicate()[0]
         else:
-            candcParser = BOXER_DIR + '/bin/candc ' + \
+            candc_parser = BOXER_DIR + '/bin/candc ' + \
                           '--models ' + BOXER_DIR + '/models/boxer ' + \
                           '--candc-printer boxer'
-            candc_proc = Popen(candcParser, shell=True, stdin=PIPE,
+            candc_proc = Popen(candc_parser, shell=True, stdin=PIPE,
                                stdout=PIPE, stderr=None, close_fds=True)
             candc_output = candc_proc.communicate(input=sys.stdin.read())[0]
 
@@ -74,6 +72,7 @@ def main():
         with open(os.path.join(outputdir, fname + ".ccg"), "w") as f_candc:
             f_candc.write(candc_output)
 
+    # Boxer
     boxer = BOXER_DIR + '/bin/boxer --semantics tacitus --resolve true --stdin'
     boxer_proc = Popen(boxer, shell=True, stdin=PIPE, stdout=PIPE,
                        stderr=None, close_fds=True)

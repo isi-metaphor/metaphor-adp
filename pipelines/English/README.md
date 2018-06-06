@@ -1,11 +1,8 @@
-English Semantic Parsing Pipeline
-=================================
+# English Semantic Parsing Pipeline
 
-**DESCRIPTION**
+English semantic parsing pipeline based on the Boxer semantic parser.
 
-English semantic parsing pipeline based on [Boxer](http://svn.ask.it.usyd.edu.au/trac/candc/wiki/boxer) semantic parser.
-
-* `Boxer_pipeline.py` – running tokenizer, CCG parser and Boxer sematic parser
+- `Boxer_pipeline.py`: run tokenizer, CCG parser, and Boxer sematic parser
 
 ```
 usage: Boxer_pipeline.py [-h] [--input INPUT] [--outputdir OUTPUTDIR] [--tok]
@@ -22,7 +19,8 @@ optional arguments:
 
 ```
 
-Alternative: `run_English.sh` runs the full processing pipline for tokenizing and parsing English text:
+Alternative: `run_English.sh` runs the full processing pipeline for
+tokenizing and parsing English text:
 
 ```
 ./run_English.sh [<path to input file> [<path to output dir]]
