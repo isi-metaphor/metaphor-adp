@@ -1,29 +1,25 @@
 #!/bin/bash
 
-inputFile="${1:-/dev/stdin}"
-outputFileName="${2:-/dev/stdout}"
+# Usage:
+#   ./LF_Pipeline <input> <output>
+# or
+#   ./LF_Pipeline <input>
+# or
+#   < <input> ./LF_Pipeline
 
-farsiPipelineDir=$METAPHOR_DIR/pipelines/Farsi
+INPUT_FILE="${1:-/dev/stdin}"
+OUTPUT_FILE="${2:-/dev/stdout}"
+
+FA_PIPELINE_DIR=$METAPHOR_DIR/pipelines/Farsi
 
 if [ -d "$2" ]; then
-	$farsiPipelineDir/tokenizer/farsilemm.py \
-        $farsiPipelineDir/tokenizer/lemmatizationDict.txt < $inputFile |
-	tee $2/preproc_o.txt |
-	$farsiPipelineDir/tokenizer/tokenize |
-	tee $2/tokenizer_o.txt |
-	$farsiPipelineDir/tokenizer/addDot.py |
-	tee $2/dot_o.txt |
-	$farsiPipelineDir/tokenizer/tag |
-	tee $2/tagger_o.txt |
-	$farsiPipelineDir/tokenizer/taggedFileToCONLL.py |
-	tee $2/parser_o.txt
-	#$farsiPipelineDir/createLF > /dev/stdout
+    $FA_PIPELINE_DIR/pre-parser < $INPUT_FILE |
+    tee $2/preparse_o.txt |
+    $FA_PIPELINE_DIR/parse |
+    tee $2/parser_o.txt |
+    $FA_PIPELINE_DIR/createLF > /dev/stdout
 else
-	$farsiPipelineDir/tokenizer/farsilemm.py \
-        $farsiPipelineDir/tokenizer/lemmatizationDict.txt < $inputFile |
-	$farsiPipelineDir/tokenizer/tokenize |
-	$farsiPipelineDir/tokenizer/addDot.py |
-	$farsiPipelineDir/tokenizer/tag |
-	$farsiPipelineDir/tokenizer/taggedFileToCONLL.py > $outputFileName
-	#$farsiPipelineDir/createLF > $outputFileName
+    $FA_PIPELINE_DIR/pre-parser < $INPUT_FILE |
+    $FA_PIPELINE_DIR/parse |
+    $FA_PIPELINE_DIR/createLF > $OUTPUT_FILE
 fi
