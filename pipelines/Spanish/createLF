@@ -1,8 +1,8 @@
 #!/bin/bash
 
-parsedInputFile="${1:-/dev/stdin}"
-lfFileName="${2:-/dev/stdout}"
+PARSED_INPUT_FILE="${1:-/dev/stdin}"
+LF_FILE_NAME="${2:-/dev/stdout}"
 
 ES_PIPELINE_DIR=$METAPHOR_DIR/pipelines/Spanish
 
-cat $parsedInputFile | python2.7 $ES_PIPELINE_DIR/LFGen/malt_to_prop.py > $lfFileName
+< $PARSED_INPUT_FILE $ES_PIPELINE_DIR/LFGen/malt_to_prop.py > $LF_FILE_NAME

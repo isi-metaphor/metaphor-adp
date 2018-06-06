@@ -11,13 +11,13 @@ resources used within the pipeline.
 ./run_spanish.sh [<absolute path to input> [<absolute path to output>]]
 ```
 
-To run the pipeline, call run_spanish.sh with the absolute path to the input
-file as an argument. By default the system outputs the logical forms of the
-sentences in the input file to stdout. The second (optional) argument can be a
-file or a directory. If the optional argument is a file, the system output
-will be redirected there. If it is a directory, the intermediate files
-(tokenized, tagged, etc.) will be put into that directory, and the final
-output will go to stdout.
+To run the pipeline, call `run_spanish.sh` with the absolute path to the
+input file as an argument. By default the system outputs the logical forms
+of the sentences in the input file to stdout. The second (optional)
+argument can be a file or a directory. If the optional argument is a file,
+the system output will be redirected there. If it is a directory, the
+intermediate files (tokenized, tagged, etc.) will be put into that
+directory, and the final output will go to stdout.
 
 
 ### Subdirectories
@@ -66,7 +66,7 @@ python2.7 malt_to_prop.py -i <input_file>
    - uses nltk.tokenize (PunktSentenceTokenizer, WordPunctTokenizer, and
      TreebankWordTokenizer)
 - POS Tagging
- - treetagger 3.2 (http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/)
+ - treetagger 3.2 (http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger)
    - Spanish parameter file available from the same page
 - Parsing
   - MaltParser 1.5 (http://www.maltparser.org/download.html)
