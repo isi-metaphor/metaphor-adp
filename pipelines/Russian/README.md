@@ -4,7 +4,8 @@
 
 Semantic parsing pipeline for Russian.
 
-- `LFGen/malt_ru.py`: converter for Malt parser output to logical form format:
+- `parse-to-lf/malt_ru.py`: converter for Malt parser output to logical form
+format:
 
 ```
 python2.7 malt_ru.py [--input <input file>] [--output <output file>] \
@@ -14,11 +15,11 @@ python2.7 malt_ru.py [--input <input file>] [--output <output file>] \
 Output should be generated using
 [this](http://corpus.leeds.ac.uk/mocky/msd-ru.html) part of speech tagset.
 
-- `run_russian.sh`: this script runs the full processing pipline for
+- `run-ru.sh`: this script runs the full processing pipeline for
   parsing Russian:
 
 ```
-./run_russian.sh [<absolute path to input> [<absolute path to output>]]
+./run-ru.sh [<absolute path to input> [<absolute path to output>]]
 ```
 
 

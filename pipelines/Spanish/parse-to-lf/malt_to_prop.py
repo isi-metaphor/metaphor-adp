@@ -37,12 +37,11 @@ def to_sents(infile):
                     wordID, sent_count]
             sentence.append(wordText)
             words.append(info)
-        else:
+        elif sentence and words:
             full_sents.append(sentence)
             all_words.append(words)
-            sent_count += 1
-            if sentence == ['.'] or sentIDre.search(sentence[0]):
-                sent_count -= 1
+            if sentence != ['.'] and not sentIDre.search(sentence[0]):
+                sent_count += 1
             sentence = []
             new_prop_sent = []
             words = []
@@ -70,7 +69,7 @@ def prop_to_dict(props, eCount, xCount, uCount):
     sent_dict = {}
     new_prop_sent = []
     question = False
-    # loop over stored list of words and save initial props
+    # Loop over stored list of words and save initial props
     for prop in props:
         new_prop = []
         ID = prop[0]
@@ -113,7 +112,7 @@ def prop_to_dict(props, eCount, xCount, uCount):
 
 def replace_args(prop_sent, sent_dict):
     prop_dict = {}
-    # loop over propositions, fill in variables, and print
+    # Loop over propositions, fill in variables, and print
     position = 0
     for prop in prop_sent:
         token = prop[0]
@@ -342,7 +341,7 @@ def inherit_args(head, wordID, sent_dict):
     if sent_dict[head][7] == "vb" and \
        not nounArg.search(sent_dict[wordID][6][1]):
         previous = sent_dict[wordID][6][1]
-        # inherit the subject of the head
+        # Inherit the subject of the head
         sent_dict[wordID][6][1] = sent_dict[head][6][1]
         # hack to replace subject of linked verbs that occur previously,
         # since my code is slop
@@ -916,7 +915,7 @@ def main():
     usage = "usage: %prog [options] <input_file>"
     parser = optparse.OptionParser(usage=usage)
     parser.add_option("-i", "--inFile", dest="input",
-                      action="store", help="read from FILE", metavar="FILE")
+                      action="store", help="Read from FILE", metavar="FILE")
     (options, args) = parser.parse_args()
 
     lines = open(options.input, "r") if options.input else sys.stdin
@@ -925,6 +924,7 @@ def main():
     logging.basicConfig(filename=logfileHandleAndName[1], level=logging.DEBUG)
 
     full_sents, all_words = to_sents(lines)
+
     sent_count = 0
     parse_count = 0
     metaFound = False
@@ -987,11 +987,6 @@ def main():
             except Exception, err:
                 logging.exception(" ".join(sent))
                 logging.exception(str(err))
-            # prop_sent, prop_dict, eCount, xCount, uCount = prop_to_dict(
-            #     words, eCount, xCount, uCount)
-            # prop_dict = replace_args(prop_sent, prop_dict)
-            # print to_print(prop_dict, sent)
-            # print ""
             eCount = 1
             xCount = 1
             uCount = 1

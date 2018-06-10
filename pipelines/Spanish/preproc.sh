@@ -5,12 +5,12 @@
 # export METAPHOR_DIR=~/code/Metaphor-ADP
 
 # Usage:
-#   ./pre-parser <input> <output>
+#   ./preproc [input] [output]
 # or
-#   ./pre-parser <input>
+#   ./preproc [input]
 # or
-#   ./pre-parser
-# <input> and <output> should be absolute paths.
+#   < [input] ./pre-parser
+# [input] and [output] should be absolute paths.
 
 PLATFORM=$(uname -s | tr '[:upper:]' '[:lower:]')
 

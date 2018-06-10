@@ -31,15 +31,15 @@ from extract_CMs_from_hypotheses import *
 
 METAPHOR_DIR = os.environ['METAPHOR_DIR']
 HENRY_DIR = os.environ['HENRY_DIR']
-TMP_DIR = os.environ['TMP_DIR']
+TMP_DIR = os.environ.get('TMP_DIR', '/tmp')
 
-BOXER2HENRY = "%s/pipelines/English/Boxer2Henry.py" % METAPHOR_DIR
-PARSER2HENRY = "%s/pipelines/common/IntParser2Henry.py" % METAPHOR_DIR
+BOXER2HENRY = METAPHOR_DIR + "/pipelines/English/parse-to-lf/Boxer2Henry.py"
+PARSER2HENRY = METAPHOR_DIR + "/pipelines/common/IntParser2Henry.py"
 
-EN_PIPELINE = "%s/pipelines/English/Boxer_pipeline.py" % METAPHOR_DIR
-ES_PIPELINE = "%s/pipelines/Spanish/run_spanish.sh" % METAPHOR_DIR
-FA_PIPELINE = "%s/pipelines/Farsi/LF_Pipeline" % METAPHOR_DIR
-RU_PIPELINE = "%s/pipelines/Russian/run_russian.sh" % METAPHOR_DIR
+EN_PIPELINE = METAPHOR_DIR + "/pipelines/English/run-en.sh"
+ES_PIPELINE = METAPHOR_DIR + "/pipelines/Spanish/run-es.sh"
+FA_PIPELINE = METAPHOR_DIR + "/pipelines/Farsi/run-fa.sh"
+RU_PIPELINE = METAPHOR_DIR + "/pipelines/Russian/run-ru.sh"
 
 # Compiled knowledge bases
 EN_KBPATH = "%s/KBs/English/English_compiled_KB.da" % METAPHOR_DIR
@@ -167,31 +167,24 @@ def main():
     if pa.parse:
         # Parsing and generating logical forms
         if pa.lang == 'EN':
-            PARSER_PIPELINE = 'python2.7 ' + EN_PIPELINE + \
-              ' --tok --outputdir ' + outputdir + ' --fname ' + fname
-            if pa.input:
-                PARSER_PIPELINE += ' --input ' + pa.input
-            LF2HENRY = 'python2.7 ' + BOXER2HENRY
+            PARSER_PIPELINE = EN_PIPELINE
+            LF2HENRY = BOXER2HENRY
             KBPATH = EN_KBPATH
         elif pa.lang == 'ES':
             PARSER_PIPELINE = ES_PIPELINE
-            if pa.input:
-                PARSER_PIPELINE += ' ' + pa.input + ' ' + outputdir
-            LF2HENRY = 'python2.7 ' + PARSER2HENRY
+            LF2HENRY = PARSER2HENRY
             KBPATH = ES_KBPATH
         elif pa.lang == 'FA':
             PARSER_PIPELINE = FA_PIPELINE
-            if pa.input:
-                PARSER_PIPELINE += ' ' + pa.input + ' ' + outputdir
-            LF2HENRY = 'python2.7 ' + PARSER2HENRY
+            LF2HENRY = PARSER2HENRY
             KBPATH = FA_KBPATH
         elif pa.lang == 'RU':
             PARSER_PIPELINE = RU_PIPELINE
-            if pa.input:
-                PARSER_PIPELINE += ' ' + pa.input + ' ' + outputdir
-            LF2HENRY = 'python2.7 ' + PARSER2HENRY
+            LF2HENRY = PARSER2HENRY
             KBPATH = RU_KBPATH
 
+        if pa.input:
+            PARSER_PIPELINE += ' ' + pa.input + ' ' + outputdir
 
         parser_proc = Popen(PARSER_PIPELINE, shell=True, stdin=PIPE,
                             stdout=PIPE, stderr=None, close_fds=True)
