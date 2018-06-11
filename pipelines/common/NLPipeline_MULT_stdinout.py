@@ -28,15 +28,15 @@ from subprocess import Popen, PIPE, STDOUT
 
 METAPHOR_DIR = os.environ['METAPHOR_DIR']
 HENRY_DIR = os.environ['HENRY_DIR']
-TMP_DIR = os.environ['TMP_DIR']
+TMP_DIR = os.environ.get('TMP_DIR', '/tmp')
 
-BOXER2HENRY = "%s/pipelines/English/Boxer2Henry.py" % METAPHOR_DIR
-PARSER2HENRY = "%s/pipelines/common/IntParser2Henry.py" % METAPHOR_DIR
+BOXER2HENRY = METAPHOR_DIR + "/pipelines/English/parse-to-lf/Boxer2Henry.py"
+PARSER2HENRY = METAPHOR_DIR + "/pipelines/common/IntParser2Henry.py"
 
-EN_PIPELINE = "%s/pipelines/English/Boxer_pipeline.py" % METAPHOR_DIR
-ES_PIPELINE = "%s/pipelines/Spanish/run_spanish.sh" % METAPHOR_DIR
-FA_PIPELINE = "%s/pipelines/Farsi/LF_Pipeline" % METAPHOR_DIR
-RU_PIPELINE = "%s/pipelines/Russian/run_russian.sh" % METAPHOR_DIR
+EN_PIPELINE = METAPHOR_DIR + "/pipelines/English/run-en.sh"
+ES_PIPELINE = METAPHOR_DIR + "/pipelines/Spanish/run-es.sh"
+FA_PIPELINE = METAPHOR_DIR + "/pipelines/Farsi/run-fa.sh"
+RU_PIPELINE = METAPHOR_DIR + "/pipelines/Russian/run-ru.sh"
 
 
 def generate_proofgraph(id, fname, graph_input, henry_output, outputdir):
@@ -112,34 +112,28 @@ def main():
     if pa.parse:
         # Parsing and generating logical forms
         if pa.lang == 'EN':
-            PARSER_PIPELINE = 'python2.7 ' + EN_PIPELINE + \
-                ' --tok --outputdir ' + outputdir + ' --fname ' + fname
-            if pa.input:
-                PARSER_PIPELINE += ' --input ' + pa.input
-            LF2HENRY = 'python2.7 ' + BOXER2HENRY
+            PARSER_PIPELINE = EN_PIPELINE
+            LF2HENRY = BOXER2HENRY
         elif pa.lang == 'ES':
             PARSER_PIPELINE = ES_PIPELINE
-            if pa.input:
-                PARSER_PIPELINE += ' ' + pa.input + ' ' + outputdir
-            LF2HENRY = 'python2.7 ' + PARSER2HENRY
+            LF2HENRY = PARSER2HENRY
         elif pa.lang == 'FA':
             PARSER_PIPELINE = FA_PIPELINE
-            if pa.input:
-                PARSER_PIPELINE += ' ' + pa.input + ' ' + outputdir
-            LF2HENRY = 'python2.7 ' + PARSER2HENRY
+            LF2HENRY = PARSER2HENRY
         elif pa.lang == 'RU':
             PARSER_PIPELINE = RU_PIPELINE
-            if pa.input:
-                PARSER_PIPELINE += ' ' + pa.input + ' ' + outputdir
-            LF2HENRY = 'python2.7 ' + PARSER2HENRY
+            LF2HENRY = PARSER2HENRY
+
+        if pa.input:
+            PARSER_PIPELINE += ' ' + pa.input + ' ' + outputdir
 
         parser_proc = Popen(PARSER_PIPELINE, shell=True, stdin=PIPE,
-                            stdout=PIPE, stderr=None, close_fds=True)
+                            stdout=PIPE, stderr=sys.stderr, close_fds=True)
         # If there is an input file, it is passed as a parameter to the
-        # parsing pipeline.
+        # parsing pipeline, above.
         if pa.input:
             parser_output = parser_proc.communicate()[0]
-        # If there is no input file, parsing pipeline reads from stdin.
+        # If there is no input file, the parsing pipeline reads from stdin.
         else:
             parser_output = parser_proc.communicate(input=sys.stdin.read())[0]
 
@@ -154,7 +148,7 @@ def main():
 
         # Convert logical forms to Henry input (observations).
         lf2h_proc = Popen(LF2HENRY, shell=True, stdin=PIPE, stdout=PIPE,
-                          stderr=None, close_fds=True)
+                          stderr=sys.stderr, close_fds=True)
         nl_output = lf2h_proc.communicate(input=parser_output)[0]
 
         # Save observations.

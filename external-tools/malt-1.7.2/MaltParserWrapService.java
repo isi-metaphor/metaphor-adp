@@ -10,7 +10,7 @@ import org.maltparser.core.syntaxgraph.DependencyStructure;
 import org.maltparser.core.syntaxgraph.edge.Edge;
 import org.maltparser.core.syntaxgraph.node.DependencyNode;
 
-public class MaltParserWrap {
+public class MaltParserWrapService {
 
     public static void main(String[] args) {
         try {
@@ -71,7 +71,6 @@ public class MaltParserWrap {
                     } else {
                         writer.write("END");
                         writer.flush();
-                        System.exit(0);
                     }
                 }
             }

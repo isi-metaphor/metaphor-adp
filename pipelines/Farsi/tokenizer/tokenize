@@ -1,13 +1,10 @@
 #!/bin/bash
 
-inputFile="${1:-/dev/stdin}"
-outputFile="${2:-/dev/stdout}"
+INPUT_FILE="${1:-/dev/stdin}"
+OUTPUT_FILE="${2:-/dev/stdout}"
 
-farsiPipelineDir=$METAPHOR_DIR/pipelines/Farsi
+FA_TOK_DIR=$METAPHOR_DIR/pipelines/Farsi/tokenizer
 
-replaceSemiSpaceWithDashInInputCommand=$farsiPipelineDir/tokenizer/replaceSemiSpaceWithDashInInput.py
-convertTokenizerOutputForTaggerCommand=$farsiPipelineDir/tokenizer/convertTokenizerOutputForTagger.py
-TOKENIZER_BIN=$METAPHOR_DIR/pipelines/Farsi/tokenizer/utf8-tokenize.perl
-
-$replaceSemiSpaceWithDashInInputCommand < $inputFile | $TOKENIZER_BIN | \
-    $convertTokenizerOutputForTaggerCommand  >$outputFile
+$FA_TOK_DIR/replaceSemiSpaceWithDashInInput.py \
+    < $INPUT_FILE | $FA_TOK_DIR/utf8-tokenize.perl |
+    $FA_TOK_DIR/convertTokenizerOutputForTagger.py >$OUTPUT_FILE

@@ -71,6 +71,7 @@ public class MaltParserWrap {
                     } else {
                         writer.write("END");
                         writer.flush();
+                        System.exit(0);
                     }
                 }
             }
