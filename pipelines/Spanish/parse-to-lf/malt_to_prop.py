@@ -43,9 +43,8 @@ def to_sents(infile):
             if sentence != ['.'] and not sentIDre.search(sentence[0]):
                 sent_count += 1
             sentence = []
-            new_prop_sent = []
             words = []
-            IDFlag = False
+            IDflag = False
     infile.close()
     return full_sents, all_words
 
@@ -56,7 +55,7 @@ def createLongID(wordID, token):
         IDflag = False
     else:
         allIDs = []
-        for word in token.split("_"):
+        for _ in token.split("_"):
             singleID = '%0*d' % (3, wordID)
             wordID += 1
             allIDs.append(singleID)
@@ -115,7 +114,7 @@ def replace_args(prop_sent, sent_dict):
     # Loop over propositions, fill in variables, and print
     position = 0
     for prop in prop_sent:
-        token = prop[0]
+        #token = prop[0]
         lemma = prop[1]
         pos = prop[2]
         head = prop[3]
@@ -182,7 +181,7 @@ def replace_args(prop_sent, sent_dict):
             sent_dict = handle_negation(head, wordID, sent_dict)
         if ((tag == "wh") or (tag == "whq")) and realHead(sent_dict, head):
             sent_dict = handle_wh(head, wordID, sent_dict)
-    for key, prop in sent_dict.items():
+    for _, prop in sent_dict.items():
         position += 1
         token = prop[0]
         lemma = prop[1]
@@ -220,17 +219,17 @@ def handle_wh(head, wordID, sent_dict):
     """Handle all wh words"""
     extra = determine_wh_helper(sent_dict[wordID][1])
     sent_dict[wordID][1] = ""
-    first_key = int(re.split("[a-z]", str(sorted(sent_dict.items())[0][0]))[0])
+    #first_key = int(re.split("[a-z]", str(sorted(sent_dict.items())[0][0]))[0])
     if sent_dict[head][7] == "vb" or sent_dict[head][7] == "in":
         headHead = sent_dict[head][3]
         if headHead == 0:
             sent_dict[head][6][2] = sent_dict[wordID][6][0]
-            for key, values in sent_dict.items():
+            for _, values in sent_dict.items():
                 # Look for the direct object with the same head as the
                 # current word
                 if (values[4] == "cd") and (values[3] == sent_dict[wordID][3]):
                     if values[7] == "vb":
-                        sent_dict, newKey = add_new_entry(
+                        sent_dict, _ = add_new_entry(
                             sent_dict, extra, sent_dict[wordID][6][1],
                             sent_dict[values[5]][6][0], sent_dict[wordID][8])
                     else:
@@ -253,7 +252,7 @@ def handle_wh(head, wordID, sent_dict):
             elif (sent_dict[headHead][7] == "nn" and
                   realHead(sent_dict, headHead)):
                 sent_dict[wordID][6].append("R")
-                sent_dict, NewKey = add_new_entry(
+                sent_dict, _ = add_new_entry(
                     sent_dict, extra, sent_dict[headHead][6][1],
                     sent_dict[head][6][0], sent_dict[wordID][8])
                 return sent_dict
@@ -261,7 +260,7 @@ def handle_wh(head, wordID, sent_dict):
 
 
 def det_to_pr(head, wordID, sent_dict):
-    headHead = sent_dict[head][3]
+    #headHead = sent_dict[head][3]
     if sent_dict[wordID][1] in thingProList and sent_dict[head][7] != "nn" \
        and sent_dict[wordID][2] != "p":
         sent_dict[wordID][7] = "thing"
@@ -786,10 +785,6 @@ def cardinal_number(lemma):
     return lemma
 
 
-def add_args(args, arg, count):
-    args.append
-
-
 def pronoun_tag(lemma):
     if lemma in heProList:
         return "male"
@@ -889,7 +884,7 @@ def nextMeta(nextSentenceW1):
 def to_print(prop_dict, sent):
     prop_count = 0
     printable = ""
-    for key, prop in sorted(prop_dict.items()):
+    for _, prop in sorted(prop_dict.items()):
         prop_count += 1
         if prop[1] == "" and prop[2] in insertList:
             printable += (prop[2] + "(" + ",".join(prop[3]) + ")")
@@ -916,7 +911,7 @@ def main():
     parser = optparse.OptionParser(usage=usage)
     parser.add_option("-i", "--inFile", dest="input",
                       action="store", help="Read from FILE", metavar="FILE")
-    (options, args) = parser.parse_args()
+    (options, _) = parser.parse_args()
 
     lines = open(options.input, "r") if options.input else sys.stdin
 
@@ -928,7 +923,6 @@ def main():
     sent_count = 0
     parse_count = 0
     metaFound = False
-    prevmeta = "prev"
     metastring = "meta"
     meta_sentences = []
     meta_props = []

@@ -5,19 +5,15 @@ PLATFORM=$(uname -s | tr '[:upper:]' '[:lower:]')
 RU_PIPELINE_DIR=$METAPHOR_DIR/pipelines/Russian
 
 TREE_TAGGER_BIN=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/bin
-TREE_TAGGER_CMD=$METAPHOR_DIR/external-tools/tree-tagger-3.2/cmd
-TREE_TAGGER_LIB=$METAPHOR_DIR/external-tools/tree-tagger-3.2/$PLATFORM/lib
 TREE_TAGGER_OPT="-lemma -token -sgml -quiet"
 TAGGER_BIN=$TREE_TAGGER_BIN/tree-tagger
-
-MALT_DIR=$METAPHOR_DIR/external-tools/malt-1.5
 
 TOKENIZER_BIN=$RU_PIPELINE_DIR/tokenizer/nltk_rtokenizer.py
 TAGGER_PAR=$RU_PIPELINE_DIR/tokenizer/russian.par
 LEMMATIZER_BIN=$RU_PIPELINE_DIR/tokenizer/lemmatiser.pl
 MALT_IFORMAT=$RU_PIPELINE_DIR/tokenizer/make-malt.pl
 
-CURRENT_DIR=`pwd`
+CURRENT_DIR=$(pwd)
 cd $RU_PIPELINE_DIR/tokenizer
 
 if [ -d "$2" ]; then
