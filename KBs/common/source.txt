@@ -1,13 +1,11 @@
 ;; -*- Mode: Lisp -*-
 
-;; Language-independent Axioms
-;; Katya Ovchinnikova, Ross Israel, Jonathan Gordon
+;; Language-independent Axioms: Metaphor Sources
+;; Jonathan Gordon, Ross Israel, Katya Ovchinnikova
 
 
-;; TODO:
-;; These are only lightly cleaned up since the June 2014 source list revision,
-;; and we still aren't consistent enough across languages about our mapping
-;; axioms and our roles for these to be useful.
+;; TODO: Update to use the predicates for source domains, subdomains, and
+;; roles, rather than the old I# language-independent predicates.
 
 
 ;; Abyss
