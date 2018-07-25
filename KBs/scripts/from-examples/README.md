@@ -1,4 +1,4 @@
-# README: KBs/Scripts/from-examples
+# README: KBs/scripts/from-examples
 Jonathan Gordon, 2018-07-25
 
 These are scripts to generate axioms from the example sentences in the
