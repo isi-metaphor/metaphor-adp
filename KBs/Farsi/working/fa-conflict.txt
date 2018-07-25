@@ -2,396 +2,106 @@
 
 ;;
 ;; Farsi Lexical Axioms: Conflict
+;; Jonathan Gordon, Niloofar Montazeri
 ;;
-
-;; Conflict and adversary come together if we have adversary words like enemy
-;; (B (name styzh-krd#kn)
-;;    (=> (^ (conflict e1 x y g h) (adversary e1 y x c))
-;;        (^ (krd#kn-vb e1 x u1 u2) (styzh-nn e3 x1) (NVE e4 x1 e1))))
-
-;;
-;; (adversary e1 x y c)
-;;
-
-(B (name dshmn)
-   (=> (adversary e1 x y c :0.9)
-       (dshmn-nn e2 x)))
-
-(B (name dshmn2)
-   (=> (adversary e1 x y c :0.9)
-       (dshmnan-nn e2 x)))
-
-(B (name bdkhvah)
-   (=> (adversary e1 x y c :0.9)
-       (bdkhvah-nn e2 x)))
-
-(B (name bdkhvah2)
-   (=> (adversary e1 x y c :0.9)
-       (bdkhvahan-nn e2 x)))
-
-(B (name rghyb)
-   (=> (adversary e1 x y c :0.9)
-       (rghyb-nn e2 x)))
-
-(B (name rghyb2)
-   (=> (adversary e1 x y c :0.9)
-       (rghba-nn e2 x)))
-
-(B (name edv)
-   (=> (adversary e1 x y c :0.9)
-       (edv-nn e2 x)))
-
-(B (name khsm)
-   (=> (adversary e1 x y c :0.9)
-       (khsm-nn e2 x)))
-
-(B (name hryf)
-   (=> (adversary e1 x y c :0.9)
-       (hryf-nn e2 x)))
-
-(B (name trf)
-   (=> (adversary e1 x y c :0.9)
-       (trf-nn e2 x)))
-
-(B (name trf2)
-   (=> (adversary e1 x y c :0.9)
-       (trfyn-nn e2 x)))
-
-
-;; Manual
-
-(B (name adversary-of)
-   (=> (adversary e1 x y c :0.9)
-       (^ (adversary e1 u x c) (of-in e2 x y))))
-
-(B (name adversary-of2)
-   (=> (adversary e1 x y c :0.9)
-       (^ (adversary e1 u x c) (nn e2 x y))))
 
 
 ;;
-;; (aim e1 x w y)
+;; Conflict
 ;;
-
-(B (name nshanh-rftn)
-   (=> (aim e x w y :0.9)
-       (^ (rftn-nn e1 e) (nshanh-nn e3 x1) (NE e4 e x1))))
-
-(B (name nshanh-rft#rv)
-   (=> (aim e1 x w y :0.9)
-       (^ (rft#rv-vb e1 x w y) (nshanh-nn e3 x1) (NVE e4 x1 e1))))
-
-(B (name nshanh-rft#rv2)
-   (=> (aim e1 x w y :0.9)
-       (^ (rft#rv-vb e1 x w y) (nshanh-nn e3 x1) (ENC e4 x1 e1))))
-
-(B (name nshanh-grftn)
-   (=> (aim e x w y :0.9)
-       (^ (grftn-nn e1 e) (nshanh-nn e3 x1) (NE e4 e x1))))
-
-(B (name nshanh-grft#gyr)
-   (=> (aim e1 x w y :0.9)
-       (^ (grft#gyr-vb e1 x w y) (nshanh-nn e3 x1) (NVE e4 x1 e1))))
-
-(B (name nshanh-grft#gyr2)
-   (=> (aim e1 x w y :0.9)
-       (^ (grft#gyr-vb e1 x w y) (nshanh-nn e3 x1) (ENC e4 x1 e1))))
-
-(B (name nshan-krd#kn)
-   (=> (aim e1 x w y :0.9)
-       (^ (krd#kn-vb e1 x w y) (nshan-nn e3 x1) (NVE e4 x1 e1))))
-
-(B (name nshan-krd#kn2)
-   (=> (aim e1 x w y :0.9)
-       (^ (krd#kn-vb e1 x w y) (nshan-nn e3 x1) (ENC e4 x1 e1))))
-
-(B (name nshan-krdn)
-   (=> (aim e x w y :0.9)
-       (^ (krdn-nn e1 e) (nshan-nn e3 x1) (NE e4 e x1))))
-
-(B (name hdf-grft#gyr)
-   (=> (aim e1 x w y :0.9)
-       (^ (grft#gyr-vb e1 x w y) (hdf-nn e3 x1) (NVE e4 x1 e1))))
-
-(B (name hdf-grft#gyr2)
-   (=> (aim e1 x w y :0.9)
-       (^ (grft#gyr-vb e1 x w y) (hdf-nn e3 x1) (ENC e4 x1 e1))))
-
-(B (name hdf-grftn)
-   (=> (aim e x w y :0.9)
-       (^ (grftn-nn e1 e) (hdf-nn e3 x1) (NE e4 e x1))))
-
-
-;; Manual
-
-(B (name aim-towards)
-   (=> (aim e1 x u1 y :0.9)
-       (^ (aim e1 x u1 u2) (towards e2 e1 y))))
-
-(B (name towards)
-   (=> (towards e2 e y :0.9)
-       (^ (bh-in e1 e s) (side e3 s) (nn e4 s y))))
-
-(B (name trf3)
-   (=> (side e3 s :0.9)
-       (trf-nn e4 s)))
-
-(B (name smt)
-   (=> (side e3 s :0.9)
-       (smt-nn e4 s)))
-
-(B (name sv)
-   (=> (side e3 s :0.9)
-       (sv-nn e4 s)))
-
-(B (name janb)
-   (=> (side e3 s :0.9)
-       (janb-nn e4 s)))
-
-
-;;
-;; (attack e1 x y)
-;;
-
-(B (name hjmh)
-   (=> (attack e1 x y :0.9)
-       (hjmh-nn e2 e1)))
-
-(B (name hmlh)
-   (=> (attack e1 x y :0.9)
-       (hmlh-nn e2 e1)))
-
-(B (name hjvm)
-   (=> (attack e1 x y :0.9)
-       (hjvm-nn e2 e1)))
-
-(B (name yvrsh)
-   (=> (attack e1 x y :0.9)
-       (yvrsh-nn e2 e1)))
-
-(B (name terz)
-   (=> (attack e1 x y :0.9)
-       (terz-nn e2 e1)))
-
-(B (name hmlh-krdn)
-   (=> (attack e x y :0.9)
-       (^ (krdn-nn e1 e) (hmlh-nn e3 x1) (NE e4 e x1))))
-
-(B (name hmlh-krd#kn)
-   (=> (attack e1 x y :0.9)
-       (^ (krd#kn-vb e1 x u1 u2) (hmlh-nn e3 x1) (NVE e4 x1 e1))))
-
-(B (name hmlh-krd#kn2)
-   (=> (attack e1 x y :0.9)
-       (^ (krd#kn-vb e1 x u1 u2) (hmlh-nn e3 x1) (ENC e4 x1 e1))))
-
-(B (name hmlh-vr-shdn)
-   (=> (attack e x y :0.9)
-       (^ (vr-shdn-nn e1 e) (hmlh-nn e3 x1) (NE e4 e x1))))
-
-(B (name hmlh-vr-shd)
-   (=> (attack e1 x y :0.9)
-       (^ (vr-shd-vb e1 x u1 u2) (hmlh-nn e3 x1) (NVE e4 x1 e1))))
-
-(B (name hmlh-vr-shd2)
-   (=> (attack e1 x y :0.9)
-       (^ (vr-shd-vb e1 x u1 u2) (hmlh-nn e3 x1) (ENC e4 x1 e1))))
-
-
-(B (name hjvm-aavrdn)
-   (=> (attack e x y :0.9)
-       (^ (aavrdn-nn e1 e) (hjvm-nn e3 x1) (NE e4 e x1))))
-
-(B (name hjvm-brdn)
-   (=> (attack e x y :0.9)
-       (^ (brdn-nn e1 e) (hjvm-nn e3 x1) (NE e4 e x1))))
-
-(B (name hjvm-brd#br)
-   (=> (attack e1 x y :0.9)
-       (^ (brd#br-vb e1 x u1 u2) (hjvm-nn e3 x1) (NVE e4 x1 e1))))
-
-(B (name hjvm-brd#br2)
-   (=> (attack e1 x y :0.9)
-       (^ (brd#br-vb e1 x u1 u2) (hjvm-nn e3 x1) (ENC e4 x1 e1))))
-
-
-(B (name tjavz-krdn)
-   (=> (attack e x y :0.9)
-       (^ (krdn-nn e1 e) (tjavz-nn e3 x1) (NE e4 e x1))))
-
-(B (name tjavz-krd#kn)
-   (=> (attack e1 x y :0.9)
-       (^ (krd#kn-vb e1 x u1 u2) (tjavz-nn e3 x1) (NVE e4 x1 e1))))
-
-(B (name tjavz-krd#kn2)
-   (=> (attack e1 x y :0.9)
-       (^ (krd#kn-vb e1 x u1 u2) (tjavz-nn e3 x1) (ENC e4 x1 e1))))
-
-
-(B (name hjmh-krdn)
-   (=> (attack e x y :0.9)
-       (^ (krdn-nn e1 e) (hjmh-nn e3 x1) (NE e4 e x1))))
-
-(B (name hjmh-krd#kn)
-   (=> (attack e1 x y :0.9)
-       (^ (krd#kn-vb e1 x u1 u2) (hjmh-nn e3 x1) (NVE e4 x1 e1))))
-
-(B (name hjmh-krd#kn2)
-   (=> (attack e1 x y :0.9)
-       (^ (krd#kn-vb e1 x u1 u2) (hjmh-nn e3 x1) (ENC e4 x1 e1))))
-
-
-(B (name yvrsh-brdn)
-   (=> (attack e x y :0.9)
-       (^ (brdn-nn e1 e) (yvrsh-nn e3 x1) (NE e4 e x1))))
-
-(B (name yvrsh-brd#br)
-   (=> (attack e1 x y :0.9)
-       (^ (brd#br-vb e1 x u1 u2) (yvrsh-nn e3 x1) (NVE e4 x1 e1))))
-
-(B (name yvrsh-brd#br2)
-   (=> (attack e1 x y :0.9)
-       (^ (brd#br-vb e1 x u1 u2) (yvrsh-nn e3 x1) (ENC e4 x1 e1))))
-
-
-(B (name terz-krdn)
-   (=> (attack e x y :0.9)
-       (^ (krdn-nn e1 e) (terz-nn e3 x1) (NE e4 e x1))))
-
-(B (name terz-krd#kn)
-   (=> (attack e1 x y :0.9)
-       (^ (krd#kn-vb e1 x u1 u2) (terz-nn e3 x1) (NVE e4 x1 e1))))
-
-(B (name terz-krd#kn2)
-   (=> (attack e1 x y :0.9)
-       (^ (krd#kn-vb e1 x u1 u2) (terz-nn e3 x1) (ENC e4 x1 e1))))
-
-
-;; Manual
-
-(B (name attack-towards)
-   (=> (attack e1 x y :0.9)
-       (^ (attack e1 x u) (towards e2 e1 y))))
-
-(B (name attack-to)
-   (=> (attack e1 x y :0.9)
-       (^ (attack e1 x u) (bh-in e2 e1 y))))
-
-
-;;
-;; (bullet w)
-;;
-
-(B (name glvlh)
-   (=> (bullet w :0.9)
-       (glvlh-nn e2 x)))
-
-
-;;
-;; (compete e1 x y c)
-;;
-
-(B (name rghabt)
-   (=> (compete e1 x y c :0.9)
-       (rghabt-nn e2 e1)))
-
-(B (name msabghh)
-   (=> (compete e1 x y c :0.9)
-       (msabghh-nn e2 e1)))
-
-(B (name hm-chshmy)
-   (=> (compete e1 x y c :0.9)
-       (hm-chshmy-nn e2 e1)))
-
-(B (name compete-krdn)
-   (=> (compete e u1 u2 u3 :0.9)
-       (^ (krdn-nn e1 e) (compete x1 u1 u2 u3) (NE e4 e x1))))
-
-(B (name compete-krd#kn)
-   (=> (compete e1 x u2 u3 :0.9)
-       (^ (krd#kn-vb e1 x u1 u2) (compete x1 u1 u2 u3) (NVE e4 x1 e1))))
-
-(B (name compete-krd#kn2)
-   (=> (compete e1 x u2 u3 :0.9)
-       (^ (krd#kn-vb e1 x u1 u2) (compete x1 u1 u2 u3) (ENC e4 x1 e1))))
-
-(B (name compete-dashtn)
-   (=> (compete e u1 u2 u3 :0.9)
-       (^ (dashtn-nn e1 e) (compete x1 u1 u2 u3) (NE e4 e x1))))
-
-(B (name compete-dasht#dar)
-   (=> (compete e1 x u2 u3 :0.9)
-       (^ (dasht#dar-vb e1 x u1 u2) (compete x1 u1 u2 u3) (NVE e4 x1 e1))))
-
-(B (name compete-dasht#dar3)
-   (=> (compete e1 x u2 u3 :0.9)
-       (^ (dasht#dar-vb e1 x u1 u2) (compete x1 u1 u2 u3) (ENC e4 x1 e1))))
-
-
-(B (name msabghh-dadn)
-   (=> (compete e x y c :0.9)
-       (^ (dadn-nn e1 e) (msabghh-nn e3 x1) (NE e4 e x1))))
-
-(B (name msabghh-dad#dh)
-   (=> (compete e1 x y c :0.9)
-       (^ (dad#dh-vb e1 x u1 u2) (msabghh-nn e3 x1) (NVE e4 x1 e1))))
-
-(B (name msabghh-dad#dh2)
-   (=> (compete e1 x y c :0.9)
-       (^ (dad#dh-vb e1 x u1 u2) (msabghh-nn e3 x1) (ENC e4 x1 e1))))
-
-;; Manual
-
-(B (name compete-with)
-   (=> (compete e1 x y c :0.9)
-       (^ (compete e1 x y c) (ba-in e2 e1 y))))
-
-
-;;
-;; (conflict e x y g h)
-;;
-
-;; N-e
-
-(B (name tzad)
+;; (conflict c x y g h):
+;;   c is a conflict with adversaries x and y who have goals g and h,
+;;   respectively
+
+;; Conflict Nouns
+
+(B (name conflict/tzad)
+   (=> (conflict c x y g h :0.9)
+       (tzad-nn e1 c)))
+(B (name conflict/تضاد)
+   (=> (conflict c x y g h :0.9)
+       (تضاد-nn e1 c)))
+
+(B (name conflict/mnaghshh)
+   (=> (conflict c x y g h :0.9)
+       (mnaghshh-nn e1 c)))
+(B (name conflict/مناقشه)
+   (=> (conflict c x y g h :0.9)
+       (مناقشه-nn e1 c)))
+
+(B (name struggle/kshmksh)
+   (=> (conflict c x y g h :0.9)
+       (kshmksh-nn e1 c)))
+(B (name struggle/کشمکش)
+   (=> (conflict c x y g h :0.9)
+       (کشمکش-nn e1 c)))
+
+(B (name collision/brkhvrd)
+   (=> (conflict c x y g h :0.9)
+       (brkhvrd-nn e1 c)))
+(B (name collision/برخورد)
+   (=> (conflict c x y g h :0.9)
+       (برخورد-nn e1 c)))
+
+(B (name battle/nbrd)
+   (=> (conflict c x y g h :0.9)
+       (nbrd-nn e1 c)))
+(B (name battle/نبرد)
+   (=> (conflict c x y g h :0.9)
+       (نبرد-nn e1 c)))
+
+(B (name conflict/styzh)
+   (=> (conflict c x y g h :0.9)
+       (styzh-nn e1 c)))
+(B (name conflict/ستیزه)
+   (=> (conflict c x y g h :0.9)
+       (ستیزه-nn e1 c)))
+
+(B (name confrontation/styz)
+   (=> (conflict c x y g h :0.9)
+       (styz-nn e1 c)))
+(B (name confrontation/ستیز)
+   (=> (conflict c x y g h :0.9)
+       (ستیز-nn e1 c)))
+
+(B (name contradiction/mghayrt)
    (=> (conflict e1 x y g h :0.9)
-       (tzad-nn e2 e1)))
-
-(B (name mnaghshh)
+       (mghayrt-nn e2 e1)))
+(B (name contradiction/مغایرت)
    (=> (conflict e1 x y g h :0.9)
-       (mnaghshh-nn e2 e1)))
+       (مغایرت-nn e2 e1)))
 
-(B (name kshmksh)
+(B (name struggle/kshaksh)
    (=> (conflict e1 x y g h :0.9)
-       (kshmksh-nn e2 e1)))
-
-(B (name brkhvrd)
+       (kshaksh-nn e2 e1)))
+(B (name struggle/کشاکش)
    (=> (conflict e1 x y g h :0.9)
-       (brkhvrd-nn e2 e1)))
+       (کشاکش-nn e2 e1)))
 
-(B (name nbrd)
+(B (name incompatibility/nasazgary)
    (=> (conflict e1 x y g h :0.9)
-       (nbrd-nn e2 e1)))
+       (nasazgary-nn e2 e1)))
+(B (name incompatibility/ناسازگاری)
+   (=> (conflict e1 x y g h :0.9)
+       (ناسازگاری-nn e2 e1)))
 
-(B (name styzh)
-   (=> (conflict e1 x y g h :0.9) (styzh-nn e2 e1)))
-(B (name styz)
-   (=> (conflict e1 x y g h :0.9) (styz-nn e2 e1)))
-(B (name mghayrt)
-   (=> (conflict e1 x y g h :0.9) (mghayrt-nn e2 e1)))
-(B (name kshaksh)
-   (=> (conflict e1 x y g h :0.9) (kshaksh-nn e2 e1)))
-(B (name nasazgary)
-   (=> (conflict e1 x y g h :0.9) (nasazgary-nn e2 e1)))
-(B (name styzh-jvyy)
-   (=> (conflict e1 x y g h :0.9) (styzh-jvyy-nn e2 e1)))
-(B (name styzhjvyy)
-   (=> (conflict e1 x y g h :0.9) (styzhjvyy-nn e2 e1)))
+(B (name pugnacity/styzh-jvyy)
+   (=> (conflict e1 x y g h :0.9)
+       (styzh-jvyy-nn e2 e1)))
+(B (name pugnacity/styzhjvyy)
+   (=> (conflict e1 x y g h :0.9)
+       (styzhjvyy-nn e2 e1)))
+(B (name pugnacity/ستیزهجویی)
+   (=> (conflict e1 x y g h :0.9)
+       (ستیزهجویی-nn e2 e1)))
 
-
-(B (name tzad-dashtn)
+(B (name have-conflict/tzad-dashtn)
    (=> (conflict e x y g h :0.9)
        (^ (dashtn-nn e1 e) (tzad-nn e3 x1) (NE e4 e x1))))
+(B (name have-conflict/داشتن-تضاد)
+   (=> (conflict e x y g h :0.9)
+       (^ (داشتن-nn e1 e) (تضاد-nn e3 x1) (NE e4 e x1))))
+
 (B (name tzad-dasht#dar)
    (=> (conflict e1 x y g h :0.9)
        (^ (dasht#dar-vb e1 x u1 u2) (tzad-nn e3 x1) (NVE e4 x1 e1))))
@@ -520,194 +230,714 @@
    (=> (conflict e1 x y g h :0.9)
        (^ (bvd#bash-vb e2 x u1 u2) (nasazgar-nn e3 x1) (not e1 e2))))
 
+
 (B (name jng)
-   (=> (conflict e x y g h :0.9) (jng-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (jng-nn e2 e)))
+
 (B (name jngydn)
-   (=> (conflict e u1 u2 u3 u4 :0.9) (jngydn-nn e2 e)))
+   (=> (conflict e u1 u2 u3 u4 :0.9)
+       (jngydn-nn e2 e)))
+
 (B (name jngyd#jng)
-   (=> (conflict e x u2 u3 u4 :0.9) (jngyd#jng-vb e x u1 u2)))
+   (=> (conflict e x u2 u3 u4 :0.9)
+       (jngyd#jng-vb e x u1 u2)))
+
 
 (B (name jdal)
-   (=> (conflict e x y g h :0.9) (jdal-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (jdal-nn e2 e)))
+
 (B (name pykar)
-   (=> (conflict e x y g h :0.9) (pykar-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (pykar-nn e2 e)))
+
 (B (name nzae)
-   (=> (conflict e x y g h :0.9) (nzae-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (nzae-nn e2 e)))
+
 (B (name rzm)
-   (=> (conflict e x y g h :0.9) (rzm-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (rzm-nn e2 e)))
+
 (B (name mharbh)
-   (=> (conflict e x y g h :0.9) (mharbh-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (mharbh-nn e2 e)))
+
 (B (name mshajrh)
-   (=> (conflict e x y g h :0.9) (mshajrh-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (mshajrh-nn e2 e)))
+
 (B (name devy)
-   (=> (conflict e x y g h :0.9) (devy-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (devy-nn e2 e)))
+
 (B (name deva)
-   (=> (conflict e x y g h :0.9) (deva-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (deva-nn e2 e)))
+
 (B (name prkhash)
-   (=> (conflict e x y g h :0.9) (prkhash-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (prkhash-nn e2 e)))
+
 (B (name mbarzh)
-   (=> (conflict e x y g h :0.9) (mbarzh-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (mbarzh-nn e2 e)))
+
 (B (name tnaze)
-   (=> (conflict e x y g h :0.9) (tnaze-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (tnaze-nn e2 e)))
+
 (B (name mnazeh)
-   (=> (conflict e x y g h :0.9) (mnazeh-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (mnazeh-nn e2 e)))
+
 (B (name mnazeat)
-   (=> (conflict e x y g h :0.9) (mnazeat-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (mnazeat-nn e2 e)))
+
 (B (name mearzh)
-   (=> (conflict e x y g h :0.9) (mearzh-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (mearzh-nn e2 e)))
+
 (B (name mearzat)
-   (=> (conflict e x y g h :0.9) (mearzat-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (mearzat-nn e2 e)))
+
 (B (name msaf)
-   (=> (conflict e x y g h :0.9) (msaf-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (msaf-nn e2 e)))
+
 (B (name zdvkhvrd)
-   (=> (conflict e x y g h :0.9) (zdvkhvrd-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (zdvkhvrd-nn e2 e)))
+
 (B (name karzar)
-   (=> (conflict e x y g h :0.9) (karzar-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (karzar-nn e2 e)))
+
 (B (name hrb)
-   (=> (conflict e x y g h :0.9) (hrb-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (hrb-nn e2 e)))
+
 (B (name mshajrat)
-   (=> (conflict e x y g h :0.9) (mshajrat-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (mshajrat-nn e2 e)))
+
 (B (name edavt)
-   (=> (conflict e x y g h :0.9) (edavt-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (edavt-nn e2 e)))
+
 (B (name akhtlaf)
-   (=> (conflict e x y g h :0.9) (akhtlaf-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (akhtlaf-nn e2 e)))
+
 (B (name msabghh3)
-   (=> (conflict e x y g h :0.9) (msabghh-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (msabghh-nn e2 e)))
+
 (B (name hm-aavry)
-   (=> (conflict e x y g h :0.9) (hm-aavry-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (hm-aavry-nn e2 e)))
+
 (B (name msht-zny)
-   (=> (conflict e x y g h :0.9) (msht-zny-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (msht-zny-nn e2 e)))
+
 (B (name bvks)
-   (=> (conflict e x y g h :0.9) (bvks-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (bvks-nn e2 e)))
+
 (B (name shvrsh)
-   (=> (conflict e x y g h :0.9) (shvrsh-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (shvrsh-nn e2 e)))
+
 (B (name anghlab)
-   (=> (conflict e x y g h :0.9) (anghlab-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (anghlab-nn e2 e)))
+
 (B (name tghyan)
-   (=> (conflict e x y g h :0.9) (tghyan-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (tghyan-nn e2 e)))
+
 (B (name shvrydn)
-   (=> (conflict e x y g h :0.9) (shvrydn-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (shvrydn-nn e2 e)))
+
 (B (name dr-aftadn)
-   (=> (conflict e x y g h :0.9) (dr-aftadn-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (dr-aftadn-nn e2 e)))
+
 (B (name draftadn)
-   (=> (conflict e x y g h :0.9) (draftadn-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (draftadn-nn e2 e)))
+
 (B (name zdyt3)
-   (=> (conflict e x y g h :0.9) (zdyt-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (zdyt-nn e2 e)))
+
 
 (B (name mkhalft)
-   (=> (conflict e x y g h :0.9) (mkhalft-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (mkhalft-nn e2 e)))
+
 (B (name paydary)
-   (=> (conflict e x y g h :0.9) (paydary-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (paydary-nn e2 e)))
+
 (B (name mghavmt)
-   (=> (conflict e x y g h :0.9) (mghavmt-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (mghavmt-nn e2 e)))
+
 (B (name aystadgy)
-   (=> (conflict e x y g h :0.9) (aystadgy-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (aystadgy-nn e2 e)))
+
 (B (name astghamt)
-   (=> (conflict e x y g h :0.9) (astghamt-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (astghamt-nn e2 e)))
+
 (B (name thml)
-   (=> (conflict e x y g h :0.9) (thml-nn e2 e)))
+   (=> (conflict e x y g h :0.9)
+       (thml-nn e2 e)))
+
 
 (B (name akhtlaf-dashtn)
    (=> (conflict e x y g h :0.9)
        (^ (dashtn-nn e2 e0) (akhtlaf-nn e3 e) (NE e4 e0 e))))
+
 (B (name edavt-dashtn)
    (=> (conflict e x y g h :0.9)
        (^ (dashtn-nn e2 e0) (edavt-nn e3 e) (NE e4 e0 e))))
+
 (B (name zdyt-dashtn)
    (=> (conflict e x y g h :0.9)
        (^ (dashtn-nn e2 e0) (zdyt-nn e3 e) (NE e4 e0 e))))
+
 (B (name mkhalft-krdn)
    (=> (conflict e x y g h :0.9)
        (^ (krdn-nn e2 e0) (mkhalft-nn e3 e) (NE e4 e0 e))))
+
 (B (name kshaksh-dashtn)
    (=> (conflict e x y g h :0.9)
        (^ (dashtn-nn e2 e0) (kshaksh-nn e3 e) (NE e4 e0 e))))
 
+
 (B (name thml-dashtn)
    (=> (conflict e x y g h :0.9)
        (^ (dashtn-nn e2 e0) (thml-nn e3 e) (NE e4 e0 e))))
+
 (B (name tab-avrdn)
    (=> (conflict e x y g h :0.9)
        (^ (avrdn-nn e2 e0) (tab-nn e3 e) (NE e4 e0 e))))
+
 (B (name sbght-grftn)
    (=> (conflict e x y g h :0.9)
        (^ (grftn-nn e2 e0) (sbght-nn e3 e) (NE e4 e0 e))))
+
 (B (name sbght-jvyydn)
    (=> (conflict e x y g h :0.9)
        (^ (jvyydn-nn e2 e0) (sbght-nn e3 e) (NE e4 e0 e))))
+
 (B (name astghamt-vrzydn)
    (=> (conflict e x y g h :0.9)
        (^ (vrzydn-nn e2 e0) (astghamt-nn e3 e) (NE e4 e0 e))))
 
+
 (B (name jng-krdn)
    (=> (conflict e2 u1 u2 u3 u4 :0.9)
        (^ (krdn-nn e2 e) (jng-nn e3 x1) (NE e4 e x1))))
+
 (B (name jng-krd#kn)
    (=> (conflict e1 x u2 u3 u4 :0.9)
        (^ (krd#kn-vb e1 x u1 u2) (jng-nn e3 x1) (NVE e4 x1 e1))))
+
 (B (name jng-krd#kn3)
    (=> (conflict e x u2 u3 u4 :0.9)
        (^ (krd#kn-vb e1 x u1 u2) (jng-nn e3 x1) (ENC e4 x1 e1))))
+
 (B (name mharbh-krd#kn)
    (=> (conflict e x u2 u3 u4 :0.9)
        (^ (krd#kn-vb e1 x u1 u2) (mharbh-nn e3 x1) (NVE e4 x1 e1))))
+
 (B (name mharbh-krd#kn3)
    (=> (conflict e x u2 u3 u4 :0.9)
        (^ (krd#kn-vb e1 x u1 u2) (mharbh-nn e3 x1) (ENC e4 x1 e1))))
+
 (B (name mharbh-krdn)
    (=> (conflict e x u2 u3 u4 :0.9)
        (^ (krdn-nn e2 e) (mharbh-nn e3 x1) (NE e4 e x1))))
+
 (B (name nzae-krd#kn)
    (=> (conflict e x u2 u3 u4 :0.9)
        (^ (krd#kn-vb e1 x u1 u2) (nzae-nn e3 x1) (NVE e4 x1 e1))))
+
 (B (name nzae-krd#kn3)
    (=> (conflict e x u2 u3 u4 :0.9)
        (^ (krd#kn-vb e1 x u1 u2) (nzae-nn e3 x1) (ENC e4 x1 e1))))
+
 (B (name nzae-krdn)
    (=> (conflict e u1 u2 u3 u4 :0.9)
        (^ (krdn-nn e2 e) (nzae-nn e3 x1) (NE e4 e x1))))
+
 (B (name nzae-dasht#dar)
    (=> (conflict e x u2 u3 u4 :0.9)
        (^ (dasht#dar-vb e1 x u1 u2) (nzae-nn e3 x1) (NVE e4 x1 e1))))
+
 (B (name nzae-dasht#dar3)
    (=> (conflict e x u2 u3 u4 :0.9)
        (^ (dasht#dar-vb e1 x u1 u2) (nzae-nn e3 x1) (ENC e4 x1 e1))))
+
 (B (name nzae-dashtn)
    (=> (conflict e u1 u2 u3 u4 :0.9)
        (^ (dashtn-nn e2 e) (nzae-nn e3 x1) (NE e4 e x1))))
 
-;; J
+
+;; Conflict Adjectives
+
 (B (name rvbrv)
    (=> (conflict e x y g h :0.9) (rvbrv-adj e2 e)))
+
 (B (name mvajh)
    (=> (conflict e x y g h :0.9) (mvajh-adj e2 e)))
+
 (B (name mane)
    (=> (conflict e x y g h :0.9) (mane-adj e2 e)))
 
-;; dar tazad boodan
-;; motazad boodan
-;; motazad
 
 ;;
-;; (crosshairs u)
+;; Adversary
 ;;
+;; (adversary e1 x y c):
+;;   x and y are rivals in the context of conflict c
+
+;; Conflict and adversary come together if we have adversary words like
+;; "enemy".
+;; (B (name styzh-krd#kn)
+;;    (=> (^ (conflict e1 x y g h) (adversary e1 y x c))
+;;        (^ (krd#kn-vb e1 x u1 u2) (styzh-nn e3 x1) (NVE e4 x1 e1))))
+
+
+;; Adversary Nouns
+
+(B (name enemy/dshmn)
+   (=> (adversary e1 x y c :0.9)
+       (dshmn-nn e2 x)))
+(B (name enemy/دشمن)
+   (=> (adversary e1 x y c :0.9)
+       (دشمن-nn e2 x)))
+
+(B (name enemies/dshmnan)
+   (=> (adversary e1 x y c :0.9)
+       (dshmnan-nn e2 x)))
+(B (name enemies/دشمنان)
+   (=> (adversary e1 x y c :0.9)
+       (دشمنان-nn e2 x)))
+
+(B (name bdkhvah)
+   (=> (adversary e1 x y c :0.9)
+       (bdkhvah-nn e2 x)))
+(B (name بدخواه)
+   (=> (adversary e1 x y c :0.9)
+       (بدخواه-nn e2 x)))
+
+(B (name bdkhvahan)
+   (=> (adversary e1 x y c :0.9)
+       (bdkhvahan-nn e2 x)))
+(B (name بدخواهان)
+   (=> (adversary e1 x y c :0.9)
+       (بدخواهان-nn e2 x)))
+
+(B (name rival/rghyb)
+   (=> (adversary e1 x y c :0.9)
+       (rghyb-nn e2 x)))
+(B (name rival/رقیب)
+   (=> (adversary e1 x y c :0.9)
+       (رقیب-nn e2 x)))
+
+(B (name rivals/rghyba)
+   (=> (adversary e1 x y c :0.9)
+       (rghba-nn e2 x)))
+(B (name rivals/رقیبا)
+   (=> (adversary e1 x y c :0.9)
+       (رقیبا-nn e2 x)))
+
+(B (name edv)
+   (=> (adversary e1 x y c :0.9)
+       (edv-nn e2 x)))
+(B (name ادو)
+   (=> (adversary e1 x y c :0.9)
+       (ادو-nn e2 x)))
+
+(B (name enemy/khsm)
+   (=> (adversary e1 x y c :0.9)
+       (khsm-nn e2 x)))
+(B (name enemy/خصم)
+   (=> (adversary e1 x y c :0.9)
+       (خصم-nn e2 x)))
+
+(B (name opponent/hryf)
+   (=> (adversary e1 x y c :0.9)
+       (hryf-nn e2 x)))
+(B (name opponent/حریف)
+   (=> (adversary e1 x y c :0.9)
+       (حریف-nn e2 x)))
+
+(B (name side/trf)
+   (=> (adversary e1 x y c :0.9)
+       (trf-nn e2 x)))
+(B (name side/طرف)
+   (=> (adversary e1 x y c :0.9)
+       (طرف-nn e2 x)))
+
+(B (name sides/trfyn)
+   (=> (adversary e1 x y c :0.9)
+       (trfyn-nn e2 x)))
+(B (name sides/طرفین)
+   (=> (adversary e1 x y c :0.9)
+       (طرفین-nn e2 x)))
+
+
+;; Adversary Prepositional Phrases
+
+(B (name adversary-of)
+   (=> (adversary e1 x y c :0.9)
+       (^ (adversary e1 u x c) (of-in e2 x y))))
+
+(B (name adversary-of2)
+   (=> (adversary e1 x y c :0.9)
+       (^ (adversary e1 u x c) (nn e2 x y))))
+
 
 ;;
-;; (goal e1 g x)
+;; Goal
+;;
+;; (goal e g x):
+;;   x has goal g
+
+(B (name goal/hdf)
+   (=> (goal e1 g x :0.9)
+       (hdf-nn e2 x)))
+(B (name goal/هدف)
+   (=> (goal e1 g x :0.9)
+       (هدف-nn e2 x)))
+
+(B (name goals/ahdaf)
+   (=> (goal e1 g x :0.9)
+       (ahdaf-nn e2 x)))
+(B (name goals/اهداف)
+   (=> (goal e1 g x :0.9)
+       (اهداف-nn e2 x)))
+
+(B (name purpose/mnzvr)
+   (=> (goal e1 g x :0.9)
+       (mnzvr-nn e2 x)))
+(B (name purpose/منظور)
+   (=> (goal e1 g x :0.9)
+       (منظور-nn e2 x)))
+
+(B (name destination/mghsd)
+   (=> (goal e1 g x :0.9)
+       (mghsd-nn e2 x)))
+(B (name destination/مقصد)
+   (=> (goal e1 g x :0.9)
+       (مقصد-nn e2 x)))
+
+(B (name destinations/mghasd)
+   (=> (goal e1 g x :0.9)
+       (mghasd-nn e2 x)))
+(B (name destinations/مقاصد)
+   (=> (goal e1 g x :0.9)
+       (مقاصد-nn e2 x)))
+
+(B (name purpose/mghsvd)
+   (=> (goal e1 g x :0.9)
+       (mghsvd-nn e2 x)))
+(B (name purpose/مقصود)
+   (=> (goal e1 g x :0.9)
+       (مقصود-nn e2 x)))
+
+
+;;
+;; Attack
+;;
+;; (attack e1 x y):
+;;   x attacks y
+
+;; Attack Nouns
+
+(B (name hjmh)
+   (=> (attack e1 x y :0.9)
+       (hjmh-nn e2 e1)))
+
+(B (name hmlh)
+   (=> (attack e1 x y :0.9)
+       (hmlh-nn e2 e1)))
+
+(B (name hjvm)
+   (=> (attack e1 x y :0.9)
+       (hjvm-nn e2 e1)))
+
+(B (name yvrsh)
+   (=> (attack e1 x y :0.9)
+       (yvrsh-nn e2 e1)))
+
+(B (name terz)
+   (=> (attack e1 x y :0.9)
+       (terz-nn e2 e1)))
+
+(B (name hmlh-krdn)
+   (=> (attack e x y :0.9)
+       (^ (krdn-nn e1 e) (hmlh-nn e3 x1) (NE e4 e x1))))
+
+(B (name hmlh-krd#kn)
+   (=> (attack e1 x y :0.9)
+       (^ (krd#kn-vb e1 x u1 u2) (hmlh-nn e3 x1) (NVE e4 x1 e1))))
+
+(B (name hmlh-krd#kn2)
+   (=> (attack e1 x y :0.9)
+       (^ (krd#kn-vb e1 x u1 u2) (hmlh-nn e3 x1) (ENC e4 x1 e1))))
+
+(B (name hmlh-vr-shdn)
+   (=> (attack e x y :0.9)
+       (^ (vr-shdn-nn e1 e) (hmlh-nn e3 x1) (NE e4 e x1))))
+
+(B (name hmlh-vr-shd)
+   (=> (attack e1 x y :0.9)
+       (^ (vr-shd-vb e1 x u1 u2) (hmlh-nn e3 x1) (NVE e4 x1 e1))))
+
+(B (name hmlh-vr-shd2)
+   (=> (attack e1 x y :0.9)
+       (^ (vr-shd-vb e1 x u1 u2) (hmlh-nn e3 x1) (ENC e4 x1 e1))))
+
+
+(B (name hjvm-aavrdn)
+   (=> (attack e x y :0.9)
+       (^ (aavrdn-nn e1 e) (hjvm-nn e3 x1) (NE e4 e x1))))
+
+(B (name hjvm-brdn)
+   (=> (attack e x y :0.9)
+       (^ (brdn-nn e1 e) (hjvm-nn e3 x1) (NE e4 e x1))))
+
+(B (name hjvm-brd#br)
+   (=> (attack e1 x y :0.9)
+       (^ (brd#br-vb e1 x u1 u2) (hjvm-nn e3 x1) (NVE e4 x1 e1))))
+
+(B (name hjvm-brd#br2)
+   (=> (attack e1 x y :0.9)
+       (^ (brd#br-vb e1 x u1 u2) (hjvm-nn e3 x1) (ENC e4 x1 e1))))
+
+
+(B (name tjavz-krdn)
+   (=> (attack e x y :0.9)
+       (^ (krdn-nn e1 e) (tjavz-nn e3 x1) (NE e4 e x1))))
+
+(B (name tjavz-krd#kn)
+   (=> (attack e1 x y :0.9)
+       (^ (krd#kn-vb e1 x u1 u2) (tjavz-nn e3 x1) (NVE e4 x1 e1))))
+
+(B (name tjavz-krd#kn2)
+   (=> (attack e1 x y :0.9)
+       (^ (krd#kn-vb e1 x u1 u2) (tjavz-nn e3 x1) (ENC e4 x1 e1))))
+
+
+(B (name hjmh-krdn)
+   (=> (attack e x y :0.9)
+       (^ (krdn-nn e1 e) (hjmh-nn e3 x1) (NE e4 e x1))))
+
+(B (name hjmh-krd#kn)
+   (=> (attack e1 x y :0.9)
+       (^ (krd#kn-vb e1 x u1 u2) (hjmh-nn e3 x1) (NVE e4 x1 e1))))
+
+(B (name hjmh-krd#kn2)
+   (=> (attack e1 x y :0.9)
+       (^ (krd#kn-vb e1 x u1 u2) (hjmh-nn e3 x1) (ENC e4 x1 e1))))
+
+
+(B (name yvrsh-brdn)
+   (=> (attack e x y :0.9)
+       (^ (brdn-nn e1 e) (yvrsh-nn e3 x1) (NE e4 e x1))))
+
+(B (name yvrsh-brd#br)
+   (=> (attack e1 x y :0.9)
+       (^ (brd#br-vb e1 x u1 u2) (yvrsh-nn e3 x1) (NVE e4 x1 e1))))
+
+(B (name yvrsh-brd#br2)
+   (=> (attack e1 x y :0.9)
+       (^ (brd#br-vb e1 x u1 u2) (yvrsh-nn e3 x1) (ENC e4 x1 e1))))
+
+
+(B (name terz-krdn)
+   (=> (attack e x y :0.9)
+       (^ (krdn-nn e1 e) (terz-nn e3 x1) (NE e4 e x1))))
+
+(B (name terz-krd#kn)
+   (=> (attack e1 x y :0.9)
+       (^ (krd#kn-vb e1 x u1 u2) (terz-nn e3 x1) (NVE e4 x1 e1))))
+
+(B (name terz-krd#kn2)
+   (=> (attack e1 x y :0.9)
+       (^ (krd#kn-vb e1 x u1 u2) (terz-nn e3 x1) (ENC e4 x1 e1))))
+
+
+;; Attack Prepositional Phrases
+
+(B (name attack-towards)
+   (=> (attack e1 x y :0.9)
+       (^ (attack e1 x u) (towards e2 e1 y))))
+
+(B (name attack-to)
+   (=> (attack e1 x y :0.9)
+       (^ (attack e1 x u) (bh-in e2 e1 y))))
+
+
+;;
+;; Aim
+;;
+;; (aim e1 x w y):
+;;   x directs weapon (or attack) w at target y
+
+(B (name nshanh-rftn)
+   (=> (aim e x w y :0.9)
+       (^ (rftn-nn e1 e) (nshanh-nn e3 x1) (NE e4 e x1))))
+
+(B (name nshanh-rft#rv)
+   (=> (aim e1 x w y :0.9)
+       (^ (rft#rv-vb e1 x w y) (nshanh-nn e3 x1) (NVE e4 x1 e1))))
+
+(B (name nshanh-rft#rv2)
+   (=> (aim e1 x w y :0.9)
+       (^ (rft#rv-vb e1 x w y) (nshanh-nn e3 x1) (ENC e4 x1 e1))))
+
+(B (name nshanh-grftn)
+   (=> (aim e x w y :0.9)
+       (^ (grftn-nn e1 e) (nshanh-nn e3 x1) (NE e4 e x1))))
+
+(B (name nshanh-grft#gyr)
+   (=> (aim e1 x w y :0.9)
+       (^ (grft#gyr-vb e1 x w y) (nshanh-nn e3 x1) (NVE e4 x1 e1))))
+
+(B (name nshanh-grft#gyr2)
+   (=> (aim e1 x w y :0.9)
+       (^ (grft#gyr-vb e1 x w y) (nshanh-nn e3 x1) (ENC e4 x1 e1))))
+
+(B (name nshan-krd#kn)
+   (=> (aim e1 x w y :0.9)
+       (^ (krd#kn-vb e1 x w y) (nshan-nn e3 x1) (NVE e4 x1 e1))))
+
+(B (name nshan-krd#kn2)
+   (=> (aim e1 x w y :0.9)
+       (^ (krd#kn-vb e1 x w y) (nshan-nn e3 x1) (ENC e4 x1 e1))))
+
+(B (name nshan-krdn)
+   (=> (aim e x w y :0.9)
+       (^ (krdn-nn e1 e) (nshan-nn e3 x1) (NE e4 e x1))))
+
+(B (name hdf-grft#gyr)
+   (=> (aim e1 x w y :0.9)
+       (^ (grft#gyr-vb e1 x w y) (hdf-nn e3 x1) (NVE e4 x1 e1))))
+
+(B (name hdf-grft#gyr2)
+   (=> (aim e1 x w y :0.9)
+       (^ (grft#gyr-vb e1 x w y) (hdf-nn e3 x1) (ENC e4 x1 e1))))
+
+(B (name hdf-grftn)
+   (=> (aim e x w y :0.9)
+       (^ (grftn-nn e1 e) (hdf-nn e3 x1) (NE e4 e x1))))
+
+(B (name aim-towards)
+   (=> (aim e1 x u1 y :0.9)
+       (^ (aim e1 x u1 u2) (towards e2 e1 y))))
+
+(B (name towards)
+   (=> (towards e2 e y :0.9)
+       (^ (bh-in e1 e s) (side e3 s) (nn e4 s y))))
+
+(B (name trf3)
+   (=> (side e3 s :0.9)
+       (trf-nn e4 s)))
+
+(B (name smt)
+   (=> (side e3 s :0.9)
+       (smt-nn e4 s)))
+
+(B (name sv)
+   (=> (side e3 s :0.9)
+       (sv-nn e4 s)))
+
+(B (name janb)
+   (=> (side e3 s :0.9)
+       (janb-nn e4 s)))
+
+
+;;
+;; (bullet w)
 ;;
 
-(B (name hdf)
-   (=> (goal e1 g x :0.9) (hdf-nn e2 x)))
-(B (name ahdaf)
-   (=> (goal e1 g x :0.9) (ahdaf-nn e2 x)))
-(B (name mnzvr)
-   (=> (goal e1 g x :0.9) (mnzvr-nn e2 x)))
-(B (name mghsd)
-   (=> (goal e1 g x :0.9) (mghsd-nn e2 x)))
-(B (name mghasd)
-   (=> (goal e1 g x :0.9) (mghasd-nn e2 x)))
-(B (name mghsvd)
-   (=> (goal e1 g x :0.9) (mghsvd-nn e2 x)))
+(B (name glvlh)
+   (=> (bullet w :0.9)
+       (glvlh-nn e2 x)))
+
+
+;;
+;; (compete e1 x y c)
+;;
+
+(B (name rghabt)
+   (=> (compete e1 x y c :0.9)
+       (rghabt-nn e2 e1)))
+
+(B (name msabghh)
+   (=> (compete e1 x y c :0.9)
+       (msabghh-nn e2 e1)))
+
+(B (name hm-chshmy)
+   (=> (compete e1 x y c :0.9)
+       (hm-chshmy-nn e2 e1)))
+
+(B (name compete-krdn)
+   (=> (compete e u1 u2 u3 :0.9)
+       (^ (krdn-nn e1 e) (compete x1 u1 u2 u3) (NE e4 e x1))))
+
+(B (name compete-krd#kn)
+   (=> (compete e1 x u2 u3 :0.9)
+       (^ (krd#kn-vb e1 x u1 u2) (compete x1 u1 u2 u3) (NVE e4 x1 e1))))
+
+(B (name compete-krd#kn2)
+   (=> (compete e1 x u2 u3 :0.9)
+       (^ (krd#kn-vb e1 x u1 u2) (compete x1 u1 u2 u3) (ENC e4 x1 e1))))
+
+(B (name compete-dashtn)
+   (=> (compete e u1 u2 u3 :0.9)
+       (^ (dashtn-nn e1 e) (compete x1 u1 u2 u3) (NE e4 e x1))))
+
+(B (name compete-dasht#dar)
+   (=> (compete e1 x u2 u3 :0.9)
+       (^ (dasht#dar-vb e1 x u1 u2) (compete x1 u1 u2 u3) (NVE e4 x1 e1))))
+
+(B (name compete-dasht#dar3)
+   (=> (compete e1 x u2 u3 :0.9)
+       (^ (dasht#dar-vb e1 x u1 u2) (compete x1 u1 u2 u3) (ENC e4 x1 e1))))
+
+
+(B (name msabghh-dadn)
+   (=> (compete e x y c :0.9)
+       (^ (dadn-nn e1 e) (msabghh-nn e3 x1) (NE e4 e x1))))
+
+(B (name msabghh-dad#dh)
+   (=> (compete e1 x y c :0.9)
+       (^ (dad#dh-vb e1 x u1 u2) (msabghh-nn e3 x1) (NVE e4 x1 e1))))
+
+(B (name msabghh-dad#dh2)
+   (=> (compete e1 x y c :0.9)
+       (^ (dad#dh-vb e1 x u1 u2) (msabghh-nn e3 x1) (ENC e4 x1 e1))))
+
+;; Manual
+
+(B (name compete-with)
+   (=> (compete e1 x y c :0.9)
+       (^ (compete e1 x y c) (ba-in e2 e1 y))))
+
 
 ;;
 ;; (gun x)
@@ -843,20 +1073,25 @@
 (B (name bhkarbrd)
    (=> (use e x w :0.9) (bhkarbrd-vb e x w u1)))
 
+
 ;;
-;; (weapon w)
+;; Weapon
 ;;
+;; (weapon w):
+;;   w is a weapon
 
 (B (name aslhh3)
    (=> (weapon w :0.9) (aslhh-nn e2 w)))
+
 (B (name tslyhat3)
    (=> (weapon w :0.9) (tslyhat-nn e2 w)))
+
 
 ;;
 ;; (^ (conflict e x y g h) (adversary e1 x y e))
 ;;
 
-;; V
+;; Verbs
 
 (B (name akhtlaf-dasht#dar)
    (=> (^ (conflict e x y g h :0.45) (adversary e1 x y e :0.45))
@@ -1342,7 +1577,7 @@
 ;; (weapon x)
 ;;
 
-;;N-x
+;; N-x
 
 (B (name mvshk)
    (=> (weapon x :0.9) (mvshk-nn e2 x)))
@@ -2233,48 +2468,86 @@
    (=> (lead e6 x y :0.9) (mdyr-nn e2 x)))
 
 ;;
-;; (politicalParty x )
+;; (politicalParty x)
 ;;
 
 ;; N-x
+
 (B (name jmhvry-khvah)
-   (=> (politicalParty x :0.9) (jmhvry-khvah-nn e2 x)))
+   (=> (politicalParty x :0.9)
+       (jmhvry-khvah-nn e2 x)))
+
 (B (name dmvkrat)
-   (=> (politicalParty x :0.9) (dmvkrat-nn e2 x)))
+   (=> (politicalParty x :0.9)
+       (dmvkrat-nn e2 x)))
+
 (B (name rastgra)
-   (=> (politicalParty x :0.9) (rastgra-nn e2 x)))
+   (=> (politicalParty x :0.9)
+       (rastgra-nn e2 x)))
+
 (B (name rast-gra)
-   (=> (politicalParty x :0.9) (rast-gra-nn e2 x)))
+   (=> (politicalParty x :0.9)
+       (rast-gra-nn e2 x)))
+
 (B (name chp-gra)
-   (=> (politicalParty x :0.9) (chp-gra-nn e2 x)))
+   (=> (politicalParty x :0.9)
+       (chp-gra-nn e2 x)))
+
 (B (name chpgra)
-   (=> (politicalParty x :0.9) (chpgra-nn e2 x)))
+   (=> (politicalParty x :0.9)
+       (chpgra-nn e2 x)))
+
 (B (name jnbsh)
-   (=> (politicalParty x :0.9) (jnbsh-nn e2 x)))
+   (=> (politicalParty x :0.9)
+       (jnbsh-nn e2 x)))
+
 (B (name nhzt)
-   (=> (politicalParty x :0.9) (nhzt-nn e2 x)))
+   (=> (politicalParty x :0.9)
+       (nhzt-nn e2 x)))
+
 (B (name tlash)
-   (=> (politicalParty x :0.9) (tlash-nn e2 x)))
+   (=> (politicalParty x :0.9)
+       (tlash-nn e2 x)))
+
 (B (name hzb)
-   (=> (politicalParty x :0.9) (hzb-nn e2 x)))
+   (=> (politicalParty x :0.9)
+       (hzb-nn e2 x)))
+
 (B (name jnah)
-   (=> (politicalParty x :0.9) (jnah-nn e2 x)))
+   (=> (politicalParty x :0.9)
+       (jnah-nn e2 x)))
+
 
 ;; J
+
 (B (name dmvkratyk)
-   (=> (politicalParty x :0.9) (dmvkratyk-adj e2 x)))
+   (=> (politicalParty x :0.9)
+       (dmvkratyk-adj e2 x)))
+
 (B (name jmhvry-khvah3)
-   (=> (politicalParty x :0.9) (jmhvry-khvah-adj e2 x)))
+   (=> (politicalParty x :0.9)
+       (jmhvry-khvah-adj e2 x)))
+
 (B (name dmvkrat3)
-   (=> (politicalParty x :0.9) (dmvkrat-adj e2 x)))
+   (=> (politicalParty x :0.9)
+       (dmvkrat-adj e2 x)))
+
 (B (name rastgra3)
-   (=> (politicalParty x :0.9) (rastgra-adj e2 x)))
+   (=> (politicalParty x :0.9)
+       (rastgra-adj e2 x)))
+
 (B (name rast-gra3)
-   (=> (politicalParty x :0.9) (rast-gra-adj e2 x)))
+   (=> (politicalParty x :0.9)
+       (rast-gra-adj e2 x)))
+
 (B (name chp-gra3)
-   (=> (politicalParty x :0.9) (chp-gra-adj e2 x)))
+   (=> (politicalParty x :0.9)
+       (chp-gra-adj e2 x)))
+
 (B (name chpgra3)
-   (=> (politicalParty x :0.9) (chpgra-adj e2 x)))
+   (=> (politicalParty x :0.9)
+       (chpgra-adj e2 x)))
+
 
 ;;
 ;; (conflict x a b g1 g2‫(
@@ -2282,19 +2555,28 @@
 
 ;; N-e
 (B (name antkhabat)
-   (=> (conflict x a b g1 g2 :0.9) (antkhabat-nn e2 e)))
+   (=> (conflict x a b g1 g2 :0.9)
+       (antkhabat-nn e2 e)))
+
 (B (name gzynsh)
-   (=> (conflict x a b g1 g2 :0.9) (gzynsh-nn e2 e)))
+   (=> (conflict x a b g1 g2 :0.9)
+       (gzynsh-nn e2 e)))
+
 (B (name antkhab)
-   (=> (conflict x a b g1 g2 :0.9) (antkhab-nn e2 e)))
+   (=> (conflict x a b g1 g2 :0.9)
+       (antkhab-nn e2 e)))
+
 (B (name brgzydn)
-   (=> (conflict x a b g1 g2 :0.9) (brgzydn-nn e2 e)))
+   (=> (conflict x a b g1 g2 :0.9)
+       (brgzydn-nn e2 e)))
+
 
 ;;
-;; (^ (conflict c x y g h ) (leadP g z c))
+;; (^ (conflict c x y g h) (leadP g z c))
 ;;
 
 ;; N-x
+
 (B (name syast-mdar)
    (=> (^ (conflict c x y g h :0.45) (leadP g z c :0.45))
        (syast-mdar-nn e2 x)))
@@ -2308,30 +2590,38 @@
 ;;
 
 ;; N-e
+
 (B (name antkhabat3)
    (=> (^ (conflict e a b g1 g2 :0.45) (members x a :0.45))
        (antkhabat-nn e2 e)))
+
 (B (name ray-dadn)
    (=> (^ (conflict e a b g1 g2 :0.45) (members x a :0.45))
        (^ (dadn-nn e2 e0) (ray-nn e3 e) (NE e4 e0 e))))
+
 (B (name antkhab-krdn)
    (=> (^ (conflict e a b g1 g2 :0.45) (members x a :0.45))
        (^ (krdn-nn e2 e0) (antkhab-nn e3 e) (NE e4 e0 e))))
+
 
 ;;
 ;; (^ (conflict c x y g h) (leadP g z c))
 ;;
 
 ;; N-c
+
 (B (name syast)
    (=> (^ (conflict c x y g h :0.45) (leadP g z c :0.45))
        (syast-nn e2 c)))
+
 (B (name sr-krdgy)
    (=> (^ (conflict c x y g h :0.45) (leadP g z c :0.45))
        (sr-krdgy-nn e2 c)))
+
 (B (name srkrdgy)
    (=> (^ (conflict c x y g h :0.45) (leadP g z c :0.45))
        (srkrdgy-nn e2 c)))
+
 (B (name hkmran3)
    (=> (^ (conflict c x y g h :0.45) (leadP g z c :0.45))
        (hkmran-nn e2 c)))
@@ -2342,31 +2632,40 @@
 (B (name syasy)
    (=> (^ (conflict c x y g h :0.45) (leadP g z c :0.45))
        (syasy-adj e2 c)))
+
 (B (name dmvkratyk3)
    (=> (^ (conflict c x y g h :0.45) (leadP g z c :0.45))
        (dmvkratyk-adj e2 c)))
+
 (B (name rast)
    (=> (^ (conflict c x y g h :0.45) (leadP g z c :0.45))
        (rast-adj e2 c)))
+
 (B (name chp)
    (=> (^ (conflict c x y g h :0.45) (leadP g z c :0.45))
        (chp-adj e2 c)))
+
 (B (name rast-gra4)
    (=> (^ (conflict c x y g h :0.45) (leadP g z c :0.45))
        (rast-gra-adj e2 c)))
 
-;;
-;; (union x )
-;;
 
+;;
+;; (union u):
+;;   u is a labor union
+;;
 
 ;; N-x
+
 (B (name athadyh)
    (=> (union x :0.9) (athadyh-nn e2 x)))
+
 (B (name anjmn)
    (=> (union x :0.9) (anjmn-nn e2 x)))
+
 (B (name aytlaf)
    (=> (union x :0.9) (aytlaf-nn e2 x)))
+
 
 ;;
 ;; (members m g)
@@ -2376,59 +2675,77 @@
 (B (name ezv3)
    (=> (members m g :0.9) (ezv-nn e2 m)))
 
+
 ;;
-;; (thrive e m )
+;; (thrive e m):
+;;   m is an entity that thrives
 ;;
 
 ;; N-e
 
 (B (name pyshrft3)
    (=> (thrive e m :0.9) (pyshrft-nn e2 e)))
+
 (B (name rvngh)
    (=> (thrive e m :0.9) (rvngh-nn e2 e)))
+
 (B (name mvfghyt)
    (=> (thrive e m :0.9) (mvfghyt-nn e2 e)))
+
 
 (B (name mvfgh-shdn)
    (=> (thrive e m :0.9)
        (^ (shdn-nn e2 e0) (mvfgh-nn e3 e) (NE e4 e0 e))))
+
 (B (name pyshrft-krdn)
    (=> (thrive e m :0.9)
        (^ (krdn-nn e2 e0) (pyshrft-nn e3 e) (NE e4 e0 e))))
+
 (B (name rvngh-grftn)
    (=> (thrive e m :0.9)
        (^ (grftn-nn e2 e0) (rvngh-nn e3 e) (NE e4 e0 e))))
+
 (B (name rvngh-yaftn)
    (=> (thrive e m :0.9)
        (^ (yaftn-nn e2 e0) (rvngh-nn e3 e) (NE e4 e0 e))))
 
+
 (B (name thrive-krd#kn)
    (=> (thrive e m :0.9)
-       (^ (krd#kn-vb e m y u2) (thrive e10 u1 ) (NVE e4 e10 e))))
+       (^ (krd#kn-vb e m y u2) (thrive e10 u1) (NVE e4 e10 e))))
+
 (B (name thrive-krd#kn3)
    (=> (thrive e m :0.9)
-       (^ (krd#kn-vb e m y u2) (thrive e10 u1 ) (ENC e4 x10 e))))
+       (^ (krd#kn-vb e m y u2) (thrive e10 u1) (ENC e4 x10 e))))
+
 (B (name thrive-nmvd#nma)
    (=> (thrive e m :0.9)
-       (^ (nmvd#nma-vb e m y u2) (thrive e10 u1 ) (NVE e4 e10 e))))
+       (^ (nmvd#nma-vb e m y u2) (thrive e10 u1) (NVE e4 e10 e))))
+
 (B (name thrive-nmvd#nma3)
    (=> (thrive e m :0.9)
-       (^ (nmvd#nma-vb e m y u2) (thrive e10 u1 ) (ENC e4 x10 e))))
+       (^ (nmvd#nma-vb e m y u2) (thrive e10 u1) (ENC e4 x10 e))))
+
 (B (name thrive-shd#shv)
    (=> (thrive e m :0.9)
-       (^ (shd#shv-vb e x m u2) (thrive e10 u1 ) (NVE e4 e10 e))))
+       (^ (shd#shv-vb e x m u2) (thrive e10 u1) (NVE e4 e10 e))))
+
 (B (name thrive-shd#shv3)
    (=> (thrive e m :0.9)
-       (^ (shd#shv-vb e x m u2) (thrive e10 u1 ) (ENC e4 x10 e))))
+       (^ (shd#shv-vb e x m u2) (thrive e10 u1) (ENC e4 x10 e))))
+
 (B (name thrive-sakht#saz4)
    (=> (thrive e m :0.9)
-       (^ (sakht#saz-vb e m y u2) (thrive e10 u1 ) (NVE e4 e10 e))))
+       (^ (sakht#saz-vb e m y u2) (thrive e10 u1) (NVE e4 e10 e))))
+
 (B (name thrive-sakht#saz5)
    (=> (thrive e m :0.9)
-       (^ (sakht#saz-vb e m y u2) (thrive e10 u1 ) (ENC e4 x10 e))))
+       (^ (sakht#saz-vb e m y u2) (thrive e10 u1) (ENC e4 x10 e))))
+
 (B (name thrive-gsht#grd4)
    (=> (thrive e m :0.9)
-       (^ (gsht#grd-vb e x m u2) (thrive e10 u1 ) (NVE e4 e10 e))))
+       (^ (gsht#grd-vb e x m u2) (thrive e10 u1) (NVE e4 e10 e))))
+
 (B (name thrive-gsht#grd5)
    (=> (thrive e m :0.9)
-       (^ (gsht#grd-vb e x m u2) (thrive e10 u1 ) (ENC e4 x10 e))))
+       (^ (gsht#grd-vb e x m u2) (thrive e10 u1) (ENC e4 x10 e))))
