@@ -9,57 +9,60 @@
 ;;
 ;; Conflict
 ;;
+;; (conflict c x y g h):
+;;   c is a conflict with adversaries x and y who have goals g and h,
+;;   respectively
 
 ;; Conflict Nouns
 
 (B (name conflict-nn)
-   (=> (conflict e x y g h :0.9)
-       (conflict-nn e1 e)))
+   (=> (conflict c x y g h :0.9)
+       (conflict-nn e1 c)))
 
 (B (name struggle-nn)
-   (=> (conflict e x y g h :0.9)
-       (struggle-nn e1 e)))
+   (=> (conflict c x y g h :0.9)
+       (struggle-nn e1 c)))
 
 (B (name battle-nn)
-   (=> (conflict e x y g h :0.9)
-       (battle-nn e1 e)))
+   (=> (conflict c x y g h :0.9)
+       (battle-nn e1 c)))
 
 (B (name fight-nn)
-   (=> (conflict e x y g h :0.9)
-       (fight-nn e1 e)))
+   (=> (conflict c x y g h :0.9)
+       (fight-nn e1 c)))
 
 (B (name dispute-nn)
-   (=> (conflict e x y g h :0.9)
-       (dispute-nn e1 e)))
+   (=> (conflict c x y g h :0.9)
+       (dispute-nn e1 c)))
 
 (B (name war-nn)
-   (=> (conflict e x y g h :0.9)
-       (war-nn e1 e)))
+   (=> (conflict c x y g h :0.9)
+       (war-nn e1 c)))
 
 (B (name combat-nn)
-   (=> (conflict e x y g h :0.9)
-       (combat-nn e1 e)))
+   (=> (conflict c x y g h :0.9)
+       (combat-nn e1 c)))
 
 (B (name quarrel-nn)
-   (=> (conflict e x y g h :0.9)
-       (quarrel-nn e1 e)))
+   (=> (conflict c x y g h :0.9)
+       (quarrel-nn e1 c)))
 
 (B (name competition-nn)
-   (=> (conflict e x y g h :0.9)
-       (competition-nn e1 e)))
+   (=> (conflict c x y g h :0.9)
+       (competition-nn e1 c)))
 
 ;; TODO: Link to boxing match and then back to conflict.
 (B (name boxing-nn)
-   (=> (conflict e x y g h :0.9)
-       (boxing-nn e1 e)))
+   (=> (conflict c x y g h :0.9)
+       (boxing-nn e1 c)))
 
 (B (name race-nn)
-   (=> (conflict e x y g h :0.9)
-       (race-nn e1 e)))
+   (=> (conflict c x y g h :0.9)
+       (race-nn e1 c)))
 
 (B (name revolt-nn)
-   (=> (conflict e x y g h :0.9)
-       (revolt-nn e1 e)))
+   (=> (conflict c x y g h :0.9)
+       (revolt-nn e1 c)))
 
 
 ;; Conflict Verbs
@@ -175,6 +178,8 @@
 ;;
 ;; Adversary
 ;;
+;; (adversary e1 x y c):
+;;   x and y are rivals in the context of conflict c
 
 ;; Adversary Nouns
 
@@ -270,8 +275,10 @@
 
 
 ;;
-;; Goals
+;; Goal
 ;;
+;; (goal e g x):
+;;   x has goal g
 
 (B (name goal-nn)
    (=> (goal e1 g x :0.9)
@@ -291,6 +298,8 @@
 ;;
 ;; Attack
 ;;
+;; (attack e1 x y):
+;;   x attacks y
 
 ;; Attack Nouns
 
@@ -415,13 +424,12 @@
 ;;
 ;; Slap
 ;;
+;; (slap e1 x y)
 
-;; A slap is an attack
 (B (name slap-vb)
    (=> (slap e1 x y :0.9)
        (slap-vb e1 x y u)))
 
-;; a slap
 (B (name slap-nn)
    (=> (slap e x y :0.9)
        (slap-nn e1 e)))
@@ -537,8 +545,8 @@
 ;;
 ;; Aim
 ;;
-
-;; Aim a weapon at a target.
+;; (aim e1 x w y):
+;;   x directs weapon (or attack) w at target y
 
 ;; x aims w at y
 (B (name aim-vb)
@@ -569,6 +577,8 @@
 ;;
 ;; Weapon
 ;;
+;; (weapon w):
+;;   w is a weapon
 
 (B (name weapon-nn)
    (=> (weapon w :0.9)
@@ -1163,15 +1173,20 @@
 
 
 ;;
-;; Other English Lexical Axioms
+;; (union u):
+;;   u is a labor union
 ;;
 
-;; union
 (B (name union-nn)
    (=> (union x :0.9)
        (union-nn w x)))
 
-;; member
+
+;;
+;; (member x y):
+;;   x is a member of y
+;;
+
 (B (name members-nn)
    (=> (members m g :0.9)
        (member-nn e1 m)))
@@ -1186,7 +1201,12 @@
    (=> (part u w :0.9)
        (^ (part-nn e1 x) (of-in e2 x w))))
 
-;; m thrives
+
+;;
+;; (thrive e m):
+;;   m is an entity that thrives
+;;
+
 (B (name thrive-vb)
    (=> (thrive e1 m :0.9)
        (thrive-vb e2 m y u)))
