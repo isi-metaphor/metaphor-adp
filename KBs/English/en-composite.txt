@@ -1,0 +1,169 @@
+;; -*- Mode: Lisp -*-
+
+;; Composite Entities: English Lexical Axioms
+;; Jonathan Gordon, Jerry Hobbs
+
+
+;; A building is described by the word "building".
+(B (name building-nn1)
+   (=> (building x :1.2)
+       (building-nn e x)))
+
+;; A door is described by the noun "door".
+(B (name door-nn1)
+   (=> (door y :1.2)
+       (door-nn e y)))
+
+;; A foundation is described by the noun "foundation".
+(B (name foundation-nn1)
+   (=> (foundation y :1.2)
+       (foundation-nn e y)))
+
+;; Scaffolding is described by the noun "scaffolding".
+(B (name scaffolding-nn1)
+   (=> (scaffolding y :1.2)
+       (scaffolding-nn e y)))
+
+;; An engine is described by the noun "engine".
+(B (name engine-nn1)
+   (=> (engine x :1.2)
+       (engine-nn e x)))
+
+;; A motor is an engine.
+(B (name motor-nn1)
+   (=> (engine x :1.2)
+       (motor-nn e x)))
+
+;; A wheel is described by the noun "wheel".
+(B (name wheel-nn1)
+   (=> (wheel x :1.2)
+       (wheel-nn e x)))
+
+;; A lubricant is described by the noun "lubricant".
+(B (name lubricant-nn1)
+   (=> (lubricant x :1.2)
+       (lubricant-nn e x)))
+
+;; A nuclear reactor can be described by the phrase "nuclear reactor".
+(B (name nuclearReactor2)
+   (=> (nuclearReactor x :1.2)
+       (^ (nuclear-adj e1 x) (reactor-nn e2 x))))
+
+;; One way a nuclear reactor loses structure is a meltdown.
+(B (name nuclearReactor2)
+   (=> (^ (nuclearReactor x :0.4) (decreaseStructP e x :0.4)
+          (etc-nuclearReactor2 :0.4))
+       (meltdown-nn e1 e)))
+
+;; The process of an engine causes humming.
+;; (B (name hum-vb1)
+;;    (=> (^ (engine x :0.6) (processOf e1 x :0.6))
+;;        (^ (hum-vb e x u1 u2) (cause e1 e))))
+
+;; Short version of hum-vb1.
+(B (name hum-vb1a)
+   (=> (^ (engine x :0.6) (processOf e1 x :0.6) (cause e1 e :0))
+       (hum-vb e x u1 u2)))
+
+
+;;
+;; Doing Things with Dynamic Functional Composite Entities
+;;
+
+;; To decrease structure is to damage.
+(B (name damage-vb1)
+   (=> (decreaseStruct x :1.2)
+       (damage-vb e y x u v)))
+
+;; One way of decreasing structure is to destroy.
+(B (name destroy-vb1)
+   (=> (^ (decreaseStruct x :0.6) (etc-destroy-vb1 x :0.6))
+       (destroy-vb e y x u v)))
+
+;; One way of decreasing structure is to demolish.
+(B (name demolish-vb1)
+   (=> (^ (decreaseStruct x :0.6) (etc-demolish-vb1 x :0.6))
+       (demolish-vb e y x u v)))
+
+;; One way of decreasing structure is to be a cataclysm.
+(B (name cataclysmic-adj1)
+   (=> (^ (decreaseStructP e1 x :0.6) (etc-cataclysmic-adj1 e1 x :0.6))
+       (cataclysmic-adj e e1)))
+
+;; Building can be described by the verb "build".
+(B (name build-vb1)
+   (=> (build z x :1.2)
+       (build-vb e z x u v)))
+
+;; One way of increasing structure is to forge.
+(B (name forge-vb1)
+   (=> (^ (increaseStruct x :0.6) (etc-forge-vb1 x :0.6))
+       (forge-vb e y x u v)))
+
+;; To penetrate is to change to being in.
+(B (name penetrate-vb1)
+   (=> (^ (compEnt x :0.4) (change e1 e2 :0.4) (inP e2 y x :0.4))
+       (penetrate-vb e y x u v)))
+
+
+;;
+;; Future
+;;
+
+;; The future is a functional composite entity made up of events.
+(B (name future-nn1)
+   (=> (^ (fCompEnt e :0.3) (componentsOf s e :0.2) (typelt e1 e :0.2)
+          (event e1 :0.3) (etc-future-nn1 e s e1 :0.2))
+       (future-nn e1 e)))
+
+;; Destiny is a functional composite entity made up of events.
+(B (name destiny-nn1)
+   (=> (^ (fCompEnt e :0.3) (componentsOf s e :0.2) (typelt e1 e :0.2)
+          (event e1 :0.3) (etc-destiny-nn1 e s e1 :0.2))
+       (destiny-nn e2 e)))
+
+
+;;
+;; Economy
+;;
+
+;; One way of being a dynamic functional composite entity is by being
+;; an economy.
+(B (name economy-nn1)
+   (=> (^ (dFCompEnt x :0.8) (etc-economy-nn1 :0.4))
+       (economy-nn e x)))
+
+;; "financial" is a noun-like adjective derived from "finance".
+(B (name financial-adj1)
+   (=> (^ (finance f :0.5) (nn f m :0.5))
+       (financial-adj e m)))
+
+;; "Business" means business.
+(B (name business-nn1)
+   (=> (business x :1.0)
+       (business-nn e x)))
+
+
+;;
+;; Stripping Cars
+;;
+
+;; The verb "x strips z from y".
+(B (name strip-vb1)
+   (=> (strip e x y z :1.0)
+       (^ (strip-vb e x y u) (for-in e1 e z))))
+
+;; The noun "part".
+(B (name part-nn1)
+   (=> (part z y :1.0)
+       (^ (part-nn e1 z) (of-in e2 z y))))
+
+;; Short version of part-nn1.
+(B (name part-nn1a)
+   (=> (part z y :1.0)
+       (part-nn e1 z)))
+
+;; "Car" means car.
+(B (name car-nn1)
+   (=> (car x :1.0)
+       (car-nn e x)))
