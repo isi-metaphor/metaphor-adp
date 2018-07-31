@@ -1,0 +1,179 @@
+;; -*- Mode: Lisp -*-
+
+;;
+;; Conflict Axioms
+;; Jonathan Gordon, Jerry Hobbs, Alicia Sagae
+;;
+
+
+;;
+;; Conflict
+;;
+
+;; Conflict has two adversaries
+;; (B (name conflict0)
+;;    (=> (conflict c x y g h :0.3)
+;;        (adversary e x y c)))
+
+;; In conflict, adversaries attack each other.
+(B (name conflict3)
+   (=> (^ (conflict c x y g h:1.2) (adversary e1 x y c :0.6))
+       (attack e1 x y)))
+
+
+;; Adversaries have contradictory goals.
+(B (name goal-conflict)
+   (=> (goal e0 g x :1.2)
+       (conflict c x y g h)))
+
+(B (name adversary1)
+   (=> (^ (adversary e1 x y c :1.2) (goalNot e2 g y :1.2))
+       (goal e3 g x)))
+
+
+;; The adversary relation is symmetric.
+;; (B (name adversary0)
+;;    (=> (adversary e x y c :1.2)
+;;        (adversary e1 y x c)))
+
+;; TODO: Adversaries have degrees of strength.
+
+;; To win is to achieve the goal.
+;; (B (name win)
+;;    (=> (^ (conflict c x y g h :0.3) (adversary e x y c :0.3)
+;;           (goal e1 g x :0.3) (goal e2 h y :0.3)
+;;           (accomplish-goal e3 g x :0.3))
+;;        (win e x y c)))
+
+;; Victory is winning.
+;; (B (name victory)
+;;    (=> (^ (conflict c x y g h :0.3) (adversary e1 x y c :0.3)
+;;           (win e1 x y c :0.3))
+;;        (victory e1 x y c)))
+
+;; To lose is for your adversary to win.
+;; (B (name lose)
+;;    (=> (win e x y c :1.2)
+;;        (lose e y x c)))
+
+;; Adversaries use weapons in attacks.
+;; (B (name weapon)
+;;    (=> (attack e1 x y :1.2)
+;;        (^ (use e1 x w y z) (weapon w))))
+
+;; A slap is an attack.
+(B (name slap)
+   (=> (attack e1 x y :1.2)
+       (slap e1 x y)))
+
+;; Aiming is preparation for attack.
+;; x prepares to attack y with w
+(B (name aim-attack1)
+   (=> (^ (prepare e x a :0.9) (attack e x y :0.3))
+       (aim e1 x w y)))
+
+
+;;
+;; War
+;;
+
+;; TODO: Adversaries in war are groups to which members are loyal.
+
+;; TODO: A flank is a part of a group adversary that is not strong.
+
+;; TODO: A frontline is a part of a group adversary that attacks.
+
+;; TODO: Members of groups sometimes defect.
+
+;; TODO: Subgroups of groups sometimes revolt.
+
+
+;;
+;; Sports
+;;
+
+;; TODO: Sport is conflict constrained by rules of behavior.
+
+;; A boxing match is a conflict.
+(B (name boxing-match1)
+   (=> (^ (conflict c x y g h :0.9) (boxing-etc c :0.3))
+       (boxing-match c)))
+
+;; TODO: In some sports, the adversaries are teams of persons.
+
+
+;; Racing
+
+;; TODO: Racing is a sport.
+
+;; TODO: A marathon is a race.
+
+;; TODO: A race has stages.
+
+
+;; Boxing
+
+;; TODO: Boxing is a sport. => lexical entry "boxing is conflict"
+
+;; TODO: Blow is an attack in boxing. => lexical entry
+
+;; TODO: Low blow is blow against the rules. => lexical entry
+
+;; TODO: Adversaries are in the same weight class.
+
+;; TODO: Heavyweight is the highest weight class.
+
+;; TODO: A round is a part of a boxing match.
+
+
+;; Wrestling
+
+;; TODO: Wrestling is a sport.
+
+
+;; Card Games
+
+;; TODO: A card game is a sport.
+
+;; TODO: sA hand is a weapon in an attack.
+
+
+;;
+;; Governance DFCEs
+;;
+
+;; A union is an organization with the goal of having its members thrive
+(B (name union1)
+   (=> (^ (thrive e1 m1 :0.3) (members m1 u :0.3) (goal e2 e1 u :0.3))
+       (union u)))
+
+(B (name nation1)
+   (=> (^ (dFCompEnt x :0.4) (functionality f x :0.3)
+          (thrive f s :0.1) (citizens s x :0.1))
+       (nation x)))
+
+
+;;
+;; Politics
+;;
+
+(B (name politicalParty1)
+   (=> (conflict e x y g1 g2 :0.9)
+       (politicalParty x)))
+
+(B (name politicalParty2)
+   (=> (^ (dFCompEnt x :0.4) (functionality f x 0:3) (leadP f x y))
+       (politicalParty x)))
+
+
+;;
+;; DFCEs
+;;
+
+(B (name decreaseStruct1)
+   (=> (^ (decreaseFct y :0.4) (functionality f x :0.5))
+       (decreaseStruct x)))
+
+(B (name increaseStruct1)
+   (=> (^ (increaseFct y :0.4) (functionality f x :0.5))
+       (increaseStruct x)))

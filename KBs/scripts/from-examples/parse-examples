@@ -17,7 +17,7 @@ sys.stdout = UTF8Writer(sys.stdout)
 
 parser = argparse.ArgumentParser(description='Parse source and target in TSV.')
 parser.add_argument('-l', dest='lang', default='EN', help='language')
-parser.add_argument('-u', dest='url', default='http://colo-vm19.isi.edu:8080',
+parser.add_argument('-u', dest='url', default='http://localhost:8000',
                     help='URL for server')
 parser.add_argument('file')
 

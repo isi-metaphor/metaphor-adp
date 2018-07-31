@@ -210,7 +210,7 @@ Possessives are handled well for the most part.
 & [15009]:del-in(e8,x3,x4) & [15010]:navegador-nn(e9,x4)
 ```
 
-These cases ( _mi_ / _my_ ) ( _tu_ / _your_) are handled well. Most
+These cases (_mi_ / _my_) (_tu_ / _your_) are handled well. Most
 failures have to do with faulty POS tagging and/or parsing.
 
 
