@@ -5,7 +5,7 @@
 # Jonathan Gordon, 2014-10-27
 
 # Usage:
-#  ./test -l en -u http://colo-vm19.isi.edu:8080 data/en.dev.tsv
+#  ./test -l en -u http://localhost:8080 data/en.dev.tsv
 
 import sys
 import argparse
@@ -33,10 +33,10 @@ def main():
                                      'metaphor recognition.')
     parser.add_argument('-l', dest='lang', default='EN', help='language')
     parser.add_argument('-u', dest='url',
-                        default='http://colo-vm19.isi.edu:8080',
+                        default='http://localhost:8080',
                         help='URL for server')
     parser.add_argument('-p', dest='kb_path',
-                        default='/nfs/isd/jgordon/kbs/',
+                        default='/adp/kbs/',
                         help='Path for KBs')
     parser.add_argument('-i', dest='identifier',
                         help='An identifier for the KB to use.')
