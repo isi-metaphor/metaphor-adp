@@ -14,7 +14,7 @@ The system is largely based on ideas summarized in [[Hobbs, 1993]](http://www.is
 
 Our abductive Natural Language Understanding pipeline is shown below.
 
-![Fig.](https://raw.github.com/isi-metaphor/Metaphor-ADP/master/docs/pics/pipeline-pic.png)
+![Fig.](https://raw.github.com/isi-metaphor/metaphor-adp/master/docs/pics/pipeline-pic.png)
 
 Text fragments are given as input to the pipeline. The text fragments are
 parsed. For Russian and Spanish tagging, we use
@@ -36,14 +36,14 @@ and Farsi, we have developed logical form converters. For English, we
 use the LF converter built in the Boxer semantic parser.
 
 Logical forms and a knowledge base are input to the [abductive
-reasoner](http://code.google.com/p/henry-n700/) based on Integer Linear
+reasoner](http://code.google.com/p/henry-n700) based on Integer Linear
 Programming [[Inoue et al.,
 2012]](http://www.cl.ecei.tohoku.ac.jp/~naoya-i/resources/jelia2012_paper.pdf).
 The reasoner produces flat first order logic interpretations in the
 textual format and proof graphs in the PDF format.
 
 More details about each component can be found
-[here](https://github.com/isi-metaphor/Metaphor-ADP/blob/master/pipelines/README.md).
+[here](https://github.com/isi-metaphor/metaphor-adp/blob/master/pipelines/README.md).
 
 
 ## Installation and running
@@ -52,7 +52,7 @@ More details about each component can be found
 1. Clone Metaphor-ADP repository:
 
 ```
-git clone https://github.com/isi-metaphor/Metaphor-ADP
+git clone https://github.com/isi-metaphor/metaphor-adp
 ```
 
 2. Build Docker image:
@@ -68,11 +68,11 @@ git clone https://github.com/isi-metaphor/Metaphor-ADP
 ```
 
 4. Run the system. See
-[instructions](https://github.com/isi-metaphor/Metaphor-ADP/blob/master/pipelines/common/README.md)
+[instructions](https://github.com/isi-metaphor/metaphor-adp/blob/master/pipelines/common/README.md)
 
 
 Note: If you prefer to run natively rather than using Docker, see
-[instructions](https://github.com/isi-metaphor/Metaphor-ADP/tree/master/installation)
+[instructions](https://github.com/isi-metaphor/metaphor-adp/tree/master/installation)
 
 
 ## System Requirements

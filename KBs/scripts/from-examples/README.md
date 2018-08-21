@@ -18,5 +18,5 @@ To use these axioms, compile with Henry:
     henry -m compile_kb -o English_compiled_KB.da en-examples.txt
 
 These axioms learned from examples can be combined with manually
-enumerated knowledge, such as that in the `Metaphor-ADP/KBs` directories
-by passing multiple source files to Henry.
+enumerated knowledge, such as that in the `KBs` directories by passing
+multiple source files to Henry.
