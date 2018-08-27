@@ -7,10 +7,10 @@ processing.
 ## Semantic parsing pipelines
 
 Semantic parsing pipelines are implemented for four languages:
-- [English](https://github.com/isi-metaphor/Metaphor-ADP/tree/master/pipelines/English)
-- [Spanish](https://github.com/isi-metaphor/Metaphor-ADP/tree/master/pipelines/Spanish)
-- [Russian](https://github.com/isi-metaphor/Metaphor-ADP/tree/master/pipelines/Russian)
-- [Farsi](https://github.com/isi-metaphor/Metaphor-ADP/tree/master/pipelines/Farsi)
+- [English](https://github.com/isi-metaphor/metaphor-adp/tree/master/pipelines/English)
+- [Spanish](https://github.com/isi-metaphor/metaphor-adp/tree/master/pipelines/Spanish)
+- [Russian](https://github.com/isi-metaphor/metaphor-adp/tree/master/pipelines/Russian)
+- [Farsi](https://github.com/isi-metaphor/metaphor-adp/tree/master/pipelines/Farsi)
 
 The pipelines can take unrelated sentences or coherent text as input.
 
