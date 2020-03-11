@@ -2,18 +2,18 @@
 
 DOWNLOAD_DIR=./
 
-python2.7 insertFile2DB.py -f $DOWNLOAD_DIR/long_abstracts_en.nt \
+python2.7 insert_file_to_db.py -f $DOWNLOAD_DIR/long_abstracts_en.nt \
           -l EN -s 1 --common $METAPHOR_DIR/pipelines/common/ \
           --temp $DOWNLOAD_DIR/english.txt &
 
-python2.7 insertFile2DB.py -f $DOWNLOAD_DIR/long_abstracts_es.nt \
+python2.7 insert_file_to_db.py -f $DOWNLOAD_DIR/long_abstracts_es.nt \
           -l ES -s 1 --common $METAPHOR_DIR/pipelines/common/ \
           --temp $DOWNLOAD_DIR/spanish.txt &
 
-python2.7 insertFile2DB.py -f $DOWNLOAD_DIR/long_abstracts_ru.nt \
+python2.7 insert_file_to_db.py -f $DOWNLOAD_DIR/long_abstracts_ru.nt \
           -l RU -s 1 --common $METAPHOR_DIR/pipelines/common/ \
           --temp $DOWNLOAD_DIR/russian.txt &
 
-python2.7 insertFile2DB.py -f $DOWNLOAD_DIR/long_abstracts_fa.nt \
+python2.7 insert_file_to_db.py -f $DOWNLOAD_DIR/long_abstracts_fa.nt \
           -l FA -s 1 --common $METAPHOR_DIR/pipelines/common/ \
           --temp $DOWNLOAD_DIR/farsi.txt &

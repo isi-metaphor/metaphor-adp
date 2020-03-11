@@ -37,7 +37,7 @@ def main():
     errorlangs = {}
 
     for i in range(0, len(files)):
-        command = 'python2.7 insertFile2DB.py -s 1 -l ' + langs[i] + \
+        command = 'python2.7 insert_file_to_db.py -s 1 -l ' + langs[i] + \
                   ' -f ' + dirPath + '/' + files[i] + " -x " + suffixes[i]
         commands.append(command)
         print 'Processing ' + files[i] + " ..."

@@ -74,10 +74,10 @@ settings.
 
 * Insert the data into PostgreSQL database
 
-* Edit the `DOWNLOAD_DIR` in `insertAll2DB.sh` to where you downloaded all
+* Edit the `DOWNLOAD_DIR` in `insert_all_to_db.sh` to where you downloaded all
 the *.nt files
 ```
-bash insertAll2DB.sh
+bash insert_all_to_db.sh
 ```
 
 
